@@ -1,20 +1,16 @@
 # Ignore everything by default
 /*
 
-# Keep this file
+# Keep these
 !/.gitignore
+!/.nojekyll       # ← add this
 
-# Allow the root redirect page
 !/index.html
 
-# Allow the landing-page folder but re-ignore its contents by default…
 !/landing-page/
 /landing-page/*
-# …then explicitly allow only its index.html
 !/landing-page/index.html
 
-# Allow the master-plan folder but re-ignore its contents by default…
 !/master-plan/
 /master-plan/*
-# …then explicitly allow only the dashboard
 !/master-plan/research-dashboard.html
