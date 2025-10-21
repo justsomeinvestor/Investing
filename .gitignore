@@ -1,0 +1,15 @@
+# Ignore everything by default
+/*
+
+# Allow this .gitignore itself
+!/.gitignore
+
+# Unignore the folder that contains the files
+!/master-plan/
+
+# Re-ignore everything inside that folder by default
+/master-plan/*
+
+# Keep only these two files
+!/master-plan/master-plan.md
+!/master-plan/research-dashboard.html
