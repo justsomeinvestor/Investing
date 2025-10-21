@@ -1,14 +1,20 @@
 # Ignore everything by default
 /*
 
-# Allow this .gitignore itself
+# Keep this file
 !/.gitignore
 
-# Allow the landing page
+# Allow the root redirect page
 !/index.html
 
-# Allow the dashboard folder, but re-ignore its contents by default…
+# Allow the landing-page folder but re-ignore its contents by default…
+!/landing-page/
+/landing-page/*
+# …then explicitly allow only its index.html
+!/landing-page/index.html
+
+# Allow the master-plan folder but re-ignore its contents by default…
 !/master-plan/
-# …then explicitly allow only the dashboard entry file
 /master-plan/*
-!/master-plan/index.html
+# …then explicitly allow only the dashboard
+!/master-plan/research-dashboard.html
