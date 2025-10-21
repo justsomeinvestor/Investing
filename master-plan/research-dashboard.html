@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Research Dashboard - October 20, 2025</title>
+    <title>Investment Research Dashboard - October 21, 2025</title>
     <style>
         * {
             margin: 0;
@@ -2376,6 +2376,19 @@
                         timestampFields.push({
                             path: ['dashboard', 'tabs', 2, 'aiInterpretation', 'updatedAt'],
                             name: 'X Sentiment Tab'
+                        });
+                    }
+                    // Check trending sections
+                    if (xSentimentTab && xSentimentTab.crypto_trending && xSentimentTab.crypto_trending.updatedAt) {
+                        timestampFields.push({
+                            path: ['dashboard', 'tabs', 2, 'crypto_trending', 'updatedAt'],
+                            name: 'Crypto Trending'
+                        });
+                    }
+                    if (xSentimentTab && xSentimentTab.macro_trending && xSentimentTab.macro_trending.updatedAt) {
+                        timestampFields.push({
+                            path: ['dashboard', 'tabs', 2, 'macro_trending', 'updatedAt'],
+                            name: 'Macro Trending'
                         });
                     }
                 }
