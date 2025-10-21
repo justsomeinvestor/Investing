@@ -4,12 +4,11 @@
 # Allow this .gitignore itself
 !/.gitignore
 
-# Unignore the folder that contains the files
+# Allow the landing page
+!/index.html
+
+# Allow the dashboard folder, but re-ignore its contents by default…
 !/master-plan/
-
-# Re-ignore everything inside that folder by default
+# …then explicitly allow only the dashboard entry file
 /master-plan/*
-
-# Keep only these two files
-!/master-plan/master-plan.md
-!/master-plan/research-dashboard.html
+!/master-plan/index.html
