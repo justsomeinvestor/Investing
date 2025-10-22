@@ -140,132 +140,106 @@ dashboard:
         probability, strong earnings vs gold recession warning). Position MAX 25% mega-cap tech with earnings power (AAPL/MSFT/META),
         50% cash ready for Oct 29 FOMC catalyst ($7.5T liquidity unlock potential), 25% contrarian BTC/ETH accumulation at
         $107-109k support. IF 50-day holds → add to 50% equities. IF breaks below 6,600 → full defensive (max cash + puts).
-  - id: macro
-    label: Macro Strategists
-    aiInterpretation:
-      updatedAt: '2025-10-21T15:10:30Z'
-      summary: BIFURCATED ECONOMY - ASSET OWNERS vs CREDIT STRESS
-      content: Macro environment shows extreme divergence. BULLISH signals GDP ~4% (Atlanta Fed vs 2.5% consensus), strong
-        corporate earnings (+21% tech YoY, GE +15%, RTX +21%), Fed easing path (25bp Oct 29 priced by 115/117 economists).
-        BEARISH signals gold/S&P ratio 1.57x (preceded 1929/1973/2008 recessions), 30-40% recession probability (JPM/S&P Global),
-        credit card delinquencies 14-year highs. Oct 29 FOMC forward guidance is KEY catalyst - dovish tone unlocks $7.5T
-        money market rotation, hawkish pause keeps liquidity sidelined. Asset owners thrive on strong fundamentals while structural
-        vulnerabilities build earnings week Oct 21-23 adds event risk. Defensive positioning appropriate until consumer data
-        stabilizes.
-    providers:
-    - name: 42 Macro
-      insights:
-      - Breadth deterioration after the sell-off keeps risk tilted lower until a >70% up-volume day prints.
-      - Labor softness (ADP -32K) reinforces need for defensive bias into next week's data.
-      - 'Base case: Q4 wobble before 2026 recovery, but only add risk once volatility eases.'
-    - name: Fundstrat Capital
-      insights:
-      - CPI print cooperative—maintaining constructive year-end outlook but breadth healing remains critical confirmation
-        signal.
-      - SPX holding above 6,640 support validates technical recovery; next target 6,750-6,800 if breadth thrusts.
-      - Energy and quality cash-flow tech outperforming—AI infrastructure names (NVDA/AMD) leading breadth recovery.
-    - name: Raoul Pal
-      insights:
-      - Structural liquidity story intact, but tactical caution advised until the data cluster passes.
-      - Watching ETF flows as primary signal—sustained inflows offset the price drawdown.
-      - Maintains medium-term crypto overweight but using options to manage near-term risk.
-    - name: MacroCompass
-      insights:
-      - Rates market pricing two cuts by March; CPI surprise could reprice quickly.
-      - 'Prefers barbell: long duration + commodity hedges while equities digest.'
-      - Notes USD firmness as additional headwind for risk until data softens.
-    economicCalendar:
-      today: []
-      thisWeek:
-      - date: Oct 15
-        time: 08:30 EST
-        event: US CPI & Core CPI
-        impact: HIGH
-      - date: Oct 16
-        time: 08:30 EST
-        event: US PPI Final Demand
-        impact: HIGH
-      - date: Oct 16
-        time: 08:30 EST
-        event: Retail Sales
-        impact: HIGH
-      nextWeek:
-      - date: Oct 24
-        time: 09:45 EST
-        event: S&P Global Manufacturing & Services PMI
-        impact: HIGH
-      keyDates:
-      - date: Oct 15-16
-        events:
-        - CPI
-        - PPI
-        - Retail Sales
-        note: Critical inflation and consumption data cluster will set the tone.
-      - date: Oct 29
-        events:
-        - FOMC Rate Decision
-        note: The main event of the month, will be heavily influenced by this week's inflation data.
-      summary: The market is holding its breath for the mid-week inflation data (CPI/PPI). A hot number could easily trigger
-        another leg down.
-  - id: crypto
-    label: Crypto Analysts
-    aiInterpretation:
-      updatedAt: '2025-10-21T15:11:00Z'
-      summary: EXTREME FEAR CONTRARIAN SETUP AT CRITICAL SUPPORT
-      content: BTC $111,600 testing critical $107-109k support zone (tested multiple times July-Oct). Fear & Greed 29, Crypto
-        F&G 24 (extreme fear) = classic contrarian opportunity. X sentiment crypto 25, macro 35 shows capitulation. BULLISH
-        signals institutional accumulation ($5.95B ETF inflows October, whale buys $251M Bitmine + $75M SharpLink, UAE royals
-        +$5B), Glassnode Trend Accumulation Score shows smart money conviction, 67% institutions expect $130k within 3-6 months
-        (Coinbase survey). BEARISH signals 337,300 BTC transferred from long-term holders (largest ever), break below $107k
-        triggers cascade to $100k then $95k. STRATEGY contrarian accumulation 25% allocation at $107-115k zone, stop below
-        $105k. Risk/reward favors buyers at extreme fear + support confluence. Oct 29 Fed decision catalyst - dovish = breakout
-        above $115k, hawkish = retest $107k.
-    providers:
-    - name: Glassnode
-      insights:
-      - 'Weekend ETF flow estimate: +$210M, well below the mid-week $900M spike but still positive.'
-      - Short-term holder cost basis now ~$114K; closing below risks deeper unwind toward $108K.
-      - Funding reset to neutral confirms leverage clean-up after the sell-off.
-    - name: Bankless Macro
-      insights:
-      - Post-CPI repricing favorable—quality L1/L2s (ETH, MATIC, AVAX) showing resilience vs speculative alts.
-      - 'Leverage flush complete; next phase: accumulation by long-term value buyers. Spot ETF flows becoming primary signal.'
-      - Liquidity concentrated in majors (BTC/ETH) and on-chain native tokens; avoid low-liquidity alts until volatility normalizes.
-    - name: CryptoQuant
-      insights:
-      - Exchange reserves ticked higher; monitor for continued increases which could cap bounces.
-      - Whale bid walls at $115K and $111K; below that sits a liquidity air-pocket to $105K.
-      - Stablecoin inflows slowed materially; need a re-acceleration to reignite bull momentum.
-  - id: tech
-    label: Tech & Innovation
+  - id: markets
+    label: 📊 Markets Intelligence
     aiInterpretation:
       updatedAt: '2025-10-21T15:11:30Z'
-      summary: Tech +21% YoY earnings (highest sector growth) driving narrow market leadership. QQQ outperforming but creates
-        concentration risk with Tech/Comm at 45% market cap (1800s levels, doubled in 10 years). Apple surged to record high
-        on strong iPhone 17 demand Oct 21. Earnings season showing strength Coca-Cola, Lockheed, GM topped estimates. Tesla,
-        Netflix reporting later this week. Information Technology largest contributor to S&P 8.5% blended growth. Semiconductors
-        primary driver.
-      keyInsight: Quality differentiation accelerating between AI infrastructure with real adoption (AMD/NVDA tangible deals,
-        AAPL ecosystem strength) and speculative tech vulnerable to rate sensitivity. Tech carrying market on shoulders -
-        narrow breadth (A/D line declining 10+ months) means any mega-cap faltering triggers cascade risk. No alternative
-        sectors positioned to absorb selling. Late-stage bull market phase characteristics (Phase 3-4).
-      action: Selective tech reentry appropriate focused ONLY on mega-caps with earnings power and cash generation (AAPL,
-        MSFT, META, NVDA). MAX 25% allocation given concentration risk and weak signal (31/100). Avoid unprofitable SaaS and
-        speculative names. Watch Oct 29 Fed guidance - dovish path preserves AI capex budgets 2025-2026, hawkish pause triggers
-        tech multiple compression. Add QQQ hedges through FOMC as insurance against hawkish surprise.
-      sentiment: cautiously bullish
-      confidence: medium
-    providers:
-    - name: Goldman Tech Desk
-      insights:
-      - Mega-cap AI basket stabilizing—down 4% on the week but recovered 2% post-CPI; foundational demand intact.
-      - New contract flow (Oracle/AMD $50K chip deal) validates structural AI infrastructure capex thesis for 2025+
-      - Highlights power cost inflation as key watch item for AI margins; data center colocation benefits from higher rates.
-    - name: ARK Research
-      insights:
-      - Still models $1T+ AI capex by 2030 but acknowledges interim volatility from rates.
-      - Prefers dollar-cost averaging into innovators rather than chasing rallies.
-      - Flagging demand for energy storage and grid upgrades as investable second-order theme.
+      summary: |
+        UNIFIED MARKET CONTEXT - BIFURCATED ECONOMY WITH CONTRARIAN CRYPTO SETUP
+
+        MACRO ENVIRONMENT: Extreme divergence between asset owners (thriving) and credit-stressed consumers. BULLISH: GDP ~4% (Atlanta Fed vs 2.5% consensus), tech earnings +21% YoY, Fed easing path (25bp Oct 29). BEARISH: gold/S&P ratio 1.57x (recession signal), 30-40% recession risk, credit card delinquencies 14-year highs. Oct 29 FOMC is KEY catalyst - dovish unlocks $7.5T money market rotation, hawkish keeps liquidity sidelined.
+
+        CRYPTO MARKETS: BTC $111,600 at critical $107-109k support. Fear & Greed 29, Crypto F&G 24 (extreme fear) = contrarian opportunity. BULLISH: institutional accumulation ($5.95B ETF inflows, whale buys $326M), 67% institutions expect $130k in 3-6 months. BEARISH: 337,300 BTC transferred from long-term holders, break <$107k triggers cascade to $100k-$95k. STRATEGY: contrarian accumulation 25% at $107-115k, stop <$105k.
+
+        TECH SECTOR: Tech +21% YoY (highest sector growth) but concentration risk at 45% market cap (doubled in 10 years). Apple hit record high Oct 21 on iPhone 17 demand. Quality differentiation accelerating - AI infrastructure with real adoption (AMD/NVDA deals, AAPL ecosystem) vs speculative tech vulnerable to rates. Narrow breadth (A/D declining 10+ months) means mega-cap faltering triggers cascade. STRATEGY: selective reentry ONLY in mega-caps with earnings power (AAPL/MSFT/META/NVDA), MAX 25% allocation, avoid unprofitable SaaS.
+
+        CONSENSUS ACTION: Defensive positioning until consumer data stabilizes. Watch Oct 29 Fed guidance as primary catalyst across all markets. Use extreme fear as tactical entry opportunity with tight stops.
+    sections:
+    - name: Macro Environment
+      providers:
+      - name: 42 Macro
+        insights:
+        - Breadth deterioration after the sell-off keeps risk tilted lower until a >70% up-volume day prints.
+        - Labor softness (ADP -32K) reinforces need for defensive bias into next week's data.
+        - 'Base case: Q4 wobble before 2026 recovery, but only add risk once volatility eases.'
+      - name: Fundstrat Capital
+        insights:
+        - CPI print cooperative—maintaining constructive year-end outlook but breadth healing remains critical confirmation
+          signal.
+        - SPX holding above 6,640 support validates technical recovery; next target 6,750-6,800 if breadth thrusts.
+        - Energy and quality cash-flow tech outperforming—AI infrastructure names (NVDA/AMD) leading breadth recovery.
+      - name: Raoul Pal
+        insights:
+        - Structural liquidity story intact, but tactical caution advised until the data cluster passes.
+        - Watching ETF flows as primary signal—sustained inflows offset the price drawdown.
+        - Maintains medium-term crypto overweight but using options to manage near-term risk.
+      - name: MacroCompass
+        insights:
+        - Rates market pricing two cuts by March; CPI surprise could reprice quickly.
+        - 'Prefers barbell: long duration + commodity hedges while equities digest.'
+        - Notes USD firmness as additional headwind for risk until data softens.
+      economicCalendar:
+        today: []
+        thisWeek:
+        - date: Oct 15
+          time: 08:30 EST
+          event: US CPI & Core CPI
+          impact: HIGH
+        - date: Oct 16
+          time: 08:30 EST
+          event: US PPI Final Demand
+          impact: HIGH
+        - date: Oct 16
+          time: 08:30 EST
+          event: Retail Sales
+          impact: HIGH
+        nextWeek:
+        - date: Oct 24
+          time: 09:45 EST
+          event: S&P Global Manufacturing & Services PMI
+          impact: HIGH
+        keyDates:
+        - date: Oct 15-16
+          events:
+          - CPI
+          - PPI
+          - Retail Sales
+          note: Critical inflation and consumption data cluster will set the tone.
+        - date: Oct 29
+          events:
+          - FOMC Rate Decision
+          note: The main event of the month, will be heavily influenced by this week's inflation data.
+        summary: The market is holding its breath for the mid-week inflation data (CPI/PPI). A hot number could easily trigger
+          another leg down.
+    - name: Crypto Markets
+      providers:
+      - name: Glassnode
+        insights:
+        - 'Weekend ETF flow estimate: +$210M, well below the mid-week $900M spike but still positive.'
+        - Short-term holder cost basis now ~$114K; closing below risks deeper unwind toward $108K.
+        - Funding reset to neutral confirms leverage clean-up after the sell-off.
+      - name: Bankless Macro
+        insights:
+        - Post-CPI repricing favorable—quality L1/L2s (ETH, MATIC, AVAX) showing resilience vs speculative alts.
+        - 'Leverage flush complete; next phase: accumulation by long-term value buyers. Spot ETF flows becoming primary signal.'
+        - Liquidity concentrated in majors (BTC/ETH) and on-chain native tokens; avoid low-liquidity alts until volatility normalizes.
+      - name: CryptoQuant
+        insights:
+        - Exchange reserves ticked higher; monitor for continued increases which could cap bounces.
+        - Whale bid walls at $115K and $111K; below that sits a liquidity air-pocket to $105K.
+        - Stablecoin inflows slowed materially; need a re-acceleration to reignite bull momentum.
+    - name: Tech & Innovation
+      providers:
+      - name: Goldman Tech Desk
+        insights:
+        - Mega-cap AI basket stabilizing—down 4% on the week but recovered 2% post-CPI; foundational demand intact.
+        - New contract flow (Oracle/AMD $50K chip deal) validates structural AI infrastructure capex thesis for 2025+
+        - Highlights power cost inflation as key watch item for AI margins; data center colocation benefits from higher rates.
+      - name: ARK Research
+        insights:
+        - Still models $1T+ AI capex by 2030 but acknowledges interim volatility from rates.
+        - Prefers dollar-cost averaging into innovators rather than chasing rallies.
+        - Flagging demand for energy storage and grid upgrades as investable second-order theme.
   - id: xsentiment
     label: 🐦 X Sentiment
     aiInterpretation:
@@ -572,18 +546,26 @@ dashboard:
       tech_themes: []
       macro_themes: []
       sentiment_words: []
-  - id: news
-    label: News & Markets
+  - id: news_catalysts
+    label: 📰 News & Catalysts
     aiInterpretation:
       updatedAt: '2025-10-21T16:05:38Z'
-      summary: "RSS Feed Summary for October 21, 2025:\nTotal Articles: 40\n\n**MarketWatch** (10 articles):\n  • Top Stories\
-        \ Coca-Cola’s stock rises as revenue beats forecasts and profit increases\n  • Top Stories GE Aerospace’s stock surges\
-        \ to a record as profit outlook raised to highest level in nine years\n  • Top Stories GM’s stock is soaring as these\
-        \ factors drive a better profit forecast\n  • Top Stories Here’s how the Louvre heist gems could end up being sold\
-        \ at your local jeweler\n  • Top Stories Israel’s economy has fallen way off trend – but the ceasefire may lead to\
+      summary: |
+        NEWS THEMES: Heavy earnings week (78-160 companies daily Oct 21-23) + FOMC Oct 28-29. Consumer confidence drop to 94.2 undermines resilience narrative. In WEAK environment (28.5), negative surprises trigger outsized moves. Key headlines: Coca-Cola/GE/GM earnings beats, Bitcoin leverage flush ($320M liquidations), AMD +30% on OpenAI deal fueling crypto miner rallies.
+
+        KEY CATALYSTS: Critical inflation data cluster (CPI/PPI) will set Fed direction. VIX term structure inversion signals extreme fear - historical precursor to stabilization. Breadth collapse (NYSE up-volume <40%) suggests failed rallies until thrust occurs. Fundstrat identifies technical deleveraging as cleaner setup for year-end recovery.
+
+        CONTRARIAN SIGNALS: X Sentiment 35/100 (crypto + macro) shows fear/uncertainty. Social sentiment typically leads price - current level suggests further downside risk before bottoming. Watch for capitulation signals.
+    sections:
+    - name: 📰 Daily News Flow
+      rss_summary: "RSS Feed Summary for October 21, 2025:\nTotal Articles: 40\n\n**MarketWatch** (10 articles):\n  • Top Stories\
+        \ Coca-Cola's stock rises as revenue beats forecasts and profit increases\n  • Top Stories GE Aerospace's stock surges\
+        \ to a record as profit outlook raised to highest level in nine years\n  • Top Stories GM's stock is soaring as these\
+        \ factors drive a better profit forecast\n  • Top Stories Here's how the Louvre heist gems could end up being sold\
+        \ at your local jeweler\n  • Top Stories Israel's economy has fallen way off trend – but the ceasefire may lead to\
         \ a big recovery, says Goldman Sachs\n  ... and 5 more\n\n**CoinDesk** (10 articles):\n  • Top Stories Asia Morning\
         \ Briefing  Bitcoin Holds Steady as Market Resets After Leverage Flush\n  • Top Stories Bitcoin Battles Key Technical\
-        \ Levels as Uptober Momentum Fades\n  • Top Stories Bitcoin Drops as Market ‘Flushes Excess Leverage ’ Crypto Daybook\
+        \ Levels as Uptober Momentum Fades\n  • Top Stories Bitcoin Drops as Market 'Flushes Excess Leverage ' Crypto Daybook\
         \ Americas\n  • Top Stories Bitcoin Falls Below $108K Amid $320M Liquidations as Excess Leverage Gets Flushed Out\n\
         \  • Top Stories BNB Falls 3.3% as Market Shakeout Cuts Through Support\n  ... and 5 more\n\n**CNBC** (10 articles):\n\
         \  • Top News & Analysis Airbnb adds direct messaging, new social features after app overhaul\n  • Top News & Analysis\
@@ -596,25 +578,78 @@ dashboard:
         \ Yield Trap\n  • Marketplace Akeso, Inc. (AKESF) Presents at ESMO Congress 2025 - Slideshow\n  • Marketplace Amazon's\
         \ Stock Rises Despite Massive AWS Outage\n  ... and 5 more\n\nKey Themes: Automated aggregation - manual curation\
         \ recommended for actionable insights."
-      content: 'Heavy news flow week: 78-160 companies reporting earnings daily Oct 21-23, plus FOMC Oct 28-29. In WEAK environment
-        (28.5), negative surprises trigger outsized moves. Consumer confidence drop to 94.2 is key story - undermines economic
-        resilience narrative. Watch for earnings guidance cuts and Fed language around consumer weakness. Current volatility
-        score 6 suggests market unprepared for surprises.'
-    providers:
-    - name: CoinDesk
-      insights:
-      - 'AI & HPC spillover into crypto: AMD''s 30% surge on OpenAI deal fueled rallies in AI/HPC-linked bitcoin miners (IREN,
-        BITF, CIFR, CLSK, WULF).'
-      - 'Bitcoin market structure shift: BTC options OI near $80B now moves spot prices, with institutional (IBIT) vs crypto-native
-        (Deribit) divergence.'
-      - 'Key resistance at $125K BTC: Analysts warn failure to break could trigger bear phase, while bulls eye $145K by year-end.'
-      - 'Treasury strategies & accumulation: BitMine Immersion adds $821M ETH, now $13.4B reserves; corporates and funds continue
-        treasury buildup.'
-    - name: CNBC (Latest)
-      insights:
-      - JPMorgan blueprint to become world's first fully AI-powered megabank
-      - Cerebras raises $1B in pre-IPO funding for AI chip expansion
-      - Buffett eyeing Berkshire's biggest deal in three years ($11.6B+)
+      providers:
+      - name: CoinDesk
+        insights:
+        - 'AI & HPC spillover into crypto: AMD''s 30% surge on OpenAI deal fueled rallies in AI/HPC-linked bitcoin miners (IREN,
+          BITF, CIFR, CLSK, WULF).'
+        - 'Bitcoin market structure shift: BTC options OI near $80B now moves spot prices, with institutional (IBIT) vs crypto-native
+          (Deribit) divergence.'
+        - 'Key resistance at $125K BTC: Analysts warn failure to break could trigger bear phase, while bulls eye $145K by year-end.'
+        - 'Treasury strategies & accumulation: BitMine Immersion adds $821M ETH, now $13.4B reserves; corporates and funds continue
+          treasury buildup.'
+      - name: CNBC (Latest)
+        insights:
+        - JPMorgan blueprint to become world's first fully AI-powered megabank
+        - Cerebras raises $1B in pre-IPO funding for AI chip expansion
+        - Buffett eyeing Berkshire's biggest deal in three years ($11.6B+)
+    - name: 🚀 Upcoming Catalysts
+      items:
+      - date: '2025-10-21'
+        title: CPI & PPI Inflation Data Cluster
+        blurb: Critical mid-week inflation data will set Fed policy direction amid WEAK signal conditions. Market extremely
+          sensitive to surprises given current volatility regime. Watch for bond market reaction as leading indicator of equity
+          moves.
+        conviction: CRITICAL
+        source: Economic Calendar
+        link: '#macro-tab'
+        tags:
+        - macro
+        - fed
+        - inflation
+        - volatility
+    - name: 💡 Research Highlights
+      items:
+      - date: '2025-10-21'
+        title: 'Fundstrat: Post-Crash Technical Analysis'
+        blurb: Tom Lee identifies tariff actions as catalyst for VIX spike in WEAK environment. Technical deleveraging event
+          provides cleaner setup for year-end recovery. Focus on quality names with strong institutional support.
+        conviction: HIGH
+        source: YouTube/Fundstrat
+        link: '#macro-tab'
+        tags:
+        - macro
+        - tariffs
+        - technical
+        - recovery
+    - name: 📊 Data Anomalies & Institutional Flows
+      items:
+      - date: '2025-10-21'
+        title: VIX Term Structure Inversion Signal
+        blurb: Unusual near-term volatility premium signals extreme fear in WEAK conditions. Historical precursor to market
+          stabilization. Monitor for compression below 19 as risk-off exit signal.
+        conviction: HIGH
+        source: Options Market
+        link: '#technicals-tab'
+        tags:
+        - volatility
+        - options
+        - term-structure
+        - fear
+    - name: ⚠️ Exhaustion Signals & Contrarian Warnings
+      items:
+      - date: '2025-10-21'
+        title: Breadth Collapse Below Critical Threshold
+        blurb: NYSE up-volume below 40% in WEAK signal environment. Failed rallies likely until breadth thrust occurs. Market
+          vulnerable to further downside without broad participation recovery.
+        conviction: HIGH
+        source: Market Breadth
+        link: '#technicals-tab'
+        tags:
+        - breadth
+        - participation
+        - warning
+        - thrust
   - id: technicals
     label: Technicals
     aiInterpretation:
@@ -723,73 +758,6 @@ dashboard:
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
     technicalsTabSyncedAt: '2025-10-21T16:03:07Z'
-  - id: media
-    label: 🎬 Media & Catalysts
-    aiInterpretation:
-      updatedAt: '2025-10-21T16:03:55Z'
-      summary: SENTIMENT DETERIORATION EVIDENT
-      content: 'X Sentiment combined 35/100 (crypto 35, macro 35) shows community fear/uncertainty. Low conviction environment
-        with bearish positioning dominating. Hype cycle position likely "Anxiety" - emoji density medium, caps lock usage
-        medium. Contrarian signal: +2pts (Fear Creeping) but not yet extreme capitulation. Social sentiment typically leads
-        price - current 35 suggests further downside risk before bottoming.'
-    categories:
-    - name: 🚀 Upcoming Catalysts
-      items:
-      - date: '2025-10-21'
-        title: CPI & PPI Inflation Data Cluster
-        blurb: Critical mid-week inflation data will set Fed policy direction amid WEAK signal conditions. Market extremely
-          sensitive to surprises given current volatility regime. Watch for bond market reaction as leading indicator of equity
-          moves.
-        conviction: CRITICAL
-        source: Economic Calendar
-        link: '#macro-tab'
-        tags:
-        - macro
-        - fed
-        - inflation
-        - volatility
-    - name: 💡 Research Highlights
-      items:
-      - date: '2025-10-21'
-        title: 'Fundstrat: Post-Crash Technical Analysis'
-        blurb: Tom Lee identifies tariff actions as catalyst for VIX spike in WEAK environment. Technical deleveraging event
-          provides cleaner setup for year-end recovery. Focus on quality names with strong institutional support.
-        conviction: HIGH
-        source: YouTube/Fundstrat
-        link: '#macro-tab'
-        tags:
-        - macro
-        - tariffs
-        - technical
-        - recovery
-    - name: 📊 Data Anomalies & Institutional Flows
-      items:
-      - date: '2025-10-21'
-        title: VIX Term Structure Inversion Signal
-        blurb: Unusual near-term volatility premium signals extreme fear in WEAK conditions. Historical precursor to market
-          stabilization. Monitor for compression below 19 as risk-off exit signal.
-        conviction: HIGH
-        source: Options Market
-        link: '#technicals-tab'
-        tags:
-        - volatility
-        - options
-        - term-structure
-        - fear
-    - name: ⚠️ Exhaustion Signals & Contrarian Warnings
-      items:
-      - date: '2025-10-21'
-        title: Breadth Collapse Below Critical Threshold
-        blurb: NYSE up-volume below 40% in WEAK signal environment. Failed rallies likely until breadth thrust occurs. Market
-          vulnerable to further downside without broad participation recovery.
-        conviction: HIGH
-        source: Market Breadth
-        link: '#technicals-tab'
-        tags:
-        - breadth
-        - participation
-        - warning
-        - thrust
   quickActionsUpdated: '2025-10-21T15:08:00Z'
   quickActions:
   - type: RISK
@@ -959,64 +927,69 @@ dashboard:
       ranAt: '2025-10-21T16:06:32Z'
       status: Pending - will run at market close
   endOfDay:
-    date: October 15, 2025
-    ranAt: '2025-10-15T15:45:00Z'
+    date: October 20, 2025
+    ranAt: '2025-10-21T15:45:00Z'
     status: COMPLETED
-    summary: Master plan updated for October 15. The composite signal improved to 69.63 (MODERATE) showing market stabilization
-      after yesterday's weakness. VIX retreated, equities rallied, crypto showed strength.
+    summary: Master plan updated for October 20-21. The composite signal declined to 31.0 (WEAK) showing extreme fear at critical support levels. SPX testing 50-day MA ($6,628) for first time since May while Fear & Greed hits 29, Crypto F&G 24 (extreme fear). BTC holding $107-109k support zone despite $5.95B ETF inflows. Bifurcated economy with GDP ~4% vs 30-40% recession probability creates contrarian opportunity similar to April 8 (F&G 3 → +3% rally). Oct 29 FOMC catalyst ahead.
     keyOutcomes:
-    - Signal upgraded from WEAK (36.21) to MODERATE (69.63) reflecting market recovery.
-    - Dashboard updated with current market data showing positive momentum.
-    - Risk positioning adjusted for selective reentry while maintaining prudent hedges through CPI.
+    - Signal downgraded to WEAK (31.0/100) from previous MODERATE reflecting extreme fear conditions.
+    - Dashboard updated with bifurcated economy narrative - strong GDP/earnings vs recession warnings.
+    - Contrarian setup identified - institutional accumulation while retail exits at support levels.
+    - Risk positioning defensive with MAX 25% mega-cap tech, 50% cash, 25% BTC/ETH at support.
     signals:
-      composite: 69.63
-      tier: MODERATE
+      composite: 31.0
+      tier: WEAK
       drivers:
-      - Market Recovery
-      - VIX Retreat
-      - Positive Breadth
-      - Seasonality Support
-      xSentiment: Crypto 35/100 (BEARISH), Macro 45/100 (NEUTRAL)
+      - Extreme Fear (F&G 29, Crypto 24)
+      - Critical Support Test (SPX 50-day MA)
+      - Institutional Accumulation
+      - FOMC Catalyst Ahead (Oct 29)
+      xSentiment: Crypto 45/100 (NEUTRAL), Macro 42/100 (NEUTRAL)
     actions:
       completed:
       - Ran all scrapers and generated provider summaries.
-      - Calculated new trading signal.
+      - Calculated new trading signal (31.0/100 WEAK).
       - Updated all sections of the master plan.
+      - Identified contrarian accumulation opportunity at support levels.
       deferred:
-      - Deploying new capital.
-      - Adding any new long positions.
+      - Deploying new capital (waiting for 50-day MA hold confirmation).
+      - Adding new long positions (defensive posture until FOMC Oct 29).
+      - Full risk-on allocation (limited to 25% mega-cap tech + 25% BTC/ETH).
     trendAnalysis:
       signalScoreTrend:
         scores:
-        - 81
-        - 11.7
-        direction: Collapsing
-        change: -69.3
-        tierTransitions: Downgraded from STRONG to AVOID in one session.
-        summary: A violent, single-day collapse in market health. Extreme caution is warranted.
+        - 69.63
+        - 31.0
+        direction: Declining
+        change: -38.63
+        tierTransitions: Downgraded from MODERATE to WEAK as fear intensified.
+        summary: Signal degraded on extreme fear conditions (F&G 29) and critical support test. However, institutional accumulation ($5.95B BTC ETF inflows) suggests contrarian setup forming similar to April lows.
       volatilityPattern:
-        vixChange: '+4.7'
-        vixChangePercent: +27%
-        pattern: Expansion
-        status: Risk-Off Pulse
-        isUnusual: true
-        context: VIX spiked above 21, confirming a high-fear environment.
+        vixChange: '+2.1'
+        vixChangePercent: +11%
+        pattern: Elevated
+        status: Fear Spike
+        isUnusual: false
+        context: VIX 20+ reflects fear, but not panic. Watch for VIX compression as FOMC approaches Oct 29.
       breadthDivergence:
         isDiverging: true
-        consecutiveDays: 1
-        historicalContext: A/D ratio collapsed to over 4-to-1 negative.
-        implication: The sell-off is broad and indiscriminate. Do not trust bounces.
+        consecutiveDays: 10+
+        historicalContext: Advance-Decline trending lower since Nov 2024 peak while SPX hit ATH Oct 9.
+        implication: Narrow leadership (45% market cap in Tech/Comm) creates fragility. Any mega-cap faltering triggers cascade risk.
       narrativeMomentum:
         hot:
-        - narrative: Liquidation
-          trend: +500%
-          days: 1
-        - narrative: Tariffs
-          trend: +400%
-          days: 1
+        - narrative: Extreme Fear
+          trend: +350%
+          days: 2
+        - narrative: FOMC Oct 29 Catalyst
+          trend: +280%
+          days: 3
+        - narrative: Contrarian Setup
+          trend: +220%
+          days: 2
         cooling:
-        - narrative: ETF Flows
-          trend: -80%
+        - narrative: Risk-On Momentum
+          trend: -90%
           days: 1
     notes: Workflow complete. The system is now in a maximum defensive posture. No new risk should be taken until the signal
       improves materially.

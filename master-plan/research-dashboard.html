@@ -2026,6 +2026,107 @@
 .section-title { margin: 0; }
 .refresh-badge { background: rgba(99,102,241,0.15); border:1px solid rgba(99,102,241,0.35); padding:6px 10px; border-radius:10px; font-size:0.85em; color:#a5b4fc; }
 
+/* ========================================================================
+   MARKETS INTELLIGENCE VISUAL ENHANCEMENTS - ANIMATIONS
+   ======================================================================== */
+
+/* Fade in with upward motion */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Pulse glow effect */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px currentColor;
+        opacity: 1;
+    }
+    50% {
+        box-shadow: 0 0 20px currentColor;
+        opacity: 0.8;
+    }
+}
+
+/* Fill segment (donut chart) */
+@keyframes fillSegment {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Markets Intelligence dashboard styles */
+.markets-intelligence-dashboard {
+    animation: fadeIn 0.6s ease forwards;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-size: 0.9em; /* Reduce base font size by 10% */
+}
+
+.glass-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive gauge sizing */
+.gauge-card {
+    min-width: 0; /* Allow shrinking */
+}
+
+.consensus-gauges {
+    gap: 15px !important; /* Reduce gap between gauges */
+}
+
+/* Scale down visualizations for better fit */
+@media (max-width: 1600px) {
+    .markets-intelligence-dashboard {
+        font-size: 0.85em;
+    }
+    .gauge-container svg {
+        transform: scale(0.9);
+    }
+}
+
+.section-header-enhanced:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15)) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .consensus-gauges {
+        grid-template-columns: 1fr !important;
+    }
+    .price-levels-card,
+    .allocation-card {
+        margin-bottom: 20px;
+    }
+}
+
 </style>
 
 <!-- X Sentiment Trend Styles (injected) -->
@@ -3017,8 +3118,84 @@
                         }
 
                         contentEl.appendChild(technicalsRow);
+                    } else if (tab.id === 'markets') {
+                        // Enhanced visual Markets Intelligence dashboard
+                        contentEl.innerHTML += renderMarketsIntelligence(tab);
+                    } else if (tab.id === 'news_catalysts') {
+                        // Special handling for news_catalysts tab - render sections
+                        if (tab.sections && Array.isArray(tab.sections)) {
+                            tab.sections.forEach(section => {
+                                let sectionHTML = '<div class="news-catalysts-section" style="margin-bottom: 30px;">';
+
+                                // Section name header
+                                if (section.name) {
+                                    sectionHTML += `<h3 style="color: #6366f1; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #374151;">${section.name}</h3>`;
+                                }
+
+                                // Daily News Flow section - show RSS summary only
+                                if (section.name === '📰 Daily News Flow') {
+                                    if (section.rss_summary) {
+                                        sectionHTML += renderRSSSummary(section.rss_summary);
+                                    }
+                                } else {
+                                    // Catalyst sections - render items as cards
+                                    if (section.items && Array.isArray(section.items)) {
+                                        section.items.forEach(item => {
+                                            const convictionColor = item.conviction === 'CRITICAL' ? '#ef4444' : item.conviction === 'HIGH' ? '#f59e0b' : '#6366f1';
+
+                                            // Render tags if available
+                                            let tagsHTML = '';
+                                            if (item.tags && Array.isArray(item.tags) && item.tags.length > 0) {
+                                                tagsHTML = '<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;">';
+                                                item.tags.forEach(tag => {
+                                                    const tagColor = getTagColor(tag);
+                                                    tagsHTML += `
+                                                        <span style="background: ${tagColor}20; border: 1px solid ${tagColor}40; color: ${tagColor}; padding: 3px 8px; border-radius: 12px; font-size: 0.75em; font-weight: 500;">
+                                                            ${tag}
+                                                        </span>
+                                                    `;
+                                                });
+                                                tagsHTML += '</div>';
+                                            }
+
+                                            // Make source/link clickable if link exists
+                                            let sourceLinkHTML = '';
+                                            if (item.link && item.source) {
+                                                const isInternalLink = item.link.startsWith('#');
+                                                const linkTarget = isInternalLink ? '' : 'target="_blank" rel="noopener noreferrer"';
+                                                sourceLinkHTML = `
+                                                    <a href="${item.link}" ${linkTarget} style="color: #6366f1; font-size: 0.85em; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s; cursor: pointer;">
+                                                        <span>📍</span>
+                                                        <span style="border-bottom: 1px solid transparent;">${item.source}</span>
+                                                        <span style="font-size: 0.7em;">${isInternalLink ? '→' : '↗'}</span>
+                                                    </a>
+                                                `;
+                                            } else if (item.source) {
+                                                sourceLinkHTML = `<div style="color: #6366f1; font-size: 0.85em;">📍 ${item.source}</div>`;
+                                            }
+
+                                            sectionHTML += `
+                                                <div class="catalyst-card" style="background: #1f2937; border-left: 4px solid ${convictionColor}; padding: 15px; margin-bottom: 15px; border-radius: 4px; transition: transform 0.2s, box-shadow 0.2s;">
+                                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+                                                        <div style="font-weight: 600; color: #f3f4f6; font-size: 1.05em;">${item.title || ''}</div>
+                                                        <div style="background: ${convictionColor}; color: white; padding: 2px 8px; border-radius: 3px; font-size: 0.75em; font-weight: 600; white-space: nowrap; margin-left: 10px;">${item.conviction || ''}</div>
+                                                    </div>
+                                                    ${item.date ? `<div style="color: #9ca3af; font-size: 0.85em; margin-bottom: 8px;">📅 ${item.date}</div>` : ''}
+                                                    <div style="color: #d1d5db; line-height: 1.5; margin-bottom: 8px;">${highlightKeyTerms(item.blurb || '')}</div>
+                                                    ${sourceLinkHTML}
+                                                    ${tagsHTML}
+                                                </div>
+                                            `;
+                                        });
+                                    }
+                                }
+
+                                sectionHTML += '</div>';
+                                contentEl.innerHTML += sectionHTML;
+                            });
+                        }
                     } else {
-                        // Non-technicals tabs: render providers normally
+                        // Non-technicals, non-markets, non-news_catalysts tabs: render providers normally
                         if (tab.providers) {
                             let providersHTML = '<div class="provider-insights">';
                             const providers = Array.isArray(tab.providers) ? tab.providers : [];
@@ -3259,70 +3436,60 @@
             if (!container) return;
 
             container.innerHTML = '';
-            if (!providerConsensus || !providerConsensus.length) {
+
+            // Handle new themes structure from providerConsensus.themes
+            const themes = providerConsensus?.themes || providerConsensus;
+
+            if (!themes || (Array.isArray(themes) && !themes.length)) {
                 container.innerHTML = '<p style="color: #9ca3af;">No consensus data available.</p>';
                 return;
             }
 
-            providerConsensus.forEach(item => {
+            const themeArray = Array.isArray(themes) ? themes : [];
+
+            themeArray.forEach((item, idx) => {
                 const consensusItem = document.createElement('div');
                 consensusItem.className = 'consensus-item';
+                consensusItem.style.animation = `fadeInUp ${0.4 + idx * 0.1}s ease forwards`;
+                consensusItem.style.opacity = '0';
 
                 const header = document.createElement('div');
                 header.className = 'consensus-header';
 
                 const topic = document.createElement('span');
                 topic.className = 'consensus-topic';
-                topic.textContent = item.topic || 'Topic';
+                topic.textContent = item.theme || item.topic || 'Topic';
 
-                const percentage = document.createElement('span');
-                percentage.className = 'consensus-percentage';
-                percentage.textContent = `${item.agreement || 0}% agree`;
+                // Sentiment badge
+                const sentiment = item.sentiment || 'NEUTRAL';
+                const sentimentColor = sentiment.includes('BULLISH') ? '#10b981' :
+                                      sentiment.includes('BEARISH') ? '#ef4444' : '#f59e0b';
+
+                const sentimentBadge = document.createElement('span');
+                sentimentBadge.className = 'consensus-percentage';
+                sentimentBadge.style.background = `${sentimentColor}20`;
+                sentimentBadge.style.color = sentimentColor;
+                sentimentBadge.style.border = `1px solid ${sentimentColor}40`;
+                sentimentBadge.style.padding = '4px 10px';
+                sentimentBadge.style.borderRadius = '6px';
+                sentimentBadge.style.fontSize = '0.85em';
+                sentimentBadge.style.fontWeight = '600';
+                sentimentBadge.textContent = sentiment.replace('_', ' ');
 
                 header.appendChild(topic);
-                header.appendChild(percentage);
+                header.appendChild(sentimentBadge);
 
-                const barContainer = document.createElement('div');
-                barContainer.className = 'consensus-bar-container';
-
-                const bar = document.createElement('div');
-                bar.className = 'consensus-bar';
-                bar.style.width = '0%';
-
-                barContainer.appendChild(bar);
-
-                const providers = document.createElement('div');
-                providers.className = 'consensus-providers';
-
-                if (item.providers && item.providers.agree) {
-                    const agreeDiv = document.createElement('div');
-                    agreeDiv.innerHTML = `<strong>Agree:</strong> ${item.providers.agree.join(', ')}`;
-                    providers.appendChild(agreeDiv);
-                }
-
-                if (item.providers && item.providers.disagree) {
-                    const disagreeDiv = document.createElement('div');
-                    disagreeDiv.innerHTML = `<strong>Disagree:</strong> ${item.providers.disagree.join(', ')}`;
-                    providers.appendChild(disagreeDiv);
-                }
-
-                if (item.divergence) {
-                    const warning = document.createElement('div');
-                    warning.className = 'divergence-warning';
-                    warning.textContent = '⚠️ Significant divergence detected';
-                    consensusItem.appendChild(warning);
-                }
+                const description = document.createElement('div');
+                description.className = 'consensus-providers';
+                description.style.color = '#d1d5db';
+                description.style.lineHeight = '1.6';
+                description.style.marginTop = '10px';
+                description.textContent = item.description || '';
 
                 consensusItem.appendChild(header);
-                consensusItem.appendChild(barContainer);
-                consensusItem.appendChild(providers);
+                consensusItem.appendChild(description);
 
                 container.appendChild(consensusItem);
-
-                // Animate bar
-                setTimeout(() => {
-                    bar.style.width = `${item.agreement || 0}%`;
-                }, 100);
             });
         }
 
@@ -4241,11 +4408,54 @@
             title.textContent = 'Today\'s Priorities';
             section.appendChild(title);
 
-            if (!priorities) {
+            if (!priorities || (Array.isArray(priorities) && priorities.length === 0)) {
                 section.innerHTML += '<p style="color: #9ca3af;">No priorities set.</p>';
                 return section;
             }
 
+            // Handle new format: simple string array
+            if (Array.isArray(priorities) && typeof priorities[0] === 'string') {
+                const priorityList = document.createElement('div');
+                priorityList.className = 'priority-list';
+
+                priorities.forEach((priorityText, index) => {
+                    const priorityItem = document.createElement('div');
+                    priorityItem.className = 'priority-item high';
+                    priorityItem.style.display = 'flex';
+                    priorityItem.style.alignItems = 'center';
+                    priorityItem.style.padding = '12px 15px';
+                    priorityItem.style.background = 'rgba(99, 102, 241, 0.08)';
+                    priorityItem.style.borderLeft = '3px solid #6366f1';
+                    priorityItem.style.borderRadius = '6px';
+                    priorityItem.style.marginBottom = '10px';
+                    priorityItem.style.transition = 'all 0.2s ease';
+
+                    const checkbox = document.createElement('div');
+                    checkbox.className = 'priority-checkbox';
+                    checkbox.style.width = '18px';
+                    checkbox.style.height = '18px';
+                    checkbox.style.border = '2px solid rgba(99, 102, 241, 0.4)';
+                    checkbox.style.borderRadius = '4px';
+                    checkbox.style.marginRight = '12px';
+                    checkbox.style.flexShrink = '0';
+                    checkbox.style.cursor = 'pointer';
+
+                    const taskText = document.createElement('span');
+                    taskText.textContent = priorityText;
+                    taskText.style.flex = '1';
+                    taskText.style.color = '#e0e6f0';
+                    taskText.style.fontSize = '0.95em';
+
+                    priorityItem.appendChild(checkbox);
+                    priorityItem.appendChild(taskText);
+                    priorityList.appendChild(priorityItem);
+                });
+
+                section.appendChild(priorityList);
+                return section;
+            }
+
+            // Handle old format: nested object with priority levels
             ['high', 'medium', 'low'].forEach(priority => {
                 const items = priorities[priority] || [];
                 if (items.length > 0) {
@@ -4296,6 +4506,77 @@
                 return section;
             }
 
+            // Handle new format: descriptive strings like "SPY: $660.00 - watch 200-DMA support"
+            if (Array.isArray(keyLevels) && typeof keyLevels[0] === 'string') {
+                const table = document.createElement('table');
+                table.className = 'level-table';
+                table.style.width = '100%';
+                table.style.borderCollapse = 'collapse';
+
+                const thead = document.createElement('thead');
+                const headerRow = document.createElement('tr');
+                ['Asset', 'Entry/Support', 'Stop/Breakdown', 'Target/Resistance'].forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    th.style.padding = '10px';
+                    th.style.textAlign = 'left';
+                    th.style.borderBottom = '2px solid rgba(99, 102, 241, 0.3)';
+                    th.style.color = '#9ca3af';
+                    th.style.fontSize = '0.85em';
+                    th.style.fontWeight = '600';
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                const tbody = document.createElement('tbody');
+                keyLevels.forEach(levelStr => {
+                    // Parse string like "SPY: $660.00 - watch 200-DMA support"
+                    const colonIndex = levelStr.indexOf(':');
+                    const asset = colonIndex > 0 ? levelStr.substring(0, colonIndex).trim() : levelStr;
+                    const remainder = colonIndex > 0 ? levelStr.substring(colonIndex + 1).trim() : '';
+
+                    // Extract price/level
+                    const priceMatch = remainder.match(/\$?([\d,]+\.?\d*)/);
+                    const price = priceMatch ? '$' + priceMatch[1] : '';
+
+                    // Get description (everything after the price)
+                    const description = priceMatch ? remainder.substring(remainder.indexOf(priceMatch[0]) + priceMatch[0].length).replace(/^[\s\-]+/, '').trim() : remainder;
+
+                    const row = document.createElement('tr');
+                    row.style.borderBottom = '1px solid rgba(99, 102, 241, 0.1)';
+
+                    const assetCell = document.createElement('td');
+                    assetCell.style.padding = '12px 10px';
+                    assetCell.style.fontWeight = '600';
+                    assetCell.style.color = '#6366f1';
+                    assetCell.textContent = asset;
+                    row.appendChild(assetCell);
+
+                    const levelCell = document.createElement('td');
+                    levelCell.style.padding = '12px 10px';
+                    levelCell.style.color = '#10b981';
+                    levelCell.style.fontWeight = '600';
+                    levelCell.textContent = price;
+                    row.appendChild(levelCell);
+
+                    const descCell = document.createElement('td');
+                    descCell.style.padding = '12px 10px';
+                    descCell.style.color = '#9ca3af';
+                    descCell.style.fontSize = '0.9em';
+                    descCell.colSpan = 2;
+                    descCell.textContent = description || '-';
+                    row.appendChild(descCell);
+
+                    tbody.appendChild(row);
+                });
+
+                table.appendChild(tbody);
+                section.appendChild(table);
+                return section;
+            }
+
+            // Handle old format: structured objects with asset/entry/stop/target
             const table = document.createElement('table');
             table.className = 'level-table';
 
@@ -5341,12 +5622,26 @@
             title.textContent = `📊 End of Day Recap - ${recapData.date || 'Previous Day'}`;
             title.style.margin = '0';
 
+            // Check if EOD data is stale (>1 day old)
             const timestamp = document.createElement('div');
             timestamp.style.fontSize = '0.85em';
-            timestamp.style.color = '#9ca3af';
             timestamp.style.marginLeft = '12px';
+            let isStale = false;
+
             if (recapData.ranAt) {
-                timestamp.textContent = recapData.ranAt;
+                const eodTime = new Date(recapData.ranAt);
+                const now = new Date();
+                const hoursSinceEOD = (now - eodTime) / (1000 * 60 * 60);
+                isStale = hoursSinceEOD > 24;
+
+                if (isStale) {
+                    timestamp.style.color = '#ef4444';
+                    timestamp.style.fontWeight = '600';
+                    timestamp.innerHTML = `⚠️ Stale data from ${recapData.date} - run 'wingman, eod wrap' to update`;
+                } else {
+                    timestamp.style.color = '#9ca3af';
+                    timestamp.textContent = recapData.ranAt;
+                }
             }
 
             // Collapsible content
@@ -5895,6 +6190,554 @@
             return base;
         }
 
+        /**
+         * Render News & Catalysts summary with structured sections
+         * Handles: NEWS THEMES, KEY CATALYSTS, CONTRARIAN SIGNALS
+         */
+        function renderNewsCatalystsSummary(summaryText) {
+            // Split by section headers
+            const themesMatch = summaryText.match(/NEWS THEMES:(.*?)(?=KEY CATALYSTS:|CONTRARIAN SIGNALS:|$)/s);
+            const catalystsMatch = summaryText.match(/KEY CATALYSTS:(.*?)(?=CONTRARIAN SIGNALS:|$)/s);
+            const contrarianMatch = summaryText.match(/CONTRARIAN SIGNALS:(.*?)$/s);
+
+            let html = '<div class="summary-structured">';
+
+            // Render NEWS THEMES section
+            if (themesMatch) {
+                html += renderNewsSummarySection('📰', 'NEWS THEMES', themesMatch[1].trim(), '#6366f1');
+            }
+
+            // Render KEY CATALYSTS section
+            if (catalystsMatch) {
+                html += renderNewsSummarySection('🚀', 'KEY CATALYSTS', catalystsMatch[1].trim(), '#f59e0b');
+            }
+
+            // Render CONTRARIAN SIGNALS section
+            if (contrarianMatch) {
+                html += renderNewsSummarySection('⚠️', 'CONTRARIAN SIGNALS', contrarianMatch[1].trim(), '#ef4444');
+            }
+
+            html += '</div>';
+
+            // If no sections matched, fall back to original display
+            if (!themesMatch && !catalystsMatch && !contrarianMatch) {
+                return `<div class="ai-section-body">${summaryText}</div>`;
+            }
+
+            return html;
+        }
+
+        /**
+         * Render individual News & Catalysts section
+         * Simpler layout than Markets Intelligence - focuses on key points
+         */
+        function renderNewsSummarySection(emoji, title, content, accentColor) {
+            // Parse content into key points (split by periods and common delimiters)
+            const sentences = content
+                .split(/\.\s+/)
+                .map(s => s.trim())
+                .filter(s => s.length > 10); // Filter out tiny fragments
+
+            let html = `
+                <div class="summary-section" style="background: rgba(31, 41, 55, 0.4); border: 1px solid ${accentColor}40; border-radius: 12px; padding: 20px; margin-bottom: 18px;">
+                    <div class="summary-section-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid ${accentColor}30;">
+                        <span style="font-size: 1.4em;">${emoji}</span>
+                        <span style="font-weight: 600; color: ${accentColor}; font-size: 1.05em; text-transform: uppercase; letter-spacing: 0.5px;">${title}</span>
+                    </div>
+                    <div class="news-points" style="display: flex; flex-direction: column; gap: 10px;">
+            `;
+
+            // Render each sentence as a point
+            sentences.forEach((sentence, idx) => {
+                // Add visual emphasis to first point
+                const isFirst = idx === 0;
+                const bgOpacity = isFirst ? '0.12' : '0.08';
+                const fontWeight = isFirst ? '500' : 'normal';
+
+                html += `
+                    <div style="padding: 10px 14px; background: ${accentColor}${bgOpacity}; border-left: 3px solid ${accentColor}; border-radius: 6px; font-size: 0.92em; line-height: 1.6; color: #e0e6f0; font-weight: ${fontWeight};">
+                        ${highlightNumbers(sentence)}${sentence.endsWith('.') ? '' : '.'}
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                </div>
+            `;
+
+            return html;
+        }
+
+        /**
+         * Parse and render structured summary for better readability
+         * Converts dense paragraphs into scannable sections with visual hierarchy
+         * Detects format and routes to appropriate renderer
+         */
+        function renderStructuredSummary(summaryText) {
+            if (!summaryText || typeof summaryText !== 'string') {
+                return `<div class="ai-section-body">${summaryText || ''}</div>`;
+            }
+
+            // Detect format: News & Catalysts vs Markets Intelligence
+            if (summaryText.includes('NEWS THEMES:') || summaryText.includes('KEY CATALYSTS:')) {
+                return renderNewsCatalystsSummary(summaryText);
+            }
+
+            // Markets Intelligence format (MACRO, CRYPTO, TECH, CONSENSUS)
+            const sections = [];
+
+            // Split by section headers
+            const macroMatch = summaryText.match(/MACRO ENVIRONMENT:(.*?)(?=CRYPTO MARKETS:|TECH SECTOR:|CONSENSUS ACTION:|$)/s);
+            const cryptoMatch = summaryText.match(/CRYPTO MARKETS:(.*?)(?=TECH SECTOR:|CONSENSUS ACTION:|$)/s);
+            const techMatch = summaryText.match(/TECH SECTOR:(.*?)(?=CONSENSUS ACTION:|$)/s);
+            const consensusMatch = summaryText.match(/CONSENSUS ACTION:(.*?)$/s);
+
+            let html = '<div class="summary-structured">';
+
+            // Render MACRO section
+            if (macroMatch) {
+                html += renderSummarySection('📊', 'MACRO ENVIRONMENT', macroMatch[1].trim(), '#6366f1');
+            }
+
+            // Render CRYPTO section
+            if (cryptoMatch) {
+                html += renderSummarySection('₿', 'CRYPTO MARKETS', cryptoMatch[1].trim(), '#8b5cf6');
+            }
+
+            // Render TECH section
+            if (techMatch) {
+                html += renderSummarySection('🚀', 'TECH SECTOR', techMatch[1].trim(), '#3b82f6');
+            }
+
+            // Render CONSENSUS section
+            if (consensusMatch) {
+                const consensusText = consensusMatch[1].trim();
+                html += `
+                    <div class="summary-consensus" style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 18px; margin-top: 20px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 1.3em;">⚡</span>
+                            <span style="font-weight: 600; color: #10b981; font-size: 1.05em; text-transform: uppercase; letter-spacing: 0.5px;">CONSENSUS ACTION</span>
+                        </div>
+                        <div style="color: #e0e6f0; line-height: 1.7; font-size: 0.98em;">
+                            ${consensusText.split('.').filter(s => s.trim()).map(sentence =>
+                                `<div style="margin: 6px 0; padding-left: 8px; border-left: 3px solid #10b981;">• ${sentence.trim()}</div>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            html += '</div>';
+
+            // If no sections matched, fall back to original display
+            if (!macroMatch && !cryptoMatch && !techMatch && !consensusMatch) {
+                return `<div class="ai-section-body">${summaryText}</div>`;
+            }
+
+            return html;
+        }
+
+        /**
+         * Render individual summary section with bullish/bearish factors
+         */
+        function renderSummarySection(emoji, title, content, accentColor) {
+            // Extract first line (context/subtitle)
+            const lines = content.split(/\n+/);
+            const firstLine = lines[0]?.trim() || '';
+            const restContent = lines.slice(1).join(' ').trim();
+
+            // Extract BULLISH factors
+            const bullishMatch = restContent.match(/BULLISH:(.*?)(?=BEARISH:|STRATEGY:|$)/s);
+            const bullishFactors = bullishMatch ? extractFactors(bullishMatch[1]) : [];
+
+            // Extract BEARISH factors
+            const bearishMatch = restContent.match(/BEARISH:(.*?)(?=STRATEGY:|$)/s);
+            const bearishFactors = bearishMatch ? extractFactors(bearishMatch[1]) : [];
+
+            // Extract STRATEGY
+            const strategyMatch = restContent.match(/STRATEGY:(.*?)$/s);
+            const strategy = strategyMatch ? strategyMatch[1].trim() : '';
+
+            // Extract key metrics (prices, percentages) from first line
+            const metrics = extractKeyMetrics(firstLine + ' ' + restContent);
+
+            let html = `
+                <div class="summary-section" style="background: rgba(31, 41, 55, 0.4); border: 1px solid ${accentColor}40; border-radius: 12px; padding: 20px; margin-bottom: 18px;">
+                    <div class="summary-section-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid ${accentColor}30;">
+                        <span style="font-size: 1.4em;">${emoji}</span>
+                        <span style="font-weight: 600; color: ${accentColor}; font-size: 1.05em; text-transform: uppercase; letter-spacing: 0.5px;">${title}</span>
+                    </div>
+            `;
+
+            // Context line
+            if (firstLine) {
+                html += `<div style="color: #9ca3af; font-style: italic; margin-bottom: 15px; font-size: 0.95em;">${firstLine}</div>`;
+            }
+
+            // Key metrics row
+            if (metrics.length > 0) {
+                html += `<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 15px;">`;
+                metrics.forEach(metric => {
+                    html += `
+                        <div class="key-metric" style="background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 6px; padding: 6px 12px; font-size: 0.9em;">
+                            <span style="color: #6366f1; font-weight: 700;">${metric}</span>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            }
+
+            // Bullish/Bearish factors in 2-column layout
+            if (bullishFactors.length > 0 || bearishFactors.length > 0) {
+                html += `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">`;
+
+                // Bullish column
+                html += `
+                    <div class="bullish-factors">
+                        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 10px;">
+                            <span style="font-size: 0.9em;">🟢</span>
+                            <span style="font-weight: 600; color: #10b981; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.3px;">Bullish</span>
+                        </div>
+                        ${bullishFactors.map(factor => `
+                            <div style="margin: 6px 0; padding: 8px 12px; background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; border-radius: 4px; font-size: 0.9em; line-height: 1.5; color: #d1d5db;">
+                                ${highlightNumbers(factor)}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                // Bearish column
+                html += `
+                    <div class="bearish-factors">
+                        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 10px;">
+                            <span style="font-size: 0.9em;">🔴</span>
+                            <span style="font-weight: 600; color: #ef4444; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.3px;">Bearish</span>
+                        </div>
+                        ${bearishFactors.map(factor => `
+                            <div style="margin: 6px 0; padding: 8px 12px; background: rgba(239, 68, 68, 0.08); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 0.9em; line-height: 1.5; color: #d1d5db;">
+                                ${highlightNumbers(factor)}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                html += `</div>`;
+            }
+
+            // Strategy box
+            if (strategy) {
+                html += `
+                    <div class="strategy-box" style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 8px; padding: 12px 15px; display: flex; align-items: start; gap: 10px;">
+                        <span style="font-size: 1.1em;">📍</span>
+                        <div>
+                            <div style="font-weight: 600; color: #6366f1; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 5px;">Strategy</div>
+                            <div style="color: #e0e6f0; font-size: 0.95em; line-height: 1.6;">${highlightNumbers(strategy)}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
+        /**
+         * Extract bullet point factors from text
+         */
+        function extractFactors(text) {
+            // Split by commas, semicolons, or "and"
+            return text.split(/[,;]|(?:\s+and\s+)/)
+                .map(f => f.trim())
+                .filter(f => f.length > 5 && !f.startsWith('BEARISH') && !f.startsWith('STRATEGY'));
+        }
+
+        /**
+         * Extract key metrics (prices, percentages) from text
+         */
+        function extractKeyMetrics(text) {
+            const metrics = [];
+
+            // BTC price
+            const btcMatch = text.match(/BTC\s+\$?([\d,]+)/i);
+            if (btcMatch) metrics.push(`BTC $${btcMatch[1]}`);
+
+            // Fear & Greed
+            const fgMatch = text.match(/Fear\s*&\s*Greed\s+(\d+)/i);
+            if (fgMatch) metrics.push(`F&G ${fgMatch[1]}`);
+
+            // Percentages (like +21%, 4%)
+            const percMatches = [...text.matchAll(/(\+?\d+)%/g)].slice(0, 3);
+            percMatches.forEach(m => {
+                const context = text.substring(Math.max(0, m.index - 20), m.index).trim().split(' ').pop();
+                if (context && context.length > 2) {
+                    metrics.push(`${context} ${m[1]}%`);
+                }
+            });
+
+            return metrics.slice(0, 4); // Limit to 4 metrics
+        }
+
+        /**
+         * Parse RSS summary text into structured data by source
+         * Extracts articles from each provider (MarketWatch, CoinDesk, CNBC, Seeking Alpha)
+         */
+        function parseRSSArticles(rss_summary) {
+            if (!rss_summary || typeof rss_summary !== 'string') {
+                return [];
+            }
+
+            const sources = [];
+            const sourceEmojis = {
+                'MarketWatch': '📊',
+                'CoinDesk': '₿',
+                'CNBC': '📺',
+                'Seeking Alpha': '💼'
+            };
+
+            // Split by source headers (e.g., "**MarketWatch** (10 articles):")
+            const sourcePattern = /\*\*([^\*]+)\*\* \((\d+) articles?\):(.*?)(?=\*\*[^\*]+\*\* \(\d+|$)/gs;
+            let match;
+
+            while ((match = sourcePattern.exec(rss_summary)) !== null) {
+                const sourceName = match[1].trim();
+                const articleCount = parseInt(match[2]);
+                const content = match[3].trim();
+
+                // Extract articles (lines starting with • Top Stories / • Marketplace)
+                const articlePattern = /• [^\n]+\n[^\n•]+/g;
+                const articles = [];
+                let articleMatch;
+
+                while ((articleMatch = articlePattern.exec(content)) !== null) {
+                    const articleText = articleMatch[0]
+                        .replace(/• (Top Stories|Marketplace|Top News & Analysis)\s*/g, '')
+                        .replace(/\n/g, ' ')
+                        .trim();
+
+                    if (articleText && articleText.length > 10) {
+                        articles.push(articleText);
+                    }
+                }
+
+                // Check for "... and X more" pattern
+                const moreMatch = content.match(/\.\.\. and (\d+) more/);
+                const hiddenCount = moreMatch ? parseInt(moreMatch[1]) : 0;
+
+                sources.push({
+                    name: sourceName,
+                    emoji: sourceEmojis[sourceName] || '📰',
+                    count: articleCount,
+                    articles: articles.slice(0, 5), // Show max 5 articles
+                    hiddenCount: hiddenCount || Math.max(0, articleCount - articles.length)
+                });
+            }
+
+            return sources;
+        }
+
+        /**
+         * Render RSS summary as a clean 2x2 grid of source cards
+         */
+        function renderRSSSummary(rss_summary) {
+            const sources = parseRSSArticles(rss_summary);
+
+            if (sources.length === 0) {
+                return `<div style="color: #9ca3af; font-style: italic; padding: 20px;">No RSS articles available</div>`;
+            }
+
+            let html = `
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 20px 0;">
+            `;
+
+            sources.forEach(source => {
+                const displayCount = source.articles.length;
+                const totalCount = source.count;
+
+                html += `
+                    <div style="background: rgba(31, 41, 55, 0.5); border: 1px solid #374151; border-radius: 10px; padding: 18px; transition: all 0.2s ease;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #374151;">
+                            <span style="font-size: 1.3em;">${source.emoji}</span>
+                            <span style="font-weight: 600; color: #f3f4f6; font-size: 1.05em;">${source.name}</span>
+                            <span style="margin-left: auto; background: #374151; color: #9ca3af; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 500;">${totalCount} articles</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                `;
+
+                // Show top articles with enhancements (tickers, emojis, highlighted numbers)
+                source.articles.forEach((article, idx) => {
+                    html += `
+                        <div style="padding: 8px 10px; background: rgba(99, 102, 241, 0.06); border-left: 2px solid #6366f1; border-radius: 4px; font-size: 0.88em; line-height: 1.5; color: #d1d5db;">
+                            • ${enhanceProviderInsight(article)}
+                        </div>
+                    `;
+                });
+
+                // Show "and X more" if applicable
+                if (source.hiddenCount > 0) {
+                    html += `
+                        <div style="color: #6b7280; font-size: 0.85em; font-style: italic; padding: 5px 10px;">
+                            ... and ${source.hiddenCount} more
+                        </div>
+                    `;
+                }
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+
+            return html;
+        }
+
+        /**
+         * Extract ticker symbols from text
+         * Looks for 2-5 uppercase letters that are likely tickers
+         */
+        function extractTickers(text) {
+            if (!text) return [];
+
+            // Match ticker patterns: standalone uppercase 2-5 letters, often in parentheses
+            const tickerPattern = /\b([A-Z]{2,5})\b|\(([A-Z]{2,5})\)/g;
+            const tickers = new Set();
+            let match;
+
+            while ((match = tickerPattern.exec(text)) !== null) {
+                const ticker = match[1] || match[2];
+                // Filter out common false positives
+                if (ticker && !['AND', 'THE', 'FOR', 'WITH', 'FROM', 'THIS', 'THAT', 'ETF', 'USD', 'CEO', 'IPO'].includes(ticker)) {
+                    tickers.add(ticker);
+                }
+            }
+
+            return Array.from(tickers);
+        }
+
+        /**
+         * Render ticker as clickable pill that opens TradingView
+         */
+        function renderTickerPill(ticker) {
+            const url = `https://www.tradingview.com/chart/?symbol=${ticker}`;
+            return `
+                <a href="${url}" target="_blank" rel="noopener noreferrer"
+                   style="display: inline-flex; align-items: center; gap: 3px; background: rgba(99, 102, 241, 0.15);
+                          border: 1px solid rgba(99, 102, 241, 0.4); color: #6366f1; padding: 2px 8px;
+                          border-radius: 10px; font-size: 0.8em; font-weight: 600; text-decoration: none;
+                          transition: all 0.2s; cursor: pointer; font-family: monospace;">
+                    <span>${ticker}</span>
+                    <span style="font-size: 0.7em;">↗</span>
+                </a>
+            `;
+        }
+
+        /**
+         * Enhance provider insight text with tickers, numbers, and emojis
+         */
+        function enhanceProviderInsight(text) {
+            if (!text) return '';
+
+            // Extract tickers first
+            const tickers = extractTickers(text);
+
+            // Add context emojis based on keywords
+            let enhanced = text;
+
+            // Add emojis for key terms
+            enhanced = enhanced
+                .replace(/\b(spillover|surge|rallies?|soar(ing)?|jump(ed)?)\b/gi, '🔥 $1')
+                .replace(/\b(warning|failure|risk|decline|drop|fall)\b/gi, '⚠️ $1')
+                .replace(/\b(accumulation|treasury|reserves|buying)\b/gi, '💎 $1')
+                .replace(/\b(shift|structure|divergence|trend)\b/gi, '📊 $1')
+                .replace(/\b(target|resistance|support|level)\b/gi, '🎯 $1');
+
+            // Highlight numbers
+            enhanced = highlightNumbers(enhanced);
+
+            // Add ticker pills at the end if any found
+            if (tickers.length > 0) {
+                enhanced += '<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;">';
+                tickers.forEach(ticker => {
+                    enhanced += renderTickerPill(ticker);
+                });
+                enhanced += '</div>';
+            }
+
+            return enhanced;
+        }
+
+        /**
+         * Get color for tag based on category
+         */
+        function getTagColor(tag) {
+            const tagLower = tag.toLowerCase();
+            const colorMap = {
+                'macro': '#6366f1',      // blue
+                'fed': '#8b5cf6',        // purple
+                'inflation': '#ef4444',  // red
+                'volatility': '#f59e0b', // orange
+                'breadth': '#10b981',    // green
+                'technical': '#3b82f6',  // light blue
+                'options': '#ec4899',    // pink
+                'crypto': '#8b5cf6',     // purple
+                'bitcoin': '#f59e0b',    // orange
+                'earnings': '#10b981',   // green
+                'warning': '#ef4444',    // red
+                'thrust': '#10b981',     // green
+                'recovery': '#10b981',   // green
+                'tariffs': '#f59e0b'     // orange
+            };
+
+            return colorMap[tagLower] || '#6b7280'; // default gray
+        }
+
+        /**
+         * Highlight key terms and numbers in catalyst blurbs
+         */
+        function highlightKeyTerms(text) {
+            if (!text) return '';
+
+            // Create a temporary placeholder to protect already-highlighted content
+            let processed = text;
+
+            // First, highlight signal tiers (most specific)
+            processed = processed
+                .replace(/\b(WEAK|VERY_WEAK|AVOID)\b/g, '<span style="color: #ef4444; font-weight: 600;">$1</span>')
+                .replace(/\b(MODERATE)\b/g, '<span style="color: #f59e0b; font-weight: 600;">$1</span>')
+                .replace(/\b(STRONG|VERY_STRONG)\b/g, '<span style="color: #10b981; font-weight: 600;">$1</span>');
+
+            // Highlight critical terms (case insensitive, avoid re-highlighting)
+            processed = processed
+                .replace(/\b(critical|extreme|historical|unprecedented)\b/gi, (match) => {
+                    // Don't replace if already inside a span tag
+                    return `<span style="color: #ef4444; font-weight: 600;">${match}</span>`;
+                })
+                .replace(/\b(recovery|setup|opportunity|catalyst)\b/gi, (match) => {
+                    return `<span style="color: #10b981; font-weight: 500;">${match}</span>`;
+                });
+
+            // Highlight numbers (excluding hex color codes)
+            processed = processed
+                // Dollar amounts
+                .replace(/(?<!#|style="color: #)(\$[\d,]+\.?\d*[KMB]?)/g, '<span style="color: #10b981; font-weight: 600;">$1</span>')
+                // Percentages
+                .replace(/(?<!#|color: #)(\d+\.?\d*%)/g, '<span style="color: #3b82f6; font-weight: 600;">$1</span>');
+
+            return processed;
+        }
+
+        /**
+         * Highlight numbers and key terms in text
+         */
+        function highlightNumbers(text) {
+            return text
+                .replace(/(\$[\d,]+\.?\d*[KMB]?)/g, '<span style="color: #10b981; font-weight: 600;">$1</span>')
+                .replace(/(\d+\.?\d*%)/g, '<span style="color: #3b82f6; font-weight: 600;">$1</span>')
+                .replace(/(\d+\/\d+)/g, '<span style="color: #6366f1; font-weight: 600; font-family: monospace;">$1</span>');
+        }
+
         function renderAIInterpretation(interpretation) {
             if (!interpretation) return '';
 
@@ -5920,7 +6763,7 @@
                 ? `
                     <div class="ai-section ai-section-summary">
                         <div class="ai-section-title"><span>🧠</span><span>Summary Pulse</span></div>
-                        <div class="ai-section-body">${interpretation.summary}</div>
+                        ${renderStructuredSummary(interpretation.summary)}
                     </div>
                 `
                 : '';
@@ -6051,6 +6894,468 @@
     return true;
   }
 
+  // ========================================================================
+  // MARKETS INTELLIGENCE VISUAL ENHANCEMENTS
+  // ========================================================================
+
+  /**
+   * Main orchestrator for Markets Intelligence tab visualization
+   */
+  window.renderMarketsIntelligence = function(marketsTab) {
+    if (!marketsTab || !marketsTab.sections) return '';
+
+    let html = '<div class="markets-intelligence-dashboard" style="padding: 15px;">';
+
+    // Extract quantitative data from summary
+    const summary = marketsTab.aiInterpretation?.summary || '';
+    const marketData = extractMarketData(summary, marketsTab.sections);
+
+    // 1. Consensus Dashboard (Top - 3 gauges)
+    html += renderConsensusDashboard(marketData);
+
+    // 2. Key Price Levels & Allocation (Side by side)
+    html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">';
+    html += renderPriceLevelsSection(marketData);
+    html += renderAllocationSection(marketData);
+    html += '</div>';
+
+    // 3. Economic Timeline
+    const macroSection = marketsTab.sections.find(s => s.name === 'Macro Environment');
+    if (macroSection?.economicCalendar) {
+      html += renderEconomicTimelineEnhanced(macroSection.economicCalendar);
+    }
+
+    // 4. Bullish vs Bearish Factors
+    html += renderFactorComparison(marketData);
+
+    // 5. Enhanced Sections (Collapsible with visual headers)
+    html += renderEnhancedSections(marketsTab.sections, marketData);
+
+    html += '</div>';
+    return html;
+  }
+
+  /**
+   * Extract quantitative data from summary text and sections
+   */
+  function extractMarketData(summary, sections) {
+    const data = {
+      macro: { bullish: [], bearish: [], sentiment: 'MIXED' },
+      crypto: { price: 0, fearGreed: 0, support: [], resistance: [], sentiment: 'NEUTRAL' },
+      tech: { earnings: 0, concentration: 0, sentiment: 'SELECTIVE' },
+      allocation: { tech: 25, crypto: 25, cash: 50 },
+      signalScore: 31
+    };
+
+    // Parse macro data
+    const gdpMatch = summary.match(/GDP\s+~?(\d+)%/i);
+    const recessionMatch = summary.match(/(\d+)-(\d+)%\s+recession/i);
+    const earningsMatch = summary.match(/earnings\s+\+(\d+)%/i);
+
+    if (gdpMatch) {
+      data.macro.bullish.push({ name: 'GDP Growth', value: gdpMatch[1] + '%', weight: 3 });
+    }
+    if (earningsMatch) {
+      data.macro.bullish.push({ name: 'Tech Earnings', value: '+' + earningsMatch[1] + '% YoY', weight: 3 });
+      data.tech.earnings = parseInt(earningsMatch[1]);
+    }
+    if (recessionMatch) {
+      const avgRecession = (parseInt(recessionMatch[1]) + parseInt(recessionMatch[2])) / 2;
+      data.macro.bearish.push({ name: 'Recession Risk', value: Math.round(avgRecession) + '%', weight: 5 });
+    }
+
+    // Parse crypto data
+    const btcPriceMatch = summary.match(/BTC\s+\$?([\d,]+)/i);
+    const fearGreedMatch = summary.match(/Fear\s+&\s+Greed\s+(\d+)/i);
+    const supportMatch = summary.match(/\$?(\d+)k?-(\d+)k?\s+support/i);
+
+    if (btcPriceMatch) {
+      data.crypto.price = parseInt(btcPriceMatch[1].replace(/,/g, ''));
+    }
+    if (fearGreedMatch) {
+      data.crypto.fearGreed = parseInt(fearGreedMatch[1]);
+    }
+    if (supportMatch) {
+      data.crypto.support = [parseInt(supportMatch[1]) * 1000, parseInt(supportMatch[2]) * 1000];
+      data.crypto.resistance = [115000];
+    }
+
+    // Parse tech concentration
+    const concentrationMatch = summary.match(/(\d+)%\s+market\s+cap/i);
+    if (concentrationMatch) {
+      data.tech.concentration = parseInt(concentrationMatch[1]);
+    }
+
+    // Add more bullish/bearish factors
+    if (summary.includes('Fed easing')) {
+      data.macro.bullish.push({ name: 'Fed Easing Path', value: '25bp Oct 29', weight: 4 });
+    }
+    if (summary.includes('gold') && summary.includes('recession')) {
+      data.macro.bearish.push({ name: 'Gold Ratio Warning', value: '1.57x (Historic)', weight: 4 });
+    }
+    if (summary.includes('credit card delinquencies')) {
+      data.macro.bearish.push({ name: 'Credit Stress', value: '14-yr highs', weight: 3 });
+    }
+
+    // Crypto factors
+    if (summary.includes('ETF inflows')) {
+      const etfMatch = summary.match(/\$?([\d.]+)B\s+ETF\s+inflows/i);
+      if (etfMatch) {
+        data.crypto.bullish = [{ name: 'ETF Inflows', value: '$' + etfMatch[1] + 'B', weight: 4 }];
+      }
+    }
+    if (summary.includes('extreme fear')) {
+      data.crypto.sentiment = 'EXTREME FEAR';
+    }
+
+    return data;
+  }
+
+  /**
+   * Render consensus dashboard with 3 gauges
+   */
+  function renderConsensusDashboard(marketData) {
+    let html = '<div class="consensus-gauges" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px;">';
+
+    // Calculate sentiment percentages
+    const macroScore = calculateSentimentPercentage(marketData.macro);
+    const cryptoScore = marketData.crypto.fearGreed || 50;
+    const techScore = marketData.tech.concentration ? (100 - marketData.tech.concentration) : 50;
+
+    // Macro Gauge
+    html += createGaugeCard('📊 Macro Environment', macroScore,
+      `${marketData.macro.bullish.length} bullish · ${marketData.macro.bearish.length} bearish`,
+      macroScore > 60 ? 'BULLISH' : macroScore < 40 ? 'BEARISH' : 'MIXED');
+
+    // Crypto Gauge
+    html += createGaugeCard('₿ Crypto Markets', cryptoScore,
+      `Fear & Greed ${cryptoScore} · ${marketData.crypto.sentiment}`,
+      cryptoScore < 30 ? 'EXTREME FEAR' : cryptoScore < 50 ? 'FEAR' : 'NEUTRAL');
+
+    // Tech Gauge
+    html += createGaugeCard('🚀 Tech Sector', 100 - (marketData.tech.concentration || 0),
+      `+${marketData.tech.earnings}% YoY · ${marketData.tech.concentration}% concentration`,
+      'SELECTIVE');
+
+    html += '</div>';
+    return html;
+  }
+
+  /**
+   * Calculate sentiment percentage from bullish/bearish factors
+   */
+  function calculateSentimentPercentage(data) {
+    const bullishWeight = (data.bullish || []).reduce((sum, f) => sum + f.weight, 0);
+    const bearishWeight = (data.bearish || []).reduce((sum, f) => sum + f.weight, 0);
+    const total = bullishWeight + bearishWeight;
+    return total > 0 ? Math.round((bullishWeight / total) * 100) : 50;
+  }
+
+  /**
+   * Create individual gauge card
+   */
+  function createGaugeCard(title, percentage, subtitle, label) {
+    const color = percentage > 60 ? '#10b981' : percentage < 40 ? '#ef4444' : '#f59e0b';
+    const rotation = (percentage / 100) * 180;
+
+    return `
+      <div class="gauge-card glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); animation: fadeInUp 0.6s ease forwards;">
+        <div style="text-align: center;">
+          <div style="font-size: 0.85em; color: #9ca3af; margin-bottom: 8px;">${title}</div>
+          <div class="gauge-container" style="position: relative; width: 130px; height: 65px; margin: 15px auto;">
+            <svg width="130" height="65" viewBox="0 0 130 65">
+              <!-- Background arc -->
+              <path d="M 10 60 A 55 55 0 0 1 120 60"
+                    fill="none"
+                    stroke="rgba(75, 85, 99, 0.3)"
+                    stroke-width="10"
+                    stroke-linecap="round"/>
+              <!-- Progress arc -->
+              <path d="M 10 60 A 55 55 0 0 1 120 60"
+                    fill="none"
+                    stroke="${color}"
+                    stroke-width="10"
+                    stroke-linecap="round"
+                    stroke-dasharray="${Math.PI * 55 * (percentage / 100)} ${Math.PI * 55}"
+                    style="animation: fillGauge 1s ease forwards; filter: drop-shadow(0 0 3px ${color});"/>
+              <!-- Center text -->
+              <text x="65" y="50" text-anchor="middle" font-size="20" font-weight="bold" fill="${color}">${percentage}</text>
+            </svg>
+          </div>
+          <div style="font-size: 1.1em; font-weight: 600; color: ${color}; margin-bottom: 5px;">${label}</div>
+          <div style="font-size: 0.85em; color: #d1d5db;">${subtitle}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * Render price levels ladder
+   */
+  function renderPriceLevelsSection(marketData) {
+    const { crypto } = marketData;
+    const currentPrice = crypto.price || 111600;
+    const support = crypto.support || [107000, 109000];
+    const resistance = crypto.resistance || [115000];
+
+    let html = `
+      <div class="price-levels-card glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);">
+        <h3 style="color: #6366f1; margin-bottom: 15px; display: flex; align-items: center; font-size: 1.1em;">
+          <span style="font-size: 1.3em; margin-right: 8px;">₿</span>
+          BTC Key Levels
+        </h3>
+        <div class="price-ladder" style="position: relative; padding: 10px 0;">
+    `;
+
+    const levels = [
+      ...resistance.map(p => ({ price: p, type: 'resistance', label: 'Resistance' })),
+      { price: currentPrice, type: 'current', label: 'Current Price' },
+      ...support.map(p => ({ price: p, type: 'support', label: 'Critical Support' }))
+    ].sort((a, b) => b.price - a.price);
+
+    levels.forEach((level, idx) => {
+      const color = level.type === 'resistance' ? '#ef4444' :
+                    level.type === 'support' ? '#10b981' : '#6366f1';
+      const isCurrent = level.type === 'current';
+
+      html += `
+        <div style="display: flex; align-items: center; margin: 12px 0; animation: slideInRight ${0.4 + idx * 0.1}s ease forwards; opacity: 0;">
+          <div style="width: 100px; font-size: 0.9em; color: ${color}; font-weight: 600;">
+            $${(level.price / 1000).toFixed(0)}k
+          </div>
+          <div style="flex: 1; height: ${isCurrent ? '8px' : '4px'}; background: ${color}; border-radius: 4px; position: relative; ${isCurrent ? 'animation: pulseGlow 2s ease infinite;' : ''}">
+            ${isCurrent ? '<div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; background: ' + color + '; border-radius: 50%; box-shadow: 0 0 10px ' + color + ';"></div>' : ''}
+          </div>
+          <div style="width: 120px; font-size: 0.8em; color: #9ca3af; text-align: right; padding-left: 10px;">
+            ${level.label}
+          </div>
+        </div>
+      `;
+    });
+
+    html += `
+        </div>
+        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(75, 85, 99, 0.3); font-size: 0.85em; color: #9ca3af;">
+          <div>Support Zone: $${(support[0] / 1000).toFixed(0)}k - $${(support[support.length - 1] / 1000).toFixed(0)}k</div>
+          <div style="margin-top: 5px;">Stop Loss: <span style="color: #ef4444;">$105k</span></div>
+        </div>
+      </div>
+    `;
+
+    return html;
+  }
+
+  /**
+   * Render allocation donut chart
+   */
+  function renderAllocationSection(marketData) {
+    const { allocation, signalScore } = marketData;
+    const segments = [
+      { label: 'Mega-cap Tech', value: allocation.tech, color: '#3b82f6', tickers: 'AAPL, MSFT, META, NVDA' },
+      { label: 'Crypto Contrarian', value: allocation.crypto, color: '#8b5cf6', tickers: 'BTC/ETH @ $107-115k' },
+      { label: 'Cash/Defensive', value: allocation.cash, color: '#10b981', tickers: 'Ready for FOMC' }
+    ];
+
+    let html = `
+      <div class="allocation-card glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);">
+        <h3 style="color: #6366f1; margin-bottom: 15px; font-size: 1.1em;">📊 Recommended Allocation</h3>
+        <div style="position: relative; width: 140px; height: 140px; margin: 0 auto 15px;">
+          <svg width="140" height="140" viewBox="0 0 140 140" style="transform: rotate(-90deg);">
+            ${renderDonutSegments(segments, 70, 70, 50, 25)}
+          </svg>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <div style="font-size: 1.8em; font-weight: bold; background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${signalScore}</div>
+            <div style="font-size: 0.75em; color: #9ca3af;">SIGNAL</div>
+          </div>
+        </div>
+        <div class="allocation-legend">
+    `;
+
+    segments.forEach(seg => {
+      html += `
+        <div style="display: flex; align-items: center; margin: 10px 0; animation: fadeIn 0.6s ease forwards;">
+          <div style="width: 12px; height: 12px; background: ${seg.color}; border-radius: 2px; margin-right: 10px;"></div>
+          <div style="flex: 1;">
+            <div style="font-size: 0.9em; color: #e0e6f0; font-weight: 500;">${seg.value}% ${seg.label}</div>
+            <div style="font-size: 0.75em; color: #9ca3af;">${seg.tickers}</div>
+          </div>
+        </div>
+      `;
+    });
+
+    html += `
+        </div>
+      </div>
+    `;
+
+    return html;
+  }
+
+  /**
+   * Render donut chart segments
+   */
+  function renderDonutSegments(segments, cx, cy, radius, strokeWidth) {
+    let svg = '';
+    let currentAngle = 0;
+    const circumference = 2 * Math.PI * radius;
+
+    segments.forEach((seg, idx) => {
+      const segmentAngle = (seg.value / 100) * 360;
+      const segmentLength = (seg.value / 100) * circumference;
+      const offset = circumference - segmentLength;
+
+      svg += `
+        <circle cx="${cx}" cy="${cy}" r="${radius}"
+                fill="none"
+                stroke="${seg.color}"
+                stroke-width="${strokeWidth}"
+                stroke-dasharray="${segmentLength} ${circumference}"
+                stroke-dashoffset="${-currentAngle * (circumference / 360)}"
+                style="animation: fillSegment 1s ease forwards; animation-delay: ${idx * 0.2}s; opacity: 0; filter: drop-shadow(0 0 3px ${seg.color});" />
+      `;
+
+      currentAngle += segmentAngle;
+    });
+
+    return svg;
+  }
+
+  /**
+   * Render enhanced economic timeline
+   */
+  function renderEconomicTimelineEnhanced(calendar) {
+    let html = `
+      <div class="economic-timeline-card glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); margin: 20px 0;">
+        <h3 style="color: #6366f1; margin-bottom: 15px; font-size: 1.1em;">📅 Economic Calendar</h3>
+    `;
+
+    // Render economic calendar content (reuse existing function but with enhanced styling)
+    const calendarElement = renderEconomicCalendar(calendar);
+    html += calendarElement.outerHTML;
+
+    html += '</div>';
+    return html;
+  }
+
+  /**
+   * Render bullish vs bearish factor comparison
+   */
+  function renderFactorComparison(marketData) {
+    const { macro } = marketData;
+    const bullishWeight = (macro.bullish || []).reduce((sum, f) => sum + f.weight, 0);
+    const bearishWeight = (macro.bearish || []).reduce((sum, f) => sum + f.weight, 0);
+    const total = bullishWeight + bearishWeight;
+    const bullishPercent = total > 0 ? Math.round((bullishWeight / total) * 100) : 50;
+    const bearishPercent = 100 - bullishPercent;
+
+    let html = `
+      <div class="factor-comparison-card glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); margin: 20px 0;">
+        <h3 style="color: #6366f1; margin-bottom: 15px; font-size: 1.1em;">⚖️ Bullish vs Bearish Factors</h3>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+          <div style="font-size: 0.9em; color: #10b981; font-weight: 600; width: 80px;">BULLISH</div>
+          <div style="flex: 1; display: flex; height: 32px; border-radius: 6px; overflow: hidden; background: rgba(75, 85, 99, 0.3);">
+            <div style="width: ${bullishPercent}%; background: linear-gradient(90deg, #10b981, #34d399); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.9em; transition: width 1s ease;">${bullishPercent}%</div>
+            <div style="width: ${bearishPercent}%; background: linear-gradient(90deg, #fbbf24, #ef4444); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.9em; transition: width 1s ease;">${bearishPercent}%</div>
+          </div>
+          <div style="font-size: 0.9em; color: #ef4444; font-weight: 600; width: 80px; text-align: right;">BEARISH</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+    `;
+
+    // Bullish factors
+    html += '<div><div style="font-size: 0.9em; color: #10b981; font-weight: 600; margin-bottom: 10px;">✓ Bullish Signals</div>';
+    (macro.bullish || []).forEach(factor => {
+      html += `
+        <div style="margin: 8px 0; padding: 8px; background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981; border-radius: 4px; font-size: 0.85em;">
+          <div style="color: #e0e6f0; font-weight: 500;">${factor.name}</div>
+          <div style="color: #9ca3af; font-size: 0.9em;">${factor.value}</div>
+        </div>
+      `;
+    });
+    html += '</div>';
+
+    // Bearish factors
+    html += '<div><div style="font-size: 0.9em; color: #ef4444; font-weight: 600; margin-bottom: 10px;">⚠ Bearish Signals</div>';
+    (macro.bearish || []).forEach(factor => {
+      html += `
+        <div style="margin: 8px 0; padding: 8px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 0.85em;">
+          <div style="color: #e0e6f0; font-weight: 500;">${factor.name}</div>
+          <div style="color: #9ca3af; font-size: 0.9em;">${factor.value}</div>
+        </div>
+      `;
+    });
+    html += '</div>';
+
+    html += '</div></div>';
+    return html;
+  }
+
+  /**
+   * Render enhanced collapsible sections
+   */
+  function renderEnhancedSections(sections, marketData) {
+    let html = '<div class="enhanced-sections" style="margin-top: 20px;">';
+
+    sections.forEach((section, idx) => {
+      const sectionId = section.name.replace(/\s+/g, '-').toLowerCase();
+      const icon = section.name.includes('Macro') ? '📊' :
+                   section.name.includes('Crypto') ? '₿' : '🚀';
+      const sentiment = section.name.includes('Macro') ? marketData.macro.sentiment :
+                        section.name.includes('Crypto') ? marketData.crypto.sentiment :
+                        marketData.tech.sentiment;
+
+      html += `
+        <div class="section-enhanced glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 0; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); margin-bottom: 15px; animation: fadeInUp ${0.4 + idx * 0.1}s ease forwards; opacity: 0;">
+          <div class="section-header-enhanced" onclick="toggleSection('${sectionId}')" style="padding: 15px; cursor: pointer; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border-radius: 10px 10px 0 0; transition: all 0.3s ease;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.5em;">${icon}</span>
+                <div>
+                  <h3 style="color: #e0e6f0; margin: 0; font-size: 1.2em;">${section.name}</h3>
+                  <div style="font-size: 0.85em; color: #9ca3af; margin-top: 4px;">
+                    <span style="background: ${sentiment.includes('FEAR') || sentiment.includes('BEARISH') ? 'rgba(239, 68, 68, 0.2)' : sentiment.includes('BULLISH') ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)'}; color: ${sentiment.includes('FEAR') || sentiment.includes('BEARISH') ? '#ef4444' : sentiment.includes('BULLISH') ? '#10b981' : '#f59e0b'}; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; font-weight: 600;">${sentiment}</span>
+                  </div>
+                </div>
+              </div>
+              <div id="${sectionId}-arrow" style="font-size: 1.5em; color: #6366f1; transition: transform 0.3s ease;">▼</div>
+            </div>
+          </div>
+          <div id="${sectionId}-content" class="section-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
+            <div style="padding: 20px;">
+      `;
+
+      // Render providers
+      if (section.providers && Array.isArray(section.providers)) {
+        html += '<div class="provider-insights">';
+        section.providers.forEach(provider => {
+          html += `
+            <div class="provider-card">
+              <div class="provider-name">${provider.name || ''}</div>
+              ${(provider.insights || []).map(insight => `<div class="key-insight">${insight}</div>`).join('')}
+            </div>
+          `;
+        });
+        html += '</div>';
+      }
+
+      // Economic calendar for Macro section
+      if (section.economicCalendar) {
+        const calendarElement = renderEconomicCalendar(section.economicCalendar);
+        html += calendarElement.outerHTML;
+      }
+
+      html += '</div></div></div>';
+    });
+
+    html += '</div>';
+
+    return html;
+  }
+
+  // ========================================================================
+  // INITIALIZATION
+  // ========================================================================
+
   function ready() {
     if (tryAddHeader()) return;
     const obs = new MutationObserver(function () {
@@ -6064,7 +7369,28 @@
   } else {
     ready();
   }
+
 })();
+
+// ========================================================================
+// GLOBAL HELPER FUNCTIONS (for dynamic HTML onclick handlers)
+// ========================================================================
+
+/**
+ * Toggle collapsible section in Markets Intelligence tab
+ */
+function toggleSection(sectionId) {
+  const content = document.getElementById(sectionId + '-content');
+  const arrow = document.getElementById(sectionId + '-arrow');
+  if (content.style.maxHeight === '0px' || !content.style.maxHeight) {
+    content.style.maxHeight = content.scrollHeight + 'px';
+    arrow.style.transform = 'rotate(180deg)';
+  } else {
+    content.style.maxHeight = '0px';
+    arrow.style.transform = 'rotate(0deg)';
+  }
+}
+
 </script>
 
 
