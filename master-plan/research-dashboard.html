@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Research Dashboard - October 21, 2025</title>
+    <title>Investment Research Dashboard - October 22, 2025</title>
     <style>
         * {
             margin: 0;
@@ -4376,18 +4376,32 @@
                 container.appendChild(aiInterpDiv);
             }
 
-            // Planner Grid
+            // Planner Grid - 2 column layout for balanced sizing
             const plannerContainer = document.createElement('div');
             plannerContainer.className = 'planner-container';
+            plannerContainer.style.display = 'grid';
+            plannerContainer.style.gridTemplateColumns = '1fr 1fr';
+            plannerContainer.style.gap = '20px';
+            plannerContainer.style.alignItems = 'start';
 
-            // Priorities Section
-            plannerContainer.appendChild(renderPriorityItems(plannerData.priorities));
+            // Left column: Key Levels + Today's Priorities (stacked)
+            const leftColumn = document.createElement('div');
+            leftColumn.style.display = 'flex';
+            leftColumn.style.flexDirection = 'column';
+            leftColumn.style.gap = '20px';
 
-            // Scheduled Events Section
-            plannerContainer.appendChild(renderScheduledEvents(plannerData.scheduledEvents));
+            // Key Levels Section (top left)
+            leftColumn.appendChild(renderKeyLevels(plannerData.keyLevels));
 
-            // Key Levels Section
-            plannerContainer.appendChild(renderKeyLevels(plannerData.keyLevels));
+            // Priorities Section (bottom left)
+            leftColumn.appendChild(renderPriorityItems(plannerData.priorities));
+
+            plannerContainer.appendChild(leftColumn);
+
+            // Right column: Economic Calendar Section (mirror of Markets Intelligence)
+            if (plannerData.economicCalendar) {
+                plannerContainer.appendChild(renderEconomicCalendar(plannerData.economicCalendar));
+            }
 
 
             // End of Day Recap Section (always show if data exists)
@@ -4619,57 +4633,6 @@
             return section;
         }
 
-        function renderScheduledEvents(events) {
-            const section = document.createElement('div');
-            section.className = 'scheduled-events-section';
-
-            const title = document.createElement('h3');
-            title.className = 'section-title';
-            title.textContent = 'Scheduled Events';
-            section.appendChild(title);
-
-            if (!events || !events.length) {
-                section.innerHTML += '<p style="color: #9ca3af;">No events scheduled.</p>';
-                return section;
-            }
-
-            events.forEach(event => {
-                const eventItem = document.createElement('div');
-                eventItem.className = 'event-item';
-
-                const leftContent = document.createElement('div');
-                const eventTime = document.createElement('div');
-                eventTime.className = 'event-time';
-                eventTime.textContent = event.time || '';
-
-                const eventText = document.createElement('div');
-                eventText.textContent = event.event || '';
-                eventText.style.marginTop = '5px';
-
-                leftContent.appendChild(eventTime);
-                leftContent.appendChild(eventText);
-                // Optional AI/context note explaining why the event matters
-                const aiSnippet =
-                    (event && (event.why || event.aiNote || event.note || event.importance || event.aiSnippet)) ||
-                    (event.ai && (event.ai.why || event.ai.note || event.ai.summary));
-                if (aiSnippet) {
-                    const aiNote = document.createElement('div');
-                    aiNote.className = 'event-ai-note';
-                    aiNote.textContent = aiSnippet;
-                    leftContent.appendChild(aiNote);
-                }
-
-                const impact = document.createElement('span');
-                impact.className = `event-impact ${(event.impact || 'low').toLowerCase()}`;
-                impact.textContent = event.impact || 'Low';
-
-                eventItem.appendChild(leftContent);
-                eventItem.appendChild(impact);
-                section.appendChild(eventItem);
-            });
-
-            return section;
-        }
 
         function renderSignalData(signalData, context = {}) {
             const { plannerData = {}, dashboardData = {}, endOfDayData = {} } = context || {};
@@ -6192,13 +6155,12 @@
 
         /**
          * Render News & Catalysts summary with structured sections
-         * Handles: NEWS THEMES, KEY CATALYSTS, CONTRARIAN SIGNALS
+         * Handles: NEWS THEMES, KEY CATALYSTS (CONTRARIAN SIGNALS removed - redundant with X Sentiment tab)
          */
         function renderNewsCatalystsSummary(summaryText) {
-            // Split by section headers
-            const themesMatch = summaryText.match(/NEWS THEMES:(.*?)(?=KEY CATALYSTS:|CONTRARIAN SIGNALS:|$)/s);
-            const catalystsMatch = summaryText.match(/KEY CATALYSTS:(.*?)(?=CONTRARIAN SIGNALS:|$)/s);
-            const contrarianMatch = summaryText.match(/CONTRARIAN SIGNALS:(.*?)$/s);
+            // Split by section headers (only NEWS THEMES and KEY CATALYSTS)
+            const themesMatch = summaryText.match(/NEWS THEMES:(.*?)(?=KEY CATALYSTS:|$)/s);
+            const catalystsMatch = summaryText.match(/KEY CATALYSTS:(.*?)$/s);
 
             let html = '<div class="summary-structured">';
 
@@ -6212,15 +6174,10 @@
                 html += renderNewsSummarySection('🚀', 'KEY CATALYSTS', catalystsMatch[1].trim(), '#f59e0b');
             }
 
-            // Render CONTRARIAN SIGNALS section
-            if (contrarianMatch) {
-                html += renderNewsSummarySection('⚠️', 'CONTRARIAN SIGNALS', contrarianMatch[1].trim(), '#ef4444');
-            }
-
             html += '</div>';
 
             // If no sections matched, fall back to original display
-            if (!themesMatch && !catalystsMatch && !contrarianMatch) {
+            if (!themesMatch && !catalystsMatch) {
                 return `<div class="ai-section-body">${summaryText}</div>`;
             }
 
@@ -6537,6 +6494,19 @@
         }
 
         /**
+         * Get source website URL by source name
+         */
+        function getSourceURL(sourceName) {
+            const sourceURLs = {
+                'MarketWatch': 'https://www.marketwatch.com',
+                'CoinDesk': 'https://www.coindesk.com',
+                'CNBC': 'https://www.cnbc.com',
+                'Seeking Alpha': 'https://seekingalpha.com'
+            };
+            return sourceURLs[sourceName] || '#';
+        }
+
+        /**
          * Render RSS summary as a clean 2x2 grid of source cards
          */
         function renderRSSSummary(rss_summary) {
@@ -6565,20 +6535,31 @@
                 `;
 
                 // Show top articles with enhancements (tickers, emojis, highlighted numbers)
+                // Each article is clickable and links to source website
+                const sourceURL = getSourceURL(source.name);
+
                 source.articles.forEach((article, idx) => {
                     html += `
-                        <div style="padding: 8px 10px; background: rgba(99, 102, 241, 0.06); border-left: 2px solid #6366f1; border-radius: 4px; font-size: 0.88em; line-height: 1.5; color: #d1d5db;">
-                            • ${enhanceProviderInsight(article)}
-                        </div>
+                        <a href="${sourceURL}" target="_blank" rel="noopener noreferrer"
+                           style="text-decoration: none; display: block; color: inherit;">
+                            <div style="padding: 8px 10px; background: rgba(99, 102, 241, 0.06); border-left: 2px solid #6366f1; border-radius: 4px; font-size: 0.88em; line-height: 1.5; color: #d1d5db; transition: all 0.2s; cursor: pointer;"
+                                 onmouseover="this.style.background='rgba(99, 102, 241, 0.12)'; this.style.borderLeft='2px solid #8b5cf6';"
+                                 onmouseout="this.style.background='rgba(99, 102, 241, 0.06)'; this.style.borderLeft='2px solid #6366f1';">
+                                • ${enhanceProviderInsight(article)}
+                            </div>
+                        </a>
                     `;
                 });
 
-                // Show "and X more" if applicable
+                // Show "and X more" as clickable link
                 if (source.hiddenCount > 0) {
                     html += `
-                        <div style="color: #6b7280; font-size: 0.85em; font-style: italic; padding: 5px 10px;">
-                            ... and ${source.hiddenCount} more
-                        </div>
+                        <a href="${sourceURL}" target="_blank" rel="noopener noreferrer"
+                           style="color: #6b7280; font-size: 0.85em; font-style: italic; padding: 5px 10px; text-decoration: none; display: block; transition: color 0.2s; cursor: pointer;"
+                           onmouseover="this.style.color='#6366f1'"
+                           onmouseout="this.style.color='#6b7280'">
+                            ... and ${source.hiddenCount} more →
+                        </a>
                     `;
                 }
 
@@ -6919,14 +6900,19 @@
     html += renderAllocationSection(marketData);
     html += '</div>';
 
-    // 3. Economic Timeline
+    // 3 & 4. Economic Calendar and Bullish vs Bearish Factors (Side by side)
+    html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">';
+
+    // Left: Economic Calendar
     const macroSection = marketsTab.sections.find(s => s.name === 'Macro Environment');
     if (macroSection?.economicCalendar) {
       html += renderEconomicTimelineEnhanced(macroSection.economicCalendar);
     }
 
-    // 4. Bullish vs Bearish Factors
+    // Right: Bullish vs Bearish Factors
     html += renderFactorComparison(marketData);
+
+    html += '</div>';
 
     // 5. Enhanced Sections (Collapsible with visual headers)
     html += renderEnhancedSections(marketsTab.sections, marketData);
