@@ -82,26 +82,26 @@ dashboard:
     label: WEAK
   riskItemsUpdated: '2025-10-21T15:07:00Z'
   riskItems:
-  - title: '50-Day MA Break Risk (CRITICAL INFLECTION)'
+  - title: 50-Day MA Break Risk (CRITICAL INFLECTION)
     description: SPX testing 50-day MA (6,628) for first time since May after Friday's -3% selloff. Break below opens door
       to 200-day MA test (6,600) and potentially 6,550-6,500 correction zone. This is the line in the sand between bullish
       structure and deeper correction.
   - title: Narrow Market Leadership (LATE-CYCLE WARNING)
     description: Advance-Decline line trending lower for 10+ months while SPX hit ATH Oct 9. Fidelity breadth BEARISH. Tech/Comm
-      at 45% market cap (1800s levels). Rally driven by 5-7 mega-caps - any faltering triggers cascade risk with no alt
-      sectors positioned to support.
+      at 45% market cap (1800s levels). Rally driven by 5-7 mega-caps - any faltering triggers cascade risk with no alt sectors
+      positioned to support.
   - title: Gold Recession Warning (HISTORIC SIGNAL)
     description: Gold/S&P ratio breaking 1.57x pivot level that preceded 1929, 1973, 2008 recessions. Gold +66% YTD while
-      at ATH creates bifurcated market. JPM/S&P Global 30-40% recession probability by year-end despite strong GDP (4%).
-      Credit card delinquencies at 14-year highs.
+      at ATH creates bifurcated market. JPM/S&P Global 30-40% recession probability by year-end despite strong GDP (4%). Credit
+      card delinquencies at 14-year highs.
   - title: Oct 29 FOMC Hawkish Surprise Risk
     description: 25bp cut fully priced by 115/117 economists. Risk lies in hawkish forward guidance on easing path. If Fed
       signals slower cuts ahead, $7.5T money market liquidity stays sidelined and deleveraging accelerates. Statement and
       presser more critical than the cut itself.
   - title: Bitcoin Support Break ($107-109k)
     description: BTC at $111,600 just above critical $107-109k support zone tested multiple times July-Oct. Break below triggers
-      long-term holder capitulation (337,300 BTC already transferred - largest ever). Next support $100k psychological,
-      then $95k structural.
+      long-term holder capitulation (337,300 BTC already transferred - largest ever). Next support $100k psychological, then
+      $95k structural.
   tabs:
   - id: portfolio
     label: 💼 Portfolio
@@ -136,21 +136,22 @@ dashboard:
       summary: CRITICAL INFLECTION - 50-DAY MA TEST
       content: Signal 31/100 (WEAK) while SPX tests 50-day MA (6,628) for first time since May creates make-or-break moment.
         Trend=0, breadth=15, volatility=6. Fear & Greed 29 (extreme fear) at major support = contrarian setup similar to April
-        8 (F&G 3 → +3% within week). Portfolio strategy BIFURCATED due to conflicting signals (GDP 4% vs 30-40% recession probability,
-        strong earnings vs gold recession warning). Position MAX 25% mega-cap tech with earnings power (AAPL/MSFT/META), 50%
-        cash ready for Oct 29 FOMC catalyst ($7.5T liquidity unlock potential), 25% contrarian BTC/ETH accumulation at $107-109k
-        support. IF 50-day holds → add to 50% equities. IF breaks below 6,600 → full defensive (max cash + puts).
+        8 (F&G 3 → +3% within week). Portfolio strategy BIFURCATED due to conflicting signals (GDP 4% vs 30-40% recession
+        probability, strong earnings vs gold recession warning). Position MAX 25% mega-cap tech with earnings power (AAPL/MSFT/META),
+        50% cash ready for Oct 29 FOMC catalyst ($7.5T liquidity unlock potential), 25% contrarian BTC/ETH accumulation at
+        $107-109k support. IF 50-day holds → add to 50% equities. IF breaks below 6,600 → full defensive (max cash + puts).
   - id: macro
     label: Macro Strategists
     aiInterpretation:
       updatedAt: '2025-10-21T15:10:30Z'
       summary: BIFURCATED ECONOMY - ASSET OWNERS vs CREDIT STRESS
-      content: Macro environment shows extreme divergence. BULLISH signals GDP ~4% (Atlanta Fed vs 2.5% consensus), strong corporate
-        earnings (+21% tech YoY, GE +15%, RTX +21%), Fed easing path (25bp Oct 29 priced by 115/117 economists). BEARISH signals
-        gold/S&P ratio 1.57x (preceded 1929/1973/2008 recessions), 30-40% recession probability (JPM/S&P Global), credit card
-        delinquencies 14-year highs. Oct 29 FOMC forward guidance is KEY catalyst - dovish tone unlocks $7.5T money market rotation,
-        hawkish pause keeps liquidity sidelined. Asset owners thrive on strong fundamentals while structural vulnerabilities build
-        earnings week Oct 21-23 adds event risk. Defensive positioning appropriate until consumer data stabilizes.
+      content: Macro environment shows extreme divergence. BULLISH signals GDP ~4% (Atlanta Fed vs 2.5% consensus), strong
+        corporate earnings (+21% tech YoY, GE +15%, RTX +21%), Fed easing path (25bp Oct 29 priced by 115/117 economists).
+        BEARISH signals gold/S&P ratio 1.57x (preceded 1929/1973/2008 recessions), 30-40% recession probability (JPM/S&P Global),
+        credit card delinquencies 14-year highs. Oct 29 FOMC forward guidance is KEY catalyst - dovish tone unlocks $7.5T
+        money market rotation, hawkish pause keeps liquidity sidelined. Asset owners thrive on strong fundamentals while structural
+        vulnerabilities build earnings week Oct 21-23 adds event risk. Defensive positioning appropriate until consumer data
+        stabilizes.
     providers:
     - name: 42 Macro
       insights:
@@ -211,13 +212,14 @@ dashboard:
     aiInterpretation:
       updatedAt: '2025-10-21T15:11:00Z'
       summary: EXTREME FEAR CONTRARIAN SETUP AT CRITICAL SUPPORT
-      content: BTC $111,600 testing critical $107-109k support zone (tested multiple times July-Oct). Fear & Greed 29, Crypto F&G
-        24 (extreme fear) = classic contrarian opportunity. X sentiment crypto 25, macro 35 shows capitulation. BULLISH signals
-        institutional accumulation ($5.95B ETF inflows October, whale buys $251M Bitmine + $75M SharpLink, UAE royals +$5B), Glassnode
-        Trend Accumulation Score shows smart money conviction, 67% institutions expect $130k within 3-6 months (Coinbase survey).
-        BEARISH signals 337,300 BTC transferred from long-term holders (largest ever), break below $107k triggers cascade to $100k
-        then $95k. STRATEGY contrarian accumulation 25% allocation at $107-115k zone, stop below $105k. Risk/reward favors buyers
-        at extreme fear + support confluence. Oct 29 Fed decision catalyst - dovish = breakout above $115k, hawkish = retest $107k.
+      content: BTC $111,600 testing critical $107-109k support zone (tested multiple times July-Oct). Fear & Greed 29, Crypto
+        F&G 24 (extreme fear) = classic contrarian opportunity. X sentiment crypto 25, macro 35 shows capitulation. BULLISH
+        signals institutional accumulation ($5.95B ETF inflows October, whale buys $251M Bitmine + $75M SharpLink, UAE royals
+        +$5B), Glassnode Trend Accumulation Score shows smart money conviction, 67% institutions expect $130k within 3-6 months
+        (Coinbase survey). BEARISH signals 337,300 BTC transferred from long-term holders (largest ever), break below $107k
+        triggers cascade to $100k then $95k. STRATEGY contrarian accumulation 25% allocation at $107-115k zone, stop below
+        $105k. Risk/reward favors buyers at extreme fear + support confluence. Oct 29 Fed decision catalyst - dovish = breakout
+        above $115k, hawkish = retest $107k.
     providers:
     - name: Glassnode
       insights:
@@ -238,18 +240,19 @@ dashboard:
     label: Tech & Innovation
     aiInterpretation:
       updatedAt: '2025-10-21T15:11:30Z'
-      summary: Tech +21% YoY earnings (highest sector growth) driving narrow market leadership. QQQ outperforming but creates concentration
-        risk with Tech/Comm at 45% market cap (1800s levels, doubled in 10 years). Apple surged to record high on strong iPhone
-        17 demand Oct 21. Earnings season showing strength Coca-Cola, Lockheed, GM topped estimates. Tesla, Netflix reporting
-        later this week. Information Technology largest contributor to S&P 8.5% blended growth. Semiconductors primary driver.
-      keyInsight: Quality differentiation accelerating between AI infrastructure with real adoption (AMD/NVDA tangible deals, AAPL
-        ecosystem strength) and speculative tech vulnerable to rate sensitivity. Tech carrying market on shoulders - narrow breadth
-        (A/D line declining 10+ months) means any mega-cap faltering triggers cascade risk. No alternative sectors positioned
-        to absorb selling. Late-stage bull market phase characteristics (Phase 3-4).
-      action: Selective tech reentry appropriate focused ONLY on mega-caps with earnings power and cash generation (AAPL, MSFT,
-        META, NVDA). MAX 25% allocation given concentration risk and weak signal (31/100). Avoid unprofitable SaaS and speculative
-        names. Watch Oct 29 Fed guidance - dovish path preserves AI capex budgets 2025-2026, hawkish pause triggers tech multiple
-        compression. Add QQQ hedges through FOMC as insurance against hawkish surprise.
+      summary: Tech +21% YoY earnings (highest sector growth) driving narrow market leadership. QQQ outperforming but creates
+        concentration risk with Tech/Comm at 45% market cap (1800s levels, doubled in 10 years). Apple surged to record high
+        on strong iPhone 17 demand Oct 21. Earnings season showing strength Coca-Cola, Lockheed, GM topped estimates. Tesla,
+        Netflix reporting later this week. Information Technology largest contributor to S&P 8.5% blended growth. Semiconductors
+        primary driver.
+      keyInsight: Quality differentiation accelerating between AI infrastructure with real adoption (AMD/NVDA tangible deals,
+        AAPL ecosystem strength) and speculative tech vulnerable to rate sensitivity. Tech carrying market on shoulders -
+        narrow breadth (A/D line declining 10+ months) means any mega-cap faltering triggers cascade risk. No alternative
+        sectors positioned to absorb selling. Late-stage bull market phase characteristics (Phase 3-4).
+      action: Selective tech reentry appropriate focused ONLY on mega-caps with earnings power and cash generation (AAPL,
+        MSFT, META, NVDA). MAX 25% allocation given concentration risk and weak signal (31/100). Avoid unprofitable SaaS and
+        speculative names. Watch Oct 29 Fed guidance - dovish path preserves AI capex budgets 2025-2026, hawkish pause triggers
+        tech multiple compression. Add QQQ hedges through FOMC as insurance against hawkish surprise.
       sentiment: cautiously bullish
       confidence: medium
     providers:
@@ -572,8 +575,27 @@ dashboard:
   - id: news
     label: News & Markets
     aiInterpretation:
-      updatedAt: '2025-10-20T14:51:49Z'
-      summary: EVENT RISK CONCENTRATION HIGH
+      updatedAt: '2025-10-21T16:05:38Z'
+      summary: "RSS Feed Summary for October 21, 2025:\nTotal Articles: 40\n\n**MarketWatch** (10 articles):\n  • Top Stories\
+        \ Coca-Cola’s stock rises as revenue beats forecasts and profit increases\n  • Top Stories GE Aerospace’s stock surges\
+        \ to a record as profit outlook raised to highest level in nine years\n  • Top Stories GM’s stock is soaring as these\
+        \ factors drive a better profit forecast\n  • Top Stories Here’s how the Louvre heist gems could end up being sold\
+        \ at your local jeweler\n  • Top Stories Israel’s economy has fallen way off trend – but the ceasefire may lead to\
+        \ a big recovery, says Goldman Sachs\n  ... and 5 more\n\n**CoinDesk** (10 articles):\n  • Top Stories Asia Morning\
+        \ Briefing  Bitcoin Holds Steady as Market Resets After Leverage Flush\n  • Top Stories Bitcoin Battles Key Technical\
+        \ Levels as Uptober Momentum Fades\n  • Top Stories Bitcoin Drops as Market ‘Flushes Excess Leverage ’ Crypto Daybook\
+        \ Americas\n  • Top Stories Bitcoin Falls Below $108K Amid $320M Liquidations as Excess Leverage Gets Flushed Out\n\
+        \  • Top Stories BNB Falls 3.3% as Market Shakeout Cuts Through Support\n  ... and 5 more\n\n**CNBC** (10 articles):\n\
+        \  • Top News & Analysis Airbnb adds direct messaging, new social features after app overhaul\n  • Top News & Analysis\
+        \ China says U.S. and Australia 'should play a proactive role' to bolster rare earth supply chains\n  • Top News &\
+        \ Analysis China's rare earth magnet exports to U.S. fall for second month, reversing brief recovery\n  • Top News\
+        \ & Analysis Coca-Cola tops earnings and revenue estimates but says demand for drinks is still soft\n  • Top News\
+        \ & Analysis CoreWeave CEO says Core Scientific 'not a need to have' as shareholder opposition to deal rises\n  ...\
+        \ and 5 more\n\n**Seeking Alpha** (10 articles):\n  • Marketplace 2 REITs That Missed Out On The Rally\n  • Marketplace\
+        \ Aemetis  Signs Of Life, But Still Fighting For Stability\n  • Marketplace AGNC Investment  Don't Fall For The 14%\
+        \ Yield Trap\n  • Marketplace Akeso, Inc. (AKESF) Presents at ESMO Congress 2025 - Slideshow\n  • Marketplace Amazon's\
+        \ Stock Rises Despite Massive AWS Outage\n  ... and 5 more\n\nKey Themes: Automated aggregation - manual curation\
+        \ recommended for actionable insights."
       content: 'Heavy news flow week: 78-160 companies reporting earnings daily Oct 21-23, plus FOMC Oct 28-29. In WEAK environment
         (28.5), negative surprises trigger outsized moves. Consumer confidence drop to 94.2 is key story - undermines economic
         resilience narrative. Watch for earnings guidance cuts and Fed language around consumer weakness. Current volatility
@@ -596,7 +618,7 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-20T14:51:49Z'
+      updatedAt: '2025-10-21T16:03:07Z'
       summary: BEARISH DIVERGENCE IN PLAY
       content: Technical score 5.0/100 is critically weak. SPY +0.57% on declining volume is textbook bearish divergence -
         price advancing without participation. Breadth 12.5 means only 1 in 8 stocks participating (narrow leadership unsustainable).
@@ -614,13 +636,13 @@ dashboard:
       - Bias downgraded to neutral/bearish beneath 20 & 50-dma.
       - 'Support: 6,520 then 6,450; resistance: 6,640/6,700.'
       - Need breadth thrust (>70% up-volume) to reinstate aggressive longs.
-      updatedAt: 2025-10-21 10:58 ET
+      updatedAt: 2025-10-21 16:03 ET
     - name: Bitcoin Technicals
       insights:
       - Momentum negative; price below 20-dma with support $115K/$111K.
       - Daily RSI at 48—neutral but vulnerable if ETF flows slow further.
       - Prefer buys near $113K-$115K with invalidation beneath $111K.
-      updatedAt: 2025-10-21 10:58 ET
+      updatedAt: 2025-10-21 16:03 ET
     optionsData:
       SPY:
         lastUpdated: '2025-10-18T22:30:00Z'
@@ -700,11 +722,11 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-21T10:58:49Z'
+    technicalsTabSyncedAt: '2025-10-21T16:03:07Z'
   - id: media
     label: 🎬 Media & Catalysts
     aiInterpretation:
-      updatedAt: '2025-10-20T14:51:49Z'
+      updatedAt: '2025-10-21T16:03:55Z'
       summary: SENTIMENT DETERIORATION EVIDENT
       content: 'X Sentiment combined 35/100 (crypto 35, macro 35) shows community fear/uncertainty. Low conviction environment
         with bearish positioning dominating. Hype cycle position likely "Anxiety" - emoji density medium, caps lock usage
@@ -713,7 +735,7 @@ dashboard:
     categories:
     - name: 🚀 Upcoming Catalysts
       items:
-      - date: '2025-10-14'
+      - date: '2025-10-21'
         title: CPI & PPI Inflation Data Cluster
         blurb: Critical mid-week inflation data will set Fed policy direction amid WEAK signal conditions. Market extremely
           sensitive to surprises given current volatility regime. Watch for bond market reaction as leading indicator of equity
@@ -728,7 +750,7 @@ dashboard:
         - volatility
     - name: 💡 Research Highlights
       items:
-      - date: '2025-10-14'
+      - date: '2025-10-21'
         title: 'Fundstrat: Post-Crash Technical Analysis'
         blurb: Tom Lee identifies tariff actions as catalyst for VIX spike in WEAK environment. Technical deleveraging event
           provides cleaner setup for year-end recovery. Focus on quality names with strong institutional support.
@@ -742,7 +764,7 @@ dashboard:
         - recovery
     - name: 📊 Data Anomalies & Institutional Flows
       items:
-      - date: '2025-10-14'
+      - date: '2025-10-21'
         title: VIX Term Structure Inversion Signal
         blurb: Unusual near-term volatility premium signals extreme fear in WEAK conditions. Historical precursor to market
           stabilization. Monitor for compression below 19 as risk-off exit signal.
@@ -756,7 +778,7 @@ dashboard:
         - fear
     - name: ⚠️ Exhaustion Signals & Contrarian Warnings
       items:
-      - date: '2025-10-14'
+      - date: '2025-10-21'
         title: Breadth Collapse Below Critical Threshold
         blurb: NYSE up-volume below 40% in WEAK signal environment. Failed rallies likely until breadth thrust occurs. Market
           vulnerable to further downside without broad participation recovery.
@@ -768,159 +790,21 @@ dashboard:
         - participation
         - warning
         - thrust
-      - date: '2025-10-16'
-        title: ECB Minutes & Retail Sales
-        blurb: European Central Bank minutes (7:30 ET) and US Retail Sales (8:30 ET) provide additional macro context. ECB
-          minutes particularly important for global risk sentiment.
-        conviction: HIGH
-        source: Economic Calendar
-        link: '#macro-tab'
-        tags:
-        - macro
-        - ecb
-        - retail
-        - global
-      - date: '2025-10-29'
-        title: FOMC Interest Rate Decision
-        blurb: Federal Reserve's November rate decision and press conference. Market pricing ~25bps cut but volatility expected
-          around the announcement.
-        conviction: CRITICAL
-        source: Economic Calendar
-        link: '#macro-tab'
-        tags:
-        - macro
-        - fed
-        - rates
-        - policy
-    - name: 💡 Research Highlights
-      items:
-      - date: '2025-10-14'
-        title: 'Fundstrat: Tariff Impact Analysis'
-        blurb: Tom Lee identifies Trump's tariff actions as direct catalyst for VIX spike and market sell-off. Technical deleveraging
-          event rather than fundamental shift - maintains constructive year-end outlook.
-        conviction: HIGH
-        source: YouTube/Fundstrat
-        link: '#macro-tab'
-        tags:
-        - macro
-        - tariffs
-        - technical
-        - recovery
-      - date: '2025-10-14'
-        title: 'Unchained: Post-Mortem Deep Dive'
-        blurb: Comprehensive analysis of the historic liquidation cascade. Perpetual futures market structure amplified the
-          sell-off - lessons for risk management and position sizing in volatile regimes.
-        conviction: HIGH
-        source: YouTube/Unchained
-        link: '#technicals-tab'
-        tags:
-        - crypto
-        - derivatives
-        - risk-management
-        - structure
-      - date: '2025-10-14'
-        title: 'All-In Podcast: Innovation Platform Convergence'
-        blurb: Cathie Wood outlines five major innovation platforms converging to drive multi-year GDP acceleration. Long-term
-          bullish thesis undeterred by short-term volatility.
-        conviction: MEDIUM-HIGH
-        source: YouTube/All-In
-        link: '#tech-tab'
-        tags:
-        - innovation
-        - long-term
-        - gdp
-        - platforms
-    - name: 📊 Data Anomalies & Institutional Flows
-      items:
-      - date: '2025-10-14'
-        title: VIX Term Structure Inversion
-        blurb: Unusual VIX term structure showing near-term volatility premium over longer-dated contracts. Typically signals
-          extreme short-term fear and potential market stabilization ahead.
-        conviction: HIGH
-        source: Options Market
-        link: '#technicals-tab'
-        tags:
-        - volatility
-        - options
-        - term-structure
-        - fear
-      - date: '2025-10-14'
-        title: Bond Market Divergence Warning
-        blurb: MOVE index (bond volatility) spiking while VIX relatively contained creates classic warning pattern. Historical
-          precursor to equity market stress - credit markets signaling trouble.
-        conviction: HIGH
-        source: Fixed Income
-        link: '#macro-tab'
-        tags:
-        - credit
-        - divergence
-        - warning
-        - bonds
-      - date: '2025-10-14'
-        title: Crypto ETF Flow Resilience
-        blurb: Spot Bitcoin ETF inflows remained positive (+$210M) despite price pressure. Institutional bid providing support
-          at lower levels - dip-buying behavior intact.
-        conviction: MEDIUM-HIGH
-        source: ETF Analytics
-        link: '#crypto-tab'
-        tags:
-        - institutional
-        - etf
-        - flows
-        - support
-    - name: ⚠️ Exhaustion Signals & Contrarian Warnings
-      items:
-      - date: '2025-10-14'
-        title: Breadth Collapse Below 40%
-        blurb: NYSE up-volume fell below 40% threshold - failed rallies likely until breadth thrust (>70%) occurs. Market
-          vulnerable to further downside without broad participation.
-        conviction: HIGH
-        source: Market Breadth
-        link: '#technicals-tab'
-        tags:
-        - breadth
-        - participation
-        - warning
-        - thrust
-      - date: '2025-10-14'
-        title: Sentiment Divergence Pattern
-        blurb: Social sentiment (X/Twitter) showing mixed signals while price action weakens. Fear & Greed index at 38 (Fear)
-          but X sentiment neutral - potential for capitulation if inflation data disappoints.
-        conviction: MEDIUM-HIGH
-        source: Sentiment Analysis
-        link: '#xsentiment-tab'
-        tags:
-        - sentiment
-        - divergence
-        - capitulation
-        - risk
-      - date: '2025-10-14'
-        title: Volatility Regime Shift
-        blurb: VIX sustained above 21 with BTC IV at 63rd percentile - wider ranges and gap risk now normal. Position sizing
-          must reflect new regime until volatility compresses below 19.
-        conviction: HIGH
-        source: Volatility Metrics
-        link: '#technicals-tab'
-        tags:
-        - volatility
-        - regime
-        - sizing
-        - compression
   quickActionsUpdated: '2025-10-21T15:08:00Z'
   quickActions:
   - type: RISK
     title: Extreme Caution - 50-Day MA Test
     value: 'Signal Score: 31.0/100 (WEAK)'
-    description: Signal remains WEAK (31.0). SPX testing critical 50-day MA (6,628) for first time since May after Friday -3%
-      selloff. Trend=0, breadth=15, volatility=6. Break below 6,628 opens 200-day MA (6,600) then 6,550-6,500 correction zone.
-      REDUCE exposure to 25% max until 50-day holds and signal >40.
+    description: Signal remains WEAK (31.0). SPX testing critical 50-day MA (6,628) for first time since May after Friday
+      -3% selloff. Trend=0, breadth=15, volatility=6. Break below 6,628 opens 200-day MA (6,600) then 6,550-6,500 correction
+      zone. REDUCE exposure to 25% max until 50-day holds and signal >40.
     urgency: CRITICAL
   - type: HEDGE
     title: Contrarian Setup Watch
     value: Fear & Greed 29 • VIX 20+
-    description: 'Extreme fear readings (F&G 29, Crypto F&G 24) at major support = contrarian opportunity zone similar to April
+    description: Extreme fear readings (F&G 29, Crypto F&G 24) at major support = contrarian opportunity zone similar to April
       8 setup (F&G 3 → +3% within week). BUT risk/reward requires 50-day MA hold. If SPX closes above 6,628 for 2+ days, reduce
-      hedges and add small long exposure. If breaks below, full defensive mode (SPY puts, max cash).'
+      hedges and add small long exposure. If breaks below, full defensive mode (SPY puts, max cash).
     urgency: HIGH
   - type: WATCH
     title: Oct 29 FOMC Catalyst
@@ -932,10 +816,10 @@ dashboard:
   - type: PLAN
     title: Bifurcated Strategy
     value: GDP 4% vs 30-40% Recession Probability
-    description: 'Conflicting signals: Strong earnings (+21% tech YoY) and GDP vs gold recession warning (1.57x S&P ratio) and
-      credit stress. Position: MAX 25% exposure in mega-cap tech with strong earnings (AAPL, MSFT, META), 50% cash, 25% contrarian
-      BTC/ETH accumulation at support ($107-109k zone). Flip to 50% equities IF 50-day holds + signal >45. Full defensive IF
-      break below 6,600.'
+    description: 'Conflicting signals: Strong earnings (+21% tech YoY) and GDP vs gold recession warning (1.57x S&P ratio)
+      and credit stress. Position: MAX 25% exposure in mega-cap tech with strong earnings (AAPL, MSFT, META), 50% cash, 25%
+      contrarian BTC/ETH accumulation at support ($107-109k zone). Flip to 50% equities IF 50-day holds + signal >45. Full
+      defensive IF break below 6,600.'
     urgency: CRITICAL
   providerConsensusUpdated: '2025-10-21T15:09:00Z'
   providerConsensus:
@@ -947,9 +831,9 @@ dashboard:
         $5.95B ETF inflows, whale buys) while retail exits = classic late-stage distribution reversal pattern.
       sentiment: CAUTIOUSLY_BULLISH
     - theme: NARROW LEADERSHIP FRAGILITY
-      description: Advance-Decline trending lower 10+ months (Nov 2024 peak) while SPX hit ATH Oct 9. Tech/Comm 45% market cap
-        (1800s levels). Rally driven by 5-7 mega-caps with +21% YoY earnings. Any leadership faltering triggers cascade risk
-        - no alternative sectors positioned to absorb selling. Fidelity breadth assessment BEARISH.
+      description: Advance-Decline trending lower 10+ months (Nov 2024 peak) while SPX hit ATH Oct 9. Tech/Comm 45% market
+        cap (1800s levels). Rally driven by 5-7 mega-caps with +21% YoY earnings. Any leadership faltering triggers cascade
+        risk - no alternative sectors positioned to absorb selling. Fidelity breadth assessment BEARISH.
       sentiment: BEARISH
     - theme: BIFURCATED ECONOMY
       description: GDP ~4% (Atlanta Fed) and strong corporate earnings clash with 30-40% recession probability (JPM/S&P Global),
@@ -963,8 +847,28 @@ dashboard:
       sentiment: NEUTRAL
   dailyPlanner:
     aiInterpretation:
-      updatedAt: '2025-10-20T15:01:46Z'
-      summary: DEFENSIVE DAY PLAN
+      updatedAt: '2025-10-21T16:06:32Z'
+      summary: 'Daily Context for October 21, 2025:
+
+
+        Signal Tier: WEAK (31.0/100)
+
+        Breadth: 15.0/25 (MODERATE)
+
+
+        Trading Posture: Defensive - reduce exposure
+
+
+        Key Focus:
+
+        - Monitor signal strength for changes in market regime
+
+        - Respect risk management rules regardless of signal
+
+        - Stay nimble - conditions can change rapidly
+
+
+        This is automated daily context. For detailed market analysis, review individual tabs.'
       keyInsight: '3-day recovery shows market found institutional buyers on weakness. CPI print (Oct 15) resolved key uncertainty
         positively. Next focus: earnings season guidance (2025 capex implications), Fed speakers, breadth thrust confirmation.
         Fear & Greed improving but still elevated—sentiment lag vs price validates contrarian positioning.'
@@ -983,48 +887,30 @@ dashboard:
       midday: 11:00-1:00 PM EST
       powerHour: 3:00-4:00 PM EST
       afterHours: 4:00-8:00 PM EST
-    prioritiesUpdated: '2025-10-18T17:30:00Z'
+    prioritiesUpdated: '2025-10-21T16:06:32Z'
     priorities:
-      high:
-      - task: Monitor breadth confirmation signal (need >70% up-volume day for thrust).
-        completed: false
-        session: intraday
-      - task: Track earnings season guidance for 2025 AI capex/semiconductor demand signals.
-        completed: false
-        session: week ahead
-      medium:
-      - task: Watch Fed speakers (Powell, Barr) for forward guidance on rate cut path.
-        completed: false
-        session: week ahead
-      - task: Monitor spot ETF crypto flows (target >$300M daily for breakout confirmation).
-        completed: false
-        session: daily
-      low:
-      - task: Review IV crush opportunities in options (post-CPI volatility premium high).
-        completed: false
-        session: intraday
-    keyLevelsUpdated: '2025-10-18T17:30:00Z'
+    - Defensive positioning - reduce exposure
+    - Monitor for breadth improvement signals
+    - Watch VIX for volatility compression
+    keyLevelsUpdated: '2025-10-21T16:06:32Z'
     keyLevels:
-    - asset: BTC
-      current: $116.8K
-      support: $115K
-      stop: $110K
-      target: $122K
-    - asset: SPX
-      current: '6532'
-      support: '6520'
-      breakdown: '6450'
-      resistance: '6640'
-    scheduledEventsUpdated: '2025-10-18T17:30:00Z'
+    - 'SPY: $660.00 - watch 200-DMA support'
+    - 'VIX: 20.0 - monitor compression below 18'
+    - 'BTC: $110,000 - key psychological level'
+    scheduledEventsUpdated: '2025-10-21T16:06:32Z'
     scheduledEvents:
-    - time: Ongoing
-      event: Monitor earnings season guidance (Q3 reporting underway) for 2025 AI capex signals.
-      impact: CRITICAL
-      why: Tech guidance tone determines Q4 conviction and 2025 growth thesis validity.
-    - time: This Week
-      event: Watch Fed speakers (Powell, Barr) for forward rate cut guidance.
-      impact: HIGH
-      why: Post-CPI dovish repricing; any hawkish signals could derail recovery.
+    - time: 09:30 ET
+      event: Market Open
+      importance: HIGH
+    - time: 10:00 ET
+      event: Economic Data Release (check calendar)
+      importance: MEDIUM
+    - time: 14:00 ET
+      event: Fed Speaker (check calendar)
+      importance: MEDIUM
+    - time: 16:00 ET
+      event: Market Close
+      importance: HIGH
     tomorrowPrep:
     - Track daily breadth ratios—need one 70%+ up-volume day to confirm bullish thrust.
     - Monitor spot ETF crypto flows ($300M+ daily target for breakout confirmation).
@@ -1069,6 +955,9 @@ dashboard:
     - No new long positions.
     - Ensure all positions are appropriately hedged.
     - Reduce overall gross exposure.
+    endOfDay:
+      ranAt: '2025-10-21T16:06:32Z'
+      status: Pending - will run at market close
   endOfDay:
     date: October 15, 2025
     ranAt: '2025-10-15T15:45:00Z'
@@ -1135,6 +1024,10 @@ dashboard:
   lastUpdated: '2025-10-20T14:54:26Z'
   updatedAt: '2025-10-20T14:54:26Z'
 ---
+
+
+
+
 
 
 
