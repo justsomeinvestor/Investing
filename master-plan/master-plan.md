@@ -134,26 +134,66 @@ dashboard:
     aiInterpretation:
       updatedAt: '2025-10-23T08:45:00Z'
       summary: REGIME SHIFT CONFIRMED - SIGNAL IMPROVED +28 PTS (30 to 58/100), CAPITAL DEPLOYMENT WINDOW OPENING
-      content: 'Account Status: Balance $23,105.83, P/L YTD +15.8%. CRITICAL CHANGE: Signal tier improved DRAMATICALLY from WEAK (30/100) to MODERATE (58/100), marking shift from risk-off to risk-management mode. This represents market finding institutional buyers on weakness, NOT capitulation. SPX defending critical 6,656 support with higher lows intact, QQQ at $604 breakout decision point. Government shutdown Day 22 creates BINARY catalyst TODAY (jobless claims 8:30 AM) = only consistent macro data available. Quantum computing structural theme accelerating (IBM error-corrected quantum 2028 with real enterprise customers: HSBC, Vanguard; AMD partnership validating industrial scale-up; IONQ/QBTS/RGTI benefiting from policy support). Bitcoin institutional adoption narrative maturing (Bittensor MEXC listing = first major exchange subnet listing; Ledger hardware security announcements; whale distribution noise masking accumulation). Earnings fundamentals STRONG (84% beat rate, 74% revenue beats, 13% YoY growth) despite "sell the news" momentum in tech. Position Sizing: MODERATE environment (58/100) JUSTIFIES selective risk deployment AFTER jobless claims data. If IN-LINE/STRONG claims: deploy 30-35% equities (quality focus + quantum names), 20% crypto (BTC/ETH infrastructure), 10% hedges. If WEAK claims: hold 25% equities max, 15% crypto, 25% hedges, 35% cash. Risk Management: Jobless claims in 90 minutes will determine trajectory. Support levels being tested (SPX 6,656, QQQ $600, BTC $107,600) = market making near-term direction call. Technical structure intact if support holds; breadth remains poor (health 3/10) so quality bias non-negotiable. Favor: (1) Quantum infrastructure winners with policy support, (2) Bitcoin institutional adoption plays, (3) Earnings quality companies sold on guidance concerns. Bottom Line: Market transitioned from deterioration to stabilization. Jobless claims is TURNING POINT catalyst.'
+      content: 'Account Status: Balance $23,105.83, P/L YTD +15.8%. CRITICAL CHANGE: Signal tier improved DRAMATICALLY from
+        WEAK (30/100) to MODERATE (58/100), marking shift from risk-off to risk-management mode. This represents market finding
+        institutional buyers on weakness, NOT capitulation. SPX defending critical 6,656 support with higher lows intact,
+        QQQ at $604 breakout decision point. Government shutdown Day 22 creates BINARY catalyst TODAY (jobless claims 8:30
+        AM) = only consistent macro data available. Quantum computing structural theme accelerating (IBM error-corrected quantum
+        2028 with real enterprise customers: HSBC, Vanguard; AMD partnership validating industrial scale-up; IONQ/QBTS/RGTI
+        benefiting from policy support). Bitcoin institutional adoption narrative maturing (Bittensor MEXC listing = first
+        major exchange subnet listing; Ledger hardware security announcements; whale distribution noise masking accumulation).
+        Earnings fundamentals STRONG (84% beat rate, 74% revenue beats, 13% YoY growth) despite "sell the news" momentum in
+        tech. Position Sizing: MODERATE environment (58/100) JUSTIFIES selective risk deployment AFTER jobless claims data.
+        If IN-LINE/STRONG claims: deploy 30-35% equities (quality focus + quantum names), 20% crypto (BTC/ETH infrastructure),
+        10% hedges. If WEAK claims: hold 25% equities max, 15% crypto, 25% hedges, 35% cash. Risk Management: Jobless claims
+        in 90 minutes will determine trajectory. Support levels being tested (SPX 6,656, QQQ $600, BTC $107,600) = market
+        making near-term direction call. Technical structure intact if support holds; breadth remains poor (health 3/10) so
+        quality bias non-negotiable. Favor: (1) Quantum infrastructure winners with policy support, (2) Bitcoin institutional
+        adoption plays, (3) Earnings quality companies sold on guidance concerns. Bottom Line: Market transitioned from deterioration
+        to stabilization. Jobless claims is TURNING POINT catalyst.'
   - id: markets
     label: 📊 Markets Intelligence
     aiInterpretation:
       updatedAt: '2025-10-23T08:45:00Z'
-      summary: 'CRITICAL INFLECTION POINT - SIGNAL JUMPED +28 PTS, MARKET FINDING SUPPORT BUT BREADTH STILL WEAK. JOBLESS CLAIMS IN 90 MINUTES = BINARY CATALYST.
+      summary: 'CRITICAL INFLECTION POINT - SIGNAL JUMPED +28 PTS, MARKET FINDING SUPPORT BUT BREADTH STILL WEAK. JOBLESS
+        CLAIMS IN 90 MINUTES = BINARY CATALYST.
 
-        MARKET STRUCTURE: Signal tier improved DRAMATICALLY from WEAK (30/100) to MODERATE (58/100) = institutional buyers found weakness. SPX 6,699 defending critical 6,656 support with higher lows pattern intact. QQQ $605.49 at critical $604 resistance (double-bottom reversal potential). BTC $109,490 testing $107,600 support floor. BUT breadth remains poor (health 3/10) - NYSE A/D Line declining since Nov 2024 creating 11-month negative divergence. This is NOT healthy strength, it equals stabilization with structural caution intact.
+        MARKET STRUCTURE: Signal tier improved DRAMATICALLY from WEAK (30/100) to MODERATE (58/100) = institutional buyers
+        found weakness. SPX 6,699 defending critical 6,656 support with higher lows pattern intact. QQQ $605.49 at critical
+        $604 resistance (double-bottom reversal potential). BTC $109,490 testing $107,600 support floor. BUT breadth remains
+        poor (health 3/10) - NYSE A/D Line declining since Nov 2024 creating 11-month negative divergence. This is NOT healthy
+        strength, it equals stabilization with structural caution intact.
 
-        TECHNICAL INFLECTION POINTS: (1) SPX $6,656 CRITICAL PIVOT - above maintains bull case toward $6,765-$6,814, below triggers cascade to $6,570-$6,518. (2) QQQ $604 DECISION POINT - double-bottom pattern suggests eventual breakout toward $613-$619, but multiple failed attempts above resistance. (3) BTC $107,600 SUPPORT FLOOR - break exposes psychological $100K level; above maintains $107.6K-$112K range.
+        TECHNICAL INFLECTION POINTS: (1) SPX $6,656 CRITICAL PIVOT - above maintains bull case toward $6,765-$6,814, below
+        triggers cascade to $6,570-$6,518. (2) QQQ $604 DECISION POINT - double-bottom pattern suggests eventual breakout
+        toward $613-$619, but multiple failed attempts above resistance. (3) BTC $107,600 SUPPORT FLOOR - break exposes psychological
+        $100K level; above maintains $107.6K-$112K range.
 
-        MARKET BIFURCATION: Fundamentals STRONG (84% earnings beat, 74% revenue beats, 13% YoY growth) vs Technicals WEAK (MACD/RSI divergences, breadth collapse, elevated defensive positioning P/C 1.57 SPY, 1.22 QQQ). This disconnect does not resolve without catalyst. TODAY is JOBLESS CLAIMS 8:30 AM = ONLY consistent macro data available in shutdown void. Any surprise will swing sentiment massively given information vacuum.
+        MARKET BIFURCATION: Fundamentals STRONG (84% earnings beat, 74% revenue beats, 13% YoY growth) vs Technicals WEAK
+        (MACD/RSI divergences, breadth collapse, elevated defensive positioning P/C 1.57 SPY, 1.22 QQQ). This disconnect does
+        not resolve without catalyst. TODAY is JOBLESS CLAIMS 8:30 AM = ONLY consistent macro data available in shutdown void.
+        Any surprise will swing sentiment massively given information vacuum.
 
-        STRUCTURAL THEMES ACCELERATING: (1) Quantum Computing Industrial Inflection - IBM error-corrected quantum 2028 with real enterprise customers (HSBC, Vanguard) = VALIDATION not vaporware. AMD partnership, policy support (Trump plus Europe) = sector momentum building. IONQ/QBTS/RGTI benefiting from halo effect. (2) Bitcoin Institutional Adoption - Bittensor MEXC listing = first major exchange subnet listing (AI-blockchain convergence validation). Ledger hardware security announcements, custody infrastructure maturing. (3) Earnings Quality Divergence - companies sold DESPITE beats (IBM -7.14%, Netflix -10% plus) while quality names rewarded (Winnebago +29%, Boston Scientific +4%, Avery Dennison +9.5%) = stock-picker environment.
+        STRUCTURAL THEMES ACCELERATING: (1) Quantum Computing Industrial Inflection - IBM error-corrected quantum 2028 with
+        real enterprise customers (HSBC, Vanguard) = VALIDATION not vaporware. AMD partnership, policy support (Trump plus
+        Europe) = sector momentum building. IONQ/QBTS/RGTI benefiting from halo effect. (2) Bitcoin Institutional Adoption
+        - Bittensor MEXC listing = first major exchange subnet listing (AI-blockchain convergence validation). Ledger hardware
+        security announcements, custody infrastructure maturing. (3) Earnings Quality Divergence - companies sold DESPITE
+        beats (IBM -7.14%, Netflix -10% plus) while quality names rewarded (Winnebago +29%, Boston Scientific +4%, Avery Dennison
+        +9.5%) = stock-picker environment.
 
-        VOLATILITY REGIME SHIFT: VIX 17.87-18.55 (elevated vs 2024 baseline 15-16) but moderating from Oct 10 spike to 20.65. Not panic but active hedging. Put skew elevated, QQQ puts +40% weekly = institutional insurance buying NOT capitulation. This is defensiveness before clarity, not panic before flush.
+        VOLATILITY REGIME SHIFT: VIX 17.87-18.55 (elevated vs 2024 baseline 15-16) but moderating from Oct 10 spike to 20.65.
+        Not panic but active hedging. Put skew elevated, QQQ puts +40% weekly = institutional insurance buying NOT capitulation.
+        This is defensiveness before clarity, not panic before flush.
 
-        NEAR-TERM PATH: Jobless claims TODAY is BINARY catalyst. IF IN-LINE/STRONG = BUY weakness in quality/quantum/Bitcoin infrastructure themes, support holds, possible technical breakout. IF WEAK = defensive tilt justified, support tests likely, breadth deterioration continues. Market making DIRECTION call THIS WEEK.
+        NEAR-TERM PATH: Jobless claims TODAY is BINARY catalyst. IF IN-LINE/STRONG = BUY weakness in quality/quantum/Bitcoin
+        infrastructure themes, support holds, possible technical breakout. IF WEAK = defensive tilt justified, support tests
+        likely, breadth deterioration continues. Market making DIRECTION call THIS WEEK.
 
-        MEDIUM-TERM: Bifurcated outcomes remain. Bull case: Jobless claims positive -> Technical support holds -> Breadth improves -> Quantum/Bitcoin structural themes take off -> Q4 rally. Bear case: Jobless claims weak -> SPX 6,656 breaks -> QQQ $600 breaks -> Crypto flushes -> Breadth collapse confirms -> Correction 10-20%. Breadth must confirm any sustained rally - without participation from broader market, rally is fragile.
+        MEDIUM-TERM: Bifurcated outcomes remain. Bull case: Jobless claims positive -> Technical support holds -> Breadth
+        improves -> Quantum/Bitcoin structural themes take off -> Q4 rally. Bear case: Jobless claims weak -> SPX 6,656 breaks
+        -> QQQ $600 breaks -> Crypto flushes -> Breadth collapse confirms -> Correction 10-20%. Breadth must confirm any sustained
+        rally - without participation from broader market, rally is fragile.
 
         '
     sections:
@@ -553,17 +593,47 @@ dashboard:
     label: 📰 News & Catalysts
     aiInterpretation:
       updatedAt: '2025-10-23T08:45:00Z'
-      summary: 'TODAY IS TURNING POINT: JOBLESS CLAIMS 8:30 AM = ONLY MACRO SIGNAL IN GOVERNMENT SHUTDOWN VOID. THIS BINARY CATALYST WILL SWING SENTIMENT MASSIVELY. Earnings Season 84% BEAT RATE (highest in 4 years) despite "sell the news" momentum. Quantum Computing News Breaking (IBM 2028 error-corrected quantum with real customers HSBC/Vanguard validates institutional adoption narrative). Bitcoin Institutional Infrastructure Accelerating (Bittensor MEXC listing = first major exchange subnet listing; Ledger hardware security announcements; whale distribution masks underlying accumulation). Government Shutdown Day 22 = unprecedented data void with Fed meeting 7 days away.
+      summary: 'TODAY IS TURNING POINT: JOBLESS CLAIMS 8:30 AM = ONLY MACRO SIGNAL IN GOVERNMENT SHUTDOWN VOID. THIS BINARY
+        CATALYST WILL SWING SENTIMENT MASSIVELY. Earnings Season 84% BEAT RATE (highest in 4 years) despite "sell the news"
+        momentum. Quantum Computing News Breaking (IBM 2028 error-corrected quantum with real customers HSBC/Vanguard validates
+        institutional adoption narrative). Bitcoin Institutional Infrastructure Accelerating (Bittensor MEXC listing = first
+        major exchange subnet listing; Ledger hardware security announcements; whale distribution masks underlying accumulation).
+        Government Shutdown Day 22 = unprecedented data void with Fed meeting 7 days away.
 
-        CRITICAL CATALYSTS TODAY/THIS WEEK: (1) Oct 23 8:30 AM - Initial Jobless Claims (ONLY consistent macro data during shutdown, binary outcome). (2) Oct 25 Friday - Delayed CPI Release (first government inflation data in weeks, outsized market reaction likely given data starvation). (3) Oct 30 - GDP 1st Release. (4) Oct 31 - PCE Deflator (Fed preferred inflation gauge). (5) Early November - Fed Meeting (7 days away, with incomplete economic information). (6) ~80 S&P 500 companies reporting this week - guidance matters MORE than beats (see IBM -7.14% despite beat, Netflix -10% plus on miss).
+        CRITICAL CATALYSTS TODAY/THIS WEEK: (1) Oct 23 8:30 AM - Initial Jobless Claims (ONLY consistent macro data during
+        shutdown, binary outcome). (2) Oct 25 Friday - Delayed CPI Release (first government inflation data in weeks, outsized
+        market reaction likely given data starvation). (3) Oct 30 - GDP 1st Release. (4) Oct 31 - PCE Deflator (Fed preferred
+        inflation gauge). (5) Early November - Fed Meeting (7 days away, with incomplete economic information). (6) ~80 S&P
+        500 companies reporting this week - guidance matters MORE than beats (see IBM -7.14% despite beat, Netflix -10% plus
+        on miss).
 
-        NEWS THEMES: (1) QUANTUM COMPUTING INFLECTION - IBM announcing error-corrected quantum computer 2028 with real enterprise customers (HSBC Vanguard productivity gains = validation beyond vaporware). AMD partnership, policy support (Trump administration plus Europe Quantum System Two) = sector momentum non-event-driven. IONQ/QBTS/RGTI benefiting from halo effect. (2) BITCOIN INSTITUTIONAL ADOPTION - Bittensor MEXC listing watershed moment (first major exchange subnet listing = AI-blockchain convergence validation). Ledger hardware announcements, custody infrastructure maturing. 1,767 BTC ($193.5M) to OKEx triggering distribution debate, but smart money reading as accumulation noise. (3) EARNINGS FUNDAMENTAL STRENGTH - 84% beat rate, 74% revenue beats, 13% YoY growth = highest in 4 years. BUT "sell the news" dynamic in tech (IBM disappointment on guidance, Netflix miss). Quality names rewarded (Winnebago +29%, Boston Scientific +4%, Avery Dennison +9.5%) = stock-picker environment. (4) GOVERNMENT DATA BLACKOUT - Day 22 shutdown = NO jobs report data, CPI delayed, Fed navigating blind into critical rate decision. Fed Chair Powell warned economy assessment "becomes more challenging" without official data.
+        NEWS THEMES: (1) QUANTUM COMPUTING INFLECTION - IBM announcing error-corrected quantum computer 2028 with real enterprise
+        customers (HSBC Vanguard productivity gains = validation beyond vaporware). AMD partnership, policy support (Trump
+        administration plus Europe Quantum System Two) = sector momentum non-event-driven. IONQ/QBTS/RGTI benefiting from
+        halo effect. (2) BITCOIN INSTITUTIONAL ADOPTION - Bittensor MEXC listing watershed moment (first major exchange subnet
+        listing = AI-blockchain convergence validation). Ledger hardware announcements, custody infrastructure maturing. 1,767
+        BTC ($193.5M) to OKEx triggering distribution debate, but smart money reading as accumulation noise. (3) EARNINGS
+        FUNDAMENTAL STRENGTH - 84% beat rate, 74% revenue beats, 13% YoY growth = highest in 4 years. BUT "sell the news"
+        dynamic in tech (IBM disappointment on guidance, Netflix miss). Quality names rewarded (Winnebago +29%, Boston Scientific
+        +4%, Avery Dennison +9.5%) = stock-picker environment. (4) GOVERNMENT DATA BLACKOUT - Day 22 shutdown = NO jobs report
+        data, CPI delayed, Fed navigating blind into critical rate decision. Fed Chair Powell warned economy assessment "becomes
+        more challenging" without official data.
 
-        KEY CONTRARIAN SIGNALS: Market Signal improved +28 pts (30 to 58/100) = institutional buyers found weakness, NOT capitulation. Fear & Greed 29 (Fear) = contrarian opportunity forming but not yet extreme (less than 25). VIX 17.87-18.55 (elevated but not panic). Put skew elevated, QQQ puts +40% weekly = institutional hedging not forced selling. This is defensive positioning before clarity, not panic before flush.
+        KEY CONTRARIAN SIGNALS: Market Signal improved +28 pts (30 to 58/100) = institutional buyers found weakness, NOT capitulation.
+        Fear & Greed 29 (Fear) = contrarian opportunity forming but not yet extreme (less than 25). VIX 17.87-18.55 (elevated
+        but not panic). Put skew elevated, QQQ puts +40% weekly = institutional hedging not forced selling. This is defensive
+        positioning before clarity, not panic before flush.
 
-        MEDIUM-TERM THEMES: (1) Quantum Computing Industrial Inflection = real customers (HSBC, Vanguard), real timeline (IBM 2028), real partnerships (AMD) = sector gaining credibility. 2-4 year horizon with near-term momentum. (2) Bitcoin Institutional Infrastructure = foundation-building phase for long-term adoption. Bittensor MEXC listing, hardware security maturation, policy tailwinds = structural accelerators. (3) U.S.-China Trade Tensions = background risk. Trump "massive tariff increases" threats echo April 2025 VIX 65.73 spike (highest since 2008). Market sensitive to escalation.
+        MEDIUM-TERM THEMES: (1) Quantum Computing Industrial Inflection = real customers (HSBC, Vanguard), real timeline (IBM
+        2028), real partnerships (AMD) = sector gaining credibility. 2-4 year horizon with near-term momentum. (2) Bitcoin
+        Institutional Infrastructure = foundation-building phase for long-term adoption. Bittensor MEXC listing, hardware
+        security maturation, policy tailwinds = structural accelerators. (3) U.S.-China Trade Tensions = background risk.
+        Trump "massive tariff increases" threats echo April 2025 VIX 65.73 spike (highest since 2008). Market sensitive to
+        escalation.
 
-        TRADING CATALYSTS: Jobless claims TODAY is PIVOTAL. Strong/In-line = Buy dips in quality/quantum/Bitcoin infrastructure. Weak = Defensive reset, support tests confirm bearish divergences. CPI Friday = second catalyst. Fed Oct 28-29 = third catalyst with incomplete economic data. Market at inflection point making DIRECTION call this week.
+        TRADING CATALYSTS: Jobless claims TODAY is PIVOTAL. Strong/In-line = Buy dips in quality/quantum/Bitcoin infrastructure.
+        Weak = Defensive reset, support tests confirm bearish divergences. CPI Friday = second catalyst. Fed Oct 28-29 = third
+        catalyst with incomplete economic data. Market at inflection point making DIRECTION call this week.
 
         '
     sections:
@@ -829,12 +899,28 @@ dashboard:
   dailyPlanner:
     aiInterpretation:
       updatedAt: '2025-10-23T08:45:00Z'
-      summary: 'October 23, 2025 - CRITICAL INFLECTION DAY: Market signal improved DRAMATICALLY +28 points (30 to 58/100), transitioning from WEAK to MODERATE. Government shutdown Day 22 creates unprecedented data blackout - 8:30 AM jobless claims is ONLY consistent macro signal available and will be binary catalyst. SPX defending critical 6,656 support, QQQ at $604 decision point, BTC testing $107,600 floor. Institutional positioning defensive (P/C 1.57 SPY, elevated puts) despite fundamentals strong (84% earnings beats). Structural themes intact: Quantum computing industrial inflection (IBM 2028, real customers), Bitcoin institutional adoption accelerating (Bittensor MEXC listing).'
-      keyInsight: 'THREE simultaneous inflection points: (1) Signal tier improvement (+28 pts) shows market finding institutional buyers on weakness = regime shift from deterioration to stabilization; (2) Jobless claims at 8:30 AM = ONLY data in shutdown void, any surprise will swing sentiment massively; (3) Technical support levels being tested simultaneously (SPX 6,656, QQQ $604, BTC $107,600) = market proving near-term direction THIS WEEK.'
-      action: 'WAIT for 8:30 AM jobless claims before aggressive positioning. IN-LINE/STRONG claims = BUY weakness in quality names + quantum/Bitcoin infrastructure themes (IBM quantum, Bittensor, Ledger announcements). WEAK claims = defensive tilt, tighten stops on all positions, reduce sizing 20%. Key monitoring: (1) Jobless claims outcome and market reaction, (2) SPX hold above 6,656, (3) QQQ break above $604 or below $600, (4) VIX cross $20 (fear escalation). Maintain tactical hedges through CPI Friday + Fed Oct 28-29.'
+      summary: 'October 23, 2025 - CRITICAL INFLECTION DAY: Market signal improved DRAMATICALLY +28 points (30 to 58/100),
+        transitioning from WEAK to MODERATE. Government shutdown Day 22 creates unprecedented data blackout - 8:30 AM jobless
+        claims is ONLY consistent macro signal available and will be binary catalyst. SPX defending critical 6,656 support,
+        QQQ at $604 decision point, BTC testing $107,600 floor. Institutional positioning defensive (P/C 1.57 SPY, elevated
+        puts) despite fundamentals strong (84% earnings beats). Structural themes intact: Quantum computing industrial inflection
+        (IBM 2028, real customers), Bitcoin institutional adoption accelerating (Bittensor MEXC listing).'
+      keyInsight: 'THREE simultaneous inflection points: (1) Signal tier improvement (+28 pts) shows market finding institutional
+        buyers on weakness = regime shift from deterioration to stabilization; (2) Jobless claims at 8:30 AM = ONLY data in
+        shutdown void, any surprise will swing sentiment massively; (3) Technical support levels being tested simultaneously
+        (SPX 6,656, QQQ $604, BTC $107,600) = market proving near-term direction THIS WEEK.'
+      action: 'WAIT for 8:30 AM jobless claims before aggressive positioning. IN-LINE/STRONG claims = BUY weakness in quality
+        names + quantum/Bitcoin infrastructure themes (IBM quantum, Bittensor, Ledger announcements). WEAK claims = defensive
+        tilt, tighten stops on all positions, reduce sizing 20%. Key monitoring: (1) Jobless claims outcome and market reaction,
+        (2) SPX hold above 6,656, (3) QQQ break above $604 or below $600, (4) VIX cross $20 (fear escalation). Maintain tactical
+        hedges through CPI Friday + Fed Oct 28-29.'
       sentiment: cautiously bullish
       confidence: medium-high
-      content: 'MODERATE signal (58.0/100) provides tactical opportunity but information asymmetry extreme. Government data void forces price action to guide positioning. Earnings 84% beat rate validates fundamental support. Jobless claims in 2 hours equals potential turning point. Technical structure intact if support holds (SPX 6,656, QQQ $600, BTC $107,600). Near-term bias: cautious on tech concentration risk (50% market cap), bullish on structural winners (quantum, Bitcoin institutional).'
+      content: 'MODERATE signal (58.0/100) provides tactical opportunity but information asymmetry extreme. Government data
+        void forces price action to guide positioning. Earnings 84% beat rate validates fundamental support. Jobless claims
+        in 2 hours equals potential turning point. Technical structure intact if support holds (SPX 6,656, QQQ $600, BTC $107,600).
+        Near-term bias: cautious on tech concentration risk (50% market cap), bullish on structural winners (quantum, Bitcoin
+        institutional).'
     currentSession: friday market
     sessionTimes:
       preMarket: 4:00-9:30 AM EST
@@ -847,14 +933,26 @@ dashboard:
     - Selective opportunities in quality names
     - Monitor signal strength for improvement
     - Maintain risk management discipline
-    keyLevelsUpdated: '2025-10-22T11:10:18Z'
+    keyLevelsUpdated: '2025-10-23T18:23:42Z'
     keyLevels:
-    - 'SPY: $674.50 - watch 200-DMA support'
-    - 'QQQ: $606.01 - tech sector leadership'
-    - 'VIX: 16.5 - monitor compression below 18'
-    - 'BTC: $42,500 - key psychological level'
-    - 'ETH: $4,020.50 - institutional accumulation zone'
-    - 'SOL: $186.90 - alt accumulation level'
+    - asset: SPY
+      entry: 674.5
+      rationale: watch 200-DMA support
+    - asset: QQQ
+      entry: 606.01
+      rationale: tech sector leadership
+    - asset: VIX
+      entry: 16.5
+      rationale: monitor compression below 18
+    - asset: BTC
+      entry: 42500.0
+      rationale: key psychological level
+    - asset: ETH
+      entry: 4020.5
+      rationale: institutional accumulation zone
+    - asset: SOL
+      entry: 186.9
+      rationale: alt accumulation level
     economicCalendarUpdated: '2025-10-22T11:10:18Z'
     economicCalendar: *id001
     tomorrowPrep:
@@ -980,6 +1078,7 @@ dashboard:
   lastUpdated: '2025-10-20T14:54:26Z'
   updatedAt: '2025-10-20T14:54:26Z'
 ---
+
 
 
 
