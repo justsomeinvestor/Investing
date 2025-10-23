@@ -132,70 +132,35 @@ dashboard:
         20-30%, raise cash 40-50%, add hedges 20-30%. Trend 0, breadth 12.5, volatility 6 all confirm weak environment. SPY
         gaining on declining volume is bearish divergence. Wait for signal >40 before adding risk.
     aiInterpretation:
-      updatedAt: '2025-10-23T08:45:00Z'
-      summary: REGIME SHIFT CONFIRMED - SIGNAL IMPROVED +28 PTS (30 to 58/100), CAPITAL DEPLOYMENT WINDOW OPENING
-      content: 'Account Status: Balance $23,105.83, P/L YTD +15.8%. CRITICAL CHANGE: Signal tier improved DRAMATICALLY from
-        WEAK (30/100) to MODERATE (58/100), marking shift from risk-off to risk-management mode. This represents market finding
-        institutional buyers on weakness, NOT capitulation. SPX defending critical 6,656 support with higher lows intact,
-        QQQ at $604 breakout decision point. Government shutdown Day 22 creates BINARY catalyst TODAY (jobless claims 8:30
-        AM) = only consistent macro data available. Quantum computing structural theme accelerating (IBM error-corrected quantum
-        2028 with real enterprise customers: HSBC, Vanguard; AMD partnership validating industrial scale-up; IONQ/QBTS/RGTI
-        benefiting from policy support). Bitcoin institutional adoption narrative maturing (Bittensor MEXC listing = first
-        major exchange subnet listing; Ledger hardware security announcements; whale distribution noise masking accumulation).
-        Earnings fundamentals STRONG (84% beat rate, 74% revenue beats, 13% YoY growth) despite "sell the news" momentum in
-        tech. Position Sizing: MODERATE environment (58/100) JUSTIFIES selective risk deployment AFTER jobless claims data.
-        If IN-LINE/STRONG claims: deploy 30-35% equities (quality focus + quantum names), 20% crypto (BTC/ETH infrastructure),
-        10% hedges. If WEAK claims: hold 25% equities max, 15% crypto, 25% hedges, 35% cash. Risk Management: Jobless claims
-        in 90 minutes will determine trajectory. Support levels being tested (SPX 6,656, QQQ $600, BTC $107,600) = market
-        making near-term direction call. Technical structure intact if support holds; breadth remains poor (health 3/10) so
-        quality bias non-negotiable. Favor: (1) Quantum infrastructure winners with policy support, (2) Bitcoin institutional
-        adoption plays, (3) Earnings quality companies sold on guidance concerns. Bottom Line: Market transitioned from deterioration
-        to stabilization. Jobless claims is TURNING POINT catalyst.'
+      updatedAt: '2025-10-23T14:45:32Z'
+      summary: 'Portfolio Signal Tier IMPROVED +28 PTS (30→58/100) = regime shift from risk-off to risk-management mode. Account
+        balance $23,105.83, YTD +15.8%. SPX 6,656 support holding with higher lows, QQQ $604 breakout decision point. Jobless
+        claims 8:30 AM = BINARY catalyst determining position sizing. Quantum computing inflection (IBM, AMD partnerships) +
+        Bitcoin institutional adoption (Bittensor, Ledger) creating twin structural themes. Strong earnings fundamentals (84%
+        beat rate) despite sector concentration risk.'
+      keyInsight: 'SIGNAL +28 PT JUMP TO MODERATE (58/100) BUT EARNINGS QUALITY UNDER PRESSURE: Current environment justifies
+        selective risk deployment but ONLY in quality names with strong technicals. Breadth deterioration (12.5/25) means 7 of
+        8 stocks still lagging—concentration risk maximal. Jobless claims outcome determines deployment window.'
+      action: 'WAIT for 8:30 AM jobless claims. IF STRONG/IN-LINE: deploy 30-35% equities (quality + quantum), 20% crypto,
+        10% hedges, 35% cash. IF WEAK: maintain 25% equities max, 15% crypto, 25% hedges, 35% cash. Monitor: SPX 6,656, QQQ
+        $604, BTC $107,600. NEVER reduce position quality regardless of signal—market rotation risk remains.'
+      sentiment: cautiously bullish
+      confidence: medium-high
   - id: markets
     label: 📊 Markets Intelligence
     aiInterpretation:
-      updatedAt: '2025-10-23T08:45:00Z'
-      summary: 'CRITICAL INFLECTION POINT - SIGNAL JUMPED +28 PTS, MARKET FINDING SUPPORT BUT BREADTH STILL WEAK. JOBLESS
-        CLAIMS IN 90 MINUTES = BINARY CATALYST.
-
-        MARKET STRUCTURE: Signal tier improved DRAMATICALLY from WEAK (30/100) to MODERATE (58/100) = institutional buyers
-        found weakness. SPX 6,699 defending critical 6,656 support with higher lows pattern intact. QQQ $605.49 at critical
-        $604 resistance (double-bottom reversal potential). BTC $109,490 testing $107,600 support floor. BUT breadth remains
-        poor (health 3/10) - NYSE A/D Line declining since Nov 2024 creating 11-month negative divergence. This is NOT healthy
-        strength, it equals stabilization with structural caution intact.
-
-        TECHNICAL INFLECTION POINTS: (1) SPX $6,656 CRITICAL PIVOT - above maintains bull case toward $6,765-$6,814, below
-        triggers cascade to $6,570-$6,518. (2) QQQ $604 DECISION POINT - double-bottom pattern suggests eventual breakout
-        toward $613-$619, but multiple failed attempts above resistance. (3) BTC $107,600 SUPPORT FLOOR - break exposes psychological
-        $100K level; above maintains $107.6K-$112K range.
-
-        MARKET BIFURCATION: Fundamentals STRONG (84% earnings beat, 74% revenue beats, 13% YoY growth) vs Technicals WEAK
-        (MACD/RSI divergences, breadth collapse, elevated defensive positioning P/C 1.57 SPY, 1.22 QQQ). This disconnect does
-        not resolve without catalyst. TODAY is JOBLESS CLAIMS 8:30 AM = ONLY consistent macro data available in shutdown void.
-        Any surprise will swing sentiment massively given information vacuum.
-
-        STRUCTURAL THEMES ACCELERATING: (1) Quantum Computing Industrial Inflection - IBM error-corrected quantum 2028 with
-        real enterprise customers (HSBC, Vanguard) = VALIDATION not vaporware. AMD partnership, policy support (Trump plus
-        Europe) = sector momentum building. IONQ/QBTS/RGTI benefiting from halo effect. (2) Bitcoin Institutional Adoption
-        - Bittensor MEXC listing = first major exchange subnet listing (AI-blockchain convergence validation). Ledger hardware
-        security announcements, custody infrastructure maturing. (3) Earnings Quality Divergence - companies sold DESPITE
-        beats (IBM -7.14%, Netflix -10% plus) while quality names rewarded (Winnebago +29%, Boston Scientific +4%, Avery Dennison
-        +9.5%) = stock-picker environment.
-
-        VOLATILITY REGIME SHIFT: VIX 17.87-18.55 (elevated vs 2024 baseline 15-16) but moderating from Oct 10 spike to 20.65.
-        Not panic but active hedging. Put skew elevated, QQQ puts +40% weekly = institutional insurance buying NOT capitulation.
-        This is defensiveness before clarity, not panic before flush.
-
-        NEAR-TERM PATH: Jobless claims TODAY is BINARY catalyst. IF IN-LINE/STRONG = BUY weakness in quality/quantum/Bitcoin
-        infrastructure themes, support holds, possible technical breakout. IF WEAK = defensive tilt justified, support tests
-        likely, breadth deterioration continues. Market making DIRECTION call THIS WEEK.
-
-        MEDIUM-TERM: Bifurcated outcomes remain. Bull case: Jobless claims positive -> Technical support holds -> Breadth
-        improves -> Quantum/Bitcoin structural themes take off -> Q4 rally. Bear case: Jobless claims weak -> SPX 6,656 breaks
-        -> QQQ $600 breaks -> Crypto flushes -> Breadth collapse confirms -> Correction 10-20%. Breadth must confirm any sustained
-        rally - without participation from broader market, rally is fragile.
-
-        '
+      updatedAt: '2025-10-23T13:45:54Z'
+      summary: 'Markets at critical inflection as signal improved +28 pts (institutional buyers entering weakness). SPX 6,656
+        support defending, QQQ $604 double-bottom breakout point, BTC $107,600 floor tested. BUT breadth deteriorating 11
+        months (negative divergence: indexes high, 93% of stocks lagging). Today''s 8:30 AM jobless claims = ONLY macro signal
+        during shutdown, binary catalyst for direction.'
+      keyInsight: 'SIGNAL TIER JUMPED +28 PTS TO MODERATE (58/100) BUT SEVERE BREADTH DETERIORATION (11-MONTH A/D LINE COLLAPSE)
+        = TEXTBOOK NEGATIVE DIVERGENCE: INDEXES AT HIGHS, MAJORITY OF STOCKS LAGGING = FRAGILE RALLY STRUCTURE NEEDING CONFIRMATION.'
+      action: 'WAIT for 8:30 AM jobless claims. STRONG/IN-LINE = deploy 30-35% equities (quality + quantum), 20% crypto, 10%
+        hedges. WEAK = defensive 25% equities, 15% crypto, 25% hedges, 35% cash. Monitor: SPX 6,656, QQQ $600, BTC $107,600
+        supports. Reduce sizing 10-20%, quality bias non-negotiable given poor breadth.'
+      sentiment: cautiously bullish
+      confidence: medium-high
     sections:
     - name: Macro Environment
       providers:
@@ -286,26 +251,34 @@ dashboard:
   - id: xsentiment
     label: 🐦 X Sentiment
     aiInterpretation:
-      updatedAt: '2025-10-22T11:28:54Z'
-      summary: No crypto sentiment data available. No macro sentiment data available.
-      keyInsight: 'Combined sentiment: 50/100 (NEUTRAL). '
-      action: Sentiment is neutral. Wait for clearer directional signals before committing capital.
+      updatedAt: '2025-10-23T14:43:15Z'
+      summary: 'X sentiment BIFURCATED: Crypto bullish (+68% BTC, +187% ETH, +378% SOL mention velocity) reflecting institutional
+        adoption narrative (Coinbase Echo $375M, Fed Crypto Conference). Macro fearful (VIX +129%, TLT +67% safe-haven demand).
+        Combined reading: 50/100 NEUTRAL BUT directional drivers emerging. Fear-driven conversation (caps down, emojis low) =
+        retail emotionally subdued—contrarian signal if extreme develops.'
+      keyInsight: 'CRYPTO STRENGTH MASKING MACRO FEAR: While crypto mentions surging (BTC 187 mentions, ETH 89, SOL 43), equity
+        sentiment weakening (BULLISH mentions -26%, SPY stable but declining conviction). CRITICAL: This divergence = front-running
+        of Fed easing (Oct 29 catalyst). If jobless claims weak, macro fear deepens and crypto rally reverses.'
+      action: 'Monitor X sentiment for capitulation signals (fear <25 or greed >75). CURRENT SETUP: Retail subdued but conviction
+        weakening in equities. TRIGGER for action: If VIX crosses $20 AND crypto mentions stay >150 combined, prepare for rally
+        if jobless claims IN-LINE. If both weaken simultaneously, reduce crypto allocation. Track daily: BTC mentions +7%, ETH -31%,
+        SOL -55% = cooling momentum in alts.'
       sentiment: neutral
-      confidence: high
-    sentimentScore: 50
-    sentimentTier: NEUTRAL
-    sentimentTrend: stable
+      confidence: medium-high
+    sentimentScore: 35
+    sentimentTier: BEARISH
+    sentimentTrend: declining
     contrarian_signal: 0 pts (Neutral - no extreme yet)
     sentiment_breakdown:
       extreme_bullish: 5
-      bullish: 20
-      neutral: 50
-      bearish: 20
-      extreme_bearish: 5
+      bullish: 15
+      neutral: 30
+      bearish: 40
+      extreme_bearish: 10
     hype_cycle:
-      position: Skepticism / Anxiety
-      emoji_density: Low
-      caps_lock_usage: Neutral
+      position: Anxiety
+      emoji_density: Medium
+      caps_lock_usage: Medium
       exclamation_marks: Medium
     crypto_trending:
       updatedAt: '2025-10-21T15:20:00Z'
@@ -564,7 +537,7 @@ dashboard:
       - 'Crypto conviction weakening: ETH -31% mentions, SOL -55% mentions, BULLISH mentions -26%'
       - BTC holding attention with 111 mentions despite market anxiety
       - 'AI theme remains resilient: 60 mentions at +22% with DEFI surging +188%'
-    sentiment_velocity: 50
+    sentiment_velocity: 35
     contrarian_detector:
       current_setup: Moderate fear (40/100) + market stabilizing = cautious bullish
       opportunity_status: NOT YET
@@ -575,7 +548,7 @@ dashboard:
       action_color: '#f59e0b'
       confidence: medium
       next_check: Monitor for capitulation if CPI disappoints
-    socialTabSyncedAt: '2025-10-22T11:28:54Z'
+    socialTabSyncedAt: '2025-10-23T13:37:50Z'
     influencer_consensus:
       tier1_sentiment: NEUTRAL
       tier2_sentiment: NEUTRAL
@@ -592,73 +565,44 @@ dashboard:
   - id: news_catalysts
     label: 📰 News & Catalysts
     aiInterpretation:
-      updatedAt: '2025-10-23T08:45:00Z'
-      summary: 'TODAY IS TURNING POINT: JOBLESS CLAIMS 8:30 AM = ONLY MACRO SIGNAL IN GOVERNMENT SHUTDOWN VOID. THIS BINARY
-        CATALYST WILL SWING SENTIMENT MASSIVELY. Earnings Season 84% BEAT RATE (highest in 4 years) despite "sell the news"
-        momentum. Quantum Computing News Breaking (IBM 2028 error-corrected quantum with real customers HSBC/Vanguard validates
-        institutional adoption narrative). Bitcoin Institutional Infrastructure Accelerating (Bittensor MEXC listing = first
-        major exchange subnet listing; Ledger hardware security announcements; whale distribution masks underlying accumulation).
-        Government Shutdown Day 22 = unprecedented data void with Fed meeting 7 days away.
-
-        CRITICAL CATALYSTS TODAY/THIS WEEK: (1) Oct 23 8:30 AM - Initial Jobless Claims (ONLY consistent macro data during
-        shutdown, binary outcome). (2) Oct 25 Friday - Delayed CPI Release (first government inflation data in weeks, outsized
-        market reaction likely given data starvation). (3) Oct 30 - GDP 1st Release. (4) Oct 31 - PCE Deflator (Fed preferred
-        inflation gauge). (5) Early November - Fed Meeting (7 days away, with incomplete economic information). (6) ~80 S&P
-        500 companies reporting this week - guidance matters MORE than beats (see IBM -7.14% despite beat, Netflix -10% plus
-        on miss).
-
-        NEWS THEMES: (1) QUANTUM COMPUTING INFLECTION - IBM announcing error-corrected quantum computer 2028 with real enterprise
-        customers (HSBC Vanguard productivity gains = validation beyond vaporware). AMD partnership, policy support (Trump
-        administration plus Europe Quantum System Two) = sector momentum non-event-driven. IONQ/QBTS/RGTI benefiting from
-        halo effect. (2) BITCOIN INSTITUTIONAL ADOPTION - Bittensor MEXC listing watershed moment (first major exchange subnet
-        listing = AI-blockchain convergence validation). Ledger hardware announcements, custody infrastructure maturing. 1,767
-        BTC ($193.5M) to OKEx triggering distribution debate, but smart money reading as accumulation noise. (3) EARNINGS
-        FUNDAMENTAL STRENGTH - 84% beat rate, 74% revenue beats, 13% YoY growth = highest in 4 years. BUT "sell the news"
-        dynamic in tech (IBM disappointment on guidance, Netflix miss). Quality names rewarded (Winnebago +29%, Boston Scientific
-        +4%, Avery Dennison +9.5%) = stock-picker environment. (4) GOVERNMENT DATA BLACKOUT - Day 22 shutdown = NO jobs report
-        data, CPI delayed, Fed navigating blind into critical rate decision. Fed Chair Powell warned economy assessment "becomes
-        more challenging" without official data.
-
-        KEY CONTRARIAN SIGNALS: Market Signal improved +28 pts (30 to 58/100) = institutional buyers found weakness, NOT capitulation.
-        Fear & Greed 29 (Fear) = contrarian opportunity forming but not yet extreme (less than 25). VIX 17.87-18.55 (elevated
-        but not panic). Put skew elevated, QQQ puts +40% weekly = institutional hedging not forced selling. This is defensive
-        positioning before clarity, not panic before flush.
-
-        MEDIUM-TERM THEMES: (1) Quantum Computing Industrial Inflection = real customers (HSBC, Vanguard), real timeline (IBM
-        2028), real partnerships (AMD) = sector gaining credibility. 2-4 year horizon with near-term momentum. (2) Bitcoin
-        Institutional Infrastructure = foundation-building phase for long-term adoption. Bittensor MEXC listing, hardware
-        security maturation, policy tailwinds = structural accelerators. (3) U.S.-China Trade Tensions = background risk.
-        Trump "massive tariff increases" threats echo April 2025 VIX 65.73 spike (highest since 2008). Market sensitive to
-        escalation.
-
-        TRADING CATALYSTS: Jobless claims TODAY is PIVOTAL. Strong/In-line = Buy dips in quality/quantum/Bitcoin infrastructure.
-        Weak = Defensive reset, support tests confirm bearish divergences. CPI Friday = second catalyst. Fed Oct 28-29 = third
-        catalyst with incomplete economic data. Market at inflection point making DIRECTION call this week.
-
-        '
+      updatedAt: '2025-10-23T14:42:19Z'
+      summary: 'TODAY''S TURNING POINT: Jobless claims 8:30 AM = ONLY macro signal during government shutdown (Day 22). Earnings
+        season 84% beat rate but ''sell the news'' dynamic (IBM -7.14%, Netflix -10%). Quantum computing inflection (IBM 2028
+        error-corrected system with HSBC/Vanguard customers validates sector). Bitcoin institutional adoption accelerating
+        (Bittensor MEXC listing, Ledger custody infrastructure). Critical week: CPI Friday (delayed), GDP Oct 30, PCE Oct
+        31, Fed meeting Nov 1.'
+      keyInsight: 'JOBLESS CLAIMS 8:30 AM = BINARY CATALYST IN UNPRECEDENTED DATA VOID: Government shutdown Day 22 means NO
+        jobs report, delayed CPI, Fed navigating blind into rate decision 7 days away. Today''s claims = ONLY consistent macro
+        signal with outsized impact on sentiment.'
+      action: 'WAIT for 8:30 AM jobless claims before trading. STRONG/IN-LINE = fade fear into quantum (IONQ/QBTS/RGTI) +
+        Bitcoin infrastructure. WEAK = defensive posture through Friday CPI. Key catalysts: (1) Today jobless claims, (2)
+        Friday CPI (first inflation data weeks), (3) ~80 S&P earnings (guidance > beats). Monitor: IBM quantum partnerships,
+        Bittensor/Ledger adoption signals.'
+      sentiment: cautiously bullish
+      confidence: medium-high
     sections:
     - name: 📰 Daily News Flow
-      rss_summary: "RSS Feed Summary for October 22, 2025:\nTotal Articles: 39\n\n**MarketWatch** (9 articles):\n  • Top Stories\
-        \ A lot has changed for Intel in three months. Earnings are the next big test.\n  • Top Stories AT&T shows off another\
-        \ big subscriber boost. Why that’s not enough to lift the stock.\n  • Top Stories Beyond Meat’s stock is up 1,200%\
-        \ in four days as blistering meme-stock rally rocks on\n  • Top Stories Does my sick husband have to reapply for spousal\
-        \ benefits when I get Social Security  He only gets $800 a month.\n  • Top Stories Gold’s plunge raises questions\
-        \ about its role in one of the most popular trades of the year\n  ... and 4 more\n\n**CoinDesk** (10 articles):\n\
-        \  • Top Stories AAVE Bounces Amid $50M Token Buyback Governance Proposal\n  • Top Stories Andreessen Horowitz Says\
-        \ Crypto Has Entered a ‘New Era’ of Real Utility\n  • Top Stories Bitcoin Miner Core Scientific Upgraded to Buy as\
-        \ HPC Momentum Builds  B. Riley\n  • Top Stories Bitcoin Options Open Interest Outpaces Futures by $40B, Signaling\
-        \ Market Maturation\n  • Top Stories Bitcoin's ‘Inevitable’ Dip Below $100K Could Be Last Chance to Buy at That Level\
-        \  Standard Chartered\n  ... and 5 more\n\n**CNBC** (10 articles):\n  • Investing News Baidu's Apollo Go plans to\
-        \ launch taxis with no steering wheels in Switzerland as the race for robotaxis in Europe heats up\n  • Investing\
-        \ News Barclays ups guidance, announces surprise $670 million share buyback\n  • Investing News Beyond Meat shares\
-        \ slash gains, briefly dipping into the red as meme rally falters\n  • Investing News The biggest crypto wipeout was\
-        \ led not by bitcoin, but much smaller tokens. Here's what happened\n  • Investing News Travis Kelce joins activist\
-        \ investor Jana Partners in push to revive Six Flags\n  ... and 5 more\n\n**Seeking Alpha** (10 articles):\n  • Marketplace\
-        \ Agree Realty Corporation (ADC) Q3 2025 Earnings Call Transcript\n  • Marketplace Avery Dennison Corporation (AVY)\
-        \ Q3 2025 Earnings Call Transcript\n  • Marketplace Basic-Fit  Like Buying Planet Fitness At 80% Discount\n  • Marketplace\
-        \ Disney  Upgrading To Buy As Streaming Turns Profitable And Valuation Becomes Attractive\n  • Marketplace Emerging\
-        \ Markets Debt Still Running Strong\n  ... and 5 more\n\nKey Themes: Automated aggregation - manual curation recommended\
-        \ for actionable insights."
+      rss_summary: "RSS Feed Summary for October 23, 2025:\nTotal Articles: 36\n\n**MarketWatch** (6 articles):\n  • Top Stories\
+        \ Ford has a secret weapon that could help its earnings as EV concerns swirl\n  • Top Stories Goldman trader answers\
+        \ why the so-called dumb money has been beating the pros this year\n  • Top Stories Simone Biles reveals her custom\
+        \ Texas mansion is complete—after 2 years of work\n  • Top Stories Social Security’s COLA is coming. Here’s how you\
+        \ can stretch your benefits the most.\n  • Top Stories Volvo Car shares enjoying best day since going public\n  ...\
+        \ and 1 more\n\n**CoinDesk** (10 articles):\n  • Top Stories Asia Morning Briefing   BTC, ETH Markets Steady as Traders\
+        \ Await CPI and China-U.S. De-Escalation Signs\n  • Top Stories BTC, XRP, SOL, ADA Hold Flat as Google’s Quantum Breakthrough\
+        \ Rekindles Old Crypto Fears\n  • Top Stories Bunni DEX Shuts Down, Cites Recovery Costs After $8.4M Exploit\n  •\
+        \ Top Stories Canada’s Anti-Money Laundering Watchdog Levies Record $126M Fine on Cryptomus\n  • Top Stories Dogecoin\
+        \ Tests $0.19 Support as Tight Range Signals Breakout Potential\n  ... and 5 more\n\n**CNBC** (10 articles):\n  •\
+        \ Investing News China's property slump is far from bottoming. But Beijing is prioritizing tech growth\n  • Top News\
+        \ & Analysis As many retailers shrink their footprints, Dick's Sporting Goods goes big\n  • Top News & Analysis China\
+        \ and India to face supply jolt as U.S. targets Russia's oil giants\n  • Top News & Analysis Elon Musk said Tesla's\
+        \ robot will be 'incredible surgeon,' left Wall Street with no guidance on EVs\n  • Top News & Analysis EU targets\
+        \ Russian energy with new sanctions — and welcomes Trump’s major policy shift\n  ... and 5 more\n\n**Seeking Alpha**\
+        \ (10 articles):\n  • Marketplace Abercrombie & Fitch  Why I'm Buying This Undervalued Apparel Stock With Double-Digit\
+        \ Buyback Yields\n  • Marketplace Artisan Emerging Markets Debt Opportunities Fund Q3 2025 Commentary\n  • Marketplace\
+        \ Azelis Group NV (AZLGY) Q3 2025 Sales  Trading Statement Call - Slideshow\n  • Marketplace BankUnited, Inc. 2025\
+        \ Q3 - Results - Earnings Call Presentation\n  • Marketplace Clicks Group Limited 2025 Q4 - Results - Earnings Call\
+        \ Presentation\n  ... and 5 more\n\nKey Themes: Automated aggregation - manual curation recommended for actionable\
+        \ insights."
       providers:
       - name: CoinDesk
         insights:
@@ -675,7 +619,7 @@ dashboard:
         - JPMorgan blueprint to become world's first fully AI-powered megabank
         - Cerebras raises $1B in pre-IPO funding for AI chip expansion
         - Buffett eyeing Berkshire's biggest deal in three years ($11.6B+)
-      rss_updated_at: '2025-10-22T11:28:56Z'
+      rss_updated_at: '2025-10-23T13:37:52Z'
     - name: 🚀 Upcoming Catalysts
       items:
       - date: '2025-10-22'
@@ -736,12 +680,21 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-22T11:28:55Z'
-      summary: BEARISH DIVERGENCE IN PLAY
-      content: Technical score 5.0/100 is critically weak. SPY +0.57% on declining volume is textbook bearish divergence -
-        price advancing without participation. Breadth 12.5 means only 1 in 8 stocks participating (narrow leadership unsustainable).
-        VIX rising confirms institutions hedging. QQQ resistance 02, support 89.50 - watch for breakdown. GLD seeing safe
-        haven demand. Technical setup favors shorts/hedges over longs until breadth >30 and volume confirms.
+      updatedAt: '2025-10-23T14:44:47Z'
+      summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
+        advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
+        for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical: SPX
+        6,628→6,600→6,550 cascade risk if breakdown.'
+      keyInsight: 'NARROW LEADERSHIP UNSUSTAINABLE: 11-month advance-decline collapse while SPX hit ATH Oct 9 = market propped
+        by 5-7 mega-caps only. Tech/Comm at 45% market cap (1800s concentration levels). If any mega-cap falters, cascade risk
+        with NO alternative sectors to absorb selling. Current structure fragile—breadth thrust needed URGENTLY to confirm any
+        rally continuation.'
+      action: 'REQUIRE breadth >30 and >70% up-volume day to reinstate longs. Until then: SHORT/HEDGE BIAS only. Key levels:
+        SPX 6,628 (50-dMA absolute line), QQQ $602 (support), BTC $115K/$111K (holds). If SPX closes BELOW 6,628 for 2+ days,
+        downside target 6,550-6,500. If holds + breadth thrusts, next resistance 6,750-6,800. Options positioning: dealer gamma
+        670 call wall = resistance zone.'
+      sentiment: bearish
+      confidence: medium-high
     closeProbability:
       currentPrice: $665.48
       maxPain: null
@@ -754,13 +707,13 @@ dashboard:
       - Bias downgraded to neutral/bearish beneath 20 & 50-dma.
       - 'Support: 6,520 then 6,450; resistance: 6,640/6,700.'
       - Need breadth thrust (>70% up-volume) to reinstate aggressive longs.
-      updatedAt: 2025-10-22 11:28 ET
+      updatedAt: 2025-10-23 13:37 ET
     - name: Bitcoin Technicals
       insights:
       - Momentum negative; price below 20-dma with support $115K/$111K.
       - Daily RSI at 48—neutral but vulnerable if ETF flows slow further.
       - Prefer buys near $113K-$115K with invalidation beneath $111K.
-      updatedAt: 2025-10-22 11:28 ET
+      updatedAt: 2025-10-23 13:37 ET
     optionsData:
       SPY:
         lastUpdated: '2025-10-18T22:30:00Z'
@@ -840,7 +793,7 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-22T11:28:55Z'
+    technicalsTabSyncedAt: '2025-10-23T13:37:51Z'
   quickActionsUpdated: '2025-10-21T15:08:00Z'
   quickActions:
   - type: RISK
@@ -898,13 +851,28 @@ dashboard:
       sentiment: NEUTRAL
   dailyPlanner:
     aiInterpretation:
-      updatedAt: '2025-10-23T08:45:00Z'
-      summary: 'October 23, 2025 - CRITICAL INFLECTION DAY: Market signal improved DRAMATICALLY +28 points (30 to 58/100),
-        transitioning from WEAK to MODERATE. Government shutdown Day 22 creates unprecedented data blackout - 8:30 AM jobless
-        claims is ONLY consistent macro signal available and will be binary catalyst. SPX defending critical 6,656 support,
-        QQQ at $604 decision point, BTC testing $107,600 floor. Institutional positioning defensive (P/C 1.57 SPY, elevated
-        puts) despite fundamentals strong (84% earnings beats). Structural themes intact: Quantum computing industrial inflection
-        (IBM 2028, real customers), Bitcoin institutional adoption accelerating (Bittensor MEXC listing).'
+      updatedAt: '2025-10-23T13:37:52Z'
+      summary: 'Daily Context for October 23, 2025:
+
+
+        Signal Tier: MODERATE (58.0/100)
+
+        Breadth: 15/25 (MODERATE)
+
+
+        Trading Posture: Selective - quality opportunities
+
+
+        Key Focus:
+
+        - Monitor signal strength for changes in market regime
+
+        - Respect risk management rules regardless of signal
+
+        - Stay nimble - conditions can change rapidly
+
+
+        This is automated daily context. For detailed market analysis, review individual tabs.'
       keyInsight: 'THREE simultaneous inflection points: (1) Signal tier improvement (+28 pts) shows market finding institutional
         buyers on weakness = regime shift from deterioration to stabilization; (2) Jobless claims at 8:30 AM = ONLY data in
         shutdown void, any surprise will swing sentiment massively; (3) Technical support levels being tested simultaneously
@@ -928,7 +896,7 @@ dashboard:
       midday: 11:00-1:00 PM EST
       powerHour: 3:00-4:00 PM EST
       afterHours: 4:00-8:00 PM EST
-    prioritiesUpdated: '2025-10-22T11:10:18Z'
+    prioritiesUpdated: '2025-10-23T13:37:52Z'
     priorities:
     - Selective opportunities in quality names
     - Monitor signal strength for improvement
@@ -953,7 +921,7 @@ dashboard:
     - asset: SOL
       entry: 186.9
       rationale: alt accumulation level
-    economicCalendarUpdated: '2025-10-22T11:10:18Z'
+    economicCalendarUpdated: '2025-10-23T13:37:52Z'
     economicCalendar: *id001
     tomorrowPrep:
     - Track daily breadth ratios—need one 70%+ up-volume day to confirm bullish thrust.
@@ -1000,7 +968,7 @@ dashboard:
     - Ensure all positions are appropriately hedged.
     - Reduce overall gross exposure.
     endOfDay:
-      ranAt: '2025-10-22T11:10:18Z'
+      ranAt: '2025-10-23T13:37:52Z'
       status: Pending - will run at market close
   endOfDay:
     date: October 20, 2025
@@ -1116,6 +1084,25 @@ dashboard:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Master Plan - Investment Knowledge Base
 
 > **🚀 NEW LLM? START HERE:** Read [README.md](../README.md) for complete system briefing and instructions!
@@ -1135,7 +1122,7 @@ This is the central hub for our integrated investment and trading system. This d
 - [RS System](../Research/system-readme.md) - **Relative Strength Trading Implementation**
 - [Friday Options](../Research/friday-options-playbook.md) - **0DTE Options Trading Framework**
 
-## 🎯 EAGLE EYE MACRO OVERVIEW (October 22, 2025)
+## 🎯 EAGLE EYE MACRO OVERVIEW (October 23, 2025)
 
 ### 🔴 STATE OF PLAY
 
@@ -1380,7 +1367,7 @@ We use a comprehensive 100-point scoring system for investment evaluation:
 - [ ] **Quarterly**: Stress-test downside scenarios against liquidity and funding conditions
 
 ---
-*Last Updated: October 22, 2025 - COMPREHENSIVE OCTOBER 22, 2025 MARKET INTELLIGENCE UPDATE*
-*Next Review: October 29, 2025 (Weekly tactical review)*
+*Last Updated: October 23, 2025 - COMPREHENSIVE OCTOBER 23, 2025 MARKET INTELLIGENCE UPDATE*
+*Next Review: October 30, 2025 (Weekly tactical review)*
 *System Version: 3.4 - October 9 Market Sentiment Integration*
 *Major Update: Signal downgraded to 35/100 WEAK. Volatility spike and breadth deterioration demand defensive posture into CPI.*
