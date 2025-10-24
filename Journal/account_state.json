@@ -1,0 +1,54 @@
+{
+  "last_updated": "2025-10-17",
+  "last_journal_entry": "2025-10-19",
+  "last_workflow_run": "2025-10-19",
+  "data_freshness": "FRESH",
+  "account": {
+    "total_balance": 23105.83,
+    "cash_and_sweep": 23105.83,
+    "ytd_pl": 3152.57,
+    "note": "Auto-updated by Wingman from trades and journal entries - represents total account value",
+    "overall_pnl_ytd": 3152.57
+  },
+  "positions": {
+    "cash": {
+      "amount": 23105.83,
+      "percentage": 100.0,
+      "note": "Cash + money market sweep vehicle"
+    },
+    "equities": {
+      "ticker": null,
+      "amount": 0,
+      "percentage": 0.0,
+      "shares": 0,
+      "note": "No equity positions currently"
+    },
+    "crypto": {
+      "asset": null,
+      "amount": 0,
+      "percentage": 0.0,
+      "note": "No crypto positions currently"
+    },
+    "hedges": {
+      "positions": [],
+      "total_amount": 0,
+      "percentage": 0.0,
+      "note": "No hedging positions currently"
+    }
+  },
+  "constraints": {
+    "max_equities_pct": 70,
+    "min_cash_pct": 10,
+    "max_crypto_pct": 30,
+    "max_single_position_pct": 50,
+    "note": "Safety guardrails - AI recommendations cannot exceed these limits"
+  },
+  "verification_status": {
+    "journal_parsed": true,
+    "balance_validated": true,
+    "positions_updated": true,
+    "last_verification": "2025-10-19T00:00:00Z"
+  },
+  "execution_notes": "AUTO-UPDATED by Wingman during trading session. Updated when: trades executed, journal parsed, workflows run. Source of truth for account state.",
+  "wingman_notes": "This file is the sacred truth. All account operations route through here. Updated by state_manager.py"
+}

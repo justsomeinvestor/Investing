@@ -1,0 +1,39 @@
+{
+  "session_id": "SESSION_20251022_160142",
+  "timestamp": "2025-10-22T23:01:42.377084+00:00",
+  "persona": {
+    "callsign": "Wingman",
+    "mode": "OPERATIONAL",
+    "protocol": "Journal_Trading_Partner_Protocol.txt",
+    "relationship": "One Crew - Pilot & Wingman"
+  },
+  "account": {
+    "balance": 23105.83,
+    "cash": 23105.83,
+    "ytd_pl": 3152.57,
+    "last_updated": "2025-10-17",
+    "freshness": "FRESH"
+  },
+  "positions": {
+    "open_count": 0,
+    "positions": [],
+    "recent_closed": []
+  },
+  "rules": [
+    {
+      "rule": "No SPY shorts without trigger stack confirmation",
+      "created": "2025-10-14",
+      "context": "Learned after loss - must have 3/3 criteria",
+      "status": "ACTIVE"
+    }
+  ],
+  "recent_trades": [],
+  "market": {
+    "signal_tier": "WEAK",
+    "signal_score": 28.5,
+    "key_levels": [],
+    "market_tone": "BULLISH",
+    "last_update": "unknown"
+  },
+  "status": "READY"
+}

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wingman Quick Commands Guide</title>
+    <style>
+        :root {
+            --primary: #0a0e27;
+            --secondary: #1a1f3a;
+            --accent: #00d4ff;
+            --accent-alt: #ff6b35;
+            --success: #00ff41;
+            --warning: #ffb700;
+            --danger: #ff0055;
+            --neutral: #b8c5d6;
+            --text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, var(--primary) 0%, #0f1535 100%);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--secondary) 0%, rgba(0, 212, 255, 0.1) 100%);
+            border-bottom: 3px solid var(--accent);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .intro {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 3px;
+            color: var(--neutral);
+            font-size: 13px;
+        }
+
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .command-card {
+            background: var(--secondary);
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+        }
+
+        .command-card:hover {
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
+            transform: translateY(-2px);
+            border-color: #ff6b35;
+        }
+
+        .category {
+            color: var(--accent-alt);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .command-syntax {
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+
+        .description {
+            color: var(--neutral);
+            font-size: 12px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .usage {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 11px;
+            color: #c0c8d4;
+            border-left: 2px solid #ffb700;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .guide-box {
+            background: var(--secondary);
+            border: 2px solid var(--accent-alt);
+            border-radius: 5px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .guide-title {
+            color: var(--accent-alt);
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .step {
+            background: rgba(255, 107, 53, 0.05);
+            border-left: 3px solid var(--accent-alt);
+            padding: 15px;
+            border-radius: 3px;
+        }
+
+        .step-num {
+            color: var(--accent-alt);
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            color: var(--neutral);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .tips {
+            background: rgba(0, 255, 65, 0.05);
+            border-left: 3px solid var(--success);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+            font-size: 12px;
+            color: var(--neutral);
+        }
+
+        .tips strong {
+            color: var(--success);
+        }
+
+        .note {
+            background: rgba(255, 183, 0, 0.05);
+            border-left: 3px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+            font-size: 12px;
+            color: var(--neutral);
+        }
+
+        .note strong {
+            color: var(--warning);
+        }
+
+        .command-examples {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 12px;
+            font-size: 11px;
+        }
+
+        .example-line {
+            color: var(--success);
+            margin: 6px 0;
+            padding-left: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--neutral);
+            border-top: 2px solid rgba(0, 212, 255, 0.2);
+            font-size: 12px;
+        }
+
+        .phase-badge {
+            display: inline-block;
+            background: var(--accent-alt);
+            color: var(--primary);
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ Wingman Quick Commands Guide</h1>
+            <div class="intro">
+                Complete reference for all Wingman commands. Type commands directly in conversation. Phase 3: Real market data from Finnhub API feeds decision engine.
+                All commands are case-insensitive. Underlined keywords are required.
+            </div>
+        </header>
+
+        <!-- SECTION: SYSTEM STATUS -->
+        <div class="section">
+            <div class="section-title">📊 System Status & Intelligence</div>
+
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="category">🔍 System Overview</div>
+                    <div class="command-syntax">wingman, status</div>
+                    <div class="description">
+                        Returns complete system readout including account balance, open positions, alert status, market signal tier, and data freshness
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Start of session or when you need full system health check
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">📈 Market Signal</div>
+                    <div class="command-syntax">wingman, signal</div>
+                    <div class="description">
+                        Current market signal (bullish/bearish/neutral), probability score (0-100), market tier (WEAK/MODERATE/STRONG), and confidence level
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Before analyzing individual tickers or deciding to trade
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">📋 Active Rules</div>
+                    <div class="command-syntax">wingman, rules</div>
+                    <div class="description">
+                        Lists all active CMT Level 2 technical analysis rules in current use, their base scores (65-85), and activation conditions
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Verify which patterns/rules apply before analyzing setups
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">📍 Support/Resistance</div>
+                    <div class="command-syntax">wingman, levels [TICKER]</div>
+                    <div class="description">
+                        Display key support, resistance, and technical levels for specified ticker. Data pulled from real cache or live API.
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ wingman, levels NVDA</div>
+                        <div class="example-line">✓ wingman, levels SPY</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Before entering a trade, to know where to place stop/target
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">💾 Data Status</div>
+                    <div class="command-syntax">wingman, cache status</div>
+                    <div class="description">
+                        Check background data collector status: running/stopped, tickers being tracked, cache freshness (age in minutes), API call usage
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Verify data is fresh and collector is active before relying on analysis
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">🎯 Account Rules</div>
+                    <div class="command-syntax">wingman, account rules</div>
+                    <div class="description">
+                        Display current account-level rules: position size limits, R:R minimums, max portfolio heat, daily loss limits, and risk management settings
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Review position sizing and risk limits before trade entry
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: ANALYSIS & DECISION ENGINE -->
+        <div class="section">
+            <div class="section-title">🔬 Analysis & Decision Engine <span class="phase-badge">Phase 3</span></div>
+
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="category">📊 Full Analysis</div>
+                    <div class="command-syntax">wingman, analyze [TICKER]</div>
+                    <div class="description">
+                        Runs complete decision engine analysis: probability score (40% TA + 25% context + 15% sentiment + 10% volume + 10% seasonality), entry/stop/target levels, position size, and full reasoning
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ wingman, analyze NVDA</div>
+                        <div class="example-line">✓ wingman, analyze QQQ</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> When considering a new trade setup - shows probability score and all decision factors
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">⚡ Quick Signal</div>
+                    <div class="command-syntax">wingman, quick analyze [TICKER]</div>
+                    <div class="description">
+                        Rapid analysis (simplified output): Just the signal (BUY/WAIT/AVOID), probability score, and why. Faster than full analysis.
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ wingman, quick analyze TSLA</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> When you just need the signal, not the full breakdown
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">🔄 Compare</div>
+                    <div class="command-syntax">wingman, compare [TICKER1] [TICKER2] [TICKER3]</div>
+                    <div class="description">
+                        Rank multiple tickers by probability score. Shows which setup has highest conviction. Compare up to 5 tickers at once.
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ wingman, compare NVDA TSLA AAPL</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Choose which trade to take when multiple setups present
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">🌍 Watchlist Analysis</div>
+                    <div class="command-syntax">wingman, analyze watchlist</div>
+                    <div class="description">
+                        Analyze all tickers in your data collection watchlist, ranked by probability score. Shows best setups first.
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Morning routine - quick scan of all tracked tickers for best opportunities
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: TRADE OPERATIONS -->
+        <div class="section">
+            <div class="section-title">✍️ Trade Operations</div>
+
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="category">📝 Record Entry</div>
+                    <div class="command-syntax">[TICKER] long/short [SIZE] @ [ENTRY], stop [STOP], target [TARGET]</div>
+                    <div class="description">
+                        Record trade entry with automatic threat assessment. Wingman checks: market signal OK?, R:R acceptable?, position size valid?, account rules followed?, daily limits ok?
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ NVDA long 100 @ 189.50, stop 188, target 192</div>
+                        <div class="example-line">✓ SPY short 50 @ 425.75, stop 427, target 420</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> After decision engine gives BUY signal and you're ready to enter. Wingman validates all risk parameters first.
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">🚪 Record Exit</div>
+                    <div class="command-syntax">Out at [PRICE]</div>
+                    <div class="description">
+                        Close active position at specified price. Logs P/L, updates account balance, records trade to journal for analysis. Can close at profit, breakeven, or loss.
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ Out at 192.50</div>
+                        <div class="example-line">✓ Exit at 188.25</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> When you've hit your target, hit your stop, or need to exit manually
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">⚠️ Manual Stop</div>
+                    <div class="command-syntax">Stop loss hit [PRICE]</div>
+                    <div class="description">
+                        Record that your stop loss was hit. Logs the loss, updates P/L, closes position. Used when stop isn't automated.
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> When your stop level is reached and you're closing
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">🎯 Target Hit</div>
+                    <div class="command-syntax">Target hit [PRICE]</div>
+                    <div class="description">
+                        Record that your profit target was hit. Logs the win, completes trade record, calculates R:R achieved.
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> When your target price is reached
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">⏸️ Partial Exit</div>
+                    <div class="command-syntax">Partial out [SIZE] at [PRICE]</div>
+                    <div class="description">
+                        Close part of position, keep rest running. Useful for taking profits on portion while letting winners run.
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ Partial out 50 at 192</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Take profits on first target while letting rest of position ride
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: DATA COLLECTION (PHASE 3) -->
+        <div class="section">
+            <div class="section-title">🚀 Data Collection Control <span class="phase-badge">Phase 3</span></div>
+
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="category">▶️ Start Collection</div>
+                    <div class="command-syntax">wingman, start collector</div>
+                    <div class="description">
+                        Begin background data collection daemon. Runs 5-minute collection cycle: fetches from Finnhub API, calculates real indicators, caches results for instant decision engine access.
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Start of trading day - begins collecting real market data
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">⏹️ Stop Collection</div>
+                    <div class="command-syntax">wingman, stop collector</div>
+                    <div class="description">
+                        Stop background data collection gracefully. Cache remains fresh for 5 minutes. Useful for preserving API calls at end of day.
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> End of trading day or if you need to pause collection
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">🔄 Restart Collection</div>
+                    <div class="command-syntax">wingman, restart collector</div>
+                    <div class="description">
+                        Stop and restart data collection. Useful if you want to refresh immediately or reset collection cycle.
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> If you suspect stale data or need immediate refresh
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">➕ Add Ticker</div>
+                    <div class="command-syntax">wingman, add ticker [TICKER]</div>
+                    <div class="description">
+                        Add custom ticker to data collection watchlist. Collector will fetch this ticker every 5 minutes. Note: SPY and QQQ are always tracked and protected.
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ wingman, add ticker TSLA</div>
+                        <div class="example-line">✓ wingman, add ticker AAPL</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> When you want to start tracking a new ticker for analysis
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">➖ Remove Ticker</div>
+                    <div class="command-syntax">wingman, remove ticker [TICKER]</div>
+                    <div class="description">
+                        Remove custom ticker from watchlist. Will stop collecting data for this ticker (cache expires in 5 min). Cannot remove SPY/QQQ - they're protected.
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ wingman, remove ticker TSLA</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Stop tracking a ticker you no longer want to analyze
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">📊 Watchlist</div>
+                    <div class="command-syntax">wingman, show watchlist</div>
+                    <div class="description">
+                        Display all tickers currently being tracked by data collector. Shows protected tickers (SPY, QQQ) and custom tickers separately.
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Verify what tickers are being collected
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>ℹ️ Data Freshness:</strong> Data is updated every 5 minutes when collector is running. Real prices from Finnhub API with real technical indicators calculated from actual market data. Cache remains valid for 5 minutes - analysis uses cached data for instant results.
+            </div>
+        </div>
+
+        <!-- SECTION: WORKFLOWS & AUTOMATION -->
+        <div class="section">
+            <div class="section-title">🔄 Workflows & Reporting</div>
+
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="category">🔬 Research Workflow</div>
+                    <div class="command-syntax">wingman, run research</div>
+                    <div class="description">
+                        Execute full signal research workflow. Analyzes all watchlist tickers, scores by probability, identifies best setups, displays ranked results with all reasoning.
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Morning market open - comprehensive scan of all opportunities
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">📝 End-of-Day Summary</div>
+                    <div class="command-syntax">wingman, eod wrap</div>
+                    <div class="description">
+                        Compile end-of-day summary: trades executed (entries/exits), P/L results, win rate, lessons learned, market observations, next session prep checklist.
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> After markets close - documents day's performance and trading journal
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">📊 Performance Review</div>
+                    <div class="command-syntax">wingman, review performance [PERIOD]</div>
+                    <div class="description">
+                        Detailed performance analysis: win rate, average R:R, P/L trend, best/worst trades, patterns in wins/losses, calendar view of results.
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ wingman, review performance today</div>
+                        <div class="example-line">✓ wingman, review performance week</div>
+                        <div class="example-line">✓ wingman, review performance month</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Review your trading performance and identify improvement areas
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="category">📚 Session Notes</div>
+                    <div class="command-syntax">Note: [YOUR TEXT]</div>
+                    <div class="description">
+                        Record session notes, observations, market conditions, or any trading commentary. Stored in journal for future reference and pattern identification.
+                    </div>
+                    <div class="command-examples">
+                        <div class="example-line">✓ Note: Tech weakness continued, bearish divergence forming</div>
+                    </div>
+                    <div class="usage">
+                        <strong>When to use:</strong> Document market conditions, lessons, or ideas throughout the day
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAILY WORKFLOW GUIDE -->
+        <div class="guide-box">
+            <div class="guide-title">📅 Recommended Daily Workflow</div>
+
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-num">1️⃣ Morning Setup (Pre-Market)</div>
+                    <div class="step-desc">
+                        • "wingman, start collector"<br>
+                        • "wingman, cache status" (verify fresh)<br>
+                        • "wingman, signal" (check market tone)
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">2️⃣ Market Open</div>
+                    <div class="step-desc">
+                        • "wingman, run research" (scan watchlist)<br>
+                        • "wingman, analyze [TICKER]" (each setup)<br>
+                        • "wingman, compare X Y Z" (rank best setups)
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">3️⃣ Trade Execution</div>
+                    <div class="step-desc">
+                        • "NVDA long 100 @ 189.50, stop 188, target 192"<br>
+                        • Watch levels from "wingman, levels NVDA"<br>
+                        • "Out at 192" or "Stop loss hit 188"
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">4️⃣ Throughout Day</div>
+                    <div class="step-desc">
+                        • "wingman, analyze [NEW_TICKER]" (new setups)<br>
+                        • "Note: Market observation"<br>
+                        • Monitor "wingman, signal" for changes
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">5️⃣ End of Day</div>
+                    <div class="step-desc">
+                        • "wingman, eod wrap" (summary)<br>
+                        • "wingman, stop collector" (end collection)<br>
+                        • Review trades and journal entries
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">6️⃣ Weekly Review</div>
+                    <div class="step-desc">
+                        • "wingman, review performance week"<br>
+                        • Identify patterns in wins/losses<br>
+                        • Plan next week's focus areas
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK TIPS -->
+        <div style="margin-bottom: 40px;">
+            <div class="tips">
+                <strong>💡 Pro Tip:</strong> Use "wingman, cache status" before analyzing. If cache is > 5 minutes old, consider restarting collector or waiting for next cycle. Fresh data = better decisions.
+            </div>
+
+            <div class="tips">
+                <strong>💡 Pro Tip:</strong> Always check "wingman, signal" before entering trades. Don't fight the market - BUY only if signal is bullish (>67 probability), AVOID if bearish (<34).
+            </div>
+
+            <div class="tips">
+                <strong>💡 Pro Tip:</strong> Use "wingman, compare AAPL MSFT GOOGL" to find the best R:R setup when multiple opportunities exist. Highest probability isn't always best - check R:R too.
+            </div>
+
+            <div class="tips">
+                <strong>💡 Pro Tip:</strong> Phase 3 gives you real market data from Finnhub API. This means your decision engine now uses actual price levels, real RSI/MACD values, and genuine support/resistance. Much better than simulated data!
+            </div>
+
+            <div class="note">
+                <strong>⚠️ Important:</strong> SPY and QQQ are always protected and cannot be removed from watchlist. They provide critical market context for all analyses. Other tickers can be added/removed freely.
+            </div>
+
+            <div class="note">
+                <strong>⚠️ Important:</strong> Data collector respects Finnhub API rate limit (60 calls/min). If you have many tickers, updates might not be instantaneous. More tickers = longer update cycles but still within reasonable time.
+            </div>
+        </div>
+
+        <footer>
+            <div style="margin-bottom: 15px;">
+                🎯 <strong>WINGMAN COMMAND CENTER</strong> | Real-Time Trading Decision Engine<br>
+                Phase 3: Background Data Collector with Real Market Data (Finnhub API)
+            </div>
+            <div>
+                Last Updated: 2025-10-19 | All commands are case-insensitive | Type naturally - Wingman understands variations
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
