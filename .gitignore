@@ -3,8 +3,8 @@
 
 # Keep these
 !/.gitignore
-!/.nojekyll       # ← add this
-
+!/.nojekyll       #  add this
+!/README.md
 !/index.html
 
 !/landing-page/
