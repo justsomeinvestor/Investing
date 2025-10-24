@@ -133,14 +133,14 @@ dashboard:
         gaining on declining volume is bearish divergence. Wait for signal >40 before adding risk.
     aiInterpretation:
       updatedAt: '2025-10-23T14:45:32Z'
-      summary: 'Portfolio Signal Tier IMPROVED +28 PTS (30→58/100) = regime shift from risk-off to risk-management mode. Account
+      summary: Portfolio Signal Tier IMPROVED +28 PTS (30→58/100) = regime shift from risk-off to risk-management mode. Account
         balance $23,105.83, YTD +15.8%. SPX 6,656 support holding with higher lows, QQQ $604 breakout decision point. Jobless
-        claims 8:30 AM = BINARY catalyst determining position sizing. Quantum computing inflection (IBM, AMD partnerships) +
-        Bitcoin institutional adoption (Bittensor, Ledger) creating twin structural themes. Strong earnings fundamentals (84%
-        beat rate) despite sector concentration risk.'
+        claims 8:30 AM = BINARY catalyst determining position sizing. Quantum computing inflection (IBM, AMD partnerships)
+        + Bitcoin institutional adoption (Bittensor, Ledger) creating twin structural themes. Strong earnings fundamentals
+        (84% beat rate) despite sector concentration risk.
       keyInsight: 'SIGNAL +28 PT JUMP TO MODERATE (58/100) BUT EARNINGS QUALITY UNDER PRESSURE: Current environment justifies
-        selective risk deployment but ONLY in quality names with strong technicals. Breadth deterioration (12.5/25) means 7 of
-        8 stocks still lagging—concentration risk maximal. Jobless claims outcome determines deployment window.'
+        selective risk deployment but ONLY in quality names with strong technicals. Breadth deterioration (12.5/25) means
+        7 of 8 stocks still lagging—concentration risk maximal. Jobless claims outcome determines deployment window.'
       action: 'WAIT for 8:30 AM jobless claims. IF STRONG/IN-LINE: deploy 30-35% equities (quality + quantum), 20% crypto,
         10% hedges, 35% cash. IF WEAK: maintain 25% equities max, 15% crypto, 25% hedges, 35% cash. Monitor: SPX 6,656, QQQ
         $604, BTC $107,600. NEVER reduce position quality regardless of signal—market rotation risk remains.'
@@ -254,15 +254,15 @@ dashboard:
       updatedAt: '2025-10-23T14:43:15Z'
       summary: 'X sentiment BIFURCATED: Crypto bullish (+68% BTC, +187% ETH, +378% SOL mention velocity) reflecting institutional
         adoption narrative (Coinbase Echo $375M, Fed Crypto Conference). Macro fearful (VIX +129%, TLT +67% safe-haven demand).
-        Combined reading: 50/100 NEUTRAL BUT directional drivers emerging. Fear-driven conversation (caps down, emojis low) =
-        retail emotionally subdued—contrarian signal if extreme develops.'
+        Combined reading: 50/100 NEUTRAL BUT directional drivers emerging. Fear-driven conversation (caps down, emojis low)
+        = retail emotionally subdued—contrarian signal if extreme develops.'
       keyInsight: 'CRYPTO STRENGTH MASKING MACRO FEAR: While crypto mentions surging (BTC 187 mentions, ETH 89, SOL 43), equity
         sentiment weakening (BULLISH mentions -26%, SPY stable but declining conviction). CRITICAL: This divergence = front-running
         of Fed easing (Oct 29 catalyst). If jobless claims weak, macro fear deepens and crypto rally reverses.'
       action: 'Monitor X sentiment for capitulation signals (fear <25 or greed >75). CURRENT SETUP: Retail subdued but conviction
-        weakening in equities. TRIGGER for action: If VIX crosses $20 AND crypto mentions stay >150 combined, prepare for rally
-        if jobless claims IN-LINE. If both weaken simultaneously, reduce crypto allocation. Track daily: BTC mentions +7%, ETH -31%,
-        SOL -55% = cooling momentum in alts.'
+        weakening in equities. TRIGGER for action: If VIX crosses $20 AND crypto mentions stay >150 combined, prepare for
+        rally if jobless claims IN-LINE. If both weaken simultaneously, reduce crypto allocation. Track daily: BTC mentions
+        +7%, ETH -31%, SOL -55% = cooling momentum in alts.'
       sentiment: neutral
       confidence: medium-high
     sentimentScore: 35
@@ -683,16 +683,16 @@ dashboard:
       updatedAt: '2025-10-23T14:44:47Z'
       summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
         advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
-        for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical: SPX
-        6,628→6,600→6,550 cascade risk if breakdown.'
+        for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical:
+        SPX 6,628→6,600→6,550 cascade risk if breakdown.'
       keyInsight: 'NARROW LEADERSHIP UNSUSTAINABLE: 11-month advance-decline collapse while SPX hit ATH Oct 9 = market propped
-        by 5-7 mega-caps only. Tech/Comm at 45% market cap (1800s concentration levels). If any mega-cap falters, cascade risk
-        with NO alternative sectors to absorb selling. Current structure fragile—breadth thrust needed URGENTLY to confirm any
-        rally continuation.'
+        by 5-7 mega-caps only. Tech/Comm at 45% market cap (1800s concentration levels). If any mega-cap falters, cascade
+        risk with NO alternative sectors to absorb selling. Current structure fragile—breadth thrust needed URGENTLY to confirm
+        any rally continuation.'
       action: 'REQUIRE breadth >30 and >70% up-volume day to reinstate longs. Until then: SHORT/HEDGE BIAS only. Key levels:
         SPX 6,628 (50-dMA absolute line), QQQ $602 (support), BTC $115K/$111K (holds). If SPX closes BELOW 6,628 for 2+ days,
-        downside target 6,550-6,500. If holds + breadth thrusts, next resistance 6,750-6,800. Options positioning: dealer gamma
-        670 call wall = resistance zone.'
+        downside target 6,550-6,500. If holds + breadth thrusts, next resistance 6,750-6,800. Options positioning: dealer
+        gamma 670 call wall = resistance zone.'
       sentiment: bearish
       confidence: medium-high
     closeProbability:
@@ -794,37 +794,34 @@ dashboard:
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
     technicalsTabSyncedAt: '2025-10-23T13:37:51Z'
-  quickActionsUpdated: '2025-10-21T15:08:00Z'
+  quickActionsUpdated: '2025-10-23T18:19:43Z'
   quickActions:
   - type: RISK
-    title: Extreme Caution - 50-Day MA Test
-    value: 'Signal Score: 31.0/100 (WEAK)'
-    description: Signal remains WEAK (31.0). SPX testing critical 50-day MA (6,628) for first time since May after Friday
-      -3% selloff. Trend=0, breadth=15, volatility=6. Break below 6,628 opens 200-day MA (6,600) then 6,550-6,500 correction
-      zone. REDUCE exposure to 25% max until 50-day holds and signal >40.
-    urgency: CRITICAL
+    title: Selective Risk - Moderate Environment
+    value: 'Signal Score: 58.0/100 (MODERATE)'
+    description: Signal at MODERATE (58.0/100). Trend=18.0, breadth=15.0 suggest selective opportunities. Maintain 30-40%
+      exposure in quality names with strong technicals. Avoid speculation until signal >60.
+    urgency: HIGH
   - type: HEDGE
-    title: Contrarian Setup Watch
-    value: Fear & Greed 29 • VIX 20+
-    description: Extreme fear readings (F&G 29, Crypto F&G 24) at major support = contrarian opportunity zone similar to April
-      8 setup (F&G 3 → +3% within week). BUT risk/reward requires 50-day MA hold. If SPX closes above 6,628 for 2+ days, reduce
-      hedges and add small long exposure. If breaks below, full defensive mode (SPY puts, max cash).
+    title: Fear Reading - Contrarian Watch
+    value: Crypto Fear & Greed 27 • BTC $109,799
+    description: Fear reading (F&G 27) approaching contrarian zone. BTC $109,799 needs to hold support. Watch for extreme
+      fear <25 or signal improvement. Maintain hedges through uncertainty.
     urgency: HIGH
   - type: WATCH
-    title: Oct 29 FOMC Catalyst
-    value: 25bp cut priced • $7.5T liquidity ready
-    description: 'FOMC Oct 29: 115/117 economists expect 25bp cut (fully priced). KEY: Forward guidance on easing path. Dovish
-      statement = money market rotation into risk assets (bullish). Hawkish pause signal = deleveraging accelerates (bearish).
-      Watch for BTC breakout above $115k (crypto leading indicator) and SPX reclaim of $665 resistance.'
+    title: Upcoming Economic Catalysts
+    value: Monitor key macro events
+    description: 'Watch for: (1) Fed meetings and rate decisions, (2) CPI/PPI inflation data, (3) Jobs reports (NFP, jobless
+      claims), (4) Major earnings releases, (5) Geopolitical events. These drive market volatility and signal shifts. Check
+      economic calendar daily for precise timing.'
     urgency: MEDIUM
   - type: PLAN
-    title: Bifurcated Strategy
-    value: GDP 4% vs 30-40% Recession Probability
-    description: 'Conflicting signals: Strong earnings (+21% tech YoY) and GDP vs gold recession warning (1.57x S&P ratio)
-      and credit stress. Position: MAX 25% exposure in mega-cap tech with strong earnings (AAPL, MSFT, META), 50% cash, 25%
-      contrarian BTC/ETH accumulation at support ($107-109k zone). Flip to 50% equities IF 50-day holds + signal >45. Full
-      defensive IF break below 6,600.'
-    urgency: CRITICAL
+    title: Balanced Risk Management
+    value: 40-50% exposure
+    description: 'Signal 58.0/100 (MODERATE) allows selective deployment. Position: 30-35% quality equities, 15-20% crypto
+      infrastructure, 10% hedges, 35-40% cash. Quality bias non-negotiable. Flip to 60% IF signal >60. Reduce to 30% IF drops
+      below 50.'
+    urgency: HIGH
   providerConsensusUpdated: '2025-10-21T15:09:00Z'
   providerConsensus:
     updatedAt: '2025-10-21T15:09:00Z'
@@ -1046,6 +1043,7 @@ dashboard:
   lastUpdated: '2025-10-20T14:54:26Z'
   updatedAt: '2025-10-20T14:54:26Z'
 ---
+
 
 
 
