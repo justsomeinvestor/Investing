@@ -3,48 +3,46 @@ dashboard:
   pageTitle: Investment Research Dashboard - October 20, 2025
   title: Investment Research Dashboard
   dateBadge: October 20, 2025
-  sentimentCardsUpdated: '2025-10-21T15:05:00Z'
+  sentimentCardsUpdated: '2025-10-23T20:00:00Z'
   sentimentCards:
   - id: equities
     label: Equities
-    value: WEAK SETUP
-    detail: Signal 31/100 • SPY $664.39 testing 50-day MA support (critical level)
-    detailColor: '#ef4444'
+    value: RECOVERY
+    detail: Signal 58.0/100 • Selective
+    detailColor: '#3b82f6'
   - id: crypto
     label: Crypto
-    value: EXTREME FEAR
-    detail: BTC $111,600 at support • Fear & Greed 29 (contrarian setup)
-    detailColor: '#ef4444'
+    value: STABILIZING
+    detail: BTC 1.66%
+    detailColor: '#3b82f6'
   - id: liquidity
     label: Liquidity Cycle
-    value: FED EASING AHEAD
-    detail: VIX 20+ • FOMC Oct 29 (25bp cut priced) • $7.5T in money markets
-    detailColor: '#f59e0b'
+    value: IMPROVING
+    detail: Conditions normalizing
+    detailColor: '#10b981'
   - id: macro
     label: Macro
-    value: BIFURCATED
-    detail: Q3 GDP ~4% growth vs 30-40% recession probability (gold warning)
+    value: CAUTIOUS
+    detail: Mixed signals
     detailColor: '#f59e0b'
-  metricsUpdated: '2025-10-21T15:05:30Z'
+  metricsUpdated: '2025-10-23T20:00:00Z'
   metrics:
   - label: Composite Score
-    value: 31.0/100 (WEAK)
-  - label: Fear & Greed (Overall)
-    value: 29 (Fear) - Contrarian opportunity zone
+    value: 58.0 (MODERATE)
+  - label: Fear & Greed (Crypto)
+    value: 30 (Fear)
   - label: BTC Spot
-    value: $111,600 (at $107-109k support zone)
+    value: $111.0K (+1.66% 24h)
   - label: ETH Spot
-    value: Institutional buying (whale $251M + $75M buys)
+    value: $3946 (+2.29% 24h)
   - label: SOL Spot
-    value: Alt accumulation (5-component signal structure)
+    value: $192.65 (+2.02% 24h)
   - label: SPY Close
-    value: $664.39 (testing 50-day MA 6,628 - CRITICAL)
+    value: $671.76 (+0.59%)
   - label: QQQ Close
-    value: Tech +21% YoY earnings (narrow leadership warning)
+    value: $610.58 (+0.84%)
   - label: GLD Close
-    value: +66% YTD (gold/S&P ratio recession warning)
-  - label: VIX
-    value: 20+ (elevated fear, mean reversion setup)
+    value: $378.79 (+0.40%)
   sentimentHistoryUpdated: '2025-10-21T15:06:00Z'
   sentimentHistory:
   - date: '2025-10-08'
@@ -185,39 +183,143 @@ dashboard:
         - Rates market pricing two cuts by March; CPI surprise could reprice quickly.
         - 'Prefers barbell: long duration + commodity hedges while equities digest.'
         - Notes USD firmness as additional headwind for risk until data softens.
-      economicCalendar: &id001
-        today: []
-        thisWeek:
-        - date: Oct 15
-          time: 08:30 EST
-          event: US CPI & Core CPI
-          impact: HIGH
-        - date: Oct 16
-          time: 08:30 EST
-          event: US PPI Final Demand
-          impact: HIGH
-        - date: Oct 16
-          time: 08:30 EST
-          event: Retail Sales
-          impact: HIGH
-        nextWeek:
+      economicCalendar:
+        today:
         - date: Oct 24
-          time: 09:45 EST
-          event: S&P Global Manufacturing & Services PMI
+          time: 13:45 ET
+          event: S&P Global Composite PMI
+          impact: MEDIUM
+        - date: Oct 24
+          time: 13:45 ET
+          event: Manufacturing PMI
           impact: HIGH
+        - date: Oct 24
+          time: 13:45 ET
+          event: Services PMI
+          impact: HIGH
+        - date: Oct 24
+          time: 14:00 ET
+          event: Michigan Consumer Sentiment
+          impact: MEDIUM
+        - date: Oct 24
+          time: 14:00 ET
+          event: UoM 1-year Consumer Inflation Expectations
+          impact: MEDIUM
+        - date: Oct 24
+          time: 14:00 ET
+          event: UoM 5-year Consumer Inflation Expectation
+          impact: MEDIUM
+        thisWeek:
+        - date: Oct 27
+          time: 12:30 ET
+          event: Durable Goods Orders
+          impact: MEDIUM
+        - date: Oct 27
+          time: 12:30 ET
+          event: Durable Goods Orders ex Defense
+          impact: MEDIUM
+        - date: Oct 27
+          time: 12:30 ET
+          event: Durable Goods Orders ex Transportation
+          impact: MEDIUM
+        - date: Oct 27
+          time: 12:30 ET
+          event: Nondefense Capital Goods Orders ex Aircraft
+          impact: MEDIUM
+        - date: Oct 28
+          time: 13:00 ET
+          event: Housing Price Index
+          impact: MEDIUM
+        - date: Oct 28
+          time: 14:00 ET
+          event: Consumer Confidence
+          impact: MEDIUM
+        - date: Oct 29
+          time: 18:00 ET
+          event: FOMC Rate Decision
+          impact: HIGH
+        - date: Oct 29
+          time: 18:00 ET
+          event: FOMC Statement
+          impact: HIGH
+        - date: Oct 29
+          time: 18:30 ET
+          event: Fed Press Conference
+          impact: HIGH
+        - date: Oct 30
+          time: 12:30 ET
+          event: Core Personal Consumption Expenditures
+          impact: MEDIUM
+        - date: Oct 30
+          time: 12:30 ET
+          event: Gross Domestic Product Annualized
+          impact: HIGH
+        - date: Oct 30
+          time: 12:30 ET
+          event: Gross Domestic Product Price Index
+          impact: MEDIUM
+        - date: Oct 30
+          time: 12:30 ET
+          event: Jobless Claims
+          impact: MEDIUM
+        - date: Oct 30
+          time: 12:30 ET
+          event: Personal Consumption Expenditures Prices
+          impact: MEDIUM
+        - date: Oct 30
+          time: 14:00 ET
+          event: Pending Home Sales
+          impact: MEDIUM
+        nextWeek:
+        - date: Oct 31
+          time: 12:30 ET
+          event: Core Personal Consumption Expenditures - Price Index
+          impact: HIGH
+        - date: Oct 31
+          time: 12:30 ET
+          event: Core Personal Consumption Expenditures - Price Index
+          impact: HIGH
+        - date: Oct 31
+          time: 12:30 ET
+          event: Employment Cost Index
+          impact: MEDIUM
+        - date: Oct 31
+          time: 12:30 ET
+          event: Personal Consumption Expenditures - Price Index
+          impact: MEDIUM
+        - date: Oct 31
+          time: 12:30 ET
+          event: Personal Consumption Expenditures - Price Index
+          impact: MEDIUM
+        - date: Oct 31
+          time: 12:30 ET
+          event: Personal Income
+          impact: MEDIUM
+        - date: Oct 31
+          time: 12:30 ET
+          event: Personal Spending
+          impact: MEDIUM
+        - date: Oct 31
+          time: 13:45 ET
+          event: Chicago PMI
+          impact: MEDIUM
         keyDates:
-        - date: Oct 15-16
+        - date: Oct 24
           events:
-          - CPI
-          - PPI
-          - Retail Sales
-          note: Critical inflation and consumption data cluster will set the tone.
+          - Manufacturing PMI
+          - Services PMI
+          note: Economic activity
         - date: Oct 29
           events:
           - FOMC Rate Decision
-          note: The main event of the month, will be heavily influenced by this week's inflation data.
-        summary: The market is holding its breath for the mid-week inflation data (CPI/PPI). A hot number could easily trigger
-          another leg down.
+          - FOMC Statement
+          - Fed Press Conference
+          note: Fed decision - critical
+        - date: Oct 30
+          events:
+          - Gross Domestic Product Annualized
+          note: Important economic releases
+        summary: FOMC decision scheduled Oct 29 is the key event. Monitor inflation and employment data leading up to it.
     - name: Crypto Markets
       providers:
       - name: Glassnode
@@ -251,157 +353,140 @@ dashboard:
   - id: xsentiment
     label: 🐦 X Sentiment
     aiInterpretation:
-      updatedAt: '2025-10-23T14:43:15Z'
-      summary: 'X sentiment BIFURCATED: Crypto bullish (+68% BTC, +187% ETH, +378% SOL mention velocity) reflecting institutional
-        adoption narrative (Coinbase Echo $375M, Fed Crypto Conference). Macro fearful (VIX +129%, TLT +67% safe-haven demand).
-        Combined reading: 50/100 NEUTRAL BUT directional drivers emerging. Fear-driven conversation (caps down, emojis low)
-        = retail emotionally subdued—contrarian signal if extreme develops.'
-      keyInsight: 'CRYPTO STRENGTH MASKING MACRO FEAR: While crypto mentions surging (BTC 187 mentions, ETH 89, SOL 43), equity
-        sentiment weakening (BULLISH mentions -26%, SPY stable but declining conviction). CRITICAL: This divergence = front-running
-        of Fed easing (Oct 29 catalyst). If jobless claims weak, macro fear deepens and crypto rally reverses.'
-      action: 'Monitor X sentiment for capitulation signals (fear <25 or greed >75). CURRENT SETUP: Retail subdued but conviction
-        weakening in equities. TRIGGER for action: If VIX crosses $20 AND crypto mentions stay >150 combined, prepare for
-        rally if jobless claims IN-LINE. If both weaken simultaneously, reduce crypto allocation. Track daily: BTC mentions
-        +7%, ETH -31%, SOL -55% = cooling momentum in alts.'
-      sentiment: neutral
-      confidence: medium-high
-    sentimentScore: 35
-    sentimentTier: BEARISH
-    sentimentTrend: declining
-    contrarian_signal: 0 pts (Neutral - no extreme yet)
+      updatedAt: '2025-10-24T06:17:18Z'
+      summary: 'Crypto sentiment: 68/100 (Moderately Bullish) Macro sentiment: 52/100 (Balanced/Mixed)'
+      keyInsight: 'Combined sentiment: 60/100 (MODERATELY BULLISH). '
+      action: Sentiment is constructive. Look for dips to add exposure in high-conviction areas.
+      sentiment: bullish
+      confidence: high
+    sentimentScore: 60
+    sentimentTier: MODERATELY BULLISH
+    sentimentTrend: stable
+    contrarian_signal: 0 pts (Neutral)
     sentiment_breakdown:
       extreme_bullish: 5
-      bullish: 15
-      neutral: 30
-      bearish: 40
-      extreme_bearish: 10
+      bullish: 30
+      neutral: 35
+      bearish: 20
+      extreme_bearish: 5
     hype_cycle:
-      position: Anxiety
-      emoji_density: Medium
-      caps_lock_usage: Medium
-      exclamation_marks: Medium
+      position: Skepticism
+      emoji_density: Low
+      caps_lock_usage: Low
+      exclamation_marks: Low
     crypto_trending:
-      updatedAt: '2025-10-21T15:20:00Z'
       top_tickers:
       - ticker: BTC
-        mentions: 187
-        velocity: +68%
-        signal: RISING
-      - ticker: ETH
-        mentions: 89
-        velocity: +187%
-        signal: RISING
-      - ticker: SOL
-        mentions: 43
-        velocity: +378%
-        signal: RISING
-      - ticker: COIN
-        mentions: 38
+        mentions: 24
         velocity: NEW
         signal: RISING
-      - ticker: ADA
-        mentions: 21
+      - ticker: ETH
+        mentions: 17
+        velocity: NEW
+        signal: RISING
+      - ticker: ONE
+        mentions: 14
+        velocity: NEW
+        signal: RISING
+      - ticker: SOL
+        mentions: 7
+        velocity: NEW
+        signal: RISING
+      - ticker: LINK
+        mentions: 5
+        velocity: NEW
+        signal: RISING
+      - ticker: W
+        mentions: 4
+        velocity: NEW
+        signal: RISING
+      - ticker: APT
+        mentions: 4
         velocity: NEW
         signal: RISING
       - ticker: ZEC
-        mentions: 18
-        velocity: NEW
-        signal: STABLE
-      - ticker: BNB
-        mentions: 11
-        velocity: NEW
-        signal: STABLE
-      key_levels:
-      - asset: BTC
-        level: $107-109K
-        type: Support
-        consensus: Critical accumulation zone - tested multiple times, whale buying
-      - asset: ETH
-        level: $3,900
-        type: Support
-        consensus: Institutional whale activity ($251M Bitmine + $75M SharpLink buys)
-      event_risk:
-      - event: Coinbase Acquires Echo $375M
-        date: Oct 21
-        velocity: EXTREME
-        impact: Major validation - Cobie's platform, "Up Only" NFT $25M, builders celebrating
-      - event: Fed Crypto Payments Conference
-        date: Oct 21
-        velocity: HIGH
-        impact: Institutional legitimization - BlackRock, Coinbase, JPM, ARK speakers
-      - event: $250M Long Liquidation
-        date: Oct 21
-        velocity: HIGH
-        impact: Deleveraging event - $243M longs wiped, overleveraged traders flushed
-    macro_trending:
-      updatedAt: '2025-10-21T15:20:00Z'
-      top_tickers:
-      - ticker: SPY
-        mentions: 67
-        velocity: +168%
-        signal: RISING
-      - ticker: AAPL
-        mentions: 31
+        mentions: 3
         velocity: NEW
         signal: RISING
-      - ticker: GLD
-        mentions: 28
-        velocity: +133%
+      - ticker: AAVE
+        mentions: 3
+        velocity: NEW
         signal: RISING
+      - ticker: NEAR
+        mentions: 2
+        velocity: NEW
+        signal: RISING
+      emerging_tickers:
       - ticker: BTC
-        mentions: 26
-        velocity: MACRO
-        signal: STABLE
-      - ticker: TSLA
-        mentions: 22
-        velocity: NEW
-        signal: STABLE
-      - ticker: NVDA
-        mentions: 19
-        velocity: STABLE
-        signal: STABLE
-      - ticker: GM
+        mentions: 24
+        signal: Alpha opportunity - new entrant with momentum
+      - ticker: ETH
         mentions: 17
-        velocity: NEW
-        signal: STABLE
-      - ticker: GE
-        mentions: 15
-        velocity: NEW
-        signal: STABLE
-      - ticker: RTX
+        signal: Alpha opportunity - new entrant with momentum
+      - ticker: ONE
         mentions: 14
+        signal: Alpha opportunity - new entrant with momentum
+      - ticker: SOL
+        mentions: 7
+        signal: Alpha opportunity - new entrant with momentum
+      - ticker: LINK
+        mentions: 5
+        signal: Alpha opportunity - new entrant with momentum
+      key_levels: []
+      event_risk: []
+      updatedAt: '2025-10-24T06:17:18Z'
+    macro_trending:
+      top_tickers:
+      - ticker: TSLA
+        mentions: 10
         velocity: NEW
-        signal: STABLE
-      - ticker: KO
-        mentions: 13
+        signal: RISING
+      - ticker: SPX
+        mentions: 5
         velocity: NEW
-        signal: STABLE
-      key_levels:
-      - asset: SPX
-        level: 6,628
-        type: Support
-        consensus: 50-day MA - CRITICAL TEST - first time since May
-      - asset: SPX
-        level: 6,600
-        type: Support
-        consensus: 200-day MA + psychological - break triggers correction
-      - asset: GLD
-        level: 1.57x S&P
-        type: Warning
-        consensus: Recession signal - preceded 1929/1973/2008
-      event_risk:
-      - event: Strong Earnings Beats
-        date: Oct 21
-        velocity: EXTREME
-        impact: GE +15.3%, RTX +20.6%, GM 9th straight beat - validating economy strength
-      - event: Fed Crypto Conference
-        date: Oct 21
-        velocity: HIGH
-        impact: Institutional legitimization - Gov Waller speaking, major players attending
-      - event: 50-Day MA Test
-        date: Oct 21
-        velocity: CRITICAL
-        impact: SPX testing 6,628 after Friday -3% selloff - make-or-break technical level
+        signal: RISING
+      - ticker: NFLX
+        mentions: 4
+        velocity: NEW
+        signal: RISING
+      - ticker: NVDA
+        mentions: 3
+        velocity: NEW
+        signal: RISING
+      - ticker: SPY
+        mentions: 2
+        velocity: NEW
+        signal: RISING
+      - ticker: AMD
+        mentions: 2
+        velocity: NEW
+        signal: RISING
+      - ticker: IWM
+        mentions: 2
+        velocity: NEW
+        signal: RISING
+      - ticker: META
+        mentions: 2
+        velocity: NEW
+        signal: RISING
+      - ticker: GOOGL
+        mentions: 2
+        velocity: NEW
+        signal: RISING
+      - ticker: QQQ
+        mentions: 1
+        velocity: NEW
+        signal: RISING
+      emerging_tickers:
+      - ticker: TSLA
+        mentions: 10
+        signal: Alpha opportunity - new entrant with momentum
+      - ticker: SPX
+        mentions: 5
+        signal: Alpha opportunity - new entrant with momentum
+      key_levels: []
+      event_risk: []
+      updatedAt: '2025-10-24T06:17:18Z'
     top_narratives: []
     market_structure:
       crypto_levels:
@@ -539,29 +624,259 @@ dashboard:
       - 'AI theme remains resilient: 60 mentions at +22% with DEFI surging +188%'
     sentiment_velocity: 35
     contrarian_detector:
-      current_setup: Moderate fear (40/100) + market stabilizing = cautious bullish
+      current_setup: Moderate bullish (60/100) + stable = neutral/wait
       opportunity_status: NOT YET
       threshold_needed: Fear <25 or Greed >75
       distance_to_threshold: 15
-      historical_win_rate: When X hits <25, next 7 days avg +8.2% BTC return
+      historical_win_rate: 'Historical: Neutral zone - wait for extreme fear (<25) or greed (>75) for high-probability setups'
       action: WAIT
-      action_color: '#f59e0b'
-      confidence: medium
-      next_check: Monitor for capitulation if CPI disappoints
+      action_color: '#6b7280'
+      confidence: low
+      next_check: Sentiment neutral - wait for directional extreme before positioning
     socialTabSyncedAt: '2025-10-23T13:37:50Z'
     influencer_consensus:
-      tier1_sentiment: NEUTRAL
-      tier2_sentiment: NEUTRAL
-      tier3_sentiment: NEUTRAL
+      tier1_sentiment: MODERATELY BULLISH
+      tier2_sentiment: MODERATELY BULLISH
+      tier3_sentiment: MODERATELY BULLISH
       notable_calls:
       - ''
       - ''
     trending_words:
-      tickers_crypto: []
-      tickers_equities: []
-      tech_themes: []
-      macro_themes: []
-      sentiment_words: []
+      tickers_crypto:
+      - word: BTC
+        mentions: 24
+        rank: 1
+        velocity_24h: 200%
+        signal: RISING
+      - word: ETH
+        mentions: 17
+        rank: 2
+        velocity_24h: NEW
+        signal: NEW
+      - word: ONE
+        mentions: 14
+        rank: 3
+        velocity_24h: 367%
+        signal: HOT
+      - word: SOL
+        mentions: 7
+        rank: 4
+        velocity_24h: NEW
+        signal: NEW
+      - word: LINK
+        mentions: 5
+        rank: 5
+        velocity_24h: 150%
+        signal: RISING
+      - word: W
+        mentions: 4
+        rank: 6
+        velocity_24h: NEW
+        signal: NEW
+      - word: APT
+        mentions: 4
+        rank: 7
+        velocity_24h: NEW
+        signal: NEW
+      - word: ZEC
+        mentions: 3
+        rank: 8
+        velocity_24h: 200%
+        signal: RISING
+      - word: AAVE
+        mentions: 3
+        rank: 9
+        velocity_24h: NEW
+        signal: NEW
+      - word: NEAR
+        mentions: 2
+        rank: 10
+        velocity_24h: NEW
+        signal: NEW
+      - word: AVAX
+        mentions: 2
+        rank: 11
+        velocity_24h: NEW
+        signal: NEW
+      - word: XRP
+        mentions: 1
+        rank: 12
+        velocity_24h: -75%
+        signal: COOLING
+      - word: DOGE
+        mentions: 1
+        rank: 13
+        velocity_24h: NEW
+        signal: NEW
+      - word: ALT
+        mentions: 1
+        rank: 14
+        velocity_24h: NEW
+        signal: NEW
+      tickers_equities:
+      - word: TSLA
+        mentions: 10
+        rank: 1
+        velocity_24h: NEW
+        signal: NEW
+      - word: SPX
+        mentions: 5
+        rank: 2
+        velocity_24h: 25%
+        signal: STABLE
+      - word: NFLX
+        mentions: 4
+        rank: 3
+        velocity_24h: NEW
+        signal: NEW
+      - word: NVDA
+        mentions: 3
+        rank: 4
+        velocity_24h: 50%
+        signal: STABLE
+      - word: SPY
+        mentions: 2
+        rank: 5
+        velocity_24h: 100%
+        signal: RISING
+      - word: AMD
+        mentions: 2
+        rank: 6
+        velocity_24h: NEW
+        signal: NEW
+      - word: IWM
+        mentions: 2
+        rank: 7
+        velocity_24h: NEW
+        signal: NEW
+      - word: META
+        mentions: 2
+        rank: 8
+        velocity_24h: NEW
+        signal: NEW
+      - word: GOOGL
+        mentions: 2
+        rank: 9
+        velocity_24h: 0%
+        signal: STABLE
+      - word: QQQ
+        mentions: 1
+        rank: 10
+        velocity_24h: NEW
+        signal: NEW
+      tech_themes:
+      - word: AI
+        mentions: 16
+        rank: 1
+        velocity_24h: NEW
+        signal: NEW
+      - word: LIQUIDITY
+        mentions: 8
+        rank: 2
+        velocity_24h: 700%
+        signal: HOT
+      - word: DEFI
+        mentions: 6
+        rank: 3
+        velocity_24h: NEW
+        signal: NEW
+      - word: OPTIONS
+        mentions: 2
+        rank: 4
+        velocity_24h: 100%
+        signal: RISING
+      - word: PERPETUAL
+        mentions: 2
+        rank: 5
+        velocity_24h: NEW
+        signal: NEW
+      - word: YIELD
+        mentions: 1
+        rank: 6
+        velocity_24h: NEW
+        signal: NEW
+      - word: MEME
+        mentions: 1
+        rank: 7
+        velocity_24h: NEW
+        signal: NEW
+      - word: NFT
+        mentions: 1
+        rank: 8
+        velocity_24h: NEW
+        signal: NEW
+      macro_themes:
+      - word: TREASURY
+        mentions: 3
+        rank: 1
+        velocity_24h: 0%
+        signal: STABLE
+      - word: FED
+        mentions: 2
+        rank: 2
+        velocity_24h: 100%
+        signal: RISING
+      - word: RATE
+        mentions: 2
+        rank: 3
+        velocity_24h: 0%
+        signal: STABLE
+      - word: INFLATION
+        mentions: 1
+        rank: 4
+        velocity_24h: NEW
+        signal: NEW
+      - word: YIELD
+        mentions: 1
+        rank: 5
+        velocity_24h: NEW
+        signal: NEW
+      sentiment_words:
+      - word: BULLISH
+        mentions: 9
+        rank: 1
+        velocity_24h: NEW
+        signal: NEW
+      - word: TOP
+        mentions: 7
+        rank: 2
+        velocity_24h: NEW
+        signal: NEW
+      - word: SUPPORT
+        mentions: 4
+        rank: 3
+        velocity_24h: 300%
+        signal: HOT
+      - word: HOLD
+        mentions: 2
+        rank: 4
+        velocity_24h: NEW
+        signal: NEW
+      - word: PUMP
+        mentions: 2
+        rank: 5
+        velocity_24h: -33%
+        signal: STABLE
+      - word: RESISTANCE
+        mentions: 2
+        rank: 6
+        velocity_24h: 100%
+        signal: RISING
+      - word: RALLY
+        mentions: 2
+        rank: 7
+        velocity_24h: NEW
+        signal: NEW
+      - word: BREAKOUT
+        mentions: 1
+        rank: 8
+        velocity_24h: NEW
+        signal: NEW
+      - word: BREAK
+        mentions: 1
+        rank: 9
+        velocity_24h: NEW
+        signal: NEW
   - id: news_catalysts
     label: 📰 News & Catalysts
     aiInterpretation:
@@ -794,34 +1109,32 @@ dashboard:
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
     technicalsTabSyncedAt: '2025-10-23T13:37:51Z'
-  quickActionsUpdated: '2025-10-23T18:19:43Z'
+  quickActionsUpdated: '2025-10-23T20:00:00Z'
   quickActions:
-  - type: RISK
-    title: Selective Risk - Moderate Environment
-    value: 'Signal Score: 58.0/100 (MODERATE)'
-    description: Signal at MODERATE (58.0/100). Trend=18.0, breadth=15.0 suggest selective opportunities. Maintain 30-40%
-      exposure in quality names with strong technicals. Avoid speculation until signal >60.
-    urgency: HIGH
-  - type: HEDGE
-    title: Fear Reading - Contrarian Watch
-    value: Crypto Fear & Greed 27 • BTC $109,799
-    description: Fear reading (F&G 27) approaching contrarian zone. BTC $109,799 needs to hold support. Watch for extreme
-      fear <25 or signal improvement. Maintain hedges through uncertainty.
-    urgency: HIGH
-  - type: WATCH
-    title: Upcoming Economic Catalysts
-    value: Monitor key macro events
-    description: 'Watch for: (1) Fed meetings and rate decisions, (2) CPI/PPI inflation data, (3) Jobs reports (NFP, jobless
-      claims), (4) Major earnings releases, (5) Geopolitical events. These drive market volatility and signal shifts. Check
-      economic calendar daily for precise timing.'
-    urgency: MEDIUM
-  - type: PLAN
-    title: Balanced Risk Management
-    value: 40-50% exposure
-    description: 'Signal 58.0/100 (MODERATE) allows selective deployment. Position: 30-35% quality equities, 15-20% crypto
-      infrastructure, 10% hedges, 35-40% cash. Quality bias non-negotiable. Flip to 60% IF signal >60. Reduce to 30% IF drops
-      below 50.'
-    urgency: HIGH
+  - type: risk
+    icon: ✅
+    title: SELECTIVE RISK REENTRY
+    value: 'Signal Score: 58.0 (MODERATE)'
+    description: MODERATE signal (58.0/100) - Selective opportunities available. Focus on quality setups.
+    urgency: medium
+  - type: hedge
+    icon: 🛡️
+    title: MAINTAIN PRUDENT HEDGES
+    value: Keep tail risk protection
+    description: Market stabilizing but maintain hedges as insurance.
+    urgency: medium
+  - type: watch
+    icon: 👀
+    title: MONITOR KEY LEVELS
+    value: Watch support/resistance
+    description: Monitor key technical levels and breadth metrics for direction.
+    urgency: medium
+  - type: plan
+    icon: 📝
+    title: BALANCED APPROACH
+    value: Selective deployment
+    description: Balanced environment. Be selective and size appropriately.
+    urgency: medium
   providerConsensusUpdated: '2025-10-21T15:09:00Z'
   providerConsensus:
     updatedAt: '2025-10-21T15:09:00Z'
@@ -919,7 +1232,39 @@ dashboard:
       entry: 186.9
       rationale: alt accumulation level
     economicCalendarUpdated: '2025-10-23T13:37:52Z'
-    economicCalendar: *id001
+    economicCalendar:
+      today: []
+      thisWeek:
+      - date: Oct 15
+        time: 08:30 EST
+        event: US CPI & Core CPI
+        impact: HIGH
+      - date: Oct 16
+        time: 08:30 EST
+        event: US PPI Final Demand
+        impact: HIGH
+      - date: Oct 16
+        time: 08:30 EST
+        event: Retail Sales
+        impact: HIGH
+      nextWeek:
+      - date: Oct 24
+        time: 09:45 EST
+        event: S&P Global Manufacturing & Services PMI
+        impact: HIGH
+      keyDates:
+      - date: Oct 15-16
+        events:
+        - CPI
+        - PPI
+        - Retail Sales
+        note: Critical inflation and consumption data cluster will set the tone.
+      - date: Oct 29
+        events:
+        - FOMC Rate Decision
+        note: The main event of the month, will be heavily influenced by this week's inflation data.
+      summary: The market is holding its breath for the mid-week inflation data (CPI/PPI). A hot number could easily trigger
+        another leg down.
     tomorrowPrep:
     - Track daily breadth ratios—need one 70%+ up-volume day to confirm bullish thrust.
     - Monitor spot ETF crypto flows ($300M+ daily target for breakout confirmation).
@@ -1043,6 +1388,19 @@ dashboard:
   lastUpdated: '2025-10-20T14:54:26Z'
   updatedAt: '2025-10-20T14:54:26Z'
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

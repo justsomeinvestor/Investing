@@ -852,14 +852,18 @@
             border-radius: 10px;
             padding: 20px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
         }
 
         .consensus-topic {
-            flex: 0 0 150px;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 1em;
             color: #e0e6f0;
+            line-height: 1.3;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            word-wrap: break-word;
         }
 
         .consensus-bar-container {
@@ -1219,10 +1223,6 @@
             .consensus-item {
                 flex-direction: column;
                 align-items: stretch;
-            }
-
-            .consensus-topic {
-                flex: 1;
             }
         }
 
@@ -3446,40 +3446,46 @@
                 consensusItem.style.animation = `fadeInUp ${0.4 + idx * 0.1}s ease forwards`;
                 consensusItem.style.opacity = '0';
 
-                const header = document.createElement('div');
-                header.className = 'consensus-header';
+                // Left side container - badge above topic (vertical stack)
+                const leftSide = document.createElement('div');
+                leftSide.style.display = 'flex';
+                leftSide.style.flexDirection = 'column';
+                leftSide.style.gap = '6px';
+                leftSide.style.flex = '0 0 280px';
 
-                const topic = document.createElement('span');
-                topic.className = 'consensus-topic';
-                topic.textContent = item.theme || item.topic || 'Topic';
-
-                // Sentiment badge
+                // Sentiment badge - tiny, subtle pill above topic
                 const sentiment = item.sentiment || 'NEUTRAL';
                 const sentimentColor = sentiment.includes('BULLISH') ? '#10b981' :
                                       sentiment.includes('BEARISH') ? '#ef4444' : '#f59e0b';
 
                 const sentimentBadge = document.createElement('span');
-                sentimentBadge.className = 'consensus-percentage';
-                sentimentBadge.style.background = `${sentimentColor}20`;
+                sentimentBadge.style.background = `${sentimentColor}10`;
                 sentimentBadge.style.color = sentimentColor;
-                sentimentBadge.style.border = `1px solid ${sentimentColor}40`;
-                sentimentBadge.style.padding = '4px 10px';
-                sentimentBadge.style.borderRadius = '6px';
-                sentimentBadge.style.fontSize = '0.85em';
-                sentimentBadge.style.fontWeight = '600';
+                sentimentBadge.style.padding = '2px 6px';
+                sentimentBadge.style.borderRadius = '3px';
+                sentimentBadge.style.fontSize = '0.65em';
+                sentimentBadge.style.fontWeight = '500';
+                sentimentBadge.style.textTransform = 'uppercase';
+                sentimentBadge.style.letterSpacing = '0.05em';
+                sentimentBadge.style.width = 'fit-content';
+                sentimentBadge.style.opacity = '0.75';
                 sentimentBadge.textContent = sentiment.replace('_', ' ');
 
-                header.appendChild(topic);
-                header.appendChild(sentimentBadge);
+                const topic = document.createElement('div');
+                topic.className = 'consensus-topic';
+                topic.textContent = item.theme || item.topic || 'Topic';
+
+                leftSide.appendChild(sentimentBadge);
+                leftSide.appendChild(topic);
 
                 const description = document.createElement('div');
                 description.className = 'consensus-providers';
                 description.style.color = '#d1d5db';
                 description.style.lineHeight = '1.6';
-                description.style.marginTop = '10px';
+                description.style.flex = '1';
                 description.textContent = item.description || '';
 
-                consensusItem.appendChild(header);
+                consensusItem.appendChild(leftSide);
                 consensusItem.appendChild(description);
 
                 container.appendChild(consensusItem);
@@ -3740,12 +3746,13 @@
             }
 
             // Crypto & Macro Trending Tickers (side-by-side grid)
-            if ((tab.crypto_trending && tab.crypto_trending.top_tickers) || (tab.macro_trending && tab.macro_trending.top_tickers)) {
+            if ((tab.crypto_trending && tab.crypto_trending.top_tickers && tab.crypto_trending.top_tickers.length > 0) ||
+                (tab.macro_trending && tab.macro_trending.top_tickers && tab.macro_trending.top_tickers.length > 0)) {
                 html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">';
             }
 
             // Crypto Trending Tickers
-            if (tab.crypto_trending && tab.crypto_trending.top_tickers) {
+            if (tab.crypto_trending && tab.crypto_trending.top_tickers && tab.crypto_trending.top_tickers.length > 0) {
                 html += '<div style="background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px; padding: 20px;">';
                 const cryptoTrendingStatusClass = tab.crypto_trending.updatedAt ? getDataFreshness(tab.crypto_trending.updatedAt) : 'status-error';
                 html += `<div style="display: flex; align-items: center; margin-bottom: 15px;"><h3 style="margin: 0; color: #8b5cf6;">🔥 Crypto Trending Tickers (Mention Velocity)</h3><span class="date-badge ${cryptoTrendingStatusClass}" style="margin-left: 10px;"></span></div>`;
@@ -3765,9 +3772,27 @@
                     `;
                 });
 
+                html += '</div>'; // Close top_tickers grid
+
+                // Crypto Emerging Tickers
+                if (tab.crypto_trending.emerging_tickers && tab.crypto_trending.emerging_tickers.length) {
+                    html += '<div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(139, 92, 246, 0.2);">';
+                    html += '<div style="color: #8b5cf6; font-weight: 600; margin-bottom: 12px;">🌟 Emerging Tickers (Alpha Opportunities)</div>';
+                    html += '<div style="display: grid; gap: 8px;">';
+                    tab.crypto_trending.emerging_tickers.forEach(ticker => {
+                        html += `
+                            <div style="background: rgba(234, 179, 8, 0.1); border-left: 3px solid #eab308; padding: 12px; border-radius: 6px;">
+                                <div style="font-weight: 600; color: #fde047; margin-bottom: 4px;">${ticker.ticker} <span style="color: #9ca3af; font-size: 0.85em;">(${ticker.mentions} mentions)</span></div>
+                                <div style="color: #d1d5db; font-size: 0.9em; font-style: italic;">${ticker.signal}</div>
+                            </div>
+                        `;
+                    });
+                    html += '</div></div>'; // Close grid + wrapper
+                }
+
                 // Crypto Key Levels Table
-                if (tab.crypto_trending.key_levels) {
-                    html += '</div><div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(139, 92, 246, 0.2);">';
+                if (tab.crypto_trending.key_levels && tab.crypto_trending.key_levels.length > 0) {
+                    html += '<div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(139, 92, 246, 0.2);">';
                     html += '<div style="color: #8b5cf6; font-weight: 600; margin-bottom: 12px;">🎯 Crypto Key Levels (Crowdsourced)</div>';
                     html += '<div style="display: grid; gap: 8px;">';
                     tab.crypto_trending.key_levels.forEach(level => {
@@ -3781,12 +3806,12 @@
                             </div>
                         `;
                     });
-                    html += '</div>';
+                    html += '</div></div>'; // Close grid + wrapper
                 }
 
                 // Crypto Event Risk Section
                 if (tab.crypto_trending.event_risk && tab.crypto_trending.event_risk.length) {
-                    html += '</div><div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(139, 92, 246, 0.2);">';
+                    html += '<div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(139, 92, 246, 0.2);">';
                     html += '<div style="color: #8b5cf6; font-weight: 600; margin-bottom: 12px;">⚠️ Event Risk (High Velocity)</div>';
                     html += '<div style="display: grid; gap: 8px;">';
                     tab.crypto_trending.event_risk.forEach(event => {
@@ -3804,14 +3829,14 @@
                             </div>
                         `;
                     });
-                    html += '</div>';
+                    html += '</div></div>'; // Close grid + wrapper
                 }
 
-                html += '</div></div>';
+                html += '</div>';
             }
 
             // Macro Trending Tickers
-            if (tab.macro_trending && tab.macro_trending.top_tickers) {
+            if (tab.macro_trending && tab.macro_trending.top_tickers && tab.macro_trending.top_tickers.length > 0) {
                 html += '<div style="background: rgba(99, 102, 241, 0.05); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 12px; padding: 20px;">';
                 const macroTrendingStatusClass = tab.macro_trending.updatedAt ? getDataFreshness(tab.macro_trending.updatedAt) : 'status-error';
                 html += `<div style="display: flex; align-items: center; margin-bottom: 15px;"><h3 style="margin: 0; color: #6366f1;">📊 Macro Trending Tickers (Mention Velocity)</h3><span class="date-badge ${macroTrendingStatusClass}" style="margin-left: 10px;"></span></div>`;
@@ -3831,9 +3856,11 @@
                     `;
                 });
 
+                html += '</div>'; // Close top_tickers grid
+
                 // Emerging Tickers
                 if (tab.macro_trending.emerging_tickers && tab.macro_trending.emerging_tickers.length) {
-                    html += '</div><div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(99, 102, 241, 0.2);">';
+                    html += '<div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(99, 102, 241, 0.2);">';
                     html += '<div style="color: #6366f1; font-weight: 600; margin-bottom: 12px;">🌟 Emerging Tickers (Alpha Opportunities)</div>';
                     html += '<div style="display: grid; gap: 8px;">';
                     tab.macro_trending.emerging_tickers.forEach(ticker => {
@@ -3844,12 +3871,12 @@
                             </div>
                         `;
                     });
-                    html += '</div>';
+                    html += '</div></div>'; // Close grid + wrapper
                 }
 
                 // Macro Key Levels Table
-                if (tab.macro_trending.key_levels) {
-                    html += '</div><div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(99, 102, 241, 0.2);">';
+                if (tab.macro_trending.key_levels && tab.macro_trending.key_levels.length > 0) {
+                    html += '<div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(99, 102, 241, 0.2);">';
                     html += '<div style="color: #6366f1; font-weight: 600; margin-bottom: 12px;">🎯 Macro Key Levels (Crowdsourced)</div>';
                     html += '<div style="display: grid; gap: 8px;">';
                     tab.macro_trending.key_levels.forEach(level => {
@@ -3863,12 +3890,12 @@
                             </div>
                         `;
                     });
-                    html += '</div>';
+                    html += '</div></div>'; // Close grid + wrapper
                 }
 
                 // Event Risk Section
                 if (tab.macro_trending.event_risk && tab.macro_trending.event_risk.length) {
-                    html += '</div><div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(99, 102, 241, 0.2);">';
+                    html += '<div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(99, 102, 241, 0.2);">';
                     html += '<div style="color: #6366f1; font-weight: 600; margin-bottom: 12px;">⚠️ Event Risk (High Velocity)</div>';
                     html += '<div style="display: grid; gap: 8px;">';
                     tab.macro_trending.event_risk.forEach(event => {
@@ -3885,14 +3912,15 @@
                             </div>
                         `;
                     });
-                    html += '</div>';
+                    html += '</div></div>'; // Close grid + wrapper
                 }
 
-                html += '</div></div>';
+                html += '</div>';
             }
 
             // Close the 2-column grid wrapper for Crypto & Macro sections
-            if ((tab.crypto_trending && tab.crypto_trending.top_tickers) || (tab.macro_trending && tab.macro_trending.top_tickers)) {
+            if ((tab.crypto_trending && tab.crypto_trending.top_tickers && tab.crypto_trending.top_tickers.length > 0) ||
+                (tab.macro_trending && tab.macro_trending.top_tickers && tab.macro_trending.top_tickers.length > 0)) {
                 html += '</div>'; // End 2-column grid
             }
 
@@ -3901,62 +3929,7 @@
             // Analytics Widgets Section + Provider Insights (3-column grid combined)
             html += '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; margin-top: 25px; margin-bottom: 25px;">';
 
-            // Widget 1: Sentiment Velocity Tracker
-            if (tab.sentiment_velocity) {
-                    const sv = tab.sentiment_velocity;
-                    const velocityColor = sv.velocity_rating === 'ACCELERATING' ? '#10b981' :
-                                         sv.velocity_rating === 'RECOVERING' ? '#3b82f6' :
-                                         sv.velocity_rating === 'STABLE' ? '#8b5cf6' : '#f59e0b';
-                    const changePct = sv.change_pct || 0;
-                    const changeColor = changePct > 0 ? '#10b981' : (changePct < 0 ? '#ef4444' : '#6b7280');
-                    const changeArrow = changePct > 0 ? '⬆️' : (changePct < 0 ? '⬇️' : '→');
-
-                    html += `
-                        <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <div style="color: #3b82f6; font-weight: 600; font-size: 1.1em;">📈 Sentiment Velocity</div>
-                                <div style="background: ${velocityColor}; color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.85em; font-weight: 600;">${sv.velocity_rating}</div>
-                            </div>
-
-                            <div style="margin-bottom: 20px;">
-                                <div style="color: #9ca3af; font-size: 0.85em; margin-bottom: 5px;">Current Sentiment</div>
-                                <div style="display: flex; align-items: baseline; gap: 8px;">
-                                    <div style="font-size: 2.5em; font-weight: bold; color: #e0e6f0;">${sv.current}</div>
-                                    <div style="font-size: 1.2em; color: #6b7280;">/100</div>
-                                    <div style="color: ${changeColor}; font-weight: 600; font-size: 1.1em; margin-left: auto;">${changeArrow} ${sv.change > 0 ? '+' : ''}${sv.change}</div>
-                                </div>
-                            </div>
-
-                            <div style="background: rgba(31, 41, 55, 0.4); padding: 12px; border-radius: 8px; margin-bottom: 12px;">
-                                <div style="color: #9ca3af; font-size: 0.8em; margin-bottom: 4px;">24h Change</div>
-                                <div style="color: ${changeColor}; font-weight: 600; font-size: 1.3em;">${changePct > 0 ? '+' : ''}${changePct}%</div>
-                                <div style="color: #9ca3af; font-size: 0.75em; margin-top: 2px;">${sv.previous_24h} → ${sv.current}</div>
-                            </div>
-
-                            <div style="background: rgba(99, 102, 241, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 12px;">
-                                <div style="color: #818cf8; font-weight: 600; font-size: 0.85em; margin-bottom: 6px;">Mean Reversion Signal</div>
-                                <div style="color: #d1d5db; font-size: 0.85em; line-height: 1.4;">${sv.mean_reversion_signal}</div>
-                            </div>
-
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
-                                <div style="background: rgba(31, 41, 55, 0.4); padding: 10px; border-radius: 6px; text-align: center;">
-                                    <div style="color: #9ca3af; font-size: 0.75em; margin-bottom: 4px;">Days in Zone</div>
-                                    <div style="color: #e0e6f0; font-weight: 600; font-size: 1.2em;">${sv.days_in_current_zone}</div>
-                                </div>
-                                <div style="background: rgba(31, 41, 55, 0.4); padding: 10px; border-radius: 6px; text-align: center;">
-                                    <div style="color: #9ca3af; font-size: 0.75em; margin-bottom: 4px;">Since Extreme</div>
-                                    <div style="color: #e0e6f0; font-weight: 600; font-size: 1.2em;">${sv.days_since_last_extreme}d</div>
-                                </div>
-                            </div>
-
-                            <div style="background: rgba(31, 41, 55, 0.2); padding: 10px; border-radius: 6px; border-left: 3px solid #3b82f6;">
-                                <div style="color: #9ca3af; font-size: 0.75em; font-style: italic;">${sv.historical_context}</div>
-                            </div>
-                        </div>
-                    `;
-                }
-
-                // Widget 2: Contrarian Play Detector
+            // Widget 1: Contrarian Play Detector
                 if (tab.contrarian_detector) {
                     const cd = tab.contrarian_detector;
                     const actionColors = {
@@ -6715,24 +6688,19 @@
     // 1. Consensus Dashboard (Top - 3 gauges)
     html += renderConsensusDashboard(marketData);
 
-    // 2. Key Price Levels & Allocation (Side by side)
-    html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">';
+    // 2. Key Price Levels, Allocation & Bullish vs Bearish (3 columns)
+    html += '<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">';
     html += renderPriceLevelsSection(marketData);
     html += renderAllocationSection(marketData);
+    html += renderFactorComparison(marketData);
     html += '</div>';
 
-    // 3 & 4. Economic Calendar and Bullish vs Bearish Factors (Side by side)
-    html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">';
-
-    // Left: Economic Calendar
+    // 3. Economic Calendar (Full width)
+    html += '<div style="margin: 20px 0;">';
     const macroSection = marketsTab.sections.find(s => s.name === 'Macro Environment');
     if (macroSection?.economicCalendar) {
       html += renderEconomicTimelineEnhanced(macroSection.economicCalendar);
     }
-
-    // Right: Bullish vs Bearish Factors
-    html += renderFactorComparison(marketData);
-
     html += '</div>';
 
     // 5. Enhanced Sections (Collapsible with visual headers)
