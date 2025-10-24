@@ -5778,6 +5778,43 @@
                 container.appendChild(summary);
             }
 
+            // Key Dates - MOVED TO TOP
+            if (calendar.keyDates && calendar.keyDates.length > 0) {
+                const keyDatesSection = document.createElement('div');
+                keyDatesSection.className = 'calendar-section';
+
+                const keyDatesHeader = document.createElement('div');
+                keyDatesHeader.className = 'calendar-section-header';
+                keyDatesHeader.innerHTML = '🎯 KEY DATES THIS MONTH';
+                keyDatesSection.appendChild(keyDatesHeader);
+
+                calendar.keyDates.forEach(keyDate => {
+                    const card = document.createElement('div');
+                    card.className = 'key-date-card';
+
+                    const header = document.createElement('div');
+                    header.className = 'key-date-header';
+                    header.innerHTML = `<div class="key-date-date">${keyDate.date}</div>`;
+                    card.appendChild(header);
+
+                    const events = document.createElement('div');
+                    events.className = 'key-date-events';
+                    events.textContent = keyDate.events.join(' • ');
+                    card.appendChild(events);
+
+                    if (keyDate.note) {
+                        const note = document.createElement('div');
+                        note.className = 'key-date-note';
+                        note.textContent = keyDate.note;
+                        card.appendChild(note);
+                    }
+
+                    keyDatesSection.appendChild(card);
+                });
+
+                container.appendChild(keyDatesSection);
+            }
+
             // Today's Events
             if (calendar.today && calendar.today.length > 0) {
                 const todaySection = document.createElement('div');
@@ -5866,43 +5903,6 @@
 
                 nextWeekSection.appendChild(nextWeekEvents);
                 container.appendChild(nextWeekSection);
-            }
-
-            // Key Dates
-            if (calendar.keyDates && calendar.keyDates.length > 0) {
-                const keyDatesSection = document.createElement('div');
-                keyDatesSection.className = 'calendar-section';
-
-                const keyDatesHeader = document.createElement('div');
-                keyDatesHeader.className = 'calendar-section-header';
-                keyDatesHeader.innerHTML = '🎯 KEY DATES THIS MONTH';
-                keyDatesSection.appendChild(keyDatesHeader);
-
-                calendar.keyDates.forEach(keyDate => {
-                    const card = document.createElement('div');
-                    card.className = 'key-date-card';
-
-                    const header = document.createElement('div');
-                    header.className = 'key-date-header';
-                    header.innerHTML = `<div class="key-date-date">${keyDate.date}</div>`;
-                    card.appendChild(header);
-
-                    const events = document.createElement('div');
-                    events.className = 'key-date-events';
-                    events.textContent = keyDate.events.join(' • ');
-                    card.appendChild(events);
-
-                    if (keyDate.note) {
-                        const note = document.createElement('div');
-                        note.className = 'key-date-note';
-                        note.textContent = keyDate.note;
-                        card.appendChild(note);
-                    }
-
-                    keyDatesSection.appendChild(card);
-                });
-
-                container.appendChild(keyDatesSection);
             }
 
             return container;
