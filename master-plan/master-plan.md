@@ -1,8 +1,8 @@
 ---
 dashboard:
-  pageTitle: Investment Research Dashboard - October 20, 2025
+  pageTitle: Investment Research Dashboard - October 25, 2025
   title: Investment Research Dashboard
-  dateBadge: October 20, 2025
+  dateBadge: October 25, 2025
   sentimentCardsUpdated: '2025-10-25T20:00:00Z'
   sentimentCards:
     - id: "equities"
@@ -43,7 +43,7 @@ dashboard:
       value: "$617.10 (+1.07%)"
     - label: "GLD Close"
       value: "$377.52 (-0.34%)"
-  sentimentHistoryUpdated: '2025-10-21T15:06:00Z'
+  sentimentHistoryUpdated: '2025-10-25T18:56:00Z'
   sentimentHistory:
   - date: '2025-10-08'
     score: 61
@@ -78,28 +78,23 @@ dashboard:
   - date: '2025-10-21'
     score: 31.0
     label: WEAK
-  riskItemsUpdated: '2025-10-21T15:07:00Z'
+  - date: '2025-10-25'
+    score: 57.0
+    label: MODERATE
+  riskItemsUpdated: '2025-10-25T18:57:00Z'
   riskItems:
-  - title: 50-Day MA Break Risk (CRITICAL INFLECTION)
-    description: SPX testing 50-day MA (6,628) for first time since May after Friday's -3% selloff. Break below opens door
-      to 200-day MA test (6,600) and potentially 6,550-6,500 correction zone. This is the line in the sand between bullish
-      structure and deeper correction.
-  - title: Narrow Market Leadership (LATE-CYCLE WARNING)
-    description: Advance-Decline line trending lower for 10+ months while SPX hit ATH Oct 9. Fidelity breadth BEARISH. Tech/Comm
-      at 45% market cap (1800s levels). Rally driven by 5-7 mega-caps - any faltering triggers cascade risk with no alt sectors
-      positioned to support.
-  - title: Gold Recession Warning (HISTORIC SIGNAL)
-    description: Gold/S&P ratio breaking 1.57x pivot level that preceded 1929, 1973, 2008 recessions. Gold +66% YTD while
-      at ATH creates bifurcated market. JPM/S&P Global 30-40% recession probability by year-end despite strong GDP (4%). Credit
-      card delinquencies at 14-year highs.
-  - title: Oct 29 FOMC Hawkish Surprise Risk
-    description: 25bp cut fully priced by 115/117 economists. Risk lies in hawkish forward guidance on easing path. If Fed
-      signals slower cuts ahead, $7.5T money market liquidity stays sidelined and deleveraging accelerates. Statement and
-      presser more critical than the cut itself.
-  - title: Bitcoin Support Break ($107-109k)
-    description: BTC at $111,600 just above critical $107-109k support zone tested multiple times July-Oct. Break below triggers
-      long-term holder capitulation (337,300 BTC already transferred - largest ever). Next support $100k psychological, then
-      $95k structural.
+  - title: Breadth Divergence (Most Traders Noting This)
+    description: Advance-Decline line trending lower 10+ months while SPX hit ATH. Only 5-7 mega-caps driving indexes. If any
+      leadership falters, cascade risk emerges with no alternative sectors to absorb selling.
+  - title: Fed Surprise Guidance (Variable Outcome Possible)
+    description: 25bp cut fully priced by consensus. KEY RISK = forward guidance on easing path. Dovish tone unlocks $7.5T money
+      market rotation. Hawkish pause triggers deleveraging.
+  - title: Tariff Inflation Spreading (Policy Uncertainty)
+    description: 'Trump tariff promises showing up in goods prices. Services inflation STICKY (hardest to control). Risk: Stagflation
+      scenario (growth slowing + inflation sticky). Could limit Fed cuts.'
+  - title: Earnings Revisions Lower (If Q4 Guidance Cautious)
+    description: Beat rate strong at 76-78% but Q4 guidance cautious risk. Tariff impact mentioned by companies could disappoint
+      revisions. Watch earnings call tone carefully.
   tabs:
   - id: portfolio
     label: 💼 Portfolio
@@ -138,33 +133,41 @@ dashboard:
         20-30%, raise cash 40-50%, add hedges 20-30%. Trend 0, breadth 12.5, volatility 6 all confirm weak environment. SPY
         gaining on declining volume is bearish divergence. Wait for signal >40 before adding risk.
     aiInterpretation:
-      updatedAt: '2025-10-23T14:45:32Z'
-      summary: Portfolio Signal Tier IMPROVED +28 PTS (30→58/100) = regime shift from risk-off to risk-management mode. Account
-        balance $23,105.83, YTD +15.8%. SPX 6,656 support holding with higher lows, QQQ $604 breakout decision point. Jobless
-        claims 8:30 AM = BINARY catalyst determining position sizing. Quantum computing inflection (IBM, AMD partnerships)
-        + Bitcoin institutional adoption (Bittensor, Ledger) creating twin structural themes. Strong earnings fundamentals
-        (84% beat rate) despite sector concentration risk.
-      keyInsight: 'SIGNAL +28 PT JUMP TO MODERATE (58/100) BUT EARNINGS QUALITY UNDER PRESSURE: Current environment justifies
-        selective risk deployment but ONLY in quality names with strong technicals. Breadth deterioration (12.5/25) means
-        7 of 8 stocks still lagging—concentration risk maximal. Jobless claims outcome determines deployment window.'
-      action: 'WAIT for 8:30 AM jobless claims. IF STRONG/IN-LINE: deploy 30-35% equities (quality + quantum), 20% crypto,
-        10% hedges, 35% cash. IF WEAK: maintain 25% equities max, 15% crypto, 25% hedges, 35% cash. Monitor: SPX 6,656, QQQ
-        $604, BTC $107,600. NEVER reduce position quality regardless of signal—market rotation risk remains.'
+      updatedAt: '2025-10-25T18:45:00Z'
+      summary: 'Portfolio Signal Tier HOLDING MODERATE (57/100) on consolidated 2-day technical setup. Market breadth divergence
+        is KEY LIMITING FACTOR—SPX at ATH but 80% of stocks below ATH. Inflation narrative bullish (CPI beat, housing anchor
+        working), but Fed Oct 29 forward guidance is THE catalyst determining next leg. Institutional accumulation vs retail fear
+        (Fear & Greed 37) = classic bottom setup. Earnings strong (76-78% beat rate, 22% positive guidance) validates quality
+        positioning. Key risk: Only mega-cap tech (NVDA/MSFT/AAPL) driving indexes—no broad support.'
+      keyInsight: 'BREADTH DIVERGENCE = THE BOTTLENECK: Signal MODERATE (57/100) not STRONG (70+) because advance-decline ratio
+        weak and concentration risk maximal. Market needs BREADTH IMPROVEMENT to sustain rally. THIS IS THE KEY CONDITION that
+        must be met post-Fed. Until breadth thrusts >70% up-volume, avoid aggressive index positioning—favor individual stock
+        selection instead.'
+      action: 'PREPARE for two scenarios post-Fed Oct 29: (1) DOVISH = breadth improvement + risk rally target $700 SPY (deploy 40%
+        equities, 20% crypto, 40% cash, 10% hedges). (2) HAWKISH = breadth failure + defensive stance target $650 SPY (maintain
+        20% equities, 10% crypto, 60% cash, 30% hedges). CURRENT ACTION: Build quality watchlist, set breakout alerts at $670 SPY
+        and $611 QQQ, wait for Fed clarity. DON''T chase current consolidation—confirmed breakout on breadth improvement is entry
+        signal. Key levels: SPX $652.84 (support), $670 (resistance).'
       sentiment: cautiously bullish
       confidence: medium-high
   - id: markets
     label: 📊 Markets Intelligence
     aiInterpretation:
-      updatedAt: '2025-10-23T13:45:54Z'
-      summary: 'Markets at critical inflection as signal improved +28 pts (institutional buyers entering weakness). SPX 6,656
-        support defending, QQQ $604 double-bottom breakout point, BTC $107,600 floor tested. BUT breadth deteriorating 11
-        months (negative divergence: indexes high, 93% of stocks lagging). Today''s 8:30 AM jobless claims = ONLY macro signal
-        during shutdown, binary catalyst for direction.'
-      keyInsight: 'SIGNAL TIER JUMPED +28 PTS TO MODERATE (58/100) BUT SEVERE BREADTH DETERIORATION (11-MONTH A/D LINE COLLAPSE)
-        = TEXTBOOK NEGATIVE DIVERGENCE: INDEXES AT HIGHS, MAJORITY OF STOCKS LAGGING = FRAGILE RALLY STRUCTURE NEEDING CONFIRMATION.'
-      action: 'WAIT for 8:30 AM jobless claims. STRONG/IN-LINE = deploy 30-35% equities (quality + quantum), 20% crypto, 10%
-        hedges. WEAK = defensive 25% equities, 15% crypto, 25% hedges, 35% cash. Monitor: SPX 6,656, QQQ $600, BTC $107,600
-        supports. Reduce sizing 10-20%, quality bias non-negotiable given poor breadth.'
+      updatedAt: '2025-10-25T18:50:00Z'
+      summary: 'MARKETS AT CRITICAL INFLECTION (57/100 MODERATE SIGNAL): Consolidation with bullish bias but unconfirmed. SPX at
+        ATH but advance-decline ratio weak = textbook divergence warning. Inflation narrative supportive (CPI beat, soft landing path
+        open), earnings strong (76-78% beat rate), BUT breadth deterioration remains primary risk (80% stocks below ATH vs indexes at
+        highs). Institutional accumulation + retail fear = contrarian bullish. Fed Oct 29 guidance = THE CATALYST determining whether
+        breadth thrusts or breaks decisively.'
+      keyInsight: 'BREADTH DIVERGENCE IS THE KEY VARIABLE: Signal MODERATE (57/100) capped at this level because market propped by
+        only 5-7 mega-caps (NVDA/MSFT/AAPL). 11-month A/D line collapse while SPX at ATH = unsustainable structure. Market NEEDS >70%
+        up-volume day + breadth improvement post-Fed to sustain rally. Without breadth thrust, any mega-cap stumble triggers cascade selling
+        with no sectors to support. This is the CONSTRAINT limiting upside.'
+      action: 'SCENARIO 1 (60% prob): Fed dovish Oct 29 + breadth improves = rally on breadth confirmation, target $700 SPY, deploy
+        40% equities. SCENARIO 2 (25% prob): Fed neutral + breadth mixes = sideways consolidation $665-680, maintain 25-30% equities.
+        SCENARIO 3 (15% prob): Fed hawkish + breadth breaks = defensive $650 target, reduce to 15-20% equities. IMMEDIATE ACTION: Set
+        alerts SPX $670/$652.84, QQQ $611/$595.71. Watch breadth meter daily (critical). Position sizing: Never chase—wait for breadth
+        confirmation before aggressive deployment.'
       sentiment: cautiously bullish
       confidence: medium-high
     sections:
@@ -442,7 +445,7 @@ dashboard:
         signal: Alpha opportunity - new entrant with momentum
       key_levels: []
       event_risk: []
-      updatedAt: '2025-10-24T06:17:18Z'
+      updatedAt: '2025-10-25T19:00:00Z'
     macro_trending:
       top_tickers:
       - ticker: TSLA
@@ -494,7 +497,7 @@ dashboard:
         signal: Alpha opportunity - new entrant with momentum
       key_levels: []
       event_risk: []
-      updatedAt: '2025-10-24T06:17:18Z'
+      updatedAt: '2025-10-25T19:00:30Z'
     top_narratives: []
     market_structure:
       crypto_levels:
@@ -1143,29 +1146,21 @@ dashboard:
       value: "Selective deployment"
       description: "Balanced environment. Be selective and size appropriately."
       urgency: "medium"
-  providerConsensusUpdated: '2025-10-21T15:09:00Z'
+  providerConsensusUpdated: '2025-10-25T18:58:00Z'
   providerConsensus:
-    updatedAt: '2025-10-21T15:09:00Z'
+    updatedAt: '2025-10-25T20:35:00Z'
     themes:
-    - theme: FEAR EXTREMES AT CRITICAL SUPPORT
-      description: Signal 31/100 (WEAK) with Fear & Greed 29, Crypto F&G 24 (extreme fear) while SPX tests 50-day MA (6,628)
-        for first time since May. Contrarian setup similar to April 8 (F&G 3 → +3% rally). Institutional accumulation (BTC
-        $5.95B ETF inflows, whale buys) while retail exits = classic late-stage distribution reversal pattern.
-      sentiment: CAUTIOUSLY_BULLISH
-    - theme: NARROW LEADERSHIP FRAGILITY
-      description: Advance-Decline trending lower 10+ months (Nov 2024 peak) while SPX hit ATH Oct 9. Tech/Comm 45% market
-        cap (1800s levels). Rally driven by 5-7 mega-caps with +21% YoY earnings. Any leadership faltering triggers cascade
-        risk - no alternative sectors positioned to absorb selling. Fidelity breadth assessment BEARISH.
-      sentiment: BEARISH
-    - theme: BIFURCATED ECONOMY
-      description: GDP ~4% (Atlanta Fed) and strong corporate earnings clash with 30-40% recession probability (JPM/S&P Global),
-        gold/S&P 1.57x recession warning (preceded 1929/1973/2008), and 14-year high credit card delinquencies. Asset owners
-        thrive while structural vulnerabilities build beneath surface. Position for both scenarios.
-      sentiment: MIXED
-    - theme: OCT 29 FOMC LIQUIDITY CATALYST
-      description: 25bp cut fully priced (115/117 economists). KEY RISK = forward guidance on easing path. Dovish tone unlocks
-        $7.5T money market rotation into risk assets (bullish acceleration). Hawkish pause signal keeps liquidity sidelined
-        and triggers deleveraging. Statement/presser more critical than the cut itself.
+    - theme: INFLATION NARRATIVE
+      description: CPI 0.1% lower than expected (validation) Owner's equivalent rent at 0.1% MoM (housing anchor WORKING) This
+        enables Fed rate cuts without inflation fear
+      sentiment: BULLISH
+    - theme: FED DECISION (OCT 29)
+      description: 25 bps cut fully priced in (consensus expectation) FORWARD GUIDANCE = the real variable Market needs clarity
+        on 2025 rate path (not just next cut)
+      sentiment: NEUTRAL
+    - theme: BREADTH DIVERGENCE
+      description: Price at ATH but advance-decline ratio weak Only tech mega-caps (NVDA, APPLE, MSFT) driving indexes 80% of
+        stocks are NOT at all-time highs
       sentiment: NEUTRAL
   dailyPlanner:
     aiInterpretation:
@@ -1219,7 +1214,7 @@ dashboard:
     - Selective opportunities in quality names
     - Monitor signal strength for improvement
     - Maintain risk management discipline
-    keyLevelsUpdated: '2025-10-23T18:23:42Z'
+    keyLevelsUpdated: '2025-10-25T18:59:00Z'
     keyLevels:
     - asset: SPY
       entry: 674.5

@@ -1,0 +1,272 @@
+Journal Workflow - End of Day Tracking
+=======================================
+
+Purpose
+-------
+Track daily execution, learn from outcomes, and build pattern recognition through consistent journaling.
+
+Self-Contained System
+---------------------
+The Journal is a STANDALONE EXECUTION LOG. It operates independently from other workflows:
+- Generates its own dashboard from Journal.md and account_state.json only
+- No dependencies on master-plan.md, research workflows, or signal calculations
+- Pure execution tracking for learning and accountability
+
+**Data Flow:**
+Trade execution → Journal.md (documented) → journal-dashboard.html (visualized) → patterns learned
+
+
+WHEN TO UPDATE JOURNAL
+-----------------------
+
+**1. Pre-Market (4:00-9:30 AM ET):**
+   - Review yesterday's EOD entry
+   - Note overnight moves
+   - Confirm today's setups from Daily Planner
+
+**2. Midday Check-in (11:00-1:00 PM ET):**
+   - Log any trades taken (entry price, size, thesis)
+   - Note if key levels triggered
+   - Brief status update (1-2 lines)
+
+**3. End of Day (4:00-8:00 PM ET) - MANDATORY:**
+   - Generate detailed daily journal in `Journal/Log-Entries/` (e.g., via ChatGPT using `Journal/Chat Log.md` template).
+   - Integrate a summary/link to this detailed journal into `Journal.md`.
+   - Timestamp: "YYYY-MM-DD (HH:MM PT)"
+   - Deliver an explicit review: execution quality (what worked / what didn't), trade outcomes, P&L, and tomorrow's prep.
+
+
+
+DATA SOURCES FOR JOURNAL ENTRIES
+---------------------------------
+
+**The journal system is self-contained. For EOD Review (to create entries in Journal.md), reference:**
+
+1. **Journal/Log-Entries/YYYY-MM-DD_EOD_Wrap.md** (PRIMARY)
+   - Detailed daily trading journal created via ChatGPT
+   - Contains: trades, P&L, account snapshot, execution observations, improvements
+   - Extract key insights, trade outcomes, P&L summary, and lessons learned
+
+2. **Prior Journal.md entries (last 3-5):**
+   - Identify recurring patterns, rule breaches, or improvements to reinforce
+
+3. **Your broker account (ALWAYS VERIFY):**
+   - Current cash & sweep vehicle balance
+   - YTD P/L total
+   - Today's P/L (final number)
+   - This feeds the Account Overview dashboard metrics
+
+4. **Journal/journal-dashboard.html → live preview (optional but recommended):**
+   - After updating `Journal.md`, refresh the local dashboard
+   - Confirms Account Overview, Latest Entry, and Previous Entries display correctly
+
+
+JOURNAL ORGANIZATION
+--------------------
+
+**Structure (top to bottom):**
+
+1. **Entry Template** (compact format at top)
+2. **Log** (newest entries first - reverse chronological, summarizing/linking to detailed entries in `Log-Entries/`)
+3. **Weekly Macro Playbook** (recurring section)
+4. **Review Checklist** (weekly/monthly retrospective)
+
+**Keep it scannable:**
+- Use headers (##) for each EOD entry
+- Bullets for all content (not paragraphs)
+- Max 5 bullets per section
+- Bold key terms (triggers, levels, tickers)
+- Keep the standard bullet labels (`**Market Action & Signal:**`, `**Trades/P&L:**`, `**P&L / Balance:**`, `**Execution Review:**`, `**Trend Watch & System Intel:**`, `**Tomorrow Prep:**`) so the dashboard parser can slot content into the correct panels.
+
+
+JOURNAL SYSTEM ARCHITECTURE
+----------------------------
+
+**Two-tier system:**
+
+1. **Journal/Log-Entries/YYYY-MM-DD_EOD_Wrap.md** (Detailed Record)
+   - Generated via ChatGPT using Chat Log.md template
+   - Contains full trade details, P&L, account snapshot, observations, improvement ideas
+   - Most granular level of tracking
+   - Used for deep analysis and pattern recognition
+
+2. **Journal/Journal.md** (Execution Log)
+   - Permanent execution log (newest entries at top, reverse chronological)
+   - Each entry summarizes key points + links to detailed journal in Log-Entries/
+   - Feeds journal-dashboard.html for visual display
+   - Searchable history for pattern recognition and learning
+
+**Dashboard (journal-dashboard.html):**
+- Reads only from: `Journal.md` and `account_state.json`
+- No dependencies on other workflows or files
+- Displays: Account Overview, Latest Entry (6 sections), Previous Entries (collapsible)
+
+
+WORKFLOW STEP-BY-STEP
+----------------------
+
+**IMPORTANT - SELF-CONTAINED WORKFLOW:**
+✅ **The JOURNAL workflow is completely independent.**
+✅ No prerequisites - start immediately at end of trading day.
+✅ No dependencies on other workflows (master-plan, research, etc).
+✅ All data comes from: ChatGPT journal + broker account + Account Summary section.
+
+**At End of Trading Day - JOURNAL WORKFLOW (start here):**
+
+**Step 1: Download Daily Journal to Inbox Folder**
+   - Throughout the day, use `Journal/Chat Log.md` template with ChatGPT
+   - At EOD, download the completed detailed journal
+   - **Save it to `Journal/Inbox/` folder** (e.g., `Journal/Inbox/2025-10-17_EOD.md`)
+
+**Step 2: Move journal from Inbox to Log-Entries**
+   ```bash
+   python scripts/journal_ingest.py --source Journal/Inbox/YYYY-MM-DD_EOD.md --date YYYY-MM-DD --tag EOD_Wrap
+   ```
+   This moves the file to `Journal/Log-Entries/YYYY-MM-DD_EOD_Wrap.md`
+
+**Step 3: Create Journal Entry in Journal.md**
+
+**OPTION A: CLAUDE-ASSISTED (RECOMMENDED) - 2-3 minutes:**
+
+   Ask Claude: "Read the detailed journal at `Journal/Log-Entries/YYYY-MM-DD_EOD_Wrap.md` and create a new journal entry at the top of `Journal.md` using the standard format. Also update `account_state.json` with the Account Snapshot values."
+
+   Claude will:
+   - Read the detailed journal (trades, P&L, account snapshot, observations)
+   - Create properly formatted entry in Journal.md with all real values
+   - Update account_state.json from Account Summary section
+   - Ensures correct format and clean data extraction
+
+**OPTION B: MANUAL - 5-10 minutes:**
+   - Open `Journal/Journal.md`
+   - Add a new entry at the TOP (newest first, reverse chronological)
+   - Use this format:
+     ```
+     ---
+
+     **End of Day Review - YYYY-MM-DD (HH:MM PT)** - [Link to Detailed Journal](Log-Entries/YYYY-MM-DD_EOD_Wrap.md)
+
+     - **Market Action & Signal:** [Key price action, market drivers, execution environment]
+     - **Trades/P&L:** [Trades executed, P&L total, what worked/didn't]
+     - **P&L / Balance:** Daily P&L **[+/-$X.XX]** or **[+/-X.XX%]**
+     - **Account Summary:**
+       - Cash & Sweep Vehicle: $[XX,XXX.XX]
+       - OVERALL P/L YTD: $[X,XXX.XX]
+     - **Execution Review:** [Process adherence, mistakes, improvements]
+     - **Trend Watch & System Intel:** [Patterns observed, recurring themes, learning notes]
+     - **Tomorrow Prep:** [Key levels, catalysts, focus areas, setup checklist]
+    ```
+   - Pull data from:
+     * Log-Entries detailed journal (YAML format) - trades, P&L, observations
+     * **Your broker account for Cash & P/L YTD** (ALWAYS verify current balances)
+   - Timestamp in PT format: "YYYY-MM-DD (HH:MM PT)"
+   - Save `Journal.md`
+
+   **IMPORTANT:** The **Account Summary** section feeds the dashboard's Account Overview metrics:
+   - Current cash balance
+   - YTD P/L total
+   - Used to calculate win rate from daily P/L entries
+
+**Step 4: Dashboard Verification (2 min)**
+   - Serve the repo locally (e.g., `python -m http.server`) if not already running
+   - Refresh `Journal/journal-dashboard.html` in the browser to verify:
+       • Account Overview: Current balance, YTD P/L, daily P/L, and win rate display correctly
+       • Latest Entry: Market/Trades/P&L/Execution/Trend/Tomorrow sections display with focus tags
+       • Previous Entries: Collapsible history shows prior entries (default collapsed)
+       • "As of" timestamps update on each panel
+   - If any data looks stale or missing, check Journal.md for typos in section labels (must match exactly)
+
+**Time commitment:** 5-10 minutes for integration into `Journal.md` (assuming detailed journal is already generated)
+
+
+JOURNALING BEST PRACTICES
+--------------------------
+
+**Do:**
+- ✅ Be honest (especially about mistakes)
+- ✅ Focus on process, not just P&L
+- ✅ Note what you did right (reinforce good habits)
+- ✅ Keep entries brief (quality > quantity)
+- ✅ Review weekly to spot patterns
+
+**Don't:**
+- ❌ Skip EOD entries (consistency matters)
+- ❌ Write novels (bullets only)
+- ❌ Only journal losses (wins teach too)
+- ❌ Blame externals (focus on controllables)
+- ❌ Let journal fall behind (daily discipline)
+
+
+REVIEW FREQUENCY
+----------------
+
+**Daily (EOD):**
+- What happened today vs plan
+- Trades executed
+- Key lesson
+
+**Weekly (Friday PM or weekend):**
+- Review all 5 EOD entries
+- Note recurring patterns
+- Update "Memory Anchors" in Weekly Playbook
+- Adjust setup criteria if needed
+
+**Monthly:**
+- Full journal scan
+- Performance metrics (R multiples, win rate, DD)
+- Process improvements to codify
+- Update risk rules
+
+
+AUTOMATION NOTES
+----------------
+
+**Currently manual:**
+- Generating detailed daily journal in `Journal/Log-Entries/` (external step).
+- Integrating summary/link into `Journal.md`.
+- Extracting key takeaways from detailed journal for `Journal.md` summary.
+
+**Could be automated (future):**
+- Auto-generate detailed daily journal from chat log.
+- Auto-summarize detailed journal and integrate into `Journal.md`.
+- Auto-extract key insights and improvement ideas.
+
+**Keep manual (for now):**
+- The interaction with ChatGPT for detailed journaling.
+- The final review and selection of key takeaways for `Journal.md` summary.
+
+
+EXAMPLE WORKFLOW INTEGRATION
+-----------------------------
+
+**5:00 PM PT - End of Trading Day (Journal System):**
+
+1. **ChatGPT:** Download completed detailed journal from ChatGPT
+2. **Inbox:** Save to `Journal/Inbox/2025-10-17_EOD.md`
+3. **Ingest:** Run journal_ingest.py to move to Log-Entries/
+4. **Journal.md:** Add new entry at TOP with:
+   ```
+   ---
+
+   **End of Day Review - 2025-10-17 (16:00 PT)** - [Link to Detailed Journal](Log-Entries/2025-10-17_EOD_Wrap.md)
+
+   - **Market Action & Signal:** ES chopped 6,650-6,700 box; composite signal 37/100 (WEAK)
+   - **Trades/P&L:** SOLZ tactical long captured +$100 on intraday momentum
+   - **P&L / Balance:** Daily P&L **+$100.00**
+   - **Account Summary:**
+     - Cash & Sweep Vehicle: $23,105.83
+     - OVERALL P/L YTD: $3,152.57
+   - **Execution Review:** Good discipline staying patient in chop; avoided overtrading
+   - **Trend Watch & System Intel:** Extreme breadth weakness (2/25), historic crypto liquidation ($19B)
+   - **Tomorrow Prep:** Mark ES levels: 6,632, 6,651, 6,687-6,692, 6,718-6,728 (20-DMA)
+   ```
+5. **Dashboard:** Refresh journal-dashboard.html to verify data appears
+
+**Total time:** 5-7 minutes (3 min ChatGPT download/ingest + 2-4 min Journal.md update)
+
+
+Notes
+-----
+- Journal is YOUR record - honest reflection builds edge
+- Consistency matters more than perfection
+- Use lessons to update rules in master plan
+- Review old entries monthly - patterns emerge over time

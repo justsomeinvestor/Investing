@@ -1,0 +1,179 @@
+TRADING SIGNALS WORKFLOW - COMPLETE INDEX
+═════════════════════════════════════════════════════════════════
+
+All Files & How to Use Them
+
+
+QUICK START (Do This First):
+═════════════════════════════════════════════════════════
+
+File: START_HERE_SIGNALS.txt
+Location: Toolbox/INSTRUCTIONS/Workflows/
+Purpose: Quick orientation - read this FIRST
+Time: 2 minutes
+
+
+File: SIGNALS_QUICK_REFERENCE.md
+Location: Toolbox/INSTRUCTIONS/Workflows/
+Purpose: One-page daily cheat sheet - read this SECOND
+Time: 5 minutes
+WHEN TO USE: During trading day for quick lookup
+
+
+DOCUMENTATION (Read in Order):
+═════════════════════════════════════════════════════════
+
+1. README_SIGNALS_WORKFLOW.md
+   Length: 350 lines
+   Purpose: Complete system overview
+   When: After quick reference, want full understanding
+
+2. RESEARCH_DASHBOARD_TO_SIGNALS_WORKFLOW.md
+   Length: 500 lines
+   Purpose: Detailed 5-step workflow guide
+   When: Deep dive implementation
+
+3. SIGNALS_SYSTEM_DIAGRAM.md
+   Length: 400 lines
+   Purpose: Visual architecture and data flow
+   When: Want to see how everything connects
+
+
+IMPLEMENTATION (Use When Building):
+═════════════════════════════════════════════════════════
+
+File: SIGNAL_CARD_HTML_TEMPLATE.md
+Purpose: Copy-paste ready HTML for Command Center
+When: Adding signals to command-center.html
+
+File: extract_signals.py
+Location: scripts/research/
+Type: Python script
+Purpose: Automated dashboard data extraction (optional)
+
+
+REFERENCE & SUMMARY:
+═════════════════════════════════════════════════════════
+
+File: WORKFLOW_DELIVERY_SUMMARY.md
+Location: Investing/ (root)
+Purpose: Delivery summary and complete overview
+
+
+FILE STRUCTURE:
+═════════════════════════════════════════════════════════
+
+Investing/
+  ├── SIGNALS_WORKFLOW_INDEX.txt
+  ├── WORKFLOW_DELIVERY_SUMMARY.md
+  │
+  ├── Toolbox/INSTRUCTIONS/Workflows/
+  │   ├── START_HERE_SIGNALS.txt
+  │   ├── SIGNALS_QUICK_REFERENCE.md
+  │   ├── README_SIGNALS_WORKFLOW.md
+  │   ├── RESEARCH_DASHBOARD_TO_SIGNALS_WORKFLOW.md
+  │   ├── SIGNAL_CARD_HTML_TEMPLATE.md
+  │   └── SIGNALS_SYSTEM_DIAGRAM.md
+  │
+  ├── scripts/research/
+  │   └── extract_signals.py
+  │
+  ├── master-plan/
+  │   └── research-dashboard.html (DATA SOURCE)
+  │
+  └── Journal/
+      └── command-center.html (WHERE SIGNALS DISPLAY)
+
+
+TODAY'S ACTION:
+═════════════════════════════════════════════════════════
+
+STEP 1: Read START_HERE_SIGNALS.txt
+STEP 2: Read SIGNALS_QUICK_REFERENCE.md
+STEP 3: Tell Claude "Generate trading signals from research dashboard"
+STEP 4: See signals in Command Center
+STEP 5: Trade the best signals!
+
+
+READING PATHS:
+═════════════════════════════════════════════════════════
+
+QUICK (10 minutes):
+  1. START_HERE_SIGNALS.txt
+  2. SIGNALS_QUICK_REFERENCE.md
+  3. Tell Claude to generate signals
+
+COMPLETE (1 hour):
+  1. START_HERE_SIGNALS.txt
+  2. README_SIGNALS_WORKFLOW.md
+  3. SIGNALS_SYSTEM_DIAGRAM.md
+  4. RESEARCH_DASHBOARD_TO_SIGNALS_WORKFLOW.md
+  5. SIGNAL_CARD_HTML_TEMPLATE.md
+
+IMPLEMENTATION (2 hours):
+  1. SIGNALS_QUICK_REFERENCE.md
+  2. SIGNAL_CARD_HTML_TEMPLATE.md
+  3. Copy HTML to command-center.html
+  4. Generate signals
+  5. View in browser
+
+AUTOMATION (30 minutes):
+  1. SIGNALS_QUICK_REFERENCE.md
+  2. Study extract_signals.py
+  3. Run the script
+  4. Use output
+
+
+WHICH FILE DO I NEED?
+═════════════════════════════════════════════════════════
+
+Q: What is this system?
+A: START_HERE_SIGNALS.txt
+
+Q: How do I use it daily?
+A: SIGNALS_QUICK_REFERENCE.md
+
+Q: How does scoring work?
+A: RESEARCH_DASHBOARD_TO_SIGNALS_WORKFLOW.md
+
+Q: How is it connected?
+A: SIGNALS_SYSTEM_DIAGRAM.md
+
+Q: What HTML code?
+A: SIGNAL_CARD_HTML_TEMPLATE.md
+
+Q: Can I automate?
+A: scripts/research/extract_signals.py
+
+Q: Full overview?
+A: README_SIGNALS_WORKFLOW.md
+
+Q: What was delivered?
+A: WORKFLOW_DELIVERY_SUMMARY.md
+
+
+ALL FILES CREATED:
+═════════════════════════════════════════════════════════
+
+✅ START_HERE_SIGNALS.txt
+✅ SIGNALS_QUICK_REFERENCE.md
+✅ README_SIGNALS_WORKFLOW.md
+✅ RESEARCH_DASHBOARD_TO_SIGNALS_WORKFLOW.md
+✅ SIGNAL_CARD_HTML_TEMPLATE.md
+✅ SIGNALS_SYSTEM_DIAGRAM.md
+✅ WORKFLOW_DELIVERY_SUMMARY.md
+✅ scripts/research/extract_signals.py
+✅ SIGNALS_WORKFLOW_INDEX.txt (this file)
+
+
+NEXT STEP:
+═════════════════════════════════════════════════════════
+
+Read: START_HERE_SIGNALS.txt
+Then: Tell Claude "Generate trading signals from research dashboard"
+Then: Trade the signals!
+
+═════════════════════════════════════════════════════════
+
+Status: READY TO USE
+Created: October 19, 2025

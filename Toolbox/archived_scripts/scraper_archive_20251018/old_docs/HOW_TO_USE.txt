@@ -1,0 +1,73 @@
+================================================================
+YouTube Transcript Batch Scraper - FINAL VERSION
+================================================================
+
+QUICK START:
+-----------
+1. Edit "channels.txt" and add your YouTube channels (one per line)
+2. Double-click "run_scraper.bat"
+3. Done! Transcripts will be organized by channel in the "transcripts" folder
+
+FEATURES:
+---------
+- Batch processes multiple channels
+- Organizes transcripts by channel name in separate folders
+- Saves as timestamped markdown files
+- Format: YYYY-MM-DD_HHMMSS_Video_Title.md
+- Downloads up to 10 videos per channel (configurable)
+
+ADDING CHANNELS:
+---------------
+Edit "channels.txt" and add channel URLs like:
+
+@TomBilyeu
+@3Blue1Brown
+https://youtube.com/@CrashCourse
+
+Lines starting with # are comments and will be ignored.
+
+OUTPUT STRUCTURE:
+----------------
+transcripts/
+├── 3Blue1Brown/
+│   ├── 2025-09-29_131717_Video_Title_1.md
+│   └── 2025-09-29_131718_Video_Title_2.md
+├── TomBilyeu/
+│   ├── 2025-09-29_140532_Video_Title_1.md
+│   └── 2025-09-29_140533_Video_Title_2.md
+└── ...
+
+MARKDOWN FILE FORMAT:
+--------------------
+Each transcript file contains:
+- Video title
+- Channel name
+- Video URL
+- Download timestamp
+- Transcript type (Manual/Auto-generated)
+- Transcript length
+- Full transcript text
+
+CONFIGURATION:
+-------------
+To change the number of videos per channel:
+1. Open "scrape_channels.py"
+2. Find line: process_channel(channel_url, max_videos=10)
+3. Change 10 to your desired number
+4. Save and run
+
+REQUIREMENTS:
+------------
+- Python 3.6+
+- youtube-transcript-api (auto-installed)
+- yt-dlp (auto-installed)
+
+TESTED AND WORKING:
+------------------
+✓ Successfully downloads transcripts
+✓ Organizes by channel folders
+✓ Timestamped markdown files
+✓ Handles manual and auto-generated transcripts
+✓ Skips videos without transcripts
+
+================================================================

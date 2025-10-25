@@ -1,0 +1,209 @@
+
+============================================================
+JOURNAL PARSER
+============================================================
+
+[*] Parsing journal for latest balance data...
+
+[OK] Updated account state:
+     Cash Balance: $23,105.83
+     Overall P/L YTD: $3,152.57
+     Date: 2025-10-17
+
+[*] Recent P/L History:
+     No P/L data found in recent entries
+
+============================================================
+DONE
+============================================================
+
+
+[*] Loading data for 2025-10-19
+============================================================
+   [OK] Signals loaded (composite: 43.5/100)
+   [WARN] Trending words not found (optional)
+   [WARN] Options data not found (optional)
+   [OK] Market data loaded
+   [OK] Master plan loaded (70259 chars)
+
+[*] Updating master plan...
+============================================================
+
+[1/8] Updating dates...
+   [OK] pageTitle updated to October 19, 2025
+   [OK] dateBadge updated to October 19, 2025
+   [OK] EAGLE EYE header updated
+   [OK] Footer dates updated
+
+[2/8] Updating tab timestamps...
+   [WARN] No tab timestamps updated
+   [WARN] No additional updatedAt fields found
+
+[3/8] Updating signal data...
+   [OK] signalData updated (composite: 43.5/100, tier: MODERATE)
+   [WARN] endOfDay signals block not updated
+   [OK] endOfDay metadata updated (October 19, 2025)
+
+[4/8] Updating sentiment history...
+   [WARN] sentimentHistory array not found
+
+[5/8] Skipping X sentiment (no trending words)
+
+[5.5/8] Skipping options data (not available)
+
+[6/8] Updating daily planner metadata...
+   [WARN] daily planner updatedAt not found
+
+[7/8] Saving master plan...
+   [OK] Master plan saved
+   [OK] Backup created: master-plan\master-plan.md.backup
+
+[8/8] Updating supporting files...
+   [OK] HTML dashboard updated
+   [OK] Processing log updated
+
+[OK] Master plan updated successfully!
+     Updated 13 sections: pageTitle, dateBadge, EAGLE EYE header, footer dates, tab timestamps, additional updatedAt fields, signalData, endOfDay signals, endOfDay metadata, sentimentHistory, dailyPlanner metadata, HTML dashboard, processing log
+
+============================================================
+[*] MASTER PLAN UPDATE COMPLETE
+============================================================
+Date: October 19, 2025
+Signal: 43.5/100 (MODERATE)
+Updates: 13 sections modified
+
+Files updated:
+  - master-plan/master-plan.md
+  - master-plan/research-dashboard.html
+  - Research/.processing_log.json
+============================================================
+
+============================================================
+X SENTIMENT TAB UPDATER
+============================================================
+Date: October 19, 2025
+
+[1/4] Loading data sources...
+   [WARN] Crypto summary not found: Research\X\Crypto\2025-10-19_X_Crypto_Summary.md
+   [INFO] Expected location: Research/X/Crypto/2025-10-19_X_Crypto_Summary.md
+   [INFO] Run data prep workflow to generate X summaries for October 19, 2025
+   [WARN] Macro summary not found: Research\X\Macro\2025-10-19_X_Macro_Summary.md
+   [INFO] Expected location: Research/X/Macro/2025-10-19_X_Macro_Summary.md
+   [INFO] Run data prep workflow to generate X summaries for October 19, 2025
+   [WARN] Trending words not found: Research\X\Trends\2025-10-19_trending_words.json
+   [INFO] Expected location: Research/X/Trends/2025-10-19_trending_words.json
+   [INFO] Run X trending words analysis to generate this file
+
+[2/4] Loading master plan...
+   [OK] Master plan loaded (70231 chars)
+
+[3/4] Updating X Sentiment tab...
+   [ERROR] Could not find xsentiment tab in master plan
+
+[4/4] Saving master plan...
+   [OK] Master plan saved
+   [OK] Backup created: master-plan\master-plan.md.xsentiment_backup
+
+============================================================
+✅ X SENTIMENT TAB UPDATE COMPLETE
+============================================================
+
+📊 Data Sources: 0/3 found
+   [NOTE] Some data sources missing - sentiment may use fallback values
+
+
+======================================================================
+🔄 SOCIAL TAB SYNCHRONIZATION
+======================================================================
+Date: 2025-10-19
+
+[1/5] Loading signals data...
+   [OK] Signal: 0/100 (MODERATE)
+   [OK] X Sentiment - Crypto: N/A, Macro: N/A
+[2/5] Loading market data...
+   [OK] BTC: $N/A, VIX: N/A
+[3/5] Loading market overview...
+   [WARN] Market overview not found (optional): Research\2025-10-19_Market_Sentiment_Overview.md
+[4/5] Loading master plan...
+   [OK] Master plan loaded (70231 chars)
+[5/5] Synchronizing Social tab...
+      ✓ Updated sentimentScore: 50, tier: NEUTRAL, trend: stable
+      ✓ Added socialTabSyncedAt: 2025-10-19T11:13:21Z
+      ✓ Updated sentiment_breakdown: 5% extreme bearish
+      ✓ Updated hype_cycle: Skepticism / Neutral
+      ⚠ crypto_trending update needs manual refinement (complexity)
+      → Suggested: BTC $100000 (MOMENTUM BUILDING), ETH $3800 (BREAKOUT WATCH)
+      ⚠ crypto key_levels update needs manual refinement
+      → Suggested: BTC $100000, ETH $3800
+      ✓ Updated crypto event_risk: 1 events (Fed Policy Uncertainty)
+      ⚠ macro_trending update needs manual refinement
+      ⚠ top_narratives update needs manual refinement
+      ⚠ market_structure update needs manual refinement
+      ⚠ market_psychology update needs manual refinement
+      ⚠ trending_detail update needs manual refinement
+      ⚠ providers insights update needs manual refinement
+      ✓ Updated sentiment_velocity: 50 (was 50, +0)
+
+   [OK] Master plan saved
+   [OK] Backup: master-plan.md.social_sync_backup_20251019_111321
+   [OK] Updated 13/14 Social tab sections
+   [OK] X Sentiment: 50/100 (NEUTRAL)
+   [OK] Signal: 50/100 (MODERATE)
+
+======================================================================
+✅ SOCIAL TAB SYNC COMPLETE
+======================================================================
+
+Traceback (most recent call last):
+  File "C:\Users\Iccanui\Desktop\Investing\scripts\automation\run_workflow.py", line 138, in run_all
+    self.run_social_tab_sync()  # Phase 3.8 - Sync Social Tab with signals (YAML format)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Iccanui\Desktop\Investing\scripts\automation\run_workflow.py", line 274, in run_social_tab_sync
+    self._validate_yaml_after_sync("Social tab sync")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'WorkflowOrchestrator' object has no attribute '_validate_yaml_after_sync'
+[WARN] YAML validator not available - skipping YAML validation after sync
+
+======================================================================
+🚀 MASTER PLAN WORKFLOW ORCHESTRATOR
+======================================================================
+Date: 2025-10-19
+Started: 2025-10-19 11:13:21
+======================================================================
+
+======================================================================
+📔 PHASE 0: PARSE JOURNAL FOR ACCOUNT DATA
+======================================================================
+
+✅ Phase 0 Complete - Account data updated
+
+[SKIP] Phase 1: Fetch market data (--skip-fetch)
+
+[SKIP] Phase 1.5: Fetch technical data (--skip-fetch)
+
+[SKIP] Phase 2: Calculate signals (--skip-signals)
+
+======================================================================
+📝 PHASE 3: UPDATE MASTER PLAN
+======================================================================
+
+✅ Phase 3 Complete
+
+======================================================================
+📱 PHASE 3.75: UPDATE X SENTIMENT TAB
+======================================================================
+[INFO] This is the MOST IMPORTANT tab - updating with fresh X/Twitter data
+
+
+✅ Phase 3.75 Complete - X Sentiment tab fully updated
+
+======================================================================
+🔄 PHASE 3.8: SYNC SOCIAL TAB WITH SIGNALS
+======================================================================
+[INFO] Automatically synchronizing Social tab with calculated signals
+
+
+✅ Phase 3.8 Complete - Social tab synced with signals
+
+
+[ERROR] Workflow failed: 'WorkflowOrchestrator' object has no attribute '_validate_yaml_after_sync'

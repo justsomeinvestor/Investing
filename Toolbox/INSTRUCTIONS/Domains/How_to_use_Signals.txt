@@ -1,0 +1,238 @@
+High-Probability Signal System - Workflow Integration Guide
+===========================================================
+
+Purpose
+-------
+Automatically generate trading signals from research data and integrate into Daily Planner + Technicals tabs.
+
+Workflow Integration
+-------------------
+
+This signal system plugs into Step 4 of the master plan workflow (How to use_MP.txt).
+
+After "Align the Master Plan" and before "Document & Organize":
+
+4.5. **Generate Trading Signals**
+
+   Realtime dependency:
+   - Before calculating scores, ensure Technical provider summaries are fresh for today if market moved materially.
+   - If Intraday Refresh Protocol (from Technicals guide) was triggered, update master-plan.md keyLevels and assets first, then compute scores.
+
+   A. Calculate Signal Scores (0-100 for each component):
+
+   TREND SIGNALS (40% weight):
+   - Read TradingView SPX/BTC summaries
+   - Calculate distance to 50-DMA and 200-DMA
+   - Check multi-timeframe alignment (Daily/4H/1H)
+   - Score: 0-40 points
+
+   BREADTH SIGNALS (25% weight):
+   - Read Market Breadth provider summary
+   - Get % SPX >50-DMA current value
+   - Check NYSE A/D Line for divergences vs price
+   - Read X Social Sentiment from Research/X/YYYY-MM-DD_X_Summary.md
+   - Calculate X sentiment contrarian adjustment (-5 to +5 points):
+     * 0-24 (EXTREME FEAR): +5 pts
+     * 25-44 (BEARISH): +4 pts
+     * 45-54 (MIXED): +2 pts
+     * 55-64 (MODERATE BULLISH): +1 pt
+     * 65-79 (BULLISH): 0 pts
+     * 80-89 (STRONG EUPHORIA): -2 pts
+     * 90-100 (EXTREME EUPHORIA): -5 pts
+   - Score: 0-25 points (base breadth + X sentiment adjustment)
+
+   VOLATILITY SIGNALS (20% weight):
+   - Read Volatility Metrics provider summary
+   - Get VIX level and term structure status
+   - Get BTC/ETH IV percentile from CoinGlass
+   - Score: 0-20 points
+
+   TECHNICAL SIGNALS (10% weight):
+   - Read TradingView summaries
+   - Get RSI, MACD, Volume data
+   - Score: 0-10 points
+
+   SEASONALITY SIGNALS (5% weight):
+   - Auto-calculate based on calendar date
+   - Turn-of-Month (T-3 to T+2), Monthly effects, FOMC proximity
+   - Score: 0-5 points
+
+   B. Calculate Composite Score:
+
+   Total Score = (Trend × 0.40) + (Breadth × 0.25) + (Volatility × 0.20) + (Technical × 0.10) + (Seasonality × 0.05)
+
+   C. Identify Active Setups:
+
+   For each asset (SPY, QQQ, BTC, ETH):
+
+   IF Total Score ≥ 85:
+      - Setup Type: EXTREME (Deep Correction Buy or rare opportunity)
+      - Priority: HIGH
+      - Add to Daily Planner high-priority tasks
+      - Position size: 4-5% account risk
+
+   ELSE IF Total Score ≥ 70:
+      - Setup Type: STRONG (Routine Dip Buy)
+      - Priority: MEDIUM
+      - Add to Daily Planner medium-priority tasks
+      - Position size: 2-3% account risk
+
+   ELSE IF Total Score ≥ 55:
+      - Setup Type: MODERATE (Reduced size setup)
+      - Priority: LOW
+      - Add to Daily Planner low-priority tasks
+      - Position size: 1-2% account risk
+
+   ELSE:
+      - Setup Type: PASS (No setup, wait)
+      - Priority: None
+      - Do not add to planner
+
+   D. Add to Dashboard Data:
+
+   Update master-plan.md JSON:
+
+   1. Daily Planner Tasks:
+      Add signal-based tasks to priorities.high/medium/low:
+      Example: "SIGNAL: SPY Routine Dip @ $662 (Score: 78) - Entry on 50-DMA reclaim"
+
+   2. Daily Planner AI Interpretation:
+      Include signal summary in aiInterpretation.summary:
+      Example: "Signal Engine shows STRONG buy setup on SPY (score 78/100). Breadth capitulation + trend mean-reversion aligned."
+
+   3. Technicals Tab AI Interpretation:
+      Update aiInterpretation.summary with signal data:
+      Example: "Composite signal score: 78/100 (STRONG). Trend (90%), Breadth (88%), Volatility (80%) all aligned for SPY dip buy."
+
+      4. Add signalData object to dailyPlanner:
+      "signalData": {
+        "SPY": {"score": 78, "setup": "Routine Dip", "entry": "$662", "stop": "$655", "target": "$675"},
+        "QQQ": {"score": 65, "setup": "Pending", "entry": "N/A", "stop": "N/A", "target": "N/A"},
+        "BTC": {"score": 42, "setup": "No Setup", "entry": "N/A", "stop": "N/A", "target": "N/A"}
+      }
+
+   E. Refresh on Intraday Updates (if triggered):
+      - Recompute affected module scores (e.g., trend/technical/volatility) based on refreshed provider summaries
+      - Overwrite dailyPlanner.signalData.composite/tier/setup and assets.<ASSET> entries (entry/stop/target) to align with new levels
+      - Keep recommendation text in sync with current triggers (e.g., replace stale BTC 111–112K sweep with 116.3–116.8K retest / 118K flip)
+
+Data Sources (From Existing Research Summaries)
+-----------------------------------------------
+
+TREND:
+- File: Research/Technicals/TradingView SPX/2025-XX-XX_TradingViewSPX_Summary.md
+- Data: Price, 50-DMA, 200-DMA, trend direction
+- File: Research/Technicals/TradingView BTC/2025-XX-XX_TradingViewBTC_Summary.md
+- Data: BTC price, moving averages
+
+BREADTH:
+- File: Research/Technicals/Market Breadth/2025-XX-XX_MarketBreadth_Summary.md
+- Data: % SPX >50-DMA, NYSE A/D Line, divergences
+
+VOLATILITY:
+- File: Research/Technicals/Volatility Metrics/2025-XX-XX_VolatilityMetrics_Summary.md
+- Data: VIX level, term structure
+- File: Research/Technicals/CoinGlass/2025-XX-XX_CoinGlass_Summary.md
+- Data: BTC/ETH IV percentile
+
+TECHNICAL:
+- File: Research/Technicals/TradingView SPX/2025-XX-XX_TradingViewSPX_Summary.md
+- Data: RSI, MACD, volume
+- Same for BTC
+
+SEASONALITY:
+- Auto-calculated based on current date
+- No file needed
+
+Signal Score Interpretation
+---------------------------
+
+85-100 (EXTREME):
+- Rare, highest conviction
+- Historical win rate: 75-85%
+- Max position size
+- Examples: Deep corrections, panic bottoms
+
+70-84 (STRONG):
+- High probability setups
+- Historical win rate: 65-75%
+- Full position size
+- Examples: Routine dips with confirmation
+
+55-69 (MODERATE):
+- Standard setups
+- Historical win rate: 55-65%
+- Reduced position size
+- Trade with tighter stops
+
+40-54 (WEAK):
+- Pass or minimal size
+- Historical win rate: 45-55%
+- Not worth the risk
+
+0-39 (AVOID):
+- Counter-trend
+- Historical win rate: <45%
+- Do not trade
+
+Playbook Reference
+-----------------
+
+For detailed entry/exit rules, risk management, and examples:
+- SPY: Trading/playbooks/spy-playbook.md
+- QQQ: Trading/playbooks/qqq-playbook.md
+- BTC: Trading/playbooks/btc-playbook.md
+- ETH: Trading/playbooks/eth-playbook.md
+
+Performance Tracking
+-------------------
+
+After signal execution:
+- Log trade in Trading/backtests/signal-performance-log.json
+- Track: Date, Asset, Setup, Score, Entry, Stop, Target, Result
+- Review quarterly: Win rate by score tier, avg R/R, false signal rate
+- Adjust scoring weights based on live performance
+
+Example Signal Generation
+-------------------------
+
+Date: October 1, 2025
+
+Step 1: Calculate Scores
+
+SPY:
+- Trend: 36/40 (90%) - Above 200-DMA, 2.7% below 50-DMA, 2/3 MTF bullish
+- Breadth: 12/25 (48%) - 32% >50-DMA improving, but A/D bearish divergence
+- Volatility: 16/20 (80%) - VIX 29 rolling over, backwardation
+- Technical: 10/10 (100%) - RSI 32 with bullish div, MACD bullish cross
+- Seasonality: 4/5 (80%) - TOM window + October
+
+Composite: (36×0.4) + (12×0.25) + (16×0.2) + (10×0.1) + (4×0.05) = 78/100
+
+Step 2: Identify Setup
+
+Score 78 = STRONG tier
+Setup Type: SPY Routine Dip Buy
+Entry: $662 (on 50-DMA reclaim)
+Stop: $655 (swing low)
+Target: $675 (prior pivot)
+R/R: 1:1.9
+
+Step 3: Add to Dashboard
+
+Daily Planner high-priority task:
+"🚦 SIGNAL: SPY Routine Dip @ $662 (Score 78/100) - Buy on 50-DMA reclaim, stop $655, target $675"
+
+Daily Planner AI interpretation:
+"Signal Engine identifies STRONG buy setup on SPY (78/100). Trend mean-reversion + VIX rollover aligned. Entry on 50-DMA reclaim at $662."
+
+Technicals tab AI interpretation:
+"Composite signal: 78/100 (STRONG). Trend 90%, Breadth 48% (caution: A/D divergence), Volatility 80%, Technical 100%. SPY routine dip setup active."
+
+Notes
+-----
+- Signal system is systematic but not automatic - human judgment required
+- Use signals as filter, not gospel
+- Adjust thresholds based on your risk tolerance
+- Track performance and refine over time
+- When in doubt, wait for higher-conviction signals (85+)

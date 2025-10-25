@@ -1,0 +1,7 @@
+﻿Go through each RSS provider folder in C:\Users\Iccanui\Desktop\Investing\Research\RSS and read the newest article files.
+For every RSS provider, create or update a timestamped Markdown summary that captures key ideas, market/technical notes, macro outlook, and watch items drawn from the latest articles.
+Save each summary file inside that provider's folder (not in the RSS root directory). Use the naming convention YYYY-MM-DD_<ProviderName>_Summary.md so that each provider's evolving viewpoint lives with its source articles.
+If a summary already exists for that provider, refresh it in-place with the most recent insights instead of creating duplicates.
+Repeat this process whenever new articles are scraped so the RSS provider summaries remain current.
+
+Note: These RSS summaries will be integrated into the main Market_Sentiment_Overview.md by the Master Plan workflow (see master-plan\How to use_MP.txt Step 2).

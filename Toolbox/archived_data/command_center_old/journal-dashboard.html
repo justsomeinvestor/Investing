@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Journal Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #01050f;
+      --bg-alt: #0a1731;
+      --fg: #f1f5f9;
+      --muted: rgba(191, 219, 254, 0.78);
+      --card: rgba(12, 21, 40, 0.88);
+      --card-strong: rgba(33, 67, 148, 0.9);
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.26);
+      --warning: #f97316;
+      --success: #22c55e;
+      font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(120% 200% at 0% -20%, rgba(96, 165, 250, 0.35), transparent 60%),
+        radial-gradient(110% 180% at 100% -10%, rgba(129, 140, 248, 0.32), transparent 65%),
+        linear-gradient(155deg, var(--bg) 0%, var(--bg-alt) 58%, #091124 100%);
+      color: var(--fg);
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(28px, 4vw, 48px) 20px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(24px, 3vw, 40px);
+    }
+    header.hero {
+      display: grid;
+      gap: 20px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(96, 165, 250, 0.28);
+      color: #e0f2ff;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+    }
+    header.hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      letter-spacing: 0.04em;
+      text-shadow: 0 18px 32px rgba(15, 23, 42, 0.55);
+    }
+    header.hero p {
+      margin: 0;
+      color: rgba(224, 242, 255, 0.86);
+      max-width: 760px;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    /* REMOVED: .status-bar and .status-pill styles - Status bar removed */
+    .grid {
+      display: grid;
+      gap: clamp(18px, 2vw, 24px);
+    }
+    @media (min-width: 960px) {
+      .grid-2 {
+        grid-template-columns: 1.2fr 1fr;
+      }
+      .grid-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+    section.card {
+      border-radius: 26px;
+      background: var(--card);
+      border: 1px solid rgba(148, 197, 255, 0.22);
+      box-shadow: 0 26px 60px rgba(2, 0, 36, 0.35);
+      padding: clamp(22px, 3vw, 30px);
+      position: relative;
+      overflow: hidden;
+    }
+    section.card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.16), rgba(2, 6, 23, 0.08));
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    section.card > * {
+      position: relative;
+      z-index: 1;
+    }
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(241, 245, 249, 0.92);
+      position: relative;
+      padding-bottom: 6px;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 56px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.85), transparent);
+      border-radius: 999px;
+    }
+    .as-of {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(203, 213, 225, 0.75);
+    }
+    .card strong {
+      color: var(--fg);
+    }
+    .meta {
+      color: rgba(219, 234, 254, 0.82);
+      font-size: 0.86rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.72));
+      border: 1px solid rgba(56, 189, 248, 0.12);
+      box-shadow: 0 18px 34px rgba(8, 47, 73, 0.28);
+      min-height: 120px;
+    }
+    .metric h3 {
+      margin: 0;
+      font-size: 0.85rem;
+      letter-spacing: 0.09em;
+      color: rgba(219, 234, 254, 0.78);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .metric h3 span.icon {
+      font-size: 1.1rem;
+    }
+    .metric .value {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .metric .value .gain {
+      color: var(--success);
+    }
+    .metric .value .loss {
+      color: var(--warning);
+    }
+    .highlight {
+      color: rgba(56, 189, 248, 0.95);
+      text-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+    }
+    .warning {
+      color: rgba(249, 115, 22, 0.9);
+    }
+    .success {
+      color: rgba(34, 197, 94, 0.9);
+    }
+    .metric .hint {
+      font-size: 0.9rem;
+      color: rgba(203, 213, 225, 0.88);
+      line-height: 1.5;
+    }
+    .latest-entry h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+    }
+    .latest-entry .meta-line {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .latest-entry .meta-line span {
+      margin-right: 12px;
+      color: rgba(148, 197, 255, 0.95);
+    }
+    .section-block {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(148, 163, 184, 0.14);
+    }
+    .section-block h4 {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(248, 250, 252, 0.75);
+    }
+    .section-block ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.6;
+      color: rgba(226, 232, 240, 0.9);
+    }
+    .section-block ul li::marker,
+    .history-item ul li::marker {
+      color: rgba(56, 189, 248, 0.75);
+      font-size: 0.9rem;
+    }
+    /* REMOVED: .priority-group ul li::marker - Priority Checklist section removed */
+    .section-block li strong {
+      color: rgba(248, 250, 252, 0.95);
+    }
+    .info-block {
+      margin-top: 16px;
+      padding: 20px 22px;
+      border-radius: 20px;
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      background: rgba(8, 15, 32, 0.88);
+      box-shadow: 0 18px 36px rgba(2, 8, 23, 0.55);
+      position: relative;
+      overflow: hidden;
+    }
+    .info-block h4 {
+      margin: 0 0 10px;
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(248, 250, 252, 0.85);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .info-block::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .info-block.market::before {
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.4), transparent);
+    }
+    .info-block.trades::before {
+      background: linear-gradient(135deg, rgba(74, 222, 128, 0.35), transparent);
+    }
+    .info-block.execution::before {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.32), transparent);
+    }
+    .info-block.trend::before {
+      background: linear-gradient(135deg, rgba(129, 140, 248, 0.34), transparent);
+    }
+    .info-block.prep::before {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.32), transparent);
+    }
+    .info-block.meta::before {
+      background: linear-gradient(135deg, rgba(148, 197, 255, 0.28), transparent);
+    }
+    .info-block.account::before {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.38), transparent);
+    }
+    .info-block.critical {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(30, 0, 0, 0.2));
+      border-color: rgba(248, 113, 113, 0.4);
+    }
+    .info-block.critical h4 {
+      color: rgba(252, 165, 165, 1);
+    }
+    .info-block.warning {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(30, 15, 0, 0.2));
+      border-color: rgba(251, 191, 36, 0.4);
+    }
+    .info-block.warning h4 {
+      color: rgba(253, 230, 138, 1);
+    }
+    .info-block-content {
+      position: relative;
+      z-index: 1;
+    }
+    .info-block h4 span.icon {
+      font-size: 1.1rem;
+    }
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.4), rgba(14, 116, 144, 0.45));
+      color: rgba(241, 245, 249, 0.96);
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      box-shadow: 0 18px 34px rgba(14, 116, 144, 0.36);
+      border: 1px solid rgba(148, 197, 255, 0.45);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .link-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 42px rgba(14, 116, 144, 0.42);
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .chip {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.35), rgba(96, 165, 250, 0.12));
+      color: rgba(224, 242, 255, 0.95);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(148, 197, 255, 0.45);
+      box-shadow: 0 12px 22px rgba(30, 64, 175, 0.28);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 28px rgba(59, 130, 246, 0.32);
+    }
+    /* REMOVED: canvas and .trend-note styles - Signal Trend section removed */
+    /* REMOVED: .levels-grid, .level-card, .level-row styles - Key Levels section removed */
+    /* REMOVED: .priority-list and .priority-group styles - Priority Checklist section removed */
+    .history-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .history-timeline.collapsed {
+      display: none;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.2s ease;
+    }
+    .history-timeline.expanded {
+      display: flex;
+      max-height: none;
+      opacity: 1;
+      transition: max-height 0.3s ease, opacity 0.2s ease;
+    }
+    .card-header.collapsible {
+      cursor: pointer;
+      user-select: none;
+    }
+    .card-header.collapsible:hover h2 {
+      color: rgba(148, 197, 255, 0.95);
+    }
+    #historyToggleIcon {
+      display: inline-block;
+      font-size: 0.8em;
+      margin-right: 8px;
+      transition: transform 0.2s ease;
+      color: rgba(96, 165, 250, 0.85);
+    }
+    #historyToggleIcon.collapsed {
+      transform: rotate(-90deg);
+    }
+    .history-item {
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      background: rgba(15, 23, 42, 0.52);
+      position: relative;
+      overflow: hidden;
+    }
+    .history-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), transparent);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .history-item > * {
+      position: relative;
+      z-index: 1;
+    }
+    .history-item h3 {
+      margin: 0;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+    .history-item .meta-line {
+      margin: 6px 0 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      gap: 12px;
+    }
+    .history-item .meta-line span {
+      color: rgba(148, 197, 255, 0.9);
+    }
+    .history-item ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.5;
+    }
+    footer {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    code {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.85rem;
+      padding: 2px 6px;
+      background: rgba(15, 23, 42, 0.75);
+      border-radius: 6px;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="tag">Journal System</div>
+      <h1>Execution Journal Control Center</h1>
+    </header>
+
+    <!-- NEW: Account Overview Section -->
+    <section class="card" id="accountCard">
+      <div class="card-header">
+        <h2>💰 Account Overview</h2>
+        <span class="as-of" id="accountAsOf">As of --</span>
+      </div>
+      <div class="grid grid-4" id="accountMetrics"></div>
+      <div class="section-block" id="allocationDetails"></div>
+    </section>
+
+    <div class="grid">
+      <section class="card latest-entry" id="latestCard">
+        <div class="card-header">
+          <h2>Latest Entry</h2>
+          <span class="as-of" id="latestAsOf">As of --</span>
+        </div>
+        <div id="latestEntry">Loading latest recap…</div>
+      </section>
+    </div>
+
+    <section class="card">
+      <div class="card-header collapsible" onclick="toggleHistory()">
+        <h2><span id="historyToggleIcon">▶</span> Previous Entries</h2>
+        <span class="as-of" id="historyAsOf">As of --</span>
+      </div>
+      <div class="history-timeline collapsed" id="historyTimeline"></div>
+    </section>
+
+    <footer>
+      Data sources: <code>Journal/Journal.md</code>, <code>Journal/account_state.json</code>. Refresh the page after updating the journal to see the latest reflection.
+    </footer>
+  </main>
+
+  <script>
+    const JOURNAL_URL = './Journal.md';
+    const ACCOUNT_STATE_URL = './account_state.json';
+
+    const KEYWORDS = [
+      { term: 'trigger', icon: '⏱️' },
+      { term: 'Max Pain', icon: '🧲' },
+      { term: 'breadth', icon: '🌐' },
+      { term: 'volatility', icon: '⚡' },
+      { term: 'signal', icon: '📈' },
+      { term: 'workflow', icon: '🛠️' }
+    ];
+
+    function formatAsOfLabel(raw) {
+      if (!raw) return 'As of --';
+      if (/^\d{4}-\d{2}-\d{2}T/.test(raw)) {
+        const date = new Date(raw);
+        if (!Number.isNaN(date.getTime())) {
+          return `As of ${date.toLocaleString(undefined, { hour12: true })}`;
+        }
+      }
+      return `As of ${raw}`;
+    }
+
+    function setAsOfLabel(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = formatAsOfLabel(value);
+    }
+
+    function splitEntries(markdown) {
+      // Skip everything before "# JOURNAL ENTRIES" marker
+      const marker = '# JOURNAL ENTRIES (Newest First)';
+      const markerIndex = markdown.indexOf(marker);
+      const journalContent = markerIndex !== -1
+        ? markdown.substring(markerIndex + marker.length)
+        : markdown;
+
+      return journalContent
+        // Tolerant split: any standalone --- with surrounding newlines
+        .split(/\n\s*---\s*\n/g)
+        .map(block => block.trim())
+        .filter(block => block && block !== '---' && block.length > 10); // Filter out tiny blocks
+    }
+
+    function parseEntry(block) {
+      const lines = block.split('\n')
+        .map(line => line.trim())
+        .filter(Boolean);
+      if (!lines.length) return null;
+
+      const titleLine = lines[0];
+      const titleMatch = titleLine.match(/\*\*(.+?)\*\*/);
+      const title = titleMatch ? titleMatch[1] : titleLine.replace(/^-+\s*/, '').trim();
+
+      const linkMatch = titleLine.match(/\[([^\]]+)\]\(([^)]+)\)/);
+      const linkText = linkMatch ? linkMatch[1] : null;
+      const linkHref = linkMatch ? linkMatch[2] : null;
+
+      const dateMatch = title.match(/(20\d{2}-\d{2}-\d{2})/);
+      const timeMatch = title.match(/\(([^)]+)\)/);
+
+      const bullets = [];
+      const sections = Object.create(null);
+      const sectionList = [];
+
+      // Track if we're inside Account Summary section
+      let inAccountSummary = false;
+      const accountSummary = { cash: null, ytdPL: null };
+
+      const bulletLines = lines.slice(1).filter(line => line.startsWith('- '));
+      for (const line of bulletLines) {
+        const cleaned = line.replace(/^-+\s*/, '').trim();
+        bullets.push(cleaned);
+
+        // Check for Account Summary section
+        if (cleaned.match(/^\*\*Account Summary\*\*/i)) {
+          inAccountSummary = true;
+          sections['account summary'] = '';
+          continue;
+        }
+
+        // Extract account data from sub-bullets (including indented sub-items)
+        if (inAccountSummary || cleaned.match(/Cash\s*&\s*Sweep\s*Vehicle:/i)) {
+          const cashMatch = cleaned.match(/Cash\s*&\s*Sweep\s*Vehicle:\s*\$([0-9,]+\.?\d*)/i);
+          if (cashMatch) {
+            accountSummary.cash = cashMatch[1].replace(/,/g, '');
+            inAccountSummary = true;  // Ensure we stay in summary mode
+          }
+        }
+        if (inAccountSummary || cleaned.match(/OVERALL\s*P[\/\\]L\s*YTD:/i)) {
+          const ytdMatch = cleaned.match(/OVERALL\s*P[\/\\]L\s*YTD:\s*\$?\s*([-+]?[0-9,]+\.?\d*)/i);
+          if (ytdMatch) {
+            accountSummary.ytdPL = ytdMatch[1].replace(/,/g, '');
+            inAccountSummary = true;  // Ensure we stay in summary mode
+          }
+        }
+
+        const sectionMatch = cleaned.match(/^\*\*(.+?)\*\*\s*:?\s*(.*)$/);
+        if (sectionMatch) {
+          const label = sectionMatch[1].trim();
+          const content = sectionMatch[2].trim();
+          if (label) {
+            if (label.toLowerCase() !== 'account summary') {
+              inAccountSummary = false;
+            }
+            sections[label.toLowerCase()] = content;
+            sectionList.push({ label, content });
+            continue;
+          }
+        }
+        sectionList.push({ label: null, content: cleaned });
+      }
+
+      return {
+        raw: block,
+        title,
+        linkText,
+        linkHref,
+        date: dateMatch ? dateMatch[1] : null,
+        time: timeMatch ? timeMatch[1] : null,
+        bullets,
+        sections,
+        sectionList,
+        accountSummary  // NEW: Include parsed account data
+      };
+    }
+
+    function enhanceText(text) {
+      return text
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>');
+    }
+
+    function stripSectionLabel(text) {
+      if (!text) return text;
+      const match = text.match(/^\*\*(.+?)\*\*\s*:?\s*(.*)$/);
+      return match ? match[2].trim() : text;
+    }
+
+    function extractSection(entry, labelCandidates) {
+      if (!entry) return null;
+      const candidates = Array.isArray(labelCandidates) ? labelCandidates : [labelCandidates];
+      const sections = entry.sections ?? null;
+      if (sections) {
+        for (const candidate of candidates) {
+          const key = candidate.toLowerCase();
+          if (sections[key]) return sections[key];
+        }
+      }
+      if (entry.bullets?.length) {
+        for (const candidate of candidates) {
+          const prefix = `**${candidate.toLowerCase()}`;
+          const match = entry.bullets.find(line => line.toLowerCase().startsWith(prefix));
+          if (match) return stripSectionLabel(match);
+        }
+      }
+      return null;
+    }
+
+    function extractFocusTags(block) {
+      const candidates = ['Max Pain', 'trigger', 'breadth', 'volatility', 'SPX', 'QQQ', 'BTC', 'NVDA', 'signal', 'workflow', 'breadth divergence', 'VIX'];
+      const normalized = block.toLowerCase();
+      const tags = [];
+      for (const word of candidates) {
+        const key = word.toLowerCase();
+        if (normalized.includes(key)) {
+          // Use Title Case for better aesthetics
+          // Keep already capitalized acronyms (SPX, QQQ, BTC, etc.) as-is
+          if (word === word.toUpperCase() && word.length <= 4) {
+            tags.push(word); // Keep acronyms uppercase
+          } else {
+            // Convert to Title Case for multi-word phrases and regular words
+            tags.push(word.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' '));
+          }
+        }
+      }
+      return [...new Set(tags)];
+    }
+
+    // NEW: Render Account Overview
+    function renderAccountOverview(entries, accountState) {
+      const container = document.getElementById('accountMetrics');
+      if (!entries || !entries.length) {
+        container.innerHTML = '<p class="muted">No account data available.</p>';
+        setAsOfLabel('accountAsOf', null);
+        return;
+      }
+
+      const latest = entries[0];
+      const acctStamp = accountState?.last_updated
+        ? accountState.last_updated
+        : (latest.date ? `${latest.date}${latest.time ? ` ${latest.time}` : ''}` : null);
+      setAsOfLabel('accountAsOf', acctStamp);
+
+      // Extract account data
+      const cash = accountState?.account?.cash_and_sweep || latest.accountSummary?.cash;
+      const ytdPL = accountState?.account?.ytd_pl ?? latest.accountSummary?.ytdPL;
+
+      // Extract daily P&L from P&L / Balance section (with more precise parsing)
+      const pnlBalance = extractSection(latest, ['P&L / Balance', 'P&L balance', 'P&L']);
+      let dailyPnL = null;
+      let dailyPnLPercent = null;
+      if (pnlBalance) {
+        // First try to match "Daily P&L" with bold formatting (**$xxx.xx**)
+        let dollarMatch = pnlBalance.match(/Daily P&L[:\s]*\*\*\$?([-+]?[0-9,]+\.?\d*)\*\*/i);
+
+        // If not found, try without bold formatting
+        if (!dollarMatch) {
+          dollarMatch = pnlBalance.match(/Daily P&L[:\s]*\$?([-+]?[0-9,]+\.?\d*)/i);
+        }
+
+        // Extract percentage if present
+        const percentMatch = pnlBalance.match(/([-+]?\d+\.?\d*)%/);
+
+        if (dollarMatch) dailyPnL = dollarMatch[1].replace(/,/g, '');
+        if (percentMatch) dailyPnLPercent = percentMatch[1];
+      }
+
+      // Calculate win rate from actual P/L amounts (dollar or percentage)
+      let totalTrades = 0;
+      let winningTrades = 0;
+      entries.forEach(entry => {
+        // Extract P&L / Balance section which contains Daily P/L
+        const pnl = extractSection(entry, ['P&L / Balance', 'P&L balance', 'P&L']);
+        if (pnl) {
+          // Skip entries with explicit "no trades" or "flat" with zero
+          if (pnl.toLowerCase().includes('no trades') || (pnl.toLowerCase().includes('flat') && pnl.includes('$0'))) {
+            return;
+          }
+
+          let plAmount = null;
+          let isWin = false;
+
+          // First try to match dollar amount with bold: **$100.00** or **-$15** or similar
+          let dollarMatch = pnl.match(/Daily\s+P[&/]?L[:\s]*\*\*([-+]?\$?[0-9,]+\.?\d+)\*\*/i);
+          if (dollarMatch) {
+            // Extract just the number part (remove $ if present)
+            plAmount = parseFloat(dollarMatch[1].replace(/[$,]/g, ''));
+          }
+
+          // If no bold dollar match, try without bold: Daily P&L: +$100 or Daily P&L $50, etc.
+          if (plAmount === null) {
+            dollarMatch = pnl.match(/Daily\s+P[&/]?L[:\s]+([-+]?\$?[0-9,]+\.?\d+)/i);
+            if (dollarMatch) {
+              plAmount = parseFloat(dollarMatch[1].replace(/[$,]/g, ''));
+            }
+          }
+
+          // If no dollar match, try percentage: **+0.95%** or **+0.95%**
+          if (plAmount === null) {
+            const percentMatch = pnl.match(/Daily\s+P[&/]?L[:\s]*\*\*([-+]?[0-9]+\.?\d+)%\*\*/i);
+            if (percentMatch) {
+              plAmount = parseFloat(percentMatch[1]);
+            }
+          }
+
+          // Last fallback: try percentage without bold
+          if (plAmount === null) {
+            const percentMatch = pnl.match(/Daily\s+P[&/]?L[:\s]+([-+]?[0-9]+\.?\d+)%/i);
+            if (percentMatch) {
+              plAmount = parseFloat(percentMatch[1]);
+            }
+          }
+
+          // Only count if we found a non-zero P/L
+          if (plAmount !== null && !isNaN(plAmount) && plAmount !== 0) {
+            totalTrades++;
+            if (plAmount > 0) {
+              winningTrades++;
+            }
+          }
+        }
+      });
+
+      const winRate = totalTrades > 0 ? ((winningTrades / totalTrades) * 100).toFixed(0) : '—';
+
+      const cashPct = accountState?.positions?.cash?.percentage;
+      const cashHint = (typeof cashPct === 'number')
+        ? `${cashPct.toFixed(1)}% Cash`
+        : '100% Cash Position';
+
+      const cards = [
+        {
+          icon: '💵',
+          title: 'Account Balance',
+          value: cash ? `<span class="highlight">$${parseFloat(cash).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>` : '<span class="muted">N/A</span>',
+          hint: cashHint
+        },
+        {
+          icon: '📊',
+          title: 'YTD P/L',
+          value: ytdPL ? `<span class="${parseFloat(ytdPL) >= 0 ? 'success' : 'loss'}">$${parseFloat(ytdPL).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>` : '<span class="muted">$0.00</span>',
+          hint: 'Year-to-Date Performance'
+        },
+        {
+          icon: '💰',
+          title: 'Daily P/L',
+          value: dailyPnL ? `<span class="${parseFloat(dailyPnL) >= 0 ? 'gain' : 'loss'}">${parseFloat(dailyPnL) >= 0 ? '+' : ''}$${parseFloat(dailyPnL).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>` : '<span class="muted">$0.00</span>',
+          hint: dailyPnLPercent ? `${parseFloat(dailyPnLPercent) >= 0 ? '+' : ''}${dailyPnLPercent}% today` : 'Latest session P/L'
+        },
+        {
+          icon: '🎯',
+          title: 'Win Rate',
+          value: `<span class="${parseFloat(winRate) >= 60 ? 'success' : (parseFloat(winRate) >= 50 ? 'warning' : 'muted')}">${winRate}%</span>`,
+          hint: `${winningTrades} wins / ${totalTrades} trades`
+        }
+      ];
+
+      container.innerHTML = cards.map(card => `
+        <div class="metric">
+          <h3>${card.icon ? `<span class="icon">${card.icon}</span>` : ''}${card.title}</h3>
+          <div class="value">${card.value || ''}</div>
+          <div class="hint">${card.hint || ''}</div>
+        </div>
+      `).join('');
+
+      // Render allocation details below the metrics
+      renderAllocationDetails(cash, accountState);
+    }
+
+    // NEW: Render allocation breakdown
+    function renderAllocationDetails(totalBalance, accountState) {
+      const container = document.getElementById('allocationDetails');
+      if (!container) return;
+
+      // Prefer live positions from account_state.json; fallback to 100% cash
+      const positions = accountState?.positions || null;
+      const allocation = positions ? [
+        { label: 'Cash & Sweep Vehicle', amount: positions.cash?.amount ?? totalBalance, percentage: positions.cash?.percentage ?? 0, icon: '💵', color: 'rgba(34, 197, 94, 0.9)' },
+        { label: 'Equities', amount: positions.equities?.amount ?? 0, percentage: positions.equities?.percentage ?? 0, icon: '📈', color: 'rgba(96, 165, 250, 0.9)' },
+        { label: 'Crypto', amount: positions.crypto?.amount ?? 0, percentage: positions.crypto?.percentage ?? 0, icon: '₿', color: 'rgba(249, 115, 22, 0.9)' },
+        { label: 'Hedges', amount: positions.hedges?.total_amount ?? 0, percentage: positions.hedges?.percentage ?? 0, icon: '🛡️', color: 'rgba(148, 163, 184, 0.9)' }
+      ] : [
+        { label: 'Cash & Sweep Vehicle', amount: totalBalance, percentage: 100.0, icon: '💵', color: 'rgba(34, 197, 94, 0.9)' },
+        { label: 'Equities', amount: 0, percentage: 0.0, icon: '📈', color: 'rgba(96, 165, 250, 0.9)' },
+        { label: 'Crypto', amount: 0, percentage: 0.0, icon: '₿', color: 'rgba(249, 115, 22, 0.9)' },
+        { label: 'Hedges', amount: 0, percentage: 0.0, icon: '🛡️', color: 'rgba(148, 163, 184, 0.9)' }
+      ];
+
+      container.innerHTML = `
+        <h4 style="margin: 0 0 12px; font-size: 0.92rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(248, 250, 252, 0.85);">
+          Position Breakdown
+        </h4>
+        <div style="display: grid; gap: 10px;">
+          ${allocation.map(pos => `
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-radius: 14px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.12);">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.2rem;">${pos.icon}</span>
+                <span style="font-size: 0.92rem; color: rgba(226, 232, 240, 0.95);">${pos.label}</span>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 0.95rem; font-weight: 600; color: ${pos.color};">
+                  ${pos.amount ? '$' + parseFloat(pos.amount).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '$0.00'}
+                </div>
+                <div style="font-size: 0.8rem; color: rgba(148, 163, 184, 0.85);">
+                  ${pos.percentage.toFixed(1)}%
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="margin-top: 14px; padding: 12px 16px; border-radius: 14px; background: rgba(96, 165, 250, 0.12); border: 1px solid rgba(96, 165, 250, 0.25);">
+          <div style="font-size: 0.85rem; color: rgba(224, 242, 255, 0.9); line-height: 1.5;">
+            <strong>💡 Note:</strong> Full cash position provides maximum flexibility for opportunistic entries when signal strengthens.
+          </div>
+        </div>
+      `;
+    }
+
+    // REMOVED: renderStatus function - Status bar removed from dashboard
+    // (Rebuild from first principles - add back if needed)
+
+    function renderLatest(entry) {
+      const entryEl = document.getElementById('latestEntry');
+      if (!entry) {
+        entryEl.textContent = 'No entries yet. Add your first EOD recap to Journal.md.';
+        setAsOfLabel('latestAsOf', null);
+        return;
+      }
+      const entryStamp = entry.date ? `${entry.date}${entry.time ? ` ${entry.time}` : ''}` : null;
+      setAsOfLabel('latestAsOf', entryStamp);
+
+      const market = extractSection(entry, ['Market Action & Signal', 'Market Action']);
+      const trades = extractSection(entry, ['Trades/P&L', 'Trades & P&L', 'Trades']);
+      const pnlBalance = extractSection(entry, ['P&L / Balance', 'P&L balance', 'P&L']);
+      const execution = extractSection(entry, ['Execution Review', 'Execution']);
+      const trend = extractSection(entry, ['Trend Watch & System Intel', 'Trend Intel', 'Trend']);
+      const prep = extractSection(entry, ['Tomorrow Prep', 'Tomorrow']);
+      const focusTargets = extractFocusTags(entry.raw);
+
+      const blockMeta = {
+        'Market Snapshot': { icon: '🌍', cls: 'market' },
+        'Trades & P&L': { icon: '💰', cls: 'trades' },
+        'P&L / Balance': { icon: '📈', cls: 'trades' },
+        'Execution Review': { icon: '🧭', cls: 'execution' },
+        'Trend Intel': { icon: '📡', cls: 'trend' },
+        'Tomorrow Prep': { icon: '🎯', cls: 'prep' }
+      };
+      const detailBlock = (title, content) => {
+        if (!content) return '';
+        let meta = blockMeta[title] || { icon: '📝', cls: 'meta' };
+        
+        // Dynamically change class based on content for Market Snapshot
+        if (title === 'Market Snapshot' && content) {
+            const lowerContent = content.toLowerCase();
+            if (lowerContent.includes('avoid') || lowerContent.includes('critical')) {
+                meta = { ...meta, cls: 'critical' };
+            } else if (lowerContent.includes('weak') || lowerContent.includes('warning')) {
+                meta = { ...meta, cls: 'warning' };
+            }
+        }
+
+        return `
+          <div class="info-block ${meta.cls}">
+            <div class="info-block-content">
+              <h4><span class="icon">${meta.icon}</span>${title}</h4>
+              <ul><li>${enhanceText(content)}</li></ul>
+            </div>
+          </div>
+        `;
+      };
+
+      const link = entry.linkHref
+        ? `<a class="link-pill" href="${entry.linkHref}" target="_blank" rel="noopener">Open detailed journal →</a>`
+        : '';
+
+      const chipMarkup = focusTargets.length
+        ? `<div class="chips">${focusTargets.map(tag => `<span class="chip">${tag}</span>`).join('')}</div>`
+        : '';
+      const chipSection = focusTargets.length
+        ? `<div class="meta" style="margin-top:18px; letter-spacing:0.12em;">Focus</div>${chipMarkup}`
+        : '';
+
+      entryEl.innerHTML = `
+        <h3>${entry.title}</h3>
+        <div class="meta-line">
+        ${entry.date ? `<span>${entry.date}</span>` : ''}
+        ${entry.time ? `<span>${entry.time}</span>` : ''}
+        </div>
+        ${detailBlock('Market Snapshot', market)}
+        ${detailBlock('Trades & P&L', trades)}
+        ${detailBlock('P&L / Balance', pnlBalance)}
+        ${detailBlock('Execution Review', execution)}
+        ${detailBlock('Trend Intel', trend)}
+        ${detailBlock('Tomorrow Prep', prep)}
+        ${chipSection}
+        ${link}
+      `;
+    }
+
+    function renderHistory(entries) {
+      const timeline = document.getElementById('historyTimeline');
+      if (!entries.length) {
+        timeline.innerHTML = '<p class="muted">Add more entries to build history.</p>';
+        setAsOfLabel('historyAsOf', null);
+        return;
+      }
+      const first = entries[0];
+      const stamp = first?.date ? `${first.date}${first.time ? ` ${first.time}` : ''}` : null;
+      setAsOfLabel('historyAsOf', stamp);
+      timeline.innerHTML = entries.map(entry => {
+        const sections = (entry.sectionList || []).filter(item => item.content);
+        const fallback = entry.bullets || [];
+        const displaySections = sections.length
+          ? sections.slice(0, 4)
+          : fallback.slice(0, 4).map(text => ({
+              label: null,
+              content: stripSectionLabel(text)
+            }));
+
+        const [primary, ...rest] = displaySections;
+        const renderSectionLine = section => {
+          if (!section) return '';
+          const body = section.content ? enhanceText(section.content) : '';
+          return section.label
+            ? `<strong>${enhanceText(section.label)}</strong> — ${body}`
+            : body;
+        };
+
+        const primaryMarkup = primary
+          ? `<div class="info-block meta" style="margin-top:0;">
+                <div class="info-block-content">
+                  <h4><span class="icon">⭐</span>${primary.label ? enhanceText(primary.label) : 'Highlight'}</h4>
+                  <ul><li>${renderSectionLine(primary)}</li></ul>
+                </div>
+             </div>`
+          : '';
+        const restMarkup = rest.length
+          ? `<ul>${rest.map(item => `<li>${renderSectionLine(item)}</li>`).join('')}</ul>`
+          : '';
+        return `
+          <div class="history-item">
+            <h3>${entry.title}</h3>
+            <div class="meta-line">
+              ${entry.date ? `<span>${entry.date}</span>` : ''}
+              ${entry.time ? `<span>${entry.time}</span>` : ''}
+            </div>
+            ${primaryMarkup}
+            ${restMarkup}
+            ${entry.linkHref ? `<p class="muted" style="margin-top:10px;"><a href="${entry.linkHref}" target="_blank" rel="noopener">Open detailed journal →</a></p>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    // REMOVED: renderMetrics function - Signal State section removed from dashboard
+    // (Rebuild from first principles - add back if needed)
+
+    // REMOVED: renderKeyLevels function - Key Levels section removed from dashboard
+    // (Rebuild from first principles - add back if needed)
+
+    // REMOVED: renderTasks function - Priority Checklist section removed (depends on master-plan.md)
+    // (Journal dashboard is now fully self-contained and modular)
+
+    // REMOVED: renderTrendChart and renderTrendSummary functions - Signal Trend section removed
+    // (Rebuild from first principles - add back if needed)
+
+    // Toggle Previous Entries section (collapsible)
+    function toggleHistory() {
+      const timeline = document.getElementById('historyTimeline');
+      const icon = document.getElementById('historyToggleIcon');
+
+      if (!timeline || !icon) return;
+
+      const isCollapsed = timeline.classList.contains('collapsed');
+
+      if (isCollapsed) {
+        // Expand
+        timeline.classList.remove('collapsed');
+        timeline.classList.add('expanded');
+        icon.classList.remove('collapsed');
+        icon.textContent = '▼';
+        localStorage.setItem('historyCollapsed', 'false');
+      } else {
+        // Collapse
+        timeline.classList.remove('expanded');
+        timeline.classList.add('collapsed');
+        icon.classList.add('collapsed');
+        icon.textContent = '▶';
+        localStorage.setItem('historyCollapsed', 'true');
+      }
+    }
+
+    // Restore collapse state on page load
+    function restoreHistoryState() {
+      const timeline = document.getElementById('historyTimeline');
+      const icon = document.getElementById('historyToggleIcon');
+      const isCollapsed = localStorage.getItem('historyCollapsed') === 'true';
+
+      if (isCollapsed && timeline && icon) {
+        timeline.classList.remove('expanded');
+        timeline.classList.add('collapsed');
+        icon.classList.add('collapsed');
+        icon.textContent = '▶';
+      } else if (timeline && icon) {
+        timeline.classList.add('expanded');
+        icon.textContent = '▼';
+      }
+    }
+
+    // REMOVED: renderProcessHighlights function - Process Pulse section removed from dashboard
+    // (Journal dashboard now focuses on Account Overview, Latest Entry, and Previous Entries)
+
+    async function loadData() {
+      try {
+        const [journalRes, accountStateRes] = await Promise.all([
+          fetch(JOURNAL_URL, { cache: 'no-store' }),
+          fetch(ACCOUNT_STATE_URL, { cache: 'no-store' })
+        ]);
+        if (!journalRes.ok) throw new Error(`Journal fetch failed: ${journalRes.status}`);
+        const accountStateOk = accountStateRes && accountStateRes.ok;
+
+        const [journalMd, accountStateRaw] = await Promise.all([
+          journalRes.text(), accountStateOk ? accountStateRes.text() : Promise.resolve(null)
+        ]);
+        const entries = splitEntries(journalMd).map(parseEntry).filter(Boolean);
+
+        let accountState = null;
+        try {
+          if (accountStateRaw) accountState = JSON.parse(accountStateRaw);
+        } catch (e) {
+          console.warn('account_state.json parse failed:', e);
+        }
+
+        const latest = entries[0];
+
+        // Render all sections
+        renderAccountOverview(entries, accountState);
+        renderLatest(latest);
+        const historyEntries = entries.length > 1 ? entries.slice(1) : entries;
+        renderHistory(historyEntries);
+        restoreHistoryState();
+
+      } catch (error) {
+        console.error(error);
+        document.getElementById('latestEntry').textContent = 'Unable to load journal data.';
+        document.getElementById('historyTimeline').innerHTML = '<p class="muted">Unable to load journal data.</p>';
+        document.getElementById('accountMetrics').innerHTML = '<p class="muted">Unable to load account data.</p>';
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

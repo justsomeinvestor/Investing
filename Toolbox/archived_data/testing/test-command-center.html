@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Center Test Suite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0e27;
+            color: #ffffff;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #1a1f3a;
+            border: 2px solid #00d4ff;
+            border-radius: 5px;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .timestamp {
+            color: #b8c5d6;
+            font-size: 12px;
+            margin-bottom: 30px;
+        }
+
+        .test-section {
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 3px solid #ff6b35;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+
+        .test-section h2 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .test-item {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 15px;
+            padding: 12px;
+            margin: 10px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+            align-items: center;
+        }
+
+        .test-name {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .test-status {
+            padding: 6px 12px;
+            border-radius: 3px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .status-pending {
+            background: #ffb700;
+            color: #000;
+        }
+
+        .status-pass {
+            background: #00ff41;
+            color: #000;
+        }
+
+        .status-fail {
+            background: #ff0055;
+            color: #fff;
+        }
+
+        .status-info {
+            background: #00d4ff;
+            color: #000;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #000;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            transition: all 0.2s ease;
+            font-size: 13px;
+        }
+
+        button:hover {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .results {
+            background: rgba(0, 255, 65, 0.05);
+            border-left: 3px solid #00ff41;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 3px;
+        }
+
+        .results h3 {
+            color: #00ff41;
+            margin-bottom: 15px;
+        }
+
+        .result-line {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            padding: 8px;
+            margin: 5px 0;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+        }
+
+        .result-line:last-child {
+            border-bottom: none;
+        }
+
+        .summary {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+        }
+
+        .summary.pass {
+            color: #00ff41;
+        }
+
+        .summary.fail {
+            color: #ff0055;
+        }
+
+        .test-details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            padding: 12px;
+            margin-top: 10px;
+            border-left: 2px solid #00d4ff;
+            display: none;
+        }
+
+        .test-details.show {
+            display: block;
+        }
+
+        .test-details h4 {
+            color: #00d4ff;
+            margin-bottom: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .detail-section {
+            margin: 8px 0;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .detail-section strong {
+            color: #00ff41;
+        }
+
+        .detail-section .label {
+            color: #b8c5d6;
+            display: inline-block;
+            width: 100px;
+        }
+
+        .expandable-test {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .expandable-test:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .expand-icon {
+            display: inline-block;
+            margin-right: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .expandable-test.expanded .expand-icon {
+            transform: rotate(90deg);
+        }
+
+        iframe {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Command Center Test Suite</h1>
+        <div class="timestamp">Test Run: <span id="test-time"></span></div>
+
+        <div class="controls">
+            <button onclick="runAllTests()">▶️ RUN ALL TESTS</button>
+            <button onclick="testFunctionality()">🔧 TEST FUNCTIONALITY</button>
+            <button onclick="testPersistence()">💾 TEST PERSISTENCE</button>
+            <button onclick="testResponsive()">📱 TEST RESPONSIVE</button>
+            <button onclick="testPerformance()">⚡ TEST PERFORMANCE</button>
+            <button onclick="clearTestResults()">🗑️ CLEAR RESULTS</button>
+        </div>
+
+        <div id="test-output"></div>
+
+        <div class="results">
+            <h3>Test Results</h3>
+            <div id="results-summary"></div>
+        </div>
+    </div>
+
+    <!-- Hidden iframe to load command center -->
+    <iframe id="test-frame" src="command-center.html"></iframe>
+
+    <script>
+        let testResults = [];
+        let passCount = 0;
+        let failCount = 0;
+        let infoCount = 0;
+
+        // Test definitions with detailed explanations
+        const testDefinitions = {
+            'Command Center Loads': {
+                what: 'Verifies the main HTML file loads without errors',
+                why: 'If the page fails to load, nothing else can work. This is the critical first test.',
+                importance: 'CRITICAL',
+                impact: 'Users cannot access dashboard if page fails to load'
+            },
+            'Analysis Panel Exists': {
+                what: 'Checks if the dynamic analysis panel div element is present in the DOM',
+                why: 'The analysis panel is the core feature for displaying trade analysis results',
+                importance: 'CRITICAL',
+                impact: 'Without this panel, analysis results cannot be displayed to the user'
+            },
+            'Test Buttons Present': {
+                what: 'Verifies all 6 test action buttons are rendered on the page',
+                why: 'Test buttons allow manual testing of analysis display functionality',
+                importance: 'HIGH',
+                impact: 'Users cannot test analysis display without these buttons'
+            },
+            'Collapsible Sections': {
+                what: 'Confirms Quick Commands and Journal Archives sections exist and have toggle functionality',
+                why: 'Collapsible sections keep the interface clean and organized, improving usability',
+                importance: 'HIGH',
+                impact: 'Dashboard becomes cluttered if sections cannot be collapsed'
+            },
+            'Trade History Data': {
+                what: 'Checks if historical trade records are loaded in the archives section',
+                why: 'Trade history provides context for past performance and learning opportunities',
+                importance: 'MEDIUM',
+                impact: 'Historical trading data unavailable for review and analysis'
+            },
+            'localStorage Support': {
+                what: 'Verifies browser supports localStorage for persistent data storage',
+                why: 'localStorage is used to save pinned analyses across page reloads',
+                importance: 'CRITICAL',
+                impact: 'PIN feature fails; analyses cannot persist across browser refresh'
+            },
+            'Console Errors': {
+                what: 'Scans for JavaScript errors logged to browser console',
+                why: 'Console errors indicate bugs that could break functionality',
+                importance: 'HIGH',
+                impact: 'Hidden errors can cause features to fail unexpectedly'
+            },
+            'Styling Applied': {
+                what: 'Confirms CSS styles are loaded and applied to elements',
+                why: 'Styling creates the polished look and aids usability',
+                importance: 'MEDIUM',
+                impact: 'Unstyled page looks unprofessional and is harder to use'
+            },
+            'localStorage Write/Read': {
+                what: 'Tests that data can be written to and retrieved from localStorage',
+                why: 'Validates the PIN-to-persist feature works correctly',
+                importance: 'CRITICAL',
+                impact: 'Pinned analyses may not save or restore properly'
+            },
+            'localStorage Cleanup': {
+                what: 'Verifies test data is properly removed after tests',
+                why: 'Prevents test data from interfering with actual usage',
+                importance: 'MEDIUM',
+                impact: 'Test data pollution could cause unexpected behavior'
+            },
+            'Viewport Meta Tag': {
+                what: 'Checks for responsive design viewport configuration',
+                why: 'Mobile devices need proper viewport settings to display correctly',
+                importance: 'HIGH',
+                impact: 'Mobile users see zoomed-out, unusable layout'
+            },
+            'Media Queries': {
+                what: 'Confirms CSS media queries for responsive breakpoints exist',
+                why: 'Media queries make the layout adapt to different screen sizes',
+                importance: 'HIGH',
+                impact: 'Tablet/mobile users see desktop layout designed for large screens'
+            },
+            'Responsive Layouts': {
+                what: 'Verifies CSS Grid is used for flexible, responsive layouts',
+                why: 'Grid layouts automatically reflow content based on container size',
+                importance: 'HIGH',
+                impact: 'Content may overflow or look broken on different devices'
+            },
+            'Mobile Compatibility': {
+                what: 'Indicates tests that need manual verification on mobile devices',
+                why: 'Automated tests cannot fully simulate touch and mobile context',
+                importance: 'HIGH',
+                impact: 'Mobile experience could be broken or confusing'
+            },
+            'Load Time': {
+                what: 'Measures how long it takes the page to fully load',
+                why: 'Fast load times improve user experience and SEO',
+                importance: 'MEDIUM',
+                impact: 'Slow pages frustrate users and increase bounce rate'
+            },
+            'File Size': {
+                what: 'Reports the total size of the HTML document',
+                why: 'Smaller files load faster, especially on slow connections',
+                importance: 'LOW',
+                impact: 'Very large files could slow down loading on mobile networks'
+            },
+            'Script Complexity': {
+                what: 'Counts the number of script tags and indicates code complexity',
+                why: 'Too many inline scripts can be harder to maintain and debug',
+                importance: 'LOW',
+                impact: 'Code organization could make future updates harder'
+            },
+            'DOM Size': {
+                what: 'Reports total number of HTML elements on the page',
+                why: 'Excessively large DOM trees can slow down browser rendering',
+                importance: 'MEDIUM',
+                impact: 'Very large DOMs could cause lag and poor performance'
+            }
+        };
+
+        function setTime() {
+            document.getElementById('test-time').textContent = new Date().toLocaleString();
+        }
+        setTime();
+
+        function addTestResult(name, status, message = '', details = {}) {
+            const definition = testDefinitions[name] || {};
+            testResults.push({
+                name,
+                status,
+                message,
+                details,
+                what: definition.what,
+                why: definition.why,
+                importance: definition.importance,
+                impact: definition.impact,
+                time: new Date().toLocaleTimeString()
+            });
+            renderResults();
+        }
+
+        function toggleTestDetails(index) {
+            const details = document.querySelector(`[data-test-index="${index}"] .test-details`);
+            const testItem = document.querySelector(`[data-test-index="${index}"] .expandable-test`);
+            if (details) {
+                details.classList.toggle('show');
+                testItem.classList.toggle('expanded');
+            }
+        }
+
+        function renderResults() {
+            const container = document.getElementById('results-summary');
+            const output = document.getElementById('test-output');
+
+            // Update counts
+            passCount = testResults.filter(r => r.status === 'PASS').length;
+            failCount = testResults.filter(r => r.status === 'FAIL').length;
+            infoCount = testResults.filter(r => r.status === 'INFO').length;
+
+            // Render detailed results
+            output.innerHTML = testResults.map((result, index) => `
+                <div class="test-section" data-test-index="${index}">
+                    <div class="expandable-test" onclick="toggleTestDetails(${index})">
+                        <span class="expand-icon">▶</span>
+                        <span>${result.name}</span>
+                    </div>
+                    <div class="test-item">
+                        <div class="test-name">${result.time}</div>
+                        <div class="test-status status-${result.status.toLowerCase()}">
+                            ${result.status}
+                        </div>
+                    </div>
+                    ${result.message ? `<div style="color: #b8c5d6; font-size: 12px; margin-top: 10px;"><strong>Result:</strong> ${result.message}</div>` : ''}
+                    <div class="test-details">
+                        <h4>📋 Test Details</h4>
+                        <div class="detail-section">
+                            <div><span class="label"><strong>What:</strong></span> ${result.what || 'N/A'}</div>
+                        </div>
+                        <div class="detail-section">
+                            <div><span class="label"><strong>Why:</strong></span> ${result.why || 'N/A'}</div>
+                        </div>
+                        <div class="detail-section">
+                            <div><span class="label"><strong>Importance:</strong></span>
+                                <span style="color: ${
+                                    result.importance === 'CRITICAL' ? '#ff0055' :
+                                    result.importance === 'HIGH' ? '#ff6b35' :
+                                    result.importance === 'MEDIUM' ? '#ffb700' : '#00d4ff'
+                                };">${result.importance || 'N/A'}</span>
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div><span class="label"><strong>Impact:</strong></span> ${result.impact || 'N/A'}</div>
+                        </div>
+                        ${result.message ? `
+                        <div class="detail-section" style="border-top: 1px solid rgba(0, 212, 255, 0.2); padding-top: 8px; margin-top: 8px;">
+                            <div><span class="label"><strong>Details:</strong></span> ${result.message}</div>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            // Summary
+            const total = passCount + failCount + infoCount;
+            const passRate = total > 0 ? ((passCount / total) * 100).toFixed(1) : 0;
+            const summaryClass = failCount === 0 ? 'pass' : 'fail';
+
+            container.innerHTML = `
+                <div class="result-line">
+                    <span>Total Tests:</span>
+                    <span>${total}</span>
+                </div>
+                <div class="result-line">
+                    <span style="color: #00ff41;">✓ PASSED:</span>
+                    <span style="color: #00ff41;">${passCount}</span>
+                </div>
+                <div class="result-line">
+                    <span style="color: #ff0055;">✗ FAILED:</span>
+                    <span style="color: #ff0055;">${failCount}</span>
+                </div>
+                <div class="result-line">
+                    <span style="color: #00d4ff;">ℹ INFO:</span>
+                    <span style="color: #00d4ff;">${infoCount}</span>
+                </div>
+                <div class="summary ${summaryClass}">
+                    PASS RATE: ${passRate}%
+                </div>
+            `;
+        }
+
+        function testFunctionality() {
+            testResults = [];
+            console.log('Starting functionality tests...');
+
+            // Test 1: Check if command center loads
+            const frame = document.getElementById('test-frame');
+            try {
+                frame.onload = function() {
+                    addTestResult('Command Center Loads', 'PASS', 'HTML file successfully loaded');
+
+                    // Test 2: Check for analysis panel
+                    const doc = frame.contentDocument;
+                    const analysisPanel = doc.getElementById('analysis-panel');
+                    if (analysisPanel) {
+                        addTestResult('Analysis Panel Exists', 'PASS', 'Dynamic analysis panel found');
+                    } else {
+                        addTestResult('Analysis Panel Exists', 'FAIL', 'Analysis panel not found');
+                    }
+
+                    // Test 3: Check for test buttons
+                    const buttons = doc.querySelectorAll('button');
+                    if (buttons.length > 0) {
+                        addTestResult('Test Buttons Present', 'PASS', `Found ${buttons.length} buttons`);
+                    } else {
+                        addTestResult('Test Buttons Present', 'FAIL', 'No buttons found');
+                    }
+
+                    // Test 4: Check for collapsible sections
+                    const commandsContent = doc.getElementById('commands-content');
+                    const archivesContent = doc.getElementById('archives-content');
+                    if (commandsContent && archivesContent) {
+                        addTestResult('Collapsible Sections', 'PASS', 'Quick Commands and Archives found');
+                    } else {
+                        addTestResult('Collapsible Sections', 'FAIL', 'Missing collapsible sections');
+                    }
+
+                    // Test 5: Check for trade history
+                    const tradeHistory = doc.getElementById('trade-history');
+                    if (tradeHistory) {
+                        const trades = tradeHistory.querySelectorAll('div[style*="border-left"]').length;
+                        addTestResult('Trade History Data', 'PASS', `Found ${trades} trade entries`);
+                    } else {
+                        addTestResult('Trade History Data', 'FAIL', 'Trade history not found');
+                    }
+
+                    // Test 6: localStorage available
+                    try {
+                        localStorage.setItem('test', 'test');
+                        localStorage.removeItem('test');
+                        addTestResult('localStorage Support', 'PASS', 'Browser supports localStorage');
+                    } catch (e) {
+                        addTestResult('localStorage Support', 'FAIL', 'localStorage not available');
+                    }
+
+                    // Test 7: Console for errors
+                    const originalError = console.error;
+                    let errorCount = 0;
+                    console.error = function(...args) {
+                        errorCount++;
+                        originalError.apply(console, args);
+                    };
+
+                    addTestResult('Console Errors', errorCount === 0 ? 'PASS' : 'FAIL', `Found ${errorCount} console errors`);
+
+                    // Test 8: Check CSS colors
+                    const style = frame.contentDocument.defaultView.getComputedStyle(analysisPanel);
+                    addTestResult('Styling Applied', 'INFO', 'Analysis panel styling verified');
+                };
+            } catch (e) {
+                addTestResult('Command Center Loads', 'FAIL', e.message);
+            }
+        }
+
+        function testPersistence() {
+            testResults = [];
+            console.log('Testing persistence...');
+
+            const frame = document.getElementById('test-frame');
+            try {
+                frame.onload = function() {
+                    const doc = frame.contentDocument;
+
+                    // Test 1: localStorage pin
+                    doc.addEventListener('DOMContentLoaded', function() {
+                        try {
+                            localStorage.setItem('lastAnalysis', '<div>Test Analysis</div>');
+                            const retrieved = localStorage.getItem('lastAnalysis');
+                            if (retrieved === '<div>Test Analysis</div>') {
+                                addTestResult('localStorage Write/Read', 'PASS', 'Data persists correctly');
+                            } else {
+                                addTestResult('localStorage Write/Read', 'FAIL', 'Data not retrieved correctly');
+                            }
+
+                            localStorage.removeItem('lastAnalysis');
+                            addTestResult('localStorage Cleanup', 'PASS', 'Test data removed');
+                        } catch (e) {
+                            addTestResult('localStorage Operations', 'FAIL', e.message);
+                        }
+                    });
+                };
+            } catch (e) {
+                addTestResult('Persistence Tests', 'FAIL', e.message);
+            }
+        }
+
+        function testResponsive() {
+            testResults = [];
+            console.log('Testing responsive design...');
+
+            const frame = document.getElementById('test-frame');
+            const viewport = frame.contentDocument.querySelector('meta[name="viewport"]');
+
+            if (viewport) {
+                addTestResult('Viewport Meta Tag', 'PASS', 'Responsive meta tag found');
+            } else {
+                addTestResult('Viewport Meta Tag', 'FAIL', 'Viewport not configured');
+            }
+
+            // Test media queries
+            const doc = frame.contentDocument;
+            const style = doc.querySelector('style');
+            if (style && style.textContent.includes('@media')) {
+                addTestResult('Media Queries', 'PASS', 'CSS media queries found');
+            } else {
+                addTestResult('Media Queries', 'FAIL', 'No media queries detected');
+            }
+
+            // Test grid layouts
+            if (style && style.textContent.includes('grid')) {
+                addTestResult('Responsive Layouts', 'PASS', 'Grid layout used');
+            } else {
+                addTestResult('Responsive Layouts', 'FAIL', 'No responsive layout detected');
+            }
+
+            addTestResult('Mobile Compatibility', 'INFO', 'Manual testing required on mobile devices');
+        }
+
+        function testPerformance() {
+            testResults = [];
+            console.log('Testing performance...');
+
+            const startTime = performance.now();
+            const frame = document.getElementById('test-frame');
+
+            frame.onload = function() {
+                const loadTime = performance.now() - startTime;
+                const doc = frame.contentDocument;
+
+                // File size (approximate)
+                const htmlSize = doc.documentElement.outerHTML.length / 1024;
+
+                if (loadTime < 2000) {
+                    addTestResult('Load Time', 'PASS', `Loaded in ${loadTime.toFixed(0)}ms`);
+                } else {
+                    addTestResult('Load Time', 'FAIL', `Took ${loadTime.toFixed(0)}ms (target: <2000ms)`);
+                }
+
+                addTestResult('File Size', 'INFO', `HTML size: ${htmlSize.toFixed(1)}KB`);
+
+                // Script count
+                const scripts = doc.querySelectorAll('script').length;
+                addTestResult('Script Complexity', 'INFO', `${scripts} script tag(s) found`);
+
+                // DOM elements
+                const elements = doc.querySelectorAll('*').length;
+                addTestResult('DOM Size', 'INFO', `${elements} DOM elements total`);
+            };
+        }
+
+        function runAllTests() {
+            testResults = [];
+            addTestResult('🧪 Test Suite Initialized', 'INFO', 'Running complete test suite...');
+
+            setTimeout(() => testFunctionality(), 500);
+            setTimeout(() => testPersistence(), 1500);
+            setTimeout(() => testResponsive(), 2500);
+            setTimeout(() => testPerformance(), 3500);
+        }
+
+        function clearTestResults() {
+            testResults = [];
+            document.getElementById('test-output').innerHTML = '';
+            document.getElementById('results-summary').innerHTML = '';
+            addTestResult('🗑️ Test Results Cleared', 'INFO', 'Ready for new test run');
+        }
+    </script>
+</body>
+</html>

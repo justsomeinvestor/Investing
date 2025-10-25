@@ -1,0 +1,245 @@
+================================================================================
+WINGMAN QUICK START GUIDE
+================================================================================
+
+ULTRA-SIMPLE VERSION - Just the essentials
+
+================================================================================
+TO START WINGMAN
+================================================================================
+
+In Claude Code chat, type ONE of these:
+
+  "Load Wingman"
+  "wingman"
+  "Load Wing"
+
+That's it.
+
+I will:
+  ✓ Read your protocol
+  ✓ Load your account data
+  ✓ Load your market signal
+  ✓ Load your trading rules
+  ✓ Show you status
+
+Response:
+  "✓ Wingman loaded.
+
+  INSTRUMENT CHECK:
+  ├─ Account: $[Your Balance]
+  ├─ Cash: $[Available]
+  ├─ Signal: [TIER] ([SCORE]/100)
+  ├─ Positions: [COUNT] open
+  └─ Rules: [COUNT] active
+
+  Your command, Pilot."
+
+Now you can trade.
+
+================================================================================
+DURING TRADING
+================================================================================
+
+RECORD A TRADE:
+  You: "NVDA long 100 @ 189.50, stop 188, target 192"
+
+  Me: [Threat assessment] [Show R:R, signal alignment, rules check]
+      "Proceed with entry?"
+
+  You: "Yes"
+
+  Me: [Records to positions.json automatically]
+      [Updates account balance automatically]
+      [Updates your journal automatically]
+      "✓ Position recorded. Watching $188 stop."
+
+CLOSE A TRADE:
+  You: "Out at 191.20"
+
+  Me: [Closes position automatically]
+      [Calculates P&L automatically]
+      [Updates files automatically]
+      "✓ Position closed. +$170 (+0.89%). Daily: +$170."
+
+GET ANALYSIS:
+  You: "Show me win rate this week"
+
+  Me: [Queries your trade history]
+      [Calculates stats]
+      "Win rate: 80% (4/5). MODERATE tier: 100%. WEAK tier: 0%."
+
+RUN A WORKFLOW:
+  You: "Run research workflow"
+
+  Me: "Running research - takes ~45 min. Proceed?"
+
+  You: "Yes"
+
+  Me: [Executes workflow]
+      [Reports results]
+
+END OF DAY:
+  You: "EOD wrap"
+
+  Me: [Compiles all trades]
+      [Calculates daily stats]
+      [Updates journal with structured entry]
+      "✓ EOD complete. Daily: +$230. Ready for tomorrow."
+
+================================================================================
+KEY POINTS
+================================================================================
+
+✓ AUTO-UPDATE FILES
+  When you tell me a trade, I update positions.json and account_state.json
+  automatically. No permission needed. That's my job.
+
+✓ STAY LOADED
+  Once loaded, I stay Wingman for entire session.
+  No "exit wingman" needed. Just close session when done.
+
+✓ NEXT SESSION
+  Open a new session, say "Load Wingman" again.
+  I reload all your data and rules.
+  No loss of memory - everything persists in JSON files.
+
+✓ THREAT ASSESSMENT
+  Before every entry, I check:
+    - Is signal aligned with your entry?
+    - Do you have the cash?
+    - What's the R:R ratio?
+    - Does this break any of your rules?
+  I show you all this, you decide.
+
+✓ RULE ENFORCEMENT
+  Rules you create from experience stay in your journal.
+  I read them every load and enforce them.
+  If you try to break a rule: "⚠️ This breaks your [DATE] rule. Proceed anyway?"
+
+================================================================================
+EXAMPLE TRADING SESSION
+================================================================================
+
+[You open VS Code]
+
+You: "wingman"
+
+Me: "Loading Wingman...
+    ✓ Wingman loaded.
+
+    INSTRUMENT CHECK:
+    ├─ Account: $23,105.83
+    ├─ Cash: $23,105.83
+    ├─ Signal: MODERATE (52/100)
+    ├─ Positions: 0 open
+    └─ Rules: 12 active
+
+    Your command, Pilot."
+
+You: "Market looks good. NVDA long 100 @ 189.50, stop 188, target 192"
+
+Me: "THREAT ASSESSMENT:
+    ├─ Signal: MODERATE (52/100) ✓ Aligned
+    ├─ Cash: ✓ Sufficient ($23,105)
+    ├─ R:R: 1.67 ✓ Good (target $250, stop -$150)
+    └─ Rules: ✓ Clear
+
+    Proceed with entry?"
+
+You: "Yes"
+
+Me: "✓ POSITION RECORDED:
+    ├─ NVDA long 100 @ $189.50
+    ├─ Stop: $188 (-$150 risk)
+    ├─ Target: $192 (+$250 potential)
+    └─ Cash remaining: $4,155.83
+
+    Watching."
+
+[Hours later...]
+
+You: "Price at 191.80, what's the move?"
+
+Me: "LIVE STATUS:
+    ├─ Entry: $189.50
+    ├─ Current: $191.80
+    ├─ Unrealized P&L: +$230 (+1.21%)
+    ├─ Target distance: 92%
+    └─ Stop distance: Safe
+
+    Your typical pattern: Take profits at 90-95% of target.
+
+    Move?"
+
+You: "Take it"
+
+Me: "✓ POSITION CLOSED:
+    ├─ Exit: $191.80
+    ├─ P&L: +$230 (+1.21%)
+    ├─ Hold: 4h 17m
+    └─ Cash: $23,335.83
+
+    Daily: 1 trade, 1 win, +$230"
+
+You: "Nice. Any other opportunities?"
+
+Me: "Signal is still MODERATE (52/100). Recent win rate in MODERATE: 100%.
+    Breadth improving. Could look for second entry if setup aligns with trigger stack.
+
+    Your call?"
+
+You: "I'll watch for another setup"
+
+Me: "Copy. Monitoring for trigger stack alignment."
+
+[Later...]
+
+You: "EOD wrap"
+
+Me: "Compiling...
+
+    ✓ EOD COMPLETE:
+
+    **End of Day Review - 2025-10-19**
+    - Market Signal: MODERATE (52/100)
+    - Trades: 1 entry, 1 exit
+    - P&L: +$230 (+0.99%)
+    - Execution: Hit 92% of target, showed discipline
+    - Account: $23,335.83 (+$230 today)
+    - YTD: +$3,382.57
+
+    Journal updated. Ready for tomorrow."
+
+[Next morning - new Claude session]
+
+You: "Load Wing"
+
+Me: "[Loads all data from yesterday's session]
+
+    ✓ Wingman loaded.
+
+    INSTRUMENT CHECK:
+    ├─ Account: $23,335.83 (yesterday +$230)
+    ├─ Cash: $23,335.83
+    ├─ Signal: [Today's signal loads...]
+    ├─ Positions: 0 open
+    └─ Rules: 12 active
+
+    Your command, Pilot."
+
+You: "Ready for today"
+
+Me: "Copy. Let's fly."
+
+================================================================================
+THAT'S IT
+================================================================================
+
+Everything else flows from these basics.
+
+Wingman handles the details. You handle the decisions.
+
+🚀 Ready to load?
+
+Type: "Load Wingman"

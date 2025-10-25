@@ -1,0 +1,197 @@
+DAILY ACCOUNT SNAPSHOT GUIDE
+============================
+
+Purpose
+-------
+Capture your broker account data daily so the AI Portfolio Manager can provide accurate recommendations based on your REAL account balance and positions.
+
+When to Update
+--------------
+**BEFORE running the master plan workflow each day**
+
+This ensures Phase 0 of the workflow picks up the latest balance data.
+
+How It Works
+------------
+The workflow automatically parses your Journal.md for the most recent account data in this format:
+
+  - **Account Summary:**
+    - Cash & Sweep Vehicle: $22,928.89
+    - OVERALL P/L YTD: $2,974.57
+
+Then updates Journal/account_state.json with that data.
+
+Daily Process
+-------------
+
+1. **Open your broker account** and note:
+   - Cash & Sweep Vehicle balance
+   - Overall P/L YTD (year-to-date profit/loss)
+   - Any positions you hold (equities, crypto, hedges)
+
+2. **Add snapshot to Journal.md** at the TOP of the file:
+
+   ```markdown
+   **End of Day Review - 2025-10-12 (HH:MM PT)**
+
+   - **Market Action & Signal:** [Will fill after workflow]
+   - **Trades/P&L:** [Your trades today]
+   - **P&L / Balance:** Daily P&L **[+/-X.XX%]** or **$[amount]**
+   - **Account Summary:**
+     - Cash & Sweep Vehicle: $22,928.89
+     - OVERALL P/L YTD: $2,974.57
+   - **Execution Review:** [Will fill after day complete]
+   - **Trend Watch & System Intel:** [Will fill after workflow]
+   - **Tomorrow Prep:** [Will fill after workflow]
+   ```
+
+3. **If you have positions** (not 100% cash), you can manually update account_state.json:
+
+   Open: Journal/account_state.json
+
+   Update the positions section:
+   ```json
+   "positions": {
+     "cash": {
+       "amount": 15000,
+       "percentage": 65.4
+     },
+     "equities": {
+       "ticker": "SPLG",
+       "amount": 5000,
+       "percentage": 21.8,
+       "shares": 104
+     },
+     "crypto": {
+       "asset": "BTC",
+       "amount": 2928.89,
+       "percentage": 12.8
+     },
+     "hedges": {
+       "positions": [],
+       "total_amount": 0,
+       "percentage": 0.0
+     }
+   }
+   ```
+
+   **Calculate percentages:** (position amount / total balance) * 100
+
+4. **Run the workflow:**
+
+   ```bash
+   python scripts/run_workflow.py 2025-10-12 --skip-fetch
+   ```
+
+   Phase 0 will attempt to parse the journal for balance data.
+   Phase 5 will generate AI recommendations based on your current allocation.
+
+5. **Review AI recommendation:**
+
+   - Open master-plan/research-dashboard.html
+   - Click 'Portfolio' tab
+   - See "Current Allocation" vs "Target Allocation"
+   - Review specific actions and reasoning
+
+6. **Execute trades if you agree:**
+
+   - Use your own judgment - don't blindly follow AI
+   - After executing, update account_state.json with new positions
+   - OR wait until next day and capture in journal entry
+
+Portfolio Tab Display
+----------------------
+The dashboard Portfolio tab will show:
+
+**Current Allocation:**
+- Cash: $22,929 (100.0%)
+- Equities (SPLG): $0 (0.0%)
+- Crypto (BTC): $0 (0.0%)
+- Hedges: $0 (0.0%)
+
+**Target Allocation:** (AI recommended based on signal)
+- Cash: 60% ($13,757)
+- Equities: 25% ($5,732)
+- Crypto: 10% ($2,293)
+- Hedges: 5% ($1,146)
+
+**Actions to Execute:**
+- Buy $5,732 SPLG (119 shares @ $48.12)
+- Buy $2,293 BTC (0.0196 BTC @ $116,800)
+- Buy $1,146 VIX calls (57 contracts @ $20)
+
+**Reasoning:**
+Signal is WEAK (41.2/100) with poor breadth...etc
+
+Important Notes
+---------------
+- **100% Cash is Fine:** If you're all cash, that's a valid allocation!
+- **Manual Position Tracking:** For now, positions must be manually updated in account_state.json
+- **Future Enhancement:** We can build automated position tracking from trade logs
+- **Journal Integration:** The journal parser automatically extracts cash balance from journal entries
+
+Troubleshooting
+---------------
+**Issue:** Workflow says "No balance data found"
+**Fix:** Make sure your latest Journal.md entry includes the Account Summary section with cash balance
+
+**Issue:** Portfolio tab shows old data
+**Fix:** Manually update Journal/account_state.json with current positions
+
+**Issue:** AI recommendations don't make sense
+**Fix:** Verify account_state.json has correct balance and positions
+
+Examples
+--------
+
+**Example 1: 100% Cash**
+```json
+{
+  "last_updated": "2025-10-12",
+  "account": {
+    "total_balance": 22928.89,
+    "cash_and_sweep": 22928.89,
+    "ytd_pl": 0
+  },
+  "positions": {
+    "cash": {"amount": 22928.89, "percentage": 100.0},
+    "equities": {"amount": 0, "percentage": 0.0},
+    "crypto": {"amount": 0, "percentage": 0.0},
+    "hedges": {"total_amount": 0, "percentage": 0.0}
+  }
+}
+```
+
+**Example 2: Mixed Portfolio**
+```json
+{
+  "last_updated": "2025-10-12",
+  "account": {
+    "total_balance": 22928.89,
+    "cash_and_sweep": 15000.00,
+    "ytd_pl": 2974.57
+  },
+  "positions": {
+    "cash": {"amount": 15000.00, "percentage": 65.4},
+    "equities": {
+      "ticker": "SPLG",
+      "amount": 5000.00,
+      "percentage": 21.8,
+      "shares": 104
+    },
+    "crypto": {
+      "asset": "BTC",
+      "amount": 2928.89,
+      "percentage": 12.8
+    },
+    "hedges": {"total_amount": 0, "percentage": 0.0}
+  }
+}
+```
+
+Contact
+-------
+Any issues with account tracking, consult:
+- Journal/How to use_Journal.txt (EOD workflow)
+- master-plan/How to use_MP.txt (full workflow)
+- This file (account snapshot guide)

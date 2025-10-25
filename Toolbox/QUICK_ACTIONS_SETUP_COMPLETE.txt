@@ -1,0 +1,201 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║       ✅ QUICK ACTIONS SETUP COMPLETE ✅                      ║
+║                                                                ║
+║         Wingman Recon + Daily Plans + Signals                 ║
+║              Added to Command Center                           ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+WHAT WAS ADDED:
+═════════════════════════════════════════════════════════════════
+
+Quick Actions Panel in Command Center with 3 Buttons:
+
+  🔍 WINGMAN RECON
+     └─ Runs: python scripts/automation/run_all_scrapers.py
+     └─ Triggers: All market scanners
+     └─ Status: Real-time notification
+
+  📊 DAILY PLANS
+     └─ Triggers: Daily trade plan workflow
+     └─ Output: Bullish/Bearish trade plans
+     └─ Status: Real-time notification
+
+  🎲 SIGNALS
+     └─ Triggers: Quality-scored signals workflow
+     └─ Output: Signals with scores (0-100)
+     └─ Status: Real-time notification
+
+
+WHERE TO FIND IT:
+═════════════════════════════════════════════════════════════════
+
+Open: Journal/command-center.html
+
+Visual Location:
+  Header
+    ↓
+  [Analyzer Input]
+    ↓
+  ⚡ QUICK ACTIONS SECTION (NEW!) ← YOU ARE HERE
+  [🔍] [📊] [🎲] with descriptions
+    ↓
+  [Live Analysis Results]
+    ↓
+  [Dashboard]
+
+
+HOW TO USE:
+═════════════════════════════════════════════════════════════════
+
+WINGMAN RECON:
+  Click: 🔍 Wingman Recon
+  Status: Orange notification "Running..."
+  Executes: python scripts/automation/run_all_scrapers.py
+  Use: Morning to get fresh market data
+
+DAILY PLANS:
+  Click: 📊 Daily Plans
+  Status: Blue notification "Generating..."
+  Output: SPX plan, ES plan, QQQ plan, etc.
+  Use: 9:30 AM to get ready-to-trade plans
+
+SIGNALS:
+  Click: 🎲 Signals
+  Status: Yellow notification "Generating..."
+  Output: Quality-scored signals with breakdown
+  Use: Generate signals from research dashboard
+
+
+DAILY WORKFLOW:
+═════════════════════════════════════════════════════════════════
+
+9:30 AM ET:
+  1. Click: 🔍 Wingman Recon (wait ~2 min)
+  2. Click: 📊 Daily Plans (wait ~30 sec)
+  3. Click: 🎲 Signals (wait ~30 sec)
+  4. Review plans + pick best to trade
+  5. Set entry alerts
+
+10:00 AM - 3:30 PM:
+  Execute trades from your selected plans
+
+4:00 PM:
+  Tell Claude: "EOD review - which plans worked?"
+  Log performance + prepare for next day
+
+
+FILES MODIFIED:
+═════════════════════════════════════════════════════════════════
+
+Journal/command-center.html
+  ├─ Added Quick Actions Panel (HTML)
+  │  └─ 3 Buttons + Status descriptions
+  │
+  └─ Added Functions (JavaScript)
+     ├─ triggerWingmanRecon()
+     ├─ generateDailyPlans()
+     └─ generateSignals()
+
+
+DOCUMENTATION:
+═════════════════════════════════════════════════════════════════
+
+New Guide: QUICK_ACTIONS_REFERENCE.md
+Location: Toolbox/INSTRUCTIONS/
+Contains:
+  - What each button does
+  - How to use them
+  - Status notifications
+  - Daily workflow
+  - FAQs
+  - Integration details
+
+
+TESTING THE SETUP:
+═════════════════════════════════════════════════════════════════
+
+1. Open Journal/command-center.html in browser
+2. Scroll below analyzer
+3. See new "⚡ Quick Actions" section
+4. Click 🔍 Wingman Recon (test)
+   └─ Should show orange notification
+   └─ Executes run_all_scrapers.py
+5. Click 📊 Daily Plans (test)
+   └─ Should show blue notification
+6. Click 🎲 Signals (test)
+   └─ Should show yellow notification
+
+
+NEXT ACTIONS:
+═════════════════════════════════════════════════════════════════
+
+Immediate:
+  1. Open Command Center in browser
+  2. Scroll down to see Quick Actions
+  3. Click any button to test
+
+Tomorrow 9:30 AM:
+  1. Click 🔍 Wingman Recon
+  2. Click 📊 Daily Plans
+  3. Click 🎲 Signals
+  4. Execute best trades
+
+Going Forward:
+  Every morning:
+    Recon → Plans → Signals → Trade
+
+
+HOW TO TRIGGER VIA VOICE:
+═════════════════════════════════════════════════════════════════
+
+To Claude:
+  "Wingman Recon"
+  or
+  "Create daily trade plans"
+  or
+  "Generate signals"
+
+
+HOW TO EXPAND:
+═════════════════════════════════════════════════════════════════
+
+To add more quick actions:
+  1. Add button HTML in Quick Actions section
+  2. Create new JavaScript function (like the 3 existing ones)
+  3. Add backend endpoint to handle the action
+  4. Follow same pattern as existing buttons
+
+
+STATUS NOTIFICATIONS:
+═════════════════════════════════════════════════════════════════
+
+All buttons show colored notifications (top right):
+
+  Orange (🔍 Recon):     #ff6b35
+  Blue (📊 Plans):       #00d4ff
+  Yellow (🎲 Signals):   #ffb700
+  Green (✅ Complete):   #00ff41
+  Red (❌ Error):        #ff0055
+
+Notifications auto-dismiss after 5 seconds
+
+
+═════════════════════════════════════════════════════════════════
+
+✅ EVERYTHING IS SET UP AND READY TO USE
+
+Your Command Center now has instant access to:
+  • Market data refresh (Wingman Recon)
+  • Daily trade plans (one click)
+  • Quality-scored signals (one click)
+
+All via buttons in the Quick Actions panel.
+
+Open command center and start using immediately!
+
+═════════════════════════════════════════════════════════════════
+
+Updated: October 20, 2025
+Status: PRODUCTION READY

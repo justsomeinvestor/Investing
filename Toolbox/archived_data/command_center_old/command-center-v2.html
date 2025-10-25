@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wingman Command Center - Trading HQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e6f0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        .dashboard-header {
+            background: rgba(26, 31, 58, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 25px 40px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            color: #10b981;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* GRID LAYOUT */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .grid.full-width {
+            grid-template-columns: 1fr;
+        }
+
+        .grid.two-column {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* CARDS */
+        .card {
+            background: rgba(26, 31, 58, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
+        }
+
+        .card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #e0e6f0;
+        }
+
+        .card-value {
+            font-size: 2em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-detail {
+            font-size: 0.9em;
+            color: #9ca3af;
+            margin-top: 8px;
+        }
+
+        /* METRIC ROW */
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            align-items: center;
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: #9ca3af;
+            font-size: 0.95em;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: #e0e6f0;
+        }
+
+        .metric-value.positive {
+            color: #10b981;
+        }
+
+        .metric-value.negative {
+            color: #ef4444;
+        }
+
+        /* SIGNAL SCORE */
+        .signal-score-large {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .signal-number {
+            font-size: 3.5em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .signal-tier {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-top: 10px;
+        }
+
+        .signal-tier.strong { color: #10b981; }
+        .signal-tier.moderate { color: #f59e0b; }
+        .signal-tier.weak { color: #ef4444; }
+        .signal-tier.avoid { color: #ef4444; }
+
+        /* TRADE ENTRY */
+        .trade-item {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 3px solid #6366f1;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .trade-item.loss {
+            border-left-color: #ef4444;
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .trade-item.win {
+            border-left-color: #10b981;
+            background: rgba(16, 185, 129, 0.08);
+        }
+
+        .trade-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .trade-symbol {
+            font-weight: 700;
+            color: #e0e6f0;
+            font-size: 1.05em;
+        }
+
+        .trade-pnl {
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .trade-pnl.loss {
+            color: #ef4444;
+        }
+
+        .trade-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: #9ca3af;
+        }
+
+        /* BUTTONS */
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #6366f1;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.25);
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #9ca3af;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .grid.two-column {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .signal-number {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1>Wingman Command Center</h1>
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>OPERATIONAL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <!-- ROW 1: SIGNAL & ACCOUNT STATUS -->
+        <div class="grid two-column">
+            <!-- Market Signal Score -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Market Signal</div>
+                </div>
+                <div class="signal-score-large">
+                    <div class="signal-number" id="signal-score">--</div>
+                    <div class="signal-tier" id="signal-tier">--</div>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Last Updated</span>
+                    <span class="metric-value" id="market-updated">--</span>
+                </div>
+            </div>
+
+            <!-- Account Status -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Account Status</div>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Balance</span>
+                    <span class="metric-value" id="account-balance">--</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Available Cash</span>
+                    <span class="metric-value" id="account-cash">--</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">YTD P/L</span>
+                    <span class="metric-value positive" id="account-ytd">--</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Positions Open</span>
+                    <span class="metric-value" id="account-positions">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2: TODAY'S TRADING -->
+        <div class="grid two-column">
+            <!-- Today's P/L -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Today's P/L</div>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Total</span>
+                    <span class="metric-value" id="today-pnl">--</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Trades</span>
+                    <span class="metric-value" id="today-trades">0</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Wins / Losses</span>
+                    <span class="metric-value" id="today-winloss">0 / 0</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Win Rate</span>
+                    <span class="metric-value" id="today-winrate">--</span>
+                </div>
+            </div>
+
+            <!-- Key Levels -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Key Levels</div>
+                </div>
+                <div id="key-levels-container">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📊</div>
+                        <div>Loading market levels...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 3: LATEST TRADE -->
+        <div class="grid full-width">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Latest Trade</div>
+                </div>
+                <div id="latest-trade-container">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📝</div>
+                        <div>No trades recorded yet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 4: RECENT TRADES -->
+        <div class="grid full-width">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Recent Trade History</div>
+                </div>
+                <div id="recent-trades-container">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📈</div>
+                        <div>No recent trades</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 5: QUICK ACTIONS -->
+        <div class="grid full-width">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Quick Actions</div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="triggerWingmanRecon()">🔍 Wingman Recon</button>
+                    <button class="btn btn-primary" onclick="generateDailyPlans()">📊 Daily Plans</button>
+                    <button class="btn btn-primary" onclick="generateSignals()">🎲 Signals</button>
+                    <button class="btn btn-secondary" onclick="refreshDashboard()">🔄 Refresh</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        /**
+         * Refresh all Command Center panels from .session_state.json
+         */
+        async function refreshDashboard() {
+            try {
+                const response = await fetch('./.session_state.json');
+                const state = await response.json();
+
+                // Update Market Signal
+                const signalScore = state.market?.signal_score || 0;
+                const signalTier = state.market?.signal_tier || 'UNKNOWN';
+                document.getElementById('signal-score').textContent = signalScore.toFixed(1);
+                document.getElementById('signal-tier').textContent = signalTier;
+                document.getElementById('signal-tier').className = `signal-tier ${signalTier.toLowerCase()}`;
+                document.getElementById('market-updated').textContent = new Date(state.market?.last_updated).toLocaleTimeString();
+
+                // Update Account Status
+                const balance = state.account?.balance || 0;
+                const cash = state.account?.cash || 0;
+                const ytdPl = state.account?.ytd_pl || 0;
+                const positions = state.account?.positions?.length || 0;
+
+                document.getElementById('account-balance').textContent = `$${balance.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
+                document.getElementById('account-cash').textContent = `$${cash.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
+                document.getElementById('account-ytd').textContent = `$${ytdPl.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
+                document.getElementById('account-positions').textContent = positions;
+
+                // Update Today's P/L
+                const todayPnl = state.account?.today_pnl || 0;
+                const todayPnlElement = document.getElementById('today-pnl');
+                todayPnlElement.textContent = `$${Math.abs(todayPnl).toLocaleString('en-US', {maximumFractionDigits: 2})}`;
+                todayPnlElement.className = `metric-value ${todayPnl >= 0 ? 'positive' : 'negative'}`;
+
+                const recentTrades = state.account?.recent_trades || [];
+                document.getElementById('today-trades').textContent = recentTrades.length;
+
+                // Update Key Levels
+                updateKeyLevels(state.market?.key_levels);
+
+                // Update Latest Trade
+                if (state.journal_feed?.last_entry) {
+                    updateLatestTrade(state.journal_feed.last_entry);
+                }
+
+                // Update Recent Trades
+                updateRecentTrades(recentTrades);
+
+            } catch (error) {
+                console.error('Error refreshing dashboard:', error);
+            }
+        }
+
+        function updateKeyLevels(keyLevels) {
+            const container = document.getElementById('key-levels-container');
+            if (!keyLevels || Object.keys(keyLevels).length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📊</div><div>No key levels available</div></div>';
+                return;
+            }
+
+            let html = '';
+            for (const [key, level] of Object.entries(keyLevels)) {
+                if (typeof level === 'object') {
+                    const support = level.support || level.value || '--';
+                    const resistance = level.resistance || '--';
+                    const price = level.price || '--';
+
+                    html += `<div class="metric-row">
+                        <span class="metric-label">${key}</span>
+                        <span class="metric-value">${price || support}</span>
+                    </div>`;
+                }
+            }
+            container.innerHTML = html || '<div class="empty-state">No levels</div>';
+        }
+
+        function updateLatestTrade(entry) {
+            const container = document.getElementById('latest-trade-container');
+            if (!entry || !entry.symbol) {
+                container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📝</div><div>No trades recorded yet</div></div>';
+                return;
+            }
+
+            const pnl = entry.pnl || 0;
+            const isProfitable = pnl >= 0;
+
+            const html = `
+                <div class="trade-item ${isProfitable ? 'win' : 'loss'}">
+                    <div class="trade-header">
+                        <span class="trade-symbol">${entry.symbol}</span>
+                        <span class="trade-pnl ${isProfitable ? '' : 'loss'}">
+                            ${isProfitable ? '+' : '-'}$${Math.abs(pnl).toLocaleString('en-US', {maximumFractionDigits: 2})}
+                        </span>
+                    </div>
+                    <div class="trade-meta">
+                        <span>Entry: $${entry.entry?.toLocaleString('en-US', {maximumFractionDigits: 2}) || '--'}</span>
+                        <span>${entry.time || '--'}</span>
+                    </div>
+                    <div class="card-detail" style="margin-top: 10px;">
+                        ${entry.raw_notes ? entry.raw_notes.substring(0, 150) + '...' : 'No notes'}
+                    </div>
+                    <div class="card-detail">
+                        Setup: ${entry.setup_type || '--'} | State: ${entry.emotional_state || '--'}
+                    </div>
+                </div>
+            `;
+            container.innerHTML = html;
+        }
+
+        function updateRecentTrades(trades) {
+            const container = document.getElementById('recent-trades-container');
+            if (!trades || trades.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📈</div><div>No recent trades</div></div>';
+                return;
+            }
+
+            let html = '';
+            trades.forEach(trade => {
+                const pnl = trade.pnl || 0;
+                const isProfitable = pnl >= 0;
+                html += `
+                    <div class="trade-item ${isProfitable ? 'win' : 'loss'}">
+                        <div class="trade-header">
+                            <span class="trade-symbol">${trade.symbol}</span>
+                            <span class="trade-pnl ${isProfitable ? '' : 'loss'}">
+                                ${isProfitable ? '+' : '-'}$${Math.abs(pnl).toLocaleString('en-US', {maximumFractionDigits: 2})}
+                            </span>
+                        </div>
+                        <div class="trade-meta">
+                            <span>${trade.date || '--'}</span>
+                            <span>${trade.setup_type || '--'}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function triggerWingmanRecon() {
+            alert('Wingman Recon: Running market scanners...');
+            console.log('Recon triggered');
+        }
+
+        function generateDailyPlans() {
+            alert('Generating daily trade plans...');
+            console.log('Daily Plans triggered');
+        }
+
+        function generateSignals() {
+            alert('Generating trading signals...');
+            console.log('Signals triggered');
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            refreshDashboard();
+            // Auto-refresh every 30 seconds
+            setInterval(refreshDashboard, 30000);
+        });
+    </script>
+</body>
+</html>
