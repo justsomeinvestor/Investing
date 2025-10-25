@@ -99,72 +99,75 @@ dashboard:
   - id: portfolio
     label: 💼 Portfolio
     portfolioRecommendation:
-        updatedAt: '2025-10-25T18:51:55Z'
-        signalScore: 57
-        signalTier: MODERATE
-        confidenceLevel: medium-high
-        allocation:
-          cash: 40
-          equities: 30
-          crypto: 20
-          hedges: 10
-        tickers:
-          tech: AAPL, MSFT, META, NVDA
-          crypto: BTC/ETH @ $107-109k support
-          defensive: Cash ready
-        actions:
-          - action: Deploy $6,933 to SPY/QQQ (30% equities) on breadth confirmation >70% up-volume
-            rationale: Based on current signal and market context
-          - action: Add $4,622 to BTC/ETH (20% crypto) positioning with 15% of capital deployed
-            rationale: Based on current signal and market context
-          - action: Maintain $9,242 cash for opportunities during Fed volatility Oct 29
-            rationale: Based on current signal and market context
-          - action: Add $929 to VIX calls (10% hedges) as insurance through Oct 29
-            rationale: Based on current signal and market context
-        reasoning: Signal moderately bullish (57/100) with clear breadth bottleneck waiting for resolution. Fed Oct 29 guidance will determine next leg—dovish scenario supports risk deployment with breadth improvement, while hawkish maintains defensive positioning. Current setup favors waiting for confirmation rather than chasing consolidation; this allocation sizes properly for both scenarios post-Fed while respecting risk management constraints.
-        keyRisks:
-          - Fed hawkish surprise could trigger immediate 2-3% SPY drawdown requiring hedge execution
-          - Breadth failure to thrust >70% would invalidate bullish setup despite price strength
-          - Concentration in mega-cap tech (NVDA/MSFT/AAPL) creates index rally fragility
-          - CPI inflation narrative could reverse if energy prices spike or labor data disappoints
-        accountBalance: 23106
-        recommendation: See allocation above for current positioning
+      updatedAt: '2025-10-25T18:51:55Z'
+      signalScore: 57
+      signalTier: MODERATE
+      confidenceLevel: medium-high
+      allocation:
+        cash: 40
+        equities: 30
+        crypto: 20
+        hedges: 10
+      tickers:
+        tech: AAPL, MSFT, META, NVDA
+        crypto: BTC/ETH @ $107-109k support
+        defensive: Cash ready
+      actions:
+      - action: Deploy $6,933 to SPY/QQQ (30% equities) on breadth confirmation >70% up-volume
+        rationale: Based on current signal and market context
+      - action: Add $4,622 to BTC/ETH (20% crypto) positioning with 15% of capital deployed
+        rationale: Based on current signal and market context
+      - action: Maintain $9,242 cash for opportunities during Fed volatility Oct 29
+        rationale: Based on current signal and market context
+      - action: Add $929 to VIX calls (10% hedges) as insurance through Oct 29
+        rationale: Based on current signal and market context
+      reasoning: Signal moderately bullish (57/100) with clear breadth bottleneck waiting for resolution. Fed Oct 29 guidance
+        will determine next leg—dovish scenario supports risk deployment with breadth improvement, while hawkish maintains
+        defensive positioning. Current setup favors waiting for confirmation rather than chasing consolidation; this allocation
+        sizes properly for both scenarios post-Fed while respecting risk management constraints.
+      keyRisks:
+      - Fed hawkish surprise could trigger immediate 2-3% SPY drawdown requiring hedge execution
+      - Breadth failure to thrust >70% would invalidate bullish setup despite price strength
+      - Concentration in mega-cap tech (NVDA/MSFT/AAPL) creates index rally fragility
+      - CPI inflation narrative could reverse if energy prices spike or labor data disappoints
+      accountBalance: 23106
+      recommendation: See allocation above for current positioning
     aiInterpretation:
       updatedAt: '2025-10-25T18:45:00Z'
       summary: 'Portfolio Signal Tier HOLDING MODERATE (57/100) on consolidated 2-day technical setup. Market breadth divergence
         is KEY LIMITING FACTOR—SPX at ATH but 80% of stocks below ATH. Inflation narrative bullish (CPI beat, housing anchor
-        working), but Fed Oct 29 forward guidance is THE catalyst determining next leg. Institutional accumulation vs retail fear
-        (Fear & Greed 37) = classic bottom setup. Earnings strong (76-78% beat rate, 22% positive guidance) validates quality
-        positioning. Key risk: Only mega-cap tech (NVDA/MSFT/AAPL) driving indexes—no broad support.'
-      keyInsight: 'BREADTH DIVERGENCE = THE BOTTLENECK: Signal MODERATE (57/100) not STRONG (70+) because advance-decline ratio
-        weak and concentration risk maximal. Market needs BREADTH IMPROVEMENT to sustain rally. THIS IS THE KEY CONDITION that
-        must be met post-Fed. Until breadth thrusts >70% up-volume, avoid aggressive index positioning—favor individual stock
-        selection instead.'
-      action: 'PREPARE for two scenarios post-Fed Oct 29: (1) DOVISH = breadth improvement + risk rally target $700 SPY (deploy 40%
-        equities, 20% crypto, 40% cash, 10% hedges). (2) HAWKISH = breadth failure + defensive stance target $650 SPY (maintain
-        20% equities, 10% crypto, 60% cash, 30% hedges). CURRENT ACTION: Build quality watchlist, set breakout alerts at $670 SPY
-        and $611 QQQ, wait for Fed clarity. DON''T chase current consolidation—confirmed breakout on breadth improvement is entry
-        signal. Key levels: SPX $652.84 (support), $670 (resistance).'
+        working), but Fed Oct 29 forward guidance is THE catalyst determining next leg. Institutional accumulation vs retail
+        fear (Fear & Greed 37) = classic bottom setup. Earnings strong (76-78% beat rate, 22% positive guidance) validates
+        quality positioning. Key risk: Only mega-cap tech (NVDA/MSFT/AAPL) driving indexes—no broad support.'
+      keyInsight: 'BREADTH DIVERGENCE = THE BOTTLENECK: Signal MODERATE (57/100) not STRONG (70+) because advance-decline
+        ratio weak and concentration risk maximal. Market needs BREADTH IMPROVEMENT to sustain rally. THIS IS THE KEY CONDITION
+        that must be met post-Fed. Until breadth thrusts >70% up-volume, avoid aggressive index positioning—favor individual
+        stock selection instead.'
+      action: 'PREPARE for two scenarios post-Fed Oct 29: (1) DOVISH = breadth improvement + risk rally target $700 SPY (deploy
+        40% equities, 20% crypto, 40% cash, 10% hedges). (2) HAWKISH = breadth failure + defensive stance target $650 SPY
+        (maintain 20% equities, 10% crypto, 60% cash, 30% hedges). CURRENT ACTION: Build quality watchlist, set breakout alerts
+        at $670 SPY and $611 QQQ, wait for Fed clarity. DON''T chase current consolidation—confirmed breakout on breadth improvement
+        is entry signal. Key levels: SPX $652.84 (support), $670 (resistance).'
       sentiment: cautiously bullish
       confidence: medium-high
   - id: markets
     label: 📊 Markets Intelligence
     aiInterpretation:
       updatedAt: '2025-10-25T18:50:00Z'
-      summary: 'MARKETS AT CRITICAL INFLECTION (57/100 MODERATE SIGNAL): Consolidation with bullish bias but unconfirmed. SPX at
-        ATH but advance-decline ratio weak = textbook divergence warning. Inflation narrative supportive (CPI beat, soft landing path
-        open), earnings strong (76-78% beat rate), BUT breadth deterioration remains primary risk (80% stocks below ATH vs indexes at
-        highs). Institutional accumulation + retail fear = contrarian bullish. Fed Oct 29 guidance = THE CATALYST determining whether
-        breadth thrusts or breaks decisively.'
-      keyInsight: 'BREADTH DIVERGENCE IS THE KEY VARIABLE: Signal MODERATE (57/100) capped at this level because market propped by
-        only 5-7 mega-caps (NVDA/MSFT/AAPL). 11-month A/D line collapse while SPX at ATH = unsustainable structure. Market NEEDS >70%
-        up-volume day + breadth improvement post-Fed to sustain rally. Without breadth thrust, any mega-cap stumble triggers cascade selling
-        with no sectors to support. This is the CONSTRAINT limiting upside.'
-      action: 'SCENARIO 1 (60% prob): Fed dovish Oct 29 + breadth improves = rally on breadth confirmation, target $700 SPY, deploy
-        40% equities. SCENARIO 2 (25% prob): Fed neutral + breadth mixes = sideways consolidation $665-680, maintain 25-30% equities.
-        SCENARIO 3 (15% prob): Fed hawkish + breadth breaks = defensive $650 target, reduce to 15-20% equities. IMMEDIATE ACTION: Set
-        alerts SPX $670/$652.84, QQQ $611/$595.71. Watch breadth meter daily (critical). Position sizing: Never chase—wait for breadth
-        confirmation before aggressive deployment.'
+      summary: 'MARKETS AT CRITICAL INFLECTION (57/100 MODERATE SIGNAL): Consolidation with bullish bias but unconfirmed.
+        SPX at ATH but advance-decline ratio weak = textbook divergence warning. Inflation narrative supportive (CPI beat,
+        soft landing path open), earnings strong (76-78% beat rate), BUT breadth deterioration remains primary risk (80% stocks
+        below ATH vs indexes at highs). Institutional accumulation + retail fear = contrarian bullish. Fed Oct 29 guidance
+        = THE CATALYST determining whether breadth thrusts or breaks decisively.'
+      keyInsight: 'BREADTH DIVERGENCE IS THE KEY VARIABLE: Signal MODERATE (57/100) capped at this level because market propped
+        by only 5-7 mega-caps (NVDA/MSFT/AAPL). 11-month A/D line collapse while SPX at ATH = unsustainable structure. Market
+        NEEDS >70% up-volume day + breadth improvement post-Fed to sustain rally. Without breadth thrust, any mega-cap stumble
+        triggers cascade selling with no sectors to support. This is the CONSTRAINT limiting upside.'
+      action: 'SCENARIO 1 (60% prob): Fed dovish Oct 29 + breadth improves = rally on breadth confirmation, target $700 SPY,
+        deploy 40% equities. SCENARIO 2 (25% prob): Fed neutral + breadth mixes = sideways consolidation $665-680, maintain
+        25-30% equities. SCENARIO 3 (15% prob): Fed hawkish + breadth breaks = defensive $650 target, reduce to 15-20% equities.
+        IMMEDIATE ACTION: Set alerts SPX $670/$652.84, QQQ $611/$595.71. Watch breadth meter daily (critical). Position sizing:
+        Never chase—wait for breadth confirmation before aggressive deployment.'
       sentiment: cautiously bullish
       confidence: medium-high
     sections:
@@ -361,7 +364,7 @@ dashboard:
   - id: xsentiment
     label: 🐦 X Sentiment
     aiInterpretation:
-      updatedAt: '2025-10-25T05:31:52Z'
+      updatedAt: '2025-10-25T12:04:34Z'
       summary: 'Crypto sentiment: 68/100 (Moderately Bullish) Macro sentiment: 52/100 (Balanced/Mixed)'
       keyInsight: 'Combined sentiment: 60/100 (MODERATELY BULLISH). '
       action: Sentiment is constructive. Look for dips to add exposure in high-conviction areas.
@@ -641,7 +644,7 @@ dashboard:
       action_color: '#6b7280'
       confidence: low
       next_check: Sentiment neutral - wait for directional extreme before positioning
-    socialTabSyncedAt: '2025-10-25T05:31:52Z'
+    socialTabSyncedAt: '2025-10-25T12:04:34Z'
     influencer_consensus:
       tier1_sentiment: MODERATELY BULLISH
       tier2_sentiment: MODERATELY BULLISH
@@ -942,7 +945,7 @@ dashboard:
         - JPMorgan blueprint to become world's first fully AI-powered megabank
         - Cerebras raises $1B in pre-IPO funding for AI chip expansion
         - Buffett eyeing Berkshire's biggest deal in three years ($11.6B+)
-      rss_updated_at: '2025-10-25T05:31:54Z'
+      rss_updated_at: '2025-10-25T12:04:35Z'
     - name: 🚀 Upcoming Catalysts
       items:
       - date: '2025-10-25'
@@ -1003,7 +1006,7 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-25T05:31:53Z'
+      updatedAt: '2025-10-25T12:04:35Z'
       summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
         advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
         for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical:
@@ -1023,20 +1026,20 @@ dashboard:
       maxPain: null
       putCallRatio: '1.49'
       ivPercentile: 34%
-      lastUpdated: 2025-10-25 05:31 ET
+      lastUpdated: 2025-10-25 12:04 ET
     providers:
     - name: Equity Technicals (SPX)
       insights:
       - Bias downgraded to neutral/bearish beneath 20 & 50-dma.
       - 'Support: 6,520 then 6,450; resistance: 6,640/6,700.'
       - Need breadth thrust (>70% up-volume) to reinstate aggressive longs.
-      updatedAt: 2025-10-25 05:31 ET
+      updatedAt: 2025-10-25 12:04 ET
     - name: Bitcoin Technicals
       insights:
       - Momentum negative; price below 20-dma with support $115K/$111K.
       - Daily RSI at 48—neutral but vulnerable if ETF flows slow further.
       - Prefer buys near $113K-$115K with invalidation beneath $111K.
-      updatedAt: 2025-10-25 05:31 ET
+      updatedAt: 2025-10-25 12:04 ET
     optionsData:
       SPY:
         lastUpdated: '2025-10-18T22:30:00Z'
@@ -1116,7 +1119,7 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-25T05:31:53Z'
+    technicalsTabSyncedAt: '2025-10-25T12:04:35Z'
   quickActionsUpdated: '2025-10-25T20:00:00Z'
   quickActions:
     - type: "risk"
@@ -1161,7 +1164,7 @@ dashboard:
       sentiment: NEUTRAL
   dailyPlanner:
     aiInterpretation:
-      updatedAt: '2025-10-25T05:31:54Z'
+      updatedAt: '2025-10-25T12:04:36Z'
       summary: 'Daily Context for October 25, 2025:
 
 
@@ -1206,7 +1209,7 @@ dashboard:
       midday: 11:00-1:00 PM EST
       powerHour: 3:00-4:00 PM EST
       afterHours: 4:00-8:00 PM EST
-    prioritiesUpdated: '2025-10-25T05:31:54Z'
+    prioritiesUpdated: '2025-10-25T12:04:36Z'
     priorities:
     - Selective opportunities in quality names
     - Monitor signal strength for improvement
@@ -1231,7 +1234,7 @@ dashboard:
     - asset: SOL
       entry: 186.9
       rationale: alt accumulation level
-    economicCalendarUpdated: '2025-10-25T05:31:54Z'
+    economicCalendarUpdated: '2025-10-25T12:04:36Z'
     economicCalendar: *id001
     tomorrowPrep:
     - Track daily breadth ratios—need one 70%+ up-volume day to confirm bullish thrust.
@@ -1278,7 +1281,7 @@ dashboard:
     - Ensure all positions are appropriately hedged.
     - Reduce overall gross exposure.
     endOfDay:
-      ranAt: '2025-10-25T05:31:54Z'
+      ranAt: '2025-10-25T12:04:36Z'
       status: Pending - will run at market close
   endOfDay:
     date: October 20, 2025
@@ -1356,6 +1359,11 @@ dashboard:
   lastUpdated: '2025-10-20T14:54:26Z'
   updatedAt: '2025-10-20T14:54:26Z'
 ---
+
+
+
+
+
 
 
 

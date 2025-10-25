@@ -1,6 +1,37 @@
 # Wingman Workflow Changes & Enhancements
 
-## Latest Update: October 25, 2025 - Portfolio Section Enhancement
+## Latest Update: October 25, 2025 - Remove Duplicate Portfolio Allocation Workflow
+
+### Removed Old Manual Portfolio Allocation Approach
+
+**What Was Removed:**
+- Phase 5 manual AI prompt for `tabs.portfolio.portfolioRecommendation` (lines 441-478 in wingman_dash.py)
+- Section mapping for portfolio allocation in `section_mappings` dictionary
+- Tier-based allocation guidelines from prompt generation
+
+**Why:**
+- Duplicate approach: sync_portfolio_recommendation.py now handles portfolio allocation automatically
+- sync script is more reliable and consistent (Phase 2, automated)
+- Eliminates conflicting/redundant portfolio update mechanisms
+- Simplifies Phase 5 workflow (AI focuses on narrative synthesis only)
+
+**Result:**
+Portfolio now has **clean separation of concerns:**
+- **Phase 2 (Automated):** `sync_portfolio_recommendation.py` updates `portfolioRecommendation` section
+  - Allocation percentages, recommended actions, key risks
+  - Runs alongside other sync scripts
+- **Phase 5 (Manual AI):** Updates only `tabs.portfolio.aiInterpretation` section
+  - Narrative briefing (summary, keyInsight, action)
+  - Consistent with all other tabs (markets, technicals, xsentiment, news)
+
+**Files Modified:**
+- `scripts/automation/wingman_dash.py` - Removed portfolio allocation prompt generation
+- `Toolbox/INSTRUCTIONS/Domains/Wingman_Command_Pipeline.txt` - Updated Phase 2 documentation
+- `Toolbox/CHANGELOG_WINGMAN_WORKFLOW.md` - This changelog
+
+---
+
+## Previous Update: October 25, 2025 - Portfolio Section Enhancement
 
 ### Portfolio Section Improvements: Full Automation & Fresh AI Analysis
 

@@ -401,6 +401,7 @@ STALE SECTIONS REFERENCE (from ai_update_prompts.json):
     tabs.portfolio.aiInterpretation
     - Source: account_state.json, positions.json, signals_YYYY-MM-DD.json
     - Update: AI interprets current portfolio state + signal implications
+    - Note: Portfolio allocation/actions handled automatically in Phase 2 via sync_portfolio_recommendation.py
 
     tabs.markets.aiInterpretation
     - Source: YYYY-MM-DD_Market_Sentiment_Overview.md, YYYY-MM-DD_Technical_Category_Overview.md
