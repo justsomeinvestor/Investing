@@ -3000,14 +3000,19 @@
 
                 // Special tab rendering (these handle their own AI interpretation)
                 if (tab.id === 'portfolio') {
-                    // Portfolio tab - simplified without allocation logic
+                    // 1. ADD AI NARRATIVE BRIEFING FIRST (at top, like other tabs)
+                    if (tab.aiInterpretation) {
+                        contentEl.innerHTML += renderAIInterpretation(tab.aiInterpretation);
+                    }
+
+                    // 2. Portfolio tab - simplified without allocation logic
                     if (tab.portfolioRecommendation) {
                         // Just show basic recommendation info without allocation comparisons
                         const rec = tab.portfolioRecommendation;
                         const signalColor = rec.signalTier === 'WEAK' ? '#fca5a5' :
                                           rec.signalTier === 'AVOID' ? '#ef4444' :
                                           rec.signalTier === 'MODERATE' ? '#fbbf24' : '#10b981';
-                        
+
                         contentEl.innerHTML += `
                             <div class="portfolio-recommendation" style="display: block; margin-top: 0;">
                                 <div class="recommendation-header">
@@ -3016,7 +3021,7 @@
                                         Signal: ${rec.signalScore}/100 (${rec.signalTier})
                                     </div>
                                 </div>
-                                
+
                                 <div class="actions-list">
                                     <div class="reasoning-title">📋 Recommended Actions</div>
                                     ${rec.actions.map(action => `
@@ -3050,7 +3055,7 @@
                         `;
                     }
 
-                    // Add Recommended Allocation widget - pull from YAML data
+                    // 3. Add Recommended Allocation widget - pull from YAML data
                     const allocationData = {
                         allocation: tab.portfolioRecommendation?.allocation || { tech: 25, crypto: 25, cash: 50 },
                         signalScore: tab.portfolioRecommendation?.signalScore || dashboard.signalData?.composite || 50,
@@ -3091,11 +3096,6 @@
                             </div>
                         </div>
                     `;
-
-                    // Add fresh AI Interpretation after allocation widget
-                    if (tab.aiInterpretation) {
-                        contentEl.innerHTML += renderAIInterpretation(tab.aiInterpretation);
-                    }
                 } else if (tab.id === 'xsentiment') {
                     contentEl.innerHTML += renderXSentiment(tab);
                 } else if (tab.id === 'markets') {
