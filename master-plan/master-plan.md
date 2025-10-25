@@ -108,6 +108,14 @@ dashboard:
       signalTier: WEAK
       signalScore: 28.5
       confidenceLevel: medium-high
+      allocation:
+        tech: 20
+        crypto: 15
+        cash: 65
+      tickers:
+        tech: 'AAPL, MSFT, META, NVDA'
+        crypto: 'BTC/ETH @ $107-109k support'
+        defensive: 'Cash ready for FOMC Oct 29'
       actions:
       - action: Selective risk reentry opportunities
         rationale: Signal upgraded to MODERATE, market stabilizing after yesterday's weakness

@@ -3049,11 +3049,54 @@
                             </div>
                         `;
                     }
+
+                    // Add Recommended Allocation widget - pull from YAML data
+                    const allocationData = {
+                        allocation: tab.portfolioRecommendation?.allocation || { tech: 25, crypto: 25, cash: 50 },
+                        signalScore: tab.portfolioRecommendation?.signalScore || dashboard.signalData?.composite || 50,
+                        tickers: tab.portfolioRecommendation?.tickers || {
+                            tech: 'AAPL, MSFT, META, NVDA',
+                            crypto: 'BTC/ETH @ market',
+                            defensive: 'Cash ready'
+                        }
+                    };
+                    const segments = [
+                        { label: 'Mega-cap Tech', value: allocationData.allocation.tech, color: '#3b82f6', tickers: allocationData.tickers.tech },
+                        { label: 'Crypto Contrarian', value: allocationData.allocation.crypto, color: '#8b5cf6', tickers: allocationData.tickers.crypto },
+                        { label: 'Cash/Defensive', value: allocationData.allocation.cash, color: '#10b981', tickers: allocationData.tickers.defensive }
+                    ];
+
+                    contentEl.innerHTML += `
+                        <div class="allocation-card glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); margin-top: 20px;">
+                            <h3 style="color: #6366f1; margin-bottom: 15px; font-size: 1.1em;">📊 Recommended Allocation</h3>
+                            <div style="position: relative; width: 140px; height: 140px; margin: 0 auto 15px;">
+                                <svg width="140" height="140" viewBox="0 0 140 140" style="transform: rotate(-90deg);">
+                                    ${renderDonutSegments(segments, 70, 70, 50, 25)}
+                                </svg>
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                                    <div style="font-size: 1.8em; font-weight: bold; background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${allocationData.signalScore}</div>
+                                    <div style="font-size: 0.75em; color: #9ca3af;">SIGNAL</div>
+                                </div>
+                            </div>
+                            <div class="allocation-legend">
+                                ${segments.map(seg => `
+                                    <div style="display: flex; align-items: center; margin: 10px 0; animation: fadeIn 0.6s ease forwards;">
+                                        <div style="width: 12px; height: 12px; background: ${seg.color}; border-radius: 2px; margin-right: 10px;"></div>
+                                        <div style="flex: 1;">
+                                            <div style="font-size: 0.9em; color: #e0e6f0; font-weight: 500;">${seg.value}% ${seg.label}</div>
+                                            <div style="font-size: 0.75em; color: #9ca3af;">${seg.tickers}</div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
                 } else if (tab.id === 'xsentiment') {
                     contentEl.innerHTML += renderXSentiment(tab);
                 } else if (tab.id === 'markets') {
                     // Enhanced visual Markets Intelligence dashboard; replace content to avoid duplicate render cycles
-                    contentEl.innerHTML = renderMarketsIntelligence(tab);
+                    // Pass allTabs so it can access X Sentiment data
+                    contentEl.innerHTML = renderMarketsIntelligence(tab, tabs);
                 } else if (tab.id === 'media') {
                     // Render Media & Catalysts custom layout
                     contentEl.innerHTML += renderMediaCatalysts(tab);
@@ -6669,9 +6712,39 @@
   // ========================================================================
 
   /**
+   * Render donut chart segments - GLOBAL UTILITY FUNCTION
+   * Used by Portfolio tab
+   */
+  window.renderDonutSegments = function(segments, cx, cy, radius, strokeWidth) {
+    let svg = '';
+    let currentAngle = 0;
+    const circumference = 2 * Math.PI * radius;
+
+    segments.forEach((seg, idx) => {
+      const segmentAngle = (seg.value / 100) * 360;
+      const segmentLength = (seg.value / 100) * circumference;
+      const offset = circumference - segmentLength;
+
+      svg += `
+        <circle cx="${cx}" cy="${cy}" r="${radius}"
+                fill="none"
+                stroke="${seg.color}"
+                stroke-width="${strokeWidth}"
+                stroke-dasharray="${segmentLength} ${circumference}"
+                stroke-dashoffset="${-currentAngle * (circumference / 360)}"
+                style="animation: fillSegment 1s ease forwards; animation-delay: ${idx * 0.2}s; opacity: 0; filter: drop-shadow(0 0 3px ${seg.color});" />
+      `;
+
+      currentAngle += segmentAngle;
+    });
+
+    return svg;
+  }
+
+  /**
    * Main orchestrator for Markets Intelligence tab visualization
    */
-  window.renderMarketsIntelligence = function(marketsTab) {
+  window.renderMarketsIntelligence = function(marketsTab, allTabs) {
     if (!marketsTab || !marketsTab.sections) return '';
 
     let html = '<div class="markets-intelligence-dashboard" style="padding: 15px;">';
@@ -6681,21 +6754,7 @@
       html += renderAIInterpretation(marketsTab.aiInterpretation);
     }
 
-    // Extract quantitative data from summary
-    const summary = marketsTab.aiInterpretation?.summary || '';
-    const marketData = extractMarketData(summary, marketsTab.sections);
-
-    // 1. Consensus Dashboard (Top - 3 gauges)
-    html += renderConsensusDashboard(marketData);
-
-    // 2. Key Price Levels, Allocation & Bullish vs Bearish (3 columns)
-    html += '<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">';
-    html += renderPriceLevelsSection(marketData);
-    html += renderAllocationSection(marketData);
-    html += renderFactorComparison(marketData);
-    html += '</div>';
-
-    // 3. Economic Calendar (Full width)
+    // Economic Calendar (Full width)
     html += '<div style="margin: 20px 0;">';
     const macroSection = marketsTab.sections.find(s => s.name === 'Macro Environment');
     if (macroSection?.economicCalendar) {
@@ -6703,165 +6762,11 @@
     }
     html += '</div>';
 
-    // 5. Enhanced Sections (Collapsible with visual headers)
-    html += renderEnhancedSections(marketsTab.sections, marketData);
+    // Enhanced Sections (Collapsible with visual headers)
+    html += renderEnhancedSections(marketsTab.sections, {});
 
     html += '</div>';
     return html;
-  }
-
-  /**
-   * Extract quantitative data from summary text and sections
-   */
-  function extractMarketData(summary, sections) {
-    const data = {
-      macro: { bullish: [], bearish: [], sentiment: 'MIXED' },
-      crypto: { price: 0, fearGreed: 0, support: [], resistance: [], sentiment: 'NEUTRAL' },
-      tech: { earnings: 0, concentration: 0, sentiment: 'SELECTIVE' },
-      allocation: { tech: 25, crypto: 25, cash: 50 },
-      signalScore: 31
-    };
-
-    // Parse macro data
-    const gdpMatch = summary.match(/GDP\s+~?(\d+)%/i);
-    const recessionMatch = summary.match(/(\d+)-(\d+)%\s+recession/i);
-    const earningsMatch = summary.match(/earnings\s+\+(\d+)%/i);
-
-    if (gdpMatch) {
-      data.macro.bullish.push({ name: 'GDP Growth', value: gdpMatch[1] + '%', weight: 3 });
-    }
-    if (earningsMatch) {
-      data.macro.bullish.push({ name: 'Tech Earnings', value: '+' + earningsMatch[1] + '% YoY', weight: 3 });
-      data.tech.earnings = parseInt(earningsMatch[1]);
-    }
-    if (recessionMatch) {
-      const avgRecession = (parseInt(recessionMatch[1]) + parseInt(recessionMatch[2])) / 2;
-      data.macro.bearish.push({ name: 'Recession Risk', value: Math.round(avgRecession) + '%', weight: 5 });
-    }
-
-    // Parse crypto data
-    const btcPriceMatch = summary.match(/BTC\s+\$?([\d,]+)/i);
-    const fearGreedMatch = summary.match(/Fear\s+&\s+Greed\s+(\d+)/i);
-    const supportMatch = summary.match(/\$?(\d+)k?-(\d+)k?\s+support/i);
-
-    if (btcPriceMatch) {
-      data.crypto.price = parseInt(btcPriceMatch[1].replace(/,/g, ''));
-    }
-    if (fearGreedMatch) {
-      data.crypto.fearGreed = parseInt(fearGreedMatch[1]);
-    }
-    if (supportMatch) {
-      data.crypto.support = [parseInt(supportMatch[1]) * 1000, parseInt(supportMatch[2]) * 1000];
-      data.crypto.resistance = [115000];
-    }
-
-    // Parse tech concentration
-    const concentrationMatch = summary.match(/(\d+)%\s+market\s+cap/i);
-    if (concentrationMatch) {
-      data.tech.concentration = parseInt(concentrationMatch[1]);
-    }
-
-    // Add more bullish/bearish factors
-    if (summary.includes('Fed easing')) {
-      data.macro.bullish.push({ name: 'Fed Easing Path', value: '25bp Oct 29', weight: 4 });
-    }
-    if (summary.includes('gold') && summary.includes('recession')) {
-      data.macro.bearish.push({ name: 'Gold Ratio Warning', value: '1.57x (Historic)', weight: 4 });
-    }
-    if (summary.includes('credit card delinquencies')) {
-      data.macro.bearish.push({ name: 'Credit Stress', value: '14-yr highs', weight: 3 });
-    }
-
-    // Crypto factors
-    if (summary.includes('ETF inflows')) {
-      const etfMatch = summary.match(/\$?([\d.]+)B\s+ETF\s+inflows/i);
-      if (etfMatch) {
-        data.crypto.bullish = [{ name: 'ETF Inflows', value: '$' + etfMatch[1] + 'B', weight: 4 }];
-      }
-    }
-    if (summary.includes('extreme fear')) {
-      data.crypto.sentiment = 'EXTREME FEAR';
-    }
-
-    return data;
-  }
-
-  /**
-   * Render consensus dashboard with 3 gauges
-   */
-  function renderConsensusDashboard(marketData) {
-    let html = '<div class="consensus-gauges" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px;">';
-
-    // Calculate sentiment percentages
-    const macroScore = calculateSentimentPercentage(marketData.macro);
-    const cryptoScore = marketData.crypto.fearGreed || 50;
-    const techScore = marketData.tech.concentration ? (100 - marketData.tech.concentration) : 50;
-
-    // Macro Gauge
-    html += createGaugeCard('📊 Macro Environment', macroScore,
-      `${marketData.macro.bullish.length} bullish · ${marketData.macro.bearish.length} bearish`,
-      macroScore > 60 ? 'BULLISH' : macroScore < 40 ? 'BEARISH' : 'MIXED');
-
-    // Crypto Gauge
-    html += createGaugeCard('₿ Crypto Markets', cryptoScore,
-      `Fear & Greed ${cryptoScore} · ${marketData.crypto.sentiment}`,
-      cryptoScore < 30 ? 'EXTREME FEAR' : cryptoScore < 50 ? 'FEAR' : 'NEUTRAL');
-
-    // Tech Gauge
-    html += createGaugeCard('🚀 Tech Sector', 100 - (marketData.tech.concentration || 0),
-      `+${marketData.tech.earnings}% YoY · ${marketData.tech.concentration}% concentration`,
-      'SELECTIVE');
-
-    html += '</div>';
-    return html;
-  }
-
-  /**
-   * Calculate sentiment percentage from bullish/bearish factors
-   */
-  function calculateSentimentPercentage(data) {
-    const bullishWeight = (data.bullish || []).reduce((sum, f) => sum + f.weight, 0);
-    const bearishWeight = (data.bearish || []).reduce((sum, f) => sum + f.weight, 0);
-    const total = bullishWeight + bearishWeight;
-    return total > 0 ? Math.round((bullishWeight / total) * 100) : 50;
-  }
-
-  /**
-   * Create individual gauge card
-   */
-  function createGaugeCard(title, percentage, subtitle, label) {
-    const color = percentage > 60 ? '#10b981' : percentage < 40 ? '#ef4444' : '#f59e0b';
-    const rotation = (percentage / 100) * 180;
-
-    return `
-      <div class="gauge-card glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); animation: fadeInUp 0.6s ease forwards;">
-        <div style="text-align: center;">
-          <div style="font-size: 0.85em; color: #9ca3af; margin-bottom: 8px;">${title}</div>
-          <div class="gauge-container" style="position: relative; width: 130px; height: 65px; margin: 15px auto;">
-            <svg width="130" height="65" viewBox="0 0 130 65">
-              <!-- Background arc -->
-              <path d="M 10 60 A 55 55 0 0 1 120 60"
-                    fill="none"
-                    stroke="rgba(75, 85, 99, 0.3)"
-                    stroke-width="10"
-                    stroke-linecap="round"/>
-              <!-- Progress arc -->
-              <path d="M 10 60 A 55 55 0 0 1 120 60"
-                    fill="none"
-                    stroke="${color}"
-                    stroke-width="10"
-                    stroke-linecap="round"
-                    stroke-dasharray="${Math.PI * 55 * (percentage / 100)} ${Math.PI * 55}"
-                    style="animation: fillGauge 1s ease forwards; filter: drop-shadow(0 0 3px ${color});"/>
-              <!-- Center text -->
-              <text x="65" y="50" text-anchor="middle" font-size="20" font-weight="bold" fill="${color}">${percentage}</text>
-            </svg>
-          </div>
-          <div style="font-size: 1.1em; font-weight: 600; color: ${color}; margin-bottom: 5px;">${label}</div>
-          <div style="font-size: 0.85em; color: #d1d5db;">${subtitle}</div>
-        </div>
-      </div>
-    `;
   }
 
   /**
@@ -6966,34 +6871,7 @@
     return html;
   }
 
-  /**
-   * Render donut chart segments
-   */
-  function renderDonutSegments(segments, cx, cy, radius, strokeWidth) {
-    let svg = '';
-    let currentAngle = 0;
-    const circumference = 2 * Math.PI * radius;
-
-    segments.forEach((seg, idx) => {
-      const segmentAngle = (seg.value / 100) * 360;
-      const segmentLength = (seg.value / 100) * circumference;
-      const offset = circumference - segmentLength;
-
-      svg += `
-        <circle cx="${cx}" cy="${cy}" r="${radius}"
-                fill="none"
-                stroke="${seg.color}"
-                stroke-width="${strokeWidth}"
-                stroke-dasharray="${segmentLength} ${circumference}"
-                stroke-dashoffset="${-currentAngle * (circumference / 360)}"
-                style="animation: fillSegment 1s ease forwards; animation-delay: ${idx * 0.2}s; opacity: 0; filter: drop-shadow(0 0 3px ${seg.color});" />
-      `;
-
-      currentAngle += segmentAngle;
-    });
-
-    return svg;
-  }
+  // renderDonutSegments is now defined globally above (line 6712)
 
   /**
    * Render enhanced economic timeline
@@ -7075,9 +6953,6 @@
       const sectionId = section.name.replace(/\s+/g, '-').toLowerCase();
       const icon = section.name.includes('Macro') ? '📊' :
                    section.name.includes('Crypto') ? '₿' : '🚀';
-      const sentiment = section.name.includes('Macro') ? marketData.macro.sentiment :
-                        section.name.includes('Crypto') ? marketData.crypto.sentiment :
-                        marketData.tech.sentiment;
 
       html += `
         <div class="section-enhanced glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 0; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); margin-bottom: 15px; animation: fadeInUp ${0.4 + idx * 0.1}s ease forwards; opacity: 0;">
@@ -7087,9 +6962,6 @@
                 <span style="font-size: 1.5em;">${icon}</span>
                 <div>
                   <h3 style="color: #e0e6f0; margin: 0; font-size: 1.2em;">${section.name}</h3>
-                  <div style="font-size: 0.85em; color: #9ca3af; margin-top: 4px;">
-                    <span style="background: ${sentiment.includes('FEAR') || sentiment.includes('BEARISH') ? 'rgba(239, 68, 68, 0.2)' : sentiment.includes('BULLISH') ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)'}; color: ${sentiment.includes('FEAR') || sentiment.includes('BEARISH') ? '#ef4444' : sentiment.includes('BULLISH') ? '#10b981' : '#f59e0b'}; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; font-weight: 600;">${sentiment}</span>
-                  </div>
                 </div>
               </div>
               <div id="${sectionId}-arrow" style="font-size: 1.5em; color: #6366f1; transition: transform 0.3s ease;">▼</div>
