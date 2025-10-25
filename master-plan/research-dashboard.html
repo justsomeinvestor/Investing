@@ -3091,6 +3091,11 @@
                             </div>
                         </div>
                     `;
+
+                    // Add fresh AI Interpretation after allocation widget
+                    if (tab.aiInterpretation) {
+                        contentEl.innerHTML += renderAIInterpretation(tab.aiInterpretation);
+                    }
                 } else if (tab.id === 'xsentiment') {
                     contentEl.innerHTML += renderXSentiment(tab);
                 } else if (tab.id === 'markets') {

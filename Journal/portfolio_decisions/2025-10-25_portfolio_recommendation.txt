@@ -1,0 +1,17 @@
+RECOMMENDATION:
+Target: 40% cash, 30% equities, 20% crypto, 10% hedges
+
+ACTIONS:
+- Deploy $6,933 to SPY/QQQ (30% equities) on breadth confirmation >70% up-volume
+- Add $4,622 to BTC/ETH (20% crypto) positioning with 15% of capital deployed
+- Maintain $9,242 cash for opportunities during Fed volatility Oct 29
+- Add $929 to VIX calls (10% hedges) as insurance through Oct 29
+
+REASONING:
+Signal moderately bullish (57/100) with clear breadth bottleneck waiting for resolution. Fed Oct 29 guidance will determine next leg—dovish scenario supports risk deployment with breadth improvement, while hawkish maintains defensive positioning. Current setup favors waiting for confirmation rather than chasing consolidation; this allocation sizes properly for both scenarios post-Fed while respecting risk management constraints.
+
+KEY RISKS:
+- Fed hawkish surprise could trigger immediate 2-3% SPY drawdown requiring hedge execution
+- Breadth failure to thrust >70% would invalidate bullish setup despite price strength
+- Concentration in mega-cap tech (NVDA/MSFT/AAPL) creates index rally fragility
+- CPI inflation narrative could reverse if energy prices spike or labor data disappoints

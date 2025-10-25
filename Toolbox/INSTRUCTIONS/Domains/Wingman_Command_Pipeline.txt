@@ -241,13 +241,16 @@ WORKFLOW:
     - Run sync_daily_planner.py (Daily planning data)
     - Run sync_risk_items.py (Dashboard risk items) ✅ NEW - Oct 25, 2025
     - Run sync_provider_consensus.py (Dashboard consensus themes) ✅ NEW - Oct 25, 2025
+    - Run sync_portfolio_recommendation.py (Portfolio recommendations) ✅ NEW - Oct 25, 2025
     - Run update_markets_intelligence.py (Markets Intelligence narrative prompt)
     - Run sync_quick_actions.py (Quick actions data)
     - Purpose: Automated updates for data-driven sections
     - Action: Populate dashboard with fresh content from research files
 
-    NOTE: sync_risk_items.py and sync_provider_consensus.py automatically extract
-    dashboard sections from Research/.cache/YYYY-MM-DD_Market_Sentiment_Overview.md
+    NOTE: sync_risk_items.py, sync_provider_consensus.py, and sync_portfolio_recommendation.py
+    automatically extract/generate dashboard sections from research data:
+      • sync_risk_items.py + sync_provider_consensus.py: from Research/.cache/YYYY-MM-DD_Market_Sentiment_Overview.md
+      • sync_portfolio_recommendation.py: from Journal/portfolio_decisions/YYYY-MM-DD_portfolio_*.txt
     These scripts MUST be run as part of Phase 2 for full dashboard automation.
 
     Phase 3: Update Master Plan

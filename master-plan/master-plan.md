@@ -99,39 +99,35 @@ dashboard:
   - id: portfolio
     label: 💼 Portfolio
     portfolioRecommendation:
-      updatedAt: '2025-10-20T15:01:46Z'
-      signalTier: WEAK
-      signalScore: 28.5
-      confidenceLevel: medium-high
-      allocation:
-        tech: 20
-        crypto: 15
-        cash: 65
-      tickers:
-        tech: AAPL, MSFT, META, NVDA
-        crypto: BTC/ETH @ $107-109k support
-        defensive: Cash ready for FOMC Oct 29
-      actions:
-      - action: Selective risk reentry opportunities
-        rationale: Signal upgraded to MODERATE, market stabilizing after yesterday's weakness
-      - action: Add $3,450 to equities (SPLG/QQQ)
-        rationale: Increase to 20% equity exposure on recovery - focus quality names
-      - action: Add $2,300 to crypto (BTC/ETH)
-        rationale: Increase to 15% crypto exposure - ETH showing strength +2.85%
-      - action: Maintain $2,300 in hedges
-        rationale: Keep 10% hedge through CPI data release as insurance
-      reasoning: Signal improved to MODERATE (69.63/100) indicating market stabilization. VIX retreated -7.83% to 19.18, equities
-        rallying (SPY +1.11%, QQQ +1.43%), and crypto showing strength (ETH +2.85%, SOL +3.32%). While Fear & Greed remains
-        at 34 (Fear) showing lingering anxiety, the technical setup allows for selective risk deployment. Maintain prudent
-        hedges through CPI release Oct 15 as insurance against surprises. Focus on quality names with strong technicals.
-      keyRisks:
-      - CPI data today could trigger volatility if inflation surprises to upside.
-      - Recovery durability uncertain - watch for breadth improvement and VIX staying below 20.
-      - Trade war escalation or government shutdown news could derail rally.
-      accountBalance: 22824
-      recommendation: REDUCE EXPOSURE - Signal 28.5/100 (WEAK) mandates defensive positioning. Lower equity allocation to
-        20-30%, raise cash 40-50%, add hedges 20-30%. Trend 0, breadth 12.5, volatility 6 all confirm weak environment. SPY
-        gaining on declining volume is bearish divergence. Wait for signal >40 before adding risk.
+        updatedAt: '2025-10-25T18:39:33Z'
+        signalTier: MODERATE
+        confidenceLevel: medium-high
+        allocation:
+          cash: 40
+          equities: 30
+          crypto: 20
+          hedges: 10
+        tickers:
+          tech: AAPL, MSFT, META, NVDA
+          crypto: BTC/ETH @ $107-109k support
+          defensive: Cash ready
+        actions:
+          - action: Deploy $6,933 to SPY/QQQ (30% equities) on breadth confirmation >70% up-volume
+            rationale: Based on current signal and market context
+          - action: Add $4,622 to BTC/ETH (20% crypto) positioning with 15% of capital deployed
+            rationale: Based on current signal and market context
+          - action: Maintain $9,242 cash for opportunities during Fed volatility Oct 29
+            rationale: Based on current signal and market context
+          - action: Add $929 to VIX calls (10% hedges) as insurance through Oct 29
+            rationale: Based on current signal and market context
+        reasoning: Signal moderately bullish (57/100) with clear breadth bottleneck waiting for resolution. Fed Oct 29 guidance will determine next leg—dovish scenario supports risk deployment with breadth improvement, while hawkish maintains defensive positioning. Current setup favors waiting for confirmation rather than chasing consolidation; this allocation sizes properly for both scenarios post-Fed while respecting risk management constraints.
+        keyRisks:
+          - Fed hawkish surprise could trigger immediate 2-3% SPY drawdown requiring hedge execution
+          - Breadth failure to thrust >70% would invalidate bullish setup despite price strength
+          - Concentration in mega-cap tech (NVDA/MSFT/AAPL) creates index rally fragility
+          - CPI inflation narrative could reverse if energy prices spike or labor data disappoints
+        accountBalance: 23106
+        recommendation: See allocation above for current positioning
     aiInterpretation:
       updatedAt: '2025-10-25T18:45:00Z'
       summary: 'Portfolio Signal Tier HOLDING MODERATE (57/100) on consolidated 2-day technical setup. Market breadth divergence

@@ -1,6 +1,84 @@
 # Wingman Workflow Changes & Enhancements
 
-## Latest Update: October 25, 2025 - Bug Fix Release
+## Latest Update: October 25, 2025 - Portfolio Section Enhancement
+
+### Portfolio Section Improvements: Full Automation & Fresh AI Analysis
+
+**Issues Fixed:**
+1. ❌ Portfolio AI interpretation was NOT being displayed on the dashboard
+2. ❌ Portfolio recommendation data was STALE (October 20, not October 25)
+3. ❌ No automation existed for portfolio updates
+4. ❌ Account balance outdated ($22,824 vs actual $23,106)
+
+**Solutions Implemented:**
+
+#### 1. AI Interpretation Now Visible on Dashboard ✅
+- **Change:** Added `renderAIInterpretation()` call to portfolio tab rendering
+- **File:** `master-plan/research-dashboard.html` (lines 3095-3098)
+- **Result:** Fresh October 25 portfolio analysis now displays alongside recommendations
+- **Content Shown:** Summary, Key Insight, Action, Sentiment, Confidence
+
+#### 2. New Portfolio Sync Script Created ✅
+- **Script:** `scripts/utilities/sync_portfolio_recommendation.py` (NEW)
+- **Purpose:** Automatically update portfolio recommendation section from latest analysis
+- **Data Source:** `Journal/portfolio_decisions/YYYY-MM-DD_portfolio_*.txt`
+- **Extracts:** Allocation %, Actions, Reasoning, Key Risks, Signal Tier
+- **Generates:** Fresh YAML for `portfolioRecommendation` section
+- **Timestamp:** Updates `portfolioRecommendation.updatedAt` automatically
+
+#### 3. Integrated into Wingman Dash Workflow ✅
+- **File:** `scripts/automation/wingman_dash.py` (line 82)
+- **Added:** `("portfolio_recommendation_sync", ...)`
+- **Location:** Phase 2 - runs alongside other sync scripts
+- **Order:** Executes after risk_items and provider_consensus syncs
+
+#### 4. Documentation Updated ✅
+- **File:** `Toolbox/INSTRUCTIONS/Domains/Wingman_Command_Pipeline.txt`
+- **Added:** Portfolio sync to Phase 2 script list
+- **Documentation:** Explains data source for portfolio recommendations
+
+### How Portfolio Sync Works
+
+**Data Flow:**
+```
+Journal/portfolio_decisions/YYYY-MM-DD_portfolio_prompt.txt
+    ↓ (send to AI for analysis)
+User receives AI recommendation in structured format
+    ↓ (save response to)
+Journal/portfolio_decisions/YYYY-MM-DD_portfolio_recommendation.txt
+    ↓ (during wingman dash)
+sync_portfolio_recommendation.py
+    ↓ (parses and updates)
+master-plan.md (portfolioRecommendation section)
+    ↓ (displays on)
+Dashboard Portfolio Tab (with fresh analysis + UI visualization)
+```
+
+### Changes Made
+
+**Files Modified:**
+1. ✅ `master-plan/research-dashboard.html` - Added AI interpretation rendering to portfolio tab
+2. ✅ `scripts/automation/wingman_dash.py` - Added portfolio sync script to Phase 2
+
+**Files Created:**
+1. ✅ `scripts/utilities/sync_portfolio_recommendation.py` (183 lines) - New sync script
+
+**Documentation Updated:**
+1. ✅ `Toolbox/INSTRUCTIONS/Domains/Wingman_Command_Pipeline.txt` - Added portfolio sync details
+
+### Verification Checklist
+
+When running `wingman dash` next, verify:
+- [ ] Portfolio tab shows AI Interpretation section (fresh analysis)
+- [ ] Portfolio sync script runs in Phase 2 logs
+- [ ] Portfolio recommendation has current date (Oct 25+)
+- [ ] Allocation percentages match latest analysis
+- [ ] Signal tier reflects current market conditions
+- [ ] Account balance updated to latest figure
+
+---
+
+## Previous Update: October 25, 2025 - Bug Fix Release
 
 ### CRITICAL BUG FIX: YAML Indentation Error in sync_risk_items.py & sync_provider_consensus.py
 
