@@ -3,46 +3,46 @@ dashboard:
   pageTitle: Investment Research Dashboard - October 20, 2025
   title: Investment Research Dashboard
   dateBadge: October 20, 2025
-  sentimentCardsUpdated: '2025-10-23T20:00:00Z'
+  sentimentCardsUpdated: '2025-10-25T20:00:00Z'
   sentimentCards:
-  - id: equities
-    label: Equities
-    value: RECOVERY
-    detail: Signal 58.0/100 • Selective
-    detailColor: '#3b82f6'
-  - id: crypto
-    label: Crypto
-    value: STABILIZING
-    detail: BTC 1.66%
-    detailColor: '#3b82f6'
-  - id: liquidity
-    label: Liquidity Cycle
-    value: IMPROVING
-    detail: Conditions normalizing
-    detailColor: '#10b981'
-  - id: macro
-    label: Macro
-    value: CAUTIOUS
-    detail: Mixed signals
-    detailColor: '#f59e0b'
-  metricsUpdated: '2025-10-23T20:00:00Z'
+    - id: "equities"
+      label: "Equities"
+      value: "RECOVERY"
+      detail: "Signal 57.16/100 • Selective"
+      detailColor: "#3b82f6"
+    - id: "crypto"
+      label: "Crypto"
+      value: "STABILIZING"
+      detail: "BTC 0.41%"
+      detailColor: "#3b82f6"
+    - id: "liquidity"
+      label: "Liquidity Cycle"
+      value: "IMPROVING"
+      detail: "Conditions normalizing"
+      detailColor: "#10b981"
+    - id: "macro"
+      label: "Macro"
+      value: "CAUTIOUS"
+      detail: "Mixed signals"
+      detailColor: "#f59e0b"
+  metricsUpdated: '2025-10-25T20:00:00Z'
   metrics:
-  - label: Composite Score
-    value: 58.0 (MODERATE)
-  - label: Fear & Greed (Crypto)
-    value: 30 (Fear)
-  - label: BTC Spot
-    value: $111.0K (+1.66% 24h)
-  - label: ETH Spot
-    value: $3946 (+2.29% 24h)
-  - label: SOL Spot
-    value: $192.65 (+2.02% 24h)
-  - label: SPY Close
-    value: $671.76 (+0.59%)
-  - label: QQQ Close
-    value: $610.58 (+0.84%)
-  - label: GLD Close
-    value: $378.79 (+0.40%)
+    - label: "Composite Score"
+      value: "57.16 (MODERATE)"
+    - label: "Fear & Greed (Crypto)"
+      value: "37 (Fear)"
+    - label: "BTC Spot"
+      value: "$111.6K (+0.41% 24h)"
+    - label: "ETH Spot"
+      value: "$3944 (-0.37% 24h)"
+    - label: "SOL Spot"
+      value: "$191.99 (+0.08% 24h)"
+    - label: "SPY Close"
+      value: "$677.25 (+0.82%)"
+    - label: "QQQ Close"
+      value: "$617.10 (+1.07%)"
+    - label: "GLD Close"
+      value: "$377.52 (-0.34%)"
   sentimentHistoryUpdated: '2025-10-21T15:06:00Z'
   sentimentHistory:
   - date: '2025-10-08'
@@ -113,9 +113,9 @@ dashboard:
         crypto: 15
         cash: 65
       tickers:
-        tech: 'AAPL, MSFT, META, NVDA'
-        crypto: 'BTC/ETH @ $107-109k support'
-        defensive: 'Cash ready for FOMC Oct 29'
+        tech: AAPL, MSFT, META, NVDA
+        crypto: BTC/ETH @ $107-109k support
+        defensive: Cash ready for FOMC Oct 29
       actions:
       - action: Selective risk reentry opportunities
         rationale: Signal upgraded to MODERATE, market stabilizing after yesterday's weakness
@@ -191,7 +191,7 @@ dashboard:
         - Rates market pricing two cuts by March; CPI surprise could reprice quickly.
         - 'Prefers barbell: long duration + commodity hedges while equities digest.'
         - Notes USD firmness as additional headwind for risk until data softens.
-      economicCalendar:
+      economicCalendar: &id001
         today:
         - date: Oct 24
           time: 13:45 ET
@@ -361,27 +361,27 @@ dashboard:
   - id: xsentiment
     label: 🐦 X Sentiment
     aiInterpretation:
-      updatedAt: '2025-10-24T06:17:18Z'
+      updatedAt: '2025-10-25T05:31:52Z'
       summary: 'Crypto sentiment: 68/100 (Moderately Bullish) Macro sentiment: 52/100 (Balanced/Mixed)'
       keyInsight: 'Combined sentiment: 60/100 (MODERATELY BULLISH). '
       action: Sentiment is constructive. Look for dips to add exposure in high-conviction areas.
       sentiment: bullish
       confidence: high
-    sentimentScore: 60
-    sentimentTier: MODERATELY BULLISH
+    sentimentScore: 50
+    sentimentTier: NEUTRAL
     sentimentTrend: stable
-    contrarian_signal: 0 pts (Neutral)
+    contrarian_signal: 0 pts (Neutral - no extreme yet)
     sentiment_breakdown:
       extreme_bullish: 5
-      bullish: 30
-      neutral: 35
+      bullish: 20
+      neutral: 50
       bearish: 20
       extreme_bearish: 5
     hype_cycle:
-      position: Skepticism
+      position: Skepticism / Anxiety
       emoji_density: Low
-      caps_lock_usage: Low
-      exclamation_marks: Low
+      caps_lock_usage: Neutral
+      exclamation_marks: Medium
     crypto_trending:
       top_tickers:
       - ticker: BTC
@@ -630,7 +630,7 @@ dashboard:
       - 'Crypto conviction weakening: ETH -31% mentions, SOL -55% mentions, BULLISH mentions -26%'
       - BTC holding attention with 111 mentions despite market anxiety
       - 'AI theme remains resilient: 60 mentions at +22% with DEFI surging +188%'
-    sentiment_velocity: 35
+    sentiment_velocity: 50
     contrarian_detector:
       current_setup: Moderate bullish (60/100) + stable = neutral/wait
       opportunity_status: NOT YET
@@ -641,7 +641,7 @@ dashboard:
       action_color: '#6b7280'
       confidence: low
       next_check: Sentiment neutral - wait for directional extreme before positioning
-    socialTabSyncedAt: '2025-10-23T13:37:50Z'
+    socialTabSyncedAt: '2025-10-25T05:31:52Z'
     influencer_consensus:
       tier1_sentiment: MODERATELY BULLISH
       tier2_sentiment: MODERATELY BULLISH
@@ -888,7 +888,7 @@ dashboard:
   - id: news_catalysts
     label: 📰 News & Catalysts
     aiInterpretation:
-      updatedAt: '2025-10-23T14:42:19Z'
+      updatedAt: '2025-10-25T03:53:05Z'
       summary: 'TODAY''S TURNING POINT: Jobless claims 8:30 AM = ONLY macro signal during government shutdown (Day 22). Earnings
         season 84% beat rate but ''sell the news'' dynamic (IBM -7.14%, Netflix -10%). Quantum computing inflection (IBM 2028
         error-corrected system with HSBC/Vanguard customers validates sector). Bitcoin institutional adoption accelerating
@@ -905,27 +905,27 @@ dashboard:
       confidence: medium-high
     sections:
     - name: 📰 Daily News Flow
-      rss_summary: "RSS Feed Summary for October 23, 2025:\nTotal Articles: 36\n\n**MarketWatch** (6 articles):\n  • Top Stories\
-        \ Ford has a secret weapon that could help its earnings as EV concerns swirl\n  • Top Stories Goldman trader answers\
-        \ why the so-called dumb money has been beating the pros this year\n  • Top Stories Simone Biles reveals her custom\
-        \ Texas mansion is complete—after 2 years of work\n  • Top Stories Social Security’s COLA is coming. Here’s how you\
-        \ can stretch your benefits the most.\n  • Top Stories Volvo Car shares enjoying best day since going public\n  ...\
-        \ and 1 more\n\n**CoinDesk** (10 articles):\n  • Top Stories Asia Morning Briefing   BTC, ETH Markets Steady as Traders\
-        \ Await CPI and China-U.S. De-Escalation Signs\n  • Top Stories BTC, XRP, SOL, ADA Hold Flat as Google’s Quantum Breakthrough\
-        \ Rekindles Old Crypto Fears\n  • Top Stories Bunni DEX Shuts Down, Cites Recovery Costs After $8.4M Exploit\n  •\
-        \ Top Stories Canada’s Anti-Money Laundering Watchdog Levies Record $126M Fine on Cryptomus\n  • Top Stories Dogecoin\
-        \ Tests $0.19 Support as Tight Range Signals Breakout Potential\n  ... and 5 more\n\n**CNBC** (10 articles):\n  •\
-        \ Investing News China's property slump is far from bottoming. But Beijing is prioritizing tech growth\n  • Top News\
-        \ & Analysis As many retailers shrink their footprints, Dick's Sporting Goods goes big\n  • Top News & Analysis China\
-        \ and India to face supply jolt as U.S. targets Russia's oil giants\n  • Top News & Analysis Elon Musk said Tesla's\
-        \ robot will be 'incredible surgeon,' left Wall Street with no guidance on EVs\n  • Top News & Analysis EU targets\
-        \ Russian energy with new sanctions — and welcomes Trump’s major policy shift\n  ... and 5 more\n\n**Seeking Alpha**\
-        \ (10 articles):\n  • Marketplace Abercrombie & Fitch  Why I'm Buying This Undervalued Apparel Stock With Double-Digit\
-        \ Buyback Yields\n  • Marketplace Artisan Emerging Markets Debt Opportunities Fund Q3 2025 Commentary\n  • Marketplace\
-        \ Azelis Group NV (AZLGY) Q3 2025 Sales  Trading Statement Call - Slideshow\n  • Marketplace BankUnited, Inc. 2025\
-        \ Q3 - Results - Earnings Call Presentation\n  • Marketplace Clicks Group Limited 2025 Q4 - Results - Earnings Call\
-        \ Presentation\n  ... and 5 more\n\nKey Themes: Automated aggregation - manual curation recommended for actionable\
-        \ insights."
+      rss_summary: "RSS Feed Summary for October 25, 2025:\nTotal Articles: 31\n\n**MarketWatch** (7 articles):\n  • Top Stories\
+        \ How can the Fed be cutting interest rates again with inflation running so high \n  • Top Stories How quantum computing\
+        \ could become the next frontier in national security\n  • Top Stories I received an inheritance from my father’s\
+        \ estate, but the executor wants me to give it back. What should I do \n  • Top Stories Oil prices jumped this week\
+        \ — and now U.S. consumers may be the ones to feel the pain from Trump’s Russia sanctions\n  • Top Stories Our two\
+        \ daughters are struggling with student debt. Should we dip into our $1.8 million 401(k)s to buy them apartments \n\
+        \  ... and 2 more\n\n**CoinDesk** (7 articles):\n  • Top Stories Bitcoin Consolidates Above $111,000 as Breakout Awaits\
+        \ Fresh Catalyst\n  • Top Stories Crypto.com Applies for OCC National Trust Bank Charter to Expand U.S. Institutional\
+        \ Custody\n  • Top Stories Dogecoin Hits $0.20 as Breakout Volume Triples Average, Confirms Bullish Setup\n  • Top\
+        \ Stories Inverse Head-and-Shoulders Breakout Puts XRP on Track for $2.80 Test\n  • Top Stories North Korea’s AI-Powered\
+        \ Hackers Are Redefining Crypto Crime\n  ... and 2 more\n\n**CNBC** (7 articles):\n  • Top News & Analysis 45% of\
+        \ investors are interested in alternatives, survey finds — advisors say there's an easy way in\n  • Top News & Analysis\
+        \ AI spending is boosting the economy, but many businesses are in survival mode\n  • Top News & Analysis One in three\
+        \ Manhattan condo owners lost money when they sold in the last year\n  • Top News & Analysis Ontario to pause Reagan\
+        \ tariffs ad — but only after it's shown during World Series this weekend\n  • Top News & Analysis Starboard aims\
+        \ to unlock the value of Fluor's investment in nuclear tech company NuScale\n  ... and 2 more\n\n**Seeking Alpha**\
+        \ (10 articles):\n  • Marketplace Aeroports de Paris SA (ARRPY) Q3 2025 Sales Call Transcript\n  • Marketplace Amotiv\
+        \ Limited (GUDDY) Shareholder Analyst Call - Slideshow\n  • Marketplace BluMetric Environmental Inc. (BLM CA) Presents\
+        \ at Planet MicroCap Showcase  TORONTO 2025 - Slideshow\n  • Marketplace Canadian Natural Resources  Competitive Leadership\
+        \ And New Sanctions Create Conditions For Growth\n  • Marketplace Cardiff Oncology  Preparing For A Defining 2026\n\
+        \  ... and 5 more\n\nKey Themes: Automated aggregation - manual curation recommended for actionable insights."
       providers:
       - name: CoinDesk
         insights:
@@ -942,12 +942,12 @@ dashboard:
         - JPMorgan blueprint to become world's first fully AI-powered megabank
         - Cerebras raises $1B in pre-IPO funding for AI chip expansion
         - Buffett eyeing Berkshire's biggest deal in three years ($11.6B+)
-      rss_updated_at: '2025-10-23T13:37:52Z'
+      rss_updated_at: '2025-10-25T05:31:54Z'
     - name: 🚀 Upcoming Catalysts
       items:
-      - date: '2025-10-22'
+      - date: '2025-10-25'
         title: CPI & PPI Inflation Data Cluster
-        blurb: Critical mid-week inflation data will set Fed policy direction amid WEAK signal conditions. Market extremely
+        blurb: Critical mid-week inflation data will set Fed policy direction amid MODERATE signal conditions. Market extremely
           sensitive to surprises given current volatility regime. Watch for bond market reaction as leading indicator of equity
           moves.
         conviction: CRITICAL
@@ -960,10 +960,10 @@ dashboard:
         - volatility
     - name: 💡 Research Highlights
       items:
-      - date: '2025-10-22'
+      - date: '2025-10-25'
         title: 'Fundstrat: Post-Crash Technical Analysis'
-        blurb: Tom Lee identifies tariff actions as catalyst for VIX spike in WEAK environment. Technical deleveraging event
-          provides cleaner setup for year-end recovery. Focus on quality names with strong institutional support.
+        blurb: Tom Lee identifies tariff actions as catalyst for VIX spike in MODERATE environment. Technical deleveraging
+          event provides cleaner setup for year-end recovery. Focus on quality names with strong institutional support.
         conviction: HIGH
         source: YouTube/Fundstrat
         link: '#macro-tab'
@@ -974,9 +974,9 @@ dashboard:
         - recovery
     - name: 📊 Data Anomalies & Institutional Flows
       items:
-      - date: '2025-10-22'
+      - date: '2025-10-25'
         title: VIX Term Structure Inversion Signal
-        blurb: Unusual near-term volatility premium signals extreme fear in WEAK conditions. Historical precursor to market
+        blurb: Unusual near-term volatility premium signals extreme fear in MODERATE conditions. Historical precursor to market
           stabilization. Monitor for compression below 19 as risk-off exit signal.
         conviction: HIGH
         source: Options Market
@@ -988,10 +988,10 @@ dashboard:
         - fear
     - name: ⚠️ Exhaustion Signals & Contrarian Warnings
       items:
-      - date: '2025-10-22'
+      - date: '2025-10-25'
         title: Breadth Collapse Below Critical Threshold
-        blurb: NYSE up-volume below 40% in WEAK signal environment. Failed rallies likely until breadth thrust occurs. Market
-          vulnerable to further downside without broad participation recovery.
+        blurb: NYSE up-volume below 40% in MODERATE signal environment. Failed rallies likely until breadth thrust occurs.
+          Market vulnerable to further downside without broad participation recovery.
         conviction: HIGH
         source: Market Breadth
         link: '#technicals-tab'
@@ -1003,7 +1003,7 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-23T14:44:47Z'
+      updatedAt: '2025-10-25T05:31:53Z'
       summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
         advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
         for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical:
@@ -1019,24 +1019,24 @@ dashboard:
       sentiment: bearish
       confidence: medium-high
     closeProbability:
-      currentPrice: $665.48
+      currentPrice: $660.00
       maxPain: null
-      putCallRatio: '1.31'
-      ivPercentile: 72%
-      lastUpdated: 2025-10-22 11:28 ET
+      putCallRatio: '1.49'
+      ivPercentile: 34%
+      lastUpdated: 2025-10-25 05:31 ET
     providers:
     - name: Equity Technicals (SPX)
       insights:
       - Bias downgraded to neutral/bearish beneath 20 & 50-dma.
       - 'Support: 6,520 then 6,450; resistance: 6,640/6,700.'
       - Need breadth thrust (>70% up-volume) to reinstate aggressive longs.
-      updatedAt: 2025-10-23 13:37 ET
+      updatedAt: 2025-10-25 05:31 ET
     - name: Bitcoin Technicals
       insights:
       - Momentum negative; price below 20-dma with support $115K/$111K.
       - Daily RSI at 48—neutral but vulnerable if ETF flows slow further.
       - Prefer buys near $113K-$115K with invalidation beneath $111K.
-      updatedAt: 2025-10-23 13:37 ET
+      updatedAt: 2025-10-25 05:31 ET
     optionsData:
       SPY:
         lastUpdated: '2025-10-18T22:30:00Z'
@@ -1116,33 +1116,33 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-23T13:37:51Z'
-  quickActionsUpdated: '2025-10-23T20:00:00Z'
+    technicalsTabSyncedAt: '2025-10-25T05:31:53Z'
+  quickActionsUpdated: '2025-10-25T20:00:00Z'
   quickActions:
-  - type: risk
-    icon: ✅
-    title: SELECTIVE RISK REENTRY
-    value: 'Signal Score: 58.0 (MODERATE)'
-    description: MODERATE signal (58.0/100) - Selective opportunities available. Focus on quality setups.
-    urgency: medium
-  - type: hedge
-    icon: 🛡️
-    title: MAINTAIN PRUDENT HEDGES
-    value: Keep tail risk protection
-    description: Market stabilizing but maintain hedges as insurance.
-    urgency: medium
-  - type: watch
-    icon: 👀
-    title: MONITOR KEY LEVELS
-    value: Watch support/resistance
-    description: Monitor key technical levels and breadth metrics for direction.
-    urgency: medium
-  - type: plan
-    icon: 📝
-    title: BALANCED APPROACH
-    value: Selective deployment
-    description: Balanced environment. Be selective and size appropriately.
-    urgency: medium
+    - type: "risk"
+      icon: "✅"
+      title: "SELECTIVE RISK REENTRY"
+      value: "Signal Score: 57.16 (MODERATE)"
+      description: "MODERATE signal (57.16/100) - Selective opportunities available. Focus on quality setups."
+      urgency: "medium"
+    - type: "hedge"
+      icon: "🛡️"
+      title: "MAINTAIN PRUDENT HEDGES"
+      value: "Keep tail risk protection"
+      description: "Market stabilizing but maintain hedges as insurance."
+      urgency: "medium"
+    - type: "watch"
+      icon: "👀"
+      title: "MONITOR KEY LEVELS"
+      value: "Watch support/resistance"
+      description: "Monitor key technical levels and breadth metrics for direction."
+      urgency: "medium"
+    - type: "plan"
+      icon: "📝"
+      title: "BALANCED APPROACH"
+      value: "Selective deployment"
+      description: "Balanced environment. Be selective and size appropriately."
+      urgency: "medium"
   providerConsensusUpdated: '2025-10-21T15:09:00Z'
   providerConsensus:
     updatedAt: '2025-10-21T15:09:00Z'
@@ -1169,13 +1169,13 @@ dashboard:
       sentiment: NEUTRAL
   dailyPlanner:
     aiInterpretation:
-      updatedAt: '2025-10-23T13:37:52Z'
-      summary: 'Daily Context for October 23, 2025:
+      updatedAt: '2025-10-25T05:31:54Z'
+      summary: 'Daily Context for October 25, 2025:
 
 
-        Signal Tier: MODERATE (58.0/100)
+        Signal Tier: MODERATE (57.16/100)
 
-        Breadth: 15/25 (MODERATE)
+        Breadth: 16.67/25 (MODERATE)
 
 
         Trading Posture: Selective - quality opportunities
@@ -1214,7 +1214,7 @@ dashboard:
       midday: 11:00-1:00 PM EST
       powerHour: 3:00-4:00 PM EST
       afterHours: 4:00-8:00 PM EST
-    prioritiesUpdated: '2025-10-23T13:37:52Z'
+    prioritiesUpdated: '2025-10-25T05:31:54Z'
     priorities:
     - Selective opportunities in quality names
     - Monitor signal strength for improvement
@@ -1239,40 +1239,8 @@ dashboard:
     - asset: SOL
       entry: 186.9
       rationale: alt accumulation level
-    economicCalendarUpdated: '2025-10-23T13:37:52Z'
-    economicCalendar:
-      today: []
-      thisWeek:
-      - date: Oct 15
-        time: 08:30 EST
-        event: US CPI & Core CPI
-        impact: HIGH
-      - date: Oct 16
-        time: 08:30 EST
-        event: US PPI Final Demand
-        impact: HIGH
-      - date: Oct 16
-        time: 08:30 EST
-        event: Retail Sales
-        impact: HIGH
-      nextWeek:
-      - date: Oct 24
-        time: 09:45 EST
-        event: S&P Global Manufacturing & Services PMI
-        impact: HIGH
-      keyDates:
-      - date: Oct 15-16
-        events:
-        - CPI
-        - PPI
-        - Retail Sales
-        note: Critical inflation and consumption data cluster will set the tone.
-      - date: Oct 29
-        events:
-        - FOMC Rate Decision
-        note: The main event of the month, will be heavily influenced by this week's inflation data.
-      summary: The market is holding its breath for the mid-week inflation data (CPI/PPI). A hot number could easily trigger
-        another leg down.
+    economicCalendarUpdated: '2025-10-25T05:31:54Z'
+    economicCalendar: *id001
     tomorrowPrep:
     - Track daily breadth ratios—need one 70%+ up-volume day to confirm bullish thrust.
     - Monitor spot ETF crypto flows ($300M+ daily target for breakout confirmation).
@@ -1318,7 +1286,7 @@ dashboard:
     - Ensure all positions are appropriately hedged.
     - Reduce overall gross exposure.
     endOfDay:
-      ranAt: '2025-10-23T13:37:52Z'
+      ranAt: '2025-10-25T05:31:54Z'
       status: Pending - will run at market close
   endOfDay:
     date: October 20, 2025
@@ -1467,6 +1435,16 @@ dashboard:
 
 
 
+
+
+
+
+
+
+
+
+
+
 # Master Plan - Investment Knowledge Base
 
 > **🚀 NEW LLM? START HERE:** Read [README.md](../README.md) for complete system briefing and instructions!
@@ -1486,7 +1464,7 @@ This is the central hub for our integrated investment and trading system. This d
 - [RS System](../Research/system-readme.md) - **Relative Strength Trading Implementation**
 - [Friday Options](../Research/friday-options-playbook.md) - **0DTE Options Trading Framework**
 
-## 🎯 EAGLE EYE MACRO OVERVIEW (October 23, 2025)
+## 🎯 EAGLE EYE MACRO OVERVIEW (October 25, 2025)
 
 ### 🔴 STATE OF PLAY
 
@@ -1731,7 +1709,7 @@ We use a comprehensive 100-point scoring system for investment evaluation:
 - [ ] **Quarterly**: Stress-test downside scenarios against liquidity and funding conditions
 
 ---
-*Last Updated: October 23, 2025 - COMPREHENSIVE OCTOBER 23, 2025 MARKET INTELLIGENCE UPDATE*
-*Next Review: October 30, 2025 (Weekly tactical review)*
+*Last Updated: October 25, 2025 - COMPREHENSIVE OCTOBER 25, 2025 MARKET INTELLIGENCE UPDATE*
+*Next Review: November 01, 2025 (Weekly tactical review)*
 *System Version: 3.4 - October 9 Market Sentiment Integration*
 *Major Update: Signal downgraded to 35/100 WEAK. Volatility spike and breadth deterioration demand defensive posture into CPI.*
