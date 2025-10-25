@@ -3005,97 +3005,99 @@
                         contentEl.innerHTML += renderAIInterpretation(tab.aiInterpretation);
                     }
 
-                    // 2. Portfolio tab - simplified without allocation logic
+                    // 2. Portfolio tab - Two-column layout: Signal+Allocation (left) | Actions+Risks (right)
                     if (tab.portfolioRecommendation) {
-                        // Just show basic recommendation info without allocation comparisons
                         const rec = tab.portfolioRecommendation;
                         const signalColor = rec.signalTier === 'WEAK' ? '#fca5a5' :
                                           rec.signalTier === 'AVOID' ? '#ef4444' :
                                           rec.signalTier === 'MODERATE' ? '#fbbf24' : '#10b981';
 
+                        // Prepare allocation data
+                        const allocationData = {
+                            allocation: rec.allocation || { cash: 40, equities: 30, crypto: 20, hedges: 10 },
+                            signalScore: rec.signalScore || 50,
+                            signalTier: rec.signalTier || 'MODERATE'
+                        };
+
+                        // Create segments for donut (using actual allocation keys from YAML)
+                        const segments = [
+                            { label: 'Cash/Defensive', value: allocationData.allocation.cash || 40, color: '#10b981' },
+                            { label: 'Equities', value: allocationData.allocation.equities || 30, color: '#3b82f6' },
+                            { label: 'Crypto', value: allocationData.allocation.crypto || 20, color: '#8b5cf6' },
+                            { label: 'Hedges', value: allocationData.allocation.hedges || 10, color: '#f59e0b' }
+                        ];
+
+                        // Build two-column layout
                         contentEl.innerHTML += `
-                            <div class="portfolio-recommendation" style="display: block; margin-top: 0;">
-                                <div class="recommendation-header">
-                                    <div class="recommendation-title">💼 AI Portfolio Manager</div>
-                                    <div class="recommendation-signal" style="background: rgba(${signalColor === '#fca5a5' ? '252, 165, 165' : '239, 68, 68'}, 0.2); color: ${signalColor};">
-                                        Signal: ${rec.signalScore}/100 (${rec.signalTier})
+                            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; margin-top: 20px;">
+                                <!-- LEFT COLUMN: Signal & Allocation -->
+                                <div style="display: flex; flex-direction: column; gap: 15px;">
+                                    <!-- Signal Card -->
+                                    <div class="glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <div style="text-align: center;">
+                                            <div style="font-size: 2.2em; font-weight: bold; background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px;">${allocationData.signalScore}</div>
+                                            <div style="color: #9ca3af; font-size: 0.85em; margin-bottom: 8px;">SIGNAL SCORE</div>
+                                            <div style="background: rgba(${signalColor === '#fbbf24' ? '251, 191, 36' : '16, 185, 129'}, 0.15); color: ${signalColor}; padding: 6px 12px; border-radius: 6px; font-weight: 500; font-size: 0.9em; display: inline-block;">${allocationData.signalTier}</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Allocation Card -->
+                                    <div class="glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <h3 style="color: #6366f1; margin: 0 0 15px 0; font-size: 1em;">📊 ALLOCATION</h3>
+                                        <div style="position: relative; width: 120px; height: 120px; margin: 0 auto 15px;">
+                                            <svg width="120" height="120" viewBox="0 0 120 120" style="transform: rotate(-90deg);">
+                                                ${renderDonutSegments(segments, 60, 60, 40, 20)}
+                                            </svg>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9em;">
+                                            ${segments.map(seg => `
+                                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <div style="display: flex; align-items: center; gap: 6px;">
+                                                        <div style="width: 8px; height: 8px; background: ${seg.color}; border-radius: 2px;"></div>
+                                                        <span style="color: #d1d5db;">${seg.label}</span>
+                                                    </div>
+                                                    <span style="color: #6366f1; font-weight: 600;">${seg.value}%</span>
+                                                </div>
+                                            `).join('')}
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="actions-list">
-                                    <div class="reasoning-title">📋 Recommended Actions</div>
-                                    ${rec.actions.map(action => `
-                                        <div class="action-item">
-                                            <div class="action-icon">→</div>
-                                            <div class="action-text">
-                                                <div class="action-main">${action.action}</div>
-                                                <div class="action-detail">${action.rationale}</div>
-                                            </div>
+                                <!-- RIGHT COLUMN: Actions & Risks -->
+                                <div style="display: flex; flex-direction: column; gap: 15px;">
+                                    <!-- Actions Card -->
+                                    <div style="flex: 1;">
+                                        <h3 style="color: #6366f1; margin: 0 0 12px 0; font-size: 1em;">⚡ RECOMMENDED ACTIONS</h3>
+                                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                                            ${rec.actions.map((action, idx) => `
+                                                <div class="glass-card" style="background: rgba(99, 102, 241, 0.08); backdrop-filter: blur(10px); padding: 14px; border-radius: 8px; border: 1px solid rgba(99, 102, 241, 0.2);">
+                                                    <div style="display: flex; gap: 10px;">
+                                                        <div style="color: #6366f1; font-weight: 700; min-width: 20px; font-size: 0.95em;">${idx + 1}.</div>
+                                                        <div>
+                                                            <div style="color: #e0e6f0; font-weight: 500; font-size: 0.95em; line-height: 1.4;">${action.action}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            `).join('')}
                                         </div>
-                                    `).join('')}
-                                </div>
+                                    </div>
 
-                                <div class="reasoning-box">
-                                    <div class="reasoning-title">💡 AI Reasoning</div>
-                                    <div class="reasoning-text">${rec.reasoning}</div>
-                                </div>
-
-                                <div class="reasoning-box">
-                                    <div class="reasoning-title">⚠️ Key Risks</div>
-                                    <div class="risks-list">
-                                        ${rec.keyRisks.map(risk => `
-                                            <div class="risk-item">
-                                                <div class="risk-icon">!</div>
-                                                <div>${risk}</div>
-                                            </div>
-                                        `).join('')}
+                                    <!-- Risks Card -->
+                                    <div style="flex: 1;">
+                                        <h3 style="color: #f87171; margin: 0 0 12px 0; font-size: 1em;">⚠️ KEY RISKS</h3>
+                                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                                            ${rec.keyRisks.map(risk => `
+                                                <div style="display: flex; gap: 8px; font-size: 0.9em; color: #d1d5db; padding: 8px; border-left: 2px solid rgba(248, 113, 113, 0.4);">
+                                                    <span style="color: #ef4444; flex-shrink: 0;">!</span>
+                                                    <span style="line-height: 1.3;">${risk}</span>
+                                                </div>
+                                            `).join('')}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         `;
                     }
-
-                    // 3. Add Recommended Allocation widget - pull from YAML data
-                    const allocationData = {
-                        allocation: tab.portfolioRecommendation?.allocation || { tech: 25, crypto: 25, cash: 50 },
-                        signalScore: tab.portfolioRecommendation?.signalScore || dashboard.signalData?.composite || 50,
-                        tickers: tab.portfolioRecommendation?.tickers || {
-                            tech: 'AAPL, MSFT, META, NVDA',
-                            crypto: 'BTC/ETH @ market',
-                            defensive: 'Cash ready'
-                        }
-                    };
-                    const segments = [
-                        { label: 'Mega-cap Tech', value: allocationData.allocation.tech, color: '#3b82f6', tickers: allocationData.tickers.tech },
-                        { label: 'Crypto Contrarian', value: allocationData.allocation.crypto, color: '#8b5cf6', tickers: allocationData.tickers.crypto },
-                        { label: 'Cash/Defensive', value: allocationData.allocation.cash, color: '#10b981', tickers: allocationData.tickers.defensive }
-                    ];
-
-                    contentEl.innerHTML += `
-                        <div class="allocation-card glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); margin-top: 20px;">
-                            <h3 style="color: #6366f1; margin-bottom: 15px; font-size: 1.1em;">📊 Recommended Allocation</h3>
-                            <div style="position: relative; width: 140px; height: 140px; margin: 0 auto 15px;">
-                                <svg width="140" height="140" viewBox="0 0 140 140" style="transform: rotate(-90deg);">
-                                    ${renderDonutSegments(segments, 70, 70, 50, 25)}
-                                </svg>
-                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                                    <div style="font-size: 1.8em; font-weight: bold; background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${allocationData.signalScore}</div>
-                                    <div style="font-size: 0.75em; color: #9ca3af;">SIGNAL</div>
-                                </div>
-                            </div>
-                            <div class="allocation-legend">
-                                ${segments.map(seg => `
-                                    <div style="display: flex; align-items: center; margin: 10px 0; animation: fadeIn 0.6s ease forwards;">
-                                        <div style="width: 12px; height: 12px; background: ${seg.color}; border-radius: 2px; margin-right: 10px;"></div>
-                                        <div style="flex: 1;">
-                                            <div style="font-size: 0.9em; color: #e0e6f0; font-weight: 500;">${seg.value}% ${seg.label}</div>
-                                            <div style="font-size: 0.75em; color: #9ca3af;">${seg.tickers}</div>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
                 } else if (tab.id === 'xsentiment') {
                     contentEl.innerHTML += renderXSentiment(tab);
                 } else if (tab.id === 'markets') {

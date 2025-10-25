@@ -99,7 +99,8 @@ dashboard:
   - id: portfolio
     label: 💼 Portfolio
     portfolioRecommendation:
-        updatedAt: '2025-10-25T18:39:33Z'
+        updatedAt: '2025-10-25T18:51:55Z'
+        signalScore: 57
         signalTier: MODERATE
         confidenceLevel: medium-high
         allocation:

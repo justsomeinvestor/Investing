@@ -114,8 +114,14 @@ def parse_portfolio_recommendation(file_path):
             if line:
                 key_risks.append(line)
 
-    # Determine signal tier based on context
+    # Determine signal tier and extract signal score from reasoning
     signal_tier = 'MODERATE'
+    signal_score = 50  # default
+
+    # Try to extract signal score from reasoning text (pattern: "57/100" or "Signal...57/100")
+    signal_match = re.search(r'(\d+)/100', reasoning)
+    if signal_match:
+        signal_score = int(signal_match.group(1))
 
     return {
         'allocation': {
@@ -124,6 +130,7 @@ def parse_portfolio_recommendation(file_path):
             'crypto': crypto,
             'hedges': hedges
         },
+        'signalScore': signal_score,
         'signalTier': signal_tier,
         'actions': actions,
         'reasoning': reasoning,
@@ -171,6 +178,7 @@ def update_portfolio_in_master_plan(data):
     # Note: This will be indented +4 spaces when inserted into master-plan.md
     portfolio_yaml = f"""portfolioRecommendation:
     updatedAt: '{now}'
+    signalScore: {data['signalScore']}
     signalTier: {data['signalTier']}
     confidenceLevel: medium-high
     {allocation_yaml}
