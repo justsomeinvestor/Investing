@@ -4230,9 +4230,9 @@
 
             plannerContainer.appendChild(leftColumn);
 
-            // Right column: Economic Calendar Section (mirror of Markets Intelligence)
+            // Right column: Economic Calendar Section (compact mode for Daily Planner)
             if (plannerData.economicCalendar) {
-                plannerContainer.appendChild(renderEconomicCalendar(plannerData.economicCalendar));
+                plannerContainer.appendChild(renderEconomicCalendar(plannerData.economicCalendar, true));
             }
 
 
@@ -5801,7 +5801,7 @@
             }
         }
 
-        function renderEconomicCalendar(calendar) {
+        function renderEconomicCalendar(calendar, compact = false) {
             if (!calendar) return document.createElement('div');
 
             const container = document.createElement('div');
@@ -5858,8 +5858,8 @@
                 container.appendChild(keyDatesSection);
             }
 
-            // Today's Events
-            if (calendar.today && calendar.today.length > 0) {
+            // Today's Events (only show in full view, not in compact mode)
+            if (!compact && calendar.today && calendar.today.length > 0) {
                 const todaySection = document.createElement('div');
                 todaySection.className = 'calendar-section';
 
@@ -5888,8 +5888,8 @@
                 container.appendChild(todaySection);
             }
 
-            // This Week's Events
-            if (calendar.thisWeek && calendar.thisWeek.length > 0) {
+            // This Week's Events (only show in full view, not in compact mode)
+            if (!compact && calendar.thisWeek && calendar.thisWeek.length > 0) {
                 const weekSection = document.createElement('div');
                 weekSection.className = 'calendar-section';
 
@@ -5918,8 +5918,8 @@
                 container.appendChild(weekSection);
             }
 
-            // Next Week's Events
-            if (calendar.nextWeek && calendar.nextWeek.length > 0) {
+            // Next Week's Events (only show in full view, not in compact mode)
+            if (!compact && calendar.nextWeek && calendar.nextWeek.length > 0) {
                 const nextWeekSection = document.createElement('div');
                 nextWeekSection.className = 'calendar-section';
 
