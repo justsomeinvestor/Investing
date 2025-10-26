@@ -642,6 +642,7 @@
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 40px;
+            display: none; /* Hidden from daily planner, shown in Markets Intelligence tab */
         }
         
         .risk-header {
@@ -839,6 +840,7 @@
             padding: 30px;
             margin-bottom: 40px;
             border: 1px solid rgba(99, 102, 241, 0.1);
+            display: none; /* Hidden from daily planner, shown in Markets Intelligence tab */
         }
 
         .consensus-items {
@@ -6713,6 +6715,184 @@
   }
 
   /**
+   * Render Analyst Consensus as HTML for Markets Intelligence tab
+   */
+  function renderConsensusAsHTML(providerConsensus, updatedAt = null) {
+    const themes = providerConsensus?.themes || providerConsensus;
+    if (!themes || (Array.isArray(themes) && !themes.length)) {
+      return '';
+    }
+
+    const statusClass = updatedAt ? getDataFreshness(updatedAt) : '';
+    const badgeHTML = updatedAt ? `<span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>` : '';
+
+    let html = `
+      <div style="flex: 1; min-width: 300px; background: rgba(31, 41, 55, 0.5); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 10px; padding: 20px;">
+        <h3 style="color: #6366f1; margin: 0 0 15px 0; font-size: 1.05em; display: flex; align-items: center;">
+          🎯 Analyst Consensus ${badgeHTML}
+        </h3>
+    `;
+
+    const themeArray = Array.isArray(themes) ? themes : [];
+    themeArray.forEach((item, idx) => {
+      const sentiment = item.sentiment || 'NEUTRAL';
+      const sentimentColor = sentiment.includes('BULLISH') ? '#10b981' :
+                            sentiment.includes('BEARISH') ? '#ef4444' : '#f59e0b';
+
+      html += `
+        <div style="margin-bottom: 12px; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 6px;">
+          <div style="display: flex; align-items: center; margin-bottom: 6px;">
+            <span style="background: ${sentimentColor}20; color: ${sentimentColor}; padding: 2px 6px; border-radius: 3px; font-size: 0.65em; font-weight: 600; text-transform: uppercase; margin-right: 10px;">${sentiment.replace('_', ' ')}</span>
+            <span style="font-weight: 600; color: #e0e6f0;">${item.theme || item.topic || 'Topic'}</span>
+          </div>
+          <div style="color: #d1d5db; font-size: 0.9em; line-height: 1.5;">${item.description || ''}</div>
+        </div>
+      `;
+    });
+
+    html += '</div>';
+    return html;
+  }
+
+  /**
+   * Render Risk & Divergence Monitor as HTML for Markets Intelligence tab
+   */
+  function renderRiskAsHTML(riskItems, divergenceAlerts, updatedAt = null) {
+    if ((!riskItems || !riskItems.length) && (!divergenceAlerts || !divergenceAlerts.length)) {
+      return '';
+    }
+
+    const statusClass = updatedAt ? getDataFreshness(updatedAt) : '';
+    const badgeHTML = updatedAt ? `<span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>` : '';
+
+    let html = `
+      <div style="flex: 1; min-width: 300px; background: rgba(31, 41, 55, 0.5); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 10px; padding: 20px;">
+        <h3 style="color: #ef4444; margin: 0 0 15px 0; font-size: 1.05em; display: flex; align-items: center;">
+          🚨 Risk & Divergence Monitor ${badgeHTML}
+        </h3>
+    `;
+
+    // Categorize divergence alerts
+    const criticalDivergences = divergenceAlerts.filter(d => d.tier === 'CRITICAL');
+    const highDivergences = divergenceAlerts.filter(d => d.tier === 'HIGH');
+    const mediumDivergences = divergenceAlerts.filter(d => d.tier === 'MEDIUM');
+
+    // CRITICAL
+    if (criticalDivergences.length > 0) {
+      html += '<div style="margin-bottom: 12px;"><div style="color: #ef4444; font-size: 0.85em; font-weight: 600; margin-bottom: 8px;">🚨 CRITICAL DIVERGENCES</div>';
+      criticalDivergences.forEach(alert => {
+        html += `
+          <div style="margin-bottom: 8px; padding: 8px; background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius: 4px;">
+            <div style="color: #fecaca; font-size: 0.85em; font-weight: 600;">${alert.theme || alert.title}</div>
+            <div style="color: #d1d5db; font-size: 0.8em; margin-top: 4px;">${alert.description || ''}</div>
+          </div>
+        `;
+      });
+      html += '</div>';
+    }
+
+    // HIGH
+    if (highDivergences.length > 0) {
+      html += '<div style="margin-bottom: 12px;"><div style="color: #f59e0b; font-size: 0.85em; font-weight: 600; margin-bottom: 8px;">⚠️ HIGH DIVERGENCES</div>';
+      highDivergences.forEach(alert => {
+        html += `
+          <div style="margin-bottom: 8px; padding: 8px; background: rgba(245, 158, 11, 0.1); border-left: 3px solid #f59e0b; border-radius: 4px;">
+            <div style="color: #fcd34d; font-size: 0.85em; font-weight: 600;">${alert.theme || alert.title}</div>
+            <div style="color: #d1d5db; font-size: 0.8em; margin-top: 4px;">${alert.description || ''}</div>
+          </div>
+        `;
+      });
+      html += '</div>';
+    }
+
+    // Technical & Structural Risks
+    if (riskItems.length > 0) {
+      html += '<div style="margin-bottom: 0;"><div style="color: #6366f1; font-size: 0.85em; font-weight: 600; margin-bottom: 8px;">📊 TECHNICAL & STRUCTURAL RISKS</div>';
+      riskItems.forEach(risk => {
+        html += `
+          <div style="margin-bottom: 8px; padding: 8px; background: rgba(99, 102, 241, 0.1); border-left: 3px solid #6366f1; border-radius: 4px;">
+            <div style="color: #a5b4fc; font-size: 0.85em; font-weight: 600;">${risk.name || risk.title}</div>
+            <div style="color: #d1d5db; font-size: 0.8em; margin-top: 4px;">${risk.description || ''}</div>
+          </div>
+        `;
+      });
+      html += '</div>';
+    }
+
+    html += '</div>';
+    return html;
+  }
+
+  /**
+   * Render Economic Calendar as collapsible
+   */
+  function renderEconomicTimelineCollapsible(calendar) {
+    const id = 'economic-calendar-' + Date.now();
+    const isCollapsed = localStorage.getItem(id + '-collapsed') === 'true';
+
+    let html = `
+      <div style="background: rgba(31, 41, 55, 0.6); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 10px; padding: 18px; margin: 20px 0;">
+        <div style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;" onclick="
+          const content = document.getElementById('${id}-content');
+          const toggle = document.getElementById('${id}-toggle');
+          const collapsed = content.style.display === 'none';
+          content.style.display = collapsed ? 'block' : 'none';
+          toggle.textContent = collapsed ? '▼' : '▶';
+          localStorage.setItem('${id}-collapsed', collapsed ? 'false' : 'true');
+        " style="padding-bottom: 15px; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">
+          <h3 style="color: #6366f1; margin: 0; font-size: 1.1em;">📅 Economic Calendar</h3>
+          <span id="${id}-toggle" style="color: #6366f1; font-size: 1.2em; transition: transform 0.2s;">${isCollapsed ? '▶' : '▼'}</span>
+        </div>
+        <div id="${id}-content" style="display: ${isCollapsed ? 'none' : 'block'}; margin-top: 15px;">
+    `;
+
+    // Insert abbreviated view when collapsed (show today + upcoming)
+    if (calendar && calendar.length > 0) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      let todayItems = calendar.filter(item => {
+        const itemDate = new Date(item.date);
+        itemDate.setHours(0, 0, 0, 0);
+        return itemDate.getTime() === today.getTime();
+      });
+
+      let upcomingItems = calendar.filter(item => {
+        const itemDate = new Date(item.date);
+        itemDate.setHours(0, 0, 0, 0);
+        return itemDate.getTime() > today.getTime();
+      }).slice(0, 5);
+
+      if (todayItems.length > 0) {
+        html += '<div style="margin-bottom: 15px;"><div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">TODAY</div>';
+        todayItems.forEach(item => {
+          html += `<div style="padding: 6px; border-left: 2px solid #10b981; color: #e0e6f0; font-size: 0.85em;">${item.event || ''}</div>`;
+        });
+        html += '</div>';
+      }
+
+      if (upcomingItems.length > 0) {
+        html += '<div><div style="color: #6366f1; font-weight: 600; margin-bottom: 8px;">UPCOMING</div>';
+        upcomingItems.forEach(item => {
+          html += `<div style="padding: 6px; border-left: 2px solid #6366f1; color: #e0e6f0; font-size: 0.85em;">${item.date || ''} - ${item.event || ''}</div>`;
+        });
+        html += '</div>';
+      }
+    }
+
+    // Full calendar view
+    html += '<div style="margin-top: 15px; border-top: 1px solid rgba(99, 102, 241, 0.1); padding-top: 15px;">';
+    const calendarElement = renderEconomicCalendar(calendar);
+    if (calendarElement) {
+      html += calendarElement.outerHTML;
+    }
+    html += '</div>';
+
+    html += '</div></div>';
+    return html;
+  }
+
+  /**
    * Main orchestrator for Markets Intelligence tab visualization
    */
   window.renderMarketsIntelligence = function(marketsTab, allTabs) {
@@ -6725,11 +6905,27 @@
       html += renderAIInterpretation(marketsTab.aiInterpretation);
     }
 
-    // Economic Calendar (Full width)
+    // ANALYST CONSENSUS + RISK & DIVERGENCE (Side-by-side at top)
+    html += '<div style="display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;">';
+
+    // Left: Analyst Consensus
+    const dashboard = window.__PLAN_JSON__?.dashboard || {};
+    if (dashboard.providerConsensus) {
+      html += renderConsensusAsHTML(dashboard.providerConsensus, dashboard.providerConsensusUpdated);
+    }
+
+    // Right: Risk & Divergence Monitor
+    if (dashboard.riskItems || dashboard.divergenceAlerts) {
+      html += renderRiskAsHTML(dashboard.riskItems || [], dashboard.divergenceAlerts || [], dashboard.riskItemsUpdated);
+    }
+
+    html += '</div>';
+
+    // Economic Calendar (Full width, collapsible)
     html += '<div style="margin: 20px 0;">';
     const macroSection = marketsTab.sections.find(s => s.name === 'Macro Environment');
     if (macroSection?.economicCalendar) {
-      html += renderEconomicTimelineEnhanced(macroSection.economicCalendar);
+      html += renderEconomicTimelineCollapsible(macroSection.economicCalendar);
     }
     html += '</div>';
 
