@@ -1006,7 +1006,7 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-25T14:35:09Z'
+      updatedAt: '2025-10-25T20:31:50Z'
       summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
         advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
         for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical:
@@ -1023,87 +1023,70 @@ dashboard:
       confidence: medium-high
     closeProbability:
       currentPrice: $660.00
-      maxPain: $646
-      putCallRatio: '1.2'
-      ivPercentile: 50%
-      lastUpdated: 2025-10-25 14:35 ET
+      maxPain: $670.00
+      putCallRatio: '1.49'
+      ivPercentile: 34%
+      lastUpdated: 2025-10-25 20:31 ET
     providers:
     - name: Equity Technicals (SPX)
       insights:
-      - Bias downgraded to neutral/bearish beneath 20 & 50-dma.
-      - 'Support: 6,520 then 6,450; resistance: 6,640/6,700.'
-      - Need breadth thrust (>70% up-volume) to reinstate aggressive longs.
-      updatedAt: 2025-10-25 14:35 ET
+      - Momentum neutral; SPX trading around 6,792.
+      - 'Key support: 6,655.9 (strong), 6,452.1 (medium).'
+      - 'Key resistance: 6,927.5 (medium), 7,131.3 (strong).'
+      - 'Daily change: +0.00%. Price: 6,792.'
+      updatedAt: 2025-10-25 20:31 ET
     - name: Bitcoin Technicals
       insights:
-      - Momentum neutral; trading in range. Support $108,000, Resistance $113,600.
-      - 'Key support levels: $105,800 (strong), $108,000 (medium).'
-      - 'Key resistance levels: $113,600 (medium), $117,000 (strong).'
-      - 'Daily change: +0.40%. Current price: $111,384.00.'
-      updatedAt: 2025-10-25 14:35 ET
+      - Momentum neutral; trading in range. Support $108,100, Resistance $113,700.
+      - 'Key support levels: $105,900 (strong), $108,100 (medium).'
+      - 'Key resistance levels: $113,700 (medium), $117,000 (strong).'
+      - 'Daily change: +0.34%. Current price: $111,450.00.'
+      updatedAt: 2025-10-25 20:31 ET
     optionsData:
       SPY:
-        lastUpdated: '2025-10-25T14:35:09Z'
+        lastUpdated: '2025-10-25T20:31:50Z'
         currentPrice: 664.39
         maxPain: $670.00
         putCallRatio: '1.49'
         ivPercentile: 34%
         volumeFlow:
-          puts: N/A
-          calls: N/A
-          premium: N/A
+          puts: 59%
+          calls: 40%
         keyLevels:
         - strike: '670'
-          type: Call Wall
-          gamma: 0.9M
-          oi: 140K
-        - strike: '660'
           type: Max Pain
-          gamma: 1.3M
-          oi: 210K
-        - strike: '655'
-          type: High Gamma
-          gamma: 0.8M
-          oi: 130K
-        - strike: '650'
+          sentiment: neutral
+          reason: Peak open interest
+        - strike: '676.7'
+          type: Gamma Neutral
+          sentiment: neutral
+          reason: High gamma exposure zone
+        - strike: '656.6'
           type: Put Wall
-          gamma: 1.0M
-          oi: 180K
-        - strike: '640'
-          type: Put Interest
-          gamma: 0.7M
-          oi: 120K
+          sentiment: bearish
+          reason: Put OI cluster (11,995,973)
       QQQ:
-        lastUpdated: '2025-10-25T14:35:09Z'
+        lastUpdated: '2025-10-25T20:31:50Z'
         currentPrice: 598.14
         maxPain: $609.00
         putCallRatio: '1.80'
         ivPercentile: 48%
         volumeFlow:
-          puts: N/A
-          calls: N/A
-          premium: N/A
+          puts: 64%
+          calls: 35%
         keyLevels:
-        - strike: '605'
-          type: Call Wall
-          gamma: 0.7M
-          oi: 95K
-        - strike: '600'
+        - strike: '609'
           type: Max Pain
-          gamma: 1.1M
-          oi: 175K
-        - strike: '595'
-          type: High Gamma
-          gamma: 0.6M
-          oi: 110K
-        - strike: '593'
+          sentiment: neutral
+          reason: Peak open interest
+        - strike: '618.13'
+          type: Gamma Neutral
+          sentiment: neutral
+          reason: High gamma exposure zone
+        - strike: '590.73'
           type: Put Wall
-          gamma: 0.8M
-          oi: 145K
-        - strike: '585'
-          type: Put Interest
-          gamma: 0.5M
-          oi: 90K
+          sentiment: bearish
+          reason: Put OI cluster (5,605,043)
     optionsAIInterpretation:
       updatedAt: '2025-10-20T15:01:46Z'
       summary: DEFENSIVE OPTIONS POSITIONING
@@ -1120,7 +1103,7 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-25T14:35:09Z'
+    technicalsTabSyncedAt: '2025-10-25T20:31:50Z'
   quickActionsUpdated: '2025-10-25T20:00:00Z'
   quickActions:
   - type: risk
@@ -1360,6 +1343,8 @@ dashboard:
   lastUpdated: '2025-10-20T14:54:26Z'
   updatedAt: '2025-10-20T14:54:26Z'
 ---
+
+
 
 
 
