@@ -3,6 +3,7 @@ dashboard:
   pageTitle: Investment Research Dashboard - October 26, 2025
   title: Investment Research Dashboard
   dateBadge: October 26, 2025
+  lastUpdated: '2025-10-26T20:00:00Z'
   sentimentCardsUpdated: '2025-10-26T20:00:00Z'
   sentimentCards:
     - id: "equities"
@@ -1225,9 +1226,11 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
       composite: 66.81
       tier: MODERATE
       date: '2025-10-26'
+    signalDataUpdated: '2025-10-26T07:45:00Z'
     recommendation: MODERATE tier (66.81/100). Market breadth healing confirmed on A/D ratio 1.69 + 231 new highs. Signal strengthened
       from 57 yesterday—risk-on bias warranted with selective deployment to quality tech/growth. Crypto accumulation window (Fear &
       Greed=40) supports 20% allocation. Maintain 35% cash + 10% hedges for Oct 29 Fed volatility. SPY support $670, resistance $690.
+    recommendationUpdated: '2025-10-26T07:45:00Z'
     actionChecklist:
     - text: Deploy 35% equities to quality tech (NVDA/META/MSFT) on dips to SPY $670 support.
       priority: high
@@ -1239,6 +1242,7 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
       priority: monitor
     - text: Watch Oct 29 FOMC for dovish guidance → expect money market rotation + crypto flow acceleration.
       priority: monitor
+    actionChecklistUpdated: '2025-10-26T07:45:00Z'
     playbook:
       BTC:
         score: 11.7
