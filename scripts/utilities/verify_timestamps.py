@@ -81,25 +81,26 @@ REQUIRED_TIMESTAMPS = [
     "tabs.xsentiment.macro_trending.updatedAt",  # Macro trending tickers
     "tabs.technicals.aiInterpretation.updatedAt",
     "tabs.technicals.technicalsTabSyncedAt",
-    "tabs.technicals.tradingSignalScore.updatedAt",  # NEW - trading signal score freshness
+    "tabs.technicals.tradingSignalScore.updatedAt",  # trading signal score freshness
+    "tabs.technicals.unusualActivity.updatedAt",  # NEW - unusual options activity detection
 ]
 
 # VERIFICATION COVERAGE SUMMARY
 # =============================
 # Total timestamp fields identified in master-plan.md: 34
-# Fields now tracked by this script: 26
-# Coverage: 76% of all fields, 100% of critical fields
+# Fields now tracked by this script: 27
+# Coverage: 79% of all fields, 100% of critical fields
 #
-# Phase 2 (Automated Sync - 13 fields): sentimentCards, metrics, riskItems, quickActions,
+# Phase 2 (Automated Sync - 14 fields): sentimentCards, metrics, riskItems, quickActions,
 #   providerConsensus, priorities, keyLevels, economicCalendar, signalDataUpdated, endOfDay.ranAt,
-#   tradingSignalScore
+#   tradingSignalScore, unusualActivity
 #
 # Phase 5 (AI Synthesis - 13 fields): dailyPlanner.aiInterpretation, recommendation*,
 #   actionChecklist*, tab aiInterpretations (portfolio, markets, news, xsentiment, technicals)
 #
 # * = newly added in this expansion
 #
-# Remaining 8 fields (not tracked): Provider-level updates, sub-section timestamps, optionsData, etc.
+# Remaining 7 fields (not tracked): Provider-level updates, sub-section timestamps, etc.
 
 
 def parse_args():
