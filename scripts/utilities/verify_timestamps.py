@@ -82,23 +82,28 @@ REQUIRED_TIMESTAMPS = [
     "tabs.technicals.aiInterpretation.updatedAt",
     "tabs.technicals.technicalsTabSyncedAt",
     "tabs.technicals.tradingSignalScore.updatedAt",  # NEW - trading signal score freshness
+    "tabs.technicals.optionsData.SPY.lastUpdated",  # NEW - SPY options data freshness (Phase 2)
+    "tabs.technicals.optionsData.QQQ.lastUpdated",  # NEW - QQQ options data freshness (Phase 2)
+    "tabs.technicals.optionsAIInterpretation.updatedAt",  # NEW - options AI interpretation (Phase 5)
 ]
 
 # VERIFICATION COVERAGE SUMMARY
 # =============================
 # Total timestamp fields identified in master-plan.md: 34
-# Fields now tracked by this script: 26
-# Coverage: 76% of all fields, 100% of critical fields
+# Fields now tracked by this script: 29
+# Coverage: 85% of all fields, 100% of critical fields
 #
-# Phase 2 (Automated Sync - 12 fields): sentimentCards, metrics, riskItems, quickActions,
-#   providerConsensus, priorities, keyLevels, economicCalendar, signalDataUpdated, endOfDay.ranAt
+# Phase 2 (Automated Sync - 15 fields): sentimentCards, metrics, riskItems, quickActions,
+#   providerConsensus, priorities, keyLevels, economicCalendar, signalDataUpdated, endOfDay.ranAt,
+#   tradingSignalScore, optionsData.SPY.lastUpdated*, optionsData.QQQ.lastUpdated*
 #
-# Phase 5 (AI Synthesis - 12 fields): dailyPlanner.aiInterpretation, recommendation*,
-#   actionChecklist*, tab aiInterpretations (portfolio, markets, news, xsentiment, technicals)
+# Phase 5 (AI Synthesis - 13 fields): dailyPlanner.aiInterpretation, recommendation*,
+#   actionChecklist*, tab aiInterpretations (portfolio, markets, news, xsentiment, technicals),
+#   optionsAIInterpretation*
 #
 # * = newly added in this expansion
 #
-# Remaining 10 fields (not tracked): Provider-level updates, sub-section timestamps, etc.
+# Remaining 5 fields (not tracked): Provider-level updates, sub-section timestamps, etc.
 
 
 def parse_args():
