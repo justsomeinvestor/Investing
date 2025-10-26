@@ -3151,6 +3151,14 @@
                                 providersSection.appendChild(providerCard);
                             });
 
+                            // Add Unusual Activity Monitor to left column
+                            const unusualActivityHTML = renderUnusualActivityMonitor(tab);
+                            if (unusualActivityHTML) {
+                                const activityContainer = document.createElement('div');
+                                activityContainer.innerHTML = unusualActivityHTML;
+                                providersSection.appendChild(activityContainer.firstElementChild);
+                            }
+
                             technicalsRow.appendChild(providersSection);
                         }
 
@@ -3243,12 +3251,6 @@
                                 sectionHTML += '</div>';
                                 contentEl.innerHTML += sectionHTML;
                             });
-                        }
-
-                        // Unusual Activity Monitor (appears after Bitcoin Technicals)
-                        const unusualActivityHTML = renderUnusualActivityMonitor(tab);
-                        if (unusualActivityHTML) {
-                            contentEl.innerHTML += unusualActivityHTML;
                         }
                     } else {
                         // Non-technicals, non-markets, non-news_catalysts tabs: render providers normally
