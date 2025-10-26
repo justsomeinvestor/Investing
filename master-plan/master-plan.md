@@ -5,44 +5,44 @@ dashboard:
   dateBadge: October 25, 2025
   sentimentCardsUpdated: '2025-10-25T20:00:00Z'
   sentimentCards:
-  - id: equities
-    label: Equities
-    value: RECOVERY
-    detail: Signal 63.22/100 • Selective
-    detailColor: '#3b82f6'
-  - id: crypto
-    label: Crypto
-    value: STABILIZING
-    detail: BTC 0.51%
-    detailColor: '#3b82f6'
-  - id: liquidity
-    label: Liquidity Cycle
-    value: IMPROVING
-    detail: Conditions normalizing
-    detailColor: '#10b981'
-  - id: macro
-    label: Macro
-    value: CAUTIOUS
-    detail: Mixed signals
-    detailColor: '#f59e0b'
+    - id: "equities"
+      label: "Equities"
+      value: "RECOVERY"
+      detail: "Signal 63.22/100 • Selective"
+      detailColor: "#3b82f6"
+    - id: "crypto"
+      label: "Crypto"
+      value: "STABILIZING"
+      detail: "BTC 0.63%"
+      detailColor: "#3b82f6"
+    - id: "liquidity"
+      label: "Liquidity Cycle"
+      value: "IMPROVING"
+      detail: "Conditions normalizing"
+      detailColor: "#10b981"
+    - id: "macro"
+      label: "Macro"
+      value: "CAUTIOUS"
+      detail: "Mixed signals"
+      detailColor: "#f59e0b"
   metricsUpdated: '2025-10-25T20:00:00Z'
   metrics:
-  - label: Composite Score
-    value: 63.22 (MODERATE)
-  - label: Fear & Greed (Crypto)
-    value: 37 (Fear)
-  - label: BTC Spot
-    value: $111.5K (+0.51% 24h)
-  - label: ETH Spot
-    value: $3954 (+0.41% 24h)
-  - label: SOL Spot
-    value: $194.46 (+0.40% 24h)
-  - label: SPY Close
-    value: $677.25 (+0.82%)
-  - label: QQQ Close
-    value: $617.10 (+1.07%)
-  - label: GLD Close
-    value: $377.52 (-0.34%)
+    - label: "Composite Score"
+      value: "63.22 (MODERATE)"
+    - label: "Fear & Greed (Crypto)"
+      value: "40 (Fear)"
+    - label: "BTC Spot"
+      value: "$111.7K (+0.63% 24h)"
+    - label: "ETH Spot"
+      value: "$3951 (+0.61% 24h)"
+    - label: "SOL Spot"
+      value: "$193.50 (-0.25% 24h)"
+    - label: "SPY Close"
+      value: "$677.25 (+0.82%)"
+    - label: "QQQ Close"
+      value: "$617.10 (+1.07%)"
+    - label: "GLD Close"
+      value: "$377.52 (-0.34%)"
   sentimentHistoryUpdated: '2025-10-25T18:56:00Z'
   sentimentHistory:
   - date: '2025-10-08'
@@ -84,14 +84,14 @@ dashboard:
   riskItemsUpdated: '2025-10-25T18:57:00Z'
   riskItems:
   - title: Breadth Divergence (Most Traders Noting This)
-    description: Advance-Decline line trending lower 10+ months while SPX hit ATH. Only 5-7 mega-caps driving indexes. If
-      any leadership falters, cascade risk emerges with no alternative sectors to absorb selling.
+    description: Advance-Decline line trending lower 10+ months while SPX hit ATH. Only 5-7 mega-caps driving indexes. If any
+      leadership falters, cascade risk emerges with no alternative sectors to absorb selling.
   - title: Fed Surprise Guidance (Variable Outcome Possible)
-    description: 25bp cut fully priced by consensus. KEY RISK = forward guidance on easing path. Dovish tone unlocks $7.5T
-      money market rotation. Hawkish pause triggers deleveraging.
+    description: 25bp cut fully priced by consensus. KEY RISK = forward guidance on easing path. Dovish tone unlocks $7.5T money
+      market rotation. Hawkish pause triggers deleveraging.
   - title: Tariff Inflation Spreading (Policy Uncertainty)
-    description: 'Trump tariff promises showing up in goods prices. Services inflation STICKY (hardest to control). Risk:
-      Stagflation scenario (growth slowing + inflation sticky). Could limit Fed cuts.'
+    description: 'Trump tariff promises showing up in goods prices. Services inflation STICKY (hardest to control). Risk: Stagflation
+      scenario (growth slowing + inflation sticky). Could limit Fed cuts.'
   - title: Earnings Revisions Lower (If Q4 Guidance Cautious)
     description: Beat rate strong at 76-78% but Q4 guidance cautious risk. Tariff impact mentioned by companies could disappoint
       revisions. Watch earnings call tone carefully.
@@ -364,7 +364,7 @@ dashboard:
   - id: xsentiment
     label: 🐦 X Sentiment
     aiInterpretation:
-      updatedAt: '2025-10-25T13:56:27Z'
+      updatedAt: '2025-10-25T20:51:40Z'
       summary: 'Crypto sentiment: 68/100 (Moderately Bullish) Macro sentiment: 52/100 (Balanced/Mixed)'
       keyInsight: 'Combined sentiment: 60/100 (MODERATELY BULLISH). '
       action: Sentiment is constructive. Look for dips to add exposure in high-conviction areas.
@@ -644,7 +644,7 @@ dashboard:
       action_color: '#6b7280'
       confidence: low
       next_check: Sentiment neutral - wait for directional extreme before positioning
-    socialTabSyncedAt: '2025-10-25T13:56:27Z'
+    socialTabSyncedAt: '2025-10-25T20:51:40Z'
     influencer_consensus:
       tier1_sentiment: MODERATELY BULLISH
       tier2_sentiment: MODERATELY BULLISH
@@ -945,7 +945,7 @@ dashboard:
         - JPMorgan blueprint to become world's first fully AI-powered megabank
         - Cerebras raises $1B in pre-IPO funding for AI chip expansion
         - Buffett eyeing Berkshire's biggest deal in three years ($11.6B+)
-      rss_updated_at: '2025-10-25T13:56:29Z'
+      rss_updated_at: '2025-10-25T20:51:42Z'
     - name: 🚀 Upcoming Catalysts
       items:
       - date: '2025-10-25'
@@ -1006,7 +1006,7 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-25T20:31:50Z'
+      updatedAt: '2025-10-25T20:51:41Z'
       summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
         advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
         for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical:
@@ -1026,7 +1026,7 @@ dashboard:
       maxPain: $670.00
       putCallRatio: '1.49'
       ivPercentile: 34%
-      lastUpdated: 2025-10-25 20:31 ET
+      lastUpdated: 2025-10-25 20:51 ET
     providers:
     - name: Equity Technicals (SPX)
       insights:
@@ -1034,17 +1034,17 @@ dashboard:
       - 'Key support: 6,655.9 (strong), 6,452.1 (medium).'
       - 'Key resistance: 6,927.5 (medium), 7,131.3 (strong).'
       - 'Daily change: +0.00%. Price: 6,792.'
-      updatedAt: 2025-10-25 20:31 ET
+      updatedAt: 2025-10-25 20:51 ET
     - name: Bitcoin Technicals
       insights:
       - Momentum neutral; trading in range. Support $108,100, Resistance $113,700.
       - 'Key support levels: $105,900 (strong), $108,100 (medium).'
       - 'Key resistance levels: $113,700 (medium), $117,000 (strong).'
       - 'Daily change: +0.34%. Current price: $111,450.00.'
-      updatedAt: 2025-10-25 20:31 ET
+      updatedAt: 2025-10-25 20:51 ET
     optionsData:
       SPY:
-        lastUpdated: '2025-10-25T20:31:50Z'
+        lastUpdated: '2025-10-25T20:51:41Z'
         currentPrice: 664.39
         maxPain: $670.00
         putCallRatio: '1.49'
@@ -1066,7 +1066,7 @@ dashboard:
           sentiment: bearish
           reason: Put OI cluster (11,995,973)
       QQQ:
-        lastUpdated: '2025-10-25T20:31:50Z'
+        lastUpdated: '2025-10-25T20:51:41Z'
         currentPrice: 598.14
         maxPain: $609.00
         putCallRatio: '1.80'
@@ -1103,52 +1103,52 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-25T20:31:50Z'
+    technicalsTabSyncedAt: '2025-10-25T20:51:41Z'
   quickActionsUpdated: '2025-10-25T20:00:00Z'
   quickActions:
-  - type: risk
-    icon: ✅
-    title: SELECTIVE RISK REENTRY
-    value: 'Signal Score: 63.22 (MODERATE)'
-    description: MODERATE signal (63.22/100) - Selective opportunities available. Focus on quality setups.
-    urgency: medium
-  - type: hedge
-    icon: 🛡️
-    title: MAINTAIN PRUDENT HEDGES
-    value: Keep tail risk protection
-    description: Market stabilizing but maintain hedges as insurance.
-    urgency: medium
-  - type: watch
-    icon: 👀
-    title: MONITOR KEY LEVELS
-    value: Watch support/resistance
-    description: Monitor key technical levels and breadth metrics for direction.
-    urgency: medium
-  - type: plan
-    icon: 📝
-    title: BALANCED APPROACH
-    value: Selective deployment
-    description: Balanced environment. Be selective and size appropriately.
-    urgency: medium
+    - type: "risk"
+      icon: "✅"
+      title: "SELECTIVE RISK REENTRY"
+      value: "Signal Score: 63.22 (MODERATE)"
+      description: "MODERATE signal (63.22/100) - Selective opportunities available. Focus on quality setups."
+      urgency: "medium"
+    - type: "hedge"
+      icon: "🛡️"
+      title: "MAINTAIN PRUDENT HEDGES"
+      value: "Keep tail risk protection"
+      description: "Market stabilizing but maintain hedges as insurance."
+      urgency: "medium"
+    - type: "watch"
+      icon: "👀"
+      title: "MONITOR KEY LEVELS"
+      value: "Watch support/resistance"
+      description: "Monitor key technical levels and breadth metrics for direction."
+      urgency: "medium"
+    - type: "plan"
+      icon: "📝"
+      title: "BALANCED APPROACH"
+      value: "Selective deployment"
+      description: "Balanced environment. Be selective and size appropriately."
+      urgency: "medium"
   providerConsensusUpdated: '2025-10-25T18:58:00Z'
   providerConsensus:
     updatedAt: '2025-10-25T20:35:00Z'
     themes:
     - theme: INFLATION NARRATIVE
-      description: CPI 0.1% lower than expected (validation) Owner's equivalent rent at 0.1% MoM (housing anchor WORKING)
-        This enables Fed rate cuts without inflation fear
+      description: CPI 0.1% lower than expected (validation) Owner's equivalent rent at 0.1% MoM (housing anchor WORKING) This
+        enables Fed rate cuts without inflation fear
       sentiment: BULLISH
     - theme: FED DECISION (OCT 29)
       description: 25 bps cut fully priced in (consensus expectation) FORWARD GUIDANCE = the real variable Market needs clarity
         on 2025 rate path (not just next cut)
       sentiment: NEUTRAL
     - theme: BREADTH DIVERGENCE
-      description: Price at ATH but advance-decline ratio weak Only tech mega-caps (NVDA, APPLE, MSFT) driving indexes 80%
-        of stocks are NOT at all-time highs
+      description: Price at ATH but advance-decline ratio weak Only tech mega-caps (NVDA, APPLE, MSFT) driving indexes 80% of
+        stocks are NOT at all-time highs
       sentiment: NEUTRAL
   dailyPlanner:
     aiInterpretation:
-      updatedAt: '2025-10-25T13:56:30Z'
+      updatedAt: '2025-10-25T20:51:43Z'
       summary: 'Daily Context for October 25, 2025:
 
 
@@ -1193,7 +1193,7 @@ dashboard:
       midday: 11:00-1:00 PM EST
       powerHour: 3:00-4:00 PM EST
       afterHours: 4:00-8:00 PM EST
-    prioritiesUpdated: '2025-10-25T13:56:30Z'
+    prioritiesUpdated: '2025-10-25T20:51:43Z'
     priorities:
     - Selective opportunities in quality names
     - Monitor signal strength for improvement
@@ -1218,15 +1218,15 @@ dashboard:
     - asset: SOL
       entry: 186.9
       rationale: alt accumulation level
-    economicCalendarUpdated: '2025-10-25T13:56:30Z'
+    economicCalendarUpdated: '2025-10-25T20:51:43Z'
     economicCalendar: *id001
     tomorrowPrep:
     - Track daily breadth ratios—need one 70%+ up-volume day to confirm bullish thrust.
     - Monitor spot ETF crypto flows ($300M+ daily target for breakout confirmation).
     signalData:
-      composite: 68.62
+      composite: 63.22
       tier: MODERATE
-      date: '2025-10-18'
+      date: '2025-10-25'
     recommendation: MODERATE tier (68.62/100). Post-CPI consolidation continues. Selective risk deployment appropriate with
       quality names showing strong technicals. Market breadth improving but still fragile—maintain hedges for volatility spikes.
     actionChecklist:
@@ -1251,10 +1251,10 @@ dashboard:
         target: N/A
     breakdown:
       trend: 20
-      breadth: 9
-      volatility: 5
-      technical: 3
-      seasonality: 3
+      breadth: 21
+      volatility: 10
+      technical: 5
+      seasonality: 5
     xSentiment: Crypto 45/100 (NEUTRAL), Macro 42/100 (NEUTRAL)
     keyWarnings:
     - Market breadth has collapsed, indicating widespread selling.
@@ -1265,7 +1265,7 @@ dashboard:
     - Ensure all positions are appropriately hedged.
     - Reduce overall gross exposure.
     endOfDay:
-      ranAt: '2025-10-25T13:56:30Z'
+      ranAt: '2025-10-25T20:51:43Z'
       status: Pending - will run at market close
   endOfDay:
     date: October 20, 2025
@@ -1343,6 +1343,12 @@ dashboard:
   lastUpdated: '2025-10-20T14:54:26Z'
   updatedAt: '2025-10-20T14:54:26Z'
 ---
+
+
+
+
+
+
 
 
 
