@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Research Dashboard - October 25, 2025</title>
+    <title>Investment Research Dashboard - October 26, 2025</title>
     <style>
         * {
             margin: 0;
@@ -2577,12 +2577,12 @@
             renderProviderTabs(dashboard.tabs || [], dashboard.dailyPlanner, planEndOfDay, dashboard);
 
             // Render integrated Risk & Divergence Monitor
-            renderRiskAndDivergenceMonitor(dashboard.riskItems || [], dashboard.divergenceAlerts || []);
+            renderRiskAndDivergenceMonitor(dashboard.riskItems || [], dashboard.divergenceAlerts || [], dashboard.riskItemsUpdated);
 
             // New dashboard features
             if (dashboard.quickActions) renderQuickActions(dashboard.quickActions, dashboard.quickActionsUpdated);
             if (dashboard.sentimentHistory) renderSentimentTimeline(dashboard.sentimentHistory, dashboard.sentimentHistoryUpdated);
-            if (dashboard.providerConsensus) renderProviderConsensus(dashboard.providerConsensus);
+            if (dashboard.providerConsensus) renderProviderConsensus(dashboard.providerConsensus, dashboard.providerConsensusUpdated);
             // Clean up any garbled icons/text from source data or encoding
             sanitizeUIArtifacts();
         }
@@ -2649,9 +2649,16 @@
             }
         }
 
-        function renderRiskAndDivergenceMonitor(riskItems, divergenceAlerts) {
+        function renderRiskAndDivergenceMonitor(riskItems, divergenceAlerts, updatedAt = null) {
             const container = document.getElementById('risk-items');
             if (!container) return;
+
+            // Update section title with status indicator badge
+            const sectionTitle = document.querySelector('.risk-monitor .section-title');
+            if (sectionTitle && updatedAt) {
+                const statusClass = getDataFreshness(updatedAt);
+                sectionTitle.innerHTML = `🚨 Risk & Divergence Monitor <span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>`;
+            }
 
             container.innerHTML = '';
 
@@ -3474,9 +3481,16 @@
             });
         }
 
-        function renderProviderConsensus(providerConsensus) {
+        function renderProviderConsensus(providerConsensus, updatedAt = null) {
             const container = document.getElementById('consensus-items');
             if (!container) return;
+
+            // Update section title with status indicator badge
+            const sectionTitle = document.querySelector('.consensus-heatmap .section-title');
+            if (sectionTitle && updatedAt) {
+                const statusClass = getDataFreshness(updatedAt);
+                sectionTitle.innerHTML = `🎯 Analyst Consensus <span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>`;
+            }
 
             container.innerHTML = '';
 
@@ -4230,16 +4244,16 @@
             leftColumn.style.gap = '20px';
 
             // Key Levels Section (top left)
-            leftColumn.appendChild(renderKeyLevels(plannerData.keyLevels));
+            leftColumn.appendChild(renderKeyLevels(plannerData.keyLevels, plannerData.keyLevelsUpdated));
 
             // Priorities Section (bottom left)
-            leftColumn.appendChild(renderPriorityItems(plannerData.priorities));
+            leftColumn.appendChild(renderPriorityItems(plannerData.priorities, plannerData.prioritiesUpdated));
 
             plannerContainer.appendChild(leftColumn);
 
             // Right column: Economic Calendar Section (compact mode for Daily Planner)
             if (plannerData.economicCalendar) {
-                plannerContainer.appendChild(renderEconomicCalendar(plannerData.economicCalendar, true));
+                plannerContainer.appendChild(renderEconomicCalendar(plannerData.economicCalendar, true, plannerData.economicCalendarUpdated));
             }
 
 
@@ -4252,13 +4266,18 @@
             return container;
         }
 
-        function renderPriorityItems(priorities) {
+        function renderPriorityItems(priorities, updatedAt) {
             const section = document.createElement('div');
             section.className = 'priorities-section';
 
             const title = document.createElement('h3');
             title.className = 'section-title';
-            title.textContent = 'Today\'s Priorities';
+            if (updatedAt) {
+                const statusClass = getDataFreshness(updatedAt);
+                title.innerHTML = `Today's Priorities <span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>`;
+            } else {
+                title.textContent = 'Today\'s Priorities';
+            }
             section.appendChild(title);
 
             if (!priorities || (Array.isArray(priorities) && priorities.length === 0)) {
@@ -4345,13 +4364,18 @@
             return section;
         }
 
-        function renderKeyLevels(keyLevels) {
+        function renderKeyLevels(keyLevels, updatedAt) {
             const section = document.createElement('div');
             section.className = 'key-levels-section';
 
             const title = document.createElement('h3');
             title.className = 'section-title';
-            title.textContent = 'Key Levels';
+            if (updatedAt) {
+                const statusClass = getDataFreshness(updatedAt);
+                title.innerHTML = `Key Levels <span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>`;
+            } else {
+                title.textContent = 'Key Levels';
+            }
             section.appendChild(title);
 
             if (!keyLevels || !keyLevels.length) {
@@ -5779,7 +5803,7 @@
             }
         }
 
-        function renderEconomicCalendar(calendar, compact = false) {
+        function renderEconomicCalendar(calendar, compact = false, updatedAt = null) {
             if (!calendar) return document.createElement('div');
 
             const container = document.createElement('div');
@@ -5788,7 +5812,13 @@
             // Header
             const header = document.createElement('div');
             header.className = 'calendar-header';
-            header.innerHTML = '<span style="font-size: 1.5em;">📅</span><div class="calendar-title">Economic Calendar</div>';
+            let titleHTML = '<span style="font-size: 1.5em;">📅</span><div class="calendar-title">Economic Calendar';
+            if (updatedAt) {
+                const statusClass = getDataFreshness(updatedAt);
+                titleHTML += ` <span class="date-badge ${statusClass}" style="margin-left: 10px; display: inline-block;"></span>`;
+            }
+            titleHTML += '</div>';
+            header.innerHTML = titleHTML;
             container.appendChild(header);
 
             // Summary
