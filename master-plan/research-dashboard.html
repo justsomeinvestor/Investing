@@ -6824,29 +6824,18 @@
   }
 
   /**
-   * Render Economic Calendar as collapsible
+   * Render Economic Calendar with TODAY visible, collapse everything after
    */
   function renderEconomicTimelineCollapsible(calendar) {
-    const id = 'economic-calendar-' + Date.now();
-    const isCollapsed = localStorage.getItem(id + '-collapsed') === 'true';
+    const id = 'econ-upcoming-' + Date.now();
+    const isExpanded = localStorage.getItem(id + '-expanded') === 'true';
 
     let html = `
       <div style="background: rgba(31, 41, 55, 0.6); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 10px; padding: 18px; margin: 20px 0;">
-        <div style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;" onclick="
-          const content = document.getElementById('${id}-content');
-          const toggle = document.getElementById('${id}-toggle');
-          const collapsed = content.style.display === 'none';
-          content.style.display = collapsed ? 'block' : 'none';
-          toggle.textContent = collapsed ? '▼' : '▶';
-          localStorage.setItem('${id}-collapsed', collapsed ? 'false' : 'true');
-        " style="padding-bottom: 15px; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">
-          <h3 style="color: #6366f1; margin: 0; font-size: 1.1em;">📅 Economic Calendar</h3>
-          <span id="${id}-toggle" style="color: #6366f1; font-size: 1.2em; transition: transform 0.2s;">${isCollapsed ? '▶' : '▼'}</span>
-        </div>
-        <div id="${id}-content" style="display: ${isCollapsed ? 'none' : 'block'}; margin-top: 15px;">
+        <h3 style="color: #6366f1; margin: 0 0 15px 0; font-size: 1.1em;">📅 Economic Calendar</h3>
     `;
 
-    // Insert abbreviated view when collapsed (show today + upcoming)
+    // Show TODAY items (always visible)
     if (calendar && calendar.length > 0) {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -6857,38 +6846,49 @@
         return itemDate.getTime() === today.getTime();
       });
 
-      let upcomingItems = calendar.filter(item => {
-        const itemDate = new Date(item.date);
-        itemDate.setHours(0, 0, 0, 0);
-        return itemDate.getTime() > today.getTime();
-      }).slice(0, 5);
-
       if (todayItems.length > 0) {
         html += '<div style="margin-bottom: 15px;"><div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">TODAY</div>';
         todayItems.forEach(item => {
           html += `<div style="padding: 6px; border-left: 2px solid #10b981; color: #e0e6f0; font-size: 0.85em;">${item.event || ''}</div>`;
         });
         html += '</div>';
+      } else {
+        html += '<div style="color: #9ca3af; font-size: 0.9em; margin-bottom: 15px;">No events today</div>';
       }
+
+      // Collapsible section for everything after TODAY
+      html += `
+        <div style="border-top: 1px solid rgba(99, 102, 241, 0.1); padding-top: 15px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;" onclick="
+            const content = document.getElementById('${id}-content');
+            const toggle = document.getElementById('${id}-toggle');
+            const expanded = content.style.display !== 'none';
+            content.style.display = expanded ? 'none' : 'block';
+            toggle.textContent = expanded ? '▶' : '▼';
+            localStorage.setItem('${id}-expanded', expanded ? 'false' : 'true');
+          " style="margin-bottom: 12px;">
+            <span style="color: #6366f1; font-weight: 600;">Upcoming Events</span>
+            <span id="${id}-toggle" style="color: #6366f1; font-size: 1.2em; transition: transform 0.2s;">${isExpanded ? '▼' : '▶'}</span>
+          </div>
+          <div id="${id}-content" style="display: ${isExpanded ? 'block' : 'none'};">
+      `;
+
+      let upcomingItems = calendar.filter(item => {
+        const itemDate = new Date(item.date);
+        itemDate.setHours(0, 0, 0, 0);
+        return itemDate.getTime() > today.getTime();
+      });
 
       if (upcomingItems.length > 0) {
-        html += '<div><div style="color: #6366f1; font-weight: 600; margin-bottom: 8px;">UPCOMING</div>';
         upcomingItems.forEach(item => {
-          html += `<div style="padding: 6px; border-left: 2px solid #6366f1; color: #e0e6f0; font-size: 0.85em;">${item.date || ''} - ${item.event || ''}</div>`;
+          html += `<div style="padding: 6px; border-left: 2px solid #6366f1; color: #e0e6f0; font-size: 0.85em; margin-bottom: 4px;">${item.date || ''} - ${item.event || ''}</div>`;
         });
-        html += '</div>';
       }
+
+      html += '</div></div>';
     }
 
-    // Full calendar view
-    html += '<div style="margin-top: 15px; border-top: 1px solid rgba(99, 102, 241, 0.1); padding-top: 15px;">';
-    const calendarElement = renderEconomicCalendar(calendar);
-    if (calendarElement) {
-      html += calendarElement.outerHTML;
-    }
     html += '</div>';
-
-    html += '</div></div>';
     return html;
   }
 
