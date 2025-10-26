@@ -3262,11 +3262,11 @@
                         }
                     }
 
-                    // Special handling for technicals tab - TRADING LEVELS DASHBOARD
+                    // Special handling for technicals tab - UNUSUAL ACTIVITY MONITOR + TRADING LEVELS
                     if (tab.id === 'technicals') {
-                        const optionsIntelligenceHTML = renderOptionsIntelligence(tab);
-                        if (optionsIntelligenceHTML) {
-                            contentEl.innerHTML += optionsIntelligenceHTML;
+                        const unusualActivityHTML = renderUnusualActivityMonitor(tab);
+                        if (unusualActivityHTML) {
+                            contentEl.innerHTML += unusualActivityHTML;
                         }
 
                         // Render Trading Levels Dashboards side-by-side (SPY & QQQ)
@@ -4921,71 +4921,53 @@
             };
         }
 
-        function resolveOptionsLastUpdated(tab) {
-            if (!tab) return '';
-            if (tab.optionsAIInterpretation && tab.optionsAIInterpretation.updatedAt) {
-                return tab.optionsAIInterpretation.updatedAt;
-            }
-            const dataSources = tab.optionsData ? Object.values(tab.optionsData) : [];
-            for (const source of dataSources) {
-                if (source && source.lastUpdated) {
-                    return source.lastUpdated;
-                }
-            }
-            return '';
-        }
-
-        function renderOptionsIntelligence(tab) {
-            const hasInterpretation = !!(tab.optionsAIInterpretation && Object.keys(tab.optionsAIInterpretation).length);
-            const hasOptionsData = tab.optionsData && Object.keys(tab.optionsData).length;
-            if (!hasInterpretation && !hasOptionsData) {
+        function renderUnusualActivityMonitor(tab) {
+            const unusualActivity = tab.unusualActivity;
+            if (!unusualActivity || (!unusualActivity.SPY && !unusualActivity.QQQ)) {
                 return '';
             }
 
-            const lastUpdated = resolveOptionsLastUpdated(tab);
-            const interpretationHTML = hasInterpretation ? renderAIInterpretation(tab.optionsAIInterpretation) : '';
+            let alertsHTML = '';
 
-            const volumeCards = [];
+            ['SPY', 'QQQ'].forEach(ticker => {
+                const alerts = unusualActivity[ticker] || [];
+                if (alerts.length === 0) return;
 
-            if (hasOptionsData) {
-                Object.entries(tab.optionsData).forEach(([ticker, data = {}]) => {
-                    const source = formatPlainValue(data.source || 'yfinance');
+                const tickerAlerts = alerts.map(alert => {
+                    const statusBadge = alert.status === 'SPIKE' ? '[SPIKE]' : '[ALERT]';
+                    const changeStr = alert.change ? `(${alert.change})` : '';
+                    const prevStr = alert.previous ? `from ${alert.previous}` : '';
 
-                    if (data.volumeFlow) {
-                        const calls = sanitizePercentValue(data.volumeFlow.calls);
-                        const puts = sanitizePercentValue(data.volumeFlow.puts);
-                        const premium = formatPlainValue(data.volumeFlow.premium || '');
-                        const remaining = Math.max(0, 100 - calls.numeric - puts.numeric);
-
-                        volumeCards.push(`
-                            <div class="options-volume-flow-card" style="margin-bottom:20px;">
-                                <div style="display:flex;justify-content:space-between;align-items:center;">
-                                    <div style="font-weight:600;color:#e0e6f0;">${ticker} Volume Flow</div>
-                                    <div style="font-size:0.8em;color:#9ca3af;">${premium}</div>
-                                </div>
-                                <div class="options-volume-flow-bar-container">
-                                    <div class="options-volume-flow-calls" style="width:${calls.numeric}%;">${calls.display}</div>
-                                    <div class="options-volume-flow-puts" style="width:${puts.numeric}%;">${puts.display}</div>
-                                    ${remaining > 0 ? `<div style="flex:1;background:rgba(99,102,241,0.25);display:flex;align-items:center;justify-content:center;color:#c7d2fe;font-size:0.75em;">${remaining.toFixed(0)}%</div>` : ''}
-                                </div>
-                                <div style="font-size:0.75em;color:#9ca3af;margin-top:8px;">Source: ${source}</div>
+                    return `
+                        <div style="margin-bottom:15px;padding:12px;background:rgba(239,68,68,0.1);border-left:3px solid #ef4444;border-radius:4px;">
+                            <div style="display:flex;align-items:center;margin-bottom:6px;">
+                                <span style="font-weight:600;color:#fecaca;margin-right:8px;">${statusBadge}</span>
+                                <span style="color:#e0e6f0;">${alert.metric}</span>
                             </div>
-                        `);
-                    }
-                });
-            }
+                            <div style="margin-left:0;color:#e0e6f0;font-size:0.9em;">
+                                <strong>${alert.current}</strong> ${changeStr} ${prevStr}
+                            </div>
+                            <div style="color:#9ca3af;font-size:0.85em;margin-top:6px;">
+                                ${alert.signal}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
 
-            const volumeHTML = volumeCards.join('');
-            const statusClass = getDataFreshness(lastUpdated);
+                alertsHTML += `
+                    <div style="margin-bottom:20px;">
+                        <h4 style="color:#e0e6f0;font-size:0.95em;margin:0 0 10px 0;font-weight:600;">${ticker}</h4>
+                        ${tickerAlerts}
+                    </div>
+                `;
+            });
 
             return `
-                <div class="options-intelligence-section">
-                    <div class="section-header-row">
-                        <h3 class="section-title">Options Intelligence</h3>
-                        ${lastUpdated ? `<span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>` : ''}
-                    </div>
-                    ${interpretationHTML}
-                    ${volumeHTML}
+                <div style="margin-bottom:30px;padding:20px;background:rgba(0,0,0,0.3);border:1px solid rgba(239,68,68,0.3);border-radius:6px;">
+                    <h3 style="color:#fecaca;font-size:1.1em;margin:0 0 15px 0;display:flex;align-items:center;">
+                        [!] UNUSUAL OPTIONS ACTIVITY
+                    </h3>
+                    ${alertsHTML}
                 </div>
             `.trim();
         }

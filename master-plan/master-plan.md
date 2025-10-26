@@ -1011,7 +1011,7 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-26T12:28:41Z'
+      updatedAt: '2025-10-26T12:54:45Z'
       summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
         advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
         for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical:
@@ -1027,13 +1027,13 @@ dashboard:
       sentiment: bearish
       confidence: medium-high
     tradingSignalScore:
-      updatedAt: '2025-10-26T12:28:41Z'
+      updatedAt: '2025-10-26T12:54:45Z'
     closeProbability:
       currentPrice: $660.00
       maxPain: $670.00
       putCallRatio: '1.49'
       ivPercentile: 34%
-      lastUpdated: 2025-10-26 12:28 ET
+      lastUpdated: 2025-10-26 12:54 ET
     providers:
     - name: Equity Technicals (SPX)
       insights:
@@ -1041,17 +1041,17 @@ dashboard:
       - 'Key support: 6,655.9 (strong), 6,452.1 (medium).'
       - 'Key resistance: 6,927.5 (medium), 7,131.3 (strong).'
       - 'Daily change: +0.00%. Price: 6,792.'
-      updatedAt: 2025-10-26 12:28 ET
+      updatedAt: 2025-10-26 12:54 ET
     - name: Bitcoin Technicals
       insights:
       - Momentum neutral; trading in range. Support $110,300, Resistance $116,000.
       - 'Key support levels: $108,100 (strong), $110,300 (medium).'
       - 'Key resistance levels: $116,000 (medium), $119,400 (strong).'
       - 'Daily change: +1.82%. Current price: $113,757.00.'
-      updatedAt: 2025-10-26 12:28 ET
+      updatedAt: 2025-10-26 12:54 ET
     optionsData:
       SPY:
-        lastUpdated: '2025-10-26T12:28:41Z'
+        lastUpdated: '2025-10-26T12:54:45Z'
         currentPrice: 664.39
         maxPain: $670.00
         putCallRatio: '1.49'
@@ -1073,7 +1073,7 @@ dashboard:
           sentiment: bearish
           reason: Put OI cluster (11,995,973)
       QQQ:
-        lastUpdated: '2025-10-26T12:28:41Z'
+        lastUpdated: '2025-10-26T12:54:45Z'
         currentPrice: 598.14
         maxPain: $609.00
         putCallRatio: '1.80'
@@ -1110,7 +1110,18 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-26T12:28:41Z'
+    technicalsTabSyncedAt: '2025-10-26T12:54:45Z'
+    unusualActivity:
+      updatedAt: '2025-10-26T12:54:45Z'
+      SPY: []
+      QQQ:
+      - metric: putCallRatio
+        current: '1.80'
+        previous: '1.80'
+        change: +0.0%
+        status: ELEVATED
+        signal: High defensive positioning
+        direction: bullish
   quickActionsUpdated: '2025-10-26T20:00:00Z'
   quickActions:
   - type: risk
@@ -1360,6 +1371,8 @@ dashboard:
     notes: Workflow complete. The system is now in a maximum defensive posture. No new risk should be taken until the signal
       improves materially.
 ---
+
+
 
 
 
