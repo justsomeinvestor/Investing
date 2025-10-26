@@ -3164,7 +3164,7 @@
                                     plannerData: dailyPlanner,
                                     dashboardData: dashboard,
                                     endOfDayData: dailyPlanner.endOfDay || {}
-                                })
+                                }, tab.tradingSignalScore?.updatedAt)
                             );
 
                             technicalsRow.appendChild(signalScoreSection);
@@ -4497,7 +4497,7 @@
         }
 
 
-        function renderSignalData(signalData, context = {}) {
+        function renderSignalData(signalData, context = {}, updatedAt = null) {
             const { plannerData = {}, dashboardData = {}, endOfDayData = {} } = context || {};
 
             const toNumber = (value) => {
@@ -4562,7 +4562,12 @@
 
             const title = document.createElement('h3');
             title.className = 'section-title';
-            title.textContent = 'Trading Signal Score';
+            if (updatedAt) {
+                const statusClass = getDataFreshness(updatedAt);
+                title.innerHTML = `Trading Signal Score <span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>`;
+            } else {
+                title.textContent = 'Trading Signal Score';
+            }
             section.appendChild(title);
 
             const scoreCard = document.createElement('div');

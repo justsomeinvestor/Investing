@@ -1,8 +1,8 @@
 # Verification Field Registry
 
 **Last Updated:** 2025-10-26
-**Coverage:** 25/34 timestamp fields (74% of all fields, 100% of critical fields)
-**Health Status:** 80% (20 current, 5 stale after Phase 2 automated sync)
+**Coverage:** 26/34 timestamp fields (76% of all fields, 100% of critical fields)
+**Health Status:** 100% (26/26 current)
 
 ---
 
@@ -12,11 +12,11 @@ Complete registry of all timestamp fields tracked by Wingman's verification syst
 
 ### Quick Stats
 - **Total fields in master-plan.md:** 34
-- **Fields tracked by verify_timestamps.py:** 25
-- **Phase 2 owned (automated):** 12
+- **Fields tracked by verify_timestamps.py:** 26
+- **Phase 2 owned (automated):** 13 (added trading signal score)
 - **Phase 5 owned (AI synthesis):** 13
-- **Expected health after Phase 2:** 48% (12/25 current)
-- **Expected health after Phase 5:** 100% (25/25 current)
+- **Expected health after Phase 2:** 50% (13/26 current)
+- **Expected health after Phase 5:** 100% (26/26 current)
 
 ---
 
@@ -90,12 +90,13 @@ These fields are set by Claude during Phase 5 (AI interpretation synthesis). The
 | 1010 | `tabs.xsentiment.crypto_trending.updatedAt` | Top crypto trending tickers | X search + mentions |
 | 1010 | `tabs.xsentiment.macro_trending.updatedAt` | Top macro trending topics | X search + mentions |
 
-#### Technicals Tab (2 fields)
+#### Technicals Tab (3 fields)
 
 | Line | Field Path | Purpose | Requires |
 |------|-----------|---------|----------|
 | 896 | `tabs.technicals.aiInterpretation.updatedAt` | Technical analysis synthesis | Chart data + pattern detection |
 | 896 | `tabs.technicals.technicalsTabSyncedAt` | Last technical data sync | Data source availability |
+| 1030 | `tabs.technicals.tradingSignalScore.updatedAt` | Trading signal score freshness | Market signal calculation | NEW |
 
 ---
 

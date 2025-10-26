@@ -1026,6 +1026,8 @@ dashboard:
         gamma 670 call wall = resistance zone.'
       sentiment: bearish
       confidence: medium-high
+    tradingSignalScore:
+      updatedAt: '2025-10-26T11:47:10Z'
     closeProbability:
       currentPrice: $660.00
       maxPain: $670.00

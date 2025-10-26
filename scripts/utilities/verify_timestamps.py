@@ -68,7 +68,7 @@ REQUIRED_TIMESTAMPS = [
     "dashboard.dailyPlanner.recommendationUpdated",  # NEW - AI-driven (Phase 5)
     "dashboard.dailyPlanner.actionChecklistUpdated",  # NEW - AI-driven (Phase 5)
 
-    # TAB-SPECIFIC (9 fields)
+    # TAB-SPECIFIC (10 fields)
     # Tab-specific timestamps (tabs are in dashboard.tabs array)
     # These require special handling - see extract_tab_timestamps()
     "tabs.portfolio.aiInterpretation.updatedAt",
@@ -81,13 +81,14 @@ REQUIRED_TIMESTAMPS = [
     "tabs.xsentiment.macro_trending.updatedAt",  # Macro trending tickers
     "tabs.technicals.aiInterpretation.updatedAt",
     "tabs.technicals.technicalsTabSyncedAt",
+    "tabs.technicals.tradingSignalScore.updatedAt",  # NEW - trading signal score freshness
 ]
 
 # VERIFICATION COVERAGE SUMMARY
 # =============================
 # Total timestamp fields identified in master-plan.md: 34
-# Fields now tracked by this script: 24
-# Coverage: 71% of all fields, 100% of critical fields
+# Fields now tracked by this script: 26
+# Coverage: 76% of all fields, 100% of critical fields
 #
 # Phase 2 (Automated Sync - 12 fields): sentimentCards, metrics, riskItems, quickActions,
 #   providerConsensus, priorities, keyLevels, economicCalendar, signalDataUpdated, endOfDay.ranAt
