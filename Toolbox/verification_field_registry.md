@@ -221,11 +221,37 @@ These can be added to `REQUIRED_TIMESTAMPS` in future iterations if more granula
 
 ---
 
+## Visual Indicators Implementation
+
+### Dashboard Status Display
+
+All 25 tracked timestamp fields now have **visual date-badge indicators** (colored dots) in the dashboard:
+
+**Color Coding:**
+- 🟢 **GREEN** (`status-ok`): Updated within last 12 hours - CURRENT
+- 🟡 **YELLOW** (`status-warning`): Updated 12-24 hours ago - STALE (but expected for AI sections)
+- 🔴 **RED** (`status-error`): Updated 2+ days ago - VERY_STALE (requires action)
+
+**Sections with Visual Indicators:**
+- ✅ Daily Planner: Key Levels, Economic Calendar, Today's Priorities (next to section titles)
+- ✅ Dashboard: Risk Monitor, Sentiment Timeline, Provider Consensus (next to section titles)
+- ✅ Tab AI Briefings: Portfolio, Markets, News, X Sentiment, Technicals (in AI header)
+- ✅ Dashboard Header: Global verification status indicator (top right)
+
+**Implementation:**
+- Indicators added via `getDataFreshness(timestamp)` function
+- Styled with CSS classes: `.date-badge.status-ok/warning/error`
+- Hover tooltips show freshness details
+- Synchronized with `verify_timestamps.py` status classifications
+
+---
+
 ## Maintenance
 
 ### Regular Updates
 
-- [ ] Reviewed: 2025-10-26 (initial creation)
+- [x] Reviewed: 2025-10-26 (initial creation)
+- [x] Updated: 2025-10-26 (added visual indicators)
 - [ ] Next review: 2025-11-02 (post 1 week)
 - [ ] When: After any new timestamp field is added
 - [ ] By: Dev + AI engineer
