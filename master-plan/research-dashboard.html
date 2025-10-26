@@ -4918,7 +4918,6 @@
 
             const metricsCards = [];
             const volumeCards = [];
-            const levelsTables = [];
 
             if (hasOptionsData) {
                 Object.entries(tab.optionsData).forEach(([ticker, data = {}]) => {
@@ -4948,32 +4947,6 @@
                         </div>
                     `);
 
-                    if (Array.isArray(data.keyLevels) && data.keyLevels.length) {
-                        const levelRows = data.keyLevels.map(level => `
-                            <tr>
-                                <td>$${formatPlainValue(level.strike)}</td>
-                                <td>${formatPlainValue(level.type)}</td>
-                                <td>${formatPlainValue(level.oi)}</td>
-                            </tr>
-                        `).join('');
-
-                        levelsTables.push(`
-                            <table class="options-key-levels-table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="3">${ticker} Key Levels</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Strike</th>
-                                        <th>Type</th>
-                                        <th>Open Interest</th>
-                                    </tr>
-                                </thead>
-                                <tbody>${levelRows}</tbody>
-                            </table>
-                        `);
-                    }
-
                     if (data.volumeFlow) {
                         const calls = sanitizePercentValue(data.volumeFlow.calls);
                         const puts = sanitizePercentValue(data.volumeFlow.puts);
@@ -5000,7 +4973,6 @@
 
             const metricsHTML = metricsCards.length ? `<div class="options-key-metrics-grid">${metricsCards.join('')}</div>` : '';
             const volumeHTML = volumeCards.join('');
-            const levelsHTML = levelsTables.join('');
             const statusClass = getDataFreshness(lastUpdated);
 
             return `
@@ -5012,7 +4984,6 @@
                     ${interpretationHTML}
                     ${metricsHTML}
                     ${volumeHTML}
-                    ${levelsHTML}
                 </div>
             `.trim();
         }
