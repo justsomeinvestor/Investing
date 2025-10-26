@@ -1149,37 +1149,20 @@ dashboard:
       sentiment: NEUTRAL
   dailyPlanner:
     aiInterpretation:
-      updatedAt: '2025-10-26T07:40:55Z'
+      updatedAt: '2025-10-26T07:45:00Z'
       summary: 'Daily Context for October 26, 2025:
 
+Signal: MODERATE (66.81/100) - upgraded from 57 yesterday on breadth healing
+Breadth: 20.83/25 (83.3%) - A/D ratio 1.69, 231 new highs vs 64 lows
+Trading Posture: RISK-ON BIAS - selective deployment to quality tech/growth warranted
 
-        Signal Tier: MODERATE (66.81/100)
+Market Structure: SPX 6,791.69 (+0.79%) consolidating at resistance. VIX normalized at 16.37 (-5.38%). Crypto stabilizing (BTC +1.40%, ETH +3.15%). Fear & Greed=40 (contrarian accumulation signal).
 
-        Breadth: 20.83/25 (MODERATE)
+Key Focus: Breadth confirmation resolved yesterday''s divergence concern. Deploy to quality names on dips. Maintain hedges through Oct 29 Fed. Monitor for >70% up-volume day to confirm bullish thrust.
 
-
-        Trading Posture: Active - deploy capital
-
-
-        Key Focus:
-
-        - Monitor signal strength for changes in market regime
-
-        - Respect risk management rules regardless of signal
-
-        - Stay nimble - conditions can change rapidly
-
-
-        This is automated daily context. For detailed market analysis, review individual tabs.'
-      keyInsight: 'THREE simultaneous inflection points: (1) Signal tier improvement (+28 pts) shows market finding institutional
-        buyers on weakness = regime shift from deterioration to stabilization; (2) Jobless claims at 8:30 AM = ONLY data in
-        shutdown void, any surprise will swing sentiment massively; (3) Technical support levels being tested simultaneously
-        (SPX 6,656, QQQ $604, BTC $107,600) = market proving near-term direction THIS WEEK.'
-      action: 'WAIT for 8:30 AM jobless claims before aggressive positioning. IN-LINE/STRONG claims = BUY weakness in quality
-        names + quantum/Bitcoin infrastructure themes (IBM quantum, Bittensor, Ledger announcements). WEAK claims = defensive
-        tilt, tighten stops on all positions, reduce sizing 20%. Key monitoring: (1) Jobless claims outcome and market reaction,
-        (2) SPX hold above 6,656, (3) QQQ break above $604 or below $600, (4) VIX cross $20 (fear escalation). Maintain tactical
-        hedges through CPI Friday + Fed Oct 28-29.'
+Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotation expected if dovish.'
+      keyInsight: 'BREADTH HEALING CONFIRMS BULL CASE: Signal upgraded 57→66.81 because A/D ratio strengthened to 1.69 with 231 new highs. This resolves the PRIMARY CONSTRAINT that was capping upside. Market structure now supports selective risk deployment to quality tech. Post-Fed dovish catalyst could trigger leg higher to $700 SPY / $6,927.5 SPX resistance.'
+      action: 'DEPLOYMENT WINDOW OPEN: Enter quality tech (NVDA/META/MSFT) on dips to SPY $670 support (max pain). Accumulate crypto at BTC $110.3K / ETH $3,900 zones (Fear & Greed=40 = accumulation signal). Maintain 35% cash + 10% hedges for Oct 29 Fed volatility. Key alerts: SPX $6,655.9 support, $6,927.5 resistance. AVOID chasing tops—enter on pullbacks to support. Oct 29 dovish Fed = $700+ SPY target; hawkish = retest $6,655.9.'
       sentiment: cautiously bullish
       confidence: medium-high
       content: 'MODERATE signal (58.0/100) provides tactical opportunity but information asymmetry extreme. Government data
@@ -1194,11 +1177,13 @@ dashboard:
       midday: 11:00-1:00 PM EST
       powerHour: 3:00-4:00 PM EST
       afterHours: 4:00-8:00 PM EST
-    prioritiesUpdated: '2025-10-26T07:40:55Z'
+    prioritiesUpdated: '2025-10-26T07:45:00Z'
     priorities:
-    - Selective opportunities in quality names
-    - Monitor signal strength for improvement
-    - Maintain risk management discipline
+    - Deploy 35% equities to quality tech on dips to SPY $670 support
+    - Accumulate 20% crypto at BTC $110.3K / ETH $3,900 zones with 3-month conviction
+    - Maintain 10% hedges (VIX calls) through Oct 29 for Fed protection
+    - Monitor breadth meter daily for >70% up-volume confirmation signal
+    - Watch Oct 29 FOMC for dovish guidance driving money market rotation
     keyLevelsUpdated: '2025-10-26T07:45:00Z'
     keyLevels:
     - asset: SPY
