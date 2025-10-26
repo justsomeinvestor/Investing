@@ -20,18 +20,18 @@ You are an AI fund manager. Analyze the data below and provide portfolio recomme
 
 ## MARKET SIGNALS - 2025-10-25
 
-**Composite Signal:** 57.16/100 (MODERATE)
+**Composite Signal:** 63.22/100 (MODERATE)
 
 **Signal Breakdown:**
-- Trend: 20.08/40
-- Breadth: 16.67/25
+- Trend: 20.88/40
+- Breadth: 21.83/25
 - Volatility: 10.0/20
-- Technical: 5.41/10
+- Technical: 5.51/10
 - Seasonality: 5.0/5
 
 **X Sentiment:**
-- Crypto: 50/100
-- Macro: 50/100
+- Crypto: 25/100
+- Macro: 25/100
 
 ## MARKET CONTEXT
 
@@ -40,10 +40,66 @@ Market overview not available
 ## X SENTIMENT DETAILS
 
 ### Crypto Sentiment
-X Crypto sentiment not available
+**Key Themes:**
+**1. Institutional Adoption Accelerating**
+- Kyrgyzstan launching national stablecoin on BNB Chain
+- CBDC rollout happening globally (institutional framework building)
+- BNB ecosystem gaining government-level adoption
+- Binance Academy expanding (regulatory compliance + education)
+
+**2. BTC "Quiet Period" = Capital Rotation**
+- Major traders pivoting to equities (better R/R temporarily)
+- BUT "BTC will play catchup" thesis circulating
+- Asymmetric upside in crypto still believed by smart traders
+- Rotation expected when equity momentum cools
+
+**3. "COVID Crash Equivalent" Narrative**
+- Traders comparing current dip to COVID crash in severity
+- Prediction: "New ATHs next year"
+- New products coming to enhance liquidity (ETFs, derivatives)
+- Sentiment: Contrarian bullish among sophisticated traders
+
+**4. Edge-Building in Dislocations**
+- Multiple trading opportunities in inefficiencies
+- Smaller traders can exploit gaps that "whales won't bother with"
+- Price differences between exchanges/assets = alpha potential
+- Trading psychology: Find YOUR advantage
+
+---
+
 
 ### Macro Sentiment
-X Macro sentiment not available
+**Key Themes:**
+**1. Fed Decision (Oct 29) = Market Hinge Pin**
+- 25 bps cut fully priced in (consensus)
+- BUT: Forward guidance is the real variable
+- Market not consensus pricing another 25 bps in December
+- Risk: Dovish surprise could re-rate higher
+
+**2. CPI Inflation Controlled (Housing = Anchor)**
+- Owner's equivalent rent flatlined at 0.1% MoM
+- This is THE story (validates soft landing narrative)
+- Housing deflation risk if rates stay high
+
+**3. Recession Risk Still in Pricing (30-40% probability)**
+- JPMorgan, S&P Global still modeling recession
+- BUT: Earnings season beating (76%+ beat rate)
+- Disconnect: Macro fear vs equity reality
+- Thesis: Market re-pricing recession lower after Fed
+
+**4. Government Shutdown = Data Vacuum**
+- Economic indicators delayed (jobs report missing)
+- This creates uncertainty (unusual Fed decision window)
+- Market could surprise on limited data visibility
+
+**5. Tariff Impact Building**
+- Trump tariff promises showing up in goods prices
+- Household furnishings +, audiovisual + (inflation reading)
+- Concern: Services will be sticky (tariff pass-through)
+- Risk: Stagflation scenario (growth slowing + inflation sticky)
+
+---
+
 
 ## RECENT TRADING ACTIVITY
 
