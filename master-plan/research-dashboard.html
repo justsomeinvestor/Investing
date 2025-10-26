@@ -3244,6 +3244,12 @@
                                 contentEl.innerHTML += sectionHTML;
                             });
                         }
+
+                        // Unusual Activity Monitor (appears after Bitcoin Technicals)
+                        const unusualActivityHTML = renderUnusualActivityMonitor(tab);
+                        if (unusualActivityHTML) {
+                            contentEl.innerHTML += unusualActivityHTML;
+                        }
                     } else {
                         // Non-technicals, non-markets, non-news_catalysts tabs: render providers normally
                         if (tab.providers) {
@@ -3262,7 +3268,7 @@
                         }
                     }
 
-                    // Special handling for technicals tab - TRADING LEVELS + UNUSUAL ACTIVITY MONITOR
+                    // Special handling for technicals tab - TRADING LEVELS
                     if (tab.id === 'technicals') {
                         // Render Trading Levels Dashboards side-by-side (SPY & QQQ)
                         let tradingLevelsHTML = '<div class="trading-levels-container">';
@@ -3279,12 +3285,6 @@
 
                         tradingLevelsHTML += '</div>';
                         contentEl.innerHTML += tradingLevelsHTML;
-
-                        // Unusual Activity Monitor tucked under Bitcoin Technicals
-                        const unusualActivityHTML = renderUnusualActivityMonitor(tab);
-                        if (unusualActivityHTML) {
-                            contentEl.innerHTML += unusualActivityHTML;
-                        }
                     }
                 }
             });
