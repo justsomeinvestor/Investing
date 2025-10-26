@@ -1,8 +1,8 @@
 # Verification Field Registry
 
 **Last Updated:** 2025-10-26
-**Coverage:** 29/34 timestamp fields (85% of all fields, 100% of critical fields)
-**Health Status:** 100% (26/26 current - pre-expansion) → ~90% expected (26/29 after options fields)
+**Coverage:** 26/34 timestamp fields (76% of all fields, 100% of critical fields)
+**Health Status:** 100% (26/26 current)
 
 ---
 
@@ -12,11 +12,11 @@ Complete registry of all timestamp fields tracked by Wingman's verification syst
 
 ### Quick Stats
 - **Total fields in master-plan.md:** 34
-- **Fields tracked by verify_timestamps.py:** 29
-- **Phase 2 owned (automated):** 15 (added trading signal score + options data)
-- **Phase 5 owned (AI synthesis):** 14 (added options AI interpretation)
-- **Expected health after Phase 2:** 52% (15/29 current)
-- **Expected health after Phase 5:** 100% (29/29 current)
+- **Fields tracked by verify_timestamps.py:** 26
+- **Phase 2 owned (automated):** 13 (added trading signal score)
+- **Phase 5 owned (AI synthesis):** 13
+- **Expected health after Phase 2:** 50% (13/26 current)
+- **Expected health after Phase 5:** 100% (26/26 current)
 
 ---
 
@@ -90,23 +90,13 @@ These fields are set by Claude during Phase 5 (AI interpretation synthesis). The
 | 1010 | `tabs.xsentiment.crypto_trending.updatedAt` | Top crypto trending tickers | X search + mentions |
 | 1010 | `tabs.xsentiment.macro_trending.updatedAt` | Top macro trending topics | X search + mentions |
 
-#### Technicals Tab (6 fields)
-
-**Phase 2 (Automated):**
-
-| Line | Field Path | Script | Purpose |
-|------|-----------|--------|---------|
-| 896 | `tabs.technicals.technicalsTabSyncedAt` | `sync_technicals_tab.py` | Last technical data sync |
-| 1030 | `tabs.technicals.tradingSignalScore.updatedAt` | `sync_technicals_tab.py` | Trading signal score freshness |
-| 1054 | `tabs.technicals.optionsData.SPY.lastUpdated` | `sync_technicals_tab.py` | SPY options data freshness | NEW |
-| 1076 | `tabs.technicals.optionsData.QQQ.lastUpdated` | `sync_technicals_tab.py` | QQQ options data freshness | NEW |
-
-**Phase 5 (AI Synthesis):**
+#### Technicals Tab (3 fields)
 
 | Line | Field Path | Purpose | Requires |
 |------|-----------|---------|----------|
 | 896 | `tabs.technicals.aiInterpretation.updatedAt` | Technical analysis synthesis | Chart data + pattern detection |
-| 1098 | `tabs.technicals.optionsAIInterpretation.updatedAt` | Options positioning interpretation | Options data + market context | NEW |
+| 896 | `tabs.technicals.technicalsTabSyncedAt` | Last technical data sync | Data source availability |
+| 1030 | `tabs.technicals.tradingSignalScore.updatedAt` | Trading signal score freshness | Market signal calculation |
 
 ---
 
@@ -190,15 +180,15 @@ These will transition to "current" during Phase 5 AI synthesis.
 
 ### For Operations (wingman dash execution)
 
-1. **After Phase 2 (automated sync):** Expect ~52% health (15/29 fields current)
-2. **After Phase 5 (AI synthesis):** Expect 100% health (29/29 fields current)
+1. **After Phase 2 (automated sync):** Expect ~48% health (12/25 fields current)
+2. **After Phase 5 (AI synthesis):** Expect 100% health (25/25 fields current)
 3. **Dashboard will show:** Green dots (current) for completed sections, yellow/red for stale
 
 ---
 
-## Fields Not Tracked (5 fields)
+## Fields Not Tracked (8 fields)
 
-The following 34 - 29 = 5 fields exist but are not tracked. These are lower-priority or sub-field timestamps:
+The following 34 - 26 = 8 fields exist but are not tracked. These are lower-priority or sub-field timestamps:
 
 | Field | Reason | Tier |
 |-------|--------|------|

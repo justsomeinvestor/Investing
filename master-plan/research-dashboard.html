@@ -4945,36 +4945,11 @@
             const lastUpdated = resolveOptionsLastUpdated(tab);
             const interpretationHTML = hasInterpretation ? renderAIInterpretation(tab.optionsAIInterpretation) : '';
 
-            const metricsCards = [];
             const volumeCards = [];
 
             if (hasOptionsData) {
                 Object.entries(tab.optionsData).forEach(([ticker, data = {}]) => {
-                    const spot = formatCurrencyValue(data.currentPrice);
-                    const maxPain = formatPlainValue(data.maxPain);
-                    const expiration = formatPlainValue(data.expiration);
-                    const putCall = formatPlainValue(data.putCallRatio);
-                    const ivPercentile = formatPlainValue(data.ivPercentile);
-                    const totalOI = formatPlainValue(data.totalOI);
                     const source = formatPlainValue(data.source || 'yfinance');
-
-                    metricsCards.push(`
-                        <div class="options-metric-card">
-                            <div class="options-metric-label">${ticker} Spot</div>
-                            <div class="options-metric-value">${spot}</div>
-                            <div style="color:#9ca3af;font-size:0.8em;margin-top:6px;">Max Pain ${maxPain}</div>
-                            <div style="color:#9ca3af;font-size:0.8em;">Expiration ${expiration}</div>
-                        </div>
-                    `);
-
-                    metricsCards.push(`
-                        <div class="options-metric-card">
-                            <div class="options-metric-label">${ticker} Put/Call</div>
-                            <div class="options-metric-value">${putCall}</div>
-                            <div style="color:#9ca3af;font-size:0.8em;margin-top:6px;">IV Percentile ${ivPercentile}</div>
-                            <div style="color:#9ca3af;font-size:0.8em;">Total OI ${totalOI}</div>
-                        </div>
-                    `);
 
                     if (data.volumeFlow) {
                         const calls = sanitizePercentValue(data.volumeFlow.calls);
@@ -5000,7 +4975,6 @@
                 });
             }
 
-            const metricsHTML = metricsCards.length ? `<div class="options-key-metrics-grid">${metricsCards.join('')}</div>` : '';
             const volumeHTML = volumeCards.join('');
             const statusClass = getDataFreshness(lastUpdated);
 
@@ -5011,7 +4985,6 @@
                         ${lastUpdated ? `<span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>` : ''}
                     </div>
                     ${interpretationHTML}
-                    ${metricsHTML}
                     ${volumeHTML}
                 </div>
             `.trim();
