@@ -44,7 +44,7 @@ dashboard:
       value: "$617.10 (+1.07%)"
     - label: "GLD Close"
       value: "$377.52 (-0.34%)"
-  sentimentHistoryUpdated: '2025-10-25T18:56:00Z'
+  sentimentHistoryUpdated: '2025-10-26T11:50:00Z'
   sentimentHistory:
   - date: '2025-10-08'
     score: 61
@@ -85,7 +85,7 @@ dashboard:
   - date: '2025-10-26'
     score: 66.81
     label: MODERATE
-  riskItemsUpdated: '2025-10-25T18:57:00Z'
+  riskItemsUpdated: '2025-10-26T11:50:00Z'
   riskItems:
   - title: Breadth Divergence (Most Traders Noting This)
     description: Advance-Decline line trending lower 10+ months while SPX hit ATH. Only 5-7 mega-caps driving indexes. If
@@ -138,18 +138,20 @@ dashboard:
       recommendation: See allocation above for current positioning
     aiInterpretation:
       updatedAt: '2025-10-26T07:45:00Z'
-      summary: 'SIGNAL IMPROVED TO 66.81/100 (MODERATE tier, strong conviction) on meaningful breadth recovery. Yesterday''s
+      summary: SIGNAL IMPROVED TO 66.81/100 (MODERATE tier, strong conviction) on meaningful breadth recovery. Yesterday's
         breadth divergence concern is healing—A/D ratio now 1.69 with 231 new 52-week highs vs 64 lows. SPY +0.82%, QQQ +1.07%
-        consolidating near key resistance $677/$617 on improving technical structure. Crypto stabilizing (BTC +1.40%, ETH +3.15%)
-        with Fear & Greed at 40 = contrarian accumulation opportunity. Earnings beat rate strong (76-78%), Fed Oct 29 dovish odds
-        improving. VIX normalized at 16.37 (from 17.30) = reduced tail risk premium.'
+        consolidating near key resistance $677/$617 on improving technical structure. Crypto stabilizing (BTC +1.40%, ETH
+        +3.15%) with Fear & Greed at 40 = contrarian accumulation opportunity. Earnings beat rate strong (76-78%), Fed Oct
+        29 dovish odds improving. VIX normalized at 16.37 (from 17.30) = reduced tail risk premium.
       keyInsight: 'BREADTH HEALING = CONFIRM BULLISH BIAS: Signal improved from 57→66.81 because breadth A/D ratio strengthened
-        AND new highs exceeded prior sessions. This is the BULLISH CONFIRMATION we waited for. Market structure improving; now risk is
-        whether breadth can sustain >70% up-volume post-Fed. If sustained, catalyst for leg higher to $700 SPY / $670 SPX resistance.'
-      action: 'DEPLOYMENT WINDOW OPEN (35% equities, up from 30%): Markets confirming bullish setup on breadth + technicals. Action:
-        (1) Deploy dry powder to quality tech/growth names (NVDA/META/MSFT) on dips to $670 SPY support. (2) Maintain 20% crypto exposure
-        (BTC $113.3K, ETH $4,067) with conviction—Fear & Greed=40 is accumulation signal. (3) Keep 35% cash for Oct 29 Fed volatility +
-        post-FOMC gaps. Key alerts: SPX $6,791 (current), resistance $6,927.5, support $6,655.9. AVOID chasing tops; enter on technicals.'
+        AND new highs exceeded prior sessions. This is the BULLISH CONFIRMATION we waited for. Market structure improving;
+        now risk is whether breadth can sustain >70% up-volume post-Fed. If sustained, catalyst for leg higher to $700 SPY
+        / $670 SPX resistance.'
+      action: 'DEPLOYMENT WINDOW OPEN (35% equities, up from 30%): Markets confirming bullish setup on breadth + technicals.
+        Action: (1) Deploy dry powder to quality tech/growth names (NVDA/META/MSFT) on dips to $670 SPY support. (2) Maintain
+        20% crypto exposure (BTC $113.3K, ETH $4,067) with conviction—Fear & Greed=40 is accumulation signal. (3) Keep 35%
+        cash for Oct 29 Fed volatility + post-FOMC gaps. Key alerts: SPX $6,791 (current), resistance $6,927.5, support $6,655.9.
+        AVOID chasing tops; enter on technicals.'
       sentiment: cautiously bullish
       confidence: medium-high
   - id: markets
@@ -158,19 +160,20 @@ dashboard:
       updatedAt: '2025-10-26T07:45:00Z'
       summary: 'MARKETS CONFIRM INFLECTION (66.81/100 MODERATE SIGNAL): Breadth healing validates bullish structure. SPX 6,791.69
         (+0.79%) with A/D ratio strengthening to 1.69 (231 new highs vs 64 lows)—this is the confirmation we waited for. Inflation
-        cooperative (CPI beat sticky), earnings resilient (76-78% beat rate, AI infrastructure supporting mega-cap tech), Fed Oct 29
-        dovish bias > 60% odds. Crypto stabilizing across majors (BTC +1.40%, ETH +3.15%, SOL +2.32%) with contrarian Fear & Greed=40.
-        Institutional flows positive, retail capitulation reversing. Technical setup improving: SPX holding $6,655.9 support with bullish
-        bias bias pointing toward $6,927.5 resistance (next leg target $700 SPY equivalent).'
-      keyInsight: 'BREADTH HEALING CONFIRMS BULL CASE: Yesterday''s divergence concern resolved. A/D ratio improving + new highs exceeding
-        prior sessions + VIX normalized (16.37) = structural market healing. Signal upgraded 57→66.81 specifically because breadth component
-        (breadth: 83.3%) now validates price strength. This removes the PRIMARY CONSTRAINT that was capping upside. Post-Fed dovish catalyst
-        could trigger leg higher; avoid being short in this structure.'
-      action: 'RISK-ON BIAS WARRANTED: Enter growth/tech on SPX dips to $6,655-6,679 (support zone). SPY max pain $670, QQQ max pain $609—
-        technicals hint gamma pin risk intraday but structure favors continuation higher post-Fed. Crypto: BTC support $110.3K, eth $3,900
-        (accumulation zones). Action checklist: (1) Buy dips to support with 35% equities allocation. (2) Hold 20% crypto, expecting post-Fed
-        money-market rotation. (3) Maintain hedges (10% VIX calls) through Oct 29 for tail risk. Oct 29 Fed dovish surprise = $700+ SPY target;
-        hawkish = retest $652.84 support. Positioning for upside more likely given current setup.'
+        cooperative (CPI beat sticky), earnings resilient (76-78% beat rate, AI infrastructure supporting mega-cap tech),
+        Fed Oct 29 dovish bias > 60% odds. Crypto stabilizing across majors (BTC +1.40%, ETH +3.15%, SOL +2.32%) with contrarian
+        Fear & Greed=40. Institutional flows positive, retail capitulation reversing. Technical setup improving: SPX holding
+        $6,655.9 support with bullish bias bias pointing toward $6,927.5 resistance (next leg target $700 SPY equivalent).'
+      keyInsight: 'BREADTH HEALING CONFIRMS BULL CASE: Yesterday''s divergence concern resolved. A/D ratio improving + new
+        highs exceeding prior sessions + VIX normalized (16.37) = structural market healing. Signal upgraded 57→66.81 specifically
+        because breadth component (breadth: 83.3%) now validates price strength. This removes the PRIMARY CONSTRAINT that
+        was capping upside. Post-Fed dovish catalyst could trigger leg higher; avoid being short in this structure.'
+      action: 'RISK-ON BIAS WARRANTED: Enter growth/tech on SPX dips to $6,655-6,679 (support zone). SPY max pain $670, QQQ
+        max pain $609— technicals hint gamma pin risk intraday but structure favors continuation higher post-Fed. Crypto:
+        BTC support $110.3K, eth $3,900 (accumulation zones). Action checklist: (1) Buy dips to support with 35% equities
+        allocation. (2) Hold 20% crypto, expecting post-Fed money-market rotation. (3) Maintain hedges (10% VIX calls) through
+        Oct 29 for tail risk. Oct 29 Fed dovish surprise = $700+ SPY target; hawkish = retest $652.84 support. Positioning
+        for upside more likely given current setup.'
       sentiment: cautiously bullish
       confidence: medium-high
     sections:
@@ -367,7 +370,7 @@ dashboard:
   - id: xsentiment
     label: 🐦 X Sentiment
     aiInterpretation:
-      updatedAt: '2025-10-26T07:40:54Z'
+      updatedAt: '2025-10-26T11:47:09Z'
       summary: 'Crypto sentiment: 68/100 (Moderately Bullish) Macro sentiment: 52/100 (Balanced/Mixed)'
       keyInsight: 'Combined sentiment: 60/100 (MODERATELY BULLISH). '
       action: Sentiment is constructive. Look for dips to add exposure in high-conviction areas.
@@ -448,7 +451,7 @@ dashboard:
         signal: Alpha opportunity - new entrant with momentum
       key_levels: []
       event_risk: []
-      updatedAt: '2025-10-25T19:00:00Z'
+      updatedAt: '2025-10-26T11:50:00Z'
     macro_trending:
       top_tickers:
       - ticker: TSLA
@@ -500,7 +503,7 @@ dashboard:
         signal: Alpha opportunity - new entrant with momentum
       key_levels: []
       event_risk: []
-      updatedAt: '2025-10-25T19:00:30Z'
+      updatedAt: '2025-10-26T11:50:00Z'
     top_narratives: []
     market_structure:
       crypto_levels:
@@ -647,7 +650,7 @@ dashboard:
       action_color: '#6b7280'
       confidence: low
       next_check: Sentiment neutral - wait for directional extreme before positioning
-    socialTabSyncedAt: '2025-10-26T07:40:54Z'
+    socialTabSyncedAt: '2025-10-26T11:47:09Z'
     influencer_consensus:
       tier1_sentiment: MODERATELY BULLISH
       tier2_sentiment: MODERATELY BULLISH
@@ -947,7 +950,7 @@ dashboard:
         - JPMorgan blueprint to become world's first fully AI-powered megabank
         - Cerebras raises $1B in pre-IPO funding for AI chip expansion
         - Buffett eyeing Berkshire's biggest deal in three years ($11.6B+)
-      rss_updated_at: '2025-10-26T07:40:55Z'
+      rss_updated_at: '2025-10-26T11:47:10Z'
     - name: 🚀 Upcoming Catalysts
       items:
       - date: '2025-10-26'
@@ -1008,7 +1011,7 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-26T07:40:54Z'
+      updatedAt: '2025-10-26T11:47:09Z'
       summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
         advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
         for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical:
@@ -1028,7 +1031,7 @@ dashboard:
       maxPain: $670.00
       putCallRatio: '1.49'
       ivPercentile: 34%
-      lastUpdated: 2025-10-26 07:40 ET
+      lastUpdated: 2025-10-26 11:47 ET
     providers:
     - name: Equity Technicals (SPX)
       insights:
@@ -1036,17 +1039,17 @@ dashboard:
       - 'Key support: 6,655.9 (strong), 6,452.1 (medium).'
       - 'Key resistance: 6,927.5 (medium), 7,131.3 (strong).'
       - 'Daily change: +0.00%. Price: 6,792.'
-      updatedAt: 2025-10-26 07:40 ET
+      updatedAt: 2025-10-26 11:47 ET
     - name: Bitcoin Technicals
       insights:
       - Momentum neutral; trading in range. Support $110,300, Resistance $116,000.
       - 'Key support levels: $108,100 (strong), $110,300 (medium).'
       - 'Key resistance levels: $116,000 (medium), $119,400 (strong).'
       - 'Daily change: +1.82%. Current price: $113,757.00.'
-      updatedAt: 2025-10-26 07:40 ET
+      updatedAt: 2025-10-26 11:47 ET
     optionsData:
       SPY:
-        lastUpdated: '2025-10-26T07:40:54Z'
+        lastUpdated: '2025-10-26T11:47:09Z'
         currentPrice: 664.39
         maxPain: $670.00
         putCallRatio: '1.49'
@@ -1068,7 +1071,7 @@ dashboard:
           sentiment: bearish
           reason: Put OI cluster (11,995,973)
       QQQ:
-        lastUpdated: '2025-10-26T07:40:54Z'
+        lastUpdated: '2025-10-26T11:47:09Z'
         currentPrice: 598.14
         maxPain: $609.00
         putCallRatio: '1.80'
@@ -1105,7 +1108,7 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-26T07:40:54Z'
+    technicalsTabSyncedAt: '2025-10-26T11:47:09Z'
   quickActionsUpdated: '2025-10-26T20:00:00Z'
   quickActions:
     - type: "risk"
@@ -1132,7 +1135,7 @@ dashboard:
       value: "Selective deployment"
       description: "Balanced environment. Be selective and size appropriately."
       urgency: "medium"
-  providerConsensusUpdated: '2025-10-25T18:58:00Z'
+  providerConsensusUpdated: '2025-10-26T11:50:00Z'
   providerConsensus:
     updatedAt: '2025-10-25T20:35:00Z'
     themes:
@@ -1153,17 +1156,23 @@ dashboard:
       updatedAt: '2025-10-26T07:45:00Z'
       summary: 'Daily Context for October 26, 2025:
 
-Signal: MODERATE (66.81/100) - upgraded from 57 yesterday on breadth healing
-Breadth: 20.83/25 (83.3%) - A/D ratio 1.69, 231 new highs vs 64 lows
-Trading Posture: RISK-ON BIAS - selective deployment to quality tech/growth warranted
+        Signal: MODERATE (66.81/100) - upgraded from 57 yesterday on breadth healing Breadth: 20.83/25 (83.3%) - A/D ratio
+        1.69, 231 new highs vs 64 lows Trading Posture: RISK-ON BIAS - selective deployment to quality tech/growth warranted
 
-Market Structure: SPX 6,791.69 (+0.79%) consolidating at resistance. VIX normalized at 16.37 (-5.38%). Crypto stabilizing (BTC +1.40%, ETH +3.15%). Fear & Greed=40 (contrarian accumulation signal).
+        Market Structure: SPX 6,791.69 (+0.79%) consolidating at resistance. VIX normalized at 16.37 (-5.38%). Crypto stabilizing
+        (BTC +1.40%, ETH +3.15%). Fear & Greed=40 (contrarian accumulation signal).
 
-Key Focus: Breadth confirmation resolved yesterday''s divergence concern. Deploy to quality names on dips. Maintain hedges through Oct 29 Fed. Monitor for >70% up-volume day to confirm bullish thrust.
+        Key Focus: Breadth confirmation resolved yesterday''s divergence concern. Deploy to quality names on dips. Maintain
+        hedges through Oct 29 Fed. Monitor for >70% up-volume day to confirm bullish thrust.
 
-Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotation expected if dovish.'
-      keyInsight: 'BREADTH HEALING CONFIRMS BULL CASE: Signal upgraded 57→66.81 because A/D ratio strengthened to 1.69 with 231 new highs. This resolves the PRIMARY CONSTRAINT that was capping upside. Market structure now supports selective risk deployment to quality tech. Post-Fed dovish catalyst could trigger leg higher to $700 SPY / $6,927.5 SPX resistance.'
-      action: 'DEPLOYMENT WINDOW OPEN: Enter quality tech (NVDA/META/MSFT) on dips to SPY $670 support (max pain). Accumulate crypto at BTC $110.3K / ETH $3,900 zones (Fear & Greed=40 = accumulation signal). Maintain 35% cash + 10% hedges for Oct 29 Fed volatility. Key alerts: SPX $6,655.9 support, $6,927.5 resistance. AVOID chasing tops—enter on pullbacks to support. Oct 29 dovish Fed = $700+ SPY target; hawkish = retest $6,655.9.'
+        Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotation expected if dovish.'
+      keyInsight: 'BREADTH HEALING CONFIRMS BULL CASE: Signal upgraded 57→66.81 because A/D ratio strengthened to 1.69 with
+        231 new highs. This resolves the PRIMARY CONSTRAINT that was capping upside. Market structure now supports selective
+        risk deployment to quality tech. Post-Fed dovish catalyst could trigger leg higher to $700 SPY / $6,927.5 SPX resistance.'
+      action: 'DEPLOYMENT WINDOW OPEN: Enter quality tech (NVDA/META/MSFT) on dips to SPY $670 support (max pain). Accumulate
+        crypto at BTC $110.3K / ETH $3,900 zones (Fear & Greed=40 = accumulation signal). Maintain 35% cash + 10% hedges for
+        Oct 29 Fed volatility. Key alerts: SPX $6,655.9 support, $6,927.5 resistance. AVOID chasing tops—enter on pullbacks
+        to support. Oct 29 dovish Fed = $700+ SPY target; hawkish = retest $6,655.9.'
       sentiment: cautiously bullish
       confidence: medium-high
       content: 'MODERATE signal (58.0/100) provides tactical opportunity but information asymmetry extreme. Government data
@@ -1189,18 +1198,18 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
     keyLevels:
     - asset: SPY
       entry: 677.25
-      stop: 670.00
-      target: 690.00
+      stop: 670.0
+      target: 690.0
       rationale: Current $677.25, max pain $670 (support), target $690 on breadth confirmation
     - asset: SPX
       entry: 6791.69
-      stop: 6655.90
-      target: 6927.50
+      stop: 6655.9
+      target: 6927.5
       rationale: Current $6,791.69, support $6,655.9 (medium), resistance $6,927.5 (next leg)
     - asset: QQQ
-      entry: 617.10
-      stop: 609.00
-      target: 630.00
+      entry: 617.1
+      stop: 609.0
+      target: 630.0
       rationale: Current $617.10, max pain $609, breakout target $630+ on sustained breadth
     - asset: BTC
       entry: 113347
@@ -1214,10 +1223,10 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
       rationale: Current $4,067, institutional accumulation zone $3,900-4,000, target $4,200 on alt rotation
     - asset: VIX
       entry: 16.37
-      stop: 20.00
-      target: 12.00
+      stop: 20.0
+      target: 12.0
       rationale: Normalized at 16.37, compression <18 supports equities, spike >20 is hedging trigger
-    economicCalendarUpdated: '2025-10-26T07:40:55Z'
+    economicCalendarUpdated: '2025-10-26T11:47:10Z'
     economicCalendar: *id001
     tomorrowPrep:
     - Track daily breadth ratios—need one 70%+ up-volume day to confirm bullish thrust.
@@ -1226,10 +1235,11 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
       composite: 66.81
       tier: MODERATE
       date: '2025-10-26'
-    signalDataUpdated: '2025-10-26T07:45:00Z'
-    recommendation: MODERATE tier (66.81/100). Market breadth healing confirmed on A/D ratio 1.69 + 231 new highs. Signal strengthened
-      from 57 yesterday—risk-on bias warranted with selective deployment to quality tech/growth. Crypto accumulation window (Fear &
-      Greed=40) supports 20% allocation. Maintain 35% cash + 10% hedges for Oct 29 Fed volatility. SPY support $670, resistance $690.
+    signalDataUpdated: '2025-10-26T11:47:10Z'
+    recommendation: MODERATE tier (66.81/100). Market breadth healing confirmed on A/D ratio 1.69 + 231 new highs. Signal
+      strengthened from 57 yesterday—risk-on bias warranted with selective deployment to quality tech/growth. Crypto accumulation
+      window (Fear & Greed=40) supports 20% allocation. Maintain 35% cash + 10% hedges for Oct 29 Fed volatility. SPY support
+      $670, resistance $690.
     recommendationUpdated: '2025-10-26T07:45:00Z'
     actionChecklist:
     - text: Deploy 35% equities to quality tech (NVDA/META/MSFT) on dips to SPY $670 support.
@@ -1238,7 +1248,8 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
       priority: high
     - text: Maintain 10% hedges (VIX calls through Oct 29) for Fed downside protection.
       priority: critical
-    - text: 'Monitor breadth meter daily—need >70% up-volume day to confirm bullish thrust. Track SPX $6,655.9 support, $6,927.5 resistance.'
+    - text: Monitor breadth meter daily—need >70% up-volume day to confirm bullish thrust. Track SPX $6,655.9 support, $6,927.5
+        resistance.
       priority: monitor
     - text: Watch Oct 29 FOMC for dovish guidance → expect money market rotation + crypto flow acceleration.
       priority: monitor
@@ -1272,7 +1283,7 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
     - Ensure all positions are appropriately hedged.
     - Reduce overall gross exposure.
     endOfDay:
-      ranAt: '2025-10-26T07:40:55Z'
+      ranAt: '2025-10-26T11:47:10Z'
       status: Pending - will run at market close
   endOfDay:
     date: October 20, 2025
@@ -1347,6 +1358,11 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
     notes: Workflow complete. The system is now in a maximum defensive posture. No new risk should be taken until the signal
       improves materially.
 ---
+
+
+
+
+
 
 
 
