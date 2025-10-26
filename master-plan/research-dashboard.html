@@ -6933,17 +6933,15 @@
                    section.name.includes('Crypto') ? '₿' : '🚀';
 
       html += `
-        <div class="section-enhanced glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 0; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); margin-bottom: 15px; animation: fadeInUp ${0.4 + idx * 0.1}s ease forwards; opacity: 0;">
-          <div class="section-header-enhanced" onclick="toggleSection('${sectionId}')" style="padding: 15px; cursor: pointer; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border-radius: 10px 10px 0 0; transition: all 0.3s ease;">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="font-size: 1.5em;">${icon}</span>
-                <div>
-                  <h3 style="color: #e0e6f0; margin: 0; font-size: 1.2em;">${section.name}</h3>
-                </div>
+        <div class="section-enhanced glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 0; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2); margin-bottom: 15px; animation: fadeInUp ${0.4 + idx * 0.1}s ease forwards;">
+          <div class="section-header-enhanced" onclick="toggleSection('${sectionId}')" style="padding: 15px; cursor: pointer; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border-radius: 10px 10px 0 0; transition: all 0.3s ease; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 1.5em;">${icon}</span>
+              <div>
+                <h3 style="color: #e0e6f0; margin: 0; font-size: 1.2em;">${section.name}</h3>
               </div>
-              <div id="${sectionId}-arrow" style="font-size: 1.5em; color: #6366f1; transition: transform 0.3s ease;">▼</div>
             </div>
+            <div id="${sectionId}-arrow" style="font-size: 1.5em; color: #6366f1; transition: transform 0.3s ease;">▼</div>
           </div>
           <div id="${sectionId}-content" class="section-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
             <div style="padding: 20px;">
