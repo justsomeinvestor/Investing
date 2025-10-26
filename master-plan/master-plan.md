@@ -1346,9 +1346,6 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
           days: 1
     notes: Workflow complete. The system is now in a maximum defensive posture. No new risk should be taken until the signal
       improves materially.
-  dataSource: master-plan.md
-  lastUpdated: '2025-10-26T09:45:00Z'
-  updatedAt: '2025-10-26T09:45:00Z'
 ---
 
 
