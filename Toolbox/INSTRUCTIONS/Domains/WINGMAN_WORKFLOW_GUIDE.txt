@@ -1,0 +1,535 @@
+================================================================================
+WINGMAN WORKFLOW GUIDE - UNIFIED REFERENCE
+================================================================================
+
+Last Updated: October 26, 2025
+Status: PRODUCTION
+Author: Trading System
+Version: 1.0
+
+Purpose: Single source of truth for the complete Wingman workflow
+         Clear separation of automated and manual AI phases
+
+================================================================================
+QUICK NAVIGATION
+================================================================================
+
+[PHASE 1] WINGMAN RECON - Automated Data Collection (~2 min)
+[PHASE 2] WINGMAP PREP - AI Summary Generation (~30-45 min)
+[PHASE 3] WINGMAN DASH - Automated Dashboard Update (~2-3 min)
+
+Complete workflow end-to-end: 45-70 minutes total
+
+================================================================================
+[PHASE 1] WINGMAN RECON - AUTOMATED DATA COLLECTION
+================================================================================
+
+PURPOSE:
+  Scrape ALL raw data from ALL sources in parallel for today's analysis
+
+COMMAND TO EXECUTE:
+  "wingman recon"
+
+TECHNICAL EXECUTION:
+  python scripts/automation/run_all_scrapers.py
+
+WHAT WINGMAN RECON DOES:
+
+1. Research Data Cleanup
+   - Keeps last 3 days of data
+   - Archives old overviews
+
+2. X/Twitter Scraper (Priority - longest task)
+   - Crypto list (400+ posts)
+   - Macro list (200+ posts)
+   - Technicals list (100+ posts)
+   - Bookmarks (integrated)
+
+3. YouTube Transcript Scraper (Parallel with X)
+   - 19 channels processed
+   - Extracts video transcripts
+
+4. RSS Feed Scraper (Parallel with X and YouTube)
+   - MarketWatch (Top Stories, Business News)
+   - CNBC (News & Analysis, Investing)
+   - Seeking Alpha (Marketplace)
+   - Federal Reserve (Press Releases)
+   - CoinDesk (Top Stories)
+
+5. X Data Archival
+   - Converts day's tweets to daily archives
+   - Prepares data for PREP analysis
+
+6. Technical Data Scraper
+   - SPY/QQQ options data (max pain, P/C, IV%)
+   - SPX technical levels
+   - BTC technical levels
+   - Market breadth (A/D ratio)
+   - VIX data
+
+OUTPUT LOCATIONS:
+  Research/RSS/{Provider}/YYYY-MM-DD*.md
+  Research/YouTube/{Channel}/YYYY-MM-DD*.md
+  Research/X/{Category}/x_list_posts_YYYYMMDD*.json
+  Research/X/{Category}/x_list_posts_YYYYMMDD_archived.json
+  Research/X/Bookmarks/x_bookmarks_posts_YYYYMMDD.json
+  Research/.cache/YYYY-MM-DD_technical_data.json
+  Research/.cache/YYYY-MM-DD_market_data.json
+
+EXECUTION DETAILS:
+  WHO EXECUTES: Python scripts (fully automated)
+  DURATION: ~2 minutes
+  DEPENDENCIES: Network access, scraper profiles configured
+  ERROR HANDLING: Built-in retry logic, outputs progress
+
+CRITICAL RULE:
+  ✅ ALL data collection happens in RECON phase
+  ❌ PREP phase does NOT scrape or fetch data
+  ❌ DASH phase does NOT scrape or fetch data
+
+NEXT STEP:
+  After RECON completes, proceed to "wingmap prep"
+
+================================================================================
+[PHASE 2] WINGMAP PREP - AI SUMMARY GENERATION
+================================================================================
+
+PURPOSE:
+  Transform raw scraped data into research summaries, overviews, and signals
+  This is AI-driven MANUAL WORKFLOW (not a Python script)
+
+COMMAND TO EXECUTE:
+  "wingmap prep"
+
+EXECUTION METHOD:
+  Claude (you) reads raw data and creates summaries IN THIS CONVERSATION
+  Follows detailed steps from: Toolbox/INSTRUCTIONS/Research/How_to_use_Research.txt
+  Guided by user feedback throughout
+
+WORKFLOW STRUCTURE:
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ STEP 0: Verify Data & Gather Web Searches (~2-3 minutes)               │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│ 0A: Verify Scrapers Completed                                          │
+│     • Run: python scripts/utilities/verify_scraper_data.py YYYY-MM-DD  │
+│     • Check exit code: 0 = all fresh, 2 = missing data                │
+│     • If exit code 2: Report missing providers and STOP                │
+│                                                                          │
+│ 0B: Run Web Searches for Market Context                               │
+│     • Execute 8 parallel web searches (not in scripts)                │
+│     • Gather real-time market sentiment, options flow, technicals    │
+│     • Save consolidated findings                                       │
+│                                                                          │
+│ 0C: Verification Checkpoint                                            │
+│     • Confirm all scraper outputs exist                                │
+│     • Confirm web search data created                                  │
+│     • Gate: Do NOT proceed to Step 1 until all verified              │
+│                                                                          │
+│ Expected Output: Verified data ready for analysis                      │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ STEP 1: Individual Provider Summaries (~20-30 minutes)                  │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│ 1.1: RSS Provider Summaries                                            │
+│      For EACH provider (MarketWatch, CNBC, Seeking Alpha, etc.):      │
+│      • Read raw article files (Glob to find YYYY-MM-DD files)        │
+│      • Summarize key content, sentiment, themes                       │
+│      • Save: Research/RSS/{Provider}/YYYY-MM-DD_{Provider}_Summary.md│
+│                                                                          │
+│ 1.2: YouTube Channel Summaries                                         │
+│      For EACH channel (42Macro, Fundstrat, Benjamin Cowen, etc.):    │
+│      • Read transcript files (Glob to find YYYY-MM-DD files)        │
+│      • Summarize key messages, themes, sentiment                      │
+│      • Save: Research/YouTube/{Channel}/YYYY-MM-DD_{Channel}_Summary.md
+│                                                                          │
+│ 1.3: Technical Summaries (7 REQUIRED - DO NOT SKIP)                   │
+│      ⚠️  These are critical for signal calculation                    │
+│      Required summaries:                                               │
+│        1. TradingView SPX (S&P 500)                                   │
+│        2. TradingView BTC (Bitcoin)                                   │
+│        3. TradingView QQQ (Nasdaq 100)                                │
+│        4. TradingView SOL (Solana)                                    │
+│        5. Fear & Greed Index (sentiment meter)                        │
+│        6. Market Breadth (A/D ratios, participation)                  │
+│        7. Volatility Metrics (VIX, IV percentiles)                    │
+│                                                                          │
+│      For EACH summary:                                                 │
+│      • Run web search: "TradingView [Asset] technical analysis..."   │
+│      • Extract: price, support/resistance, indicators, trend         │
+│      • Include format: Current level, key supports, key resistance   │
+│      • Save: Research/Technicals/{Provider}/YYYY-MM-DD_{Provider}_Summary.md
+│      • Verify parseable format (Price: XX, 50-DMA: XX, 200-DMA: XX) │
+│                                                                          │
+│ 1.4: X/Twitter Summaries (4 files - Use Task agent)                  │
+│      ⚠️  Use Task tool (files too large for direct reading)          │
+│      Categories:                                                        │
+│        1. Crypto sentiment (400+ posts analyzed)                      │
+│        2. Macro sentiment (200+ posts analyzed)                       │
+│        3. Technicals sentiment (100+ posts analyzed)                  │
+│        4. Bookmarks summary (trending bookmarked posts)               │
+│                                                                          │
+│      For EACH category:                                                │
+│      • Use Task agent to read complete JSON file                      │
+│      • Count sentiment (bullish/bearish/neutral)                      │
+│      • Identify top discussed tickers                                 │
+│      • Extract key themes and narratives                              │
+│      • Save: Research/X/YYYY-MM-DD_X_{Category}_Summary.md          │
+│                                                                          │
+│ Expected Output: 16+ individual provider summary files                │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ STEP 2: Category Overviews (~5-10 minutes)                              │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│ 2.1: RSS Category Overview                                             │
+│      • Read all RSS provider summaries (Step 1.1 outputs)            │
+│      • Consolidate themes, sentiment, consensus                       │
+│      • Save: Research/RSS/YYYY-MM-DD_RSS_Overview.md                 │
+│                                                                          │
+│ 2.2: YouTube Category Overview                                         │
+│      • Read all YouTube channel summaries (Step 1.2 outputs)         │
+│      • Consolidate messages, diverging opinions, consensus           │
+│      • Save: Research/YouTube/YYYY-MM-DD_YouTube_Overview.md         │
+│                                                                          │
+│ 2.3: Technical Category Overview                                       │
+│      • Read all 7 technical summaries (Step 1.3 outputs)            │
+│      • Consolidate technical signals, key levels, market health      │
+│      • Save: Research/Technicals/YYYY-MM-DD_Technical_Overview.md    │
+│                                                                          │
+│ 2.4: X/Twitter Category Overview                                       │
+│      • Read all 4 X summaries (Step 1.4 outputs)                    │
+│      • Consolidate sentiment by category, cross-category tickers     │
+│      • Save: Research/X/YYYY-MM-DD_X_Overview.md                    │
+│                                                                          │
+│ 2.5: Key Themes Document                                              │
+│      • Read all 4 category overviews (2.1-2.4 outputs)             │
+│      • Identify cross-provider consensus themes                       │
+│      • Note where sources agree (high consensus) vs disagree          │
+│      • Identify major catalysts and key levels                       │
+│      • Save: Research/.cache/YYYY-MM-DD_key_themes.md               │
+│                                                                          │
+│ Optimization: Run 2.1-2.4 in PARALLEL using Task agents (save time) │
+│ Expected Output: 5 category overview files                            │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ STEP 3: Market Sentiment Overview (~3-5 minutes)                        │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│ 3.1: Create Final Market Sentiment Overview                           │
+│      Read: All category overviews + key themes (Step 2)              │
+│      Synthesize:                                                       │
+│        • Executive summary (2-3 sentences: overall market tone)       │
+│        • Cross-provider consensus (bullish vs bearish themes)         │
+│        • Key levels to watch (SPX, BTC, QQQ major levels)           │
+│        • Major catalysts this week (events, earnings, data)           │
+│        • Aggregate sentiment score (0-100 qualitative)               │
+│        • Risk level assessment (LOW/MEDIUM/HIGH)                      │
+│                                                                          │
+│      Save: Research/.cache/YYYY-MM-DD_Market_Sentiment_Overview.md   │
+│                                                                          │
+│ Expected Output: 1 comprehensive market overview file                │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ STEP 4: Calculate Trading Signals (~0.1 seconds)                        │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│ 4.1: Run Signal Calculation Script                                    │
+│      Command: python scripts/processing/calculate_signals.py YYYY-MM-DD
+│                                                                          │
+│      Input: Reads technical summaries + market data                  │
+│      Process:                                                          │
+│        • Analyzes 5 weighted components                               │
+│        • Trend (40%): Moving average position, dip-buy scoring      │
+│        • Breadth (25%): Market participation                         │
+│        • Volatility (20%): VIX levels, implied volatility           │
+│        • Technical (10%): RSI oversold conditions                    │
+│        • Seasonality (5%): Historical monthly patterns               │
+│                                                                          │
+│      Output: signals_YYYY-MM-DD.json                                 │
+│      Contains:                                                         │
+│        • Composite score (0-100)                                      │
+│        • Tier (WEAK/MODERATE/STRONG/EXTREME)                         │
+│        • Component breakdown with explanations                        │
+│                                                                          │
+│ 4.2: Optional AI Review & Adjustments                                │
+│      • Review signals_YYYY-MM-DD.json                               │
+│      • If signals contradict research data: Document adjustments    │
+│      • Max adjustment: ±15 points total                              │
+│      • Document reasoning in ai_adjustments array                    │
+│                                                                          │
+│ Expected Output: 1 signals JSON file with composite score            │
+└──────────────────────────────────────────────────────────────────────────┘
+
+FINAL VERIFICATION (Before proceeding to DASH):
+  ☐ All 16+ research files created
+  ☐ signals_YYYY-MM-DD.json exists with composite score
+  ☐ Market Sentiment Overview created
+  ☐ All timestamps are today's date
+
+WHO EXECUTES: Claude (AI) in THIS conversation
+TOTAL DURATION: 30-45 minutes
+DEPENDENCIES: All RECON output files present
+NEXT STEP: After PREP completes, proceed to "wingman dash"
+
+DETAILED REFERENCE:
+  See: Toolbox/INSTRUCTIONS/Research/How_to_use_Research.txt
+  Contains: Step-by-step prompts, examples, verification checklists
+
+================================================================================
+[PHASE 3] WINGMAN DASH - AUTOMATED DASHBOARD UPDATE
+================================================================================
+
+PURPOSE:
+  Read prepared research data from PREP phase
+  Update master plan and dashboard with signals and analysis
+  Verify all sections are current
+  Identify stale AI sections needing manual updates
+
+COMMAND TO EXECUTE:
+  "wingman dash"
+
+TECHNICAL EXECUTION:
+  python scripts/automation/run_workflow.py YYYY-MM-DD --skip-fetch --skip-signals
+
+FLAGS EXPLAINED:
+  --skip-fetch: Market data already collected in RECON (no re-fetching)
+  --skip-signals: Signals already calculated in PREP (no re-calculation)
+
+PREREQUISITES (CRITICAL):
+  ⚠️  ALL PREP output files must exist:
+    • signals_YYYY-MM-DD.json (MANDATORY)
+    • Market Sentiment Overview (MANDATORY)
+    • 7 technical summaries (MANDATORY)
+    • All other research summaries (should exist)
+
+  If critical files missing → Workflow will FAIL
+  Action: Return to PREP and create missing files
+
+WHAT WINGMAN DASH DOES:
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ Phase 0: Parse Journal                                                  │
+│ • Extract account balance and P/L data                                │
+│ • Update account state                                                │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ Phase 3: Update Master Plan                                             │
+│ • Read signals_YYYY-MM-DD.json                                        │
+│ • Update 18 sections in master-plan.md:                               │
+│   - Page title, date badge, EAGLE EYE header                          │
+│   - Footer dates, signal scores, sentiment cards                      │
+│   - Metrics, quick actions, X sentiment data                          │
+│   - Daily planner metadata, economic calendar                         │
+│ • Create backup (master-plan.md.backup)                               │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ Phase 3.7: Process Trending Words                                       │
+│ • Extract trending tickers from X data                                │
+│ • Calculate velocity (how fast trends are rising)                     │
+│ • Output: YYYY-MM-DD_trending_words.json                             │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ Phases 3.8-3.11: Automated Tab Syncs                                     │
+│ • Sync Social Tab with signals (YAML format)                          │
+│ • Sync Technicals Tab with market + technical data                    │
+│ • Sync News Tab with RSS feeds                                        │
+│ • Sync Daily Planner with economic calendar                           │
+│ • Update Markets Intelligence prompt                                  │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ Phase 4: Verify Consistency                                             │
+│ • Check all YAML sections valid                                       │
+│ • Check all required fields present                                   │
+│ • Flag any structural issues                                          │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ Phase 4.5: Verify Timestamps (CRITICAL)                                 │
+│ • Check which sections have today's timestamp                         │
+│ • Identify STALE sections (need AI narrative updates)                 │
+│ • Output: stale_sections_YYYY-MM-DD.json                             │
+│ • Health percentage report (0-100%)                                   │
+│                                                                          │
+│ Expected: 8-12 stale AI interpretation sections                       │
+│           (These require manual AI updates - see POST-EXECUTION)      │
+└──────────────────────────────────────────────────────────────────────────┘
+
+OUTPUT FILES:
+  master-plan.md (updated with latest data)
+  master-plan.md.backup (copy of previous version)
+  research-dashboard.html (updated visualization)
+  stale_sections_YYYY-MM-DD.json (list of sections needing AI updates)
+
+EXECUTION DETAILS:
+  WHO EXECUTES: Python scripts (fully automated)
+  DURATION: 2-3 minutes
+  DEPENDENCIES: All PREP files must exist
+
+POST-EXECUTION (Manual AI Work - 10-20 minutes):
+  ⚠️  8-12 sections identified as stale in stale_sections JSON
+  Action Required:
+    1. Read: stale_sections_YYYY-MM-DD.json
+    2. For EACH stale section:
+       • Read current research files for context
+       • Write fresh AI narrative (Bloomberg-style analysis)
+       • Update master-plan.md with new content + timestamp
+    3. Verify timestamp health reaches 100%
+    4. Done!
+
+  Details: See Toolbox/INSTRUCTIONS/Research/How_to_use_MP_CLAUDE_ONLY.txt
+
+NEXT STEP:
+  After Phase 4.5 completes, update stale AI sections (manual work)
+
+================================================================================
+COMPLETE WORKFLOW TIMELINE
+================================================================================
+
+TIME        PHASE                    DURATION    TYPE        WHO
+────────────────────────────────────────────────────────────────────────────
+9:30 AM     WINGMAN RECON            2 min       Automated   Python Scripts
+            Data Collection
+            ↓
+            All raw data downloaded
+────────────────────────────────────────────────────────────────────────────
+9:32 AM     WINGMAP PREP             30-45 min   Manual      Claude (AI)
+            Summary Generation                              in Conversation
+            ↓
+            STEP 0: Verify data (2-3 min)
+            STEP 1: Provider summaries (20-30 min)
+            STEP 2: Category overviews (5-10 min)
+            STEP 3: Market sentiment (3-5 min)
+            STEP 4: Calculate signals (0.1 sec)
+            ↓
+            All research files + signals ready
+────────────────────────────────────────────────────────────────────────────
+10:15 AM    WINGMAN DASH             2-3 min     Automated   Python Scripts
+            Dashboard Update
+            ↓
+            Phases 0, 3-3.12 automated
+            Phase 4.5: Identify stale sections
+────────────────────────────────────────────────────────────────────────────
+10:20 AM    AI Section Updates       10-20 min   Manual      Claude (AI)
+            (Post-DASH)             (estimated)  in Conversation
+            ↓
+            Update 8-12 stale sections
+            Verify timestamp health = 100%
+────────────────────────────────────────────────────────────────────────────
+10:40 AM    WORKFLOW COMPLETE        45-70 min   Total Time
+            Dashboard 100% current
+            Ready to trade
+────────────────────────────────────────────────────────────────────────────
+
+================================================================================
+KEY PRINCIPLES
+================================================================================
+
+PHASE SEPARATION:
+  ✅ RECON = ONLY data collection (automated)
+  ✅ PREP = ONLY research summaries + signals (manual AI)
+  ✅ DASH = ONLY dashboard updates (automated)
+
+  ❌ DO NOT mix phases - execute them sequentially
+
+NO DUPLICATE WORK:
+  ✅ RECON fetches all data once
+  ✅ PREP uses that data (no re-fetching)
+  ✅ DASH uses PREP output (no re-calculation)
+
+  ❌ DO NOT re-run scrapers in PREP
+  ❌ DO NOT re-calculate signals in DASH
+  ❌ DO NOT re-fetch market data in DASH
+
+CRITICAL FILES:
+  signals_YYYY-MM-DD.json = MOST CRITICAL
+  Market Sentiment Overview = CRITICAL
+  7 Technical Summaries = CRITICAL
+
+  Without these: DASH will FAIL
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: RECON takes 10+ minutes (should be ~2)
+CAUSE: Network issues, scraper failures, rate limits
+ACTION: Check individual scraper output, retry failed components
+
+PROBLEM: PREP takes 2-3 minutes (should be 30-45)
+CAUSE: Trying to run as Python script instead of manual workflow
+ACTION: PREP is AI work - must be executed as conversation workflow
+FIX: Execute How_to_use_Research.txt steps (1, 2, 3 are manual)
+
+PROBLEM: DASH fails with "signals not found"
+CAUSE: PREP not completed (no signals_YYYY-MM-DD.json)
+ACTION: Return to PREP, run Step 4 signal calculation
+
+PROBLEM: DASH fails with "critical files missing"
+CAUSE: PREP incomplete or improperly executed
+ACTION: Verify all 16+ research files exist before running DASH
+
+PROBLEM: Old documentation mentions --prep-only flag
+CAUSE: Deprecated - workflow was previously misunderstood
+ACTION: Ignore --prep-only - PREP is not a script execution
+
+PROBLEM: Confusion about what's automated vs manual
+REFER TO: Timeline diagram above
+RECON = Automated, PREP = Manual AI, DASH = Automated
+
+================================================================================
+DETAILED REFERENCE DOCUMENTS
+================================================================================
+
+For step-by-step instructions and prompts, refer to:
+
+PREP (STEP-BY-STEP):
+  Location: Toolbox/INSTRUCTIONS/Research/How_to_use_Research.txt
+  Contains: Detailed steps, prompts, verification checklists
+  Use When: Executing PREP workflow (Step 1-4 details)
+
+DASH (STEP-BY-STEP):
+  Location: Toolbox/INSTRUCTIONS/Research/How_to_use_MP_CLAUDE_ONLY.txt
+  Contains: Stale section updates, AI narrative writing
+  Use When: Post-DASH AI section updates
+
+PROTOCOL:
+  Location: Toolbox/INSTRUCTIONS/Domains/Journal_Trading_Partner_Protocol.txt
+  Contains: Overall system rules, safeguards, authorization
+
+COMMAND PIPELINE:
+  Location: Toolbox/INSTRUCTIONS/Domains/Wingman_Command_Pipeline.txt
+  Contains: High-level workflow overview, daily examples
+
+================================================================================
+VERSION HISTORY
+================================================================================
+
+v1.0 - October 26, 2025
+  ✅ Initial unified workflow guide created
+  ✅ Clear three-phase separation documented
+  ✅ Removed deprecated --prep-only documentation
+  ✅ Clarified manual vs automated execution
+  ✅ Added complete timeline and troubleshooting
+
+================================================================================
+END WINGMAN WORKFLOW GUIDE
+================================================================================
+
+Status: PRODUCTION READY
+Next Review: When major workflow changes occur
+
+This guide is your single source of truth for the Wingman workflow.
+Bookmark it. Reference it. Keep it current.
+
+Safe trading. 🚀

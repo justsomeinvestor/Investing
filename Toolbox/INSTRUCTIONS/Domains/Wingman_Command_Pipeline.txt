@@ -85,32 +85,20 @@ COMMAND:
     "wingman prep"
 
 EXECUTION:
-    python scripts/automation/run_workflow.py YYYY-MM-DD --prep-only --skip-fetch
+    ⚠️  IMPORTANT: PREP is NOT a Python script execution
 
-    Flags explained:
-    - --prep-only: Stop after Phase 2 (signal calculation), skip dashboard sync (phases 3-5)
-    - --skip-fetch: Use cached market data from WINGMAN RECON (already fresh)
+    PREP is a MANUAL AI WORKFLOW executed in this conversation
+    Follow: Toolbox/INSTRUCTIONS/Research/How_to_use_Research.txt (Steps 0-4)
 
-    What it does:
-    - Phase 0: Parse journal for account state
-    - Phase 1.5: SKIPPED (--skip-fetch)
-    - Phase 2: Calculate signals from cached data
-    - Phases 3-5: SKIPPED (--prep-only, dashboard sync deferred to WINGMAN DASH)
-
-CRITICAL OPTIMIZATION:
-    ⚠️  ALWAYS use --skip-fetch after WINGMAN RECON
-
-    Why: WINGMAN RECON already fetches ALL market data, including:
-      • F&G Index, crypto prices, stock indices (Phase 1) - 3 seconds
-      • SPY/QQQ options, SPX levels, breadth, VIX (Phase 1.5) - 176 seconds
-
-    Re-fetching is wasteful duplication and risks API rate limits.
-    Data is still fresh (RECON→PREP runs within 2-5 minutes).
-
-    Time savings: 179 seconds per workflow run
+    What WINGMAN PREP does (NOT automated):
+    - Step 0: Verify scrapers + run web searches
+    - Step 1: Create individual provider summaries (16+ files)
+    - Step 2: Create category overviews (4 files)
+    - Step 3: Create market sentiment overview (1 file)
+    - Step 4: Calculate trading signals (via Python script)
 
 DURATION:
-    ~0.1 seconds (Phase 2 only, data fetch skipped via --skip-fetch)
+    ~30-45 minutes (manual AI work, not instant)
 
 PURPOSE:
     Analyze collected data and generate AI-driven research summaries.
@@ -207,17 +195,20 @@ SIGNAL OUTPUT EXAMPLE:
       }
     }
 
-WHAT WINGMAN PREP DOES NOT (with --skip-fetch):
-    ✗ Does NOT re-fetch market data (uses RECON cache)
-    ✗ Does NOT call APIs again (F&G, crypto prices, technical data)
-    ✗ Does NOT re-scrape RSS/YouTube/Twitter data
-    ✗ Does NOT update dashboard (phases 3-5 skipped with --prep-only)
+WHAT WINGMAN PREP DOES NOT:
+    ✗ Does NOT run Python scripts for scrapers
+    ✗ Does NOT call APIs for market data
+    ✗ Does NOT update the dashboard
+    ✗ Does NOT run verify_timestamps script
 
-WHAT WINGMAN PREP DOES (with --skip-fetch --prep-only):
-    ✓ Verifies scraper data freshness
-    ✓ Calculates trading signals from cached market data
+WHAT WINGMAN PREP DOES:
+    ✓ Reads raw data from RECON (JSON files, article text)
+    ✓ Creates 16+ research summary markdown files (AI work)
+    ✓ Creates 4 category overview markdown files (AI work)
+    ✓ Creates market sentiment overview (AI work)
+    ✓ Runs signal calculation script (0.1 sec)
     ✓ Outputs signals_YYYY-MM-DD.json
-    ✓ Stops cleanly (no timestamp verification errors)
+    ✓ Ready for WINGMAN DASH
 
 WINGMAN DASH USES:
     ✓ All research summaries created here
@@ -524,20 +515,16 @@ DAILY WORKFLOW EXAMPLE
 
 TIME        ACTION                          DURATION    OUTPUT
 ---------------------------------------------------------------------------
-9:30 AM     wingman recon                   ~2 min      Fresh data files
-            (Collect all market data)
+9:30 AM     wingman recon                   ~2 min      Raw data files
+            (Collect all market data)       (Automated)
 
-9:32 AM     wingman prep                    ~0.1 sec    signals_2025-10-26.json
-            python run_workflow.py          (Phase 2
-            YYYY-MM-DD                      only with
-            --prep-only --skip-fetch        --skip-fetch)
-            (Calculate signals from
-             cached recon data)
+9:32 AM     wingman prep                    ~30-45 min  Research summaries
+            (AI: Read data → Create         (Manual AI  + signals
+             summaries → Calculate signals)  work)
 
-9:33 AM     wingman dash                    ~2-3 min    Updated dashboard
-            (Sync dashboard, identify
-             stale AI sections, verify
-             timestamps)
+10:15 AM    wingman dash                    ~2-3 min    Updated dashboard
+            (Sync prepared data to          (Automated) + stale section list
+             dashboard, verify)
 
 10:25 AM    [AI WORK] Update stale          ~10-20min   Fresh AI intrepret.
             interpretations                             Dashboard 100% current
@@ -554,14 +541,14 @@ COMMAND USAGE SYNTAX
 ================================================================================
 
 To the Pilot:
-    "wingman recon"     →   Wingman executes recon workflow
+    "wingman recon"     →   Wingman executes recon workflow (automated)
                             python scripts/automation/run_all_scrapers.py
 
-    "wingman prep"      →   Wingman executes prep workflow
-                            python scripts/automation/run_workflow.py YYYY-MM-DD --prep-only --skip-fetch
-                            (ALWAYS use --skip-fetch after recon)
+    "wingman prep"      →   Wingman executes prep workflow (manual AI)
+                            Follow How_to_use_Research.txt (Steps 0-4)
+                            Read data, create summaries, calculate signals
 
-    "wingman dash"      →   Wingman executes dash workflow
+    "wingman dash"      →   Wingman executes dash workflow (automated)
                             python scripts/automation/run_workflow.py YYYY-MM-DD --skip-fetch --skip-signals
 
 Wingman Response:
@@ -576,9 +563,14 @@ Wingman Response:
 TROUBLESHOOTING
 ================================================================================
 
-PROBLEM: wingman prep takes 30+ minutes (should be 0.1 sec)
-CAUSE: Missing --skip-fetch flag (re-fetching data from recon)
-FIX: Use: python scripts/automation/run_workflow.py YYYY-MM-DD --prep-only --skip-fetch
+PROBLEM: "wingman prep" takes too long or doesn't complete
+CAUSE: Complex - AI workflow has many steps (summaries + overviews)
+FIX: This is EXPECTED - PREP is 30-45 minute manual workflow
+     Follow How_to_use_Research.txt step-by-step
+
+PROBLEM: PREP appears to complete instantly (seconds)
+CAUSE: Trying to run PREP as automated script instead of manual
+FIX: PREP is not automated - must manually execute How_to_use_Research.txt
 
 PROBLEM: wingman dash takes 30+ minutes (should be 2-3 min)
 CAUSE: Missing --skip-fetch --skip-signals flags
@@ -633,6 +625,13 @@ SCRIPTS:
 ================================================================================
 VERSION HISTORY
 ================================================================================
+
+v1.1 - October 26, 2025
+    - Clarified PREP is manual AI workflow (not automated script)
+    - Removed deprecated --prep-only flag documentation
+    - Updated timing: PREP is 30-45 min (not instant)
+    - Added reference to unified WINGMAN_WORKFLOW_GUIDE.txt
+    - Clear distinction: RECON automated, PREP manual, DASH automated
 
 v1.0 - October 23, 2025
     - Initial Wingman Command Pipeline documentation

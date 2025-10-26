@@ -568,42 +568,37 @@ Pre-configured commands and buttons in the Command Center dashboard that trigger
 
 ### 🗺️ WINGMAP PREP
 - **Command:** "wingmap prep"
-- **Purpose:** Execute complete research workflow after Wingman Recon
-- **Execution Command:**
-  ```bash
-  python scripts/automation/run_workflow.py YYYY-MM-DD --prep-only --skip-fetch
-  ```
-  - `--prep-only`: Stop after Phase 2 (signals calculation), skip dashboard sync
-  - `--skip-fetch`: Use market data from WINGMAN RECON (already fresh, avoid re-fetching)
-- **CRITICAL:** ALWAYS use `--skip-fetch` after WINGMAN RECON
-  - WINGMAN RECON already fetches all market data (including 176-second technical data fetch)
-  - Re-fetching is wasteful duplication and risks rate limits
-  - Data is still fresh (RECON→PREP runs within 2-5 minutes)
-  - Time savings: 179 seconds per workflow run
-- **Triggers:** Full research processing pipeline (Steps 0-2 only with --prep-only)
-- **What it runs:**
-  - **STEP 0A (CRITICAL - MANDATORY):** Run verification script FIRST
-    * Command: python scripts/utilities/verify_scraper_data.py YYYY-MM-DD
-    * Exit code 0 = Proceed to STEP 0B
-    * Exit code 2 = STOP workflow, report missing data to Commander
-    * Exit code 1 = STOP workflow, report error to Commander
-    * DO NOT manually search files with Glob - trust the script
-  - **STEP 0B:** Journal parsing + cached market data verification
-  - **STEP 1:** Phase 1 & 1.5 SKIPPED (--skip-fetch flag)
-  - **STEP 2:** Trading signals calculation (only phase that runs)
-- **Status notification:** Real-time progress updates through signal calculation
-- **Use case:** Daily research analysis using fresh data from wingman recon
-- **Time required:** ~0.1 seconds (Phase 2 only, data fetch skipped)
+- **Purpose:** Manually transform raw data into research summaries and signals
+- **Execution Method:** MANUAL AI WORKFLOW (not automated Python script)
+  - Claude reads scraped data and creates summaries IN THIS CONVERSATION
+  - Follow: `Toolbox/INSTRUCTIONS/Research/How_to_use_Research.txt` (Steps 0-4)
+  - Guided by user feedback throughout workflow
+- **What PREP involves (Steps 0-4):**
+  - **STEP 0 (2-3 min):** Verify scrapers + run web searches
+  - **STEP 1 (20-30 min):** Create 16+ individual provider summaries
+    * RSS summaries (MarketWatch, CNBC, etc.)
+    * YouTube summaries (42Macro, Fundstrat, etc.)
+    * Technical summaries (7 required: SPX, BTC, QQQ, SOL, F&G, Breadth, Vol)
+    * X/Twitter summaries (Crypto, Macro, Technicals, Bookmarks)
+  - **STEP 2 (5-10 min):** Create 4 category overviews + key themes
+  - **STEP 3 (3-5 min):** Create market sentiment overview
+  - **STEP 4 (0.1 sec):** Calculate trading signals via Python script
+- **Status notification:** Real-time updates through research workflow
+- **Use case:** Daily research analysis after fresh data collection
+- **Time required:** ~30-45 minutes (manual AI work, not instant)
 - **Prerequisites:**
   - Must run "wingman recon" first
-  - Scraper data verification must pass (all providers fresh for today)
+  - Scraper data verification must pass (run: `python scripts/utilities/verify_scraper_data.py YYYY-MM-DD`)
 - **Wingman role:**
-  - Execute automated data verification FIRST
-  - If verification fails → STOP and report missing data to Commander
-  - If verification passes → Execute signal calculation only
-  - Report completion with signal scores
-- **Output:** Creates signals_YYYY-MM-DD.json with composite score
+  - Read raw scraped data (X posts, RSS articles, YouTube transcripts, technical data)
+  - Create markdown summary files for each provider
+  - Roll up provider summaries into category overviews
+  - Synthesize market sentiment overview
+  - Run signal calculation script
+  - Report completion with 16+ research files + signal scores
+- **Output:** Creates 16+ research files + signals_YYYY-MM-DD.json
 - **Data Quality Safeguard:** NEVER proceeds if scraper data is incomplete or stale
+- **Detailed Reference:** See `How_to_use_Research.txt` for step-by-step instructions
 
 ### 📊 WINGMAN DASH
 - **Command:** "wingman dash"
@@ -767,12 +762,12 @@ Step 1: Say "wingman recon" (or click 🔍 WINGMAN RECON)
 - Result: All data sources are fresh and current
 
 Step 2: Say "wingmap prep" (or click 🗺️ WINGMAP PREP)
-- Command: python scripts/automation/run_workflow.py 2025-10-26 --prep-only --skip-fetch
-- Status: Real-time updates through signal calculation
-- Wait: ~0.1 seconds for completion (Phase 2 only with --skip-fetch)
-- Result: Composite signal score calculated from cached market data
-- Output: signals_2025-10-26.json + composite signal score
-- Note: --skip-fetch uses data from wingman recon (no re-fetching)
+- Method: Manual AI workflow (Claude reads data, creates summaries)
+- Status: Real-time updates through research workflow
+- Wait: ~30-45 minutes for completion
+- Result: 16+ research summary files + composite signal score
+- Output: Research files in .cache, Research/RSS, Research/X, Research/Technicals, etc.
+- Process: Steps 0-4 from How_to_use_Research.txt
 
 Step 3: Say "wingman dash" (or click 📊 WINGMAN DASH)
 - Status: Real-time updates through dashboard sync
