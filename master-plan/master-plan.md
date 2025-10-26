@@ -6,44 +6,44 @@ dashboard:
   lastUpdated: '2025-10-26T09:45:00Z'
   sentimentCardsUpdated: '2025-10-26T20:00:00Z'
   sentimentCards:
-    - id: "equities"
-      label: "Equities"
-      value: "RECOVERY"
-      detail: "Signal 66.81/100 • Selective"
-      detailColor: "#3b82f6"
-    - id: "crypto"
-      label: "Crypto"
-      value: "STABILIZING"
-      detail: "BTC 1.40%"
-      detailColor: "#3b82f6"
-    - id: "liquidity"
-      label: "Liquidity Cycle"
-      value: "IMPROVING"
-      detail: "Conditions normalizing"
-      detailColor: "#10b981"
-    - id: "macro"
-      label: "Macro"
-      value: "CAUTIOUS"
-      detail: "Mixed signals"
-      detailColor: "#f59e0b"
+  - id: equities
+    label: Equities
+    value: RECOVERY
+    detail: Signal 66.81/100 • Selective
+    detailColor: '#3b82f6'
+  - id: crypto
+    label: Crypto
+    value: STABILIZING
+    detail: BTC 1.40%
+    detailColor: '#3b82f6'
+  - id: liquidity
+    label: Liquidity Cycle
+    value: IMPROVING
+    detail: Conditions normalizing
+    detailColor: '#10b981'
+  - id: macro
+    label: Macro
+    value: CAUTIOUS
+    detail: Mixed signals
+    detailColor: '#f59e0b'
   metricsUpdated: '2025-10-26T20:00:00Z'
   metrics:
-    - label: "Composite Score"
-      value: "66.81 (MODERATE)"
-    - label: "Fear & Greed (Crypto)"
-      value: "40 (Fear)"
-    - label: "BTC Spot"
-      value: "$113.3K (+1.40% 24h)"
-    - label: "ETH Spot"
-      value: "$4067 (+3.15% 24h)"
-    - label: "SOL Spot"
-      value: "$197.73 (+2.32% 24h)"
-    - label: "SPY Close"
-      value: "$677.25 (+0.82%)"
-    - label: "QQQ Close"
-      value: "$617.10 (+1.07%)"
-    - label: "GLD Close"
-      value: "$377.52 (-0.34%)"
+  - label: Composite Score
+    value: 66.81 (MODERATE)
+  - label: Fear & Greed (Crypto)
+    value: 40 (Fear)
+  - label: BTC Spot
+    value: $113.3K (+1.40% 24h)
+  - label: ETH Spot
+    value: $4067 (+3.15% 24h)
+  - label: SOL Spot
+    value: $197.73 (+2.32% 24h)
+  - label: SPY Close
+    value: $677.25 (+0.82%)
+  - label: QQQ Close
+    value: $617.10 (+1.07%)
+  - label: GLD Close
+    value: $377.52 (-0.34%)
   sentimentHistoryUpdated: '2025-10-26T11:50:00Z'
   sentimentHistory:
   - date: '2025-10-08'
@@ -1011,7 +1011,7 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-26T11:47:09Z'
+      updatedAt: '2025-10-26T12:28:41Z'
       summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
         advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
         for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical:
@@ -1027,13 +1027,13 @@ dashboard:
       sentiment: bearish
       confidence: medium-high
     tradingSignalScore:
-      updatedAt: '2025-10-26T11:47:10Z'
+      updatedAt: '2025-10-26T12:28:41Z'
     closeProbability:
       currentPrice: $660.00
       maxPain: $670.00
       putCallRatio: '1.49'
       ivPercentile: 34%
-      lastUpdated: 2025-10-26 11:47 ET
+      lastUpdated: 2025-10-26 12:28 ET
     providers:
     - name: Equity Technicals (SPX)
       insights:
@@ -1041,17 +1041,17 @@ dashboard:
       - 'Key support: 6,655.9 (strong), 6,452.1 (medium).'
       - 'Key resistance: 6,927.5 (medium), 7,131.3 (strong).'
       - 'Daily change: +0.00%. Price: 6,792.'
-      updatedAt: 2025-10-26 11:47 ET
+      updatedAt: 2025-10-26 12:28 ET
     - name: Bitcoin Technicals
       insights:
       - Momentum neutral; trading in range. Support $110,300, Resistance $116,000.
       - 'Key support levels: $108,100 (strong), $110,300 (medium).'
       - 'Key resistance levels: $116,000 (medium), $119,400 (strong).'
       - 'Daily change: +1.82%. Current price: $113,757.00.'
-      updatedAt: 2025-10-26 11:47 ET
+      updatedAt: 2025-10-26 12:28 ET
     optionsData:
       SPY:
-        lastUpdated: '2025-10-26T11:47:09Z'
+        lastUpdated: '2025-10-26T12:28:41Z'
         currentPrice: 664.39
         maxPain: $670.00
         putCallRatio: '1.49'
@@ -1073,7 +1073,7 @@ dashboard:
           sentiment: bearish
           reason: Put OI cluster (11,995,973)
       QQQ:
-        lastUpdated: '2025-10-26T11:47:09Z'
+        lastUpdated: '2025-10-26T12:28:41Z'
         currentPrice: 598.14
         maxPain: $609.00
         putCallRatio: '1.80'
@@ -1110,33 +1110,33 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-26T11:47:09Z'
+    technicalsTabSyncedAt: '2025-10-26T12:28:41Z'
   quickActionsUpdated: '2025-10-26T20:00:00Z'
   quickActions:
-    - type: "risk"
-      icon: "✅"
-      title: "SELECTIVE RISK REENTRY"
-      value: "Signal Score: 66.81 (MODERATE)"
-      description: "MODERATE signal (66.81/100) - Selective opportunities available. Focus on quality setups."
-      urgency: "medium"
-    - type: "hedge"
-      icon: "🛡️"
-      title: "MAINTAIN PRUDENT HEDGES"
-      value: "Keep tail risk protection"
-      description: "Market stabilizing but maintain hedges as insurance."
-      urgency: "medium"
-    - type: "watch"
-      icon: "👀"
-      title: "MONITOR KEY LEVELS"
-      value: "Watch support/resistance"
-      description: "Monitor key technical levels and breadth metrics for direction."
-      urgency: "medium"
-    - type: "plan"
-      icon: "📝"
-      title: "BALANCED APPROACH"
-      value: "Selective deployment"
-      description: "Balanced environment. Be selective and size appropriately."
-      urgency: "medium"
+  - type: risk
+    icon: ✅
+    title: SELECTIVE RISK REENTRY
+    value: 'Signal Score: 66.81 (MODERATE)'
+    description: MODERATE signal (66.81/100) - Selective opportunities available. Focus on quality setups.
+    urgency: medium
+  - type: hedge
+    icon: 🛡️
+    title: MAINTAIN PRUDENT HEDGES
+    value: Keep tail risk protection
+    description: Market stabilizing but maintain hedges as insurance.
+    urgency: medium
+  - type: watch
+    icon: 👀
+    title: MONITOR KEY LEVELS
+    value: Watch support/resistance
+    description: Monitor key technical levels and breadth metrics for direction.
+    urgency: medium
+  - type: plan
+    icon: 📝
+    title: BALANCED APPROACH
+    value: Selective deployment
+    description: Balanced environment. Be selective and size appropriately.
+    urgency: medium
   providerConsensusUpdated: '2025-10-26T11:50:00Z'
   providerConsensus:
     updatedAt: '2025-10-25T20:35:00Z'
@@ -1360,6 +1360,7 @@ dashboard:
     notes: Workflow complete. The system is now in a maximum defensive posture. No new risk should be taken until the signal
       improves materially.
 ---
+
 
 
 
