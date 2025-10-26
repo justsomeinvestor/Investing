@@ -3,7 +3,7 @@ dashboard:
   pageTitle: Investment Research Dashboard - October 26, 2025
   title: Investment Research Dashboard
   dateBadge: October 26, 2025
-  lastUpdated: '2025-10-26T20:00:00Z'
+  lastUpdated: '2025-10-26T09:45:00Z'
   sentimentCardsUpdated: '2025-10-26T20:00:00Z'
   sentimentCards:
     - id: "equities"
@@ -1347,8 +1347,8 @@ Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotati
     notes: Workflow complete. The system is now in a maximum defensive posture. No new risk should be taken until the signal
       improves materially.
   dataSource: master-plan.md
-  lastUpdated: '2025-10-20T14:54:26Z'
-  updatedAt: '2025-10-20T14:54:26Z'
+  lastUpdated: '2025-10-26T09:45:00Z'
+  updatedAt: '2025-10-26T09:45:00Z'
 ---
 
 
