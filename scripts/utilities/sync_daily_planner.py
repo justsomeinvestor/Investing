@@ -231,7 +231,11 @@ class DailyPlannerSyncer:
             'seasonality': int(breakdown.get('seasonality', 3))
         }
 
+        # Update timestamp for signal data (Phase 2 automated sync field)
+        planner['signalDataUpdated'] = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
+
         print(f"      ✓ Updated signalData: {composite}/100 ({tier})")
+        print(f"      ✓ Updated signalDataUpdated timestamp")
         print(f"      ✓ Updated breakdown: Trend {breakdown.get('trend', 20)} | Breadth {breakdown.get('breadth', 12)} | Vol {breakdown.get('volatility', 10)}")
 
     # REMOVED: _update_key_levels() method
