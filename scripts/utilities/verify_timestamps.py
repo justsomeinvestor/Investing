@@ -79,6 +79,7 @@ REQUIRED_TIMESTAMPS = [
     "tabs.xsentiment.socialTabSyncedAt",
     "tabs.xsentiment.crypto_trending.updatedAt",  # Crypto trending tickers
     "tabs.xsentiment.macro_trending.updatedAt",  # Macro trending tickers
+    "tabs.xsentiment.contrarian_detector.updatedAt",  # Contrarian analysis & opportunity detection
     "tabs.technicals.aiInterpretation.updatedAt",
     "tabs.technicals.technicalsTabSyncedAt",
     "tabs.technicals.tradingSignalScore.updatedAt",  # trading signal score freshness

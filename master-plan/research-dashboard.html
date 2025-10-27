@@ -4143,11 +4143,15 @@
                     const actionColor = cd.action_color || actionColors[cd.action] || '#6b7280';
                     const opportunityStatus = cd.opportunity_status || 'NOT YET';
                     const opportunityColor = opportunityStatus === 'ACTIVE' ? '#10b981' : (opportunityStatus === 'EXTREME' ? '#ef4444' : '#f59e0b');
+                    const contrarianStatusClass = cd.updatedAt ? getDataFreshness(cd.updatedAt) : 'status-error';
 
                     html += `
                         <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; padding: 20px;">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <div style="color: #8b5cf6; font-weight: 600; font-size: 1.1em;">🎲 Contrarian Detector</div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div style="color: #8b5cf6; font-weight: 600; font-size: 1.1em;">🎲 Contrarian Detector</div>
+                                    <span class="date-badge ${contrarianStatusClass}" style="margin: 0;"></span>
+                                </div>
                                 <div style="background: ${actionColor}; color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.85em; font-weight: 600;">${cd.action}</div>
                             </div>
 

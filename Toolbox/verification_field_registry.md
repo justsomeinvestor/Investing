@@ -1,8 +1,8 @@
 # Verification Field Registry
 
 **Last Updated:** 2025-10-26
-**Coverage:** 27/34 timestamp fields (79% of all fields, 100% of critical fields)
-**Health Status:** 100% (27/27 current)
+**Coverage:** 28/34 timestamp fields (82% of all fields, 100% of critical fields)
+**Health Status:** 100% (28/28 current)
 
 ---
 
@@ -12,11 +12,11 @@ Complete registry of all timestamp fields tracked by Wingman's verification syst
 
 ### Quick Stats
 - **Total fields in master-plan.md:** 34
-- **Fields tracked by verify_timestamps.py:** 27
-- **Phase 2 owned (automated):** 14 (added trading signal score, unusual activity)
+- **Fields tracked by verify_timestamps.py:** 28
+- **Phase 2 owned (automated):** 15 (added contrarian detector tracking)
 - **Phase 5 owned (AI synthesis):** 13
-- **Expected health after Phase 2:** 52% (14/27 current)
-- **Expected health after Phase 5:** 100% (27/27 current)
+- **Expected health after Phase 2:** 54% (15/28 current)
+- **Expected health after Phase 5:** 100% (28/28 current)
 
 ---
 
@@ -81,7 +81,7 @@ These fields are set by Claude during Phase 5 (AI interpretation synthesis). The
 |------|-----------|---------|----------|
 | 450 | `tabs.news_catalysts.aiInterpretation.updatedAt` | News sentiment + catalyst analysis | News scraping + filtering |
 
-#### X Sentiment Tab (3 fields)
+#### X Sentiment Tab (4 fields)
 
 | Line | Field Path | Purpose | Requires |
 |------|-----------|---------|----------|
@@ -89,6 +89,7 @@ These fields are set by Claude during Phase 5 (AI interpretation synthesis). The
 | 369 | `tabs.xsentiment.socialTabSyncedAt` | Last sync from X API | API data availability |
 | 1010 | `tabs.xsentiment.crypto_trending.updatedAt` | Top crypto trending tickers | X search + mentions |
 | 1010 | `tabs.xsentiment.macro_trending.updatedAt` | Top macro trending topics | X search + mentions |
+| 643 | `tabs.xsentiment.contrarian_detector.updatedAt` | Contrarian analysis & opportunity detection | Sentiment score calculation |
 
 #### Technicals Tab (4 fields - Phase 2)
 
