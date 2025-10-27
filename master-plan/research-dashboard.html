@@ -3340,12 +3340,12 @@
                             catalystSections.forEach(section => {
                                 let sectionHTML = '<div class="news-catalysts-section" style="margin-bottom: 30px;">';
 
-                                // Section name header with timestamp badge (badge on LEFT)
+                                // Section name header with timestamp badge (badge on RIGHT of title)
                                 if (section.name) {
                                     const statusClass = section.updatedAt ? getDataFreshness(section.updatedAt) : 'status-error';
                                     sectionHTML += `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #374151;">
-                                        <span class="date-badge ${statusClass}" style="margin: 0; flex-shrink: 0;"></span>
                                         <h3 style="color: #6366f1; margin: 0;">${section.name}</h3>
+                                        <span class="date-badge ${statusClass}" style="margin: 0; flex-shrink: 0;"></span>
                                     </div>`;
                                 }
 
@@ -3408,11 +3408,11 @@
                             if (newsFlowSection) {
                                 let newsHTML = '<div class="news-catalysts-section" style="margin-bottom: 30px;">';
 
-                                // Section header with timestamp badge (badge on LEFT)
+                                // Section header with timestamp badge (badge on RIGHT of title)
                                 const newsStatusClass = newsFlowSection.rss_updated_at ? getDataFreshness(newsFlowSection.rss_updated_at) : 'status-error';
                                 newsHTML += `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #374151;">
-                                    <span class="date-badge ${newsStatusClass}" style="margin: 0; flex-shrink: 0;"></span>
                                     <h3 style="color: #6366f1; margin: 0;">${newsFlowSection.name}</h3>
+                                    <span class="date-badge ${newsStatusClass}" style="margin: 0; flex-shrink: 0;"></span>
                                 </div>`;
 
                                 if (newsFlowSection.rss_summary) {
