@@ -1,6 +1,8 @@
-# EOD Wrap Handler — Wingman Automation
+# EOD Wrap Handler — Wingman Automation [UPDATED]
 
-**Purpose:** When Pilot says "wingman, eod wrap", this handler processes the day's session and generates all necessary journal entries and updates.
+**Purpose:** When Pilot says "wingman, eod wrap [notes]", this handler executes a complete 7-step end-of-day automation process.
+
+**Status:** ✅ FULLY AUTOMATED - Single command executes all steps (no manual work)
 
 ---
 

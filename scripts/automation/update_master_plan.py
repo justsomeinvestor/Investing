@@ -56,11 +56,16 @@ class MasterPlanUpdater:
         self.date_str = date_str
         self.date_display = self.date.strftime('%B %d, %Y')  # "October 10, 2025"
 
-        # Paths
-        self.master_plan_file = Path("master-plan/master-plan.md")
-        self.html_dashboard_file = Path("master-plan/research-dashboard.html")
-        self.processing_log_file = Path("Research/.processing_log.json")
-        self.cache_dir = Path("Research/.cache")
+        # Get repo root (absolute paths work regardless of execution directory)
+        # Path(__file__) = .../scripts/automation/update_master_plan.py
+        # .parents[2] = .../repo_root
+        repo_root = Path(__file__).resolve().parents[2]
+
+        # Paths - ABSOLUTE (work from any directory)
+        self.master_plan_file = repo_root / "master-plan" / "master-plan.md"
+        self.html_dashboard_file = repo_root / "master-plan" / "research-dashboard.html"
+        self.processing_log_file = repo_root / "Research" / ".processing_log.json"
+        self.cache_dir = repo_root / "Research" / ".cache"
 
         # Data
         self.signals: Optional[Dict] = None

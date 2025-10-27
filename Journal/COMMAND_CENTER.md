@@ -308,10 +308,25 @@ Out at 191.20
 "wingman, show watchlist"            → Display all tracked tickers
 ```
 
+### End-of-Day Automation (FULLY AUTOMATED - 7 Steps)
+```
+"wingman, eod wrap"                  → Execute complete 7-step EOD automation:
+                                        1. Collect session data
+                                        2. Generate journal entry
+                                        3. Update Command Center
+                                        4. Update account state
+                                        5. Finalize session summary
+                                        6. Update Journal index
+                                        7. Reset session state
+
+  Optional: Add execution notes:
+  "wingman, eod wrap
+   Good discipline day - caught the dip with tight stop. Ready for tomorrow."
+```
+
 ### Workflows & Reporting
 ```
 "wingman, run research"              → Full research workflow: analyze all, rank by probability
-"wingman, eod wrap"                  → End-of-day summary: trades, P/L, lessons learned
 "wingman, review performance [PERIOD]" → Performance analysis (today/week/month)
 "Note: [YOUR TEXT]"                  → Record session notes and observations
 ```

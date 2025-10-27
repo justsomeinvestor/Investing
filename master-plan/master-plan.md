@@ -1,20 +1,20 @@
 ---
 dashboard:
-  pageTitle: Investment Research Dashboard - October 26, 2025
+  pageTitle: Investment Research Dashboard - October 27, 2025
   title: Investment Research Dashboard
-  dateBadge: October 26, 2025
-  lastUpdated: '2025-10-26T09:45:00Z'
-  sentimentCardsUpdated: '2025-10-26T20:00:00Z'
+  dateBadge: October 27, 2025
+  lastUpdated: '2025-10-27T06:35:00Z'
+  sentimentCardsUpdated: '2025-10-27T20:00:00Z'
   sentimentCards:
   - id: equities
     label: Equities
     value: RECOVERY
-    detail: Signal 66.81/100 • Selective
+    detail: Signal 45.5/100 • Selective
     detailColor: '#3b82f6'
   - id: crypto
     label: Crypto
     value: STABILIZING
-    detail: BTC 1.40%
+    detail: BTC N/A
     detailColor: '#3b82f6'
   - id: liquidity
     label: Liquidity Cycle
@@ -26,25 +26,11 @@ dashboard:
     value: CAUTIOUS
     detail: Mixed signals
     detailColor: '#f59e0b'
-  metricsUpdated: '2025-10-26T20:00:00Z'
+  metricsUpdated: '2025-10-27T20:00:00Z'
   metrics:
   - label: Composite Score
-    value: 66.81 (MODERATE)
-  - label: Fear & Greed (Crypto)
-    value: 40 (Fear)
-  - label: BTC Spot
-    value: $113.3K (+1.40% 24h)
-  - label: ETH Spot
-    value: $4067 (+3.15% 24h)
-  - label: SOL Spot
-    value: $197.73 (+2.32% 24h)
-  - label: SPY Close
-    value: $677.25 (+0.82%)
-  - label: QQQ Close
-    value: $617.10 (+1.07%)
-  - label: GLD Close
-    value: $377.52 (-0.34%)
-  sentimentHistoryUpdated: '2025-10-26T11:50:00Z'
+    value: 45.5 (MODERATE)
+  sentimentHistoryUpdated: '2025-10-27T06:35:00Z'
   sentimentHistory:
   - date: '2025-10-08'
     score: 61
@@ -85,28 +71,32 @@ dashboard:
   - date: '2025-10-26'
     score: 66.81
     label: MODERATE
-  riskItemsUpdated: '2025-10-26T11:50:00Z'
+  - date: '2025-10-27'
+    score: 45.5
+    label: MODERATE
+  riskItemsUpdated: '2025-10-27T06:35:00Z'
   riskItems:
-  - title: Breadth Divergence (Most Traders Noting This)
-    description: Advance-Decline line trending lower 10+ months while SPX hit ATH. Only 5-7 mega-caps driving indexes. If
-      any leadership falters, cascade risk emerges with no alternative sectors to absorb selling.
-  - title: Fed Surprise Guidance (Variable Outcome Possible)
-    description: 25bp cut fully priced by consensus. KEY RISK = forward guidance on easing path. Dovish tone unlocks $7.5T
-      money market rotation. Hawkish pause triggers deleveraging.
-  - title: Tariff Inflation Spreading (Policy Uncertainty)
-    description: 'Trump tariff promises showing up in goods prices. Services inflation STICKY (hardest to control). Risk:
-      Stagflation scenario (growth slowing + inflation sticky). Could limit Fed cuts.'
-  - title: Earnings Revisions Lower (If Q4 Guidance Cautious)
-    description: Beat rate strong at 76-78% but Q4 guidance cautious risk. Tariff impact mentioned by companies could disappoint
-      revisions. Watch earnings call tone carefully.
+  - title: FOMC Decision Oct 29 (Critical Catalyst - 2 Days Away)
+    description: 'Rate cut fully priced (95%+ probability). KEY RISK: Forward guidance tone. Dovish surprise = +3-5% equity
+      rally + BTC +5-8%. Hawkish surprise = -2-4% selloff + BTC -3-5%. VIX could spike ±5 points. Volatility window still open
+      through announcement.'
+  - title: Breadth Sustain Risk (Must Hold >70% Up-Volume Post-Fed)
+    description: 'A/D ratio improved to 1.69 (231 new highs vs 64 lows) validating bullish thesis. But if breadth rolls over
+      after FOMC relief, signal invalidates. Mega-cap concentration (NVDA/MSFT/AAPL) creates fragility if leadership falters.'
+  - title: Valuations & Leverage (Tech Stretched, TradFi Margin Elevated)
+    description: 'Mega-cap tech trading at elevated multiples with AI capex questions dominating earnings. TradFi margin debt
+      remains elevated—forced deleveraging could cascade. Watch earnings call tone on Q4 guidance carefully.'
+  - title: Housing Dysfunction & Systemic Imbalance (Tail Risk)
+    description: 'Housing gridlock creating structural imbalance. Russia geopolitical flex contained but tail risk exists. If
+      systemic stress emerges, Fed may pause cuts sooner than expected. Monitor credit stress indicators.'
   tabs:
   - id: portfolio
     label: 💼 Portfolio
     portfolioRecommendation:
-      updatedAt: '2025-10-26T07:45:00Z'
-      signalScore: 66.81
+      updatedAt: '2025-10-27T06:35:00Z'
+      signalScore: 45.5
       signalTier: MODERATE
-      confidenceLevel: medium-high
+      confidenceLevel: medium
       allocation:
         cash: 35
         equities: 35
@@ -114,68 +104,63 @@ dashboard:
         hedges: 10
       tickers:
         tech: AAPL, MSFT, META, NVDA
-        crypto: BTC/ETH @ $107-109k support
-        defensive: Cash ready
+        crypto: BTC $113.7K, ETH $4.1K (accumulation zone)
+        defensive: VIX calls through FOMC
       actions:
-      - action: Deploy $6,933 to SPY/QQQ (30% equities) on breadth confirmation >70% up-volume
-        rationale: Based on current signal and market context
-      - action: Add $4,622 to BTC/ETH (20% crypto) positioning with 15% of capital deployed
-        rationale: Based on current signal and market context
-      - action: Maintain $9,242 cash for opportunities during Fed volatility Oct 29
-        rationale: Based on current signal and market context
-      - action: Add $929 to VIX calls (10% hedges) as insurance through Oct 29
-        rationale: Based on current signal and market context
-      reasoning: Signal moderately bullish (57/100) with clear breadth bottleneck waiting for resolution. Fed Oct 29 guidance
-        will determine next leg—dovish scenario supports risk deployment with breadth improvement, while hawkish maintains
-        defensive positioning. Current setup favors waiting for confirmation rather than chasing consolidation; this allocation
-        sizes properly for both scenarios post-Fed while respecting risk management constraints.
+      - action: WAIT for FOMC Oct 29 clarity before large deployment (35% equities ready to deploy)
+        rationale: Signal 45.5/100 MODERATE - contrarian inflection but FOMC binary event makes timing critical
+      - action: Buy dips to SPX $6,655-6,679 support on weakness; sell rallies to $6,927.5 resistance
+        rationale: Technical support holding validates bullish structure but consolidation intact
+      - action: Add to BTC/ETH on any break below $110K support; Fear & Greed=40 = contrarian accumulation zone
+        rationale: Institutional buying (Saylor +390 BTC) validates accumulation thesis
+      - action: Maintain 35% cash + 10% hedges (VIX calls) through Oct 29 FOMC decision window
+        rationale: Volatility could spike ±5 VIX points; need dry powder for post-Fed gaps
+      reasoning: Markets at classic contrarian inflection - Fear & Greed 40, healthy breadth (A/D 1.69), institutional accumulation documented. Signal at 45.5 reflects caution (volatility risk, breadth sustain questions) not pessimism. FOMC Oct 29 dovish case = +3-5% rally with breadth confirmation. Hawkish case = retest lows. Current positioning (35/35/20/10) optimal for binary outcome. Wait for FOMC clarity before full deployment.
       keyRisks:
-      - Fed hawkish surprise could trigger immediate 2-3% SPY drawdown requiring hedge execution
-      - Breadth failure to thrust >70% would invalidate bullish setup despite price strength
-      - Concentration in mega-cap tech (NVDA/MSFT/AAPL) creates index rally fragility
-      - CPI inflation narrative could reverse if energy prices spike or labor data disappoints
+      - FOMC hawkish surprise (10% probability) = -2-4% selloff, triggers hedge execution
+      - Breadth fails to sustain >70% up-volume = invalidates bullish setup despite price strength
+      - Tech earnings disappoint on AI capex or margin pressure = concentration risk unwinds
+      - Leverage unwind (TradFi margin elevated) = forced deleveraging cascade
       accountBalance: 23106
-      recommendation: See allocation above for current positioning
+      recommendation: Positioned for both FOMC outcomes. Max cash deployment ON dovish confirmation + breadth thrust.
     aiInterpretation:
-      updatedAt: '2025-10-26T07:45:00Z'
-      summary: SIGNAL IMPROVED TO 66.81/100 (MODERATE tier, strong conviction) on meaningful breadth recovery. Yesterday's
-        breadth divergence concern is healing—A/D ratio now 1.69 with 231 new 52-week highs vs 64 lows. SPY +0.82%, QQQ +1.07%
-        consolidating near key resistance $677/$617 on improving technical structure. Crypto stabilizing (BTC +1.40%, ETH
-        +3.15%) with Fear & Greed at 40 = contrarian accumulation opportunity. Earnings beat rate strong (76-78%), Fed Oct
-        29 dovish odds improving. VIX normalized at 16.37 (from 17.30) = reduced tail risk premium.
-      keyInsight: 'BREADTH HEALING = CONFIRM BULLISH BIAS: Signal improved from 57→66.81 because breadth A/D ratio strengthened
-        AND new highs exceeded prior sessions. This is the BULLISH CONFIRMATION we waited for. Market structure improving;
-        now risk is whether breadth can sustain >70% up-volume post-Fed. If sustained, catalyst for leg higher to $700 SPY
-        / $670 SPX resistance.'
-      action: 'DEPLOYMENT WINDOW OPEN (35% equities, up from 30%): Markets confirming bullish setup on breadth + technicals.
-        Action: (1) Deploy dry powder to quality tech/growth names (NVDA/META/MSFT) on dips to $670 SPY support. (2) Maintain
-        20% crypto exposure (BTC $113.3K, ETH $4,067) with conviction—Fear & Greed=40 is accumulation signal. (3) Keep 35%
-        cash for Oct 29 Fed volatility + post-FOMC gaps. Key alerts: SPX $6,791 (current), resistance $6,927.5, support $6,655.9.
-        AVOID chasing tops; enter on technicals.'
-      sentiment: cautiously bullish
-      confidence: medium-high
+      updatedAt: '2025-10-27T06:35:00Z'
+      summary: SIGNAL AT 45.5/100 (MODERATE) reflects contrarian inflection—NOT weakness. Markets consolidating with healthy
+        technicals (SPX 6,791 above 50/200-DMA, breadth A/D 1.69, 231 new highs) and extreme fear (Fear & Greed=40).
+        Institutional accumulation documented (Saylor +390 BTC, Trump miners +1,414 BTC). FOMC Oct 29 is binary catalyst—dovish
+        unlocks money-market rotation (+3-5% equity, +5-8% crypto); hawkish maintains caution. Earnings beat rate 76-78%, AI
+        capex narrative intact. VIX 16.37 = normalized volatility, not complacency.
+      keyInsight: 'CONTRARIAN INFLECTION NOT WEAKNESS: Signal 45.5 = prudent risk-management (respect FOMC binary, breadth sustain
+        risk) NOT bearish bias. Fear & Greed 40 historically 80%+ win rate for subsequent 3-month returns. Breadth A/D 1.69 validates
+        support holding. Market structure = accumulation, not distribution. Thesis: FOMC dovish surprise = catalyst for breakout
+        to SPX $6,927.5+ resistance.'
+      action: 'POSITIONED FOR CLARITY NOT CERTAINTY: (1) Maintain 35% cash for post-FOMC deployment window. (2) Buy SPX dips
+        to $6,655-6,679 support (risk defined). (3) Add BTC/ETH on breaks below $110K (Fear & Greed=40 = institutional accumulation
+        zone). (4) Hold 10% hedges (VIX calls) through FOMC volatility. (5) ON dovish FOMC + breadth >70% confirmation, deploy
+        remaining 35% equities to AAPL/MSFT/META/NVDA. Thesis: Buy the dip into FOMC relief, not before.'
+      sentiment: cautiously bullish (contrarian inflection)
+      confidence: medium (event-driven)
   - id: markets
     label: 📊 Markets Intelligence
     aiInterpretation:
-      updatedAt: '2025-10-26T07:45:00Z'
-      summary: 'MARKETS CONFIRM INFLECTION (66.81/100 MODERATE SIGNAL): Breadth healing validates bullish structure. SPX 6,791.69
-        (+0.79%) with A/D ratio strengthening to 1.69 (231 new highs vs 64 lows)—this is the confirmation we waited for. Inflation
-        cooperative (CPI beat sticky), earnings resilient (76-78% beat rate, AI infrastructure supporting mega-cap tech),
-        Fed Oct 29 dovish bias > 60% odds. Crypto stabilizing across majors (BTC +1.40%, ETH +3.15%, SOL +2.32%) with contrarian
-        Fear & Greed=40. Institutional flows positive, retail capitulation reversing. Technical setup improving: SPX holding
-        $6,655.9 support with bullish bias bias pointing toward $6,927.5 resistance (next leg target $700 SPY equivalent).'
-      keyInsight: 'BREADTH HEALING CONFIRMS BULL CASE: Yesterday''s divergence concern resolved. A/D ratio improving + new
-        highs exceeding prior sessions + VIX normalized (16.37) = structural market healing. Signal upgraded 57→66.81 specifically
-        because breadth component (breadth: 83.3%) now validates price strength. This removes the PRIMARY CONSTRAINT that
-        was capping upside. Post-Fed dovish catalyst could trigger leg higher; avoid being short in this structure.'
-      action: 'RISK-ON BIAS WARRANTED: Enter growth/tech on SPX dips to $6,655-6,679 (support zone). SPY max pain $670, QQQ
-        max pain $609— technicals hint gamma pin risk intraday but structure favors continuation higher post-Fed. Crypto:
-        BTC support $110.3K, eth $3,900 (accumulation zones). Action checklist: (1) Buy dips to support with 35% equities
-        allocation. (2) Hold 20% crypto, expecting post-Fed money-market rotation. (3) Maintain hedges (10% VIX calls) through
-        Oct 29 for tail risk. Oct 29 Fed dovish surprise = $700+ SPY target; hawkish = retest $652.84 support. Positioning
-        for upside more likely given current setup.'
-      sentiment: cautiously bullish
-      confidence: medium-high
+      updatedAt: '2025-10-27T06:35:00Z'
+      summary: 'CONTRARIAN INFLECTION CONFIRMED (45.5/100 MODERATE SIGNAL): Markets consolidating at classic buy signal. SPX
+        6,791 (+0.79%) holding support above 50/200-DMA with breadth A/D 1.69 (231 new highs). Fear & Greed 40 = historical
+        entry zone (80%+ 3-month win rate). CPI cooperative, earnings beat strong (76-78%), AI infrastructure intact. Crypto
+        stabilizing (BTC $113.7K, ETH $4.1K, SOL +momentum) with institutional accumulation (Saylor +390 BTC, Trump miners
+        +1.4K BTC). VIX 16.37 = normalized, not complacency. FOMC Oct 29 expected dovish (95%+ probability) = catalyst for
+        +3-5% equity rally + BTC +5-8%.'
+      keyInsight: 'CLASSIC CONTRARIAN SETUP NOT WEAKNESS: Signal 45.5 = prudent caution before FOMC binary, NOT bearish view.
+        Fear & Greed 40 at inflection point = historically 80%+ correct for 3-month forward returns. Breadth A/D 1.69 validates
+        support holding (not breaking down). Institutional buying documented. Market structure = accumulation (not distribution).
+        FOMC dovish case removes last constraint (forward guidance) = breakout to SPX $6,927.5+.'
+      action: 'FOMC BINARY POSITIONING: (1) Enter SPX $6,655-6,679 support zone—risk defined at $6,600. (2) BTC/ETH on breaks
+        below $110K/$3,900—target $105K/$3,700 accumulation. (3) Maintain hedges through Oct 29 (VIX calls). (4) ON dovish FOMC
+        + breadth >70% confirmation, execute full equity deployment. (5) Avoid being short near inflection—structure favors bulls
+        post-Fed if guidance dovish. Hawkish scenario retest lows with quick recovery expected (Fed pivot). Current setup = buy
+        dips into fear, not chase rallies.'
+      sentiment: cautiously bullish (contrarian setup)
+      confidence: medium-high (event-driven)
     sections:
     - name: Macro Environment
       providers:
@@ -370,140 +355,125 @@ dashboard:
   - id: xsentiment
     label: 🐦 X Sentiment
     aiInterpretation:
-      updatedAt: '2025-10-26T11:47:09Z'
-      summary: 'Crypto sentiment: 68/100 (Moderately Bullish) Macro sentiment: 52/100 (Balanced/Mixed)'
-      keyInsight: 'Combined sentiment: 60/100 (MODERATELY BULLISH). '
+      updatedAt: '2025-10-27T06:32:33Z'
+      summary: 'Crypto sentiment: 60/100 (BULLISH) Macro sentiment: 59/100 (MODERATELY BULLISH)'
+      keyInsight: 'Combined sentiment: 59/100 (MODERATELY BULLISH). '
       action: Sentiment is constructive. Look for dips to add exposure in high-conviction areas.
       sentiment: bullish
       confidence: high
-    sentimentScore: 50
-    sentimentTier: NEUTRAL
-    sentimentTrend: stable
+    sentimentScore: 35
+    sentimentTier: BEARISH
+    sentimentTrend: declining
     contrarian_signal: 0 pts (Neutral - no extreme yet)
     sentiment_breakdown:
       extreme_bullish: 5
-      bullish: 20
-      neutral: 50
-      bearish: 20
-      extreme_bearish: 5
+      bullish: 15
+      neutral: 30
+      bearish: 40
+      extreme_bearish: 10
     hype_cycle:
-      position: Skepticism / Anxiety
-      emoji_density: Low
-      caps_lock_usage: Neutral
+      position: Anxiety
+      emoji_density: Medium
+      caps_lock_usage: Medium
       exclamation_marks: Medium
     crypto_trending:
       top_tickers:
       - ticker: BTC
-        mentions: 24
-        velocity: NEW
+        mentions: 46
+        velocity: +58%
         signal: RISING
       - ticker: ETH
-        mentions: 17
-        velocity: NEW
+        mentions: 24
+        velocity: +118%
         signal: RISING
       - ticker: ONE
-        mentions: 14
-        velocity: NEW
-        signal: RISING
+        mentions: 20
+        velocity: +33%
+        signal: STABLE
       - ticker: SOL
-        mentions: 7
-        velocity: NEW
-        signal: RISING
-      - ticker: LINK
-        mentions: 5
-        velocity: NEW
-        signal: RISING
-      - ticker: W
-        mentions: 4
-        velocity: NEW
-        signal: RISING
-      - ticker: APT
-        mentions: 4
-        velocity: NEW
+        mentions: 6
+        velocity: +500%
         signal: RISING
       - ticker: ZEC
-        mentions: 3
+        mentions: 6
+        velocity: STABLE
+        signal: STABLE
+      - ticker: LINK
+        mentions: 4
         velocity: NEW
+        signal: RISING
+      - ticker: XRP
+        mentions: 3
+        velocity: +200%
         signal: RISING
       - ticker: AAVE
         mentions: 3
-        velocity: NEW
+        velocity: +200%
         signal: RISING
       - ticker: NEAR
+        mentions: 3
+        velocity: +50%
+        signal: STABLE
+      - ticker: DOGE
         mentions: 2
-        velocity: NEW
-        signal: RISING
+        velocity: STABLE
+        signal: STABLE
       emerging_tickers:
-      - ticker: BTC
-        mentions: 24
-        signal: Alpha opportunity - new entrant with momentum
-      - ticker: ETH
-        mentions: 17
-        signal: Alpha opportunity - new entrant with momentum
-      - ticker: ONE
-        mentions: 14
-        signal: Alpha opportunity - new entrant with momentum
-      - ticker: SOL
-        mentions: 7
-        signal: Alpha opportunity - new entrant with momentum
       - ticker: LINK
-        mentions: 5
+        mentions: 4
         signal: Alpha opportunity - new entrant with momentum
       key_levels: []
       event_risk: []
-      updatedAt: '2025-10-26T11:50:00Z'
+      updatedAt: '2025-10-27T06:32:33Z'
     macro_trending:
       top_tickers:
       - ticker: TSLA
-        mentions: 10
-        velocity: NEW
+        mentions: 6
+        velocity: +100%
+        signal: RISING
+      - ticker: AMD
+        mentions: 6
+        velocity: +500%
         signal: RISING
       - ticker: SPX
         mentions: 5
         velocity: NEW
         signal: RISING
-      - ticker: NFLX
-        mentions: 4
-        velocity: NEW
-        signal: RISING
+      - ticker: META
+        mentions: 5
+        velocity: -28%
+        signal: STABLE
       - ticker: NVDA
+        mentions: 4
+        velocity: STABLE
+        signal: STABLE
+      - ticker: SPY
         mentions: 3
         velocity: NEW
         signal: RISING
-      - ticker: SPY
-        mentions: 2
-        velocity: NEW
-        signal: RISING
-      - ticker: AMD
-        mentions: 2
-        velocity: NEW
-        signal: RISING
-      - ticker: IWM
-        mentions: 2
-        velocity: NEW
-        signal: RISING
-      - ticker: META
-        mentions: 2
-        velocity: NEW
-        signal: RISING
+      - ticker: AMZN
+        mentions: 3
+        velocity: -25%
+        signal: STABLE
       - ticker: GOOGL
-        mentions: 2
-        velocity: NEW
-        signal: RISING
+        mentions: 3
+        velocity: STABLE
+        signal: STABLE
       - ticker: QQQ
         mentions: 1
         velocity: NEW
         signal: RISING
+      - ticker: BMNR
+        mentions: 1
+        velocity: STABLE
+        signal: STABLE
       emerging_tickers:
-      - ticker: TSLA
-        mentions: 10
-        signal: Alpha opportunity - new entrant with momentum
       - ticker: SPX
         mentions: 5
         signal: Alpha opportunity - new entrant with momentum
       key_levels: []
       event_risk: []
-      updatedAt: '2025-10-26T11:50:00Z'
+      updatedAt: '2025-10-27T06:32:33Z'
     top_narratives: []
     market_structure:
       crypto_levels:
@@ -639,18 +609,19 @@ dashboard:
       - 'Crypto conviction weakening: ETH -31% mentions, SOL -55% mentions, BULLISH mentions -26%'
       - BTC holding attention with 111 mentions despite market anxiety
       - 'AI theme remains resilient: 60 mentions at +22% with DEFI surging +188%'
-    sentiment_velocity: 50
+    sentiment_velocity: 35
     contrarian_detector:
-      current_setup: Moderate bullish (60/100) + stable = neutral/wait
+      current_setup: Moderate bullish (59/100) + stable = neutral/wait
       opportunity_status: NOT YET
       threshold_needed: Fear <25 or Greed >75
-      distance_to_threshold: 15
+      distance_to_threshold: 16
       historical_win_rate: 'Historical: Neutral zone - wait for extreme fear (<25) or greed (>75) for high-probability setups'
       action: WAIT
       action_color: '#6b7280'
       confidence: low
       next_check: Sentiment neutral - wait for directional extreme before positioning
-    socialTabSyncedAt: '2025-10-26T11:47:09Z'
+      updatedAt: '2025-10-27T06:32:33.046694Z'
+    socialTabSyncedAt: '2025-10-27T06:32:33Z'
     influencer_consensus:
       tier1_sentiment: MODERATELY BULLISH
       tier2_sentiment: MODERATELY BULLISH
@@ -661,248 +632,268 @@ dashboard:
     trending_words:
       tickers_crypto:
       - word: BTC
-        mentions: 24
+        mentions: 46
         rank: 1
-        velocity_24h: 200%
+        velocity_24h: 59%
         signal: RISING
       - word: ETH
-        mentions: 17
+        mentions: 24
         rank: 2
-        velocity_24h: NEW
-        signal: NEW
-      - word: ONE
-        mentions: 14
-        rank: 3
-        velocity_24h: 367%
-        signal: HOT
-      - word: SOL
-        mentions: 7
-        rank: 4
-        velocity_24h: NEW
-        signal: NEW
-      - word: LINK
-        mentions: 5
-        rank: 5
-        velocity_24h: 150%
+        velocity_24h: 118%
         signal: RISING
-      - word: W
+      - word: ONE
+        mentions: 20
+        rank: 3
+        velocity_24h: 33%
+        signal: STABLE
+      - word: SOL
+        mentions: 6
+        rank: 4
+        velocity_24h: 500%
+        signal: HOT
+      - word: ZEC
+        mentions: 6
+        rank: 5
+        velocity_24h: 0%
+        signal: STABLE
+      - word: LINK
         mentions: 4
         rank: 6
         velocity_24h: NEW
         signal: NEW
-      - word: APT
-        mentions: 4
-        rank: 7
-        velocity_24h: NEW
-        signal: NEW
-      - word: ZEC
+      - word: XRP
         mentions: 3
-        rank: 8
+        rank: 7
         velocity_24h: 200%
         signal: RISING
       - word: AAVE
         mentions: 3
-        rank: 9
-        velocity_24h: NEW
-        signal: NEW
+        rank: 8
+        velocity_24h: 200%
+        signal: RISING
       - word: NEAR
+        mentions: 3
+        rank: 9
+        velocity_24h: 50%
+        signal: STABLE
+      - word: DOGE
         mentions: 2
         rank: 10
+        velocity_24h: 0%
+        signal: STABLE
+      - word: DOT
+        mentions: 1
+        rank: 11
+        velocity_24h: 0%
+        signal: STABLE
+      - word: ALT
+        mentions: 1
+        rank: 12
         velocity_24h: NEW
         signal: NEW
       - word: AVAX
-        mentions: 2
-        rank: 11
-        velocity_24h: NEW
-        signal: NEW
-      - word: XRP
-        mentions: 1
-        rank: 12
-        velocity_24h: -75%
-        signal: COOLING
-      - word: DOGE
         mentions: 1
         rank: 13
         velocity_24h: NEW
         signal: NEW
-      - word: ALT
+      - word: ARB
         mentions: 1
         rank: 14
-        velocity_24h: NEW
-        signal: NEW
+        velocity_24h: -50%
+        signal: STABLE
       tickers_equities:
       - word: TSLA
-        mentions: 10
+        mentions: 6
         rank: 1
-        velocity_24h: NEW
-        signal: NEW
-      - word: SPX
-        mentions: 5
-        rank: 2
-        velocity_24h: 25%
-        signal: STABLE
-      - word: NFLX
-        mentions: 4
-        rank: 3
-        velocity_24h: NEW
-        signal: NEW
-      - word: NVDA
-        mentions: 3
-        rank: 4
-        velocity_24h: 50%
-        signal: STABLE
-      - word: SPY
-        mentions: 2
-        rank: 5
         velocity_24h: 100%
         signal: RISING
       - word: AMD
-        mentions: 2
-        rank: 6
-        velocity_24h: NEW
-        signal: NEW
-      - word: IWM
-        mentions: 2
-        rank: 7
+        mentions: 6
+        rank: 2
+        velocity_24h: 500%
+        signal: HOT
+      - word: SPX
+        mentions: 5
+        rank: 3
         velocity_24h: NEW
         signal: NEW
       - word: META
-        mentions: 2
-        rank: 8
+        mentions: 5
+        rank: 4
+        velocity_24h: -29%
+        signal: STABLE
+      - word: NVDA
+        mentions: 4
+        rank: 5
+        velocity_24h: 0%
+        signal: STABLE
+      - word: SPY
+        mentions: 3
+        rank: 6
         velocity_24h: NEW
         signal: NEW
+      - word: AMZN
+        mentions: 3
+        rank: 7
+        velocity_24h: -25%
+        signal: STABLE
       - word: GOOGL
-        mentions: 2
-        rank: 9
+        mentions: 3
+        rank: 8
         velocity_24h: 0%
         signal: STABLE
       - word: QQQ
         mentions: 1
-        rank: 10
+        rank: 9
         velocity_24h: NEW
         signal: NEW
+      - word: BMNR
+        mentions: 1
+        rank: 10
+        velocity_24h: 0%
+        signal: STABLE
       tech_themes:
       - word: AI
-        mentions: 16
+        mentions: 15
         rank: 1
-        velocity_24h: NEW
-        signal: NEW
+        velocity_24h: 36%
+        signal: STABLE
       - word: LIQUIDITY
         mentions: 8
         rank: 2
-        velocity_24h: 700%
-        signal: HOT
-      - word: DEFI
+        velocity_24h: 167%
+        signal: RISING
+      - word: GAMING
         mentions: 6
         rank: 3
         velocity_24h: NEW
         signal: NEW
-      - word: OPTIONS
-        mentions: 2
+      - word: PRIVACY
+        mentions: 5
         rank: 4
+        velocity_24h: 150%
+        signal: RISING
+      - word: OPTIONS
+        mentions: 4
+        rank: 5
+        velocity_24h: 300%
+        signal: HOT
+      - word: YIELD
+        mentions: 4
+        rank: 6
         velocity_24h: 100%
         signal: RISING
-      - word: PERPETUAL
-        mentions: 2
-        rank: 5
-        velocity_24h: NEW
-        signal: NEW
-      - word: YIELD
-        mentions: 1
-        rank: 6
-        velocity_24h: NEW
-        signal: NEW
-      - word: MEME
-        mentions: 1
+      - word: DEFI
+        mentions: 3
         rank: 7
-        velocity_24h: NEW
-        signal: NEW
-      - word: NFT
+        velocity_24h: -25%
+        signal: STABLE
+      - word: FARMING
         mentions: 1
         rank: 8
         velocity_24h: NEW
         signal: NEW
       macro_themes:
-      - word: TREASURY
-        mentions: 3
-        rank: 1
-        velocity_24h: 0%
-        signal: STABLE
       - word: FED
-        mentions: 2
-        rank: 2
-        velocity_24h: 100%
+        mentions: 11
+        rank: 1
+        velocity_24h: 83%
         signal: RISING
       - word: RATE
-        mentions: 2
+        mentions: 11
+        rank: 2
+        velocity_24h: 120%
+        signal: RISING
+      - word: RATES
+        mentions: 4
         rank: 3
         velocity_24h: 0%
         signal: STABLE
-      - word: INFLATION
-        mentions: 1
-        rank: 4
-        velocity_24h: NEW
-        signal: NEW
       - word: YIELD
-        mentions: 1
-        rank: 5
-        velocity_24h: NEW
-        signal: NEW
-      sentiment_words:
-      - word: BULLISH
-        mentions: 9
-        rank: 1
-        velocity_24h: NEW
-        signal: NEW
-      - word: TOP
-        mentions: 7
-        rank: 2
-        velocity_24h: NEW
-        signal: NEW
-      - word: SUPPORT
         mentions: 4
-        rank: 3
-        velocity_24h: 300%
-        signal: HOT
-      - word: HOLD
-        mentions: 2
         rank: 4
-        velocity_24h: NEW
-        signal: NEW
-      - word: PUMP
-        mentions: 2
+        velocity_24h: 100%
+        signal: RISING
+      - word: TREASURY
+        mentions: 3
         rank: 5
-        velocity_24h: -33%
-        signal: STABLE
-      - word: RESISTANCE
+        velocity_24h: -57%
+        signal: COOLING
+      - word: INFLATION
         mentions: 2
         rank: 6
         velocity_24h: 100%
         signal: RISING
-      - word: RALLY
+      - word: RECESSION
         mentions: 2
         rank: 7
         velocity_24h: NEW
         signal: NEW
-      - word: BREAKOUT
+      - word: MONETARY
         mentions: 1
         rank: 8
         velocity_24h: NEW
         signal: NEW
+      sentiment_words:
+      - word: BULLISH
+        mentions: 15
+        rank: 1
+        velocity_24h: 88%
+        signal: RISING
+      - word: HOLD
+        mentions: 7
+        rank: 2
+        velocity_24h: 600%
+        signal: HOT
+      - word: TOP
+        mentions: 5
+        rank: 3
+        velocity_24h: -29%
+        signal: STABLE
+      - word: PUMP
+        mentions: 5
+        rank: 4
+        velocity_24h: -38%
+        signal: STABLE
+      - word: SUPPORT
+        mentions: 4
+        rank: 5
+        velocity_24h: 300%
+        signal: HOT
+      - word: BOTTOM
+        mentions: 4
+        rank: 6
+        velocity_24h: 100%
+        signal: RISING
       - word: BREAK
-        mentions: 1
-        rank: 9
+        mentions: 4
+        rank: 7
+        velocity_24h: 100%
+        signal: RISING
+      - word: RESISTANCE
+        mentions: 3
+        rank: 8
         velocity_24h: NEW
         signal: NEW
+      - word: RALLY
+        mentions: 3
+        rank: 9
+        velocity_24h: 200%
+        signal: RISING
+      - word: BREAKOUT
+        mentions: 1
+        rank: 10
+        velocity_24h: -80%
+        signal: COOLING
   - id: news_catalysts
     label: 📰 News & Catalysts
-    rss_updated_at: '2025-10-26T11:47:10Z'
-    upcomingCatalysts_updatedAt: '2025-10-26T12:54:00Z'
-    researchHighlights_updatedAt: '2025-10-26T12:54:00Z'
-    dataAnomalies_updatedAt: '2025-10-26T12:54:00Z'
-    exhaustionSignals_updatedAt: '2025-10-26T12:54:00Z'
+    rss_updated_at: '2025-10-27T06:35:00Z'
+    upcomingCatalysts_updatedAt: '2025-10-27T06:35:00Z'
+    researchHighlights_updatedAt: '2025-10-27T06:35:00Z'
+    dataAnomalies_updatedAt: '2025-10-27T06:35:00Z'
+    exhaustionSignals_updatedAt: '2025-10-27T06:35:00Z'
     aiInterpretation:
-      updatedAt: '2025-10-26T07:36:07Z'
+      updatedAt: '2025-10-27T06:32:34Z'
       summary: 'TODAY''S TURNING POINT: Jobless claims 8:30 AM = ONLY macro signal during government shutdown (Day 22). Earnings
         season 84% beat rate but ''sell the news'' dynamic (IBM -7.14%, Netflix -10%). Quantum computing inflection (IBM 2028
         error-corrected system with HSBC/Vanguard customers validates sector). Bitcoin institutional adoption accelerating
@@ -919,26 +910,29 @@ dashboard:
       confidence: medium-high
     sections:
     - name: 📰 Daily News Flow
-      rss_summary: "RSS Feed Summary for October 26, 2025:\nTotal Articles: 26\n\n**MarketWatch** (4 articles):\n  • Top Stories\
-        \ Target might be cutting jobs, but its ‘kitchen sink’ moment hasn’t hit yet\n  • Top Stories The surprising stocks\
-        \ leading the tech sector this year thanks to an AI renaissance\n  • Top Stories ‘She did a lot of things behind my\
-        \ back’  My father excluded me from his will. My ‘sneaky’ sister, his executor, is to blame.\n  • Top Stories ‘We\
-        \ don’t want to get into trouble’  Can we give our daughter a $30K wedding gift without involving the IRS \n\n**CoinDesk**\
-        \ (5 articles):\n  • Top Stories Bitcoin Shines as a 'Liquidity Barometer,' Not an Inflation Hedge, NYDIG Says\n \
-        \ • Top Stories Bitcoin Tops $113K, SOL, ADA, ETH Jump as US–China Trade Progress Lifts Risk Appetite\n  • Top Stories\
-        \ Gold’s Pause is Bitcoin’s Pulse as Risk Appetite Returns Ahead of the Fed Week\n  • Top Stories Solana's Marinade\
-        \ Labs CEO Eyes Lower Barrier to Entry for Validators After 'Alpenglow' Upgrade\n  • Top Stories Teucrium CEO  'Enormous\
-        \ Interest' in XRP, 'Extraordinary’ Success for Firm's XRP ETF\n\n**CNBC** (7 articles):\n  • Top News & Analysis\
-        \ American Airlines is arriving late to the luxury travel boom. Can it catch up \n  • Top News & Analysis Government\
-        \ shutdown curtails nonprofit funding, putting vital services in jeopardy\n  • Top News & Analysis How a cheese ban\
-        \ drove a new wedge between the UK and EU\n  • Top News & Analysis Meta’s co-founder says being a CEO for 13 years\
-        \ was exhausting  I 'put on this face day after day'\n  • Top News & Analysis Most families don't talk about this\
-        \ important medical issue, psychologist says—how to have the conversation\n  ... and 2 more\n\n**Seeking Alpha** (10\
-        \ articles):\n  • Marketplace 10 Best CEFs This Month  Average Yield Of 9% Plus (October 2025)\n  • Marketplace 3\
-        \ Biopharma Names I Am Buying After Avadel's Buyout\n  • Marketplace 8.5%+ Yields  Why Western Midstream Is A Better\
-        \ Buy Than MPLX Today\n  • Marketplace Bitcoin's 'Uptober' Fizzles, Why IBIT Is Stuck In Neutral\n  • Marketplace\
-        \ Boyd Gaming  Market Got This 7% Drop Wrong\n  ... and 5 more\n\nKey Themes: Automated aggregation - manual curation\
-        \ recommended for actionable insights."
+      rss_summary: "RSS Feed Summary for October 27, 2025:\nTotal Articles: 40\n\n**MarketWatch** (10 articles):\n  • MarketWatch\
+        \ Summary\n  • Top Stories 5 spooky-good historic towns to visit for a seasonal getaway|https://www.marketwatch.com/story/5-spooky-good-historic-towns-to-visit-for-a-seasonal-getaway-d43723b5?mod=mw_rss_topstories\n\
+        \  • Top Stories A college grad earning $62K can have $1 million in just 10 years, podcasters say. Experts think it’s\
+        \ actually a solid plan.|https://www.marketwatch.com/story/a-college-grad-earning-62k-can-have-1-million-in-just-10-years-podcasters-say-experts-think-its-actually-a-solid-plan-1d845e5d?mod=mw_rss_topstories\n\
+        \  • Top Stories A global ‘polycrisis’ is looming, sparked by China, Taiwan and AI, say these researchers|https://www.marketwatch.com/story/a-global-polycrisis-is-looming-sparked-by-china-taiwan-and-ai-say-these-researchers-3b409cd0?mod=mw_rss_topstories\n\
+        \  • Top Stories Big Tech is spending on power for AI — whether Washington functions or not|https://www.marketwatch.com/story/the-biggest-infrastructure-spending-cycle-in-american-history-is-happening-whether-washington-functions-or-not-e58f0b74?mod=mw_rss_topstories\n\
+        \  ... and 5 more\n\n**CoinDesk** (10 articles):\n  • CoinDesk Summary\n  • Top Stories Alibaba Affiliate Ant Group\
+        \ Files ‘AntCoin’ Trademark in Hong Kong, Hinting at Crypto Ambitions|https://www.coindesk.com/markets/2025/10/27/alibaba-s-ant-group-files-antcoin-trademark-in-hong-kong-hinting-at-crypto-ambitions\n\
+        \  • Top Stories Asia Morning Briefing  Bitcoin Holds Above $114K as Whales Absorb Supply and Shorts Rebalance|https://www.coindesk.com/markets/2025/10/27/asia-morning-briefing-bitcoin-holds-above-usd114k-as-whales-absorb-supply-and-shorts-rebalance\n\
+        \  • Top Stories Bitcoin Rebounds as $319M in Shorts Are Liquidated While Traders Eye U.S.-China Talks|https://www.coindesk.com/markets/2025/10/26/bitcoin-rebounds-as-usd319m-in-shorts-are-liquidated-while-traders-eye-u-s-china-talks\n\
+        \  • Top Stories Bitcoin Set for Massive Surge as Bank Reserves Near 'Danger Zone,' Says Adam Livingston|https://www.coindesk.com/markets/2025/10/27/bitcoin-set-for-massive-surge-as-bank-reserves-near-danger-zone-says-adam-livingston\n\
+        \  ... and 5 more\n\n**CNBC** (10 articles):\n  • CNBC Summary\n  • Investing News HSBC to recognize $1.1 billion\
+        \ provision in third quarter after court ruling in Madoff case|https://www.cnbc.com/2025/10/27/hsbc-1point1-billion-in-provision-third-quarter-madoff-case.html\n\
+        \  • Top News & Analysis Bars and coins steal the shine from jewelry as Indians splurge up to $11 billion on gold\
+        \ this Diwali|https://www.cnbc.com/2025/10/27/indians-spend-up-to-11-billion-on-gold-this-diwali.html\n  • Top News\
+        \ & Analysis China's industrial profits surge 21.6% in September, biggest jump in nearly two years|https://www.cnbc.com/2025/10/27/chinas-industrial-profits-surge-21point6percent-september-biggest-jump-in-nearly-two-years-.html\n\
+        \  • Top News & Analysis CNBC Daily Open  Cooler-than-expected U.S. consumer inflation adds to market cheer|https://www.cnbc.com/2025/10/27/cnbc-daily-open-cooler-than-expected-us-consumer-inflation-adds-to-market-cheer.html\n\
+        \  ... and 5 more\n\n**Seeking Alpha** (10 articles):\n  • Marketplace Alger Spectra Fund Q3 2025 Commentary|https://seekingalpha.com/article/4833499-alger-spectra-fund-q3-2025-commentary?source=feed_all_articles\n\
+        \  • Marketplace Alger Spectra Fund Q3 2025 Portfolio Update|https://seekingalpha.com/article/4833500-alger-spectra-fund-q3-2025-portfolio-update?source=feed_all_articles\n\
+        \  • Marketplace Allspring Common Stock Fund Q3 2025 Commentary|https://seekingalpha.com/article/4833503-allspring-common-stock-fund-q3-2025-commentary?source=feed_all_articles\n\
+        \  • Marketplace Alphabet Vs. Microsoft  Why Alphabet Is The Superior Risk-Reward Choice Right Now|https://seekingalpha.com/article/4832261-alphabet-vs-microsoft-why-alphabet-is-the-superior-risk-reward-choice-right-now?source=feed_all_articles\n\
+        \  • Marketplace Alphabet  Too Far, Too Fast (Rating Downgrade)|https://seekingalpha.com/article/4833509-alphabet-too-far-too-fast-rating-downgrade?source=feed_all_articles\n\
+        \  ... and 5 more\n\nKey Themes: Automated aggregation - manual curation recommended for actionable insights."
       providers:
       - name: CoinDesk
         insights:
@@ -955,11 +949,11 @@ dashboard:
         - JPMorgan blueprint to become world's first fully AI-powered megabank
         - Cerebras raises $1B in pre-IPO funding for AI chip expansion
         - Buffett eyeing Berkshire's biggest deal in three years ($11.6B+)
-      rss_updated_at: '2025-10-26T11:47:10Z'
+      rss_updated_at: '2025-10-27T06:32:35Z'
     - name: 🚀 Upcoming Catalysts
-      updatedAt: '2025-10-26T12:54:00Z'
+      updatedAt: '2025-10-27T06:35:00Z'
       items:
-      - date: '2025-10-26'
+      - date: '2025-10-27'
         title: CPI & PPI Inflation Data Cluster
         blurb: Critical mid-week inflation data will set Fed policy direction amid MODERATE signal conditions. Market extremely
           sensitive to surprises given current volatility regime. Watch for bond market reaction as leading indicator of equity
@@ -973,9 +967,9 @@ dashboard:
         - inflation
         - volatility
     - name: 💡 Research Highlights
-      updatedAt: '2025-10-26T12:54:00Z'
+      updatedAt: '2025-10-27T06:35:00Z'
       items:
-      - date: '2025-10-26'
+      - date: '2025-10-27'
         title: 'Fundstrat: Post-Crash Technical Analysis'
         blurb: Tom Lee identifies tariff actions as catalyst for VIX spike in MODERATE environment. Technical deleveraging
           event provides cleaner setup for year-end recovery. Focus on quality names with strong institutional support.
@@ -988,9 +982,9 @@ dashboard:
         - technical
         - recovery
     - name: 📊 Data Anomalies & Institutional Flows
-      updatedAt: '2025-10-26T12:54:00Z'
+      updatedAt: '2025-10-27T06:35:00Z'
       items:
-      - date: '2025-10-26'
+      - date: '2025-10-27'
         title: VIX Term Structure Inversion Signal
         blurb: Unusual near-term volatility premium signals extreme fear in MODERATE conditions. Historical precursor to market
           stabilization. Monitor for compression below 19 as risk-off exit signal.
@@ -1003,9 +997,9 @@ dashboard:
         - term-structure
         - fear
     - name: ⚠️ Exhaustion Signals & Contrarian Warnings
-      updatedAt: '2025-10-26T12:54:00Z'
+      updatedAt: '2025-10-27T06:35:00Z'
       items:
-      - date: '2025-10-26'
+      - date: '2025-10-27'
         title: Breadth Collapse Below Critical Threshold
         blurb: NYSE up-volume below 40% in MODERATE signal environment. Failed rallies likely until breadth thrust occurs.
           Market vulnerable to further downside without broad participation recovery.
@@ -1020,7 +1014,7 @@ dashboard:
   - id: technicals
     label: Technicals
     aiInterpretation:
-      updatedAt: '2025-10-26T12:54:45Z'
+      updatedAt: '2025-10-27T06:32:34Z'
       summary: 'Technical Score 5.0/100 = CRITICALLY WEAK. SPY +0.57% on declining volume is textbook bearish divergence—price
         advancing without participation. Breadth 12.5/25 means only 1 in 8 stocks participating. SPX testing 50-day MA (6,628)
         for first time since May after Friday -3% selloff. VIX 20+ confirms institutions hedging. Support levels critical:
@@ -1036,7 +1030,7 @@ dashboard:
       sentiment: bearish
       confidence: medium-high
     tradingSignalScore:
-      updatedAt: '2025-10-26T12:54:45Z'
+      updatedAt: '2025-10-27T06:32:34Z'
     closeProbability:
       currentPrice: $660.00
       maxPain: $670.00
@@ -1050,17 +1044,51 @@ dashboard:
       - 'Key support: 6,655.9 (strong), 6,452.1 (medium).'
       - 'Key resistance: 6,927.5 (medium), 7,131.3 (strong).'
       - 'Daily change: +0.00%. Price: 6,792.'
-      updatedAt: 2025-10-26 12:54 ET
+      updatedAt: '2025-10-27T06:32:34Z'
     - name: Bitcoin Technicals
       insights:
-      - Momentum neutral; trading in range. Support $110,300, Resistance $116,000.
-      - 'Key support levels: $108,100 (strong), $110,300 (medium).'
-      - 'Key resistance levels: $116,000 (medium), $119,400 (strong).'
-      - 'Daily change: +1.82%. Current price: $113,757.00.'
-      updatedAt: 2025-10-26 12:54 ET
+      - Momentum neutral; trading in range. Support $111,800, Resistance $117,600.
+      - 'Key support levels: $109,500 (strong), $111,800 (medium).'
+      - 'Key resistance levels: $117,600 (medium), $121,100 (strong).'
+      - 'Daily change: +1.48%. Current price: $115,287.00.'
+      updatedAt: '2025-10-27T06:32:34Z'
+    spxTechnicals:
+      updatedAt: '2025-10-27T06:32:34Z'
+      momentum: neutral
+      currentPrice: 6792.0
+      priceChange: +0.00%
+      keySupport:
+      - level: 6655.9
+        strength: strong
+      - level: 6452.1
+        strength: medium
+      keyResistance:
+      - level: 6927.5
+        strength: medium
+      - level: 7131.3
+        strength: strong
+      analysis: 'SPX trading neutral at 6792. Support at 6655.9 (strong), resistance at 6927.5 (medium). Breadth concern:
+        only 1 in 8 stocks participating (breadth 12.5/25).'
+    bitcoinTechnicals:
+      updatedAt: '2025-10-27T06:32:34Z'
+      momentum: neutral
+      currentPrice: 113757.0
+      priceChange: +1.82%
+      keySupport:
+      - level: 108100
+        strength: strong
+      - level: 110300
+        strength: medium
+      keyResistance:
+      - level: 116000
+        strength: medium
+      - level: 119400
+        strength: strong
+      analysis: BTC trading in range. Support $110,300 (medium), Resistance $116,000 (medium). Current price $113,757 maintaining
+        consolidation.
     optionsData:
       SPY:
-        lastUpdated: '2025-10-26T12:54:45Z'
+        lastUpdated: '2025-10-27T06:32:34Z'
         currentPrice: 664.39
         maxPain: $670.00
         putCallRatio: '1.49'
@@ -1082,7 +1110,7 @@ dashboard:
           sentiment: bearish
           reason: Put OI cluster (11,995,973)
       QQQ:
-        lastUpdated: '2025-10-26T12:54:45Z'
+        lastUpdated: '2025-10-27T06:32:34Z'
         currentPrice: 598.14
         maxPain: $609.00
         putCallRatio: '1.80'
@@ -1119,9 +1147,9 @@ dashboard:
       content: VIX rising with elevated hedging activity indicates defensive positioning by institutions. Put/call ratios
         elevated. In WEAK signal environment (28.5/100), options market pricing fear. Max pain levels suggest downside risk.
         Use options for hedging rather than speculation until signal improves >40.
-    technicalsTabSyncedAt: '2025-10-26T12:54:45Z'
+    technicalsTabSyncedAt: '2025-10-27T06:32:34Z'
     unusualActivity:
-      updatedAt: '2025-10-26T12:54:45Z'
+      updatedAt: '2025-10-27T06:32:34Z'
       SPY: []
       QQQ:
       - metric: putCallRatio
@@ -1131,13 +1159,13 @@ dashboard:
         status: ELEVATED
         signal: High defensive positioning
         direction: bullish
-  quickActionsUpdated: '2025-10-26T20:00:00Z'
+  quickActionsUpdated: '2025-10-27T20:00:00Z'
   quickActions:
   - type: risk
     icon: ✅
     title: SELECTIVE RISK REENTRY
-    value: 'Signal Score: 66.81 (MODERATE)'
-    description: MODERATE signal (66.81/100) - Selective opportunities available. Focus on quality setups.
+    value: 'Signal Score: 45.5 (MODERATE)'
+    description: MODERATE signal (45.5/100) - Selective opportunities available. Focus on quality setups.
     urgency: medium
   - type: hedge
     icon: 🛡️
@@ -1157,7 +1185,7 @@ dashboard:
     value: Selective deployment
     description: Balanced environment. Be selective and size appropriately.
     urgency: medium
-  providerConsensusUpdated: '2025-10-26T11:50:00Z'
+  providerConsensusUpdated: '2025-10-27T06:35:00Z'
   providerConsensus:
     updatedAt: '2025-10-25T20:35:00Z'
     themes:
@@ -1175,28 +1203,30 @@ dashboard:
       sentiment: NEUTRAL
   dailyPlanner:
     aiInterpretation:
-      updatedAt: '2025-10-26T07:45:00Z'
-      summary: 'Daily Context for October 26, 2025:
+      updatedAt: '2025-10-27T06:35:00Z'
+      summary: 'Daily Context for October 27, 2025:
 
-        Signal: MODERATE (66.81/100) - upgraded from 57 yesterday on breadth healing Breadth: 20.83/25 (83.3%) - A/D ratio
-        1.69, 231 new highs vs 64 lows Trading Posture: RISK-ON BIAS - selective deployment to quality tech/growth warranted
+        Signal: MODERATE (45.5/100) - contrarian inflection NOT weakness. Breadth A/D 1.69 (231 new highs), support holding above
+        50/200-DMA. Trading Posture: FOMC BINARY POSITIONING - wait for Oct 29 dovish confirmation before full deployment.
 
-        Market Structure: SPX 6,791.69 (+0.79%) consolidating at resistance. VIX normalized at 16.37 (-5.38%). Crypto stabilizing
-        (BTC +1.40%, ETH +3.15%). Fear & Greed=40 (contrarian accumulation signal).
+        Market Structure: SPX 6,791 consolidating with healthy technicals. VIX 16.37 (normalized). Crypto stabilizing (BTC $113.7K,
+        ETH $4.1K) with Fear & Greed=40 (historically 80%+ 3-month win rate). Institutional accumulation documented (Saylor +390 BTC,
+        Trump miners +1.4K BTC).
 
-        Key Focus: Breadth confirmation resolved yesterday''s divergence concern. Deploy to quality names on dips. Maintain
-        hedges through Oct 29 Fed. Monitor for >70% up-volume day to confirm bullish thrust.
+        Key Focus: FOMC Oct 29 is binary catalyst (dovish = +3-5% equity rally, hawkish = retest lows). Position defensively with
+        35% cash ready to deploy ON dovish confirmation. Maintain hedges through announcement. Entry points: SPX $6,655-6,679 support,
+        BTC $110K/$108K accumulation zones.
 
-        Next Catalyst: Oct 29 FOMC (dovish bias >60% odds). Post-Fed money market rotation expected if dovish.'
-      keyInsight: 'BREADTH HEALING CONFIRMS BULL CASE: Signal upgraded 57→66.81 because A/D ratio strengthened to 1.69 with
-        231 new highs. This resolves the PRIMARY CONSTRAINT that was capping upside. Market structure now supports selective
-        risk deployment to quality tech. Post-Fed dovish catalyst could trigger leg higher to $700 SPY / $6,927.5 SPX resistance.'
-      action: 'DEPLOYMENT WINDOW OPEN: Enter quality tech (NVDA/META/MSFT) on dips to SPY $670 support (max pain). Accumulate
-        crypto at BTC $110.3K / ETH $3,900 zones (Fear & Greed=40 = accumulation signal). Maintain 35% cash + 10% hedges for
-        Oct 29 Fed volatility. Key alerts: SPX $6,655.9 support, $6,927.5 resistance. AVOID chasing tops—enter on pullbacks
-        to support. Oct 29 dovish Fed = $700+ SPY target; hawkish = retest $6,655.9.'
-      sentiment: cautiously bullish
-      confidence: medium-high
+        Next Catalyst: FOMC Oct 29 (95%+ dovish odds). Rate cut expected. Forward guidance tone determines next leg direction.'
+      keyInsight: 'CONTRARIAN INFLECTION NOT WEAKNESS: Signal 45.5 = prudent caution before FOMC binary event. Fear & Greed 40
+        = classic entry zone (80%+ 3-month win rate historically). Support holdings + A/D 1.69 + institutional buying = accumulation
+        structure. Market structure favors bulls IF FOMC dovish. Positioning: Buy dips into fear (SPX $6,655-6,679), not chase rallies.'
+      action: 'FOMC POSITIONING THROUGH OCT 29: (1) Enter SPX dips to $6,655-6,679 (stop $6,600). (2) Add BTC/ETH on breaks below
+        $110K/$3,900. (3) Maintain 35% cash + 10% hedges (VIX calls). (4) Monitor breadth daily—need >70% up-volume post-Fed. (5) ON
+        dovish FOMC + breadth confirmation, deploy full 35% to AAPL/MSFT/META/NVDA. Oct 29 dovish = breakout to $700 SPY/$6,927.5 SPX.
+        Hawkish = quick recovery expected (Fed pivot). Current setup = buy fear, not euphoria.'
+      sentiment: cautiously bullish (contrarian setup)
+      confidence: medium (event-driven)
       content: 'MODERATE signal (58.0/100) provides tactical opportunity but information asymmetry extreme. Government data
         void forces price action to guide positioning. Earnings 84% beat rate validates fundamental support. Jobless claims
         in 2 hours equals potential turning point. Technical structure intact if support holds (SPX 6,656, QQQ $600, BTC $107,600).
@@ -1209,14 +1239,15 @@ dashboard:
       midday: 11:00-1:00 PM EST
       powerHour: 3:00-4:00 PM EST
       afterHours: 4:00-8:00 PM EST
-    prioritiesUpdated: '2025-10-26T07:45:00Z'
+    prioritiesUpdated: '2025-10-27T06:35:00Z'
     priorities:
-    - Deploy 35% equities to quality tech on dips to SPY $670 support
-    - Accumulate 20% crypto at BTC $110.3K / ETH $3,900 zones with 3-month conviction
-    - Maintain 10% hedges (VIX calls) through Oct 29 for Fed protection
-    - Monitor breadth meter daily for >70% up-volume confirmation signal
-    - Watch Oct 29 FOMC for dovish guidance driving money market rotation
-    keyLevelsUpdated: '2025-10-26T07:45:00Z'
+    - WAIT for FOMC Oct 29 dovish confirmation before max deployment (35% cash ready to deploy)
+    - Buy SPX dips to $6,655-6,679 support (risk defined at $6,600)
+    - Add BTC/ETH on breaks below $110K/$3,900 support zones (accumulation window open)
+    - Maintain 10% hedges (VIX calls) through FOMC Oct 29 announcement for tail risk
+    - Monitor breadth daily—need >70% up-volume post-Fed to confirm bullish breakout
+    - ON dovish FOMC + breadth >70%, execute full 35% deployment to quality tech
+    keyLevelsUpdated: '2025-10-27T06:35:00Z'
     keyLevels:
     - asset: SPY
       entry: 677.25
@@ -1248,21 +1279,22 @@ dashboard:
       stop: 20.0
       target: 12.0
       rationale: Normalized at 16.37, compression <18 supports equities, spike >20 is hedging trigger
-    economicCalendarUpdated: '2025-10-26T11:47:10Z'
+    economicCalendarUpdated: '2025-10-27T06:35:00Z'
     economicCalendar: *id001
     tomorrowPrep:
-    - Track daily breadth ratios—need one 70%+ up-volume day to confirm bullish thrust.
-    - Monitor spot ETF crypto flows ($300M+ daily target for breakout confirmation).
+    - Track daily breadth ratios through FOMC—need one 70%+ up-volume day for bullish confirmation.
+    - Monitor spot ETF crypto flows ($300M+ for breakout); watch whale bid walls at $115K/$111K (BTC).
+    - FOMC Oct 29 timing: 18:00 ET rate decision, 18:30 ET press conference. Volatility window open ±5 VIX.
     signalData:
-      composite: 66.81
+      composite: 45.5
       tier: MODERATE
-      date: '2025-10-26'
-    signalDataUpdated: '2025-10-26T11:47:10Z'
-    recommendation: MODERATE tier (66.81/100). Market breadth healing confirmed on A/D ratio 1.69 + 231 new highs. Signal
-      strengthened from 57 yesterday—risk-on bias warranted with selective deployment to quality tech/growth. Crypto accumulation
-      window (Fear & Greed=40) supports 20% allocation. Maintain 35% cash + 10% hedges for Oct 29 Fed volatility. SPY support
-      $670, resistance $690.
-    recommendationUpdated: '2025-10-26T07:45:00Z'
+      date: '2025-10-27'
+    signalDataUpdated: '2025-10-27T06:35:00Z'
+    recommendation: 'MODERATE tier (45.5/100). Contrarian inflection (Fear & Greed 40, A/D 1.69, institutional accumulation).
+      FOMC Oct 29 binary catalyst—position defensively with 35% cash ready to deploy ON dovish confirmation + breadth >70%.
+      Crypto accumulation window (Fear & Greed=40 = 80%+ historical 3-month win rate) supports 20% allocation. Maintain 10% hedges
+      through FOMC. Entry: SPX $6655-6679, BTC $110K/$108K. Oct 29 dovish = breakout to $700 SPY/$6927.5 SPX.'
+    recommendationUpdated: '2025-10-27T06:35:00Z'
     actionChecklist:
     - text: Deploy 35% equities to quality tech (NVDA/META/MSFT) on dips to SPY $670 support.
       priority: high
@@ -1275,7 +1307,7 @@ dashboard:
       priority: monitor
     - text: Watch Oct 29 FOMC for dovish guidance → expect money market rotation + crypto flow acceleration.
       priority: monitor
-    actionChecklistUpdated: '2025-10-26T07:45:00Z'
+    actionChecklistUpdated: '2025-10-27T06:35:00Z'
     playbook:
       BTC:
         score: 11.7
@@ -1305,8 +1337,8 @@ dashboard:
     - Ensure all positions are appropriately hedged.
     - Reduce overall gross exposure.
     endOfDay:
-      ranAt: '2025-10-26T11:47:10Z'
-      status: Pending - will run at market close
+      ranAt: '2025-10-27T06:35:00Z'
+      status: Pending - will run at market close (Oct 27)
   endOfDay:
     date: October 20, 2025
     ranAt: '2025-10-21T15:45:00Z'
@@ -1539,6 +1571,16 @@ dashboard:
 
 
 
+
+
+
+
+
+
+
+
+
+
 # Master Plan - Investment Knowledge Base
 
 > **🚀 NEW LLM? START HERE:** Read [README.md](../README.md) for complete system briefing and instructions!
@@ -1558,7 +1600,7 @@ This is the central hub for our integrated investment and trading system. This d
 - [RS System](../Research/system-readme.md) - **Relative Strength Trading Implementation**
 - [Friday Options](../Research/friday-options-playbook.md) - **0DTE Options Trading Framework**
 
-## 🎯 EAGLE EYE MACRO OVERVIEW (October 26, 2025)
+## 🎯 EAGLE EYE MACRO OVERVIEW (October 27, 2025)
 
 ### 🔴 STATE OF PLAY
 
@@ -1803,7 +1845,7 @@ We use a comprehensive 100-point scoring system for investment evaluation:
 - [ ] **Quarterly**: Stress-test downside scenarios against liquidity and funding conditions
 
 ---
-*Last Updated: October 26, 2025 - COMPREHENSIVE OCTOBER 26, 2025 MARKET INTELLIGENCE UPDATE*
-*Next Review: November 02, 2025 (Weekly tactical review)*
+*Last Updated: October 27, 2025 - COMPREHENSIVE OCTOBER 27, 2025 MARKET INTELLIGENCE UPDATE*
+*Next Review: November 03, 2025 (Weekly tactical review)*
 *System Version: 3.4 - October 9 Market Sentiment Integration*
 *Major Update: Signal downgraded to 35/100 WEAK. Volatility spike and breadth deterioration demand defensive posture into CPI.*

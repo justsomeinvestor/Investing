@@ -29,14 +29,16 @@ The X Sentiment tab provides real-time sentiment analysis from X/Twitter, combin
 - **Bullish:** 245 posts (61%)
 - **Bearish:** 85 posts (21%)
 - **Neutral:** 70 posts (18%)
-- **Sentiment Score:** 68/100 (Moderately Bullish)
+- **Sentiment Score:** 68/100
 ```
 
 **Critical Fields**:
-- Line ~14: `**Sentiment Score:** XX/100 (Label)`
-- Sentiment breakdown percentages
+- Line ~9: `- **Sentiment Score:** XX/100` (numeric score, label generated automatically)
+- Sentiment breakdown percentages (bullish/bearish/neutral posts)
 - Top Narratives section (optional)
 - Most Discussed Tickers/Assets (optional)
+
+**Note**: Script automatically infers sentiment label from score (60-69 = MODERATELY BULLISH, etc.). Label in file optional but will be ignored if present.
 
 ### 2. X Macro Summary
 **Path**: `Research/X/{date}_X_Macro_Summary.md`
@@ -48,14 +50,16 @@ The X Sentiment tab provides real-time sentiment analysis from X/Twitter, combin
 - **Bullish:** 95 posts (47%)
 - **Bearish:** 68 posts (34%)
 - **Neutral:** 37 posts (19%)
-- **Sentiment Score:** 52/100 (Balanced/Mixed)
+- **Sentiment Score:** 52/100
 ```
 
 **Critical Fields**:
-- Line ~14: `**Sentiment Score:** XX/100 (Label)`
-- Sentiment breakdown percentages
+- Line ~9: `- **Sentiment Score:** XX/100` (numeric score, label generated automatically)
+- Sentiment breakdown percentages (bullish/bearish/neutral posts)
 - Top Narratives section (optional)
 - Most Discussed Tickers/Assets (optional)
+
+**Note**: Script automatically infers sentiment label from score (50-59 = NEUTRAL, etc.). Label in file optional but will be ignored if present.
 
 ### 3. Trending Words JSON
 **Path**: `Research/X/Trends/{date}_trending_words.json`
@@ -246,24 +250,40 @@ crypto_trending['top_tickers'] = top_tickers[:10]
 
 ---
 
-### Issue 2: AI Narrative Showing "No Data Available"
-**Problem**: AI Narrative Briefing displayed fallback text instead of actual sentiment data.
+### Issue 2: Sentiment Score Regex Mismatch (FIXED Oct 27, 2025)
+**Problem**: Script reported "CRYPTO SENTIMENT DATA MISSING" even though files existed.
 
-**Root Cause**: Regex patterns expected `Overall Sentiment:` but files used `**Sentiment Score:**`
-
-**Fix Applied** (Lines 136 + 171):
+**Root Cause**: Regex pattern expected label in parentheses that never existed in actual files.
 ```python
-# Before (WRONG - doesn't match file format)
-sentiment_match = re.search(r'Overall Sentiment:\s*(\d+)/100\s*\(([^)]+)\)', content)
-
-# After (CORRECT - matches actual file format)
+# OLD (WRONG - expected: "60/100 (BULLISH)")
 sentiment_match = re.search(r'\*\*Sentiment Score:\*\*\s*(\d+)/100\s*\(([^)]+)\)', content)
+
+# Actual file format (reality):
+- **Sentiment Score:** 60/100     # No label in parentheses!
 ```
 
+**Fix Applied** (Lines 137 + 172):
+```python
+# NEW (CORRECT - matches actual file format)
+sentiment_match = re.search(r'\*\*Sentiment Score:\*\*\s*(\d+)/100', content)
+
+# Then infer label from score using _infer_sentiment_label() helper
+self.crypto_data['sentiment_label'] = self._infer_sentiment_label(int(sentiment_match.group(1)))
+```
+
+**Sentiment Label Tiers** (auto-generated):
+- 70-100: STRONGLY/EXTREME BULLISH
+- 60-69: BULLISH/MODERATELY BULLISH
+- 50-59: NEUTRAL/MODERATELY BULLISH
+- 40-49: NEUTRAL/MODERATELY BEARISH
+- 20-39: BEARISH/WEAK
+- 0-19: EXTREME BEARISH
+
 **Impact**:
-- Script now correctly extracts crypto sentiment: `68/100 (Moderately Bullish)`
-- Script now correctly extracts macro sentiment: `52/100 (Balanced/Mixed)`
-- AI Narrative Briefing populated with real data instead of "No data available"
+- ✅ Script now correctly extracts all sentiment scores
+- ✅ Works with files that have NO label, WITH label, or different label format
+- ✅ AI Narrative Briefing auto-populates with inferred labels
+- ✅ Path resolution fix (repo_root) ensures files are found reliably
 
 ---
 

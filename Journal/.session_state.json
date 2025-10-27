@@ -29,11 +29,19 @@
   ],
   "recent_trades": [],
   "market": {
-    "signal_tier": "WEAK",
-    "signal_score": 28.5,
+    "signal_tier": "MODERATE",
+    "signal_score": 66.81,
+    "delta": 9.81,
     "key_levels": [],
     "market_tone": "BULLISH",
-    "last_update": "unknown"
+    "last_updated": "2025-10-26T07:00:00Z",
+    "breakdown": {
+      "trend": 32.0,
+      "breadth": 18.0,
+      "volatility": 5.0,
+      "technical": 8.3,
+      "seasonality": 4.4
+    }
   },
   "status": "READY"
 }

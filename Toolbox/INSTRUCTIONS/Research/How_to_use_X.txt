@@ -419,10 +419,15 @@ Create THREE separate summaries:
 **CRYPTO Template (must include TRENDING TICKERS section):**
 
 ---
-# X Social Sentiment Summary - [DATE] (Crypto)
+# X/Twitter Crypto Summary - [DATE]
 
-## Overall Sentiment: [SCORE]/100 ([TIER])
-[1-2 sentence interpretation of crypto crowd sentiment]
+**Total Posts Analyzed:** [X]
+
+## Sentiment Analysis
+- Bullish: [X] posts ([X]%)
+- Bearish: [X] posts ([X]%)
+- Neutral: [X] posts ([X]%)
+- **Sentiment Score:** [X]/100
 
 **Signal Impact:** [+/-X] points to Breadth Signals module
 
@@ -485,10 +490,15 @@ Create THREE separate summaries:
 **MACRO Template (must include TRENDING TICKERS + EVENT RISK):**
 
 ---
-# X Social Sentiment Summary - [DATE] (Macro)
+# X/Twitter Macro Summary - [DATE]
 
-## Overall Sentiment: [SCORE]/100 ([TIER])
-[1-2 sentence interpretation of macro/equity crowd sentiment]
+**Total Posts Analyzed:** [X]
+
+## Sentiment Analysis
+- Bullish: [X] posts ([X]%)
+- Bearish: [X] posts ([X]%)
+- Neutral: [X] posts ([X]%)
+- **Sentiment Score:** [X]/100
 
 **Signal Impact:** [+/-X] points to Breadth Signals module
 
