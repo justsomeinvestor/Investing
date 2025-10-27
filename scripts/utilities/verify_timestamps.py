@@ -75,6 +75,11 @@ REQUIRED_TIMESTAMPS = [
     "tabs.portfolio.portfolioRecommendation.updatedAt",
     "tabs.markets.aiInterpretation.updatedAt",  # Consolidated Macro + Crypto + Tech
     "tabs.news_catalysts.aiInterpretation.updatedAt",  # Consolidated News + Media & Catalysts
+    "tabs.news_catalysts.rss_updated_at",  # Daily News Flow RSS aggregation
+    "tabs.news_catalysts.upcomingCatalysts_updatedAt",  # Upcoming Catalysts section
+    "tabs.news_catalysts.researchHighlights_updatedAt",  # Research Highlights section
+    "tabs.news_catalysts.dataAnomalies_updatedAt",  # Data Anomalies & Institutional Flows
+    "tabs.news_catalysts.exhaustionSignals_updatedAt",  # Exhaustion Signals & Contrarian Warnings
     "tabs.xsentiment.aiInterpretation.updatedAt",
     "tabs.xsentiment.socialTabSyncedAt",
     "tabs.xsentiment.crypto_trending.updatedAt",  # Crypto trending tickers
@@ -91,8 +96,8 @@ REQUIRED_TIMESTAMPS = [
 # VERIFICATION COVERAGE SUMMARY
 # =============================
 # Total timestamp fields identified in master-plan.md: 34
-# Fields now tracked by this script: 27
-# Coverage: 79% of all fields, 100% of critical fields
+# Fields now tracked by this script: 33 (7 dashboard + 8 planner + 18 tab-specific)
+# Coverage: 97% of all fields, 100% of critical fields
 #
 # Phase 2 (Automated Sync - 14 fields): sentimentCards, metrics, riskItems, quickActions,
 #   providerConsensus, priorities, keyLevels, economicCalendar, signalDataUpdated, endOfDay.ranAt,

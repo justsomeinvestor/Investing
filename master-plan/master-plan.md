@@ -896,6 +896,11 @@ dashboard:
         signal: NEW
   - id: news_catalysts
     label: 📰 News & Catalysts
+    rss_updated_at: '2025-10-26T11:47:10Z'
+    upcomingCatalysts_updatedAt: '2025-10-26T12:54:00Z'
+    researchHighlights_updatedAt: '2025-10-26T12:54:00Z'
+    dataAnomalies_updatedAt: '2025-10-26T12:54:00Z'
+    exhaustionSignals_updatedAt: '2025-10-26T12:54:00Z'
     aiInterpretation:
       updatedAt: '2025-10-26T07:36:07Z'
       summary: 'TODAY''S TURNING POINT: Jobless claims 8:30 AM = ONLY macro signal during government shutdown (Day 22). Earnings
@@ -952,6 +957,7 @@ dashboard:
         - Buffett eyeing Berkshire's biggest deal in three years ($11.6B+)
       rss_updated_at: '2025-10-26T11:47:10Z'
     - name: 🚀 Upcoming Catalysts
+      updatedAt: '2025-10-26T12:54:00Z'
       items:
       - date: '2025-10-26'
         title: CPI & PPI Inflation Data Cluster
@@ -967,6 +973,7 @@ dashboard:
         - inflation
         - volatility
     - name: 💡 Research Highlights
+      updatedAt: '2025-10-26T12:54:00Z'
       items:
       - date: '2025-10-26'
         title: 'Fundstrat: Post-Crash Technical Analysis'
@@ -981,6 +988,7 @@ dashboard:
         - technical
         - recovery
     - name: 📊 Data Anomalies & Institutional Flows
+      updatedAt: '2025-10-26T12:54:00Z'
       items:
       - date: '2025-10-26'
         title: VIX Term Structure Inversion Signal
@@ -995,6 +1003,7 @@ dashboard:
         - term-structure
         - fear
     - name: ⚠️ Exhaustion Signals & Contrarian Warnings
+      updatedAt: '2025-10-26T12:54:00Z'
       items:
       - date: '2025-10-26'
         title: Breadth Collapse Below Critical Threshold

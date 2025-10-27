@@ -1,8 +1,8 @@
 # Verification Field Registry
 
 **Last Updated:** 2025-10-26
-**Coverage:** 30/34 timestamp fields (88% of all fields, 100% of critical fields)
-**Health Status:** 100% (30/30 current)
+**Coverage:** 33/34 timestamp fields (97% of all fields, 100% of critical fields)
+**Health Status:** 100% (33/33 current)
 
 ---
 
@@ -12,11 +12,11 @@ Complete registry of all timestamp fields tracked by Wingman's verification syst
 
 ### Quick Stats
 - **Total fields in master-plan.md:** 34
-- **Fields tracked by verify_timestamps.py:** 30
-- **Phase 2 owned (automated):** 17 (added SPX + BTC technicals tracking)
-- **Phase 5 owned (AI synthesis):** 13
-- **Expected health after Phase 2:** 57% (17/30 current)
-- **Expected health after Phase 5:** 100% (30/30 current)
+- **Fields tracked by verify_timestamps.py:** 33
+- **Phase 2 owned (automated):** 19 (added 4 news/catalyst section timestamps)
+- **Phase 5 owned (AI synthesis):** 14
+- **Expected health after Phase 2:** 58% (19/33 current)
+- **Expected health after Phase 5:** 100% (33/33 current)
 
 ---
 
@@ -75,11 +75,16 @@ These fields are set by Claude during Phase 5 (AI interpretation synthesis). The
 |------|-----------|---------|----------|
 | 157 | `tabs.markets.aiInterpretation.updatedAt` | Consolidated macro/crypto/tech analysis | Research + provider data |
 
-#### News & Catalysts Tab (1 field)
+#### News & Catalysts Tab (5 fields)
 
 | Line | Field Path | Purpose | Requires |
 |------|-----------|---------|----------|
-| 450 | `tabs.news_catalysts.aiInterpretation.updatedAt` | News sentiment + catalyst analysis | News scraping + filtering |
+| 450 | `tabs.news_catalysts.aiInterpretation.updatedAt` | AI narrative + catalyst interpretation | News scraping + catalyst filtering |
+| 916 | `tabs.news_catalysts.rss_updated_at` | Daily News Flow RSS aggregation freshness | RSS feed sync via sync_news_tab.py |
+| 954 | `tabs.news_catalysts.upcomingCatalysts_updatedAt` | Upcoming Catalysts section freshness | Catalyst data updates |
+| 970 | `tabs.news_catalysts.researchHighlights_updatedAt` | Research Highlights section freshness | Research data updates |
+| 985 | `tabs.news_catalysts.dataAnomalies_updatedAt` | Data Anomalies & Flows section freshness | Market data updates |
+| 1000 | `tabs.news_catalysts.exhaustionSignals_updatedAt` | Exhaustion Signals section freshness | Technical/market exhaustion data |
 
 #### X Sentiment Tab (4 fields)
 

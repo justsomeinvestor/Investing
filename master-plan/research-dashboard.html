@@ -3330,77 +3330,98 @@
 
                         contentEl.appendChild(technicalsRow);
                     } else if (tab.id === 'news_catalysts') {
-                        // Special handling for news_catalysts tab - render sections
+                        // Special handling for news_catalysts tab - render catalyst sections FIRST, then Daily News Flow
                         if (tab.sections && Array.isArray(tab.sections)) {
-                            tab.sections.forEach(section => {
+                            // Separate catalyst sections from daily news flow
+                            const catalystSections = tab.sections.filter(s => s.name !== '📰 Daily News Flow');
+                            const newsFlowSection = tab.sections.find(s => s.name === '📰 Daily News Flow');
+
+                            // Render catalyst sections first
+                            catalystSections.forEach(section => {
                                 let sectionHTML = '<div class="news-catalysts-section" style="margin-bottom: 30px;">';
 
-                                // Section name header
+                                // Section name header with timestamp badge
                                 if (section.name) {
-                                    sectionHTML += `<h3 style="color: #6366f1; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #374151;">${section.name}</h3>`;
+                                    const statusClass = section.updatedAt ? getDataFreshness(section.updatedAt) : 'status-error';
+                                    sectionHTML += `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #374151;">
+                                        <h3 style="color: #6366f1; margin: 0; flex: 1;">${section.name}</h3>
+                                        <span class="date-badge ${statusClass}" style="margin: 0;"></span>
+                                    </div>`;
                                 }
 
-                                // Daily News Flow section - show RSS summary only
-                                if (section.name === '📰 Daily News Flow') {
-                                    if (section.rss_summary) {
-                                        sectionHTML += renderRSSSummary(section.rss_summary);
-                                    }
-                                } else {
-                                    // Catalyst sections - render items as cards
-                                    if (section.items && Array.isArray(section.items)) {
-                                        section.items.forEach(item => {
-                                            const convictionColor = item.conviction === 'CRITICAL' ? '#ef4444' : item.conviction === 'HIGH' ? '#f59e0b' : '#6366f1';
+                                // Catalyst sections - render items as cards
+                                if (section.items && Array.isArray(section.items)) {
+                                    section.items.forEach(item => {
+                                        const convictionColor = item.conviction === 'CRITICAL' ? '#ef4444' : item.conviction === 'HIGH' ? '#f59e0b' : '#6366f1';
 
-                                            // Render tags if available
-                                            let tagsHTML = '';
-                                            if (item.tags && Array.isArray(item.tags) && item.tags.length > 0) {
-                                                tagsHTML = '<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;">';
-                                                item.tags.forEach(tag => {
-                                                    const tagColor = getTagColor(tag);
-                                                    tagsHTML += `
-                                                        <span style="background: ${tagColor}20; border: 1px solid ${tagColor}40; color: ${tagColor}; padding: 3px 8px; border-radius: 12px; font-size: 0.75em; font-weight: 500;">
-                                                            ${tag}
-                                                        </span>
-                                                    `;
-                                                });
-                                                tagsHTML += '</div>';
-                                            }
-
-                                            // Make source/link clickable if link exists
-                                            let sourceLinkHTML = '';
-                                            if (item.link && item.source) {
-                                                const isInternalLink = item.link.startsWith('#');
-                                                const linkTarget = isInternalLink ? '' : 'target="_blank" rel="noopener noreferrer"';
-                                                sourceLinkHTML = `
-                                                    <a href="${item.link}" ${linkTarget} style="color: #6366f1; font-size: 0.85em; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s; cursor: pointer;">
-                                                        <span>📍</span>
-                                                        <span style="border-bottom: 1px solid transparent;">${item.source}</span>
-                                                        <span style="font-size: 0.7em;">${isInternalLink ? '→' : '↗'}</span>
-                                                    </a>
+                                        // Render tags if available
+                                        let tagsHTML = '';
+                                        if (item.tags && Array.isArray(item.tags) && item.tags.length > 0) {
+                                            tagsHTML = '<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;">';
+                                            item.tags.forEach(tag => {
+                                                const tagColor = getTagColor(tag);
+                                                tagsHTML += `
+                                                    <span style="background: ${tagColor}20; border: 1px solid ${tagColor}40; color: ${tagColor}; padding: 3px 8px; border-radius: 12px; font-size: 0.75em; font-weight: 500;">
+                                                        ${tag}
+                                                    </span>
                                                 `;
-                                            } else if (item.source) {
-                                                sourceLinkHTML = `<div style="color: #6366f1; font-size: 0.85em;">📍 ${item.source}</div>`;
-                                            }
+                                            });
+                                            tagsHTML += '</div>';
+                                        }
 
-                                            sectionHTML += `
-                                                <div class="catalyst-card" style="background: #1f2937; border-left: 4px solid ${convictionColor}; padding: 15px; margin-bottom: 15px; border-radius: 4px; transition: transform 0.2s, box-shadow 0.2s;">
-                                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
-                                                        <div style="font-weight: 600; color: #f3f4f6; font-size: 1.05em;">${item.title || ''}</div>
-                                                        <div style="background: ${convictionColor}; color: white; padding: 2px 8px; border-radius: 3px; font-size: 0.75em; font-weight: 600; white-space: nowrap; margin-left: 10px;">${item.conviction || ''}</div>
-                                                    </div>
-                                                    ${item.date ? `<div style="color: #9ca3af; font-size: 0.85em; margin-bottom: 8px;">📅 ${item.date}</div>` : ''}
-                                                    <div style="color: #d1d5db; line-height: 1.5; margin-bottom: 8px;">${highlightKeyTerms(item.blurb || '')}</div>
-                                                    ${sourceLinkHTML}
-                                                    ${tagsHTML}
-                                                </div>
+                                        // Make source/link clickable if link exists
+                                        let sourceLinkHTML = '';
+                                        if (item.link && item.source) {
+                                            const isInternalLink = item.link.startsWith('#');
+                                            const linkTarget = isInternalLink ? '' : 'target="_blank" rel="noopener noreferrer"';
+                                            sourceLinkHTML = `
+                                                <a href="${item.link}" ${linkTarget} style="color: #6366f1; font-size: 0.85em; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s; cursor: pointer;">
+                                                    <span>📍</span>
+                                                    <span style="border-bottom: 1px solid transparent;">${item.source}</span>
+                                                    <span style="font-size: 0.7em;">${isInternalLink ? '→' : '↗'}</span>
+                                                </a>
                                             `;
-                                        });
-                                    }
+                                        } else if (item.source) {
+                                            sourceLinkHTML = `<div style="color: #6366f1; font-size: 0.85em;">📍 ${item.source}</div>`;
+                                        }
+
+                                        sectionHTML += `
+                                            <div class="catalyst-card" style="background: #1f2937; border-left: 4px solid ${convictionColor}; padding: 15px; margin-bottom: 15px; border-radius: 4px; transition: transform 0.2s, box-shadow 0.2s;">
+                                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+                                                    <div style="font-weight: 600; color: #f3f4f6; font-size: 1.05em;">${item.title || ''}</div>
+                                                    <div style="background: ${convictionColor}; color: white; padding: 2px 8px; border-radius: 3px; font-size: 0.75em; font-weight: 600; white-space: nowrap; margin-left: 10px;">${item.conviction || ''}</div>
+                                                </div>
+                                                ${item.date ? `<div style="color: #9ca3af; font-size: 0.85em; margin-bottom: 8px;">📅 ${item.date}</div>` : ''}
+                                                <div style="color: #d1d5db; line-height: 1.5; margin-bottom: 8px;">${highlightKeyTerms(item.blurb || '')}</div>
+                                                ${sourceLinkHTML}
+                                                ${tagsHTML}
+                                            </div>
+                                        `;
+                                    });
                                 }
 
                                 sectionHTML += '</div>';
                                 contentEl.innerHTML += sectionHTML;
                             });
+
+                            // Render Daily News Flow section last
+                            if (newsFlowSection) {
+                                let newsHTML = '<div class="news-catalysts-section" style="margin-bottom: 30px;">';
+
+                                // Section header with timestamp badge
+                                const newsStatusClass = newsFlowSection.rss_updated_at ? getDataFreshness(newsFlowSection.rss_updated_at) : 'status-error';
+                                newsHTML += `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #374151;">
+                                    <h3 style="color: #6366f1; margin: 0; flex: 1;">${newsFlowSection.name}</h3>
+                                    <span class="date-badge ${newsStatusClass}" style="margin: 0;"></span>
+                                </div>`;
+
+                                if (newsFlowSection.rss_summary) {
+                                    newsHTML += renderRSSSummary(newsFlowSection.rss_summary);
+                                }
+
+                                newsHTML += '</div>';
+                                contentEl.innerHTML += newsHTML;
+                            }
                         }
                     } else {
                         // Non-technicals, non-markets, non-news_catalysts tabs: render providers normally
