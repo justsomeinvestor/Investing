@@ -7145,16 +7145,16 @@
 
     html += '</div>';
 
-    // Enhanced Sections (Collapsible with visual headers)
-    html += renderEnhancedSections(marketsTab.sections, {});
-
-    // Economic Calendar (Full width, collapsible - positioned AFTER sections)
+    // Economic Calendar (positioned after Consensus/Risk, before dropdown sections)
     html += '<div style="margin: 20px 0;">';
     const macroSection = marketsTab.sections.find(s => s.name === 'Macro Environment');
     if (macroSection?.economicCalendar) {
       html += renderEconomicTimelineCollapsible(macroSection.economicCalendar);
     }
     html += '</div>';
+
+    // Enhanced Sections (Collapsible with visual headers)
+    html += renderEnhancedSections(marketsTab.sections, {});
 
     html += '</div>';
     return html;
