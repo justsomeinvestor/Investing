@@ -1,53 +1,77 @@
 # Current Focus - Active Goals & Investigations
-**Last Updated:** 2025-10-27
-**Session:** 1 (Initial Wingman Load)
+**Last Updated:** 2025-10-27 (Session 2 - EOD)
+**Session:** 2 (System Development & Infrastructure)
 
 ---
 
-## Active Goals (What We're Working On Right Now)
+## Session 2 Completion Summary (Oct 27)
 
-### Goal 1: Execute First Real Trade with Wingman
-- [ ] Test full threat assessment framework in live trading
-- [ ] Verify threat assessment output format and clarity
-- [ ] Practice rule enforcement before entry
-- [ ] Record first trade with all required fields
-- [ ] Analyze execution quality post-trade
+✅ **COMPLETED - Session 2 Achievements:**
+1. ✅ Built comprehensive trades_ledger.json (all 5 trades documented with full context)
+2. ✅ Redesigned command center dashboard (real data integration, interactive checklist)
+3. ✅ Identified clear edge: Inverse ETF hedges 100% win rate, range fades 0% win rate
+4. ✅ Created Rules #7 (SPY/SPXU shorts) and #17 (external advice verification)
+5. ✅ Implemented pattern recognition system (compliance tracking, setup classification)
+6. ✅ Set up backup and git versioning (pushed to main branch)
+7. ✅ Created comprehensive EOD wrap documenting all learnings
 
-**Timeline:** Next market session
-**Success Criteria:** Clean entry, proper threat assessment, position recorded accurately
+**Key Finding:** Compliance directly correlates with wins. Oct 15 & 17 (100% compliant) = 100% wins. Oct 27 (0% compliant) = loss.
 
----
-
-### Goal 2: Validate Session Continuity System
-- [ ] Close session and verify all files updated
-- [ ] Restart Wingman with "i know kung fu" trigger
-- [ ] Confirm all context loads correctly
-- [ ] Verify session memory intact
-
-**Timeline:** End of current trading session
-**Success Criteria:** Seamless handoff between sessions, zero context loss
+**Action:** Dashboard pre-entry checklist prevents behavioral mistakes (like Oct 27 Chris Lori trade).
 
 ---
 
-### Goal 3: Build Rule Compliance Tracking
-- [ ] Create real-time compliance tracker
-- [ ] Log each trade against applicable rules
-- [ ] Calculate compliance percentage weekly
-- [ ] Identify patterns (which rules are followed/broken)
+## Active Goals (What We're Working On Next)
 
-**Timeline:** Sessions 2-4
-**Success Criteria:** Automated rule checking before entries, accurate compliance metrics
+### Goal 1: Execute 1-2 Inverse ETF Hedge Trades with 100% Compliance
+- [ ] Open market and verify threat assessment checklist ready
+- [ ] Identify valid hedge setup (puts read or inverse ETF opportunity)
+- [ ] Check ALL 6 threat assessment boxes before entry
+- [ ] Record trade with full context (entry time, price, shares, stop, target)
+- [ ] Exit according to plan (don't chase, don't hold overnight)
+
+**Timeline:** Next 2 market sessions (Oct 28, Oct 29, or after FOMC)
+**Success Criteria:** 1-2 trades executed, 100% compliance, positive P/L
+
+**Rationale:** Inverse ETF hedges have proven 100% win rate (2/2). This is your EDGE. Build confidence here.
 
 ---
 
-### Goal 4: Establish Performance Dashboard
-- [ ] Track daily P/L, win rate, rule compliance
-- [ ] Monitor signal alignment (trades in MODERATE vs WEAK signals)
-- [ ] Build trend analysis (improving/declining areas)
-- [ ] Create weekly review template
+### Goal 2: Improve Compliance from 40% to 80%+
+- [ ] Use dashboard pre-entry checklist for EVERY trade
+- [ ] Don't click entry button until all 6 items checked
+- [ ] Track compliance % after each trade (should be 100%)
+- [ ] Analyze any violations immediately
+- [ ] Log lessons to trades_ledger.json
 
-**Timeline:** Week 2
-**Success Criteria:** Weekly reviews completed, performance trends visible
+**Timeline:** Every session
+**Success Criteria:** 80%+ compliance over next 10 trades (vs 40% current)
+
+**Rationale:** Data shows 100% compliance trades win, violations lose. Compliance IS the opportunity.
+
+---
+
+### Goal 3: Avoid Range Fades Until Structure Improves
+- [ ] Don't enter fade setups in choppy markets (signal <50)
+- [ ] Wait for clear trend structure or support/resistance breaks
+- [ ] If fading, require: C+R confirmation, EMA filter, volume 1.3×, ADD confirming
+- [ ] Track range fade attempts and outcomes
+
+**Timeline:** Ongoing
+**Success Criteria:** 0 losses to range fades (vs 0% win rate historically)
+
+**Rationale:** Range fades 0/2 = clear weakness. Skip until proven edge develops.
+
+---
+
+### Goal 4: Track Progress Toward $2,500 Monthly Goal
+- [ ] Daily: Check dashboard for YTD and daily rate
+- [ ] Weekly: Calculate days remaining vs $ remaining
+- [ ] After each trade: Update trades_ledger.json with P/L impact
+- [ ] Identify what setup types move needle (hedges +$281/2 trades = strongest)
+
+**Timeline:** Daily tracking through end of October
+**Success Criteria:** Hit $2,500 by Oct 31 (need ~$1,221 more = $136/day for 9 days)
 
 ---
 
