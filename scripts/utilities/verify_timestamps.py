@@ -49,11 +49,10 @@ MASTER_PLAN = REPO_ROOT / "master-plan" / "master-plan.md"
 # Updated 2025-10-26: Expanded to 24 critical fields (71% of 34 total timestamp fields)
 
 REQUIRED_TIMESTAMPS = [
-    # DASHBOARD-LEVEL (7 fields)
+    # DASHBOARD-LEVEL (6 fields)
     "dashboard.lastUpdated",  # NEW - overall dashboard timestamp
     "dashboard.sentimentCardsUpdated",
     "dashboard.sentimentHistoryUpdated",
-    "dashboard.metricsUpdated",
     "dashboard.riskItemsUpdated",
     "dashboard.quickActionsUpdated",
     "dashboard.providerConsensusUpdated",
@@ -95,11 +94,11 @@ REQUIRED_TIMESTAMPS = [
 
 # VERIFICATION COVERAGE SUMMARY
 # =============================
-# Total timestamp fields identified in master-plan.md: 34
-# Fields now tracked by this script: 33 (7 dashboard + 8 planner + 18 tab-specific)
+# Total timestamp fields identified in master-plan.md: 33 (metrics removed)
+# Fields now tracked by this script: 32 (6 dashboard + 8 planner + 18 tab-specific)
 # Coverage: 97% of all fields, 100% of critical fields
 #
-# Phase 2 (Automated Sync - 14 fields): sentimentCards, metrics, riskItems, quickActions,
+# Phase 2 (Automated Sync - 13 fields): sentimentCards, riskItems, quickActions,
 #   providerConsensus, priorities, keyLevels, economicCalendar, signalDataUpdated, endOfDay.ranAt,
 #   tradingSignalScore, unusualActivity
 #

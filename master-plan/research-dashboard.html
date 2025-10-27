@@ -719,42 +719,6 @@
             margin-top: 2px;
         }
 
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .metric-card {
-            background: rgba(26, 31, 58, 0.6);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .metric-card:hover {
-            background: rgba(99, 102, 241, 0.1);
-            transform: scale(1.05);
-        }
-        
-        .metric-label {
-            font-size: 0.85em;
-            color: #9ca3af;
-            margin-bottom: 10px;
-        }
-        
-        .metric-value {
-            font-size: 1.8em;
-            font-weight: bold;
-            background: linear-gradient(45deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
         .risk-monitor {
             background: rgba(26, 31, 58, 0.6);
             border: 1px solid rgba(239, 68, 68, 0.2);
@@ -2463,10 +2427,6 @@
             <div class="sentiment-grid" id="sentiment-grid"></div>
         </div>
 
-        <!-- Key Metrics -->
-        <h2 class="section-title">Key Market Metrics</h2>
-        <div class="metrics-grid" id="metrics-grid"></div>
-
         <!-- Provider Insights Tabs -->
         <div class="tabs" id="provider-tabs"></div>
         <div id="provider-contents"></div>
@@ -2577,7 +2537,6 @@
                 // List of key timestamp fields to check
                 const timestampFields = [
                     { path: ['dashboard', 'sentimentCardsUpdated'], name: 'Sentiment Cards' },
-                    { path: ['dashboard', 'metricsUpdated'], name: 'Market Metrics' },
                     { path: ['dashboard', 'quickActionsUpdated'], name: 'Quick Actions' },
                     { path: ['dashboard', 'sentimentHistoryUpdated'], name: 'Sentiment Timeline' },
                     { path: ['dashboard', 'riskItemsUpdated'], name: 'Risk Items' },
@@ -2693,7 +2652,6 @@
             checkVerificationStatus(plan);
 
             renderSentimentCards(dashboard.sentimentCards || [], dashboard.sentimentCardsUpdated);
-            renderMetrics(dashboard.metrics || [], dashboard.metricsUpdated);
             const planEndOfDay = plan && plan.endOfDay ? plan.endOfDay : dashboard.endOfDay;
             renderProviderTabs(dashboard.tabs || [], dashboard.dailyPlanner, planEndOfDay, dashboard);
 
@@ -2967,116 +2925,6 @@
 
 
 
-        function renderMetrics(metrics, updatedAt) {
-            const grid = document.getElementById('metrics-grid');
-            if (!grid) {
-                return;
-            }
-
-            // Update section title with status indicator badge
-            const sectionTitle = document.querySelector('.metrics-grid').previousElementSibling;
-            if (sectionTitle && sectionTitle.classList.contains('section-title') && updatedAt) {
-                const statusClass = getDataFreshness(updatedAt);
-                sectionTitle.innerHTML = `Key Market Metrics <span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>`;
-            }
-
-            grid.innerHTML = '';
-
-            if (!metrics.length) {
-                grid.innerHTML = '<p style="color: #9ca3af;">No metrics available.</p>';
-                return;
-            }
-
-            // Group metrics by asset
-            const grouped = {};
-            const order = ['S&P 500', 'BTC', 'ETH', 'SPY', 'QQQ', 'Fed', 'Gold'];
-
-            metrics.forEach(metric => {
-                const label = metric.label || '';
-                let assetKey = 'Other';
-
-                if (label.includes('S&P 500')) assetKey = 'S&P 500';
-                else if (label.includes('BTC')) assetKey = 'BTC';
-                else if (label.includes('ETH')) assetKey = 'ETH';
-                else if (label.includes('SPY')) assetKey = 'SPY';
-                else if (label.includes('QQQ')) assetKey = 'QQQ';
-                else if (label.includes('Fed')) assetKey = 'Fed';
-                else if (label.includes('Gold')) assetKey = 'Gold';
-
-                if (!grouped[assetKey]) grouped[assetKey] = [];
-                grouped[assetKey].push(metric);
-            });
-
-            // Render grouped metrics
-            order.forEach(assetKey => {
-                if (!grouped[assetKey]) return;
-
-                const card = document.createElement('div');
-                card.className = 'metric-card';
-
-                // Asset header
-                const header = document.createElement('div');
-                header.style.cssText = 'font-size: 0.9em; font-weight: 600; color: #818cf8; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;';
-                header.textContent = assetKey;
-                card.appendChild(header);
-
-                // Sort metrics: Resistance/Target first, then Current, then Support
-                const sortedMetrics = grouped[assetKey].sort((a, b) => {
-                    const labelA = a.label.toLowerCase();
-                    const labelB = b.label.toLowerCase();
-
-                    if (labelA.includes('target') || labelA.includes('resistance')) return -1;
-                    if (labelB.includes('target') || labelB.includes('resistance')) return 1;
-                    if (labelA.includes('current')) return -1;
-                    if (labelB.includes('current')) return 1;
-                    return 0;
-                });
-
-                // Metric items
-                sortedMetrics.forEach((metric, idx) => {
-                    const item = document.createElement('div');
-                    item.style.cssText = idx > 0 ? 'margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(99, 102, 241, 0.2);' : '';
-
-                    const itemLabel = document.createElement('div');
-                    itemLabel.style.cssText = 'font-size: 0.75em; color: #9ca3af; margin-bottom: 4px;';
-                    itemLabel.textContent = metric.label.replace(assetKey + ' ', '');
-
-                    const itemValue = document.createElement('div');
-                    itemValue.style.cssText = 'font-size: 1.1em; font-weight: 600; color: #e0e6f0;';
-                    itemValue.textContent = metric.value || '';
-
-                    item.appendChild(itemLabel);
-                    item.appendChild(itemValue);
-                    card.appendChild(item);
-                });
-
-                grid.appendChild(card);
-            });
-
-            // Render ungrouped metrics (Fed, Gold, etc.)
-            if (grouped['Other']) {
-                grouped['Other'].forEach(metric => {
-                    const card = document.createElement('div');
-                    card.className = 'metric-card';
-
-                    const label = document.createElement('div');
-                    label.className = 'metric-label';
-                    label.textContent = metric.label || '';
-
-                    const value = document.createElement('div');
-                    value.style.cssText = 'font-size: 1.1em; font-weight: 600; color: #e0e6f0;';
-                    value.textContent = metric.value || '';
-
-                    card.appendChild(label);
-                    card.appendChild(value);
-                    grid.appendChild(card);
-                });
-            }
-        }
-
-
-
-
         function createTab(id, label) {
             const tab = document.createElement('div');
             tab.className = 'tab';
@@ -3254,19 +3102,24 @@
                         contentEl.innerHTML += renderAIInterpretation(tab.aiInterpretation);
                     }
 
-                    // Special handling for technicals tab - PROVIDERS + SIGNAL SCORE SIDE-BY-SIDE
+                    // Special handling for technicals tab - NEW LAYOUT
                     if (tab.id === 'technicals') {
-                        // Create flex container for providers + signal score
-                        const technicalsRow = document.createElement('div');
-                        technicalsRow.className = 'technicals-providers-signal-row';
-
-                        // Add providers in a grid section
+                        // ROW 1: Equity Technicals (SPX) + Bitcoin Technicals side-by-side
                         if (tab.providers) {
-                            const providersSection = document.createElement('div');
-                            providersSection.className = 'technicals-providers-section provider-insights';
+                            const providersRow = document.createElement('div');
+                            providersRow.style.display = 'grid';
+                            providersRow.style.gridTemplateColumns = '1fr 1fr';
+                            providersRow.style.gap = '20px';
+                            providersRow.style.marginBottom = '20px';
 
                             const providers = Array.isArray(tab.providers) ? tab.providers : [];
-                            providers.forEach(provider => {
+
+                            // Filter for only Equity Technicals (SPX) and Bitcoin Technicals
+                            const relevantProviders = providers.filter(p =>
+                                p.name && (p.name.includes('Equity Technicals') || p.name.includes('Bitcoin'))
+                            );
+
+                            relevantProviders.forEach(provider => {
                                 const providerCard = document.createElement('div');
                                 providerCard.className = 'provider-card';
 
@@ -3298,21 +3151,51 @@
                                     providerCard.appendChild(insightDiv);
                                 });
 
-                                providersSection.appendChild(providerCard);
+                                providersRow.appendChild(providerCard);
                             });
 
-                            // Add Unusual Activity Monitor to left column
-                            const unusualActivityHTML = renderUnusualActivityMonitor(tab);
-                            if (unusualActivityHTML) {
-                                const activityContainer = document.createElement('div');
-                                activityContainer.innerHTML = unusualActivityHTML;
-                                providersSection.appendChild(activityContainer.firstElementChild);
-                            }
-
-                            technicalsRow.appendChild(providersSection);
+                            contentEl.appendChild(providersRow);
                         }
 
-                        // Add Trading Signal Score section
+                        // ROW 2: Key Levels (shortened) + Unusual Activity (LEFT) | Trading Signal Score (RIGHT)
+                        const keyLevelsSignalRow = document.createElement('div');
+                        keyLevelsSignalRow.style.display = 'grid';
+                        keyLevelsSignalRow.style.gridTemplateColumns = '1fr 1fr';
+                        keyLevelsSignalRow.style.gap = '20px';
+                        keyLevelsSignalRow.style.marginBottom = '20px';
+
+                        // LEFT COLUMN: Key Levels (shortened) + Unusual Activity stacked
+                        const leftColumn = document.createElement('div');
+                        leftColumn.style.display = 'flex';
+                        leftColumn.style.flexDirection = 'column';
+                        leftColumn.style.gap = '20px';
+
+                        // Add Key Levels (shortened version)
+                        if (dailyPlanner && dailyPlanner.keyLevels) {
+                            const keyLevelsElement = renderKeyLevels(dailyPlanner.keyLevels, dailyPlanner.keyLevelsUpdated);
+                            // Shorten the key levels: reduce padding and font sizes
+                            const tables = keyLevelsElement.querySelectorAll('table');
+                            tables.forEach(table => {
+                                table.style.fontSize = '0.85em';
+                                const cells = table.querySelectorAll('td, th');
+                                cells.forEach(cell => {
+                                    cell.style.padding = '6px 8px';
+                                });
+                            });
+                            leftColumn.appendChild(keyLevelsElement);
+                        }
+
+                        // Add Unusual Activity Monitor to left column
+                        const unusualActivityHTML = renderUnusualActivityMonitor(tab);
+                        if (unusualActivityHTML) {
+                            const activityContainer = document.createElement('div');
+                            activityContainer.innerHTML = unusualActivityHTML;
+                            leftColumn.appendChild(activityContainer.firstElementChild);
+                        }
+
+                        keyLevelsSignalRow.appendChild(leftColumn);
+
+                        // RIGHT COLUMN: Trading Signal Score alone
                         if (dailyPlanner && dailyPlanner.signalData) {
                             const signalScoreSection = document.createElement('div');
                             signalScoreSection.className = 'technicals-signal-score-section';
@@ -3325,10 +3208,10 @@
                                 }, tab.tradingSignalScore?.updatedAt)
                             );
 
-                            technicalsRow.appendChild(signalScoreSection);
+                            keyLevelsSignalRow.appendChild(signalScoreSection);
                         }
 
-                        contentEl.appendChild(technicalsRow);
+                        contentEl.appendChild(keyLevelsSignalRow);
                     } else if (tab.id === 'news_catalysts') {
                         // Special handling for news_catalysts tab - render catalyst sections FIRST, then Daily News Flow
                         if (tab.sections && Array.isArray(tab.sections)) {
@@ -4320,7 +4203,7 @@
         }
 
         function applyCardAnimations() {
-            const cards = document.querySelectorAll('.provider-card, .metric-card');
+            const cards = document.querySelectorAll('.provider-card');
             if (!cards.length) {
                 return;
             }
@@ -4415,16 +4298,13 @@
             plannerContainer.style.gap = '20px';
             plannerContainer.style.alignItems = 'start';
 
-            // Left column: Key Levels + Today's Priorities (stacked)
+            // Left column: Today's Priorities (Key Levels moved to Technicals tab)
             const leftColumn = document.createElement('div');
             leftColumn.style.display = 'flex';
             leftColumn.style.flexDirection = 'column';
             leftColumn.style.gap = '20px';
 
-            // Key Levels Section (top left)
-            leftColumn.appendChild(renderKeyLevels(plannerData.keyLevels, plannerData.keyLevelsUpdated));
-
-            // Priorities Section (bottom left)
+            // Priorities Section (left)
             leftColumn.appendChild(renderPriorityItems(plannerData.priorities, plannerData.prioritiesUpdated));
 
             plannerContainer.appendChild(leftColumn);

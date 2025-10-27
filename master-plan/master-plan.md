@@ -26,10 +26,6 @@ dashboard:
     value: CAUTIOUS
     detail: Mixed signals
     detailColor: '#f59e0b'
-  metricsUpdated: '2025-10-27T20:00:00Z'
-  metrics:
-  - label: Composite Score
-    value: 45.5 (MODERATE)
   sentimentHistoryUpdated: '2025-10-27T06:35:00Z'
   sentimentHistory:
   - date: '2025-10-08'

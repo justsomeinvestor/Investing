@@ -1,0 +1,207 @@
+{
+  "last_updated": "2025-10-27T00:00:00Z",
+  "rules": [
+    {
+      "id": 1,
+      "created": "2025-10-13",
+      "category": "NVDA_shorts",
+      "rule": "Direction filter: QQQ < 600.9 (and not reclaiming) OR rejection from 603.5 + lower high",
+      "reason": "Entered NVDA short without QQQ confirmation. Loss: -$100. Need directional filter to prevent counter-trend entries.",
+      "source": "2025-10-13 EOD Wrap - NVDA trade analysis",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "created": "2025-10-13",
+      "category": "NVDA_shorts",
+      "rule": "Location: Only short on rejection at range high (189.7–190.0) OR break–retest below 186.6",
+      "reason": "Entered NVDA inside range (186.6–189.9) with no edge. Loss: -$100. Require location confluence.",
+      "source": "2025-10-13 EOD Wrap - NVDA corrective rules",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "created": "2025-10-13",
+      "category": "entries",
+      "rule": "Volume confirmation: Entry bar ≥ 1.3× 20-bar average",
+      "reason": "Skipped volume checks on NVDA entry. Require 1.3x volume to confirm breakdowns/fades.",
+      "source": "2025-10-13 EOD Wrap - volume requirements",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "created": "2025-10-13",
+      "category": "vix_management",
+      "rule": "VIX re-entry flag: If VIX re-entry ON, only trade break–retests (no naked breakdowns)",
+      "reason": "VIX Bollinger Re-Entry triggered. Entering naked breakdowns in VIX-ON mode = squeeze risk.",
+      "source": "2025-10-13 EOD Wrap - VIX re-entry protocol",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "created": "2025-10-13",
+      "category": "time_management",
+      "rule": "Time: No new initiations in last 15 min of session unless already in profit",
+      "reason": "Prevents end-of-day desperation trades. Last 15 min should only be for exit management.",
+      "source": "2025-10-13 EOD Wrap - time discipline",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 6,
+      "created": "2025-10-13",
+      "category": "NVDA_shorts",
+      "rule": "Stops: Pre-set 190.5 on rejection shorts; >VWAP reclaim on breakdown shorts",
+      "reason": "Prevent stop-hunting and emotional exits. Pre-set stops enforce discipline.",
+      "source": "2025-10-13 EOD Wrap - stop placement",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 7,
+      "created": "2025-10-14",
+      "category": "SPY_shorts",
+      "rule": "Short trigger: SPY close+retest < 659.5 AND QQQ < 600.9 AND ADD ≤ -500 AND 5-min 200 EMA down AND 1.3× volume",
+      "reason": "Entered SPY short without C+R confirmation. Loss: -$15. Need ALL confirmation criteria met.",
+      "source": "2025-10-14 EOD Wrap - short trigger rules",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 8,
+      "created": "2025-10-14",
+      "category": "SPY_longs",
+      "rule": "Long trigger: SPY close+retest > 665.5 AND ADD ≥ +500 AND 5-min 200 EMA up AND 1.3× volume",
+      "reason": "Establish symmetric long trigger rules. Mirror the short structure for consistency.",
+      "source": "2025-10-14 EOD Wrap - long trigger rules",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 9,
+      "created": "2025-10-14",
+      "category": "structure",
+      "rule": "Require C+R (close+retest) confirmation before fading resistance/support",
+      "reason": "Attempted fade without confirmation. Market rebounded instead of breaking down.",
+      "source": "2025-10-14 EOD Wrap - structure requirements",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 10,
+      "created": "2025-10-14",
+      "category": "EMA_filters",
+      "rule": "Only short when 5-min 200 EMA is falling (not flat or rising)",
+      "reason": "EMA flattened mid-trade, signaled failed breakdown. Require downtrend confirmation.",
+      "source": "2025-10-14 EOD Wrap - EMA posture",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 11,
+      "created": "2025-10-14",
+      "category": "breadth_management",
+      "rule": "Do NOT fade improving breadth (ADD improving = risk-on signal)",
+      "reason": "ADD improved from -1300 to +50 during short entry. Fighting the tape.",
+      "source": "2025-10-14 EOD Wrap - breadth bias",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 12,
+      "created": "2025-10-14",
+      "category": "context_filtering",
+      "rule": "Counter-trend trades (shorting when above 20 EMA) = half-size maximum",
+      "reason": "SPY above 20-day EMA = uptrend context. Shorts should be half-size or none.",
+      "source": "2025-10-14 EOD Wrap - instrument selection",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 13,
+      "created": "2025-10-15",
+      "category": "execution",
+      "rule": "Follow trigger stack cleanly: starter position, then adds on confirmation, then exit on signal",
+      "reason": "SPXU trade executed cleanly with adds and proper exit management. Document as best practice.",
+      "source": "2025-10-15 EOD Wrap - good execution",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 14,
+      "created": "2025-10-15",
+      "category": "analysis",
+      "rule": "Track DXY divergence actively as USD strength signals risk-off",
+      "reason": "Executed cleanly but should have monitored DXY as additional risk signal.",
+      "source": "2025-10-15 EOD Wrap - improvement note",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 15,
+      "created": "2025-10-17",
+      "category": "discipline",
+      "rule": "Stay patient in choppy conditions. Respect chop structure. Avoid forcing trades in range chop.",
+      "reason": "ES chopped 6,650-6,700 with multiple rejections. Good discipline to only capture tactical SOLZ long.",
+      "source": "2025-10-17 EOD Wrap - discipline win",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    },
+    {
+      "id": 16,
+      "created": "2025-10-17",
+      "category": "position_management",
+      "rule": "Pre-plan response to repeated rejection zones. Don't chase breakouts that fail.",
+      "reason": "ES rejected 6,700 multiple times. System should have had pre-planned response.",
+      "source": "2025-10-17 EOD Wrap - improvement area",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
+    }
+  ],
+  "compliance_tracking": {
+    "total_rules": 16,
+    "active_rules": 16,
+    "deprecated_rules": 0,
+    "total_trades_since_rules_created": 5,
+    "rules_followed_estimated": 3,
+    "rules_broken_estimated": 2,
+    "compliance_rate_estimated": 0.60,
+    "note": "Compliance rate will be tracked precisely as we execute future trades"
+  },
+  "rule_categories": {
+    "NVDA_shorts": 3,
+    "SPY_shorts": 1,
+    "SPY_longs": 1,
+    "entries": 1,
+    "structure": 1,
+    "EMA_filters": 1,
+    "breadth_management": 1,
+    "context_filtering": 1,
+    "vix_management": 1,
+    "time_management": 1,
+    "execution": 2,
+    "discipline": 1,
+    "position_management": 1,
+    "analysis": 1
+  }
+}
