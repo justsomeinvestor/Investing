@@ -645,7 +645,7 @@
         }
 
         .unusual-activity-ticker-section {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .unusual-activity-ticker-section:last-child {
@@ -654,10 +654,10 @@
 
         .unusual-activity-ticker-label {
             color: #e0e6f0;
-            font-size: 0.95em;
+            font-size: 0.9em;
             font-weight: 600;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
             border-bottom: 1px solid rgba(239, 68, 68, 0.1);
         }
 
@@ -665,8 +665,8 @@
             background: rgba(239, 68, 68, 0.1);
             border-left: 3px solid #ef4444;
             border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
+            padding: 10px;
+            margin-bottom: 8px;
             transition: all 0.2s ease;
         }
 
@@ -5051,6 +5051,41 @@
             };
         }
 
+        function detectActivitySentiment(unusualActivity) {
+            // Analyze all alerts across tickers to determine overall sentiment
+            const allAlerts = [...(unusualActivity.SPY || []), ...(unusualActivity.QQQ || [])];
+
+            let bullishCount = 0;
+            let bearishCount = 0;
+
+            allAlerts.forEach(alert => {
+                const signal = (alert.signal || '').toLowerCase();
+
+                // Bullish indicators
+                if (signal.includes('accumul') || signal.includes('bullish') ||
+                    signal.includes('buying') || signal.includes('support') ||
+                    signal.includes('strength')) {
+                    bullishCount++;
+                }
+
+                // Bearish indicators
+                if (signal.includes('defensive') || signal.includes('distribution') ||
+                    signal.includes('selling') || signal.includes('bearish') ||
+                    signal.includes('breakdown') || signal.includes('risk')) {
+                    bearishCount++;
+                }
+            });
+
+            // Return emoji based on sentiment
+            if (bullishCount > bearishCount) {
+                return { emoji: '🚀', label: 'Bullish Activity' };
+            } else if (bearishCount > bullishCount) {
+                return { emoji: '📉', label: 'Bearish Activity' };
+            } else {
+                return { emoji: '⚠️', label: 'Unusual Activity' };
+            }
+        }
+
         function renderUnusualActivityMonitor(tab) {
             const unusualActivity = tab.unusualActivity;
             if (!unusualActivity || (!unusualActivity.SPY && !unusualActivity.QQQ)) {
@@ -5058,10 +5093,12 @@
             }
 
             let alertsHTML = '';
+            let hasAlerts = false;
 
             ['SPY', 'QQQ'].forEach(ticker => {
                 const alerts = unusualActivity[ticker] || [];
                 if (alerts.length === 0) return;
+                hasAlerts = true;
 
                 const tickerAlerts = alerts.map(alert => {
                     const statusBadge = alert.status === 'SPIKE' ? '🔴 SPIKE' : '🟠 ALERT';
@@ -5092,15 +5129,23 @@
                 `;
             });
 
-            // Get timestamp if available
+            if (!hasAlerts) {
+                return '';
+            }
+
+            // Detect sentiment and get emoji
+            const sentiment = detectActivitySentiment(unusualActivity);
+
+            // Get timestamp if available and create badge
             const updatedAt = tab.unusualActivity?.updatedAt || tab.unusualActivity?.synced_at;
-            const timestampHTML = updatedAt ? `<span class="unusual-activity-timestamp">${updatedAt}</span>` : '';
+            const statusClass = updatedAt ? getDataFreshness(updatedAt) : '';
+            const badgeHTML = updatedAt ? `<span class="date-badge ${statusClass}" style="margin-left: 10px;"></span>` : '';
 
             return `
                 <div class="unusual-activity-monitor">
                     <h3 class="unusual-activity-header">
-                        [!] UNUSUAL OPTIONS ACTIVITY
-                        ${timestampHTML}
+                        ${sentiment.emoji} UNUSUAL OPTIONS ACTIVITY
+                        ${badgeHTML}
                     </h3>
                     ${alertsHTML}
                 </div>
