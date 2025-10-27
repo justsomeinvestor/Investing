@@ -599,7 +599,132 @@
             font-size: 0.9em;
             line-height: 1.5;
         }
-        
+
+        /* Unusual Activity Monitor - matches provider card aesthetic */
+        .unusual-activity-monitor {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unusual-activity-monitor::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ef4444, #f97316);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .unusual-activity-monitor:hover::before {
+            transform: scaleX(1);
+        }
+
+        .unusual-activity-monitor:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .unusual-activity-header {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 0 0 20px 0;
+            color: #fecaca;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .unusual-activity-ticker-section {
+            margin-bottom: 20px;
+        }
+
+        .unusual-activity-ticker-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .unusual-activity-ticker-label {
+            color: #e0e6f0;
+            font-size: 0.95em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(239, 68, 68, 0.1);
+        }
+
+        .unusual-activity-alert {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .unusual-activity-alert:last-child {
+            margin-bottom: 0;
+        }
+
+        .unusual-activity-alert:hover {
+            background: rgba(239, 68, 68, 0.15);
+            transform: translateX(4px);
+        }
+
+        .unusual-activity-alert-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .unusual-activity-badge {
+            font-weight: 600;
+            color: #fecaca;
+            margin-right: 8px;
+            font-size: 0.9em;
+            padding: 2px 6px;
+            background: rgba(239, 68, 68, 0.2);
+            border-radius: 4px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .unusual-activity-metric {
+            color: #e0e6f0;
+            font-weight: 500;
+        }
+
+        .unusual-activity-value {
+            color: #e0e6f0;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        .unusual-activity-value strong {
+            color: #fecaca;
+        }
+
+        .unusual-activity-signal {
+            color: #9ca3af;
+            font-size: 0.8em;
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        .unusual-activity-timestamp {
+            font-size: 0.8em;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -4939,20 +5064,20 @@
                 if (alerts.length === 0) return;
 
                 const tickerAlerts = alerts.map(alert => {
-                    const statusBadge = alert.status === 'SPIKE' ? '[SPIKE]' : '[ALERT]';
+                    const statusBadge = alert.status === 'SPIKE' ? '🔴 SPIKE' : '🟠 ALERT';
                     const changeStr = alert.change ? `(${alert.change})` : '';
                     const prevStr = alert.previous ? `from ${alert.previous}` : '';
 
                     return `
-                        <div style="margin-bottom:15px;padding:12px;background:rgba(239,68,68,0.1);border-left:3px solid #ef4444;border-radius:4px;">
-                            <div style="display:flex;align-items:center;margin-bottom:6px;">
-                                <span style="font-weight:600;color:#fecaca;margin-right:8px;">${statusBadge}</span>
-                                <span style="color:#e0e6f0;">${alert.metric}</span>
+                        <div class="unusual-activity-alert">
+                            <div class="unusual-activity-alert-header">
+                                <span class="unusual-activity-badge">${statusBadge}</span>
+                                <span class="unusual-activity-metric">${alert.metric}</span>
                             </div>
-                            <div style="margin-left:0;color:#e0e6f0;font-size:0.9em;">
+                            <div class="unusual-activity-value">
                                 <strong>${alert.current}</strong> ${changeStr} ${prevStr}
                             </div>
-                            <div style="color:#9ca3af;font-size:0.85em;margin-top:6px;">
+                            <div class="unusual-activity-signal">
                                 ${alert.signal}
                             </div>
                         </div>
@@ -4960,17 +5085,22 @@
                 }).join('');
 
                 alertsHTML += `
-                    <div style="margin-bottom:20px;">
-                        <h4 style="color:#e0e6f0;font-size:0.95em;margin:0 0 10px 0;font-weight:600;">${ticker}</h4>
+                    <div class="unusual-activity-ticker-section">
+                        <div class="unusual-activity-ticker-label">${ticker}</div>
                         ${tickerAlerts}
                     </div>
                 `;
             });
 
+            // Get timestamp if available
+            const updatedAt = tab.unusualActivity?.updatedAt || tab.unusualActivity?.synced_at;
+            const timestampHTML = updatedAt ? `<span class="unusual-activity-timestamp">${updatedAt}</span>` : '';
+
             return `
-                <div style="margin-bottom:30px;padding:20px;background:rgba(0,0,0,0.3);border:1px solid rgba(239,68,68,0.3);border-radius:6px;">
-                    <h3 style="color:#fecaca;font-size:1.1em;margin:0 0 15px 0;display:flex;align-items:center;">
+                <div class="unusual-activity-monitor">
+                    <h3 class="unusual-activity-header">
                         [!] UNUSUAL OPTIONS ACTIVITY
+                        ${timestampHTML}
                     </h3>
                     ${alertsHTML}
                 </div>
