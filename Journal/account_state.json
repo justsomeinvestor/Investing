@@ -1,18 +1,18 @@
 {
-  "last_updated": "2025-10-17",
-  "last_journal_entry": "2025-10-19",
+  "last_updated": "2025-10-27T15:37:55Z",
+  "last_journal_entry": "2025-10-27",
   "last_workflow_run": "2025-10-19",
   "data_freshness": "FRESH",
   "account": {
-    "total_balance": 23105.83,
-    "cash_and_sweep": 23105.83,
-    "ytd_pl": 3152.57,
+    "total_balance": 23132.21,
+    "cash_and_sweep": 23132.21,
+    "ytd_pl": 3179.52,
     "note": "Auto-updated by Wingman from trades and journal entries - represents total account value",
-    "overall_pnl_ytd": 3152.57
+    "overall_pnl_ytd": 3179.52
   },
   "positions": {
     "cash": {
-      "amount": 23105.83,
+      "amount": 23132.21,
       "percentage": 100.0,
       "note": "Cash + money market sweep vehicle"
     },

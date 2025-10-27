@@ -147,7 +147,32 @@
 
 ---
 
-## Recent Lessons (Last 7 Days)
+## Recent Lessons (Last 7 Days - UPDATED OCT 27)
+
+### Oct 27 - External Advice Without Verification (Today)
+**Lesson:** Following someone else's recommendation (Chris from Simpler Trading: "9-day EMA mean reversion") without running OUR threat assessment = automatic loss.
+
+**What happened:**
+- Heard Chris say "market should come back to 9-day EMA"
+- Belief in mean reversion was strong
+- Entered SPXU short @ 12.61, exited @ 12.54
+- Loss: -$21 (small, but 0% rule compliance)
+- Skipped: C+R confirmation, EMA filter, ADD confirmation, volume check, etc.
+
+**Rule Created:**
+**NEW RULE #17:** "Never enter on external tip without verifying against trigger checklist. External advice ≠ OUR thesis. All confluence criteria must be met REGARDLESS of advisor credibility."
+
+**Application:**
+- Other people's good ideas can be trap doors if WE don't verify them
+- Respect the process (threat assessment + rule check) more than respect the advisor
+- "Chris said so" is not a valid entry reason
+
+**Pattern Recognition:**
+This is the EXACT pattern identified in continuity: Over-eagerness in uncertain structure. Market was choppy, structure unclear, Chris's suggestion felt like clarity → you jumped.
+
+---
+
+## Previous Lessons (Last 7 Days)
 
 ### Oct 17 - Discipline Win
 **Lesson:** Patience in chop pays off. Stayed in cash during ES 6,650-6,700 box, only captured tactical SOLZ long (+$100).

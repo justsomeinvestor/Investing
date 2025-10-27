@@ -176,23 +176,34 @@
       "compliance_rate": null,
       "effectiveness": null,
       "status": "active"
+    },
+    {
+      "id": 17,
+      "created": "2025-10-27",
+      "category": "entries",
+      "rule": "Never enter on external tip without verifying against trigger checklist. External advice ≠ OUR thesis. All confluence criteria must be met REGARDLESS of advisor credibility.",
+      "reason": "Entered SPXU short based on Chris from Simpler Trading 9-day EMA recommendation. Loss: -$21. Skipped entire threat assessment because conviction in advisor was strong. Must verify OUR criteria even when external advice sounds good.",
+      "source": "2025-10-27 Trade - SPXU short on external recommendation",
+      "compliance_rate": null,
+      "effectiveness": null,
+      "status": "active"
     }
   ],
   "compliance_tracking": {
-    "total_rules": 16,
-    "active_rules": 16,
+    "total_rules": 17,
+    "active_rules": 17,
     "deprecated_rules": 0,
-    "total_trades_since_rules_created": 5,
+    "total_trades_since_rules_created": 6,
     "rules_followed_estimated": 3,
-    "rules_broken_estimated": 2,
-    "compliance_rate_estimated": 0.60,
-    "note": "Compliance rate will be tracked precisely as we execute future trades"
+    "rules_broken_estimated": 3,
+    "compliance_rate_estimated": 0.50,
+    "note": "Oct 27 SPXU trade: 0/3 rules followed (Rule 9 C+R, Rule 10 EMA, Rule 17 external advice new). Compliance declining - over-eagerness pattern repeating in uncertain structure."
   },
   "rule_categories": {
     "NVDA_shorts": 3,
     "SPY_shorts": 1,
     "SPY_longs": 1,
-    "entries": 1,
+    "entries": 2,
     "structure": 1,
     "EMA_filters": 1,
     "breadth_management": 1,
