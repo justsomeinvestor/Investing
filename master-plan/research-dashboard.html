@@ -6835,28 +6835,41 @@
         <h3 style="color: #6366f1; margin: 0 0 15px 0; font-size: 1.1em;">📅 Economic Calendar</h3>
     `;
 
+    // Check if calendar data exists
+    if (!calendar || calendar.length === 0) {
+      html += '<div style="color: #9ca3af; font-size: 0.9em;">No calendar data available</div>';
+      html += '</div>';
+      return html;
+    }
+
     // Show TODAY items (always visible)
-    if (calendar && calendar.length > 0) {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-      let todayItems = calendar.filter(item => {
-        const itemDate = new Date(item.date);
-        itemDate.setHours(0, 0, 0, 0);
-        return itemDate.getTime() === today.getTime();
+    let todayItems = calendar.filter(item => {
+      const itemDate = new Date(item.date);
+      itemDate.setHours(0, 0, 0, 0);
+      return itemDate.getTime() === today.getTime();
+    });
+
+    if (todayItems.length > 0) {
+      html += '<div style="margin-bottom: 15px;"><div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">TODAY</div>';
+      todayItems.forEach(item => {
+        html += `<div style="padding: 6px; border-left: 2px solid #10b981; color: #e0e6f0; font-size: 0.85em;">${item.event || ''}</div>`;
       });
+      html += '</div>';
+    } else {
+      html += '<div style="color: #9ca3af; font-size: 0.9em; margin-bottom: 15px;">No events today</div>';
+    }
 
-      if (todayItems.length > 0) {
-        html += '<div style="margin-bottom: 15px;"><div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">TODAY</div>';
-        todayItems.forEach(item => {
-          html += `<div style="padding: 6px; border-left: 2px solid #10b981; color: #e0e6f0; font-size: 0.85em;">${item.event || ''}</div>`;
-        });
-        html += '</div>';
-      } else {
-        html += '<div style="color: #9ca3af; font-size: 0.9em; margin-bottom: 15px;">No events today</div>';
-      }
+    // Collapsible section for everything after TODAY
+    let upcomingItems = calendar.filter(item => {
+      const itemDate = new Date(item.date);
+      itemDate.setHours(0, 0, 0, 0);
+      return itemDate.getTime() > today.getTime();
+    });
 
-      // Collapsible section for everything after TODAY
+    if (upcomingItems.length > 0) {
       html += `
         <div style="border-top: 1px solid rgba(99, 102, 241, 0.1); padding-top: 15px;">
           <div style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;" onclick="
@@ -6873,17 +6886,9 @@
           <div id="${id}-content" style="display: ${isExpanded ? 'block' : 'none'};">
       `;
 
-      let upcomingItems = calendar.filter(item => {
-        const itemDate = new Date(item.date);
-        itemDate.setHours(0, 0, 0, 0);
-        return itemDate.getTime() > today.getTime();
+      upcomingItems.forEach(item => {
+        html += `<div style="padding: 6px; border-left: 2px solid #6366f1; color: #e0e6f0; font-size: 0.85em; margin-bottom: 4px;">${item.date || ''} - ${item.event || ''}</div>`;
       });
-
-      if (upcomingItems.length > 0) {
-        upcomingItems.forEach(item => {
-          html += `<div style="padding: 6px; border-left: 2px solid #6366f1; color: #e0e6f0; font-size: 0.85em; margin-bottom: 4px;">${item.date || ''} - ${item.event || ''}</div>`;
-        });
-      }
 
       html += '</div></div>';
     }
@@ -6921,16 +6926,16 @@
 
     html += '</div>';
 
-    // Economic Calendar (Full width, collapsible)
+    // Enhanced Sections (Collapsible with visual headers)
+    html += renderEnhancedSections(marketsTab.sections, {});
+
+    // Economic Calendar (Full width, collapsible - positioned AFTER sections)
     html += '<div style="margin: 20px 0;">';
     const macroSection = marketsTab.sections.find(s => s.name === 'Macro Environment');
     if (macroSection?.economicCalendar) {
       html += renderEconomicTimelineCollapsible(macroSection.economicCalendar);
     }
     html += '</div>';
-
-    // Enhanced Sections (Collapsible with visual headers)
-    html += renderEnhancedSections(marketsTab.sections, {});
 
     html += '</div>';
     return html;
