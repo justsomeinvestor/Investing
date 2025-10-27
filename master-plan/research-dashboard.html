@@ -644,21 +644,15 @@
             gap: 10px;
         }
 
-        .unusual-activity-ticker-section {
-            margin-bottom: 12px;
-        }
-
-        .unusual-activity-ticker-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .unusual-activity-ticker-label {
+        .unusual-activity-ticker {
             color: #e0e6f0;
-            font-size: 0.9em;
             font-weight: 600;
-            margin-bottom: 8px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid rgba(239, 68, 68, 0.1);
+            margin: 0 6px;
+        }
+
+        .unusual-activity-separator {
+            color: #9ca3af;
+            margin: 0 6px;
         }
 
         .unusual-activity-alert {
@@ -5095,20 +5089,24 @@
             let alertsHTML = '';
             let hasAlerts = false;
 
+            // Consolidate all alerts from all tickers into single list with inline ticker symbol
             ['SPY', 'QQQ'].forEach(ticker => {
                 const alerts = unusualActivity[ticker] || [];
                 if (alerts.length === 0) return;
                 hasAlerts = true;
 
-                const tickerAlerts = alerts.map(alert => {
-                    const statusBadge = alert.status === 'SPIKE' ? '🔴 SPIKE' : '🟠 ALERT';
+                alerts.forEach(alert => {
+                    const statusEmoji = alert.status === 'SPIKE' ? '🔴' : '🟠';
+                    const statusLabel = alert.status === 'SPIKE' ? 'SPIKE' : 'ALERT';
                     const changeStr = alert.change ? `(${alert.change})` : '';
                     const prevStr = alert.previous ? `from ${alert.previous}` : '';
 
-                    return `
+                    alertsHTML += `
                         <div class="unusual-activity-alert">
                             <div class="unusual-activity-alert-header">
-                                <span class="unusual-activity-badge">${statusBadge}</span>
+                                <span class="unusual-activity-badge">${statusEmoji} ${statusLabel}</span>
+                                <span class="unusual-activity-ticker">${ticker}</span>
+                                <span class="unusual-activity-separator">-</span>
                                 <span class="unusual-activity-metric">${alert.metric}</span>
                             </div>
                             <div class="unusual-activity-value">
@@ -5119,14 +5117,7 @@
                             </div>
                         </div>
                     `;
-                }).join('');
-
-                alertsHTML += `
-                    <div class="unusual-activity-ticker-section">
-                        <div class="unusual-activity-ticker-label">${ticker}</div>
-                        ${tickerAlerts}
-                    </div>
-                `;
+                });
             });
 
             if (!hasAlerts) {
