@@ -7022,6 +7022,20 @@
       return html;
     }
 
+    // Show KEY DATES first (at the very top)
+    if (calendar.keyDates && calendar.keyDates.length > 0) {
+      html += '<div style="margin-bottom: 15px;"><div style="color: #6366f1; font-weight: 600; margin-bottom: 8px;">🎯 KEY DATES</div>';
+      calendar.keyDates.forEach(keyDate => {
+        html += `
+          <div style="padding: 8px; margin-bottom: 6px; background: rgba(99, 102, 241, 0.1); border-left: 3px solid #6366f1; border-radius: 4px;">
+            <div style="color: #e0e6f0; font-size: 0.85em; font-weight: 500;">${keyDate.date || ''}</div>
+            <div style="color: #9ca3af; font-size: 0.75em; margin-top: 3px;">${(keyDate.events || []).join(' • ')}</div>
+          </div>
+        `;
+      });
+      html += '</div>';
+    }
+
     // Show TODAY items (always visible)
     if (calendar.today && calendar.today.length > 0) {
       html += '<div style="margin-bottom: 15px;"><div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">🔴 TODAY</div>';
@@ -7089,20 +7103,6 @@
             <div style="padding: 6px; margin-bottom: 4px; background: ${impactBg}; border-left: 2px solid ${impactColor}; border-radius: 3px;">
               <div style="color: #e0e6f0; font-size: 0.8em;">${event.event || ''}</div>
               <div style="color: #9ca3af; font-size: 0.7em; margin-top: 2px;">${event.date || ''} ${event.time || ''} • <span style="color: ${impactColor}; font-weight: 600;">${event.impact || ''}</span></div>
-            </div>
-          `;
-        });
-        html += '</div>';
-      }
-
-      // Render KEY DATES (if present)
-      if (calendar.keyDates && calendar.keyDates.length > 0) {
-        html += '<div><div style="color: #6366f1; font-size: 0.85em; font-weight: 600; margin-bottom: 6px;">🎯 KEY DATES</div>';
-        calendar.keyDates.forEach(keyDate => {
-          html += `
-            <div style="padding: 6px; margin-bottom: 4px; background: rgba(99, 102, 241, 0.1); border-left: 2px solid #6366f1; border-radius: 3px;">
-              <div style="color: #e0e6f0; font-size: 0.8em;">${keyDate.date || ''}</div>
-              <div style="color: #9ca3af; font-size: 0.7em; margin-top: 2px;">${(keyDate.events || []).join(' • ')}</div>
             </div>
           `;
         });
