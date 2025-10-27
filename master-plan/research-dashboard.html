@@ -3340,12 +3340,12 @@
                             catalystSections.forEach(section => {
                                 let sectionHTML = '<div class="news-catalysts-section" style="margin-bottom: 30px;">';
 
-                                // Section name header with timestamp badge
+                                // Section name header with timestamp badge (badge on LEFT)
                                 if (section.name) {
                                     const statusClass = section.updatedAt ? getDataFreshness(section.updatedAt) : 'status-error';
                                     sectionHTML += `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #374151;">
-                                        <h3 style="color: #6366f1; margin: 0; flex: 1;">${section.name}</h3>
-                                        <span class="date-badge ${statusClass}" style="margin: 0;"></span>
+                                        <span class="date-badge ${statusClass}" style="margin: 0; flex-shrink: 0;"></span>
+                                        <h3 style="color: #6366f1; margin: 0;">${section.name}</h3>
                                     </div>`;
                                 }
 
@@ -3408,11 +3408,11 @@
                             if (newsFlowSection) {
                                 let newsHTML = '<div class="news-catalysts-section" style="margin-bottom: 30px;">';
 
-                                // Section header with timestamp badge
+                                // Section header with timestamp badge (badge on LEFT)
                                 const newsStatusClass = newsFlowSection.rss_updated_at ? getDataFreshness(newsFlowSection.rss_updated_at) : 'status-error';
                                 newsHTML += `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #374151;">
-                                    <h3 style="color: #6366f1; margin: 0; flex: 1;">${newsFlowSection.name}</h3>
-                                    <span class="date-badge ${newsStatusClass}" style="margin: 0;"></span>
+                                    <span class="date-badge ${newsStatusClass}" style="margin: 0; flex-shrink: 0;"></span>
+                                    <h3 style="color: #6366f1; margin: 0;">${newsFlowSection.name}</h3>
                                 </div>`;
 
                                 if (newsFlowSection.rss_summary) {
@@ -6492,13 +6492,23 @@
                 let articleMatch;
 
                 while ((articleMatch = articlePattern.exec(content)) !== null) {
-                    const articleText = articleMatch[0]
+                    let articleText = articleMatch[0]
                         .replace(/• (Top Stories|Marketplace|Top News & Analysis)\s*/g, '')
                         .replace(/\n/g, ' ')
                         .trim();
 
                     if (articleText && articleText.length > 10) {
-                        articles.push(articleText);
+                        // Parse format: "headline|URL" if URL exists
+                        // Store as object with title and url properties
+                        let article = { title: articleText, url: null };
+
+                        if (articleText.includes('|')) {
+                            const parts = articleText.split('|');
+                            article.title = parts[0].trim();
+                            article.url = parts.slice(1).join('|').trim(); // URL might contain pipes
+                        }
+
+                        articles.push(article);
                     }
                 }
 
@@ -6560,17 +6570,21 @@
                 `;
 
                 // Show top articles with enhancements (tickers, emojis, highlighted numbers)
-                // Each article is clickable and links to source website
+                // Each article links to actual URL if available, otherwise to source homepage
                 const sourceURL = getSourceURL(source.name);
 
                 source.articles.forEach((article, idx) => {
+                    // Handle both string (legacy) and object (new) formats
+                    const articleTitle = typeof article === 'object' ? article.title : article;
+                    const articleURL = typeof article === 'object' && article.url ? article.url : sourceURL;
+
                     html += `
-                        <a href="${sourceURL}" target="_blank" rel="noopener noreferrer"
+                        <a href="${articleURL}" target="_blank" rel="noopener noreferrer"
                            style="text-decoration: none; display: block; color: inherit;">
                             <div style="padding: 8px 10px; background: rgba(99, 102, 241, 0.06); border-left: 2px solid #6366f1; border-radius: 4px; font-size: 0.88em; line-height: 1.5; color: #d1d5db; transition: all 0.2s; cursor: pointer;"
                                  onmouseover="this.style.background='rgba(99, 102, 241, 0.12)'; this.style.borderLeft='2px solid #8b5cf6';"
                                  onmouseout="this.style.background='rgba(99, 102, 241, 0.06)'; this.style.borderLeft='2px solid #6366f1';">
-                                • ${enhanceProviderInsight(article)}
+                                • ${enhanceProviderInsight(articleTitle)}
                             </div>
                         </a>
                     `;
