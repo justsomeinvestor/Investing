@@ -252,6 +252,7 @@ WORKFLOW:
     Phase 2: Automated Sync Scripts
     --------------------------------
     - Run sync_social_tab.py (X Sentiment data)
+    - Run update_x_sentiment_tab.py (X Sentiment trending topics) ✅ NEW - Oct 26, 2025
     - Run sync_technicals_tab.py (Technical data)
     - Run sync_news_tab.py (RSS/News data)
     - Run sync_daily_planner.py (Daily planning data)
@@ -263,10 +264,12 @@ WORKFLOW:
     - Purpose: Automated updates for data-driven sections
     - Action: Populate dashboard with fresh content from research files
 
-    NOTE: sync_risk_items.py, sync_provider_consensus.py, and sync_portfolio_recommendation.py
-    automatically extract/generate dashboard sections from research data:
+    NOTE: Several scripts automatically extract/generate dashboard sections from research data:
       • sync_risk_items.py + sync_provider_consensus.py: from Research/.cache/YYYY-MM-DD_Market_Sentiment_Overview.md
       • sync_portfolio_recommendation.py: from Journal/portfolio_decisions/YYYY-MM-DD_portfolio_*.txt
+      • update_x_sentiment_tab.py: from Research/X/Trends/YYYY-MM-DD_trending_words.json
+        - Updates: crypto_trending.updatedAt and macro_trending.updatedAt timestamps
+        - Ensures trending topics show as current (not stale) on dashboard
     These scripts MUST be run as part of Phase 2 for full dashboard automation.
 
     Phase 3: Update Master Plan
