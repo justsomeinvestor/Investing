@@ -3139,6 +3139,7 @@
                         const signalColor = rec.signalTier === 'WEAK' ? '#fca5a5' :
                                           rec.signalTier === 'AVOID' ? '#ef4444' :
                                           rec.signalTier === 'MODERATE' ? '#fbbf24' : '#10b981';
+                        const portfolioStatusClass = rec.updatedAt ? getDataFreshness(rec.updatedAt) : 'status-error';
 
                         // Prepare allocation data
                         const allocationData = {
@@ -3162,16 +3163,22 @@
                                 <div style="display: flex; flex-direction: column; gap: 15px;">
                                     <!-- Signal Card -->
                                     <div class="glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+                                            <span style="color: #9ca3af; font-size: 0.85em;">SIGNAL SCORE</span>
+                                            <span class="date-badge ${portfolioStatusClass}" style="margin: 0;"></span>
+                                        </div>
                                         <div style="text-align: center;">
                                             <div style="font-size: 2.2em; font-weight: bold; background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px;">${allocationData.signalScore}</div>
-                                            <div style="color: #9ca3af; font-size: 0.85em; margin-bottom: 8px;">SIGNAL SCORE</div>
                                             <div style="background: rgba(${signalColor === '#fbbf24' ? '251, 191, 36' : '16, 185, 129'}, 0.15); color: ${signalColor}; padding: 6px 12px; border-radius: 6px; font-weight: 500; font-size: 0.9em; display: inline-block;">${allocationData.signalTier}</div>
                                         </div>
                                     </div>
 
                                     <!-- Allocation Card -->
                                     <div class="glass-card" style="background: rgba(31, 41, 55, 0.6); backdrop-filter: blur(10px); padding: 18px; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);">
-                                        <h3 style="color: #6366f1; margin: 0 0 15px 0; font-size: 1em;">📊 ALLOCATION</h3>
+                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                                            <h3 style="color: #6366f1; margin: 0; font-size: 1em;">📊 ALLOCATION</h3>
+                                            <span class="date-badge ${portfolioStatusClass}" style="margin: 0;"></span>
+                                        </div>
                                         <div style="position: relative; width: 120px; height: 120px; margin: 0 auto 15px;">
                                             <svg width="120" height="120" viewBox="0 0 120 120" style="transform: rotate(-90deg);">
                                                 ${renderDonutSegments(segments, 60, 60, 40, 20)}
@@ -3195,7 +3202,10 @@
                                 <div style="display: flex; flex-direction: column; gap: 15px;">
                                     <!-- Actions Card -->
                                     <div style="flex: 1;">
-                                        <h3 style="color: #6366f1; margin: 0 0 12px 0; font-size: 1em;">⚡ RECOMMENDED ACTIONS</h3>
+                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                                            <h3 style="color: #6366f1; margin: 0; font-size: 1em;">⚡ RECOMMENDED ACTIONS</h3>
+                                            <span class="date-badge ${portfolioStatusClass}" style="margin: 0;"></span>
+                                        </div>
                                         <div style="display: flex; flex-direction: column; gap: 10px;">
                                             ${rec.actions.map((action, idx) => `
                                                 <div class="glass-card" style="background: rgba(99, 102, 241, 0.08); backdrop-filter: blur(10px); padding: 14px; border-radius: 8px; border: 1px solid rgba(99, 102, 241, 0.2);">
@@ -3212,7 +3222,10 @@
 
                                     <!-- Risks Card -->
                                     <div style="flex: 1;">
-                                        <h3 style="color: #f87171; margin: 0 0 12px 0; font-size: 1em;">⚠️ KEY RISKS</h3>
+                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                                            <h3 style="color: #f87171; margin: 0; font-size: 1em;">⚠️ KEY RISKS</h3>
+                                            <span class="date-badge ${portfolioStatusClass}" style="margin: 0;"></span>
+                                        </div>
                                         <div style="display: flex; flex-direction: column; gap: 8px;">
                                             ${rec.keyRisks.map(risk => `
                                                 <div style="display: flex; gap: 8px; font-size: 0.9em; color: #d1d5db; padding: 8px; border-left: 2px solid rgba(248, 113, 113, 0.4);">
