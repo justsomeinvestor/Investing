@@ -6824,7 +6824,8 @@
   }
 
   /**
-   * Render Economic Calendar with TODAY visible, collapse everything after
+   * Render Economic Calendar with TODAY visible, everything else collapsible
+   * Accepts calendar object with structure: {summary, today[], thisWeek[], nextWeek[], keyDates[]}
    */
   function renderEconomicTimelineCollapsible(calendar) {
     const id = 'econ-upcoming-' + Date.now();
@@ -6836,40 +6837,37 @@
     `;
 
     // Check if calendar data exists
-    if (!calendar || calendar.length === 0) {
+    if (!calendar || (typeof calendar !== 'object')) {
       html += '<div style="color: #9ca3af; font-size: 0.9em;">No calendar data available</div>';
       html += '</div>';
       return html;
     }
 
     // Show TODAY items (always visible)
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    let todayItems = calendar.filter(item => {
-      const itemDate = new Date(item.date);
-      itemDate.setHours(0, 0, 0, 0);
-      return itemDate.getTime() === today.getTime();
-    });
-
-    if (todayItems.length > 0) {
-      html += '<div style="margin-bottom: 15px;"><div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">TODAY</div>';
-      todayItems.forEach(item => {
-        html += `<div style="padding: 6px; border-left: 2px solid #10b981; color: #e0e6f0; font-size: 0.85em;">${item.event || ''}</div>`;
+    if (calendar.today && calendar.today.length > 0) {
+      html += '<div style="margin-bottom: 15px;"><div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">🔴 TODAY</div>';
+      calendar.today.forEach(event => {
+        const impactColor = event.impact === 'HIGH' ? '#ef4444' : '#f59e0b';
+        const impactBg = event.impact === 'HIGH' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(245, 158, 11, 0.1)';
+        html += `
+          <div style="padding: 8px; margin-bottom: 6px; background: ${impactBg}; border-left: 3px solid ${impactColor}; border-radius: 4px;">
+            <div style="color: #e0e6f0; font-size: 0.85em; font-weight: 500;">${event.event || ''}</div>
+            <div style="color: #9ca3af; font-size: 0.75em; margin-top: 3px;">${event.time || ''} • <span style="color: ${impactColor}; font-weight: 600;">${event.impact || ''}</span></div>
+          </div>
+        `;
       });
       html += '</div>';
     } else {
       html += '<div style="color: #9ca3af; font-size: 0.9em; margin-bottom: 15px;">No events today</div>';
     }
 
-    // Collapsible section for everything after TODAY
-    let upcomingItems = calendar.filter(item => {
-      const itemDate = new Date(item.date);
-      itemDate.setHours(0, 0, 0, 0);
-      return itemDate.getTime() > today.getTime();
-    });
+    // Check if there are any upcoming events
+    const hasUpcoming =
+      (calendar.thisWeek && calendar.thisWeek.length > 0) ||
+      (calendar.nextWeek && calendar.nextWeek.length > 0) ||
+      (calendar.keyDates && calendar.keyDates.length > 0);
 
-    if (upcomingItems.length > 0) {
+    if (hasUpcoming) {
       html += `
         <div style="border-top: 1px solid rgba(99, 102, 241, 0.1); padding-top: 15px;">
           <div style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;" onclick="
@@ -6886,9 +6884,51 @@
           <div id="${id}-content" style="display: ${isExpanded ? 'block' : 'none'};">
       `;
 
-      upcomingItems.forEach(item => {
-        html += `<div style="padding: 6px; border-left: 2px solid #6366f1; color: #e0e6f0; font-size: 0.85em; margin-bottom: 4px;">${item.date || ''} - ${item.event || ''}</div>`;
-      });
+      // Render THIS WEEK events
+      if (calendar.thisWeek && calendar.thisWeek.length > 0) {
+        html += '<div style="margin-bottom: 12px;"><div style="color: #6366f1; font-size: 0.85em; font-weight: 600; margin-bottom: 6px;">📊 THIS WEEK</div>';
+        calendar.thisWeek.forEach(event => {
+          const impactColor = event.impact === 'HIGH' ? '#ef4444' : '#f59e0b';
+          const impactBg = event.impact === 'HIGH' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(245, 158, 11, 0.1)';
+          html += `
+            <div style="padding: 6px; margin-bottom: 4px; background: ${impactBg}; border-left: 2px solid ${impactColor}; border-radius: 3px;">
+              <div style="color: #e0e6f0; font-size: 0.8em;">${event.event || ''}</div>
+              <div style="color: #9ca3af; font-size: 0.7em; margin-top: 2px;">${event.date || ''} ${event.time || ''} • <span style="color: ${impactColor}; font-weight: 600;">${event.impact || ''}</span></div>
+            </div>
+          `;
+        });
+        html += '</div>';
+      }
+
+      // Render NEXT WEEK events
+      if (calendar.nextWeek && calendar.nextWeek.length > 0) {
+        html += '<div style="margin-bottom: 12px;"><div style="color: #6366f1; font-size: 0.85em; font-weight: 600; margin-bottom: 6px;">📅 NEXT WEEK</div>';
+        calendar.nextWeek.forEach(event => {
+          const impactColor = event.impact === 'HIGH' ? '#ef4444' : '#f59e0b';
+          const impactBg = event.impact === 'HIGH' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(245, 158, 11, 0.1)';
+          html += `
+            <div style="padding: 6px; margin-bottom: 4px; background: ${impactBg}; border-left: 2px solid ${impactColor}; border-radius: 3px;">
+              <div style="color: #e0e6f0; font-size: 0.8em;">${event.event || ''}</div>
+              <div style="color: #9ca3af; font-size: 0.7em; margin-top: 2px;">${event.date || ''} ${event.time || ''} • <span style="color: ${impactColor}; font-weight: 600;">${event.impact || ''}</span></div>
+            </div>
+          `;
+        });
+        html += '</div>';
+      }
+
+      // Render KEY DATES (if present)
+      if (calendar.keyDates && calendar.keyDates.length > 0) {
+        html += '<div><div style="color: #6366f1; font-size: 0.85em; font-weight: 600; margin-bottom: 6px;">🎯 KEY DATES</div>';
+        calendar.keyDates.forEach(keyDate => {
+          html += `
+            <div style="padding: 6px; margin-bottom: 4px; background: rgba(99, 102, 241, 0.1); border-left: 2px solid #6366f1; border-radius: 3px;">
+              <div style="color: #e0e6f0; font-size: 0.8em;">${keyDate.date || ''}</div>
+              <div style="color: #9ca3af; font-size: 0.7em; margin-top: 2px;">${(keyDate.events || []).join(' • ')}</div>
+            </div>
+          `;
+        });
+        html += '</div>';
+      }
 
       html += '</div></div>';
     }
