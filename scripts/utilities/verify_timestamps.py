@@ -82,6 +82,8 @@ REQUIRED_TIMESTAMPS = [
     "tabs.xsentiment.contrarian_detector.updatedAt",  # Contrarian analysis & opportunity detection
     "tabs.technicals.aiInterpretation.updatedAt",
     "tabs.technicals.technicalsTabSyncedAt",
+    "tabs.technicals.spxTechnicals.updatedAt",  # S&P 500 technical analysis
+    "tabs.technicals.bitcoinTechnicals.updatedAt",  # Bitcoin technical analysis
     "tabs.technicals.tradingSignalScore.updatedAt",  # trading signal score freshness
     "tabs.technicals.unusualActivity.updatedAt",  # NEW - unusual options activity detection
 ]

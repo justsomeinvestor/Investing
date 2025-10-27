@@ -3270,10 +3270,26 @@
                                 const providerCard = document.createElement('div');
                                 providerCard.className = 'provider-card';
 
-                                const providerName = document.createElement('div');
-                                providerName.className = 'provider-name';
-                                providerName.textContent = provider.name || '';
-                                providerCard.appendChild(providerName);
+                                const providerNameContainer = document.createElement('div');
+                                providerNameContainer.className = 'provider-name';
+                                providerNameContainer.style.display = 'flex';
+                                providerNameContainer.style.alignItems = 'center';
+                                providerNameContainer.style.gap = '10px';
+
+                                const nameText = document.createElement('span');
+                                nameText.textContent = provider.name || '';
+                                providerNameContainer.appendChild(nameText);
+
+                                // Add green dot badge if updatedAt exists
+                                if (provider.updatedAt) {
+                                    const statusClass = getDataFreshness(provider.updatedAt);
+                                    const badge = document.createElement('span');
+                                    badge.className = `date-badge ${statusClass}`;
+                                    badge.style.margin = '0';
+                                    providerNameContainer.appendChild(badge);
+                                }
+
+                                providerCard.appendChild(providerNameContainer);
 
                                 (provider.insights || []).forEach(insight => {
                                     const insightDiv = document.createElement('div');

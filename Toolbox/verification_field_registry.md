@@ -1,8 +1,8 @@
 # Verification Field Registry
 
 **Last Updated:** 2025-10-26
-**Coverage:** 28/34 timestamp fields (82% of all fields, 100% of critical fields)
-**Health Status:** 100% (28/28 current)
+**Coverage:** 30/34 timestamp fields (88% of all fields, 100% of critical fields)
+**Health Status:** 100% (30/30 current)
 
 ---
 
@@ -12,11 +12,11 @@ Complete registry of all timestamp fields tracked by Wingman's verification syst
 
 ### Quick Stats
 - **Total fields in master-plan.md:** 34
-- **Fields tracked by verify_timestamps.py:** 28
-- **Phase 2 owned (automated):** 15 (added contrarian detector tracking)
+- **Fields tracked by verify_timestamps.py:** 30
+- **Phase 2 owned (automated):** 17 (added SPX + BTC technicals tracking)
 - **Phase 5 owned (AI synthesis):** 13
-- **Expected health after Phase 2:** 54% (15/28 current)
-- **Expected health after Phase 5:** 100% (28/28 current)
+- **Expected health after Phase 2:** 57% (17/30 current)
+- **Expected health after Phase 5:** 100% (30/30 current)
 
 ---
 
@@ -91,12 +91,14 @@ These fields are set by Claude during Phase 5 (AI interpretation synthesis). The
 | 1010 | `tabs.xsentiment.macro_trending.updatedAt` | Top macro trending topics | X search + mentions |
 | 643 | `tabs.xsentiment.contrarian_detector.updatedAt` | Contrarian analysis & opportunity detection | Sentiment score calculation |
 
-#### Technicals Tab (4 fields - Phase 2)
+#### Technicals Tab (6 fields - Phase 2)
 
 | Line | Field Path | Purpose | Requires |
 |------|-----------|---------|----------|
 | 896 | `tabs.technicals.aiInterpretation.updatedAt` | Technical analysis synthesis | Chart data + pattern detection |
 | 896 | `tabs.technicals.technicalsTabSyncedAt` | Last technical data sync | Data source availability |
+| 1015 | `tabs.technicals.spxTechnicals.updatedAt` | SPX technical analysis (momentum, support, resistance) | SPX price + technical levels |
+| 1022 | `tabs.technicals.bitcoinTechnicals.updatedAt` | Bitcoin technical analysis (momentum, support, resistance) | BTC price + technical levels |
 | 1030 | `tabs.technicals.tradingSignalScore.updatedAt` | Trading signal score freshness | Market signal calculation |
 | 1122+ | `tabs.technicals.unusualActivity.updatedAt` | Unusual options activity detection | P/C ratio spikes, IV extremes, etc. |
 
