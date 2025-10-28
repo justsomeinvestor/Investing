@@ -57,6 +57,28 @@
         .metric-value.positive { color: #10b981; }
         .metric-value.negative { color: #ef4444; }
 
+        /* Portfolio Overview */
+        .portfolio-card { display: flex; flex-direction: column; gap: 24px; }
+        .portfolio-summary { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        .portfolio-summary-item { background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 10px; padding: 16px 18px; }
+        .portfolio-summary-label { font-size: 0.8em; letter-spacing: 0.08em; text-transform: uppercase; color: #9ca3af; margin-bottom: 6px; }
+        .portfolio-summary-value { font-size: 1.8em; font-weight: 700; background: linear-gradient(45deg, #6366f1, #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .portfolio-summary-note { font-size: 0.8em; color: #9ca3af; margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase; }
+        .portfolio-breakdown { display: grid; gap: 24px; }
+        @media (min-width: 992px) { .portfolio-breakdown { grid-template-columns: repeat(2, 1fr); } }
+        .portfolio-section-title { font-size: 0.95em; font-weight: 600; color: #e0e6f0; letter-spacing: 0.05em; text-transform: uppercase; }
+        .portfolio-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        .portfolio-table th,
+        .portfolio-table td { padding: 10px 12px; border-bottom: 1px solid rgba(99, 102, 241, 0.12); font-size: 0.9em; }
+        .portfolio-table th { color: #9ca3af; font-size: 0.75em; letter-spacing: 0.08em; text-transform: uppercase; }
+        .portfolio-table td.value { text-align: right; font-weight: 600; color: #e0e6f0; }
+        .portfolio-table tr:last-child td { border-bottom: none; }
+        .portfolio-total-row td { border-top: 1px solid rgba(99, 102, 241, 0.2); font-weight: 700; }
+        .portfolio-cash-callout { background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 16px; font-size: 0.9em; color: #d1fae5; }
+        .portfolio-cash-callout strong { display: block; font-size: 0.95em; color: #10b981; margin-bottom: 4px; }
+        .portfolio-thesis ul { margin-left: 18px; line-height: 1.6; color: #d1d5db; font-size: 0.9em; }
+        .portfolio-thesis li { margin-bottom: 8px; }
+
         /* Daily Loss Limit Tracker */
         .limit-tracker { margin-top: 16px; }
         .limit-label { font-size: 0.85em; font-weight: 600; color: #9ca3af; margin-bottom: 8px; }
@@ -214,8 +236,8 @@
             </div>
         </div>
 
-        <!-- ROW 2: RULE COMPLIANCE -->
-        <div class="grid full-width">
+        <!-- ROW 2: RULE COMPLIANCE + PRE-ENTRY THREAT ASSESSMENT (SIDE BY SIDE) -->
+        <div class="grid two-column">
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">Rule Compliance (Today)</div>
@@ -224,20 +246,7 @@
                     <div class="empty-state">No trades yet</div>
                 </div>
             </div>
-        </div>
 
-        <!-- ROW 3: ACTIVE POSITION (CONDITIONAL) -->
-        <div class="grid full-width" id="active-position-row" style="display: none;">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Active Position</div>
-                </div>
-                <div id="active-position-container"></div>
-            </div>
-        </div>
-
-        <!-- ROW 4: PRE-ENTRY THREAT ASSESSMENT -->
-        <div class="grid full-width">
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">Pre-Entry Threat Assessment Checklist</div>
@@ -272,7 +281,17 @@
             </div>
         </div>
 
-        <!-- ROW 5: SESSION PERFORMANCE + QUICK ACTIONS -->
+        <!-- ROW 3: ACTIVE POSITION (CONDITIONAL) -->
+        <div class="grid full-width" id="active-position-row" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Active Position</div>
+                </div>
+                <div id="active-position-container"></div>
+            </div>
+        </div>
+
+        <!-- ROW 5: SESSION PERFORMANCE + RECENT TRADES -->
         <div class="grid two-column">
             <div class="card">
                 <div class="card-header">
@@ -295,20 +314,6 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Quick Actions</div>
-                </div>
-                <div class="button-group" style="flex-direction: column; gap: 8px;">
-                    <button class="btn btn-primary">📝 Record Trade</button>
-                    <button class="btn btn-secondary">📊 EOD Wrap</button>
-                    <button class="btn btn-secondary">📋 Review Rules</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ROW 6: RECENT TRADES -->
-        <div class="grid full-width">
-            <div class="card">
-                <div class="card-header">
                     <div class="card-title">Recent Trades</div>
                 </div>
                 <div id="recent-trades-container">
@@ -317,27 +322,205 @@
             </div>
         </div>
 
-        <!-- ROW 7: COMMAND REFERENCE (COLLAPSED) -->
+        <!-- ROW 7: PORTFOLIO COMMAND DECK -->
         <div class="grid full-width">
-            <div class="card">
-                <details class="command-group">
-                    <summary>Wingman Commands Reference</summary>
-                    <ul class="command-list">
-                        <li><code>wingman, status</code> — Full system readout</li>
-                        <li><code>wingman, signal</code> — Current market signal</li>
-                        <li><code>wingman, rules</code> — Active trading rules</li>
-                        <li><code>wingman, analyze [TICKER]</code> — Full probability breakdown</li>
-                        <li><code>NVDA long 100 @ 189.50, stop 188, target 192</code> — Log entry</li>
-                        <li><code>Out at [PRICE]</code> — Close position</li>
-                        <li><code>wingman, eod wrap</code> — End-of-day summary</li>
+            <div class="card portfolio-card">
+                <div class="card-header">
+                    <div class="card-title">Portfolio Command Deck</div>
+                </div>
+                <div class="portfolio-thesis">
+                    <div class="portfolio-section-title">Portfolio Thesis</div>
+                    <p class="card-detail" style="margin-bottom: 12px;">
+                        Core positioning leans on crypto momentum with ample cash kept ready for asymmetric shots in equities.
+                    </p>
+                    <ul>
+                        <li>Maintain BTC and ETH core stack while trimming back only if allocation creeps above 55% of total capital.</li>
+                        <li>Lean into SOL leadership - add on pullbacks toward $185 with confirmation from higher time frame trend.</li>
+                        <li>Keep $46K cash liquid for selective stock entries (QS, ARKX, TSLA) once market signal upgrades to MODERATE+.</li>
                     </ul>
-                </details>
+                </div>
+                <div class="portfolio-summary">
+                    <div class="portfolio-summary-item">
+                        <div class="portfolio-summary-label">Total Portfolio</div>
+                        <div class="portfolio-summary-value">$90,044.47</div>
+                        <div class="portfolio-summary-note">100% allocation</div>
+                    </div>
+                    <div class="portfolio-summary-item">
+                        <div class="portfolio-summary-label">Cash</div>
+                        <div class="portfolio-summary-value">$46,000.00</div>
+                        <div class="portfolio-summary-note">51.1% allocation</div>
+                    </div>
+                    <div class="portfolio-summary-item">
+                        <div class="portfolio-summary-label">Crypto</div>
+                        <div class="portfolio-summary-value">$43,798.64</div>
+                        <div class="portfolio-summary-note">48.6% allocation</div>
+                    </div>
+                    <div class="portfolio-summary-item">
+                        <div class="portfolio-summary-label">Stocks</div>
+                        <div class="portfolio-summary-value">$245.83</div>
+                        <div class="portfolio-summary-note">0.3% allocation</div>
+                    </div>
+                </div>
+                <div class="portfolio-cash-callout">
+                    <strong>Cash Reserve</strong>
+                    $46,000.00 earmarked for high-conviction setups (51.1% of portfolio)
+                </div>
+                <div class="portfolio-breakdown">
+                    <div>
+                        <div class="portfolio-section-title">Crypto Holdings</div>
+                        <table class="portfolio-table">
+                            <thead>
+                                <tr>
+                                    <th>Asset</th>
+                                    <th>Holdings</th>
+                                    <th>Asset Price</th>
+                                    <th>Value</th>
+                                    <th>Weight</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bitcoin</td>
+                                    <td class="value">0.1105</td>
+                                    <td class="value">$113,999.50</td>
+                                    <td class="value">$12,598.27</td>
+                                    <td class="value">28.76%</td>
+                                </tr>
+                                <tr>
+                                    <td>Ethereum</td>
+                                    <td class="value">2.0619</td>
+                                    <td class="value">$4,116.06</td>
+                                    <td class="value">$8,487.09</td>
+                                    <td class="value">19.38%</td>
+                                </tr>
+                                <tr>
+                                    <td>Solana</td>
+                                    <td class="value">97.6603</td>
+                                    <td class="value">$201.44</td>
+                                    <td class="value">$19,672.70</td>
+                                    <td class="value">44.92%</td>
+                                </tr>
+                                <tr>
+                                    <td>Litecoin</td>
+                                    <td class="value">0.2789</td>
+                                    <td class="value">$99.70</td>
+                                    <td class="value">$27.80</td>
+                                    <td class="value">0.06%</td>
+                                </tr>
+                                <tr>
+                                    <td>Dogecoin</td>
+                                    <td class="value">14,604.7119</td>
+                                    <td class="value">$0.2011</td>
+                                    <td class="value">$2,937.64</td>
+                                    <td class="value">6.71%</td>
+                                </tr>
+                                <tr>
+                                    <td>Avalanche</td>
+                                    <td class="value">1.2732</td>
+                                    <td class="value">$20.45</td>
+                                    <td class="value">$26.04</td>
+                                    <td class="value">0.06%</td>
+                                </tr>
+                                <tr>
+                                    <td>Luna</td>
+                                    <td class="value">22,030</td>
+                                    <td class="value">$0.00005</td>
+                                    <td class="value">$1.00</td>
+                                    <td class="value">0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td>Near Protocol</td>
+                                    <td class="value">2.5356</td>
+                                    <td class="value">$2.34</td>
+                                    <td class="value">$5.93</td>
+                                    <td class="value">0.01%</td>
+                                </tr>
+                                <tr>
+                                    <td>Raydium</td>
+                                    <td class="value">22.92</td>
+                                    <td class="value">$1.84</td>
+                                    <td class="value">$42.17</td>
+                                    <td class="value">0.10%</td>
+                                </tr>
+                                <tr class="portfolio-total-row">
+                                    <td>Crypto Total</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="value">$43,798.64</td>
+                                    <td class="value">48.6%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="portfolio-section-title">Stock Holdings</div>
+                        <table class="portfolio-table">
+                            <thead>
+                                <tr>
+                                    <th>Ticker</th>
+                                    <th>Shares</th>
+                                    <th>Price</th>
+                                    <th>Value</th>
+                                    <th>Weight</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ARKX</td>
+                                    <td class="value">2</td>
+                                    <td class="value">$31.05</td>
+                                    <td class="value">$62.10</td>
+                                    <td class="value">25.26%</td>
+                                </tr>
+                                <tr>
+                                    <td>TSLA</td>
+                                    <td class="value">0.0907</td>
+                                    <td class="value">$452.42</td>
+                                    <td class="value">$41.05</td>
+                                    <td class="value">16.70%</td>
+                                </tr>
+                                <tr>
+                                    <td>QS</td>
+                                    <td class="value">8.7640</td>
+                                    <td class="value">$16.28</td>
+                                    <td class="value">$142.68</td>
+                                    <td class="value">58.04%</td>
+                                </tr>
+                                <tr class="portfolio-total-row">
+                                    <td>Stock Total</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="value">$245.83</td>
+                                    <td class="value">0.3%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- ROW 8: END OF DAY RECAP (COLLAPSED BY DEFAULT) -->
         <div class="grid full-width">
             <div class="card" id="eod-recap-container"></div>
+        </div>
+
+        <!-- ROW 9: COMMAND REFERENCE (COLLAPSED) -->
+        <div class="grid full-width">
+            <div class="card">
+                <details class="command-group">
+                    <summary>Wingman Commands Reference</summary>
+                    <ul class="command-list">
+                        <li><code>wingman, status</code> - Full system readout</li>
+                        <li><code>wingman, signal</code> - Current market signal</li>
+                        <li><code>wingman, rules</code> - Active trading rules</li>
+                        <li><code>wingman, analyze [TICKER]</code> - Full probability breakdown</li>
+                        <li><code>NVDA long 100 @ 189.50, stop 188, target 192</code> - Log entry</li>
+                        <li><code>Out at [PRICE]</code> - Close position</li>
+                        <li><code>wingman, eod wrap</code> - End-of-day summary</li>
+                    </ul>
+                </details>
+            </div>
         </div>
     </div>
 

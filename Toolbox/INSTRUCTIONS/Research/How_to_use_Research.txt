@@ -134,22 +134,71 @@ Replace all instances of `YYYY-MM-DD` in this document with today's actual date 
     - Step 2.5: Key Themes (FROM all 4 overviews)
 
 **FIX #4: SCRAPER OUTPUT HANDLING (All Sources Mandatory)**
-- **EMPTY RESULTS are VALID, not failures:**
-  - If X bookmarks returns `[]` (empty array): This is NORMAL, means no new bookmarks today
-    - **Action**: Create summary noting "Zero new bookmarks collected for YYYY-MM-DD"
-    - **Continue workflow**: Empty is valid data; still create the summary file
-  - If YouTube returns no new transcripts: Still create YouTube summary with "No new videos today"
-  - If RSS returns no new articles: Still create RSS summary with "No new articles today"
-  - **KEY**: Empty data ≠ scraper failure. Empty data means zero content today, which is valid
 
-- **SCRAPER CRASHES are FAILURES (to be retried/debugged):**
-  - If scraper returns ERROR/EXCEPTION: This is a FAILURE, not valid empty data
-  - **Action**: Retry the scraper ONCE
-  - **If still fails**: DO NOT SKIP - STOP workflow and report incomplete data collection
-  - Do NOT proceed with missing data sources
-  - **Example**: If YouTube scraper crashes (Selenium error), retry. If still fails after retry, STOP - do not skip YouTube
+**READ THIS FIRST:** See `Toolbox/INSTRUCTIONS/Research/SCRAPER_STATUS_GUIDE.md` for complete decision tree.
 
-- **Key difference**: "Empty array" (zero bookmarks) vs "Exception error" (scraper crashed) = very different
+FOOLPROOF RULE: Check the status file first before deciding if something is an error.
+
+- **STATUS FILE LOCATION**: `Research/.cache/scraper_status_YYYY-MM-DD.json`
+  - Created by each scraper automatically on completion
+  - Contains: `ran` (true/false), `items_found` (number), `error` (message if failed)
+  - **Always check this file first** before assuming success or failure
+
+- **SCENARIO A: EMPTY RESULTS are VALID, not failures** ✅
+  - Status file shows: `"ran": true, "items_found": 0, "error": null`
+  - **Meaning**: Scraper ran successfully. No new content published today.
+  - **Action**: Create summary noting "Zero new [content] collected for YYYY-MM-DD"
+  - **Continue workflow**: Empty is valid data; still create the summary file
+  - **Examples**:
+    - YouTube: `"ran": true, "items_found": 0` → No new videos (NORMAL, proceed)
+    - RSS: `"ran": true, "items_found": 0` → No new articles (NORMAL, proceed)
+    - X Bookmarks: `"ran": true, "items_found": 0` → No new posts (NORMAL, proceed)
+  - **KEY**: `items_found=0` with `ran=true` ≠ failure. It means zero content, which is valid.
+
+- **SCENARIO B: SCRAPER CRASHES are FAILURES** ❌
+  - Status file shows: `"ran": false, "error": "[Exception message]"`
+  - **Meaning**: Scraper crashed or failed to complete.
+  - **Action**:
+    1. Read the error message in status file
+    2. If transient (timeout, network): Retry scraper ONCE
+    3. If persistent (permission, auth): Fix issue, then retry
+    4. If still fails: STOP workflow and report incomplete data collection
+  - **Do NOT skip** missing data sources. Do NOT proceed with partial data.
+  - **Example**: YouTube scraper shows `"ran": false, "error": "Connection timeout"` → Retry once. If fails again → STOP.
+
+- **SCENARIO C: SCRAPER MISSING FROM STATUS FILE** ❌
+  - Scraper name not in `Research/.cache/scraper_status_YYYY-MM-DD.json`
+  - **Meaning**: Scraper never completed (crashed mid-execution or never started)
+  - **Action**: STOP and investigate. Do NOT proceed with missing sources.
+
+- **Decision Tree** (Use This):
+  ```
+  1. Check if status file exists for today?
+     NO → ❌ ERROR: No scraping ran
+     YES ↓
+  2. Is scraper entry in status file?
+     NO → ❌ ERROR: Scraper didn't reach completion
+     YES ↓
+  3. Check "ran" field
+     false → ❌ ERROR: Scraper failed (see error message)
+     true ↓
+  4. Check "items_found"
+     0 → ✅ OK: Zero content (NORMAL, proceed)
+     >0 → ✅ OK: Found content (SUCCESS, process)
+  ```
+
+- **Templates for Zero-Content Summaries**: See `Toolbox/TEMPLATES/zero_content_summary_template.md`
+  - Pre-written summaries for YouTube, X, RSS, etc.
+  - Copy and customize for zero-content days
+  - Ensures consistent documentation
+
+- **Key Differences Explained**:
+  | Status | items_found | Meaning | Action |
+  |--------|-------------|---------|--------|
+  | `ran=true` | 0 | No content published | ✅ Create zero-content summary, continue |
+  | `ran=true` | 5+ | Content found | ✅ Process content, create summary |
+  | `ran=false` | 0 | Scraper crashed | ❌ STOP, retry, investigate |
+  | (missing) | N/A | Never completed | ❌ STOP, investigate |
 
 **FIX #5: SIGNAL CALCULATION ROBUSTNESS** (Handle Parser Failures)
 - If signal calculation completes but trend = 0: Likely parser extraction failed
