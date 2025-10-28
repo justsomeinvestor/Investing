@@ -1,0 +1,559 @@
+================================================================================
+RISK MANAGEMENT FRAMEWORK - WINGMAN OPERATIONAL MEMORY
+================================================================================
+
+**CALLSIGN:** Risk Manager (Wingman sub-system)
+**PURPOSE:** Core risk calculations loaded into Wingman memory at session start
+**APPLIES TO:** Every trade, every entry, every exit
+**STATUS:** PERMANENT - Load at start of EVERY session
+**LAST UPDATED:** 2025-10-27
+
+================================================================================
+CORE ACCOUNT PARAMETERS (SACRED - NEVER VIOLATE)
+================================================================================
+
+**Account Balance:** $23,105.83 (From account_state.json)
+**Risk Per Trade:** 1% = $231.00 (FIXED)
+**Daily Loss Limit:** $250.00 (Stop trading after this)
+**Monthly Income Goal:** $2,500.00 ($125/day average)
+
+**Constraints (From account_state.json):**
+- Max equities: 70% of account
+- Min cash: 10% of account
+- Max crypto: 30% of account
+- Max single position: 50% of account
+
+================================================================================
+POSITION SIZING FORMULA (MECHANICAL - NO JUDGMENT)
+================================================================================
+
+**Step 1: Calculate Risk Distance**
+Risk Distance = Entry Price - Stop Price
+
+**Step 2: Calculate Position Size**
+Position Size = Risk Amount ÷ Risk Distance
+Position Size = $231 ÷ (Entry - Stop)
+
+**Example:**
+Entry: $189.50
+Stop: $188.20 (ATR-based, see below)
+Risk Distance: $189.50 - $188.20 = $1.30
+Position Size: $231 ÷ $1.30 = 177.69 shares → 177 shares
+
+**Capital Required:** Position Size × Entry Price = 177 × $189.50 = $33,542.50
+
+**Check:** Do we have enough cash? If not, reduce position size proportionally.
+
+================================================================================
+STOP LOSS CALCULATION - 4 METHODS
+================================================================================
+
+**METHOD 1: ATR-BASED (PRIMARY - USE THIS FOR MOST TRADES)**
+
+Formula: Entry Price - (1.5 × ATR)
+
+What is ATR?
+- Average True Range over 14 periods
+- Measures volatility
+- Higher volatility = larger stops
+- Lower volatility = tighter stops
+
+Calculation:
+1. Calculate True Range for last 14 bars:
+   TR = MAX(High - Low, ABS(High - Close[1]), ABS(Low - Close[1]))
+2. Average the 14 TRs
+3. Result = ATR(14)
+
+Example:
+Entry: $189.50
+ATR(14): $0.87
+Stop: $189.50 - (1.5 × $0.87) = $189.50 - $1.305 = $188.195 → $188.20
+Risk: $1.30 per share
+
+**Why ATR-based?**
+✓ Adapts to market volatility (tight in calm, wide in chop)
+✓ Prevents whipsaws (not too tight)
+✓ Scientific, not emotional
+✓ Works across all timeframes
+
+---
+
+**METHOD 2: STRUCTURE-BASED (SECONDARY - CROSS-CHECK)**
+
+Logic: Place stop just below recent support (for longs) or above recent resistance (for shorts)
+
+Example:
+Entry: $189.50 (breakout above resistance)
+Recent Swing Low: $188.20 (support level)
+Stop: $188.20 - $0.05 (one tick below) = $188.15
+Risk: $1.35 per share
+
+**Why Structure-based?**
+✓ Based on actual price history
+✓ Respects support/resistance zones
+✓ Institutions watch these levels
+✓ More intuitive
+
+**How to use BOTH:**
+1. Calculate ATR-based stop ($188.20)
+2. Check recent structure support ($188.20)
+3. If they align → Strong stop location
+4. If they differ → Use structure if tighter, ATR if tighter
+
+---
+
+**METHOD 3: TIME-BASED (TACTICAL - INTRADAY ONLY)**
+
+Logic: Exit if no progress toward target within X minutes
+
+Example:
+Entry: $189.50 at 9:45 AM
+Time Limit: 15 minutes
+Checkpoint: 10:00 AM
+If price hasn't moved toward T1 ($191.45) by 10:00 AM → Exit for small loss
+
+**When to use:**
+✓ In highly choppy markets (6,650-6,700 box)
+✓ Indecision zones
+✓ Low-volume periods
+✗ Don't use in trending markets
+
+**Risk:** $231 (same as normal stop)
+
+---
+
+**METHOD 4: PERCENTAGE-BASED (NOT RECOMMENDED - BACKUP ONLY)**
+
+Formula: Entry × (1 - Risk %)
+
+Example:
+Entry: $189.50
+2% stop: $189.50 × (1 - 0.02) = $185.71
+Risk: $3.79 per share (TOO LARGE - avoid)
+
+Example:
+Entry: $189.50
+0.5% stop: $189.50 × (1 - 0.005) = $188.55
+Risk: $0.95 per share (TOO TIGHT - whipsaw risk)
+
+**Why not use?**
+✗ Ignores volatility (ignores market context)
+✗ Ignores support/resistance (wrong levels)
+✗ Mechanical without basis
+
+**Only use if:**
+- ATR data unavailable
+- Extreme market conditions
+- Backup calculation
+
+================================================================================
+TARGET CALCULATION - SYSTEMATIC 3-TIER SYSTEM
+================================================================================
+
+**SYSTEM 1: RISK/REWARD RATIO (PRIMARY - USE THIS)**
+
+Formula:
+T1 = Entry + (Risk × 1.5)   [Take 50% profit here]
+T2 = Entry + (Risk × 2.5)   [Take 30% profit here]
+T3 = Entry + (Risk × 4.0)   [Let runner, trail stop]
+
+What is "Risk"?
+Risk = Entry Price - Stop Price
+
+Example:
+Entry: $189.50
+Stop: $188.20
+Risk per share: $189.50 - $188.20 = $1.30
+
+T1: $189.50 + ($1.30 × 1.5) = $189.50 + $1.95 = $191.45
+T2: $189.50 + ($1.30 × 2.5) = $189.50 + $3.25 = $192.75
+T3: $189.50 + ($1.30 × 4.0) = $189.50 + $5.20 = $194.70
+
+**Exit Plan with 177 shares:**
+T1 @ $191.45:
+  - Exit 50% (88 shares) = 88 × $1.95 = +$171.60
+  - Remaining: 89 shares @ breakeven stop
+
+T2 @ $192.75:
+  - Exit 30% (26 shares) = 26 × $3.25 = +$84.50
+  - Remaining: 63 shares (runner)
+
+T3 @ $194.70 or stop hit:
+  - 63 shares @ profit or small loss
+  - Potential: +$261 or breakeven
+
+**Total Potential:**
+Best case (all targets hit): +$171.60 + $84.50 + $261 = +$517.10
+Conservative (T1+T2 + T3 breakeven): +$171.60 + $84.50 + $0 = +$256.10
+Worst case (all stopped): -$231.00
+
+---
+
+**SYSTEM 2: FIBONACCI EXTENSIONS (CROSS-CHECK)**
+
+Use when:
+✓ Clear swing low and high visible
+✓ Fibonacci extensions align with resistance
+✗ Don't use if no clear swing structure
+
+Formula:
+T1 = Entry + (1.618 × Swing Range)
+T2 = Entry + (2.618 × Swing Range)
+T3 = Entry + (4.236 × Swing Range)
+
+Example:
+Swing Low: $186.00
+Swing High: $189.00
+Swing Range: $3.00
+
+T1: $189.50 + (1.618 × $3.00) = $189.50 + $4.85 = $194.35
+T2: $189.50 + (2.618 × $3.00) = $189.50 + $7.85 = $197.35
+T3: $189.50 + (4.236 × $3.00) = $189.50 + $12.71 = $202.21
+
+**How to use both:**
+- Calculate R:R targets (primary)
+- Calculate Fibonacci targets (secondary)
+- If they align: Confidence higher
+- If they differ: Use primary R:R targets
+
+---
+
+**SYSTEM 3: STRUCTURE LEVELS (CROSS-CHECK)**
+
+Use when:
+✓ Previous swing highs/lows visible
+✓ Round numbers (e.g., 190.00, 195.00)
+✓ Multi-timeframe resistance zones
+
+Example:
+Recent swing high: $191.45 → Good T1 target
+Previous major high: $193.20 → Good T2 target
+Next major resistance: $195.00+ → Good T3 target
+
+**How to use:**
+1. Set R:R targets (primary)
+2. Check if structure levels align
+3. If targets near structure: Confidence higher
+4. If targets in white space: Adjust down slightly
+
+================================================================================
+RISK/REWARD MINIMUM STANDARDS
+================================================================================
+
+**Minimum R:R Ratio:** 1.5:1
+- You must risk $1 to make $1.50
+- Below 1.5:1 → DO NOT TRADE
+
+**Example:**
+Entry: $189.50
+Stop: $188.50 (risk $1.00)
+T1 required: $189.50 + (1.5 × $1.00) = $191.00
+Ratio: 1.5:1 ✓ ACCEPTABLE
+
+Bad example:
+Entry: $189.50
+Stop: $188.00 (risk $1.50)
+T1 only: $190.20 (profit $0.70)
+Ratio: 0.47:1 ✗ REJECT
+
+================================================================================
+POSITION SIZING WITH CASH CONSTRAINTS
+================================================================================
+
+**Scenario: Insufficient Cash**
+
+If capital required > available cash:
+1. Reduce position size proportionally
+2. Adjust risk accordingly
+3. Don't use margin (stay at 1% risk)
+4. Skip trade or wait for cash
+
+Example:
+Entry: $189.50
+Stop: $188.20
+Risk: $231 (1%)
+Position: 177 shares
+Capital needed: $33,542.50
+Available cash: $23,105.83 ✗ INSUFFICIENT
+
+Solution:
+Max shares: $23,105.83 ÷ $189.50 = 121.87 → 121 shares
+Adjusted risk: 121 × $1.30 = $157.30 (0.68% account)
+New capital: 121 × $189.50 = $22,919.50 ✓ WITHIN BUDGET
+
+**Decision:** Proceed with 121 shares, note reduced risk in entry record
+
+================================================================================
+DAILY LOSS LIMIT ENFORCEMENT
+================================================================================
+
+**Daily Limit:** $250.00
+
+**How it works:**
+1. Start day with $0 P/L
+2. Each loss subtracts from limit
+3. At -$250, Wingman BLOCKS new entries
+4. Can close existing positions to recover
+5. Limit resets at next trading day
+
+**Example Sequence:**
+Trade 1: -$50 (Daily: -$50, remaining: $200)
+Trade 2: +$150 (Daily: +$100, remaining: $250)
+Trade 3: -$75 (Daily: +$25, remaining: $250)
+Trade 4: -$200 (Daily: -$175, remaining: $75)
+Trade 5: -$80 (BLOCKED - would exceed $250 limit)
+
+**If Blocked:**
+- Close position if possible to recover
+- OR wait until next trading day
+- OR request override (logged for analysis)
+
+================================================================================
+LEVERAGE & MARGIN (NOT RECOMMENDED)
+================================================================================
+
+**Current Status:** DO NOT USE MARGIN
+
+**Why?**
+✗ Amplifies losses (lose more than account)
+✗ Adds complexity (margin calls, forced exits)
+✗ Unnecessary (1% risk per trade sufficient)
+✗ Violates "sustainable income" goal
+
+**Exception:** Only if:
+- Swing trading multi-day positions
+- Need higher capital deployment
+- Deep analysis done on margin requirements
+- Always: 2× conservative risk (0.5% instead of 1%)
+
+================================================================================
+RULE COMPLIANCE - RISK CHECKS
+================================================================================
+
+**Before EVERY entry, verify:**
+
+❑ Risk = $231 (1% of $23,105)?
+  If not, adjust position size
+
+❑ Stop calculated (ATR or structure)?
+  If not, calculate it now
+
+❑ Targets calculated (1.5R, 2.5R, 4.0R)?
+  If not, calculate them now
+
+❑ R:R ratio >= 1.5:1?
+  If not, SKIP this trade
+
+❑ Cash available for position?
+  If not, reduce size or skip
+
+❑ Daily loss limit not exceeded?
+  If yes, STOP for the day
+
+❑ Position size mathematically correct?
+  Double-check: Risk ÷ Stop Distance = Position
+
+❑ Capital required within budget?
+  Position Size × Entry = Capital Required
+
+❑ All stops/targets set in broker?
+  If not, set them before market execution
+
+**If ANY check fails:** DO NOT ENTER TRADE
+
+================================================================================
+EXAMPLE CALCULATION (COMPLETE WALK-THROUGH)
+================================================================================
+
+**Setup:** NVDA Long, Entry $189.50
+
+**Step 1: Calculate Stop**
+ATR(14) = $0.87
+Stop = $189.50 - (1.5 × $0.87) = $188.20
+
+**Step 2: Verify Structure**
+Recent swing low: $188.20
+Matches ATR stop ✓ Confidence high
+
+**Step 3: Calculate Risk**
+Risk = $189.50 - $188.20 = $1.30 per share
+
+**Step 4: Calculate Position Size**
+Risk target: 1% = $231
+Position: $231 ÷ $1.30 = 177.69 → 177 shares
+
+**Step 5: Calculate Capital Required**
+177 × $189.50 = $33,542.50
+
+**Step 6: Check Cash Available**
+Available: $23,105.83
+Required: $33,542.50
+⚠️ INSUFFICIENT: Reduce position
+
+**Step 7: Adjust Position**
+Max shares: $23,105.83 ÷ $189.50 = 121.87 → 121 shares
+New risk: 121 × $1.30 = $157.30
+% of account: $157.30 ÷ $23,105.83 = 0.68%
+
+**Step 8: Calculate Targets**
+T1: $189.50 + ($1.30 × 1.5) = $191.45
+T2: $189.50 + ($1.30 × 2.5) = $192.75
+T3: $189.50 + ($1.30 × 4.0) = $194.70
+
+**Step 9: Verify R:R**
+Risk: $1.30
+Reward (T1): $1.95
+Ratio: 1.5:1 ✓ MEETS MINIMUM
+
+**Step 10: Verify Rules Compliance**
+✓ Risk = 0.68% (within 1%)
+✓ Stop calculated (ATR-based)
+✓ Targets calculated (R:R system)
+✓ R:R >= 1.5:1 ✓
+✓ Cash available ✓
+✓ Daily loss limit not exceeded ✓
+
+**READY TO ENTER: 121 shares @ $189.50, stop $188.20**
+
+================================================================================
+TRACKING DURING THE TRADE
+================================================================================
+
+**Real-Time Monitoring:**
+Price: $190.00
+Entry: $189.50
+Current P/L: +$50.50 (0.22% account gain)
+Distance to T1: $1.45 (getting close)
+Distance to stop: $1.80 (healthy)
+
+**At T1 Hit ($191.45):**
+Exit 50% (60 shares): 60 × $1.95 = +$117
+Remaining: 61 shares
+New stop: $189.50 (breakeven)
+New target: T2 @ $192.75
+
+**At T2 Hit ($192.75):**
+Exit 30% (18 shares): 18 × $3.25 = +$58.50
+Remaining: 43 shares (runner)
+New stop: $190.00 (small profit)
+New target: T3 @ $194.70 or trail
+
+**If Stop Hit ($188.20):**
+Exit all: Loss = $157.30
+Consolidate for next trade
+Update daily P/L tracker
+
+================================================================================
+END OF DAY RECONCILIATION
+================================================================================
+
+**Daily P/L Summary:**
+All trades closed or runner positions recorded
+- Daily total: +$X (toward $125 daily goal)
+- YTD total: Updated in account_state.json
+- Win/loss count: Recorded
+- Rules compliance: % logged
+
+**File Updates (Auto by Wingman):**
+- positions.json: All trades recorded
+- account_state.json: Cash/balance updated
+- Journal log entry: Full trade details
+
+================================================================================
+CRITICAL SAFETY RULES (NEVER VIOLATE)
+================================================================================
+
+1. **Never risk more than 1% per trade** ($231)
+   Exception: Explicitly approved override with reasoning
+
+2. **Never trade without stop loss calculated**
+   Exception: None - always calculate first
+
+3. **Never trade without targets calculated**
+   Exception: Scalp trades <$50 profit (still need targets)
+
+4. **Never violate daily $250 loss limit**
+   Exception: Recovery trades only (market closed after limit hit)
+
+5. **Never use leverage/margin**
+   Exception: Swing positions with 0.5% risk, approved first
+
+6. **Never ignore position sizing formula**
+   Exception: None - always calculate mathematically
+
+7. **Never enter if R:R < 1.5:1**
+   Exception: Setup so good you're willing to risk (logged)
+
+================================================================================
+WINGMAN'S RESPONSIBILITY
+================================================================================
+
+**Wingman MUST do:**
+✓ Calculate all stops/targets before entry
+✓ Verify position sizing math
+✓ Check cash availability
+✓ Monitor daily loss limit
+✓ Alert when targets hit
+✓ Track compliance with rules
+✓ Update all files after trades
+✓ Report P/L at EOD
+
+**Wingman CANNOT do:**
+✗ Override stop losses
+✗ Approve trades below 1.5:1 R:R
+✗ Ignore daily loss limit
+✗ Margin trading
+✗ Skip position sizing calculations
+
+================================================================================
+REFERENCE QUICK-LOOKUP
+================================================================================
+
+**Account:**
+Balance: $23,105.83
+Risk per trade: 1% = $231
+Daily loss limit: $250
+Monthly goal: $2,500
+
+**Stop Loss:**
+Primary: ATR(14) × 1.5 below entry
+Secondary: Structure (recent support/resistance)
+Tertiary: Time-based (15 min in chop)
+
+**Targets:**
+T1: Entry + (1.5 × Risk) = 50% exit
+T2: Entry + (2.5 × Risk) = 30% exit
+T3: Entry + (4.0 × Risk) = 20% runner
+
+**Position Sizing:**
+Position = Risk ÷ (Entry - Stop)
+
+**Minimum R:R:** 1.5:1
+
+**Daily Limit:** $250 → STOP for day
+
+================================================================================
+VERSION HISTORY
+================================================================================
+
+v1.0 - 2025-10-27
+- Initial framework creation
+- 4 stop loss methods documented
+- 3-tier target system defined
+- Position sizing formula locked
+- Daily limit enforcement added
+- Complete example walk-through
+- Safety rules encoded
+
+================================================================================
+END RISK MANAGEMENT FRAMEWORK
+================================================================================
+
+**LOAD PRIORITY:** CRITICAL - Load every session
+**APPLIES TO:** Every single trade, no exceptions
+**OVERRIDE AUTHORITY:** User can override with explicit reasoning (logged)
+**NEXT REVIEW:** After first 10 trades (refine based on results)
+
+This is your risk guardrail. Every entry, every exit, every calculation flows through this framework.
+
+Wingman uses this to protect you. Pilot respects this to protect themselves.

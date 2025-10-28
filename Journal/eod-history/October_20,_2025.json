@@ -1,0 +1,86 @@
+{
+  "date": "October 20, 2025",
+  "ranAt": "2025-10-21T15:45:00Z",
+  "status": "COMPLETED",
+  "summary": "Master plan updated for October 20-21. The composite signal declined to 31.0 (WEAK) showing extreme fear at critical support levels. SPX testing 50-day MA ($6,628) for first time since May while Fear & Greed hits 29, Crypto F&G 24 (extreme fear). BTC holding $107-109k support zone despite $5.95B ETF inflows. Bifurcated economy with GDP ~4% vs 30-40% recession probability creates contrarian opportunity similar to April 8 (F&G 3 → +3% rally). Oct 29 FOMC catalyst ahead.",
+  "keyOutcomes": [
+    "Signal downgraded to WEAK (31.0/100) from previous MODERATE reflecting extreme fear conditions.",
+    "Dashboard updated with bifurcated economy narrative - strong GDP/earnings vs recession warnings.",
+    "Contrarian setup identified - institutional accumulation while retail exits at support levels.",
+    "Risk positioning defensive with MAX 25% mega-cap tech, 50% cash, 25% BTC/ETH at support."
+  ],
+  "signals": {
+    "composite": "31.0",
+    "tier": "WEAK",
+    "drivers": [
+      "Extreme Fear (F&G 29, Crypto 24)",
+      "Critical Support Test (SPX 50-day MA)",
+      "Institutional Accumulation",
+      "FOMC Catalyst Ahead (Oct 29)"
+    ],
+    "xSentiment": "Crypto 45/100 (NEUTRAL), Macro 42/100 (NEUTRAL)"
+  },
+  "actions": {
+    "completed": [
+      "Ran all scrapers and generated provider summaries.",
+      "Calculated new trading signal (31.0/100 WEAK).",
+      "Updated all sections of the master plan.",
+      "Identified contrarian accumulation opportunity at support levels."
+    ],
+    "deferred": [
+      "Deploying new capital (waiting for 50-day MA hold confirmation).",
+      "Adding new long positions (defensive posture until FOMC Oct 29).",
+      "Full risk-on allocation (limited to 25% mega-cap tech + 25% BTC/ETH)."
+    ]
+  },
+  "trendAnalysis": {
+    "signalScoreTrend": {
+      "scores": [69.63, 31.0],
+      "direction": "Declining",
+      "change": "-38.63",
+      "tierTransitions": "Downgraded from MODERATE to WEAK as fear intensified.",
+      "summary": "Signal degraded on extreme fear conditions (F&G 29) and critical support test. However, institutional accumulation ($5.95B BTC ETF inflows) suggests contrarian setup forming similar to April lows."
+    },
+    "volatilityPattern": {
+      "vixChange": "+2.1",
+      "vixChangePercent": "+11%",
+      "pattern": "Elevated",
+      "status": "Fear Spike",
+      "isUnusual": false,
+      "context": "VIX 20+ reflects fear, but not panic. Watch for VIX compression as FOMC approaches Oct 29."
+    },
+    "breadthDivergence": {
+      "isDiverging": true,
+      "consecutiveDays": "10+",
+      "historicalContext": "Advance-Decline trending lower since Nov 2024 peak while SPX hit ATH Oct 9.",
+      "implication": "Narrow leadership (45% market cap in Tech/Comm) creates fragility. Any mega-cap faltering triggers cascade risk."
+    },
+    "narrativeMomentum": {
+      "hot": [
+        {
+          "narrative": "Extreme Fear",
+          "trend": "+350%",
+          "days": "2"
+        },
+        {
+          "narrative": "FOMC Oct 29 Catalyst",
+          "trend": "+280%",
+          "days": "3"
+        },
+        {
+          "narrative": "Contrarian Setup",
+          "trend": "+220%",
+          "days": "2"
+        }
+      ],
+      "cooling": [
+        {
+          "narrative": "Risk-On Momentum",
+          "trend": "-90%",
+          "days": "1"
+        }
+      ]
+    }
+  },
+  "notes": "Workflow complete. The system is now in a maximum defensive posture. No new risk should be taken until the signal improves materially."
+}

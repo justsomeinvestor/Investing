@@ -130,3 +130,23 @@
 - **Tomorrow Prep:** Stalk buy-the-dip zones **SPX 6,690 / BTC $117K-$120K / QQQ $603**, keep NVDA 190 and Max Pain overlays on chart, wait for Michigan Sentiment, and align entries strictly with the trigger stack before pressing longs.
 
 ---
+## 📖 Journal Entries (Newest First)
+**End of Day Review - 2025-10-27 (17:56 PM )** ✅ - [Link to Detailed Journal](Log-Entries/2025-10-27_EOD_Wrap.md)
+
+- **Market Action & Signal:** Composite signal MODERATE (46/100)
+- **Trades/P&L:** 1 trades, 0 wins
+- **Daily P&L:** $-21.00 (-0.09%)
+- **Account:** $23,132.21
+- **YTD P/L:** $+3,179.52
+
+
+
+**End of Day Review - 2025-10-27 (17:12 PM )** ✅ - [Link to Detailed Journal](Log-Entries/2025-10-27_EOD_Wrap.md)
+
+- **Market Action & Signal:** Composite signal MODERATE (46/100)
+- **Trades/P&L:** 1 trades, 0 wins
+- **Daily P&L:** $+0.00 (+0.00%)
+- **Account:** $23,132.21
+- **YTD P/L:** $+3,179.52
+
+

@@ -1,0 +1,264 @@
+{
+  "metadata": {
+    "created": "2025-10-27T15:37:55Z",
+    "last_updated": "2025-10-27T15:37:55Z",
+    "version": "1.0",
+    "description": "Comprehensive trades ledger - all trades with compliance, statistics, and analysis",
+    "total_trades": 5,
+    "account_id": "D-69778033"
+  },
+  "trades": [
+    {
+      "id": 1,
+      "date": "2025-10-13",
+      "day": "Monday",
+      "symbol": "NVDA",
+      "instrument": "NVDS",
+      "direction": "short",
+      "type": "day_trade",
+      "entry_time": "~10:30 PT",
+      "exit_time": "~15:30 PT (close)",
+      "entry_price": 187.50,
+      "exit_price": 187.50,
+      "shares": 100,
+      "pnl": -100.00,
+      "pnl_percent": -0.53,
+      "setup_type": "Range fade (no confluence)",
+      "thesis": "Short continuation from morning weakness with QQQ under resistance",
+      "emotional_state": "over-eager",
+      "rule_violations": [
+        "Entered without trigger confluence (skipped monthly/weekly/daily mids)",
+        "Skipped AVWAP and gamma flip checks",
+        "No volume confirmation (no 1.3× 20-bar average)",
+        "VIX re-entry ON - should not trade naked breakdowns",
+        "QQQ filter not met (should be <600.9)"
+      ],
+      "compliance_score": 10,
+      "lessons_learned": [
+        "Direction filter: QQQ must be <600.9",
+        "Only short on rejection or break-retest, not inside range",
+        "Volume confirmation required: ≥1.3× 20-bar average",
+        "VIX re-entry ON means only trade breaks with retests",
+        "Pre-set stops critical: 190.5 on rejection shorts"
+      ],
+      "notes": "Flat day trade. Respected exit plan but entered without system confirmation. This trade triggered corrective rules."
+    },
+    {
+      "id": 2,
+      "date": "2025-10-14",
+      "day": "Tuesday",
+      "symbol": "SPY",
+      "instrument": "SPXU",
+      "direction": "short",
+      "type": "intraday",
+      "entry_time": "~10:15 PT",
+      "exit_time": "~10:20 PT",
+      "entry_price": 13.60,
+      "exit_price": 13.57,
+      "shares": 500,
+      "pnl": -15.00,
+      "pnl_percent": -0.22,
+      "setup_type": "Range fade (failed)",
+      "thesis": "Fade 663-665 SPY resistance with target toward 657-654",
+      "emotional_state": "methodical",
+      "rule_violations": [
+        "No close+retest (C+R) confirmation below 659.5",
+        "5-min 200 EMA was flat (should be falling for shorts)",
+        "ADD improving (+50) - should not fade improving breadth",
+        "Trading counter-trend without confirmation (above 20 EMA daily)"
+      ],
+      "compliance_score": 25,
+      "lessons_learned": [
+        "Require C+R confirmation before fading",
+        "Only short when 5-min 200 EMA is FALLING",
+        "Don't fade improving internals (ADD)",
+        "Counter-trend trades must be half-size minimum",
+        "Created Rule #7: SPY/SPXU short requires full trigger stack"
+      ],
+      "notes": "Quick stop. Correct resistance call but no structural confirmation. 5-min EMA shifted from down→flat→up. Excellent early exit prevented larger loss."
+    },
+    {
+      "id": 3,
+      "date": "2025-10-15",
+      "day": "Wednesday",
+      "symbol": "SPXU",
+      "instrument": "SPXU",
+      "direction": "long",
+      "type": "intraday",
+      "entry_time": "06:49:26 PT",
+      "exit_time": "08:51:28 PT",
+      "entry_price": 13.4792,
+      "exit_price": 13.63,
+      "shares": 1200,
+      "pnl": 181.00,
+      "pnl_percent": 1.35,
+      "setup_type": "Inverse ETF long (puts read)",
+      "thesis": "Followed Andy's puts read via SPXU. SPY max-pain coil trade.",
+      "emotional_state": "methodical",
+      "rule_violations": [],
+      "compliance_score": 100,
+      "lessons_learned": [
+        "Max-pain coil strategy effective when structure allows",
+        "Use inverse ETF for tactical hedges/contrarian plays",
+        "Exit as price gravitates back to max-pain area - don't chase",
+        "AVWAP and VWAP confluence = clean risk management"
+      ],
+      "notes": "Round-trip trade following Andy's expertise. Solid execution. Exited as SPY reclaimed 9-SMA and moved toward max-pain. Perfect discipline on profit-taking."
+    },
+    {
+      "id": 4,
+      "date": "2025-10-17",
+      "day": "Friday",
+      "symbol": "SOLZ",
+      "instrument": "SOLZ",
+      "direction": "long",
+      "type": "intraday",
+      "entry_time": "~08:30 PT",
+      "exit_time": "~16:00 PT",
+      "entry_price": 19.80,
+      "exit_price": 20.80,
+      "shares": 100,
+      "pnl": 100.00,
+      "pnl_percent": 5.05,
+      "setup_type": "Tactical intraday long",
+      "thesis": "Tactical intraday long; details TBD in original notes",
+      "emotional_state": "confident",
+      "rule_violations": [],
+      "compliance_score": 100,
+      "lessons_learned": [
+        "SOLZ (Solana tracking) responsive to crypto momentum",
+        "Same-session management effective for intraday swings",
+        "Daytrading discipline worked - didn't hold overnight"
+      ],
+      "notes": "Good day after market repair. Choppy ES morning (6650-6700 range), psychology remained constructive. Post-dump coiling setup."
+    },
+    {
+      "id": 5,
+      "date": "2025-10-27",
+      "day": "Monday",
+      "symbol": "SPXU",
+      "instrument": "SPXU",
+      "direction": "short",
+      "type": "intraday",
+      "entry_time": "04:46:13 PT",
+      "exit_time": "09:03:33 PT",
+      "entry_price": 12.61,
+      "exit_price": 12.54,
+      "shares": 300,
+      "pnl": -21.00,
+      "pnl_percent": -0.56,
+      "setup_type": "Mean reversion (external idea)",
+      "thesis": "9-day EMA mean reversion - Chris Lori recommendation",
+      "emotional_state": "over-eager",
+      "rule_violations": [
+        "Rule 9: C+R confirmation - SKIPPED",
+        "Rule 10: EMA filter check - SKIPPED",
+        "Rule 17: External advice verification - VIOLATED",
+        "No threat assessment performed"
+      ],
+      "compliance_score": 0,
+      "lessons_learned": [
+        "External advice from credible source still requires OUR verification",
+        "Conviction in advisor ≠ conviction in setup",
+        "Respect the process (threat assessment + rule check) more than advisor credibility",
+        "Created Rule #17: Never enter on external tip without verifying against trigger checklist"
+      ],
+      "notes": "Heard Chris say 'market should come back to 9-day EMA'. Believed in mean reversion. Entered without running threat assessment. Small loss but clear rule violation. Pattern: Over-eagerness in uncertain structure."
+    }
+  ],
+  "statistics": {
+    "overall": {
+      "total_trades": 5,
+      "winning_trades": 2,
+      "losing_trades": 3,
+      "breakeven_trades": 0,
+      "win_rate": 40.0,
+      "loss_rate": 60.0
+    },
+    "performance": {
+      "gross_pnl": 145.00,
+      "gross_wins": 281.00,
+      "gross_losses": -136.00,
+      "average_winner": 140.50,
+      "average_loser": -45.33,
+      "largest_win": 181.00,
+      "largest_loss": -100.00,
+      "profit_factor": 2.06,
+      "risk_reward_ratio": 3.10
+    },
+    "compliance": {
+      "fully_compliant_trades": 2,
+      "partial_violations": 2,
+      "full_violations": 1,
+      "compliance_percentage": 40.0,
+      "patterns": [
+        "Over-eagerness in uncertain structure (Oct 13, Oct 27)",
+        "Skipping checklist when conviction in idea is high (Oct 27)",
+        "Good discipline on exits when structure is clear (Oct 15, Oct 17)"
+      ]
+    },
+    "by_setup": {
+      "range_fade": {
+        "trades": 2,
+        "wins": 0,
+        "losses": 2,
+        "total_pnl": -115.00,
+        "win_rate": 0.0
+      },
+      "mean_reversion_external": {
+        "trades": 1,
+        "wins": 0,
+        "losses": 1,
+        "total_pnl": -21.00,
+        "win_rate": 0.0
+      },
+      "inverse_etf_hedge": {
+        "trades": 1,
+        "wins": 1,
+        "losses": 0,
+        "total_pnl": 181.00,
+        "win_rate": 100.0
+      },
+      "tactical_intraday": {
+        "trades": 1,
+        "wins": 1,
+        "losses": 0,
+        "total_pnl": 100.00,
+        "win_rate": 100.0
+      }
+    }
+  },
+  "account_impact": {
+    "starting_balance_ytd": 2952.57,
+    "trades_pnl_total": 145.00,
+    "current_balance_ytd": 3179.52,
+    "account_growth_ytd": 7.69,
+    "days_traded": 5,
+    "avg_pnl_per_day": 29.00
+  },
+  "rules_created": [
+    {
+      "rule_id": 7,
+      "created": "2025-10-14",
+      "category": "SPY_shorts",
+      "rule": "SPY/SPXU short trigger requires: C+R confirmation, EMA filter falling, volume 1.3×, ADD confirming, signal tier ≥ MODERATE",
+      "source": "Oct 14 failed fade trade",
+      "status": "active"
+    },
+    {
+      "rule_id": 17,
+      "created": "2025-10-27",
+      "category": "entries",
+      "rule": "Never enter on external tip without verifying against trigger checklist. External advice ≠ OUR thesis.",
+      "source": "Oct 27 Chris Lori 9-day EMA trade",
+      "status": "active"
+    }
+  ],
+  "next_session_priorities": [
+    "Build range-fade edge (0% currently - avoid until confluence improves)",
+    "Refine inverse ETF/hedge trades (100% win rate - continue this setup)",
+    "Improve external advice evaluation (verify before entry, not after)",
+    "Increase overall compliance from 40% to 80%+",
+    "Track daily average PnL: $29/day baseline, target $83/day for $2.5k monthly"
+  ]
+}

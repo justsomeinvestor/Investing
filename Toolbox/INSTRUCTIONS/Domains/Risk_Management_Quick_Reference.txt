@@ -1,0 +1,59 @@
+================================================================================
+RISK MANAGEMENT QUICK REFERENCE
+================================================================================
+Pocket-sized version for during-trade decisions
+
+Account Parameters (FIXED):
+├─ Balance: $23,105.83
+├─ Risk per trade: $231 (1%)
+├─ Daily limit: $250
+└─ Monthly goal: $2,500
+
+Position Sizing Formula (ALWAYS):
+Position = $231 ÷ (Entry Price - Stop Price)
+
+Stop Loss Calculation (PRIMARY):
+Stop = Entry - (1.5 × ATR)
+
+Target Calculation (ALWAYS 3-TIER):
+├─ T1 (50% exit) = Entry + (Risk × 1.5)
+├─ T2 (30% exit) = Entry + (Risk × 2.5)
+└─ T3 (20% runner) = Entry + (Risk × 4.0)
+
+BEFORE EVERY ENTRY - Run These Checks:
+☐ Confluence score 8+/10?
+☐ Stop calculated?
+☐ Targets calculated?
+☐ R:R ratio >= 1.5:1?
+☐ Cash available?
+☐ Daily loss limit not exceeded?
+☐ Position size correct?
+
+Risk/Reward Formula:
+Risk = Entry Price - Stop Price
+T1 Target = Entry + (Risk × 1.5)
+Ratio = Profit ÷ Risk
+
+If Ratio < 1.5:1 → SKIP THE TRADE
+
+Example Quick Calc:
+Entry $189.50, Stop $188.20
+├─ Risk = $1.30
+├─ Position = $231 ÷ $1.30 = 177 shares
+├─ T1 = $189.50 + $1.95 = $191.45
+├─ T2 = $189.50 + $3.25 = $192.75
+└─ T3 = $189.50 + $5.20 = $194.70
+
+Exit Rules:
+- T1 hit → Exit 50%
+- T2 hit → Exit 30%
+- T3 or stop → Exit 20% runner
+- Stop hit → Exit all, take loss, move on
+
+Safety Net:
+If daily P/L < -$250 → STOP trading
+Exception: Close existing to recover, no new entries
+
+================================================================================
+Full details: Risk_Management_Framework.txt
+================================================================================

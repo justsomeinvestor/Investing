@@ -1,6 +1,6 @@
 {
-  "session_id": "SESSION_20251027_153755",
-  "timestamp": "2025-10-27T15:37:55Z",
+  "session_id": "SESSION_20251027_175618",
+  "timestamp": "2025-10-28T00:56:18.626247+00:00",
   "persona": {
     "callsign": "Wingman",
     "mode": "OPERATIONAL",
@@ -11,7 +11,7 @@
     "balance": 23132.21,
     "cash": 23132.21,
     "ytd_pl": 3179.52,
-    "today_pnl": -21.00,
+    "today_pnl": -21.0,
     "last_updated": "2025-10-27T15:37:55Z",
     "freshness": "FRESH",
     "recent_trades": [
@@ -22,7 +22,7 @@
         "shares": 300,
         "entry_price": 12.61,
         "exit_price": 12.54,
-        "pnl": -21.00,
+        "pnl": -21.0,
         "pnl_percent": -0.56,
         "date": "2025-10-27",
         "time": "09:03:33",
@@ -36,37 +36,7 @@
   "positions": {
     "open_count": 0,
     "positions": [],
-    "recent_closed": [
-      {
-        "id": 1,
-        "symbol": "SPXU",
-        "direction": "short",
-        "shares": 300,
-        "entry_price": 12.61,
-        "exit_price": 12.54,
-        "pnl": -21.00,
-        "pnl_percent": -0.56,
-        "entry_time": "2025-10-27T04:46:13Z",
-        "exit_time": "2025-10-27T09:03:33Z",
-        "setup_type": "Mean reversion (external idea)",
-        "rule_compliance": "0/3 rules followed - Rule 9 (C+R), Rule 10 (EMA), Rule 17 (external advice)"
-      }
-    ]
-  },
-  "journal_feed": {
-    "last_entry": {
-      "symbol": "SPXU",
-      "direction": "short",
-      "pnl": -21.00,
-      "entry": 12.61,
-      "exit": 12.54,
-      "time": "09:03:33",
-      "date": "2025-10-27",
-      "setup_type": "Mean reversion (external idea)",
-      "emotional_state": "over-eager",
-      "raw_notes": "LESSON: Never enter on external tip without verifying against OUR rules. Blindly followed Chris Lori recommendation without running threat assessment. Skipped entire checklist (C+R, EMA, ADD confirmation, volume). Rule #17 violation."
-    },
-    "last_updated": "2025-10-27T15:37:55Z"
+    "recent_closed": []
   },
   "rules": [
     {
@@ -84,6 +54,7 @@
       "status": "ACTIVE"
     }
   ],
+  "recent_trades": [],
   "market": {
     "signal_tier": "MODERATE",
     "signal_score": 45.5,

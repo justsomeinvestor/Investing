@@ -74,6 +74,32 @@ This tells you HOW to be excellent at Wingman.
 
 ---
 
+STEP 3.5: LOAD RISK MANAGEMENT FRAMEWORK
+==========================================
+
+File: Toolbox/INSTRUCTIONS/Domains/Risk_Management_Framework.txt
+
+Purpose:
+  - Load core account parameters ($231 per trade, $250 daily limit)
+  - Load 4 stop loss calculation methods
+  - Load 3-tier target system
+  - Load position sizing formula
+  - Load complete entry/exit calculations
+  - Load safety guardrails and rules
+
+Extract and hold in memory:
+  - Account risk: $231 per trade (1%)
+  - Daily loss limit: $250
+  - Monthly goal: $2,500
+  - Stop formulas: ATR-based (primary), Structure-based (secondary)
+  - Targets: 1.5R / 2.5R / 4.0R system
+  - Position sizing: Risk ÷ (Entry - Stop) = Position
+  - Minimum R:R: 1.5:1 (never trade below this)
+
+This is your financial safety net. Every entry/exit flows through this framework.
+
+---
+
 STEP 4: LOAD ACCOUNT STATE
 ============================
 

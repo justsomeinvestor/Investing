@@ -11,9 +11,9 @@
 ┌─────────────────────────────────────┐
 │ OPERATIONAL STATUS: READY           │
 ├─────────────────────────────────────┤
-│ Account Balance:    $23,132.21
+│ Account Balance:    $23,105.83      │
 │ Available Cash:     $23,105.83 (✓)  │
-│ YTD P/L:            +$3,179.52
+│ YTD P/L:            +$3,152.57      │
 │ Open Positions:     0                │
 │ Alert Status:       GREEN            │
 └─────────────────────────────────────┘
@@ -52,7 +52,7 @@
 
 ## 📊 MARKET INTELLIGENCE
 
-### Key Levels (Last Updated: 2025-10-27
+### Key Levels (Last Updated: 2025-10-17)
 
 **Indices:**
 | Level | Value | Status |
@@ -82,66 +82,18 @@
 
 ---
 
-## 📝 PAPER TRADING TRACKER
-
-### How to Log Trades (Conversational)
-
-**Just tell me about your trades naturally:**
-
-```
-"Opened QQQ long 100 @ $601.25"
-→ I log it, update account, show status
-
-"Closed QQQ at $605.50"
-→ I calculate P&L, update balance, show results
-
-"Show positions" or "Show account"
-→ I display live status with all data
-```
-
-### Current Paper Account Status
-
-**Balance:** $23,105.83
-**Available Cash:** $23,105.83
-**Open Positions:** 0
-**Total P&L (YTD):** +$3,152.57
-
----
-
 ## 📋 TRADING COMMAND LOG
 
-### Current Session: 2025-10-27
+### Current Session: 2025-10-19
 
-**Status:** Ready for paper trading entries
+**No active trades. Ready for deployment.**
 
-**Recent Closed Trades (Live from positions.json):**
-- None yet this session - ready to log first trade
-
----
-
-### How to Use Paper Trading System
-
-1. **Enter a position:**
-   - Say: "Opened [TICKER] [LONG/SHORT] [SHARES] @ $[PRICE]"
-   - Example: "Opened NVDA long 50 @ $189.00"
-   - I'll log it, reduce available cash, show status
-
-2. **Exit a position:**
-   - Say: "Closed [TICKER] at $[PRICE]"
-   - Example: "Closed NVDA at $191.20"
-   - I'll calculate P&L (+$110 in this case), update balance
-
-3. **Check status:**
-   - Say: "Show positions" → See all open trades
-   - Say: "Show account" → See full account status
-   - Say: "Paper trading status" → See everything
-
-4. **All data flows to:**
-   - `Journal/positions.json` (position tracking)
-   - `Journal/account_state.json` (account state)
-   - Command Center (this display)
-   - Wingman continuity system
-   - EOD wraps (automatic journal entries)
+**Recent Trade History (Last 5):**
+1. **SQQQ** — Long (10-20) | Profitable ✓ (Defensive hedge)
+2. **SOLZ** — Long (10-17) | +$100 ✓
+3. **NVDA** — Short (10-13) | -$100 ✗
+4. **SPXU** — Long (10-15) | +$181 ✓
+5. **SPY Short** — Via SPXU (10-14) | -$15 ✗
 
 ---
 
@@ -430,7 +382,7 @@ Wingman loads all yesterday's data, refreshes market signal, and you're ready to
 ## 📞 WINGMAN ALWAYS READY
 
 **Session Status:** ✅ OPERATIONAL
-**Last Updated: 2025-10-27
+**Last Updated:** 2025-10-19 19:13 UTC
 **Data Freshness:** FRESH
 
 **Your command, Pilot.** What's the mission?
