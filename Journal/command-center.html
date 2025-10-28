@@ -220,14 +220,6 @@
         .btn-secondary { background: rgba(99, 102, 241, 0.15); color: #6366f1; border: 1px solid rgba(99, 102, 241, 0.3); }
         .btn-secondary:hover { background: rgba(99, 102, 241, 0.25); }
 
-        /* Signal Compact */
-        .signal-compact { text-align: center; }
-        .signal-score-compact { font-size: 2.5em; font-weight: 700; background: linear-gradient(45deg, #6366f1, #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .signal-tier-compact { font-size: 0.95em; font-weight: 600; margin-top: 4px; }
-        .signal-delta-compact { font-size: 0.85em; margin-top: 4px; }
-        .signal-delta-compact.positive { color: #10b981; }
-        .signal-delta-compact.negative { color: #ef4444; }
-
         /* Session Stats */
         .stat-block { text-align: center; padding: 12px; background: rgba(99, 102, 241, 0.08); border-radius: 8px; margin-bottom: 10px; }
         .stat-value { font-size: 1.5em; font-weight: 700; color: #6366f1; }
@@ -264,8 +256,8 @@
     </div>
 
     <div class="container">
-        <!-- ROW 1: COMPACT ACCOUNT + MARKET SIGNAL + MONTHLY GOAL (THREE COLUMN) -->
-        <div class="grid three-column">
+        <!-- ROW 1: COMPACT ACCOUNT + MONTHLY GOAL (TWO COLUMN) -->
+        <div class="grid two-column">
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">Trading Status</div>
@@ -291,17 +283,6 @@
                         <span id="loss-used">$21 / $250</span>
                         <span class="limit-status" id="loss-status">SAFE</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Market Signal</div>
-                </div>
-                <div class="signal-compact">
-                    <div class="signal-score-compact" id="signal-score">--</div>
-                    <div class="signal-tier-compact" id="signal-tier">UNKNOWN</div>
-                    <div class="signal-delta-compact" id="signal-delta"></div>
                 </div>
             </div>
 
@@ -423,13 +404,12 @@
         <div class="grid full-width">
             <div class="card portfolio-card">
                 <div class="card-header">
-                    <div class="card-title">Portfolio Command Deck</div>
+                    <div class="card-title">Long Term Portfolio</div>
                     <div class="portfolio-subtitle">Situational read • refreshed with each dashboard sync</div>
                 </div>
                 <div class="portfolio-highlight">
                     <div class="portfolio-band">
                         <div class="portfolio-band-title">⚡ Active Stance</div>
-                        <div class="portfolio-band-meta">Crypto-led offense with cash shield primed for asymmetric entries</div>
                     </div>
                     <div class="portfolio-chips">
                         <span class="portfolio-chip">💰 Liquidity Ready: $46K</span>
@@ -440,7 +420,7 @@
                 <div class="portfolio-thesis">
                     <div class="portfolio-section-title">🧭 Portfolio Thesis</div>
                     <p class="card-detail" style="margin-bottom: 12px;">
-                        Core positioning leans on crypto momentum with ample cash kept ready for asymmetric shots in equities.
+                        Core positioning leans on crypto momentum with ample cash kept ready for asymmetric shots in equities. 
                     </p>
                     <ul>
                         <li>🔒 Maintain BTC and ETH core stack while trimming back only if allocation creeps above 55% of total capital.</li>
@@ -672,22 +652,6 @@
                 const todayEl = document.getElementById('today-pnl');
                 todayEl.textContent = `$${Math.abs(todayPnl).toLocaleString('en-US', {maximumFractionDigits: 2})}`;
                 todayEl.className = `metric-value ${todayPnl >= 0 ? 'positive' : 'negative'}`;
-
-                // Update Market Signal
-                const signalScore = state.market?.signal_score || 0;
-                const signalTier = state.market?.signal_tier || 'UNKNOWN';
-                const delta = state.market?.delta || 0;
-
-                document.getElementById('signal-score').textContent = signalScore.toFixed(1);
-                document.getElementById('signal-tier').textContent = signalTier;
-                document.getElementById('signal-tier').className = `signal-tier-compact ${signalTier.toLowerCase().replace(/\s+/g, '-')}`;
-
-                const deltaEl = document.getElementById('signal-delta');
-                if (delta !== 0) {
-                    const deltaText = delta > 0 ? `+${delta.toFixed(1)}` : delta.toFixed(1);
-                    deltaEl.textContent = deltaText;
-                    deltaEl.className = delta > 0 ? 'signal-delta-compact positive' : delta < 0 ? 'signal-delta-compact negative' : 'signal-delta-compact';
-                }
 
                 // Update Daily Loss Limit
                 updateLossLimitDisplay(todayPnl);

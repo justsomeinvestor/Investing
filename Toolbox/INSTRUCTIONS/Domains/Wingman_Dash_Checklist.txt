@@ -1,0 +1,279 @@
+═════════════════════════════════════════════════════════════════════════════
+WINGMAN DASH PRE-COMPLETION CHECKLIST
+═════════════════════════════════════════════════════════════════════════════
+
+Use this checklist before declaring "wingman dash complete" to prevent YAML
+syntax errors and ensure dashboard integrity.
+
+═════════════════════════════════════════════════════════════════════════════
+
+⚠️  CRITICAL PHILOSOPHY: CONTENT FIRST, TIMESTAMP SECOND
+═════════════════════════════════════════════════════════════════════════════
+
+THE TIMESTAMP IS VERIFICATION ONLY - NOT AN ACTION TRIGGER
+
+Correct Workflow:
+1. CHECK timestamp → identify stale sections (>24 hours old)
+2. UPDATE SECTION CONTENT with fresh Oct 28 research data
+   - Extract new signal scores from signal_2025-10-28.json
+   - Extract new technical prices/analysis from Technical_Category_Overview
+   - Extract new sentiment scores from X summary files
+   - Extract new whale/institutional data
+   - Replace OLD narratives/insights with NEW Oct 28 data
+3. THEN update timestamp as verification that content is fresh
+
+WRONG Workflow (DO NOT DO THIS):
+- DO NOT update timestamp without updating content
+- DO NOT assume "timestamp update" means dashboard is current
+- DO NOT skip content verification step
+
+The timestamp is PROOF that section content is fresh, not a substitute for it.
+
+═════════════════════════════════════════════════════════════════════════════
+
+PHASE COMPLETION CHECKS
+═════════════════════════════════════════════════════════════════════════════
+
+✓ PHASE 1: Automated Scripts (4 sec)
+  [ ] Oct 28 signal data loaded
+  [ ] Market sentiment overview synthesized
+  [ ] All 4-category consensus extracted
+
+✓ PHASE 2: Stale Sections Identified
+  [ ] Dashboard metadata parsed
+  [ ] Sentiment cards identified
+  [ ] Risk items mapped
+  [ ] Portfolio recommendations extracted
+  [ ] Markets intelligence sections listed
+  [ ] All tab dependencies documented
+
+✓ PHASE 3: CONTENT UPDATED WITH FRESH RESEARCH DATA (DO THIS BEFORE PHASE 4)
+
+  [ ] Daily Planner section:
+      - Signal score updated from research JSON (e.g., 45.5 → 70)
+      - Entry zones updated with current technical levels
+      - Breadth narrative updated with A/D ratio & new highs data
+      - Action checklist replaced with Oct 28 priorities
+      (Do NOT just change date - update all narratives)
+
+  [ ] X Sentiment tab:
+      - Crypto/Macro sentiment scores updated from X summaries
+      - Whale movement data added ($727M BTC, $221M SOL, etc.)
+      - Sentiment breakdown refreshed
+      (Do NOT just change date - add new data)
+
+  [ ] Technicals tab:
+      - SPX/BTC/QQQ prices updated to current session (6,875, $114,512, etc.)
+      - Moving average distances recalculated
+      - Breadth metrics updated (A/D ratio, new highs, etc.)
+      - Technical analysis narrative updated
+      (Do NOT just change date - update all price data)
+
+  [ ] Supporting sections:
+      - Markets Intelligence: Replace old quotes with fresh Oct 28 narrative
+      - Crypto Markets: Add whale positioning data
+      - News Catalysts: Update RSS summary for current day
+      (Do NOT just change date - replace content)
+
+✓ PHASE 4: TIMESTAMP UPDATES (ONLY AFTER CONTENT IS UPDATED)
+  [ ] All timestamps synchronized to current UTC
+  [ ] 34+ timestamp fields updated (one for each section)
+  [ ] Confirm ALL stale sections now have fresh content BEFORE timestamping
+  [ ] No timestamps updated without corresponding content refresh
+
+✓ PHASE 4.5: MANDATORY VERIFICATION SCRIPT (BLOCKING REQUIREMENT)
+  [ ] Run verification script:
+      python scripts/utilities/verify_timestamps.py --date 2025-10-28
+      (Replace 2025-10-28 with current date YYYY-MM-DD)
+
+  [ ] Check verification output:
+      Expected: "[OK] All sections are current! [OK] 100% data freshness"
+
+      CRITICAL: If health < 100%:
+      - DO NOT PROCEED to PHASE 5
+      - Identify stale sections in verification output
+      - Update those timestamps to current UTC date
+      - Re-run verification script
+      - Repeat until 100% health achieved
+
+  [ ] Success criteria:
+      - Verification must show: "34/34 current" (or appropriate count)
+      - Health status must be: "100% data freshness"
+      - All timestamp fields must be: "2025-10-28T04:30:00Z" (current date)
+
+═════════════════════════════════════════════════════════════════════════════
+
+YAML SYNTAX VALIDATION (CRITICAL)
+═════════════════════════════════════════════════════════════════════════════
+
+REQUIRED: Run validation before declaring complete!
+
+[ ] Run validation command:
+    python Toolbox/validate_yaml.py
+
+    Expected output: ✅ YAML validation passed
+
+    If ❌ ERROR appears:
+    - Do NOT declare complete
+    - Fix YAML errors immediately (see YAML RULES below)
+    - Re-run validation
+    - Repeat until ✅ passes
+
+═════════════════════════════════════════════════════════════════════════════
+
+YAML SYNTAX RULES (Prevent indentation errors)
+═════════════════════════════════════════════════════════════════════════════
+
+When editing aiInterpretation sections, follow these rules STRICTLY:
+
+1. ALWAYS QUOTE VALUES containing special characters:
+   ❌ WRONG:  summary: FOMC Oct 29 (Oct 27: 45.5) dovish expected
+   ✅ RIGHT:  summary: 'FOMC Oct 29 (Oct 27: 45.5) dovish expected'
+
+   Special characters requiring quotes:
+   • Colons with spaces: (Oct 27: 45.5)
+   • Parentheses: (critical), (high), (optional)
+   • Question marks at start: ?Why
+   • Hash symbols at start: #trending
+   • Ampersands: Smith & Jones
+   • Asterisks at start: *Important
+   • Brackets: [action] or {key: value}
+
+2. ALWAYS QUOTE all aiInterpretation field values by default:
+   [ ] updatedAt: '2025-10-28T04:30:00Z'  (quoted)
+   [ ] summary: 'Your text here...' (quoted)
+   [ ] keyInsight: 'Your insight...' (quoted)
+   [ ] action: 'Action items...' (quoted)
+   [ ] sentiment: 'Bullish/Bearish/Neutral' (quoted)
+   [ ] confidence: 'High/Medium/Low' (quoted)
+
+3. SAFE to leave unquoted:
+   ✅ Simple sentences: This is a summary
+   ✅ Numbers: 70 or 45.5
+   ✅ ISO dates: 2025-10-28T04:30:00Z
+   ✅ Simple phrases: MODERATE-HIGH BULLISH
+
+4. For very long strings (>120 characters):
+   Consider using multiline syntax:
+
+   summary: |
+     This is a long summary that spans
+     multiple lines and preserves line breaks.
+
+   OR for flowing text:
+
+   summary: >
+     This is a long summary that will be wrapped
+     into a single paragraph automatically.
+
+═════════════════════════════════════════════════════════════════════════════
+
+CONTENT VALIDATION
+═════════════════════════════════════════════════════════════════════════════
+
+Data Accuracy:
+[ ] Signal score reflects current market consensus
+[ ] Sentiment cards match portfolio recommendation
+[ ] Risk items list current catalysts (not stale dates)
+[ ] Entry zones (SPX, BTC, QQQ) match technical levels
+[ ] Allocation percentages sum to 100%
+[ ] Account balance updated from Journal/account_state.json
+[ ] All target prices reasonable from current levels
+
+Structure Integrity:
+[ ] No duplicate risk items
+[ ] No stale timestamps remaining
+[ ] All portfolio recommendations have rationale
+[ ] All action items specific (not generic)
+[ ] Quick actions have realistic urgency levels
+[ ] Dashboard cards use consistent color scheme
+[ ] No broken markdown links or references
+
+═════════════════════════════════════════════════════════════════════════════
+
+DASHBOARD RENDERING CHECK
+═════════════════════════════════════════════════════════════════════════════
+
+Visual verification (if available):
+[ ] Dashboard loads without errors
+[ ] Sentiment cards display correctly
+[ ] Risk items render properly
+[ ] Portfolio section readable
+[ ] Markets tab data visible
+[ ] Quick actions appear clickable
+[ ] No truncated or overlapping text
+
+═════════════════════════════════════════════════════════════════════════════
+
+FINAL VERIFICATION
+═════════════════════════════════════════════════════════════════════════════
+
+Before declaring "wingman dash complete":
+
+[ ] YAML validation passed (✅ required)
+[ ] Verification script passed (✅ REQUIRED - 100% health)
+[ ] All content accurate and current
+[ ] All timestamps synchronized
+[ ] No syntax errors visible
+[ ] Dashboard rendering confirmed
+[ ] Signal score updated
+[ ] Portfolio recommendations actionable
+[ ] Risk items reflect current catalysts
+[ ] Entry zones match technical setup
+[ ] Checklist completed in full
+[ ] All 34 timestamp fields at current UTC date
+
+═════════════════════════════════════════════════════════════════════════════
+
+COMMON ERRORS & FIXES
+═════════════════════════════════════════════════════════════════════════════
+
+Error: "bad indentation of a mapping entry"
+Cause: Unquoted string with colons
+Fix: Add single quotes around the value
+Example:
+  ❌ summary: Fear & Greed 40 (Oct 27: 45.5) = caution
+  ✅ summary: 'Fear & Greed 40 (Oct 27: 45.5) = caution'
+
+Error: "found undefined alias"
+Cause: Reference to missing YAML anchor
+Fix: Check that all &id and *id references exist
+
+Error: "expected <block end>, but found <scalar>"
+Cause: Indentation inconsistency
+Fix: Check indentation matches surrounding entries (2-space standard)
+
+═════════════════════════════════════════════════════════════════════════════
+
+QUICK REFERENCE: PHASES & TIMING
+═════════════════════════════════════════════════════════════════════════════
+
+PHASE 1: Automated Scripts          ~4 sec   (Auto, no issues expected)
+PHASE 2: Identify Stale Sections    ~1 min   (Auto, just reading)
+PHASE 3: Update Sections            ~20 min  (Manual edits, watch for YAML!)
+PHASE 4: Verify Timestamps          ~2 min   (Auto check)
+PHASE 4.5: Verification Script      ~1 min   (BLOCKING - 100% health required)
+PHASE 5: Generate Recommendations   ~5 min   (Auto, no issues expected)
+PHASE 6: Report Status              ~1 min   (Summary only)
+
+YAML VALIDATION:                     ~30 sec  (RUN BEFORE COMPLETE!)
+SCRIPT VERIFICATION:                 ~1 min   (MANDATORY - blocks PHASE 5!)
+
+═════════════════════════════════════════════════════════════════════════════
+
+SIGN-OFF
+═════════════════════════════════════════════════════════════════════════════
+
+Only declare "wingman dash complete" when ALL checkboxes are marked:
+
+Date: ________________
+Time: ________________
+Validation Status: ✅ PASSED / ❌ FAILED
+Notes: _________________________________________________________________
+
+═════════════════════════════════════════════════════════════════════════════
+
+Document Version: 1.0
+Created: October 28, 2025
+Last Updated: October 28, 2025
+Purpose: Prevent YAML syntax errors in wingman dash updates

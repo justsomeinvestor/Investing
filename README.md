@@ -2,6 +2,17 @@
 
 A restored working copy of my full-stack market operations workspace: structured research data, automation scripts, and the visual dashboard that I review each trading session. The repo keeps the source data (`master-plan/master-plan.md`), rendered dashboard (`master-plan/research-dashboard.html`), guides, and helper tooling in one place so it is easy to see **what the project is** and ship updates to GitHub.
 
+## For Claude Code Users (Wingman System)
+
+**If you're using Claude Code as your Wingman trading partner:**
+
+- Start here: **[CLAUDE.md](./CLAUDE.md)** — Project rules, planning protocols, and Wingman system overview
+- Load instructions: **[Toolbox/INSTRUCTIONS/Domains/How_to_Load_Wingman.txt](./Toolbox/INSTRUCTIONS/Domains/How_to_Load_Wingman.txt)** — Complete Wingman load workflow (10 steps)
+- Quick commands: **[Toolbox/INSTRUCTIONS/Domains/Wingman_Quick_Commands_Cheat_Sheet.txt](./Toolbox/INSTRUCTIONS/Domains/Wingman_Quick_Commands_Cheat_Sheet.txt)** — One-page reference for all commands
+- Core protocol: **[Toolbox/INSTRUCTIONS/Domains/Journal_Trading_Partner_Protocol.txt](./Toolbox/INSTRUCTIONS/Domains/Journal_Trading_Partner_Protocol.txt)** — Wingman's operating bible
+
+**Activate with:** `"i know kung fu"` (from The Matrix — symbolizes full awakening with complete context)
+
 ## Core Components
 
 | Path | Purpose |

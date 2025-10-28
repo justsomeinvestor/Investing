@@ -6,7 +6,7 @@
 
 ## 🎯 What's Available
 
-Three powerful quick action buttons in your Command Center:
+Five powerful quick actions for your trading workflow:
 
 ### 1. 🔍 **Wingman Recon**
 - **Trigger:** Click button or say "Wingman Recon"
@@ -15,14 +15,35 @@ Three powerful quick action buttons in your Command Center:
 - **Status:** Shows real-time notification
 - **Use when:** Want fresh market data from all sources
 
-### 2. 📊 **Daily Plans**
+### 2. 🗺️ **Wingman Prep**
+- **Trigger:** Say "wingman prep"
+- **What it does:** Manual AI research workflow (Steps 0-4)
+- **Executes:** Claude reads raw data, creates 16+ provider summaries + market sentiment overview
+- **Outputs:** Creates 16+ markdown files + calculates composite signal score
+- **Status:** Real-time updates through conversation (not automated)
+- **Time:** ~30-45 minutes
+- **Prerequisites:** Must run "wingman recon" first
+- **Use when:** Daily research analysis after fresh data collection
+
+### 3. 📊 **Wingman Dash**
+- **Trigger:** Say "wingman dash"
+- **What it does:** Update dashboard with research data (Steps 6-9)
+- **Executes:** Python automated scripts + AI narrative updates for stale sections
+- **Outputs:** Updates master-plan.md, refreshes dashboard visualization
+- **Status:** Real-time updates through conversation
+- **Time:** ~20-60 minutes (depending on stale sections)
+- **Prerequisites:** Must have completed "wingman prep" workflow first
+- **Use when:** After research workflow completes, before daily trading
+- **Details:** Runs automated phase checks, identifies stale sections, updates with fresh AI narratives
+
+### 4. 📊 **Daily Plans**
 - **Trigger:** Click button or say "Create daily trade plans"
 - **What it does:** Generates bullish/bearish trade plans
 - **Executes:** Daily trade plan workflow
 - **Status:** Shows real-time notification
 - **Use when:** 9:30 AM to get ready-to-trade plans for the day
 
-### 3. 🎲 **Signals**
+### 5. 🎲 **Signals**
 - **Trigger:** Click button or say "Generate signals"
 - **What it does:** Creates quality-scored trading signals
 - **Executes:** Signals quality scoring workflow
@@ -170,7 +191,7 @@ Entry: 5650-5655 | Stop: 5600 | Target: 5700
 
 ## 🔊 Voice Commands
 
-You can also trigger these via voice commands to Claude:
+You can trigger these via voice commands to Claude:
 
 ### Wingman Recon
 ```
@@ -179,6 +200,24 @@ or
 "Run market scanners"
 or
 "Get fresh market data"
+```
+
+### Wingman Prep (Research Workflow)
+```
+"Wingman prep"
+or
+"Run research workflow"
+or
+"Create research summaries"
+```
+
+### Wingman Dash (Dashboard Update)
+```
+"Wingman dash"
+or
+"Update dashboard"
+or
+"Sync research to dashboard"
 ```
 
 ### Daily Plans
@@ -205,15 +244,27 @@ or
 
 ### Morning (9:30 AM)
 ```
-1. Click: 🔍 Wingman Recon
+1. Click/Say: 🔍 Wingman Recon
    └─ Wait for completion (1-2 minutes)
    └─ Fresh market data ready
 
-2. Click: 📊 Daily Plans
+2. Say: 🗺️ Wingman Prep
+   └─ Wait for completion (30-45 minutes)
+   └─ 16+ research summaries + signal score calculated
+
+3. Say: 📊 Wingman Dash
+   └─ Wait for completion (20-60 minutes)
+   └─ Dashboard updated with fresh research
+
+4. Click: 📊 Daily Plans
    └─ Wait for completion (30 seconds)
    └─ See bullish/bearish plans for each ticker
 
-3. Review plans
+5. Click: 🎲 Signals
+   └─ Wait for completion (30 seconds)
+   └─ Quality-scored trading opportunities
+
+6. Review plans & signals
    └─ Pick 1-2 best setups
    └─ Set entry alerts
 ```

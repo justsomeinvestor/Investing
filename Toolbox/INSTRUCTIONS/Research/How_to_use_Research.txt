@@ -75,7 +75,7 @@ Replace all instances of `YYYY-MM-DD` in this document with today's actual date 
 
 1. **Use TodoWrite tool** to track all 5 steps and mark each completed
 2. **STEP 0A: Verify scrapers have completed** - User will run scrapers manually, ASK USER to confirm completion
-3. **STEP 0B: Run web searches in parallel** - Execute 8 searches simultaneously (2-3 min)
+3. **STEP 0B: Run web searches in parallel** - Execute 8 searches using WebSearch tool (NOT firecrawl - costs API calls) - 2-3 min
 4. **STEP 0C: Verify all data is present** - Check that scraper outputs + web search data exist before Step 1
 5. **Create 7 technical summaries early** - These are blocking requirements
 6. **Use parallel tool calls** when independent - maximize speed (see Step 1.3 parallel optimization)
@@ -89,6 +89,73 @@ Replace all instances of `YYYY-MM-DD` in this document with today's actual date 
    - **NO EXCEPTIONS:** Fresh data from ALL sources, EVERY RUN, WITHOUT FAIL
    - **CACHING STRATEGY:** System may cache old data to avoid re-downloading unchanged sources, but primary goal is FRESH data input in real-time as possible
 8. **Always report completion** - Use the full report format with all 16 files verified
+
+================================================================================
+🔧 **YAML EDITING GUIDELINES FOR WINGMAN DASH & MASTER-PLAN.MD - CRITICAL**
+================================================================================
+
+When updating master-plan.md or other YAML files, follow these rules STRICTLY
+to prevent indentation errors and syntax failures.
+
+**MANDATORY QUOTING RULES (Prevent YAML parsing errors):**
+
+1. ALWAYS QUOTE values containing special characters:
+   ❌ WRONG:  summary: FOMC Oct 29 (Oct 27: 45.5) dovish expected
+   ✅ RIGHT:  summary: 'FOMC Oct 29 (Oct 27: 45.5) dovish expected'
+
+   Characters that REQUIRE quoting:
+   • Colons with spaces: "Oct 27: 45.5"
+   • Parentheses with content: "(Oct 27: 45.5)" or "(critical)"
+   • Question marks at start: "?Why did this happen"
+   • Hash symbols at start: "#trending"
+   • Ampersands: "Smith & Jones"
+   • Asterisks at start: "*Important"
+   • Square brackets: "[action]"
+   • Curly braces: "{key: value}"
+
+2. ALWAYS QUOTE all aiInterpretation field values by default:
+   ✓ updatedAt: '2025-10-28T04:30:00Z'
+   ✓ summary: 'Your text here with special chars: like this'
+   ✓ keyInsight: 'Your insight with colons: will work'
+   ✓ action: 'Action items (with parens): work fine'
+   ✓ sentiment: 'Bullish (institutional accumulation)'
+   ✓ confidence: 'High (4-source consensus)'
+
+3. SAFE to leave unquoted:
+   ✓ Simple sentences without special chars: "This is a summary"
+   ✓ Pure numbers: 70 or 45.5
+   ✓ ISO dates: 2025-10-28T04:30:00Z
+   ✓ Simple phrases with hyphens: MODERATE-HIGH BULLISH
+
+4. For very long strings (>120 characters), use multiline syntax:
+   summary: |
+     This is a long summary that spans multiple lines.
+     It preserves line breaks and handles special characters safely.
+
+**VALIDATION BEFORE COMPLETING:**
+
+After making dashboard edits, ALWAYS run:
+  python Toolbox/validate_yaml.py
+
+Expected output: ✅ YAML validation passed
+
+If ❌ ERROR appears:
+  1. Note the line number (e.g., "line 130:139")
+  2. Find that line in master-plan.md
+  3. Look for unquoted strings with special characters
+  4. Add single quotes around the value
+  5. Re-run validation
+  6. Repeat until ✅ passes
+
+**REFERENCE CHECKLIST:**
+
+See Toolbox/INSTRUCTIONS/Domains/Wingman_Dash_Checklist.txt for:
+  - Full pre-completion validation checklist
+  - YAML syntax rules with examples
+  - Common errors and fixes
+  - Sign-off procedure
+
+================================================================================
 
 **CRITICAL WORKFLOW SAFEGUARDS (Prevent Blocking Failures):**
 

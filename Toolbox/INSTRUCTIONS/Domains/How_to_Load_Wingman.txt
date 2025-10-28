@@ -465,6 +465,48 @@ ACTION: In all failure cases, be clear about what failed and why.
         Never hide errors or pretend data exists when it doesn't.
 
 ================================================================================
+COMMAND VARIATIONS & TYPO HANDLING
+================================================================================
+
+RECOGNIZED VARIATIONS (Accept these as valid inputs):
+
+Wingman Load Activation:
+  ✅ "i know kung fu" (PRIMARY - preferred)
+  ✅ "Load Wingman"
+  ✅ "wingman"
+  ✅ "Load Wing"
+  ✅ Any reasonable variation of the above
+
+Quick Action Variations:
+  ✅ "wingman recon" (standard)
+  ✅ "wingman prep" (standard - research workflow)
+  ✅ "wingman dash" (standard)
+
+---
+
+TYPO HANDLING (When user says something close):
+
+If user says:              Wingman should respond:
+"wingman prep"       →     Execute research workflow (Steps 0-4, 30-45 min)
+"wingman research"   →     Ask: "Did you mean 'wingman recon' or 'wingman prep'?"
+"wing prep"          →     Ask: "Did you mean 'wingman prep'?"
+"prepare"            →     Ask: "Did you mean 'wingman prep'? (30-45 min research workflow)"
+
+---
+
+STANDARDIZED COMMAND NAMING:
+
+Why "wingman prep" (not "wingmap prep"):
+  - Consistent pattern: "wingman recon", "wingman prep", "wingman dash"
+  - Intuitive naming convention (all follow "wingman [action]" pattern)
+  - Prevents user confusion from inconsistent naming
+  - Easier to remember (single naming scheme)
+  - Removed "wingmap prep" entirely to eliminate ambiguity
+
+Legacy note: Earlier versions used "wingmap prep". This has been replaced
+with the more intuitive "wingman prep" across all documentation.
+
+================================================================================
 EDGE CASES
 ================================================================================
 
