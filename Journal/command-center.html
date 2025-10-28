@@ -242,6 +242,43 @@
             .grid.two-column, .grid.three-column { grid-template-columns: 1fr; }
             h1 { font-size: 1.5em; }
         }
+
+        /* Live Trade Tracker Specific Styles */
+        .live-trade-card { background: radial-gradient(circle at top, rgba(16, 185, 129, 0.1), rgba(99, 102, 241, 0.12) 50%, rgba(10, 12, 38, 0.95) 100%); border: 2px solid rgba(16, 185, 129, 0.3); }
+        .trade-status-badge { background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 0.85em; font-weight: 600; }
+        .trade-details-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+        .trade-detail-item { display: flex; flex-direction: column; gap: 6px; }
+        .detail-label { font-size: 0.75em; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; }
+        .detail-value { font-size: 1.3em; font-weight: 700; color: #e0e6f0; }
+        .stop-target-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+        .stop-box, .target-box { background: rgba(10, 14, 39, 0.6); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 14px; }
+        .target-box { border-color: rgba(16, 185, 129, 0.3); }
+        .box-label { font-size: 0.75em; color: #9ca3af; margin-bottom: 8px; text-transform: uppercase; }
+        .box-value { font-size: 1.5em; font-weight: 700; color: #ef4444; }
+        .target-box .box-value { color: #10b981; }
+        .box-detail { font-size: 0.8em; color: #9ca3af; margin-top: 4px; }
+        .fib-levels-section { background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 10px; padding: 16px; margin-bottom: 20px; }
+        .section-title { font-size: 0.85em; font-weight: 600; color: #9fb4ff; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
+        .fib-levels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .fib-item { display: flex; flex-direction: column; gap: 6px; }
+        .fib-item.highlight { background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 8px; }
+        .fib-label { font-size: 0.75em; color: #9ca3af; }
+        .fib-value { font-size: 1.1em; font-weight: 600; color: #e0e6f0; }
+        .thesis-section { background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 10px; padding: 16px; margin-bottom: 20px; }
+        .thesis-text { color: #e0e6f0; font-size: 0.9em; line-height: 1.6; margin-bottom: 10px; }
+        .rule-badge { display: inline-block; background: rgba(139, 92, 246, 0.2); color: #c4b5fd; padding: 6px 12px; border-radius: 6px; font-size: 0.8em; font-weight: 600; }
+        .wingman-opinion-section { background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 10px; padding: 16px; margin-bottom: 20px; }
+        .threat-indicator { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .threat-dot { width: 12px; height: 12px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.8); }
+        .threat-dot.yellow { background: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.8); }
+        .threat-dot.red { background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.8); }
+        .threat-text { font-size: 1em; font-weight: 600; color: #10b981; }
+        .opinion-analysis { font-size: 0.85em; line-height: 1.7; color: #e0e6f0; margin-bottom: 12px; }
+        .opinion-analysis div { margin-bottom: 6px; }
+        .decision-prompt { background: rgba(245, 158, 11, 0.15); border-left: 3px solid #f59e0b; padding: 10px 12px; border-radius: 6px; color: #fcd34d; font-size: 0.85em; font-weight: 600; line-height: 1.5; }
+        .confluence-section { background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 10px; padding: 16px; }
+        .confluence-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .confluence-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 0.75em; font-weight: 600; color: #e5edff; background: rgba(79, 70, 229, 0.28); border: 1px solid rgba(165, 180, 252, 0.35); border-radius: 999px; }
     </style>
 </head>
 <body>
@@ -327,49 +364,116 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Pre-Entry Threat Assessment Checklist</div>
+                    <div class="card-title">Pre-Entry Threat Assessment Checklist (v2.1 - 18 Items)</div>
+                    <div style="font-size: 0.8em; color: #9ca3af;">
+                        <select id="setup-type-filter" onchange="filterChecklistBySetupType(this.value)" style="background: rgba(99,102,241,0.2); color: #e0e6f0; border: 1px solid rgba(99,102,241,0.3); padding: 4px 8px; border-radius: 4px; margin-right: 10px;">
+                            <option value="all">All Items (General Entry)</option>
+                            <option value="extension_sell">Extension SELL Setup (Rule #20)</option>
+                            <option value="pullback_buy">Pullback BUY Setup (Rule #20)</option>
+                        </select>
+                    </div>
                 </div>
                 <div id="threat-checklist">
+                    <!-- TECHNICAL STRUCTURE SECTION -->
+                    <div style="margin-top: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(99,102,241,0.2); font-size: 0.75em; color: #9fb4ff; text-transform: uppercase; font-weight: 600;">🔧 TECHNICAL STRUCTURE</div>
                     <div class="checklist-item">
                         <div class="checkbox" onclick="toggleCheck(this)">✓</div>
-                        <label class="checklist-label">C+R Confirmation (close+retest)</label>
+                        <label class="checklist-label">1. C+R Confirmation (close+retest)</label>
                     </div>
                     <div class="checklist-item">
                         <div class="checkbox" onclick="toggleCheck(this)">✓</div>
-                        <label class="checklist-label">EMA Filter (5-min 200 EMA direction)</label>
+                        <label class="checklist-label">2. RSI Level Check (extremes >80 or <20)</label>
                     </div>
                     <div class="checklist-item">
                         <div class="checkbox" onclick="toggleCheck(this)">✓</div>
-                        <label class="checklist-label">Volume ≥ 1.3× 20-bar average</label>
+                        <label class="checklist-label">3. 50% Fib Pullback Area (confluence point)</label>
                     </div>
                     <div class="checklist-item">
                         <div class="checkbox" onclick="toggleCheck(this)">✓</div>
-                        <label class="checklist-label">ADD Confirmation (breadth direction)</label>
+                        <label class="checklist-label">4. 127% / 168% Extension Area (reversal zones)</label>
                     </div>
                     <div class="checklist-item">
                         <div class="checkbox" onclick="toggleCheck(this)">✓</div>
-                        <label class="checklist-label">Signal Tier ≥ MODERATE</label>
+                        <label class="checklist-label">5. Divergence Present? (momentum vs price)</label>
                     </div>
                     <div class="checklist-item">
                         <div class="checkbox" onclick="toggleCheck(this)">✓</div>
-                        <label class="checklist-label">Risk Calculated ($231 max)</label>
+                        <label class="checklist-label">5b. VWAP Extension Trigger (yellow/orange/red arrow)</label>
                     </div>
-                    <div class="checklist-status notready" id="checklist-status">✗ CRITERIA NOT MET - WAIT</div>
+
+                    <!-- MOMENTUM & VOLUME SECTION -->
+                    <div style="margin-top: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(99,102,241,0.2); font-size: 0.75em; color: #9fb4ff; text-transform: uppercase; font-weight: 600;">📊 MOMENTUM & VOLUME</div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">6. EMA Filter (5-min 200 EMA direction)</label>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">7. Volume ≥ 1.3× 20-bar average</label>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">8. ADD Confirmation (breadth direction)</label>
+                    </div>
+
+                    <!-- MARKET CONTEXT SECTION -->
+                    <div style="margin-top: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(99,102,241,0.2); font-size: 0.75em; color: #9fb4ff; text-transform: uppercase; font-weight: 600;">🌍 MARKET CONTEXT</div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">9. Signal Tier ≥ MODERATE</label>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">10. Higher Timeframe Alignment (daily/weekly trend)</label>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">11. Volatility Pattern (consolidation/breakout/squeeze)</label>
+                    </div>
+
+                    <!-- RISK MANAGEMENT SECTION -->
+                    <div style="margin-top: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(99,102,241,0.2); font-size: 0.75em; color: #9fb4ff; text-transform: uppercase; font-weight: 600;">💰 RISK MANAGEMENT</div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">12. Risk Calculated ($231 max / 1% account)</label>
+                    </div>
+
+                    <!-- RULE #20 EXTENSION SELL SECTION -->
+                    <div style="margin-top: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(245,158,11,0.3); background: rgba(245,158,11,0.08); padding: 8px; border-radius: 6px; font-size: 0.75em; color: #fcd34d; text-transform: uppercase; font-weight: 600;">📈 RULE #20 - EXTENSION SELL (Short at Extensions)</div>
+                    <div class="checklist-item setup-extension-sell" style="display: none;">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">13. [EXTENSION SELL] At 127%-168% Fib Extension?</label>
+                    </div>
+                    <div class="checklist-item setup-extension-sell" style="display: none;">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">14. [EXTENSION SELL] Bearish Divergence Confirmed?</label>
+                    </div>
+                    <div class="checklist-item setup-extension-sell" style="display: none;">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">15. [EXTENSION SELL] VWAP Yellow/Orange/Red Arrow?</label>
+                    </div>
+
+                    <!-- RULE #20 PULLBACK BUY SECTION -->
+                    <div style="margin-top: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(16,185,129,0.3); background: rgba(16,185,129,0.08); padding: 8px; border-radius: 6px; font-size: 0.75em; color: #86efac; text-transform: uppercase; font-weight: 600;">📉 RULE #20 - PULLBACK BUY (Long at Pullbacks)</div>
+                    <div class="checklist-item setup-pullback-buy" style="display: none;">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">16. [PULLBACK BUY] 50%-61.8% Pullback Level Identified?</label>
+                    </div>
+                    <div class="checklist-item setup-pullback-buy" style="display: none;">
+                        <div class="checkbox" onclick="toggleCheck(this)">✓</div>
+                        <label class="checklist-label">17. [PULLBACK BUY] Hard Level Confluence Present? (weekly/monthly/support)</label>
+                    </div>
+
+                    <!-- CHECKLIST STATUS -->
+                    <div style="margin-top: 16px; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600; background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);">
+                        <div id="checklist-counter" style="font-size: 0.9em; color: #9ca3af; margin-bottom: 8px;">Checked: <span id="checked-count">0</span> / <span id="total-count">12</span></div>
+                        <div class="checklist-status notready" id="checklist-status">✗ CRITERIA NOT MET - WAIT</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ROW 3: ACTIVE POSITION (CONDITIONAL) -->
-        <div class="grid full-width" id="active-position-row" style="display: none;">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Active Position</div>
-                </div>
-                <div id="active-position-container"></div>
-            </div>
-        </div>
-
-        <!-- ROW 5: SESSION PERFORMANCE + RECENT TRADES -->
+        <!-- ROW 3: SESSION PERFORMANCE (Below Rule Compliance on left) -->
         <div class="grid two-column">
             <div class="card">
                 <div class="card-header">
@@ -400,7 +504,100 @@
             </div>
         </div>
 
-        <!-- ROW 7: PORTFOLIO COMMAND DECK -->
+        <!-- ROW 4: LIVE TRADE TRACKER (Shows when trade active) -->
+        <div class="grid full-width" id="active-position-row" style="display: block;">
+            <div class="card live-trade-card">
+                <div class="card-header">
+                    <div class="card-title">🎯 LIVE TRADE MONITOR</div>
+                    <div class="trade-status-badge" id="trade-status-badge">ACTIVE</div>
+                </div>
+
+                <!-- Trade Details -->
+                <div class="trade-details-grid">
+                    <div class="trade-detail-item">
+                        <span class="detail-label">Symbol</span>
+                        <span class="detail-value" id="trade-symbol">--</span>
+                    </div>
+                    <div class="trade-detail-item">
+                        <span class="detail-label">Entry</span>
+                        <span class="detail-value" id="trade-entry">--</span>
+                    </div>
+                    <div class="trade-detail-item">
+                        <span class="detail-label">Current</span>
+                        <span class="detail-value" id="trade-current">--</span>
+                    </div>
+                    <div class="trade-detail-item">
+                        <span class="detail-label">P/L</span>
+                        <span class="detail-value" id="trade-pnl">--</span>
+                    </div>
+                </div>
+
+                <!-- Stop & Target -->
+                <div class="stop-target-row">
+                    <div class="stop-box">
+                        <div class="box-label">🛑 STOP</div>
+                        <div class="box-value" id="trade-stop">--</div>
+                        <div class="box-detail" id="stop-level">--</div>
+                    </div>
+                    <div class="target-box">
+                        <div class="box-label">🎯 TARGET</div>
+                        <div class="box-value" id="trade-target">--</div>
+                        <div class="box-detail" id="target-level">--</div>
+                    </div>
+                </div>
+
+                <!-- Fibonacci Levels -->
+                <div class="fib-levels-section">
+                    <div class="section-title">📊 Fibonacci Levels (SPY)</div>
+                    <div class="fib-levels-grid">
+                        <div class="fib-item">
+                            <span class="fib-label">127% Extension</span>
+                            <span class="fib-value" id="fib-127">--</span>
+                        </div>
+                        <div class="fib-item highlight">
+                            <span class="fib-label">50% Mid-Zone ⭐</span>
+                            <span class="fib-value" id="fib-50">--</span>
+                        </div>
+                        <div class="fib-item">
+                            <span class="fib-label">168% Extension</span>
+                            <span class="fib-value" id="fib-168">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thesis -->
+                <div class="thesis-section">
+                    <div class="section-title">📋 Thesis</div>
+                    <div class="thesis-text" id="trade-thesis">--</div>
+                    <div class="rule-badge" id="rule-active">--</div>
+                </div>
+
+                <!-- Wingman Opinion (AI Blessing) -->
+                <div class="wingman-opinion-section">
+                    <div class="section-title">🤖 WINGMAN OPINION</div>
+                    <div class="threat-indicator" id="threat-indicator">
+                        <span class="threat-dot" id="threat-dot"></span>
+                        <span class="threat-text" id="threat-text">Analyzing...</span>
+                    </div>
+                    <div class="opinion-analysis" id="opinion-analysis">
+                        <!-- Dynamically populated -->
+                    </div>
+                    <div class="decision-prompt" id="decision-prompt">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Confluence Scorecard -->
+                <div class="confluence-section">
+                    <div class="section-title">✅ Confluence Scorecard (7/7)</div>
+                    <div class="confluence-chips" id="confluence-chips">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 5: PORTFOLIO COMMAND DECK -->
         <div class="grid full-width">
             <div class="card portfolio-card">
                 <div class="card-header">
@@ -620,17 +817,66 @@
         }
 
         function updateChecklistStatus() {
-            const checkboxes = document.querySelectorAll('#threat-checklist .checkbox');
-            const allChecked = Array.from(checkboxes).every(cb => cb.classList.contains('checked'));
-            const statusEl = document.getElementById('checklist-status');
+            const visibleCheckboxes = Array.from(document.querySelectorAll('#threat-checklist .checkbox')).filter(cb => {
+                const item = cb.closest('.checklist-item');
+                return item && item.style.display !== 'none';
+            });
+            const checkedCount = visibleCheckboxes.filter(cb => cb.classList.contains('checked')).length;
+            const totalCount = visibleCheckboxes.length;
 
-            if (allChecked) {
-                statusEl.textContent = '✓ ALL CLEAR - READY TO TRADE';
+            // Update counter
+            const countEl = document.getElementById('checked-count');
+            const totalEl = document.getElementById('total-count');
+            if (countEl && totalEl) {
+                countEl.textContent = checkedCount;
+                totalEl.textContent = totalCount;
+            }
+
+            // Update status
+            const statusEl = document.getElementById('checklist-status');
+            const allChecked = checkedCount === totalCount && totalCount > 0;
+
+            if (allChecked && totalCount >= 12) {
+                if (totalCount === 15) {
+                    statusEl.textContent = '✓ 15/15 EXTENSION SELL - READY TO SHORT';
+                } else if (totalCount === 14) {
+                    statusEl.textContent = '✓ 14/14 PULLBACK BUY - READY TO BUY';
+                } else {
+                    statusEl.textContent = '✓ ALL CHECKED - READY TO TRADE';
+                }
                 statusEl.className = 'checklist-status ready';
+            } else if (checkedCount === totalCount - 1 && totalCount > 0) {
+                statusEl.textContent = `⚠️ ${checkedCount}/${totalCount} CHECKED - WAIT (Missing 1 Item)`;
+                statusEl.className = 'checklist-status notready';
             } else {
-                statusEl.textContent = '✗ CRITERIA NOT MET - WAIT';
+                statusEl.textContent = `✗ ${checkedCount}/${totalCount} CHECKED - DO NOT ENTER`;
                 statusEl.className = 'checklist-status notready';
             }
+        }
+
+        function filterChecklistBySetupType(setupType) {
+            const extensionSellItems = document.querySelectorAll('.setup-extension-sell');
+            const pullbackBuyItems = document.querySelectorAll('.setup-pullback-buy');
+
+            if (setupType === 'extension_sell') {
+                // Show extension sell items
+                extensionSellItems.forEach(item => item.style.display = 'flex');
+                pullbackBuyItems.forEach(item => item.style.display = 'none');
+                document.getElementById('total-count').textContent = '15';
+            } else if (setupType === 'pullback_buy') {
+                // Show pullback buy items
+                extensionSellItems.forEach(item => item.style.display = 'none');
+                pullbackBuyItems.forEach(item => item.style.display = 'flex');
+                document.getElementById('total-count').textContent = '14';
+            } else {
+                // Show all items (general entry)
+                extensionSellItems.forEach(item => item.style.display = 'none');
+                pullbackBuyItems.forEach(item => item.style.display = 'none');
+                document.getElementById('total-count').textContent = '12';
+            }
+
+            // Reset checkboxes for new filter view
+            updateChecklistStatus();
         }
 
         async function refreshDashboard() {
@@ -1387,10 +1633,103 @@
             container.appendChild(placeholder);
         }
 
+        // Live Trade Tracker Functions
+        async function loadLiveTrade() {
+            try {
+                const response = await fetch('./live_trade_tracker.json');
+                if (!response.ok) {
+                    hideActiveTrade();
+                    return;
+                }
+
+                const data = await response.json();
+                const trade = data.active_trade;
+
+                if (!trade.is_active) {
+                    hideActiveTrade();
+                    return;
+                }
+
+                // Show the active position row
+                document.getElementById('active-position-row').style.display = 'block';
+
+                // Update trade details
+                document.getElementById('trade-symbol').textContent = `${trade.symbol} (${trade.description})`;
+                document.getElementById('trade-entry').textContent = `$${trade.entry_price.toFixed(2)}`;
+                document.getElementById('trade-current').textContent = `$${trade.current_price.toFixed(2)}`;
+
+                // Update P/L with color
+                const pnlEl = document.getElementById('trade-pnl');
+                const pnlSign = trade.pnl_dollars >= 0 ? '+' : '';
+                pnlEl.textContent = `${pnlSign}$${trade.pnl_dollars.toFixed(2)} (${pnlSign}${trade.pnl_percent.toFixed(2)}%)`;
+                pnlEl.style.color = trade.pnl_dollars >= 0 ? '#10b981' : '#ef4444';
+
+                // Update stop & target
+                document.getElementById('trade-stop').textContent = `$${trade.stop_price.toFixed(2)}`;
+                document.getElementById('stop-level').textContent = trade.stop_level_spy;
+                document.getElementById('trade-target').textContent = `$${trade.target_price.toFixed(2)}`;
+                document.getElementById('target-level').textContent = trade.target_level_spy;
+
+                // Update Fib levels
+                document.getElementById('fib-127').textContent = trade.fib_levels['127_extension'];
+                document.getElementById('fib-50').textContent = trade.fib_levels['50_mid_zone'];
+                document.getElementById('fib-168').textContent = trade.fib_levels['168_extension'];
+
+                // Update thesis
+                document.getElementById('trade-thesis').textContent = trade.thesis;
+                document.getElementById('rule-active').textContent = `${trade.rule_active} (${trade.candles_completed}/${trade.candles_completed + trade.candles_remaining} candles)`;
+
+                // Update Wingman opinion
+                const opinion = trade.wingman_opinion;
+                updateThreatIndicator(opinion.threat_level);
+
+                const analysisHtml = opinion.analysis.map(line => `<div>${line}</div>`).join('');
+                document.getElementById('opinion-analysis').innerHTML = analysisHtml;
+                document.getElementById('decision-prompt').textContent = opinion.decision_prompt;
+
+                // Update confluences
+                const confluencesHtml = trade.confluences.map((c, i) =>
+                    `<span class="confluence-chip">${i + 1}. ${c.substring(0, 50)}${c.length > 50 ? '...' : ''}</span>`
+                ).join('');
+                document.getElementById('confluence-chips').innerHTML = confluencesHtml;
+
+            } catch (error) {
+                console.error('Error loading live trade:', error);
+                hideActiveTrade();
+            }
+        }
+
+        function updateThreatIndicator(level) {
+            const dot = document.getElementById('threat-dot');
+            const text = document.getElementById('threat-text');
+
+            dot.className = 'threat-dot';
+            if (level === 'yellow') {
+                dot.classList.add('yellow');
+                text.textContent = 'CAUTION - Thesis Weakening';
+                text.style.color = '#f59e0b';
+            } else if (level === 'red') {
+                dot.classList.add('red');
+                text.textContent = 'DANGER - Thesis Broken';
+                text.style.color = '#ef4444';
+            } else {
+                text.textContent = 'GREEN - Thesis Holding';
+                text.style.color = '#10b981';
+            }
+        }
+
+        function hideActiveTrade() {
+            document.getElementById('active-position-row').style.display = 'none';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             refreshDashboard();
             loadEndOfDayRecap();
-            setInterval(refreshDashboard, 30000);
+            loadLiveTrade();
+            setInterval(() => {
+                refreshDashboard();
+                loadLiveTrade();
+            }, 30000);
         });
     </script>
 </body>

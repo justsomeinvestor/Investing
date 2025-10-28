@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "created": "2025-10-28T13:00:00Z",
+    "last_updated": "2025-10-28T13:00:00Z",
+    "version": "1.0",
+    "description": "Live Trade Tracker - Real-time trade monitoring with Wingman conversational updates"
+  },
+  "active_trade": {
+    "is_active": true,
+    "trade_id": 7,
+    "symbol": "SPXU",
+    "direction": "long",
+    "description": "Short SPY via inverse ETF (Rule #20 Extension SELL)",
+    "entry_price": 12.45,
+    "shares": 300,
+    "current_price": 12.3076,
+    "pnl_dollars": -42.72,
+    "pnl_percent": -1.14,
+    "stop_price": 12.60,
+    "stop_level_spy": "12.60 (Extended short stop)",
+    "target_price": 12.20,
+    "target_level_spy": "12.20 (50%-61.8% pullback - Rule #20 BUY target)",
+    "risk_dollars": 100,
+    "risk_percent": 1.0,
+    "fib_levels": {
+      "entry_zone": "12.45 - 2nd extension zone entry",
+      "127_extension": "12.60 - Stop level",
+      "50_mid_zone": "12.20 - Mid-zone pullback target",
+      "168_extension": "12.00 - Deep pullback target"
+    },
+    "thesis": "Gap-up market continued higher to 2nd extension zone. Bearish divergence + breadth divergence + mega-cap concentration + FOMC catalyst continuing. Entering extension SELL (Rule #20) at tighter confluence with reduced position size ($100 risk vs $200 on Trade #6). Testing framework repeatability within same day.",
+    "rule_active": "Rule #20 - Two-Way Fibonacci Reversion Framework (extension SELL side)",
+    "rule_mechanics": "Entry at extension (127%-168% Fib) with bearish divergence + VWAP trigger. Apply Rule #19 (3-candle hold) for confirmation. Target: 50%-61.8% pullback zone. Risk: tight at 1% ($100).",
+    "candles_completed": 0,
+    "candles_remaining": 3,
+    "wingman_opinion": {
+      "status": "thesis_testing",
+      "threat_level": "yellow",
+      "summary": "⚠️ FRAMEWORK RE-ENTRY - Trade #6 exited at small loss, now testing same framework at higher extension. Lower position size ($100 risk vs $200). Watching for divergence confirmation.",
+      "analysis": [
+        "ℹ️ Trade #6 framework test: Thesis triggered correctly but SPY rallied higher",
+        "ℹ️ Rule #19 worked: Exited cleanly per 3-candle hold, prevented larger loss",
+        "→ Trade #7 is 2nd attempt with tighter risk management",
+        "→ Framework has potential but needs better entry timing or confluence",
+        "→ Smaller position size = better risk management, same $ risk but fewer shares",
+        "⚠️ Watch for: Same divergence weakness as Trade #6 (price continuing higher)"
+      ],
+      "decision_prompt": "Framework on 2nd test. Trade #6 validated Rule #19 exit mechanics. Trade #7 validates if framework repeats. Status: LEARNING PHASE - collecting data on extension SELL side repeatability."
+    },
+    "confluences": [
+      "1. Bearish divergence - Technical Analysis (continuing from morning setup)",
+      "2. Breadth divergence - Market Data (RSP still lagging SPY)",
+      "3. FOMC catalyst - Macro Catalyst (traders pre-flatten)",
+      "4. VWAP extension - VWAP Script Signal (price extended above VWAP)"
+    ],
+    "entry_context": {
+      "date": "2025-10-28",
+      "time": "08:30 ET",
+      "market_condition": "Gap-up move continuing higher",
+      "setup_framework": "Reversion Framework v1.0 - Extension SELL (Rule #20)",
+      "setup_quality": "Moderate - 4 confluences (lower than Trade #6's 7)",
+      "compliance_score": "Pending (Rule #19 in progress)"
+    }
+  }
+}

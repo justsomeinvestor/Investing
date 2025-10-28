@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "created": "2025-10-28T10:57:00Z",
+    "last_updated": "2025-10-28T10:57:00Z",
+    "version": "1.0",
+    "description": "Andy (Lead Trader) Intel Tracking - Daily calls, levels, thesis, and accuracy tracking",
+    "purpose": "Track Andy's technical calls and validate effectiveness over time. Not to blindly follow, but to listen closely and verify against market outcomes."
+  },
+  "andy_daily_calls": [
+    {
+      "date": "2025-10-28",
+      "time_captured": "morning session (5:18am - 9:57am ET)",
+      "general_thesis": "FOMC tomorrow creates opportunity. Tech showing distribution, not accumulation. Mega-cap rejections likely.",
+      "key_levels": {
+        "NQ": {
+          "range": "25,880 to 26,090",
+          "context": "Nasdaq consolidation range"
+        },
+        "AAPL": {
+          "observation": "DOUBLE TOP at 269.87",
+          "interpretation": "Rejection, sellers showing up at highs",
+          "previous_levels": "270.85 then 273.10",
+          "significance": "Distribution pattern"
+        },
+        "NVDA": {
+          "breakout": "Broke previous ATH at 195.62",
+          "red_zone": "196.25 to 197.55 (rejection area)",
+          "interpretation": "Momentum breakout but in vulnerable zone",
+          "note": "CEO at White House - watch China news",
+          "significance": "Mega-cap showing weakness despite breakout"
+        },
+        "SPX": {
+          "first_resistance": 6885,
+          "first_support_below": 6858,
+          "resistance_above": 6922,
+          "current_context": "At first resistance, vulnerable"
+        },
+        "GC": {
+          "overnight_test": 3900,
+          "current": 3980,
+          "target": 4000,
+          "note": "Below 20 USAR = dead money. Watch China rare earths cost"
+        },
+        "IBIT": {
+          "range": "64+/- to 67+/-",
+          "context": "Crypto range consolidation"
+        },
+        "NAIL": {
+          "fill": 61,
+          "target": 74.60,
+          "note": "FOMC catalyst expected"
+        },
+        "CLS": {
+          "position": "Calls bought on pullback",
+          "target": "341+/-",
+          "timing": "Expecting target soon",
+          "reason": "Earnings beat + technical setup",
+          "note": "Oct 31 is Celestica earnings date"
+        },
+        "NOK": {
+          "trigger": "NVDA deal",
+          "first_resistance": 8.20,
+          "context": "NVDA dependent"
+        }
+      },
+      "key_insights": [
+        "AAPL printed double top - distribution signal",
+        "NVDA broke ATH but in rejection zone - momentum fading",
+        "SPX at first resistance 6885 - vulnerable to pullback",
+        "Tech mega-caps showing weakness despite index at ATH",
+        "Breadth divergence confirmed by Andy's level work",
+        "FOMC tomorrow = flatening bias expected",
+        "Strong earnings beat from Celestica (CLS) - quality earnings setup"
+      ],
+      "confluence_with_pilot_trade": [
+        "Andy's AAPL double top + NVDA rejection = mega-cap weakness",
+        "Pilot's breadth divergence (RSP vs SPY) aligns with Andy's technical rejections",
+        "SPX at 6885 resistance = exact area where reversion likely (pilot's thesis)",
+        "Andy's levels validate pilot's SPXU short setup"
+      ],
+      "andy_accuracy_tracking": {
+        "status": "in_progress",
+        "calls_made": 8,
+        "calls_validated": 0,
+        "hit_rate_percentage": null,
+        "notes": "First tracking day - will record outcomes vs predictions"
+      }
+    }
+  ],
+  "andy_patterns": {
+    "trading_style": "Technical levels + fundamental catalysts + earnings analysis",
+    "strengths_observed": [
+      "Precise technical levels (6885 SPX resistance, AAPL 269.87 double top)",
+      "Integration of macro catalysts (FOMC, China news, earnings)",
+      "Quality over quantity (selective, well-researched positions)",
+      "Lead-time intelligence (CLS calls ahead of earnings beat)"
+    ],
+    "focus_areas": [
+      "Mega-cap tech (AAPL, NVDA, QQQ)",
+      "FOMC positioning and catalysts",
+      "Earnings quality and beats",
+      "Geopolitical impacts (China, WH intel)"
+    ],
+    "decision_triggers": [
+      "Double tops and rejection zones",
+      "Breakout momentum in 'red zones'",
+      "Earnings beats above previous quarter guidance",
+      "Macro events (FOMC, China negotiations)"
+    ]
+  },
+  "integration_with_pilot": {
+    "how_to_use": "Listen closely, verify against Pilot's own analysis. Andy's levels = confluence factors for Pilot's trades. Not 100% follow, but validate technical work.",
+    "today_example": "Andy's AAPL double top + NVDA rejection + SPX 6885 resistance confirms Pilot's bearish divergence thesis and reversion setup",
+    "action_for_pilot": "When Andy calls levels, check: (1) Do they align with Pilot's technical analysis? (2) Do they add confluence? (3) If yes, higher conviction. If no, question why difference.",
+    "next_validation": "Track Andy's predictions over next 5-10 sessions. Build accuracy profile. Determine: Which Andy calls hit? Which miss? What's the pattern?"
+  },
+  "next_session_updates": [
+    "Record outcomes of Andy's calls from today",
+    "Track AAPL double top hold or break (269.87 level)",
+    "Track NVDA rejection zone result (196.25-197.55)",
+    "Track SPX first resistance test result (6885)",
+    "Calculate Andy's hit rate after 10 days of tracking"
+  ]
+}

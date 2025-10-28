@@ -131,6 +131,15 @@
 
 ---
 ## 📖 Journal Entries (Newest First)
+**End of Day Review - 2025-10-28 (13:14 PM )** ✅ - [Link to Detailed Journal](Log-Entries/2025-10-28_EOD_Wrap.md)
+
+- **Market Action & Signal:** Composite signal MODERATE (46/100)
+- **Trades/P&L:** 1 trades, 0 wins
+- **Daily P&L:** $-44.02 (-0.18%)
+- **Account:** $24,977.68
+- **YTD P/L:** $+3,135.50
+
+
 **End of Day Review - 2025-10-27 (17:56 PM )** ✅ - [Link to Detailed Journal](Log-Entries/2025-10-27_EOD_Wrap.md)
 
 - **Market Action & Signal:** Composite signal MODERATE (46/100)

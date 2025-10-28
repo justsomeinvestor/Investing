@@ -1,10 +1,10 @@
 {
   "metadata": {
     "created": "2025-10-27T15:37:55Z",
-    "last_updated": "2025-10-27T15:37:55Z",
-    "version": "1.0",
+    "last_updated": "2025-10-28T10:30:00Z",
+    "version": "1.1",
     "description": "Comprehensive trades ledger - all trades with compliance, statistics, and analysis",
-    "total_trades": 5,
+    "total_trades": 6,
     "account_id": "D-69778033"
   },
   "trades": [
@@ -164,37 +164,143 @@
         "Created Rule #17: Never enter on external tip without verifying against trigger checklist"
       ],
       "notes": "Heard Chris say 'market should come back to 9-day EMA'. Believed in mean reversion. Entered without running threat assessment. Small loss but clear rule violation. Pattern: Over-eagerness in uncertain structure."
+    },
+    {
+      "id": 6,
+      "date": "2025-10-28",
+      "day": "Tuesday",
+      "symbol": "SPXU",
+      "instrument": "SPXU",
+      "direction": "long",
+      "type": "intraday",
+      "entry_time": "10:30 ET",
+      "exit_time": "~12:00 ET",
+      "entry_price": 13.68,
+      "exit_price": 13.60,
+      "shares": 552,
+      "pnl": -44.02,
+      "pnl_percent": -0.58,
+      "setup_type": "Reversion Framework v1.0 (gap extension + fib targets + max pain + FOMC flatten)",
+      "thesis": "Gap up market looking for intraday reversion. SPY extended from 9-day EMA on explosive move. MSFT + GOOGLE at fib extension targets. Max pain Friday $683 (lower). FOMC Friday compresses traders to flatten positions. Testing tight risk on clear support level (prior daily high).",
+      "emotional_state": "methodical",
+      "confluence_factors": [
+        "Bearish divergence (Technical Analysis - price higher, RSI lower, volume declining)",
+        "Breadth divergence (Market Data - RSP +0.4% vs SPY +1.2% narrow leadership)",
+        "AAPL double-top at 269.87 (Lead Trader Intel - Andy distribution signal)",
+        "NVDA rejection in red-zone 196.25-197.55 (Lead Trader Intel - Andy momentum fading)",
+        "SPX at first resistance 6885 (Technical Structure - Andy technical levels)",
+        "FOMC Friday catalyst (Macro Catalyst - traders flatten positions pre-event, 98.3% cut probability)",
+        "VWAP extension trigger yellow arrow (VWAP Script signal - price extended, now re-entering VWAP)"
+      ],
+      "market_intelligence_oct28": {
+        "breadth_divergence": "CRITICAL - RSP equal-weight +0.4% vs SPY +1.2% = narrow leadership (only MSFT +2%, AAPL, NVDA driving)",
+        "relative_strength": "QQQ +0.53% outperforming SPY +0.27% (QQQ stronger but both weak breadth)",
+        "sector_concentration": "XLK tech +1.9%, mega-cap dependent (fragile support if MSFT/AAPL stall)",
+        "fomc_catalyst": "98.3% probability 25bp rate cut tomorrow 18:00 ET = traders flatten positions pre-announcement",
+        "vix_sentiment": "VIX 15.97-16.73 (down 5.38% in 24h), below historical avg 19.42 = complacency, vulnerable to reversal",
+        "andy_technical_validation": "Lead trader Andy confirms mega-cap weakness: AAPL printed double-top at 269.87 (distribution), NVDA broke ATH but in red-zone rejection 196.25-197.55 (momentum fading), SPX at first resistance 6885 (vulnerable)",
+        "andy_confluence": "Pilot's bearish divergence thesis + Andy's technical rejections (AAPL double-top + NVDA red-zone) + SPX at 6885 resistance = HIGH CONFLUENCE for reversion setup",
+        "vwap_extension_trigger": "YELLOW ARROW (weak signal) from Smart Mean Reversion script: Price extended above VWAP bands, now coming back to VWAP = mean reversion confirmation signal",
+        "vwap_script_context": "ThinkOrSwim Smart Mean Reversion with VWAP Guide: Yellow arrow = 40-60% confidence signal for re-entry into VWAP. Validates reversion thesis at technical level.",
+        "key_finding": "Narrow breadth + mega-cap concentration + VIX complacency + FOMC flatten bias + Andy's distribution signals + VWAP extension trigger = VERY STRONG reversion setup",
+        "confluence_count": "7 independent confluences: (1) Bearish divergence, (2) Breadth divergence, (3) AAPL double-top, (4) NVDA rejection, (5) SPX at resistance, (6) FOMC catalyst, (7) VWAP extension trigger",
+        "thesis_confirmation": "Real-time data + Lead trader validation + VWAP script signal STRONGLY VALIDATES reversion framework validity"
+      },
+      "entry_mechanics": "Retest of VWAP after initial gap pullback. Waiting for 5-min confirmation.",
+      "entry_trigger_type": "Reversion Framework v1.0 (tested, not yet proven)",
+      "risk_management": {
+        "stop_price": 685.38,
+        "risk_dollars": 200,
+        "risk_percent": 1.0,
+        "position_size": 552,
+        "entry_price": 13.68
+      },
+      "exit_plan": "UPDATED: Hold for 3 x 5-min candles to confirm bearish divergence (Rule #19). Spotted: price higher, RSI lower, volume declining. If price rolls over in next 15 min = thesis alive, HOLD. If continues higher = thesis broken, EXIT.",
+      "rule_compliance": "Process compliant - research done, technical confluence verified, stop pre-set, sized correctly. Entering before 5-min confirmation (anticipatory). Testing new framework validity. APPLYING Rule #19 (NEW) to this trade.",
+      "active_rule": "Rule #19 - Divergence Confirmation Protocol (3-candle hold)",
+      "compliance_score": 100,
+      "lessons_learned": [
+        "Reversion Framework v1.0 (gap + fib + max pain + FOMC) triggered correctly but SPY continued higher",
+        "Anticipatory entry (before 5-min confirmation) led to early exit with small loss",
+        "Rule #19 worked: Exit after 3 candles prevented larger loss when thesis broke",
+        "Framework has merit but needs tighter confluence or better exit management"
+      ],
+      "notes": "Small loss on reversion framework test. Exited cleanly when thesis broke per Rule #19. Framework validation in progress - framework triggered correctly, but market continued higher through extension zone. Trade #7 re-entered lower to test BUY side of Rule #20."
+    },
+    {
+      "id": 7,
+      "date": "2025-10-28",
+      "day": "Tuesday",
+      "symbol": "SPXU",
+      "instrument": "SPXU",
+      "direction": "long",
+      "type": "intraday",
+      "entry_time": "08:30 ET",
+      "exit_time": "PENDING",
+      "entry_price": 12.45,
+      "exit_price": null,
+      "shares": 300,
+      "pnl": null,
+      "pnl_percent": null,
+      "setup_type": "Reversion Framework v1.0 - Extension SELL (Rule #20)",
+      "thesis": "Gap-up market continued higher. SPY now at 2nd extension zone (168% Fib). Bearish divergence + breadth divergence + mega-cap concentration + FOMC catalyst still valid. Entering extension SELL at higher zone with tighter confluence. Risk: $100 (tight 1% on 300 shares).",
+      "emotional_state": "methodical",
+      "confluence_factors": [
+        "Bearish divergence (Technical Analysis - continuing from morning)",
+        "Breadth divergence (Market Data - RSP still lagging SPY)",
+        "FOMC Friday catalyst (Macro Catalyst - traders flatten pre-event)",
+        "VWAP extension (VWAP Script signal - SPY extended further above VWAP)"
+      ],
+      "entry_mechanics": "Re-entry at higher extension zone. Waiting for 5-min pullback confirmation.",
+      "risk_management": {
+        "stop_price": 12.60,
+        "risk_dollars": 100,
+        "risk_percent": 1.0,
+        "position_size": 300,
+        "entry_price": 12.45
+      },
+      "exit_plan": "Apply Rule #19 (3-candle divergence hold). Target: 50%-61.8% pullback zone (Rule #20 BUY side setup).",
+      "rule_compliance": "Process compliant - applying Rule #20 two-way framework. Confluence verified, risk pre-set, sized correctly.",
+      "active_rule": "Rule #20 - Two-Way Fibonacci Reversion Framework (extension SELL side)",
+      "compliance_score": "PENDING",
+      "lessons_expected": [
+        "Does Rule #20 extension SELL work at 2nd extension zone (higher risk)?",
+        "Can we identify pullback BUY zone (50%-61.8%) from current SELL?",
+        "Does lower position size (300 vs 552) improve execution quality?"
+      ],
+      "notes": "FRAMEWORK CONTINUATION: Trade #6 tested framework validity and exited cleanly per Rule #19. Trade #7 is 2nd attempt at same reversion setup with tighter risk. Testing if framework repeats within same day."
     }
   ],
   "statistics": {
     "overall": {
-      "total_trades": 5,
+      "total_trades": 6,
       "winning_trades": 2,
-      "losing_trades": 3,
+      "losing_trades": 4,
       "breakeven_trades": 0,
-      "win_rate": 40.0,
-      "loss_rate": 60.0
+      "win_rate": 33.3,
+      "loss_rate": 66.7
     },
     "performance": {
-      "gross_pnl": 145.00,
+      "gross_pnl": 100.98,
       "gross_wins": 281.00,
-      "gross_losses": -136.00,
+      "gross_losses": -180.02,
       "average_winner": 140.50,
-      "average_loser": -45.33,
+      "average_loser": -45.01,
       "largest_win": 181.00,
       "largest_loss": -100.00,
-      "profit_factor": 2.06,
-      "risk_reward_ratio": 3.10
+      "profit_factor": 1.56,
+      "risk_reward_ratio": 3.13
     },
     "compliance": {
-      "fully_compliant_trades": 2,
+      "fully_compliant_trades": 3,
       "partial_violations": 2,
       "full_violations": 1,
-      "compliance_percentage": 40.0,
+      "compliance_percentage": 50.0,
       "patterns": [
         "Over-eagerness in uncertain structure (Oct 13, Oct 27)",
         "Skipping checklist when conviction in idea is high (Oct 27)",
-        "Good discipline on exits when structure is clear (Oct 15, Oct 17)"
+        "Good discipline on exits when structure is clear (Oct 15, Oct 17, Oct 28 Trade #6)",
+        "Framework validation trades improving compliance (Oct 28)"
       ]
     },
     "by_setup": {
@@ -225,16 +331,24 @@
         "losses": 0,
         "total_pnl": 100.00,
         "win_rate": 100.0
+      },
+      "reversion_framework": {
+        "trades": 1,
+        "wins": 0,
+        "losses": 1,
+        "total_pnl": -44.02,
+        "win_rate": 0.0,
+        "notes": "Trade #6 - Framework validation test. Exited per Rule #19 when thesis broke."
       }
     }
   },
   "account_impact": {
     "starting_balance_ytd": 2952.57,
-    "trades_pnl_total": 145.00,
-    "current_balance_ytd": 3179.52,
-    "account_growth_ytd": 7.69,
-    "days_traded": 5,
-    "avg_pnl_per_day": 29.00
+    "trades_pnl_total": 100.98,
+    "current_balance_ytd": 3135.50,
+    "account_growth_ytd": 6.22,
+    "days_traded": 6,
+    "avg_pnl_per_day": 16.83
   },
   "rules_created": [
     {

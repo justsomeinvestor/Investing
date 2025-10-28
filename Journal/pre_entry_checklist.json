@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "created": "2025-10-28T11:00:00Z",
+    "last_updated": "2025-10-28T11:00:00Z",
+    "version": "2.0",
+    "description": "Pre-Entry Threat Assessment Checklist - Source of truth for all entry criteria",
+    "purpose": "Structured checklist data (not hardcoded in HTML). Used by: command-center.html, trades_ledger.json compliance tracking, rules_database compliance scoring, EOD wrap validation.",
+    "status": "PRODUCTION - Single source of truth"
+  },
+  "checklist": {
+    "total_items": 18,
+    "pass_criteria": "For extension SELL setups: items 1-12 PLUS 13-15 (extension sell items). For pullback BUY setups: items 1-12 PLUS 16-17 (pullback buy items). ALL applicable items must be checked before entry.",
+    "categories": [
+      {
+        "name": "TECHNICAL STRUCTURE",
+        "description": "Price action, Fibonacci levels, divergences",
+        "items": [
+          {
+            "id": 1,
+            "item": "C+R Confirmation (close+retest)",
+            "description": "Price closed below level, retested, confirmed breakdown/breakup",
+            "type": "ORIGINAL",
+            "rules_linked": ["#7", "#9"],
+            "why_matters": "Prevents premature entries into false breakdowns"
+          },
+          {
+            "id": 2,
+            "item": "RSI Level Check",
+            "description": "What is current RSI? Extremes (>80 or <20) = divergence risk",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#19"],
+            "why_matters": "Identifies overbought/oversold = reversal vulnerability. Divergence confirmation signal."
+          },
+          {
+            "id": 3,
+            "item": "50% Fib Pullback Area",
+            "description": "Are we at 50% Fibonacci pullback zone? (Confluence point)",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#18"],
+            "why_matters": "Classic support/resistance zone where reversions often stall or confirm"
+          },
+          {
+            "id": 4,
+            "item": "127% / 168% Extension Area",
+            "description": "Are we at Fib extension targets? (Reversal zones / Stop placement)",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#18", "#19"],
+            "why_matters": "Extensions mark where moves exhaust. Use as entry trigger or stop placement."
+          },
+          {
+            "id": 5,
+            "item": "Divergence Present?",
+            "description": "Price making higher high, but RSI/momentum lower = bearish divergence (vice versa for bullish)",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#19"],
+            "why_matters": "Early reversal signal. Requires 3-candle confirmation (Rule #19) before acting."
+          },
+          {
+            "id": 5b,
+            "item": "VWAP Extension Trigger (ThinkOrSwim script)",
+            "description": "Price extended beyond VWAP bands (upper/lower). Yellow/Orange/Red arrows = coming back to VWAP = mean reversion opportunity",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#18"],
+            "why_matters": "Formal signal from VWAP mean reversion system. Green arrow (up), Yellow (weak), Orange (medium), Red (strong). Guides entry timing into reversion zones.",
+            "script_reference": "Smart Mean Reversion with VWAP Guide"
+          }
+        ]
+      },
+      {
+        "name": "MOMENTUM & VOLUME",
+        "description": "Confirmation of move direction through volume and momentum",
+        "items": [
+          {
+            "id": 6,
+            "item": "EMA Filter (5-min 200 EMA direction)",
+            "description": "5-min 200 EMA: must be falling for shorts, rising for longs",
+            "type": "ORIGINAL",
+            "rules_linked": ["#10"],
+            "why_matters": "Prevents trading against trend. Filters out counter-trend noise."
+          },
+          {
+            "id": 7,
+            "item": "Volume ≥ 1.3× 20-bar average",
+            "description": "Entry bar volume must be at least 1.3x the 20-bar average",
+            "type": "ORIGINAL",
+            "rules_linked": ["#3"],
+            "why_matters": "Confirms conviction. Low volume entries often fail."
+          },
+          {
+            "id": 8,
+            "item": "ADD Confirmation (breadth direction)",
+            "description": "Advance-Decline line: improving for longs, declining for shorts",
+            "type": "ORIGINAL",
+            "rules_linked": ["#11"],
+            "why_matters": "Validates broad market support. Don't fade improving breadth."
+          }
+        ]
+      },
+      {
+        "name": "MARKET CONTEXT",
+        "description": "Macro setup, signal tier, volatility regime",
+        "items": [
+          {
+            "id": 9,
+            "item": "Signal Tier ≥ MODERATE",
+            "description": "Current market signal must be MODERATE or higher (not WEAK/AVOID)",
+            "type": "ORIGINAL",
+            "rules_linked": ["#4"],
+            "why_matters": "Respects system signal. Don't force trades in weak signal environments."
+          },
+          {
+            "id": 10,
+            "item": "Higher Timeframe Alignment",
+            "description": "Are we aligned with daily/weekly trend? Or intentionally counter-trend? Document either way.",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#12"],
+            "why_matters": "Counter-trend trades need extra confluences and half-size. Alignment trades get full size."
+          },
+          {
+            "id": 11,
+            "item": "Volatility Pattern",
+            "description": "Market regime: In consolidation/squeeze? Breakout direction confirmed? Volatility expanding?",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#18"],
+            "why_matters": "Ranges ≠ trend trades. Breakouts = momentum. Squeezes = breakout imminent. Different strategies."
+          }
+        ]
+      },
+      {
+        "name": "FIBONACCI REVERSION FRAMEWORK (Rule #20)",
+        "description": "Two-way systematic framework: SELL extensions with divergence, BUY pullbacks at hard levels",
+        "items": [
+          {
+            "id": 13,
+            "item": "[EXTENSION SELL] At 127%-168% Fib Extension?",
+            "description": "Price extended to 127% or 168% Fibonacci extension of prior move. Use fib_levels from chart.",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#20"],
+            "setup_type": "SELL_EXTENSION",
+            "why_matters": "Extensions exhaust momentum. Natural reversal entry zone. Must combine with bearish divergence."
+          },
+          {
+            "id": 14,
+            "item": "[EXTENSION SELL] Bearish Divergence Confirmed?",
+            "description": "Price at extension making higher high, but RSI/momentum lower. 5-min timeframe divergence present.",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#20", "#19"],
+            "setup_type": "SELL_EXTENSION",
+            "why_matters": "Divergence at extension = confirmed momentum failure. Dual entry signal: (1) extension, (2) divergence."
+          },
+          {
+            "id": 15,
+            "item": "[EXTENSION SELL] VWAP Yellow/Orange/Red Arrow?",
+            "description": "VWAP script showing arrow signal indicating price extended, re-entering VWAP band = mean reversion trigger.",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#20"],
+            "setup_type": "SELL_EXTENSION",
+            "why_matters": "Confirms that price is in extension zone and reverting. Formal confirmation of reversion thesis."
+          },
+          {
+            "id": 16,
+            "item": "[PULLBACK BUY] 50%-61.8% Pullback Level Identified?",
+            "description": "After selling extension, calculate where 50%-61.8% pullback would be. Identify the retrace zone.",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#20"],
+            "setup_type": "BUY_PULLBACK",
+            "why_matters": "Defines where next opportunity appears. Natural profit-taking zone. Buyers emerge here."
+          },
+          {
+            "id": 17,
+            "item": "[PULLBACK BUY] Hard Level Confluence Present?",
+            "description": "Does 50%-61.8% pullback zone hit HARD LEVEL? (Weekly high/low, monthly high/low, prior support/resistance, EMA)",
+            "type": "NEW_OCT28",
+            "rules_linked": ["#20", "#0 (Confluence)"],
+            "setup_type": "BUY_PULLBACK",
+            "why_matters": "Pullback MUST hit structure, not arbitrary 50%. Structure + pullback + confluence = high-probability buy."
+          }
+        ]
+      },
+      {
+        "name": "RISK MANAGEMENT",
+        "description": "Position sizing, stop placement, capital allocation",
+        "items": [
+          {
+            "id": 18,
+            "item": "Risk Calculated ($231 max)",
+            "description": "Position sized for $231 risk (1% of account). Stop pre-set. Capital verified.",
+            "type": "ORIGINAL",
+            "rules_linked": ["Risk Management Framework"],
+            "why_matters": "Enforces discipline. No surprises on loss size."
+          }
+        ]
+      }
+    ]
+  },
+  "compliance_tracking": {
+    "how_to_use": "For EXTENSION SELL entries (Rule #20): Check items 1-12 (general) + 13-15 (extension-specific) = 15 items. For PULLBACK BUY entries (Rule #20): Check items 1-12 (general) + 16-17 (pullback-specific) = 14 items. ALL must be TRUE before entry.",
+    "scoring": {
+      "extension_sell_15_15": "READY - Enter short at extension with high confidence",
+      "extension_sell_14_15": "WAIT - Missing one item, review before entry",
+      "extension_sell_13_or_less": "DO NOT ENTER - Fix before entry",
+      "pullback_buy_14_14": "READY - Enter long at pullback+structure with high confidence",
+      "pullback_buy_13_14": "WAIT - Missing one item, review before entry",
+      "pullback_buy_12_or_less": "DO NOT ENTER - Fix before entry"
+    },
+    "linking_to_trades": "After trade closes, log in trades_ledger.json which items were checked vs skipped. Use for post-trade analysis."
+  },
+  "integration_points": {
+    "command_center_html": "Load this checklist dynamically (todo: update HTML loader)",
+    "trades_ledger_json": "Log compliance scorecard for each trade (which items checked before entry)",
+    "rules_database_json": "Link each checklist item to relevant rules",
+    "eod_wrap": "Validate that all high-compliance trades checked all 12 items"
+  },
+  "version_history": [
+    {
+      "version": "1.0",
+      "date": "2025-10-27",
+      "items": 6,
+      "source": "Original threat assessment checklist (created last night)"
+    },
+    {
+      "version": "2.0",
+      "date": "2025-10-28",
+      "items": 12,
+      "additions": ["RSI Level Check", "50% Fib Pullback", "127%/168% Extensions", "Divergence Present", "Higher TF Alignment", "Volatility Pattern"],
+      "reason": "Oct 28 SPXU trade (Rule #19) demonstrated need for Fib levels and RSI divergence checks. Expanded to comprehensive pre-entry framework.",
+      "source": "Pilot + Wingman live collaboration during Trade #6"
+    },
+    {
+      "version": "2.1",
+      "date": "2025-10-28 (Oct 28 evening update)",
+      "items": 18,
+      "additions": ["[EXTENSION SELL] At 127%-168% Fib Extension?", "[EXTENSION SELL] Bearish Divergence Confirmed?", "[EXTENSION SELL] VWAP Yellow/Orange/Red Arrow?", "[PULLBACK BUY] 50%-61.8% Pullback Level Identified?", "[PULLBACK BUY] Hard Level Confluence Present?"],
+      "new_category": "FIBONACCI REVERSION FRAMEWORK (Rule #20)",
+      "reason": "Rule #20 discovered and formalized. Two-way framework requires specific checklist items for extension SELL entries and pullback BUY entries. Framework is now core systematic system.",
+      "source": "Pilot realized complete two-direction framework on Oct 28 during Trade #6 chart analysis"
+    }
+  ]
+}

@@ -1,9 +1,28 @@
 {
-  "last_updated": "2025-10-27T15:37:55Z",
-  "open_positions": [],
+  "last_updated": "2025-10-28T14:30:00Z",
+  "open_positions": [
+    {
+      "id": 7,
+      "ticker": "SPXU",
+      "direction": "long",
+      "entry_time": "2025-10-28T08:30:00Z",
+      "entry_price": 12.45,
+      "shares": 300,
+      "current_price": 12.3076,
+      "pnl_dollars": -42.72,
+      "pnl_percent": -1.14,
+      "setup_type": "Reversion Framework v1.0 - Extension SELL (Rule #20)",
+      "thesis": "Gap-up market at 2nd extension zone. Bearish + breadth divergence + FOMC catalyst. Testing framework repeatability with tighter risk ($100 vs $200 on Trade #6).",
+      "status": "open",
+      "rule_active": "Rule #20 - Two-Way Fibonacci Reversion Framework",
+      "risk_dollars": 100,
+      "stop_price": 12.60,
+      "notes": "Framework validation trade #2. Trade #6 exited cleanly per Rule #19 at small loss. Trade #7 tests if framework repeats same day."
+    }
+  ],
   "closed_positions": [
     {
-      "id": 1,
+      "id": 5,
       "ticker": "SPXU",
       "direction": "short",
       "entry_time": "2025-10-27T04:46:13Z",
@@ -18,7 +37,25 @@
       "thesis": "9-day EMA mean reversion (Chris Lori recommendation)",
       "status": "closed",
       "notes": "LESSON: Never enter on external tip without verifying against OUR rules. Skipped entire rule checklist because of conviction in advisor recommendation. Small loss (tiny %) but rule violation clear. Extract: Only trade when ALL confluence criteria met, not because someone else said so."
+    },
+    {
+      "id": 6,
+      "ticker": "SPXU",
+      "direction": "long",
+      "entry_time": "2025-10-28T10:30:00Z",
+      "entry_price": 13.68,
+      "shares": 552,
+      "exit_time": "2025-10-28T12:00:00Z",
+      "exit_price": 13.60,
+      "pnl_dollars": -44.02,
+      "pnl_percent": -0.58,
+      "setup_type": "Reversion Framework v1.0 (Rule #19 validation)",
+      "thesis": "Gap-up reversion at extension zone. 7 independent confluences (bearish divergence, breadth divergence, AAPL double-top, NVDA rejection, SPX resistance, FOMC catalyst, VWAP trigger).",
+      "status": "closed",
+      "rule_active": "Rule #19 - Divergence Confirmation Protocol",
+      "compliance_score": 100,
+      "notes": "Framework validation trade #1. Thesis triggered correctly but SPY continued higher. Exited per Rule #19 (3-candle hold) preventing larger loss. Learned: Framework has merit, need tighter confluence or better timing."
     }
   ],
-  "notes": "Position tracking - closed positions logged with rule compliance notes for learning."
+  "notes": "Position tracking - open positions monitored in real-time, closed positions logged with rule compliance notes for learning and framework validation."
 }

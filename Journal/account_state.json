@@ -1,27 +1,32 @@
 {
-  "last_updated": "2025-10-27",
-  "last_journal_entry": "2025-10-27",
-  "last_workflow_run": "2025-10-19",
+  "last_updated": "2025-10-28",
+  "last_journal_entry": "2025-10-28",
+  "last_workflow_run": "2025-10-28",
   "data_freshness": "FRESH",
   "account": {
-    "total_balance": 23132.21,
-    "cash_and_sweep": 23132.21,
-    "ytd_pl": 3179.52,
-    "note": "Auto-updated by Wingman from trades and journal entries - represents total account value",
-    "overall_pnl_ytd": 3179.52
+    "total_balance": 24977.68,
+    "cash_and_sweep": 21242.68,
+    "cash_available": 21242.68,
+    "open_positions_value": 3735.0,
+    "ytd_pl": 3135.5,
+    "note": "Auto-updated by Wingman from trades and broker data - represents total account value including open positions",
+    "overall_pnl_ytd": 3135.5
   },
   "positions": {
     "cash": {
-      "amount": 23132.21,
-      "percentage": 100.0,
-      "note": "Cash + money market sweep vehicle"
+      "amount": 21242.68,
+      "percentage": 85.0,
+      "note": "Cash available (not in positions)"
     },
     "equities": {
-      "ticker": null,
-      "amount": 0,
-      "percentage": 0.0,
-      "shares": 0,
-      "note": "No equity positions currently"
+      "ticker": "SPXU",
+      "amount": 3735.0,
+      "percentage": 15.0,
+      "shares": 300,
+      "entry_price": 12.45,
+      "current_price": 12.3076,
+      "pnl": -42.72,
+      "note": "Trade #7 - Short SPY via SPXU inverse ETF (Rule #20)"
     },
     "crypto": {
       "asset": null,

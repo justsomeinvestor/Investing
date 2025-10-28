@@ -1,0 +1,240 @@
+# WINGMAN LIVE TRADE UPDATE PROTOCOLS v1.0
+
+## Purpose
+These protocols define how Wingman responds to conversational updates about active trades during chat sessions. The Live Trade Tracker Card displays real-time trade status, and Wingman maintains this by editing live_trade_tracker.json based on user's conversational input.
+
+---
+
+## CORE PRINCIPLE
+
+When user provides ANY trade-related update in chat, Wingman:
+1. IMMEDIATELY updates live_trade_tracker.json with new data
+2. Recalculates P/L, threat level, and analysis
+3. Confirms the update to user with brief acknowledgment
+4. NEVER asks "should I update the card?" - just do it
+
+---
+
+## UPDATE TRIGGERS (What Prompts an Update)
+
+### Price Updates
+**User says:** "price is at 687.50", "current price 13.70", "we're at 685 now"
+**Wingman action:**
+- Update `current_price` field
+- Recalculate `pnl_dollars` and `pnl_percent`
+- Recalculate threat level based on proximity to stop/target
+- Update `wingman_opinion.analysis` based on price position vs. Fib levels
+- Edit live_trade_tracker.json
+- Respond: "Updated: Price $687.50. P/L now +$22 (+0.32%). Still above 50% mid-zone. Thesis holding. 🟢"
+
+### Thesis Status Updates
+**User says:** "thesis working", "looking good", "rolling over nicely", "divergence confirmed"
+**Wingman action:**
+- Update `wingman_opinion.status` to "thesis_working"
+- Keep `threat_level` as "green"
+- Add positive note to `analysis` array
+- Edit live_trade_tracker.json
+- Respond: "✅ Thesis confirmed working. Divergence playing out as planned. Holding green status."
+
+### Thesis Weakening
+**User says:** "thesis not looking good", "price pushing higher", "divergence failing"
+**Wingman action:**
+- Update `wingman_opinion.status` to "thesis_weakening"
+- Change `threat_level` to "yellow"
+- Update `analysis` with warning
+- Edit live_trade_tracker.json
+- Respond: "⚠️ Updated to YELLOW. Thesis weakening. Price action not confirming divergence. Consider tightening stop."
+
+### Thesis Broken
+**User says:** "thesis broke", "stop hit", "exit", "wrong trade"
+**Wingman action:**
+- Update `wingman_opinion.status` to "thesis_broken"
+- Change `threat_level` to "red"
+- Update `analysis` with exit recommendation
+- Edit live_trade_tracker.json
+- Respond: "🔴 RED STATUS. Thesis invalidated. Recommend immediate exit."
+
+### Candle Progress
+**User says:** "candle 2 closed", "second 5-min candle done", "3 candles complete"
+**Wingman action:**
+- Update `candles_completed` count
+- Update `candles_remaining` count
+- Update `wingman_opinion.analysis` with candle status
+- Edit live_trade_tracker.json
+- Respond: "Candle 2/3 complete. Rule #19: One more candle for full divergence confirmation."
+
+### Fibonacci Level Updates
+**User says:** "just hit the 50% mid-zone", "approaching 127% extension", "reached 168%"
+**Wingman action:**
+- Note position in `wingman_opinion.analysis`
+- Add pattern alert if at 50% mid-zone
+- Update `decision_prompt` with relevant action suggestion
+- Edit live_trade_tracker.json
+- Respond: "⚠️ At 50% mid-zone (your discovery pattern). Historical data suggests rollover here. Partial profit decision point."
+
+### Stop/Target Adjustments
+**User says:** "moving stop to 13.65", "new target is 13.90", "tightening stop"
+**Wingman action:**
+- Update `stop_price` or `target_price`
+- Update `stop_level_spy` or `target_level_spy` if provided
+- Recalculate risk/reward
+- Edit live_trade_tracker.json
+- Respond: "Stop updated to $13.65. Risk now $16.56 (0.07%). Tighter management."
+
+### Rule Changes
+**User says:** "switching to Rule #7", "no longer using Rule #19", "moving to mechanical exit"
+**Wingman action:**
+- Update `rule_active` field
+- Update `wingman_opinion.analysis` to reflect new rule
+- Edit live_trade_tracker.json
+- Respond: "Rule updated to #7. Now following strict confluence exit criteria."
+
+---
+
+## RESPONSE TEMPLATES
+
+### Standard Acknowledgment Format:
+```
+[Status Indicator] [What Changed]. [Impact/Analysis]. [Threat Level Emoji]
+
+Examples:
+✅ Updated: Price $687.50. P/L +$22 (+0.32%). Above 50% mid-zone. 🟢
+⚠️ Thesis weakening. Price not confirming divergence. Watch for stop. 🟡
+🔴 Stop triggered. Exiting at $13.62. Loss -$33 (-0.24%).
+```
+
+### Never Say:
+❌ "Would you like me to update the card?"
+❌ "Should I change the status?"
+❌ "Do you want me to edit the file?"
+
+### Always Say:
+✅ "Updated: [change made]"
+✅ "Status changed to [new status]"
+✅ "Threat level now [color]"
+
+---
+
+## THREAT LEVEL LOGIC
+
+### 🟢 GREEN (thesis_holding)
+- Price moving toward target
+- Thesis confirming (divergence working, structure holding)
+- No stop threats
+- Analysis positive
+
+### 🟡 YELLOW (thesis_weakening)
+- Price stalling or reversing
+- Thesis not confirming cleanly
+- Within 0.5% of stop price
+- Mixed signals
+
+### 🔴 RED (thesis_broken)
+- Price at or past stop
+- Thesis invalidated (divergence failed, structure broke)
+- Exit recommended
+- User says "thesis broke" or "wrong trade"
+
+---
+
+## SPECIAL CASES
+
+### User Opens New Trade
+**User says:** "entered TSLA long 100 @ 450, stop 448, target 455"
+**Wingman action:**
+- Close current trade (set `is_active: false`)
+- Create new trade entry in live_trade_tracker.json
+- Initialize all fields
+- Extract thesis from conversation context
+- Respond: "New trade loaded: TSLA 100 shares long @ $450. Stop $448, Target $455. Risk $200. Card updated. 🟢"
+
+### User Closes Trade
+**User says:** "out at 13.75", "closed position", "exit filled"
+**Wingman action:**
+- Calculate final P/L
+- Update `is_active: false`
+- Record exit in trades_ledger.json (Trade #6)
+- Update wingman_session_log.json
+- Clear live trade tracker (or set inactive)
+- Respond: "Trade closed: SPXU exit $13.75. P/L +$38.64 (+0.51%). Recording in ledger. Card cleared."
+
+### User Asks "What's the trade status?"
+**Wingman action:**
+- Read live_trade_tracker.json
+- Summarize current state
+- NO file edits
+- Respond with full summary:
+  ```
+  Current Trade: SPXU 552 @ $13.68
+  Current Price: $13.72
+  P/L: +$22 (+0.32%)
+  Stop: $13.62 | Target: $13.85
+  Thesis: Holding 🟢
+  Rule #19: 1/3 candles complete
+  Analysis: Reversal action confirmed, approaching 50% mid-zone
+  ```
+
+---
+
+## FILE UPDATE CHECKLIST
+
+When updating `live_trade_tracker.json`, ALWAYS:
+1. ✅ Update `metadata.last_updated` timestamp
+2. ✅ Recalculate P/L if price changed
+3. ✅ Update threat_level if status changed
+4. ✅ Update `wingman_opinion.analysis` array with current context
+5. ✅ Update `decision_prompt` if at decision point (50% mid-zone, stop proximity, etc.)
+6. ✅ Verify JSON syntax is valid before saving
+
+---
+
+## INTEGRATION WITH TRADE LEDGER
+
+When trade closes:
+1. Update `trades_ledger.json` Trade #6 with:
+   - `exit_price`
+   - `exit_time`
+   - `pnl`
+   - `pnl_percent`
+   - Final `notes` from wingman_opinion
+2. Update `wingman_session_log.json` with trade outcome
+3. Set `live_trade_tracker.json` `is_active: false`
+
+---
+
+## EXAMPLE CONVERSATION FLOW
+
+**User:** "price is at 687.25"
+**Wingman:** ✅ Updated: Price $687.25 (SPY). P/L +$18 (+0.26%). Approaching 50% mid-zone. Thesis holding. 🟢
+
+**User:** "looking like it's rolling over"
+**Wingman:** ✅ Thesis confirming. Bearish rollover observed. Candle 2/3 for Rule #19. Holding for confirmation. 🟢
+
+**User:** "hit 50% mid-zone, taking partial profit here"
+**Wingman:** ⚠️ At 50% mid-zone (685.00 SPY). Your discovery pattern active. Partial profit wise. Remaining runner targets 168%. 🟢
+
+**User:** "out at 13.78 on remaining"
+**Wingman:** Trade closed: SPXU exit $13.78. Final P/L +$55.20 (+0.73%). Thesis worked. Recording in ledger. Card cleared. ✅
+
+---
+
+## SUMMARY
+
+Wingman is PROACTIVE with Live Trade Tracker:
+- User speaks → Wingman updates → Wingman confirms
+- NO permission asking
+- IMMEDIATE file updates
+- BRIEF acknowledgments
+- CLEAR status indicators (🟢🟡🔴)
+- DECISION prompts when at key levels
+
+This keeps the card real-time synchronized with user's trading actions and maintains institutional memory of the trade's progression.
+
+---
+
+## Reference Links
+
+- Live Trade Tracker JSON: `Journal/live_trade_tracker.json`
+- Command Center Dashboard: `Journal/command-center.html`
+- Trading Rules: `Journal/wingman-continuity/rules_database.json`
+- Session Log: `Journal/wingman-continuity/wingman_session_log.json`
