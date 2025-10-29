@@ -1,0 +1,484 @@
+================================================================================
+HOW TO UPDATE COMMAND CENTER DASHBOARD
+================================================================================
+
+Command Center Dashboard Update System for Journal/command-center.html
+
+This guide documents the two-command system for keeping the trading dashboard
+current during active sessions and end-of-day finalization.
+
+Mirrors the pattern used in Research Dashboard (Master Plan workflow):
+  Research Dashboard: "run_workflow.py" (intraday) + final sync (EOD)
+  Trading Dashboard: "wingman intra" (intraday) + "wingman eod" (EOD)
+
+================================================================================
+QUICK START
+================================================================================
+
+During Trading Session (Multiple Times):
+  → "wingman intra"
+
+End of Day (Once, at market close):
+  → "wingman eod"
+
+That's it. Everything else is automatic.
+
+================================================================================
+OVERVIEW: TWO-COMMAND SYSTEM
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ "WINGMAN INTRA" - INTRADAY DASHBOARD REFRESH                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ PURPOSE:                                                                    │
+│   Keep dashboard current during active trading session                      │
+│                                                                             │
+│ WHEN TO USE:                                                                │
+│   After trades close, market observations, position changes, discussions   │
+│   Run MULTIPLE times per session (very fast, ~5-10 seconds)                │
+│                                                                             │
+│ WHAT IT UPDATES:                                                            │
+│   ✓ Trading Status card (balance, YTD P/L, today P/L)                     │
+│   ✓ Session Performance stats (trades, win rate, compliance %)            │
+│   ✓ Recent Trades list (last 5 trades with details)                       │
+│   ✓ Live Trade Tracker (position monitoring, threat level)                │
+│   ✓ Market Context (signal tier, key levels)                              │
+│                                                                             │
+│ WHAT IT DOES NOT DO:                                                        │
+│   ✗ Generate EOD recap (bottom collapsed card)                            │
+│   ✗ Create journal entries (Markdown files)                               │
+│   ✗ Finalize/reset session                                                │
+│   ✗ Archive anything                                                       │
+│                                                                             │
+│ EXECUTION TIME: ~5-10 seconds                                              │
+│ CAN RUN MULTIPLE TIMES: YES                                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ "WINGMAN EOD" - END OF DAY COMPREHENSIVE WRAP                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ PURPOSE:                                                                    │
+│   Complete day finalization + full dashboard update                        │
+│                                                                             │
+│ WHEN TO USE:                                                                │
+│   Once at market close (3:55-4:00 PM ET)                                   │
+│   Run ONLY ONCE per session                                                │
+│                                                                             │
+│ WHAT IT UPDATES:                                                            │
+│   ✓ Everything "wingman intra" does (all live sections)                   │
+│   ✓ EOD Recap JSON (collapsed card at bottom of dashboard)                │
+│   ✓ Journal entry (Markdown file in Log-Entries/)                         │
+│   ✓ Journal.md index (tracking all sessions)                              │
+│   ✓ Account state (finalized realized P&L)                                │
+│                                                                             │
+│ WHAT IT GENERATES:                                                          │
+│   ✓ .eod_recap.json (dashboard card data)                                │
+│   ✓ YYYY-MM-DD_EOD_Wrap.md (journal entry)                               │
+│   ✓ Archives previous recap to eod-history/                               │
+│                                                                             │
+│ EXECUTION TIME: ~30-60 seconds                                             │
+│ CAN RUN MULTIPLE TIMES: NO (run once per session)                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+WORKFLOW PATTERN - COMPLETE TRADING DAY
+================================================================================
+
+MORNING (Session Start)
+  1. Market opens (9:30 AM ET)
+  2. Run scans, analyze levels, discuss setups
+  3. Wingman issues: "wingman intra"
+     → Command Center shows current context
+     → Ready for trading
+
+DURING DAY (Active Trading)
+  After each of these events → Run "wingman intra":
+    • Trade executed
+    • Trade closed (important!)
+    • Significant market observation shared
+    • Discussion about key levels
+    • Position size adjusted
+    • Stop/target modified
+    • New confluence factor identified
+    • Rules enforced/evaluated
+
+  Example pattern:
+    09:45 → Trade #8 executed → "wingman intra" ✓
+    10:30 → Observed breadth divergence → "wingman intra" ✓
+    11:15 → Trade #8 closed +$75 → "wingman intra" ✓
+    12:00 → Analyzing next setup → "wingman intra" ✓
+    14:30 → Trade #9 entered → "wingman intra" ✓
+    15:45 → Market consolidation → "wingman intra" ✓
+
+END OF DAY (Market Close)
+  1. Market closes (4:00 PM ET)
+  2. Run: "wingman eod"
+     → Final comprehensive update to ALL sections
+     → EOD recap generated
+     → Journal entry created
+     → Session finalized, ready for tomorrow
+
+NEXT MORNING
+  Session resets, cycle repeats
+
+================================================================================
+DETAILED WORKFLOW STEPS
+================================================================================
+
+STEP 1: INTRADAY REFRESH (During Session)
+─────────────────────────────────────────
+
+When?
+  After significant trading events (trade close, analysis, decisions)
+  Multiple times per session (whenever dashboard needs current data)
+
+How?
+  Type: "wingman intra"
+  Wingman executes: `command_center_updater.py --mode intraday`
+
+What Happens?
+  1. Loads current trading data from JSON files
+  2. Aggregates trading statistics (wins/losses, compliance, P&L)
+  3. Updates .session_state.json with current data
+  4. Updates account_state.json with current P/L
+  5. Updates dashboard in real-time
+
+Dashboard Sections Updated:
+  ┌─ Trading Status Card ─────────────────┐
+  │ Balance: $24,977.68 ← UPDATED         │
+  │ Today P/L: +$120.00 ← UPDATED         │
+  │ YTD P/L: $3,240.00 ← UPDATED          │
+  │ Daily Loss Limit: (Green bar) ← OK    │
+  └───────────────────────────────────────┘
+
+  ┌─ Session Performance Card ────────────┐
+  │ Trades Executed: 9 ← UPDATED          │
+  │ Win Rate: 55.6% ← UPDATED             │
+  │ Rule Compliance: 100% ← UPDATED       │
+  │ Pattern: Learning phase ← UPDATED     │
+  └───────────────────────────────────────┘
+
+  ┌─ Recent Trades ───────────────────────┐
+  │ [Latest 5 trades with P/L] ← UPDATED  │
+  └───────────────────────────────────────┘
+
+  ┌─ Live Trade Tracker ──────────────────┐
+  │ If position open: current P/L ← UPDATED
+  │ Threat level assessment ← UPDATED     │
+  │ Stop/target levels ← UPDATED          │
+  └───────────────────────────────────────┘
+
+Output:
+  ✓ INTRADAY DASHBOARD REFRESH
+
+  Command Center Updated:
+    ✓ Trading Status card
+    ✓ Session Performance stats
+    ✓ Recent Trades list
+    ✓ Live Trade Tracker
+    ✓ Market context
+
+  Status: Dashboard synchronized with current session data
+
+STEP 2: END OF DAY WRAP (Market Close Only)
+────────────────────────────────────────────
+
+When?
+  ONCE per session, at market close (3:55-4:00 PM ET)
+  Do NOT run multiple times
+
+How?
+  Type: "wingman eod"
+  Wingman executes: `command_center_updater.py --mode eod`
+
+What Happens?
+  1. Runs full intraday update (Step 1)
+  2. Generates EOD recap JSON (.eod_recap.json)
+  3. Archives previous recap to eod-history/
+  4. Updates all continuity files
+  5. Creates journal entry (Markdown)
+  6. Finalizes session for next day
+
+Dashboard Sections Updated:
+  [All sections from intraday refresh, PLUS:]
+
+  ┌─ EOD Recap Card (Collapsed at Bottom) ┐
+  │ Session Summary ← GENERATED           │
+  │ Key Outcomes (bullet list) ← GENERATED│
+  │ Signal Snapshot ← GENERATED           │
+  │ Trend Analysis (7-day) ← GENERATED    │
+  │ Narrative Momentum ← GENERATED        │
+  │ Trading Insights ← GENERATED          │
+  │ Actions Completed/Deferred ← GENERATED│
+  └───────────────────────────────────────┘
+
+Additional Outputs:
+  ✓ Journal entry created: Log-Entries/2025-10-29_EOD_Wrap.md
+  ✓ EOD recap archived: eod-history/2025-10-29_eod_recap.json
+  ✓ Session state reset for next day
+  ✓ Account P&L finalized
+
+Output:
+  ✓ End-of-day wrap completed successfully
+  Timestamp: [ISO timestamp]
+  Dashboard sections updated:
+    - Trading Status card
+    - Session Performance stats
+    - Recent Trades list
+    - Live Trade Tracker
+    - EOD Recap card (collapsed)
+
+  Session ready for next trading day
+
+================================================================================
+DATA SOURCES - WHAT GETS UPDATED
+================================================================================
+
+INTRADAY REFRESH updates these JSON files:
+  1. .session_state.json
+     └─ Current session timestamp
+     └─ Account balance/P&L
+     └─ Trading stats (trades count, win rate, compliance)
+     └─ Recent trades list
+
+  2. account_state.json
+     └─ Current balance
+     └─ Available cash
+     └─ YTD P&L
+     └─ Today's P/L
+
+END OF DAY WRAP creates/updates:
+  1. .eod_recap.json (NEW)
+     └─ Session summary
+     └─ Key outcomes
+     └─ Signal snapshot
+     └─ Trading insights
+     └─ Actions log
+
+  2. Log-Entries/YYYY-MM-DD_EOD_Wrap.md (NEW)
+     └─ Comprehensive journal entry
+
+  3. Journal.md (UPDATED)
+     └─ Index of all sessions
+
+  4. eod-history/YYYY-MM-DD_eod_recap.json
+     └─ Archive of previous recap (for historical tracking)
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: "wingman intra" command not recognized
+SOLUTION:
+  1. Ensure you typed exactly: "wingman intra" (with space, not comma)
+  2. Check that command_center_updater.py exists in scripts/journal/
+  3. Verify path: c:\Users\Iccanui\Desktop\Investing\scripts\journal\
+
+PROBLEM: Dashboard not updating after "wingman intra"
+SOLUTION:
+  1. Refresh your browser (F5 or Cmd+R)
+  2. Check that .session_state.json file was updated (check timestamp)
+  3. Verify JSON files are valid: check JSON in Journal/ directory
+  4. Run again: "wingman intra"
+
+PROBLEM: "wingman eod" fails or is incomplete
+SOLUTION:
+  1. Check that all prerequisite files exist:
+     - Journal/trades_ledger.json
+     - Journal/account_state.json
+     - Journal/wingman-continuity/wingman_session_log.json
+  2. Verify backup exists in Backups/Session4_Oct29/
+  3. Run "wingman intra" first, then "wingman eod"
+  4. Check console output for specific error messages
+
+PROBLEM: EOD recap card shows stale data
+SOLUTION:
+  1. Ensure "wingman eod" completed successfully (not just intraday)
+  2. Check .eod_recap.json timestamp matches session close time
+  3. Refresh browser (F5)
+  4. If still stale, run "wingman eod" again
+
+PROBLEM: Multiple "wingman eod" commands in one session
+SOLUTION:
+  1. This is OK - runs fresh EOD wrap each time
+  2. Each run archives previous recap
+  3. Only run ONCE per session to avoid confusion
+  4. If you run twice, the second one overwrites the first
+
+================================================================================
+COMPARISON TO RESEARCH DASHBOARD
+================================================================================
+
+Research Dashboard (master-plan.md)       Trading Dashboard (command-center.html)
+─────────────────────────────────────    ───────────────────────────────────
+run_workflow.py (during research)    →   "wingman intra" (during trading)
+  - Updates master-plan.md              - Updates command-center.html
+  - Multiple runs per session            - Multiple runs per session
+  - ~10-30 seconds                       - ~5-10 seconds
+
+run_workflow.py (EOD final)          →   "wingman eod" (EOD final)
+  - Updates narratives + timestamps      - Updates dashboard + journal
+  - Finalizes research                   - Finalizes trading session
+  - ~60 seconds                          - ~30-60 seconds
+
+Both systems follow the same pattern:
+  Intraday: Multiple incremental updates (fast refresh)
+  EOD: Comprehensive finalization (includes journaling)
+
+================================================================================
+DATA VERIFICATION
+================================================================================
+
+Automatic Verification: "Hybrid Approach"
+=========================================
+
+Both "wingman intra" and "wingman eod" include built-in quick verification:
+  - Runs automatically at end of each command
+  - <100ms overhead per run
+  - Checks JSON validity, required sections, placeholder detection
+  - Reports any issues found
+
+If you see warnings during execution:
+  Example: "⚠ Warning: .session_state.json missing section 'timestamp'"
+
+  This indicates the update completed but some data is missing.
+  The dashboard may still display, but missing sections won't render.
+
+Standalone Verification Script
+==============================
+
+For comprehensive audits, use the standalone verifier:
+
+  During intraday session:
+    python scripts/journal/verify_command_center.py --mode intraday
+
+  After EOD wrap (standard):
+    python scripts/journal/verify_command_center.py --mode eod
+
+  After EOD wrap (deep verification):
+    python scripts/journal/verify_command_center.py --mode eod --strict
+
+Exit Codes:
+  0 = SUCCESS (all checks passed)
+  1 = WARNINGS (non-critical issues found, update valid)
+  2 = CRITICAL (errors found, investigate update)
+
+Intraday Mode Verification Checks:
+  ✓ File existence (critical files must exist)
+  ✓ Session state structure (timestamp, account, trading)
+  ✓ Account state structure (account, positions)
+  ✓ Value ranges (balances positive, percentages 0-100)
+  ✓ Cross-file consistency (YTD P/L matches, trade counts match)
+  ✓ Placeholder detection (no undefined/TBD values)
+
+EOD Mode Verification Checks:
+  [All intraday checks, PLUS:]
+  ✓ EOD recap structure (all required sections present)
+  ✓ EOD recap completeness (--strict only)
+    - Summary has meaningful content
+    - Key outcomes populated
+    - Signal data properly formatted
+    - Narratives (hot/cooling) present
+
+Example Usage:
+  After a trading session update:
+    # Quick check (included in wingman intra)
+    $ wingman intra
+    [dashboard updates]
+    ✓ Quick verification passed
+
+    # Comprehensive check
+    $ python scripts/journal/verify_command_center.py --mode intraday
+    [prints detailed verification report]
+    Checks: 18/18 passed
+    ✓ VERIFICATION PASSED
+
+  After EOD wrap:
+    # Quick check (included in wingman eod)
+    $ wingman eod
+    [dashboard + recap updates]
+    ✓ Quick verification passed
+
+    # Deep check
+    $ python scripts/journal/verify_command_center.py --mode eod --strict
+    [prints comprehensive EOD verification]
+    Checks: 24/24 passed
+    ✓ VERIFICATION PASSED
+
+Troubleshooting Verification Issues:
+===================================
+
+PROBLEM: "Missing section in session_state"
+SOLUTION:
+  1. Run "wingman intra" again (may have been incomplete update)
+  2. Check Journal/.session_state.json exists and is readable
+  3. Run standalone verifier: python verify_command_center.py --mode intraday
+  4. Check for recent errors in terminal output
+
+PROBLEM: "Value out of range" (e.g., win_rate: 156%)
+SOLUTION:
+  1. This indicates corrupted data in JSON files
+  2. Check trades_ledger.json for calculation errors
+  3. Run "wingman intra" to recalculate from source
+  4. If persists, restore from backup and re-run
+
+PROBLEM: Verification fails with exit code 2
+SOLUTION:
+  1. Stop using the dashboard (may be in inconsistent state)
+  2. Run standalone verifier in strict mode: python verify_command_center.py --mode eod --strict
+  3. Check the error messages (details on what failed)
+  4. Contact support with verification output
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+DURING TRADING SESSION:
+  After trade close: "wingman intra"
+  After discussion: "wingman intra"
+  After analysis: "wingman intra"
+  (Run as needed, very fast)
+
+AT MARKET CLOSE:
+  "wingman eod"
+  (Run once, comprehensive)
+
+WHAT HAPPENS:
+  Intraday: Dashboard cards updated in real-time
+  EOD: Dashboard + journal entry + session finalized
+
+BROWSER REFRESH:
+  Dashboard updates automatically (JSON loaded on page load)
+  If needed: F5 or Cmd+R to force refresh
+
+VERIFICATION:
+  Check Journal folder: timestamp on .session_state.json should be current
+  Check EOD recap: appears in collapsed card at bottom (after "wingman eod")
+
+BACKUPS:
+  Before modifications: Backups/Session4_Oct29/
+  EOD recaps: eod-history/ (one per session)
+
+================================================================================
+SUPPORT
+================================================================================
+
+Questions?
+  Review this guide section by section
+  Check troubleshooting section above
+  Verify file paths and JSON structure
+
+Related Documentation:
+  Toolbox/INSTRUCTIONS/Domains/EOD_Recap_System_Guide.md
+  Toolbox/INSTRUCTIONS/Research/How_to_use_MP_CLAUDE_ONLY.txt (for comparison)
+  Journal/command-center.html (dashboard source code)
+  scripts/journal/command_center_updater.py (update script source)
+
+System Health:
+  Command Center is primary UI for trading dashboard
+  Real-time updates reflect current account state
+  EOD wrap creates permanent record (journal entry)
+
+================================================================================
+VERSION: 1.0 | Date: Oct 29, 2025 | Status: PRODUCTION READY
+================================================================================

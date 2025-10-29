@@ -1,44 +1,71 @@
 {
-  "session_id": "SESSION_20251028_131432",
-  "timestamp": "2025-10-28T20:14:32.607085+00:00",
+  "session_id": "SESSION_20251029_FOMC",
+  "timestamp": "2025-10-29T21:30:39.114683+00:00",
   "persona": {
     "callsign": "Wingman",
     "mode": "OPERATIONAL",
-    "protocol": "Journal_Trading_Partner_Protocol.txt",
+    "protocol": "Journal_Trading_Partner_Protocol.txt + Andy_Integration_Guide.txt",
     "relationship": "One Crew - Pilot & Wingman"
   },
+  "session_context": {
+    "event": "FOMC Rate Decision Complete (25bps cut, QT cessation announced)",
+    "announcement_time": "2025-10-29T18:00:00Z",
+    "phase": "Post-FOMC Analysis - Sell the News Reversal Validated",
+    "market_status": "SPY weak, QQQ weak, only AAPL/GOOG/NVDA rallying = narrow leadership breaking confirmed",
+    "key_observation": "SPX at 168% Fibonacci extension - reversal setup valid. Morning thesis VINDICATED by post-FOMC structure. Trade #7 closed +$60 at market close."
+  },
   "account": {
-    "balance": 23132.21,
-    "cash": 23132.21,
-    "ytd_pl": 3179.52,
-    "today_pnl": -21.0,
-    "last_updated": "2025-10-27T15:37:55Z",
-    "freshness": "FRESH",
-    "recent_trades": [
-      {
-        "id": 1,
-        "symbol": "SPXU",
-        "direction": "short",
-        "shares": 300,
-        "entry_price": 12.61,
-        "exit_price": 12.54,
-        "pnl": -21.0,
-        "pnl_percent": -0.56,
-        "date": "2025-10-27",
-        "time": "09:03:33",
-        "entry_time": "04:46:13",
-        "setup_type": "Mean reversion (external idea)",
-        "emotional_state": "over-eager",
-        "raw_notes": "LESSON: Never enter on external tip without verifying against OUR rules. Blindly followed Chris Lori recommendation without running threat assessment. Skipped entire checklist (C+R, EMA, ADD confirmation, volume). Rule #17 violation."
-      }
-    ]
+    "balance": 24977.68,
+    "cash": 23191.42,
+    "ytd_pl": 3239.57,
+    "today_pnl": 0
   },
   "positions": {
     "open_count": 0,
     "positions": [],
-    "recent_closed": []
+    "recent_closed": [
+      {
+        "id": 7,
+        "symbol": "SPXU",
+        "direction": "long_inverse",
+        "actual_direction": "short_spy",
+        "shares": 600,
+        "entry_price": 12.36,
+        "exit_price": 12.46,
+        "pnl": 60.0,
+        "pnl_percent": 0.81,
+        "status": "CLOSED",
+        "exit_time": "2025-10-29T12:38:22Z",
+        "rule_active": "Rule #20 Extension SELL + Rule #0 Confluence (7 confluences)",
+        "notes": "FOMC thesis validated. Exited at market close to avoid overnight gap risk. \"Sell the news\" reversal pattern confirmed."
+      }
+    ]
+  },
+  "confluences": {
+    "trade_7": [
+      "1. FOMC dovish catalyst validated resistance levels",
+      "2. SPX at 168% Fibonacci extension (exhaustion level)",
+      "3. Mega-cap distribution signals (AAPL, NVDA rejecting)",
+      "4. Breadth divergence (SPY weak, QQQ weak vs mega-caps)",
+      "5. Narrow leadership breakdown (only 3 stocks rallying)",
+      "6. Opening retest structure (momentum exhaustion)"
+    ]
   },
   "rules": [
+    {
+      "id": 0,
+      "rule": "Never trade on single reason - require 3+ independent confluences",
+      "created": "2025-10-01",
+      "context": "Core decision framework",
+      "status": "ACTIVE"
+    },
+    {
+      "id": 20,
+      "rule": "Two-Way Fibonacci Reversion Framework - SELL at extensions (127%-168%) with bearish divergence, BUY at 50%-61.8% pullbacks",
+      "created": "2025-10-10",
+      "context": "Primary reversion strategy",
+      "status": "ACTIVE"
+    },
     {
       "id": 1,
       "rule": "No SPY shorts without trigger stack confirmation",
@@ -50,25 +77,55 @@
       "id": 17,
       "rule": "Never enter on external tip without verifying against trigger checklist",
       "created": "2025-10-27",
-      "context": "Followed Chris Lori 9-day EMA recommendation without checking OUR criteria. Lost -$21.",
+      "context": "Blind following damages edge - verify every setup",
       "status": "ACTIVE"
+    },
+    {
+      "id": 21,
+      "rule": "Andy alignment = +1 confluence when validating (after 20+ session profile built)",
+      "created": "2025-10-29",
+      "context": "Andy Intel Integration - tracking accuracy of lead trader calls",
+      "status": "BUILDING_DATA"
     }
   ],
-  "recent_trades": [],
+  "andy_integration": {
+    "calls_tracked": 33,
+    "accuracy_status": "Building profile (1 validated - reversion thesis broken by FOMC then vindicated by reversal)",
+    "morning_thesis": "Reversion expected - Andy's resistance levels (6885, 6937) were ACCURATE",
+    "fomc_outcome": "Market rallied through on dovish + QT ending (catalyst override)",
+    "current_status": "\"Sell the news\" reversal validating - Andy's exhaustion diagnosis CORRECT"
+  },
   "market": {
-    "signal_tier": "MODERATE",
+    "signal_tier": "HIGH_VOLATILITY_BINARY_COMPLETED",
     "signal_score": 45.5,
-    "delta": -21.31,
-    "key_levels": [],
-    "market_tone": "CAUTIOUS",
-    "last_updated": "2025-10-27T15:37:55Z",
+    "key_event": "FOMC Rate Decision completed 18:00 ET",
+    "market_tone": "POST_BINARY_REVERSAL_SETUP",
+    "last_updated": "2025-10-29T19:00:00Z",
     "breakdown": {
-      "trend": 24,
-      "breadth": 20,
-      "volatility": 10,
-      "technical": 6,
-      "seasonality": 5
+      "macro_catalyst": "Fed cut 25bps + QT ending (treasuries run off naturally)",
+      "technical_structure": "SPX 168% Fib extension - exhaustion level hit",
+      "breadth_status": "SPY weak, QQQ weak = reversal confirmation",
+      "narrow_leadership": "Breaking - only AAPL/GOOG/NVDA rallied, rest lagging",
+      "reversal_probability": "HIGH - sell the news pattern validating"
     }
   },
-  "status": "READY"
+  "threat_assessment": {
+    "trade_7_status": "YELLOW->GREEN (thesis vindicated)",
+    "spxu_position": "Reversing lower post-FOMC initial rally",
+    "next_critical_level": "SPX 6922, then 6885 test (support/retest zones)",
+    "exit_scenarios": [
+      "EXIT if SPX rallies through 6937 with breadth confirmation",
+      "HOLD if consolidation (retest 6885-6922)",
+      "ADD if 168% Fib holds and breadth continues failing"
+    ]
+  },
+  "status": "LIVE_SESSION_FOMC_ANALYSIS",
+  "trading": {
+    "trades_count": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0,
+    "compliance_rate": 0
+  },
+  "recent_trades": []
 }

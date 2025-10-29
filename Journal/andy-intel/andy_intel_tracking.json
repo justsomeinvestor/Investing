@@ -1,0 +1,622 @@
+{
+  "metadata": {
+    "created": "2025-10-29T09:00:00Z",
+    "last_updated": "2025-10-29T19:00:00Z (FOMC intraday update)",
+    "version": "2.1 (Intraday Post-FOMC)",
+    "description": "Andy (Lead Trader) Intel Tracking - Daily calls, accuracy, pattern recognition. INCLUDES FOMC intraday thesis shift.",
+    "purpose": "Systematic tracking of Andy's trading insights. NOT blind follow - validate against Pilot's independent analysis. Build effectiveness profile over 20+ sessions.",
+    "accuracy_goal": "Quantify Andy's contribution to confluence framework. Determine: Which calls hit? Which miss? Which categories most reliable?",
+    "session_status": "FOMC EVENT PROCESSED - Morning reversion thesis invalidated. Market rallying risk-on instead of reversing. Trade #7 thesis broken."
+  },
+
+  "andy_daily_calls": [
+    {
+      "date": "2025-10-29",
+      "session": "intraday_post_fomc_update",
+      "time_captured": "INTRADAY - Post Fed Decision (18:30-19:00 ET)",
+      "general_thesis": "THESIS SHIFT: Market rallying through resistance on dovish FOMC + Fed QT ending. NOT reverting as expected. Mega-caps accelerating (AAPL through 269.87 resistance, GOOG strengthening to 275). Mining breakout (GDXJ 95-96 resistance test). Bonds sold off initially (TLT down). Fed QT stop is massive catalyst - will change treasury/bond dynamics. Reversion thesis BROKEN. Market is risk-on rally through supply.",
+      "critical_note": "FOMC dovish cut + Powell statements on QT ending = regime shift from reversion to rally-through-resistance. Early morning bearish thesis invalidated. SPX 6885 broken upside, AAPL through distribution, mega-caps leading higher.",
+
+      "key_levels": {
+        "SPX": {
+          "support": [6858],
+          "resistance": [6885, 6922, 6937],
+          "current_price_status": "BROKEN THROUGH 6885 resistance - market rallying, not reversing",
+          "pattern": "FOMC dovish catalyst overrode exhaustion signals. Mega-cap led breakout.",
+          "context": "Market rallied through resistance on dovish cut + QT ending catalyst. This breaks the reversion thesis.",
+          "significance": "resistance_broken_bullish",
+          "catalyst": "Fed 25bps cut + QT cessation announced"
+        },
+        "AAPL": {
+          "support": [269.87],
+          "resistance": [272, 274],
+          "current_price_status": "Through 269.87 resistance (distribution level broken UPSIDE)",
+          "pattern": "AAPL through resistance. Day high next. NOT distribution signal - reversal signal.",
+          "context": "Andy early call (double top distribution) was WRONG on direction. Market rallying through mega-cap resistance.",
+          "significance": "breakout_bullish",
+          "catalyst": "Dovish FOMC + mega-cap rotation"
+        },
+        "GOOG": {
+          "support": [],
+          "resistance": [273.75, 275],
+          "current_price_status": "Strengthening toward 275",
+          "pattern": "Mega-cap strength. 275 next target.",
+          "context": "GOOG leading higher post-FOMC. Data center narrative intact.",
+          "significance": "bullish_momentum",
+          "catalyst": "FOMC dovish"
+        },
+        "NVDA": {
+          "support": [202.80],
+          "resistance": [212.30],
+          "current_price_status": "Support at 202.80 relevant intraday",
+          "pattern": "Morning rejection at 212.19 may have been short-term only. Support 202.80 hold = bullish.",
+          "context": "If 202.80 holds, NVDA could participate in mega-cap rally.",
+          "significance": "support_to_watch",
+          "catalyst": "FOMC rally participation"
+        },
+        "TSM": {
+          "support": [],
+          "resistance": [302],
+          "current_price_status": "Testing 302 resistance",
+          "pattern": "If 302 holds, higher in intermediate timeframe per Andy",
+          "context": "Semiconductor strength on FOMC dovish (rates down = growth trades).",
+          "significance": "key_resistance_test",
+          "catalyst": "Rate cut = semi strength"
+        },
+        "RKT": {
+          "support": [16],
+          "resistance": [24],
+          "current_price_status": "Breakout mode 16-24 range",
+          "pattern": "Range breakout setup",
+          "context": "Mortgage rates down on FOMC = RKT catalyst",
+          "significance": "breakout_setup",
+          "catalyst": "FOMC rate cut = mortgage rates lower"
+        },
+        "GDXJ": {
+          "support": [90],
+          "resistance": [95, 96],
+          "current_price_status": "At 95-96 resistance testing. Nothing until 100.",
+          "pattern": "Breakout watch - if through 96, gap to 100 next",
+          "context": "Mining rally continuation. Gap reaction 95-96 critical for continuation to 100.",
+          "significance": "gap_breakout_watch",
+          "catalyst": "Mining/commodities strength"
+        },
+        "TLT": {
+          "support": [],
+          "resistance": [93.30],
+          "current_price_status": "DOWN intraday (bonds sold off)",
+          "pattern": "TLT dropped = unexpected on dovish cut. Suggests Powell hawkish on something OR market repricing growth.",
+          "context": "Bond sell-off suggests Fed QT ending and growth recovery narrative stronger than expected.",
+          "significance": "negative_bond_reaction",
+          "catalyst": "Fed cut + growth repricing"
+        }
+      },
+
+      "macro_catalysts": [
+        {
+          "event": "FOMC Rate Decision (Announced 18:00 ET)",
+          "impact": "MAJOR - regime shifting",
+          "timing": "18:00 ET announcement + 18:30 ET Powell press conference",
+          "decision": "25bps rate cut (dovish, as expected)",
+          "powell_statements": "Fed stopping QT (quantitative tightening). Fed balance sheet to run off naturally (treasuries, MBS roll off). No more active runoff selling.",
+          "market_reaction": "BULLISH - stocks rally on dovish + growth narrative, bonds sell off on growth repricing",
+          "positioning": "MORNING THESIS BROKEN. Early prediction was reversion on exhaustion. FOMC catalyst overrode technical signals. Market rallying risk-on into growth names (mega-caps, semis, commodities)."
+        }
+      ],
+
+      "key_insights_intraday": [
+        "FOMC dovish cut + QT stop = Growth rally narrative. Technical reversion thesis invalidated.",
+        "AAPL/GOOG/NVDA breaking through resistance on mega-cap strength. NOT distribution - growth acceleration.",
+        "Mining (GDXJ) strong on rate cut = commodity play activation.",
+        "RKT rallying on lower mortgage rates (Fed cut impact).",
+        "TSM testing 302 - if holds, semis rallying (rates down = growth stocks).",
+        "TLT down = growth repricing stronger than bond rally (unexpected but market repricing risk appetite).",
+        "Fed QT stop is massive: No more $6.6T runoff. Treasuries will naturally roll (much slower). Bond dynamics changing.",
+        "CRITICAL FOR TRADE #7: Reversion thesis is broken. SPX rallied through 6885 resistance. SPXU short position thesis invalidated. EXIT RECOMMENDED."
+      ],
+
+      "accuracy_tracking_update": {
+        "morning_thesis": "Reversion expected on mega-cap exhaustion. FOMC catalyst unknown.",
+        "outcome": "BROKEN - Market rallied through resistance on dovish FOMC + growth repricing",
+        "validation": "MISS - Morning resistance calls (6885, 6937) were correct placement, but market rallied THROUGH them instead of reversing at them.",
+        "lesson": "Right levels, wrong direction. FOMC dovish catalyst overrode technical exhaustion signals."
+      }
+    },
+    {
+      "date": "2025-10-29",
+      "session": "premarket_and_morning",
+      "time_captured": "05:58 AM - 08:53 AM ET",
+      "general_thesis": "Earnings-driven market (NEE strong on electric demand, CAT exceptional mining/data center themes). Consumer weakness signal (tapped). Breadth still negative despite index strength. Fed day volatility. Narrow leadership risk (tops are narrow). Data center adjacent positioning favored. Nuclear sector emerging (Cameco/Westinghouse government 80B contract). Structure clarity critical before entries.",
+
+      "key_levels": {
+        "SPX": {
+          "support": [6858],
+          "resistance": [6885, 6922, 6937],
+          "range": "6858 to 6937",
+          "pattern": "At next resistance, narrow mega-cap leadership",
+          "context": "SPX at key resistance zone. Fed decision today = volatility driver.",
+          "significance": "resistance",
+          "catalyst": "FOMC decision 18:00 ET today (dovish 95%+ priced)"
+        },
+        "QQQ": {
+          "support": [633.65],
+          "resistance": [637.75],
+          "range": "633.65 to 637.75",
+          "pattern": "Channel resistance, breadth weakness underneath",
+          "context": "QQQ hitting resistance but breadth negative = caution signal",
+          "significance": "resistance",
+          "catalyst": "Fed day, tech-sensitive to rates"
+        },
+        "AAPL": {
+          "support": [],
+          "resistance": [269.87, 271, 274],
+          "range": "271 to 274",
+          "pattern": "Double top at 269.87, Andy scaling back (distribution signal)",
+          "context": "Mega-cap showing distribution at highs. Andy sold some AAPL.",
+          "significance": "distribution",
+          "catalyst": "Mega-cap concentration risk"
+        },
+        "NVDA": {
+          "support": [202.80],
+          "resistance": [212.30, 212.19],
+          "range": "202.80 to 212.30",
+          "pattern": "Rejected at 212.19, major Fib at 212.30",
+          "context": "AMD has more upside than NVDA at moment. NVDA showing weakness.",
+          "significance": "resistance_rejection",
+          "catalyst": "Technical rejection, momentum loss vs AMD"
+        },
+        "AMD": {
+          "support": [225, 230],
+          "resistance": [271.75, 299],
+          "range": "225 to 299",
+          "pattern": "More upside than NVDA. Targets: 271.75 first, then 299 after pullback",
+          "context": "AMD positioning more bullish than NVDA. Pullback to 225-230 = buy zone.",
+          "significance": "bullish",
+          "catalyst": "Outperforming NVDA, AI narrative continuation"
+        },
+        "TSLA": {
+          "support": [450, 453.55],
+          "resistance": [465.35, 470.75],
+          "range": "450 to 470.75",
+          "pattern": "Clear support/resistance defined",
+          "context": "Range defined, waiting for directional break",
+          "significance": "neutral",
+          "catalyst": "Fed day volatility could trigger break"
+        },
+        "MSFT": {
+          "support": [528],
+          "resistance": [],
+          "range": "528 to ATH",
+          "pattern": "Support identified",
+          "context": "Key support level to monitor",
+          "significance": "support",
+          "catalyst": "Data center demand, cloud spend trends"
+        },
+        "GOOG": {
+          "support": [],
+          "resistance": [273.75],
+          "range": "TBD to 273.75",
+          "pattern": "Next resistance level",
+          "context": "Mega-cap resistance target",
+          "significance": "resistance",
+          "catalyst": "AI capex narrative, data center trends"
+        },
+        "CLS": {
+          "support": [],
+          "resistance": [341, 344],
+          "range": "TBD to 344",
+          "pattern": "Likely retests resistance 341-344",
+          "context": "CEO said they manufacture AVGO products, large data center footprint. Andy scaled back in.",
+          "significance": "resistance_with_thesis",
+          "catalyst": "AVGO relationship, data center spending"
+        },
+        "APP": {
+          "support": [620],
+          "resistance": [659.50],
+          "range": "620 to 659.50",
+          "pattern": "Wave V target: 659.50 if 620 holds",
+          "context": "Technical wave count. Andy monitoring for continuation.",
+          "significance": "neutral",
+          "catalyst": "Technical structure"
+        },
+        "APPX": {
+          "support": [34.50],
+          "resistance": [38, 40],
+          "range": "34.50 to 40",
+          "pattern": "Andy buy 34.50, expecting 38-40 area",
+          "context": "Entry point documented. Waiting for target.",
+          "significance": "bullish",
+          "catalyst": "Technical setup"
+        },
+        "CAT": {
+          "support": [580],
+          "resistance": [600],
+          "range": "580 to 600",
+          "pattern": "Earnings were exceptional, raised 2026 guide",
+          "context": "Two avenues: (1) Generators for data center, (2) Machinery for mining (gold/silver/rare earths). Bought Bucyrus (#2 mining equipment).",
+          "significance": "bullish",
+          "catalyst": "Earnings, mining/data center growth"
+        },
+        "CCJ": {
+          "support": [100],
+          "resistance": [],
+          "range": "100+",
+          "pattern": "Must hold 100",
+          "context": "Cameco bought Westinghouse (50%+ of global nuclear plants). Government buying 80B nuclear plants from CCJ/BEP. CCJ produces 20% of global fuel.",
+          "significance": "bullish",
+          "catalyst": "Government nuclear spending, supply shortage"
+        },
+        "UEC": {
+          "support": [],
+          "resistance": [],
+          "pattern": "Nuclear fuel supplier",
+          "context": "Part of nuclear growth thesis. Fuel supply play.",
+          "significance": "bullish",
+          "catalyst": "Nuclear sector growth"
+        },
+        "BWXT": {
+          "support": [],
+          "resistance": [],
+          "pattern": "Nuclear fuel supplier",
+          "context": "Part of nuclear growth thesis. Fuel supply play.",
+          "significance": "bullish",
+          "catalyst": "Nuclear sector growth"
+        },
+        "CEG": {
+          "support": [],
+          "resistance": [],
+          "pattern": "Largest nuclear operator in America",
+          "context": "Will see near-term growth from fuel suppliers. Traditional facility takes 7 years to build.",
+          "significance": "structural",
+          "catalyst": "Long-term nuclear trend"
+        },
+        "RUN": {
+          "support": [],
+          "resistance": [23.25],
+          "range": "19.70 to 23.25",
+          "pattern": "Andy fill: 19.70 shares, target 23.25",
+          "context": "Entry documented, target clear",
+          "significance": "neutral",
+          "catalyst": "Technical setup"
+        },
+        "GDXJ": {
+          "support": [90],
+          "resistance": [98],
+          "range": "90 to 98",
+          "pattern": "Andy buy 90 yesterday, watching gap reaction at 98",
+          "context": "Best in precious metals sector. Looking for gap reaction.",
+          "significance": "bullish",
+          "catalyst": "Mining/precious metals thesis"
+        },
+        "NAIL": {
+          "support": [62],
+          "resistance": [],
+          "range": "62+",
+          "pattern": "Buy support 62",
+          "context": "Connected to TLT (93.30 next on TLT). Bond reaction trade.",
+          "significance": "bullish_if_support_holds",
+          "catalyst": "Bond market reaction to Fed"
+        },
+        "TLT": {
+          "support": [],
+          "resistance": [93.30],
+          "range": "TBD to 93.30",
+          "pattern": "93.30 next resistance",
+          "context": "Fed day volatility will move bonds. Bond market = key indicator.",
+          "significance": "neutral",
+          "catalyst": "Fed decision today"
+        },
+        "RBLX": {
+          "support": [147.50],
+          "resistance": [],
+          "pattern": "Support level. Lawsuit concerns about child abuse.",
+          "context": "Regulatory/legal risk. Andy flagging for awareness.",
+          "significance": "caution",
+          "catalyst": "Litigation risk"
+        },
+        "PLTR": {
+          "support": [192],
+          "resistance": [203.40],
+          "range": "192 to 203.40",
+          "pattern": "Range defined",
+          "context": "Clear trade levels",
+          "significance": "neutral",
+          "catalyst": "Government/AI narratives"
+        },
+        "COST": {
+          "support": [],
+          "resistance": [840],
+          "pattern": "Resistance at 840",
+          "context": "Consumer staple, but Andy caution on consumer (tapped)",
+          "significance": "neutral",
+          "catalyst": "Consumer strength (questionable per Andy)"
+        },
+        "SRUUF": {
+          "support": [],
+          "resistance": [],
+          "pattern": "ETF holding uranium fuel commodity directly",
+          "context": "Pure commodity play vs CCJ/UEC (miner exposure)",
+          "significance": "neutral",
+          "catalyst": "Nuclear theme investment vehicle"
+        },
+        "ASTS": {
+          "support": [80],
+          "resistance": [85],
+          "range": "80 to 110-120",
+          "pattern": "Drop from 100 to 65 looks like motive move. If true, needs new low. 20-day = 80.",
+          "context": "Technical analysis suggests further weakness if motive. But stock could go 110-120 when structure clarifies.",
+          "significance": "neutral_pending_structure",
+          "catalyst": "Technical structure clarity needed"
+        }
+      },
+
+      "trade_ideas": [
+        {
+          "symbol": "RUN",
+          "direction": "long",
+          "entry_zone": "19.70 (filled)",
+          "target": "23.25",
+          "stop": "TBD",
+          "catalyst": "Technical setup",
+          "timeframe": "swing",
+          "conviction": "medium",
+          "notes": "Andy got fill at 19.70. Clear target 23.25. Risk:reward appears favorable."
+        },
+        {
+          "symbol": "GDXJ",
+          "direction": "long",
+          "entry_zone": "90 (filled yesterday)",
+          "target": "98 (gap reaction monitoring)",
+          "stop": "TBD",
+          "catalyst": "Precious metals sector strength",
+          "timeframe": "swing",
+          "conviction": "medium",
+          "notes": "Andy: 'Best in precious metal sector.' Looking for gap reaction at 98. Wait for setup clarity before chasing."
+        },
+        {
+          "symbol": "APPX",
+          "direction": "long",
+          "entry_zone": "34.50 (filled)",
+          "target": "38-40",
+          "stop": "TBD",
+          "catalyst": "Technical setup",
+          "timeframe": "swing",
+          "conviction": "medium",
+          "notes": "Andy fill at 34.50. Expecting 38-40 area. Defined risk setup."
+        },
+        {
+          "symbol": "NAIL",
+          "direction": "long",
+          "entry_zone": "Support 62",
+          "target": "TBD",
+          "stop": "Below 62",
+          "catalyst": "Bond market reaction to Fed (TLT 93.30 resistance break)",
+          "timeframe": "swing",
+          "conviction": "medium",
+          "notes": "Connected to TLT. If bonds rally (TLT hits 93.30+), NAIL likely to follow. Support 62 = entry point."
+        },
+        {
+          "symbol": "CAT",
+          "direction": "long",
+          "entry_zone": "TBD",
+          "target": "580-600",
+          "stop": "TBD",
+          "catalyst": "Exceptional earnings, mining/data center growth",
+          "timeframe": "position",
+          "conviction": "high",
+          "notes": "Andy: 'CAT earns were nutty good.' Two growth avenues: (1) Generators for data center, (2) Mining equipment (Bucyrus acquisition). Raised 2026 guide. BUT caution on when Fed becomes 'sell the news'."
+        },
+        {
+          "symbol": "AMD",
+          "direction": "long",
+          "entry_zone": "225-230 (pullback)",
+          "target": "271.75 first, then 299",
+          "stop": "Below support zones",
+          "catalyst": "More upside than NVDA. Outperforming narrative.",
+          "timeframe": "position",
+          "conviction": "high",
+          "notes": "Andy: 'AMD has more upside than NVDA at moment.' Targets clear: $271.75 first, then $299 after pullback to 225-230. Wait for pullback structure to clarify."
+        },
+        {
+          "symbol": "CCJ",
+          "direction": "long",
+          "entry_zone": "Hold 100 minimum",
+          "target": "TBD",
+          "stop": "Below 100",
+          "catalyst": "Government 80B nuclear plant orders, 7-year build timeline",
+          "timeframe": "position",
+          "conviction": "high",
+          "notes": "Andy: 'Government is buying 80B worth of nuclear plants from CCJ/BEP. They will build most traditional plants in US. CCJ produces 20% of global fuel.' This is structural trend. Long-term bullish thesis."
+        }
+      ],
+
+      "sector_themes": [
+        {
+          "sector": "Data Center & Infrastructure",
+          "bias": "bullish",
+          "leaders": ["MSFT (528 support)", "GOOG (273.75 target)", "NVDA (momentum loss)", "CLS (data center footprint)"],
+          "laggards": ["NVDA (showing weakness vs AMD)"],
+          "note": "Andy: 'Stay with data center adjacent.' Hyperscalers saying more spend coming. BUT: If hyperscalers pause spend, other 80% down. Narrow leadership risk - only mega-caps driving."
+        },
+        {
+          "sector": "Mining & Commodities",
+          "bias": "bullish",
+          "leaders": ["CAT (mining equipment via Bucyrus)", "CCJ (nuclear fuel)", "GDXJ (precious metals)", "UEC (uranium fuel)"],
+          "laggards": [],
+          "note": "Andy: 'Mining is becoming the new growth sector.' Two drivers: (1) Gold/silver/rare earths (traditional mining), (2) Nuclear fuel (Westinghouse deal, government 80B spending). Even uranium doubled mining footprint."
+        },
+        {
+          "sector": "Nuclear Energy",
+          "bias": "bullish",
+          "leaders": ["CCJ (Cameco)", "CEG (largest US nuclear operator)", "UEC", "BWXT", "BEP (Canadian partner)"],
+          "laggards": [],
+          "note": "Andy: 'Sector will see near-term growth from fuel suppliers.' CEG is largest nuclear operator in America. Traditional facility takes 7 years - so near-term growth from fuel (CCJ 20% global supply), not from new plants."
+        },
+        {
+          "sector": "Consumer Discretionary",
+          "bias": "bearish",
+          "leaders": [],
+          "laggards": ["WMT", "TGT", "AMZN (benefit if SNAP spend lost)", "Dollar stores"],
+          "note": "Andy: 'Consumer is tapped.' SNAP loss (revenue hit to retail) will pressure WMT, TGT, dollar stores. AMZN could benefit if discretionary spending shifts to necessities."
+        },
+        {
+          "sector": "Clean Energy",
+          "bias": "mixed",
+          "leaders": ["NEE (earnings were strong)", "BE (hyper-scalers using clean over carbon)"],
+          "laggards": [],
+          "note": "Andy: 'NEE earnings very strong on electric demand.' BUT 'BE did not react like NEE' - suggests market preferring traditional nuclear over renewable solar. Range BE 121.50-155 for monitoring."
+        }
+      ],
+
+      "macro_catalysts": [
+        {
+          "event": "FOMC Rate Decision",
+          "impact": "high",
+          "timing": "TODAY 18:00 ET (18:30 ET press conference)",
+          "expected_move": "Dovish cut 95%+ priced. Rate cut expected. Variable: Forward guidance tone.",
+          "positioning": "Fed day volatility. Bond market will react. Andy: 'Bond market will react to Fed speak today.' TLT watching 93.30. Can't anticipate 'sell the news' but CAT 580-600 targets hopeful."
+        },
+        {
+          "event": "Earnings Season Reactions",
+          "impact": "high",
+          "timing": "Throughout week (NEE, CAT, CLS earnings)",
+          "expected_move": "NEE strong (electric demand). CAT nutty good (mining/data center). CLS likely retest 341-344.",
+          "positioning": "Andy monitoring earnings themes: mining up, data center up, consumer caution. Early earnings beats (76-78%) validating AI infrastructure, but sustainability questioned."
+        },
+        {
+          "event": "Breadth & Market Internals",
+          "impact": "high",
+          "timing": "Daily monitoring",
+          "expected_move": "Breadth negative despite SPX strength. Tops are narrow (mega-cap only). Need breadth thrust >70% to confirm bullish.",
+          "positioning": "Andy: 'Breadth still negative by a bit.' 'Tops are narrow.' Caution: Narrow leadership unsustainable. Watch for breadth failure = reversal risk."
+        },
+        {
+          "event": "Mega-cap Distribution Signals",
+          "impact": "high",
+          "timing": "Real-time monitoring",
+          "expected_move": "AAPL double top at 269.87 (distribution). NVDA rejection at 212.19 (momentum loss). MSFT support 528 critical.",
+          "positioning": "Mega-cap showing fatigue. Andy scaled back AAPL. If mega-caps falter = index support evaporates. Key to watch post-FOMC."
+        }
+      ],
+
+      "earnings_analysis": [
+        {
+          "symbol": "NEE",
+          "earnings_date": "Occurred (strong)",
+          "expected_move": "UP (electric demand narrative)",
+          "bias": "bullish",
+          "conviction": "80%+",
+          "entry_timing": "Already validated - strong results",
+          "key_factors": "Electric demand strong. Energy transition narrative intact."
+        },
+        {
+          "symbol": "CAT",
+          "earnings_date": "Occurred (exceptional)",
+          "expected_move": "UP (guidance raise, mining+data center)",
+          "bias": "bullish",
+          "conviction": "80%+",
+          "entry_timing": "Already hit targets (580-600 range). Raised 2026 guide.",
+          "key_factors": "Two avenues working: (1) Data center generators, (2) Mining equipment. Bucyrus acquisition enables mining growth."
+        },
+        {
+          "symbol": "CLS",
+          "earnings_date": "Oct 31 (upcoming)",
+          "expected_move": "AAPL products + large data center footprint",
+          "bias": "bullish",
+          "conviction": "80%+",
+          "entry_timing": "Wait for technical retest of 341-344 resistance for entry",
+          "key_factors": "Manufacturing AVGO products. Data center footprint = secular growth. CEO on Cramer confirmed positioning. Andy scaled back in (accumulation signal)."
+        }
+      ],
+
+      "key_insights": [
+        "Mining is the new growth sector (secular shift). CCJ/uranium plays have government 80B supply contract visibility.",
+        "Data center adjacent positioning favored. BUT only mega-caps (MSFT, GOOG, NVDA) driving - narrow leadership risk.",
+        "Mega-cap distribution signals visible (AAPL double top, NVDA rejection). Monitor post-FOMC if mega-caps fail.",
+        "Breadth is negative despite index strength. Tops are narrow. Need >70% up-volume confirmation post-FOMC.",
+        "Consumer weakness signal (SNAP loss, dollar stores pressure). Avoid consumer discretionary except quality (COST, WMT).",
+        "Earnings momentum intact but sustainability questioned. Fed decision today could shift narrative quickly.",
+        "Bond market reaction to Fed = key indicator. TLT 93.30, NAIL support 62 = related plays.",
+        "Nuclear energy = emerging structural trend (7-year build, fuel suppliers in near term). CCJ/CEG/fuel plays > direct nuclear operators."
+      ],
+
+      "confluence_with_pilot": [
+        "Andy's SPX resistance 6885, 6937 aligns with Pilot's FOMC binary thesis (traders pre-flattening = reversion setup).",
+        "Andy's mega-cap distribution signals (AAPL, NVDA) validate Pilot's Trade #7 reversion thesis (breadth divergence + concentration risk).",
+        "Andy's breadth caution ('breadth still negative') supports Pilot's concern about narrow leadership fragility.",
+        "Mining sector bullish positioning from Andy provides additional macro confluence for energy/commodities rotation.",
+        "Nuclear thesis (CCJ/CEG) emerging at confluence point: government spending + secular trend + supply shortage."
+      ],
+
+      "accuracy_tracking": {
+        "calls_made": 25,
+        "calls_validated": 0,
+        "calls_invalidated": 0,
+        "calls_pending": 25,
+        "hit_rate_session": null,
+        "validations": []
+      }
+    }
+  ],
+
+  "andy_patterns": {
+    "trading_style": "Technical levels + macro catalysts + earnings analysis + sector rotation themes",
+    "strengths_observed": [
+      "Precise technical levels (support/resistance defined to 1-2 handles)",
+      "Earnings analysis frameworks (8-point checklist, 80% confidence threshold)",
+      "Macro catalyst positioning (FOMC, Fed speak timing)",
+      "Sector theme identification (mining, data center, nuclear emerging)",
+      "Distribution signal recognition (double tops, rejection zones)"
+    ],
+    "focus_areas": [
+      "Mega-cap tech (AAPL, NVDA, MSFT, GOOG)",
+      "FOMC/Fed positioning and bond market reactions",
+      "Earnings season management and risk/reward timing",
+      "Sector rotation themes (cyclical > consumer)",
+      "Breadth and market internals monitoring"
+    ],
+    "decision_triggers": [
+      "Double tops/distribution signals (AAPL 269.87)",
+      "Rejection zones (NVDA 212.19)",
+      "Support/resistance breaks with volume confirmation",
+      "Earnings catalyst alignments",
+      "Breadth divergence warnings"
+    ],
+    "accuracy_profile": {
+      "best_at": "TBD after 10+ sessions",
+      "weakest_at": "TBD after 10+ sessions",
+      "sample_size": 1,
+      "confidence_level": "insufficient_data"
+    }
+  },
+
+  "integration_with_pilot": {
+    "how_to_use": "Andy's insights are ONE confluence source (Rule #0). Never blind follow. Always require Pilot's independent analysis. Validate Andy's calls against market outcomes. Track effectiveness over 20+ sessions.",
+    "confluence_value": "high_potential",
+    "validation_status": "building_database",
+    "action_protocol": "When Pilot identifies ticker for trade: check andy_ticker_levels.json for recent Andy calls. If aligned with Pilot's thesis = +1 confluence. If divergent = investigate why. Track whether Andy confluence trades win more often."
+  },
+
+  "accuracy_summary": {
+    "total_calls": 25,
+    "total_validated": 0,
+    "total_invalidated": 0,
+    "total_pending": 25,
+    "overall_hit_rate": null,
+    "by_category": {
+      "technical_levels": {"made": 15, "hit": 0, "miss": 0, "pending": 15, "rate": null},
+      "trade_ideas": {"made": 8, "hit": 0, "miss": 0, "pending": 8, "rate": null},
+      "sector_themes": {"made": 5, "hit": 0, "miss": 0, "pending": 5, "rate": null},
+      "macro_catalysts": {"made": 4, "hit": 0, "miss": 0, "pending": 4, "rate": null},
+      "earnings_analysis": {"made": 3, "hit": 0, "miss": 0, "pending": 3, "rate": null}
+    },
+    "confidence_assessment": "INSUFFICIENT DATA - First session data collected. Tracking begins Oct 29. Will revisit after 20+ calls validated."
+  },
+
+  "next_session_validations": [
+    "EOD Oct 29: Did FOMC hit expectations? Did TLT reach 93.30? Did SPX test 6937 resistance?",
+    "EOD Oct 30: Did CLS retest 341-344? Did NAIL hold 62? Did breadth improve post-FOMC?",
+    "EOD Oct 31: Did CAT trade 580-600 range hold? Did RUN target 23.25? Did GDXJ gap reaction at 98?",
+    "Weekly: Aggregate hit rate by category. Update andy_accuracy_history.json with results."
+  ]
+}

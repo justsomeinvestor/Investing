@@ -1,32 +1,35 @@
 {
-  "last_updated": "2025-10-28",
-  "last_journal_entry": "2025-10-28",
-  "last_workflow_run": "2025-10-28",
+  "last_updated": "2025-10-29T12:38:22Z (Trade #7 Closed)",
+  "last_journal_entry": "2025-10-29",
+  "last_workflow_run": "2025-10-29",
   "data_freshness": "FRESH",
   "account": {
     "total_balance": 24977.68,
-    "cash_and_sweep": 21242.68,
-    "cash_available": 21242.68,
-    "open_positions_value": 3735.0,
-    "ytd_pl": 3135.5,
-    "note": "Auto-updated by Wingman from trades and broker data - represents total account value including open positions",
-    "overall_pnl_ytd": 3135.5
+    "cash_and_sweep": 23191.42,
+    "cash_available": 23191.42,
+    "open_positions_value": 0.0,
+    "ytd_pl": 3239.57,
+    "today_pnl": 60.0,
+    "note": "Auto-updated by Wingman from trades and broker data. Trade #7 closed at $12.46 for +$60 profit.",
+    "overall_pnl_ytd": 3239.57
   },
   "positions": {
     "cash": {
-      "amount": 21242.68,
-      "percentage": 85.0,
-      "note": "Cash available (not in positions)"
+      "amount": 23191.42,
+      "percentage": 100.0,
+      "note": "All cash (Trade #7 closed)"
     },
     "equities": {
       "ticker": "SPXU",
-      "amount": 3735.0,
-      "percentage": 15.0,
-      "shares": 300,
-      "entry_price": 12.45,
-      "current_price": 12.3076,
-      "pnl": -42.72,
-      "note": "Trade #7 - Short SPY via SPXU inverse ETF (Rule #20)"
+      "amount": 0.0,
+      "percentage": 0.0,
+      "shares": 0,
+      "status": "CLOSED",
+      "entry_price": 12.36,
+      "exit_price": 12.46,
+      "pnl": 60.0,
+      "pnl_percent": 0.81,
+      "note": "Trade #7 - Closed 10/29 at market close. Short SPY via SPXU (Rule #20). Thesis validated, exited before overnight gap risk."
     },
     "crypto": {
       "asset": null,

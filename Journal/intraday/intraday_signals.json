@@ -1,0 +1,197 @@
+{
+  "metadata": {
+    "created": "2025-10-29T19:00:00Z",
+    "last_updated": "2025-10-29T19:00:00Z",
+    "version": "1.0",
+    "description": "Live Intraday Signals Tracker - Real-time capture of 5-min, 15-min, 1-hour setups with confluence validation"
+  },
+
+  "market_context": {
+    "timestamp": "2025-10-29T19:00:00Z",
+    "vix_level": 18.5,
+    "add_level": -800,
+    "tick_level": 400,
+    "session_time": "post_fomc",
+    "market_regime": "volatile_post_binary",
+    "regime_classification": "VIX_18_ADD_negative_reversal_setup",
+    "best_setups_for_regime": ["fibonacci_extension_fade", "divergence_reversal", "vwap_reversion"],
+    "avoid_setups_for_regime": ["orb_breakout", "momentum_follow"]
+  },
+
+  "active_signals": [
+    {
+      "signal_id": "20251029-001",
+      "status": "pending_entry",
+      "timestamp": "2025-10-29T14:00:00Z",
+      "ticker": "SPY",
+      "setup_type": "vwap_reversion",
+      "timeframe": "5min",
+      "description": "SPY testing VWAP extension (post-FOMC rally exhaustion), red arrow, breadth divergence",
+
+      "entry_criteria": {
+        "price_at_entry": 684.08,
+        "vwap_status": "red_arrow_triggered",
+        "rsi_5min": 72,
+        "rsi_15min": 68,
+        "macd_status": "bearish_divergence_forming",
+        "volume_ratio": 1.35,
+        "ema_filter_5min": "above_200ema_falling",
+        "breadth_alignment": "negative_add_-800"
+      },
+
+      "confluence_scorecard": {
+        "total_confluences": 6,
+        "confluences_present": [
+          "1. VWAP red arrow - Technical (Extension exhaustion)",
+          "2. RSI divergence - 5-min RSI 72 (overbought)",
+          "3. Breadth failure - ADD -800 (SPY weak)",
+          "4. Narrow leadership - Only AAPL/GOOG rallying",
+          "5. FOMC catalyst fading - Initial rally exhausting",
+          "6. SPX at 168% Fib - Exhaustion level hit"
+        ],
+        "confluence_quality": "very_high",
+        "expected_win_rate": 0.72
+      },
+
+      "multi_timeframe_alignment": {
+        "alignment_score": 3,
+        "alignment_status": "perfect_alignment",
+        "details": {
+          "5min": "Extension + red arrow + RSI overbought",
+          "15min": "Channel resistance + MACD divergence",
+          "1hour": "SPX at 168% Fib + breadth failing"
+        }
+      },
+
+      "pre_entry_checklist": {
+        "total_items": 18,
+        "completed": 17,
+        "compliance_rate": 0.94,
+        "checklist_status": "GO",
+        "pending_item": "Verify Andy level alignment"
+      },
+
+      "risk_management": {
+        "entry_price": 684.08,
+        "stop_price": 685.50,
+        "target_price": 680.00,
+        "risk_dollars": 42,
+        "risk_percent": 0.17,
+        "account_risk_pct": 0.17,
+        "planned_rr": 2.0,
+        "position_size": "standard"
+      },
+
+      "andy_alignment": {
+        "andy_call_present": true,
+        "andy_levels": ["SPX resistance 6885, 6937"],
+        "andy_thesis": "\"Sell the news\" reversal, narrow leadership breaking",
+        "confluence_alignment": "perfect",
+        "andy_confluence_weight": 1.0
+      },
+
+      "decision": "READY_TO_ENTER_ON_CONFIRMATION"
+    }
+  ],
+
+  "recent_closed_signals": [
+    {
+      "signal_id": "20251029-demo",
+      "status": "closed",
+      "outcome": "pending_data",
+      "ticker": "SPY",
+      "setup_type": "vwap_reversion",
+      "timeframe": "5min",
+      "confluence_count": 6,
+      "entry_price": 684.50,
+      "exit_price": "pending",
+      "pnl_dollars": "pending",
+      "pnl_percent": "pending",
+      "bars_held": "pending",
+      "note": "Example signal structure - awaiting live data"
+    }
+  ],
+
+  "signal_effectiveness_tracker": {
+    "by_setup_type": {
+      "vwap_reversion": {
+        "total_signals": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_r_multiple": null,
+        "profit_factor": null,
+        "status": "building_database"
+      },
+      "orb_breakout": {
+        "total_signals": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "status": "building_database"
+      },
+      "c_plus_r_confirmation": {
+        "total_signals": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "status": "building_database"
+      },
+      "fibonacci_extension": {
+        "total_signals": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "status": "building_database"
+      }
+    },
+
+    "by_confluence_count": {
+      "3_confluences": {
+        "total_signals": 0,
+        "win_rate": null,
+        "status": "building_database"
+      },
+      "4_confluences": {
+        "total_signals": 0,
+        "win_rate": null,
+        "status": "building_database"
+      },
+      "5_plus_confluences": {
+        "total_signals": 0,
+        "win_rate": null,
+        "status": "building_database"
+      }
+    },
+
+    "by_timeframe": {
+      "5min": {
+        "total_signals": 0,
+        "win_rate": null,
+        "avg_bars_held": null,
+        "status": "building_database"
+      },
+      "15min": {
+        "total_signals": 0,
+        "win_rate": null,
+        "avg_bars_held": null,
+        "status": "building_database"
+      },
+      "1hour": {
+        "total_signals": 0,
+        "win_rate": null,
+        "avg_bars_held": null,
+        "status": "building_database"
+      }
+    }
+  },
+
+  "instructions": {
+    "how_to_log_signal": "Chat to Wingman: 'Wingman, log intraday signal: [ticker] [setup type] [timeframe] [key confluences]'. Example: 'Wingman, log intraday signal: SPY VWAP reversion 5-min RED arrow RSI 82 breadth weak'",
+    "how_to_close_signal": "Chat to Wingman: 'Close signal [signal_id]: [exit_price] [outcome]'. Example: 'Close signal 20251029-001: 682.50 win'",
+    "auto_fields": "Timestamp, market regime, VIX/ADD/TICK auto-populated. You provide: ticker, setup_type, timeframe, confluences, entry_price, exit_price.",
+    "minimum_confluences": "3 required for entry (Rule #0). Encouraged: 4+ for higher win rate (65%+ expected)."
+  },
+
+  "next_update": "Real-time as signals captured via chat interface"
+}

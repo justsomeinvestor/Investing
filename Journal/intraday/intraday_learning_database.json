@@ -1,0 +1,307 @@
+{
+  "metadata": {
+    "created": "2025-10-29T19:00:00Z",
+    "last_updated": "2025-10-29T19:00:00Z",
+    "version": "1.0",
+    "description": "Intraday Learning Database - Historical record of all intraday trades for pattern recognition and edge identification",
+    "purpose": "Track setup effectiveness, confluence value, and market regime performance. Build database to 50+ trades for reliable statistical conclusions."
+  },
+
+  "trading_records": [],
+
+  "setup_effectiveness": {
+    "vwap_reversion": {
+      "description": "Price extends to VWAP band, triggered by colored arrow (yellow/orange/red), fades extension",
+      "total_trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": null,
+      "avg_r_multiple": null,
+      "profit_factor": null,
+      "best_timeframe": null,
+      "best_market_regime": null,
+      "status": "COLLECTING_DATA",
+      "benchmark": "Target: 70%+ win rate based on professional standards"
+    },
+
+    "orb_breakout": {
+      "description": "Opening Range Breakout - first 30 min establishes range, entry on break with confirmation",
+      "total_trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": null,
+      "avg_r_multiple": null,
+      "profit_factor": null,
+      "best_timeframe": "5min | 15min",
+      "best_market_regime": "trending_vix_below_20",
+      "status": "COLLECTING_DATA",
+      "benchmark": "Target: 60-65% win rate in trending markets"
+    },
+
+    "c_plus_r_confirmation": {
+      "description": "Close below level + retest confirms breakdown (C+R). Uses Rule #7, #9",
+      "total_trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": null,
+      "avg_r_multiple": null,
+      "profit_factor": null,
+      "best_structure_type": null,
+      "status": "COLLECTING_DATA",
+      "benchmark": "Target: 62%+ win rate"
+    },
+
+    "fibonacci_pullback": {
+      "description": "Price extends, then pulls back to 50%-61.8% zone at hard level (weekly mid, support)",
+      "total_trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": null,
+      "avg_r_multiple": null,
+      "profit_factor": null,
+      "best_pullback_level": null,
+      "status": "COLLECTING_DATA",
+      "benchmark": "Target: 65%+ win rate"
+    },
+
+    "divergence_reversal": {
+      "description": "Price higher high, momentum lower high (bearish divergence). Requires 3-candle confirmation (Rule #19)",
+      "total_trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": null,
+      "avg_r_multiple": null,
+      "confirmation_rate": null,
+      "false_signal_rate": null,
+      "status": "COLLECTING_DATA",
+      "benchmark": "Target: 70%+ win rate on confirmed divergences"
+    }
+  },
+
+  "confluence_effectiveness": {
+    "bearish_divergence": {
+      "total_appearances": 0,
+      "win_rate_when_present": null,
+      "confidence_score": null,
+      "benchmark": "Professional traders: 72% win rate"
+    },
+
+    "vwap_colored_arrow": {
+      "yellow_arrow": {
+        "total_appearances": 0,
+        "win_rate": null,
+        "expected_probability": 0.50,
+        "benchmark": "Weak reversion signal"
+      },
+      "orange_arrow": {
+        "total_appearances": 0,
+        "win_rate": null,
+        "expected_probability": 0.65,
+        "benchmark": "Medium reversion signal"
+      },
+      "red_arrow": {
+        "total_appearances": 0,
+        "win_rate": null,
+        "expected_probability": 0.80,
+        "benchmark": "Strong reversion signal"
+      }
+    },
+
+    "breadth_alignment": {
+      "add_greater_than_500": {
+        "total_appearances": 0,
+        "long_win_rate": null,
+        "confidence": "bullish"
+      },
+      "add_less_than_minus_500": {
+        "total_appearances": 0,
+        "short_win_rate": null,
+        "confidence": "bearish"
+      },
+      "add_neutral": {
+        "total_appearances": 0,
+        "setup_win_rate": null,
+        "note": "Use smaller size when ADD neutral"
+      }
+    },
+
+    "rsi_divergence": {
+      "total_appearances": 0,
+      "win_rate_when_confirmed": null,
+      "confirmation_rate": null,
+      "benchmark": "3-bar confirmation required (Rule #19)"
+    },
+
+    "andy_level_alignment": {
+      "total_appearances": 0,
+      "win_rate_when_aligned": null,
+      "andy_accuracy_rate": null,
+      "status": "BUILDING_PROFILE",
+      "note": "After 10+ sessions, determine Andy's confluence value"
+    },
+
+    "max_pain_alignment": {
+      "total_appearances": 0,
+      "win_rate_when_present": null,
+      "benchmark": "Professional traders: 54-60% win rate"
+    }
+  },
+
+  "market_regime_performance": {
+    "trending_vix_below_20": {
+      "description": "VIX <20, ADD persistent direction, strong momentum",
+      "total_trades": 0,
+      "win_rate": null,
+      "best_setup": null,
+      "best_setup_win_rate": null,
+      "avoid_setups": "mean_reversion",
+      "recommended_strategy": "ORB and C+R breakouts"
+    },
+
+    "choppy_vix_15_25": {
+      "description": "VIX 15-25, ADD oscillating, whipsaws common",
+      "total_trades": 0,
+      "win_rate": null,
+      "best_setup": "vwap_reversion",
+      "best_setup_win_rate": null,
+      "avoid_setups": "orb_breakout",
+      "recommended_strategy": "Mean reversion to support/resistance"
+    },
+
+    "volatile_vix_above_25": {
+      "description": "VIX >25, ADD extreme swings, capitulation possible",
+      "total_trades": 0,
+      "win_rate": null,
+      "best_setup": "fibonacci_extension_fade",
+      "best_setup_win_rate": null,
+      "note": "Use wider stops, smaller size, wait for 3-bar confirmation"
+    }
+  },
+
+  "session_performance": {
+    "opening_930_1030": {
+      "description": "Opening 30 min + first hour (highest volume, ORB setup optimal)",
+      "total_trades": 0,
+      "win_rate": null,
+      "avg_r_multiple": null,
+      "best_setup_type": null
+    },
+
+    "trend_development_1030_1130": {
+      "description": "Strongest trending period, extension setups work well",
+      "total_trades": 0,
+      "win_rate": null,
+      "avg_r_multiple": null
+    },
+
+    "lunch_chop_1130_200": {
+      "description": "Reduced volume, whipsaws common - REDUCE SIZE 50%",
+      "total_trades": 0,
+      "win_rate": null,
+      "note": "If lunch win rate <50%, consider skipping this session"
+    },
+
+    "power_hour_200_345": {
+      "description": "Volume returns, trends resume, pullback setups develop",
+      "total_trades": 0,
+      "win_rate": null,
+      "avg_r_multiple": null,
+      "best_setup_type": null
+    },
+
+    "close_345_400": {
+      "description": "AVOID NEW ENTRIES (Rule #5)",
+      "total_trades": 0,
+      "note": "Exit management only, no initiations"
+    }
+  },
+
+  "timeframe_analysis": {
+    "5_min_scalping": {
+      "description": "Quick reversions, 1-3 bar holds, VWAP optimal",
+      "total_trades": 0,
+      "win_rate": null,
+      "avg_bars_held": null,
+      "avg_duration_minutes": null,
+      "benchmark": "70%+ win rate if VWAP red arrow"
+    },
+
+    "15_min_swing": {
+      "description": "Structure trades, C+R breakouts, 6-12 bar holds",
+      "total_trades": 0,
+      "win_rate": null,
+      "avg_bars_held": null,
+      "avg_duration_minutes": null,
+      "benchmark": "60-65% win rate"
+    },
+
+    "1_hour_positional": {
+      "description": "Pullbacks to hard levels, overnight holds possible",
+      "total_trades": 0,
+      "win_rate": null,
+      "avg_bars_held": null,
+      "avg_duration_hours": null,
+      "benchmark": "55-60% win rate"
+    }
+  },
+
+  "confluence_count_correlation": {
+    "3_confluences": {
+      "total_trades": 0,
+      "win_rate": null,
+      "expected_win_rate": 0.55,
+      "minimum_threshold": "Used when time-sensitive setup"
+    },
+
+    "4_confluences": {
+      "total_trades": 0,
+      "win_rate": null,
+      "expected_win_rate": 0.62,
+      "standard_threshold": "Typical entry requirement"
+    },
+
+    "5_confluences": {
+      "total_trades": 0,
+      "win_rate": null,
+      "expected_win_rate": 0.68,
+      "strong_setup": "High conviction entry"
+    },
+
+    "6_plus_confluences": {
+      "total_trades": 0,
+      "win_rate": null,
+      "expected_win_rate": 0.75,
+      "premium_setup": "Highest probability setups"
+    }
+  },
+
+  "daily_summary": {
+    "date": "2025-10-29",
+    "trades_logged": 0,
+    "wins": 0,
+    "losses": 0,
+    "daily_win_rate": null,
+    "daily_pnl": null,
+    "best_setup": null,
+    "worst_setup": null,
+    "lessons_learned": [],
+    "adjustments_for_tomorrow": []
+  },
+
+  "statistical_summary": {
+    "total_trades_recorded": 0,
+    "overall_win_rate": null,
+    "overall_profit_factor": null,
+    "overall_expectancy_per_trade": null,
+    "status": "INITIALIZATION - Need 50+ trades for reliability",
+    "next_milestone": "10 trades recorded",
+    "confidence_level": "insufficient_data"
+  },
+
+  "instructions": {
+    "how_to_add_trade": "After closing signal, Wingman auto-adds to learning_database.json with full details",
+    "what_gets_tracked": "Setup type, confluence count, entry/exit, P&L, bars held, market regime, confluences present, checklist compliance",
+    "data_analysis": "Every 10 trades, win rate by setup type updates. After 20 trades, regime-specific recommendations emerge. After 50 trades, statistically reliable edge identified.",
+    "continuous_improvement": "Every 90 days, compare actual win rates to benchmarks. Adjust rules, deprecate low-win-rate setups, scale high-win-rate setups."
+  }
+}

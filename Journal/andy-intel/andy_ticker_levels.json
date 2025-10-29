@@ -1,0 +1,308 @@
+{
+  "metadata": {
+    "description": "Andy's most recent levels by ticker - quick reference for pre-trade checks. Auto-expires after 7 days without update. UPDATED INTRADAY POST-FOMC.",
+    "last_updated": "2025-10-29T19:00:00Z (FOMC intraday)",
+    "source": "andy_intel_tracking.json",
+    "expiration_days": 7,
+    "usage": "When analyzing potential trade, check this file for Andy's recent levels and bias on that ticker. If aligned with your thesis = +1 confluence (Rule #0).",
+    "session_note": "CRITICAL: FOMC dovish + QT ending shifted market from reversion to rally. Morning bearish thesis broken. SPX/AAPL/GOOG rallying through resistance. Mega-cap led, mining strong."
+  },
+
+  "tickers": {
+    "SPX": {
+      "last_updated": "2025-10-29",
+      "support": [6858],
+      "resistance": [6885, 6922, 6937],
+      "current_bias": "rally_through_resistance",
+      "current_status": "BROKEN THROUGH 6885 - now 6922, 6937 are retest levels",
+      "key_pattern": "FOMC rally broke through resistance. Dovish cut + QT ending = bullish catalyst.",
+      "notes": "INTRADAY UPDATE: SPX rallied through morning resistance on dovish FOMC (25bps cut) + Fed QT ending announcement. Mega-cap led move. 6922 and 6937 now support/retest zones. Reversion thesis broken.",
+      "source_date": "2025-10-29 intraday (post-FOMC 19:00 ET)"
+    },
+    "QQQ": {
+      "last_updated": "2025-10-29",
+      "support": [633.65],
+      "resistance": [637.75],
+      "current_bias": "at_resistance",
+      "key_pattern": "Channel resistance, breadth weakness",
+      "notes": "Hitting resistance but breadth negative underneath. Fed day volatility expected.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "AAPL": {
+      "last_updated": "2025-10-29",
+      "support": [269.87],
+      "resistance": [272, 274],
+      "current_bias": "breakout_bullish",
+      "current_status": "THROUGH 269.87 resistance - day high next (Andy intraday call)",
+      "key_pattern": "Broke through morning 'distribution' level. NOT distribution - growth acceleration breakout.",
+      "notes": "INTRADAY UPDATE: AAPL rallied through 269.87 resistance on FOMC dovish. Andy morning distribution call WRONG on direction. Market rallying through mega-cap resistance, not reversing. Day high next per Andy.",
+      "source_date": "2025-10-29 intraday (post-FOMC 19:00 ET)"
+    },
+    "NVDA": {
+      "last_updated": "2025-10-29",
+      "support": [202.80],
+      "resistance": [212.19, 212.30],
+      "current_bias": "rejection",
+      "key_pattern": "Rejected at 212.19 (major Fib 212.30)",
+      "notes": "Momentum loss vs AMD. Shows weakness despite ATH break. Mega-cap distribution signal.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "AMD": {
+      "last_updated": "2025-10-29",
+      "support": [225, 230],
+      "resistance": [271.75, 299],
+      "current_bias": "bullish_outperformer",
+      "key_pattern": "More upside than NVDA. Pullback to support = buy",
+      "notes": "Andy: 'AMD has more upside than NVDA at moment.' Targets: $271.75 first, then $299 after pullback. Wait for structure clarity at 225-230 support.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "MSFT": {
+      "last_updated": "2025-10-29",
+      "support": [528],
+      "resistance": [],
+      "current_bias": "watching_support",
+      "key_pattern": "Support identified at 528",
+      "notes": "Key support level. Data center play. Fed day volatile.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "GOOG": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [273.75, 275],
+      "current_bias": "strengthening_bullish",
+      "current_status": "Strengthening toward 275",
+      "key_pattern": "Mega-cap acceleration on FOMC dovish. Breaking through resistance levels.",
+      "notes": "INTRADAY UPDATE: GOOG strengthening post-FOMC. 275 next target per Andy. Data center narrative intact with lower rates.",
+      "source_date": "2025-10-29 intraday (post-FOMC 19:00 ET)"
+    },
+    "TSLA": {
+      "last_updated": "2025-10-29",
+      "support": [450, 453.55],
+      "resistance": [465.35, 470.75],
+      "current_bias": "range_bound",
+      "key_pattern": "Clear range defined",
+      "notes": "Support/resistance clear. Waiting for directional break on Fed day volatility.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "CLS": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [341, 344],
+      "current_bias": "bullish_retest",
+      "key_pattern": "Likely retests 341-344 resistance",
+      "notes": "Manufacturing AVGO products, large data center footprint. Andy scaled back in (accumulation). Earnings Oct 31.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "CAT": {
+      "last_updated": "2025-10-29",
+      "support": [580],
+      "resistance": [600],
+      "current_bias": "bullish_strong",
+      "key_pattern": "Exceptional earnings, raised guide",
+      "notes": "Andy: 'Earns were nutty good.' Targets 580-600. Two growth avenues: (1) Data center generators, (2) Mining equipment. BUT caution: 'Sell the news' risk on Fed day.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "CCJ": {
+      "last_updated": "2025-10-29",
+      "support": [100],
+      "resistance": [],
+      "current_bias": "bullish_structural",
+      "key_pattern": "Must hold 100",
+      "notes": "Cameco bought Westinghouse. Government 80B nuclear plant contract. CCJ produces 20% global nuclear fuel. Long-term bullish thesis.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "CEG": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [],
+      "current_bias": "bullish_structural",
+      "key_pattern": "Largest nuclear operator in America",
+      "notes": "Long-term structural play. Near-term growth from fuel suppliers (CCJ, UEC). Traditional plant takes 7 years to build.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "UEC": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [],
+      "current_bias": "bullish_fuel_supply",
+      "key_pattern": "Nuclear fuel supplier",
+      "notes": "Part of nuclear growth thesis. Fuel supply = near-term growth driver.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "BWXT": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [],
+      "current_bias": "bullish_fuel_supply",
+      "key_pattern": "Nuclear fuel supplier",
+      "notes": "Part of nuclear growth thesis. Fuel supply = near-term growth driver.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "RUN": {
+      "last_updated": "2025-10-29",
+      "support": [19.70],
+      "resistance": [23.25],
+      "current_bias": "long_setup",
+      "key_pattern": "Andy fill 19.70, target 23.25",
+      "notes": "Entry documented. Clear target. Monitor for fill validation.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "GDXJ": {
+      "last_updated": "2025-10-29",
+      "support": [90],
+      "resistance": [98],
+      "current_bias": "bullish_gap_watch",
+      "key_pattern": "Buy 90, watch gap reaction 98",
+      "notes": "Best in precious metals. Andy accumulating. Watch gap reaction for continuation signal.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "APPX": {
+      "last_updated": "2025-10-29",
+      "support": [34.50],
+      "resistance": [38, 40],
+      "current_bias": "long_setup",
+      "key_pattern": "Andy fill 34.50, expecting 38-40",
+      "notes": "Entry documented. Clear targets. Risk defined.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "APP": {
+      "last_updated": "2025-10-29",
+      "support": [620],
+      "resistance": [659.50],
+      "current_bias": "wave_v_target",
+      "key_pattern": "If 620 holds, wave V = 659.50",
+      "notes": "Technical wave count. Conditional on support holding.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "NAIL": {
+      "last_updated": "2025-10-29",
+      "support": [62],
+      "resistance": [],
+      "current_bias": "bullish_if_bonds_rally",
+      "key_pattern": "Support 62, connected to TLT",
+      "notes": "If bonds rally (TLT 93.30+), NAIL should follow. Support 62 = entry point.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "TLT": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [93.30],
+      "current_bias": "fed_day_watch",
+      "key_pattern": "93.30 next resistance",
+      "notes": "Bond market reaction to Fed = key indicator. TLT move likely. Watch for relief rally post-dovish cut.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "PLTR": {
+      "last_updated": "2025-10-29",
+      "support": [192],
+      "resistance": [203.40],
+      "current_bias": "range_neutral",
+      "key_pattern": "Clear range defined",
+      "notes": "Government/AI narratives. Wait for directional clarity.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "COST": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [840],
+      "current_bias": "caution_consumer_weak",
+      "key_pattern": "Resistance at 840",
+      "notes": "Consumer staple, but Andy caution on consumer ('tapped'). Quality hold but limited upside.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "RBLX": {
+      "last_updated": "2025-10-29",
+      "support": [147.50],
+      "resistance": [],
+      "current_bias": "caution_litigation",
+      "key_pattern": "Support at 147.50",
+      "notes": "Lawsuit concerns about child abuse. Regulatory risk. Andy flagging for awareness.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "SRUUF": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [],
+      "current_bias": "uranium_commodity",
+      "key_pattern": "Pure uranium commodity ETF",
+      "notes": "Alternative to CCJ/UEC for pure commodity exposure. Nuclear theme play.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "ASTS": {
+      "last_updated": "2025-10-29",
+      "support": [80],
+      "resistance": [85, 110, 120],
+      "current_bias": "structure_pending",
+      "key_pattern": "Drop 100 to 65 looks motive. If true, needs new low.",
+      "notes": "Technical analysis suggests further weakness if motive move. But could rally to 110-120 if structure clarifies positive. Wait for clarity before entry.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "BE": {
+      "last_updated": "2025-10-29",
+      "support": [121.50],
+      "resistance": [155],
+      "current_bias": "neutral_solar_concern",
+      "key_pattern": "Range 121.50 to 155",
+      "notes": "Clean energy, but underperforming NEE. Andy: 'Did not react like NEE.' Market preferring nuclear to solar. Range monitoring.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "NEE": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [],
+      "current_bias": "bullish_validated",
+      "key_pattern": "Earnings strong on electric demand",
+      "notes": "NEE leading clean energy rally. Electric demand narrative strong. Outperforming BE.",
+      "source_date": "2025-10-29 morning calls"
+    },
+    "TSM": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [302],
+      "current_bias": "test_higher",
+      "current_status": "Testing 302 resistance",
+      "key_pattern": "If 302 holds, higher in intermediate timeframe",
+      "notes": "INTRADAY ADD: Semis rally on rate cut (lower rates = growth acceleration). TSM testing 302 resistance. If holds, continuation expected per Andy.",
+      "source_date": "2025-10-29 intraday (post-FOMC 19:00 ET)"
+    },
+    "RKT": {
+      "last_updated": "2025-10-29",
+      "support": [16],
+      "resistance": [24],
+      "current_bias": "long_breakout",
+      "current_status": "Breakout 16-24 range",
+      "key_pattern": "Range breakout on Fed rate cut",
+      "notes": "INTRADAY ADD: Mortgage rates down on Fed cut. RKT breakout setup 16-24 range per Andy.",
+      "source_date": "2025-10-29 intraday (post-FOMC 19:00 ET)"
+    },
+    "GDXJ": {
+      "last_updated": "2025-10-29",
+      "support": [90],
+      "resistance": [95, 96, 100],
+      "current_bias": "gap_breakout_watch",
+      "current_status": "Testing 95-96 resistance - nothing until 100",
+      "key_pattern": "Gap reaction critical - if through 96, targets 100",
+      "notes": "INTRADAY UPDATE: Mining strength continues. GDXJ at 95-96 gap. Andy: 'Nothing until 100' if breakout. Critical level for gap reaction confirmation.",
+      "source_date": "2025-10-29 intraday (post-FOMC 19:00 ET)"
+    },
+    "TLT": {
+      "last_updated": "2025-10-29",
+      "support": [],
+      "resistance": [93.30],
+      "current_bias": "sold_off_unexpected",
+      "current_status": "DOWN intraday (bonds sold)",
+      "key_pattern": "Dovish FOMC usually rallies bonds, but TLT down. Growth repricing stronger.",
+      "notes": "INTRADAY UPDATE: TLT dropped despite dovish cut. Suggests growth repricing story + Fed QT ending (no more runoff) changes bond dynamics. Unexpected but indicates market risk appetite strong.",
+      "source_date": "2025-10-29 intraday (post-FOMC 19:00 ET)"
+    }
+  },
+
+  "notes": "This file is a quick reference during trading. When analyzing potential entries, check relevant ticker sections. If Andy's recent levels/bias align with your thesis = stronger confluence (Rule #0). Track whether Andy-aligned trades win more often than non-Andy trades.",
+
+  "update_protocol": {
+    "frequency": "Daily (after Andy's morning calls captured)",
+    "process": "Update andy_intel_tracking.json first. Then sync relevant tickers to this file.",
+    "expiration": "Each ticker expires 7 days from last update. Expired tickers marked for refresh.",
+    "auto_cleanup": "EOD each Friday: Archive tickers >7 days old to historical file"
+  }
+}

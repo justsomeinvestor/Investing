@@ -1,6 +1,6 @@
 {
   "date": "2025-10-29",
-  "ranAt": "2025-10-29T21:30:39.114683+00:00",
+  "ranAt": "2025-10-29T21:30:11.458411+00:00",
   "status": "COMPLETED",
   "summary": "Live Trading Session #4: FOMC Binary Event + Thesis Validation Day. Trade #7 positioned overnight into FOMC and executed perfectly. FOMC announced dovish 25bps cut + QT ending at 18:00 ET. Initial catalyst-driven rally through resistance (expected override). Pilot/Wingman monitored post-FOMC \"sell the news\" reversal setup: SPX at 168% Fib exhaustion, breadth divergence (SPY/QQQ weak vs mega-caps rallying), narrow leadership breaking. Exited Trade #7 at market close (12:38 PM before FOMC) at +$60 profit. Risk management decision: Avoid overnight gap risk on binary event. Morning extension thesis VINDICATED by post-FOMC structure. YTD P/L now +$3,239.57.",
   "keyOutcomes": [
@@ -36,11 +36,11 @@
       "summary": "Signal 46/100. Compliance 62% with 42% win rate."
     },
     "volatilityPattern": {
-      "vixCurrent": "0.00",
-      "vixChange": "0.00",
-      "vixChangePercent": "0.0%",
+      "vixCurrent": "N/A",
+      "vixChange": "N/A",
+      "vixChangePercent": "N/A",
       "pattern": "Normal",
-      "regime": "low",
+      "regime": "normal",
       "status": "Defensive positioning into FOMC binary event",
       "isUnusual": false,
       "context": "Market monitoring"

@@ -349,6 +349,66 @@ This is NOT optional. This is core Wingman operational behavior.
 
 ---
 
+STEP 8.7: LOAD ANDY INTEL TRACKING (NEW v1.4 - CONFLUENCE INTEGRATION)
+======================================================================
+
+Purpose: Load lead trader (Andy) insights and validate them against Pilot's analysis.
+
+Action:
+  1. Read: Journal/andy-intel/andy_intel_tracking.json (today's calls)
+  2. Extract and hold in memory:
+     - key_levels for major tickers (SPX, QQQ, AAPL, NVDA, etc.)
+     - Current bias (bullish/bearish/neutral) for each level
+     - Trade ideas with entry/target/stop
+     - Sector themes and macro catalysts
+     - Andy's general market thesis for day
+     - Accuracy tracking status
+  3. Read: Journal/andy-intel/andy_ticker_levels.json (quick reference)
+  4. Extract: Most recent support/resistance levels per ticker
+  5. Hold both files in working memory for session
+
+CRITICAL BEHAVIOR (Integration with Rule #0):
+  - Andy's insights are ONE confluence source among 7 possible sources
+  - NEVER blind follow Andy (violates Rule #17 - external validation)
+  - When Pilot identifies trade: Check andy_ticker_levels.json for recent Andy calls
+  - If Andy aligns with Pilot's thesis: +1 confluence point
+  - If Andy diverges: Flag for investigation ("Your thesis differs from Andy's. What's your view?")
+  - Document Andy's contribution in trade confluence scorecard
+
+  Example workflow:
+    Pilot: "Looking at shorting SPY at 688"
+    Wingman: [Checks andy_ticker_levels.json for SPX/SPY entries]
+            [Finds: Andy SPX resistance 6885, 6937]
+            "Andy's recent SPX: Resistance 6885, 6937 (next). You're shorting into key zone.
+             +1 confluence if your thesis aligns. SPX breadth divergence validates reversal setup."
+
+ANDY INTEGRATION RESPONSIBILITY:
+  - Keep Andy's levels and bias loaded throughout session
+  - Reference Andy when analyzing tickers he has recent calls on
+  - Track: Trades with Andy confluence vs without Andy confluence
+  - Update: accuracy_history.json EOD with validation results
+  - Never override Pilot decision (suggest, don't dictate)
+  - Always require Pilot's independent analysis first
+
+WHAT THIS ENABLES:
+  - Pilot sees Andy's perspective on tickers being analyzed
+  - Confluence framework strengthened when Andy + Pilot align
+  - Systematic validation of Andy's effectiveness (data-driven)
+  - Over 20+ sessions: Determine which Andy calls are reliable
+  - Risk reduction: Avoid over-weighting unreliable sources
+
+ACCURACY TRACKING (Critical):
+  - After each session: Validate Andy's morning calls vs actual market outcomes
+  - Update Journal/andy-intel/andy_accuracy_history.json
+  - After 20+ calls: Assess Andy's overall accuracy by category
+  - Adjust confluence weighting based on statistical evidence
+  - If Andy <50% accurate in category: Reduce or eliminate weighting
+
+This is OPTIONAL confluence source (not core protocol like Rule #0).
+But tracking is MANDATORY to determine effectiveness.
+
+---
+
 STEP 9: OUTPUT STATUS REPORT (WINGMAN + PILOT REMINDERS)
 ========================================================
 
@@ -626,9 +686,10 @@ When "Load Wingman" is said, verify you DO this:
 [ ] STEP 8: Set WINGMAN_MODE_ACTIVE for this session
 [ ] STEP 8.5: Initialize Trade Filter Console (reset live_assessment.json, verify trade-console.html exists)
 [ ] STEP 8.6: Load Live Trade Tracker (read live_trade_tracker.json, hold position state in memory, prepare for real-time sync)
+[ ] STEP 8.7: Load Andy Intel Tracking (read andy_intel_tracking.json + andy_ticker_levels.json, hold in memory for confluence integration)
 [ ] STEP 9: Output status report with instrument check + Pilot's reminders
 
-All 12 steps must complete successfully (including Steps 7.5, 8.5, and 8.6).
+All 13 steps must complete successfully (including Steps 7.5, 8.5, 8.6, and 8.7).
 
 If ANY step fails: Abort and report error clearly.
 

@@ -473,6 +473,67 @@
             </div>
         </div>
 
+        <!-- ROW 2.5: ANDY KEY INSIGHTS (Full Width - Keep Pilot Grounded) -->
+        <div class="grid full-width">
+            <div class="card" style="background: radial-gradient(circle at top, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.08) 50%, rgba(10, 12, 38, 0.95) 100%); border: 1px solid rgba(139, 92, 246, 0.3);">
+                <div class="card-header">
+                    <div class="card-title" style="background: linear-gradient(120deg, #c084fc, #a78bfa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">📡 Andy's Key Insights - Keep Grounded</div>
+                    <div style="font-size: 0.8em; color: #a78bfa;">Live Confluence Source</div>
+                </div>
+
+                <!-- Market Bias & Thesis -->
+                <div style="background: rgba(139, 92, 246, 0.12); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+                    <div style="font-size: 0.85em; font-weight: 600; color: #d8b4fe; margin-bottom: 8px;">⚡ TODAY'S MARKET THESIS</div>
+                    <div id="andy-thesis" style="font-size: 0.9em; color: #e0e6f0; line-height: 1.5;">
+                        <div style="color: #9ca3af;">Loading Andy's perspective...</div>
+                    </div>
+                </div>
+
+                <!-- Key Levels Grid (3 columns) -->
+                <div style="margin-bottom: 14px;">
+                    <div style="font-size: 0.8em; font-weight: 600; color: #a78bfa; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em;">🎯 Key Levels</div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <div style="background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 8px; padding: 10px;">
+                            <div style="font-size: 0.75em; color: #9ca3af; margin-bottom: 4px; text-transform: uppercase;">SPX Resistance</div>
+                            <div style="font-size: 1.2em; font-weight: 700; color: #ef4444;" id="andy-spx-resistance">--</div>
+                            <div style="font-size: 0.75em; color: #9ca3af; margin-top: 4px;" id="andy-spx-pattern">--</div>
+                        </div>
+                        <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; padding: 10px;">
+                            <div style="font-size: 0.75em; color: #9ca3af; margin-bottom: 4px; text-transform: uppercase;">QQQ Resistance</div>
+                            <div style="font-size: 1.2em; font-weight: 700; color: #fbbf24;" id="andy-qqq-resistance">--</div>
+                            <div style="font-size: 0.75em; color: #9ca3af; margin-top: 4px;" id="andy-qqq-pattern">--</div>
+                        </div>
+                        <div style="background: rgba(139, 92, 246, 0.12); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 8px; padding: 10px;">
+                            <div style="font-size: 0.75em; color: #9ca3af; margin-bottom: 4px; text-transform: uppercase;">Macro Catalyst</div>
+                            <div style="font-size: 1.2em; font-weight: 700; color: #a78bfa;" id="andy-catalyst">--</div>
+                            <div style="font-size: 0.75em; color: #9ca3af; margin-top: 4px;" id="andy-catalyst-time">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top 3 Key Insights (Actionable) -->
+                <div style="margin-bottom: 14px;">
+                    <div style="font-size: 0.8em; font-weight: 600; color: #a78bfa; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em;">💡 Top Insights</div>
+                    <div id="andy-insights" style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="background: rgba(245, 158, 11, 0.15); border-left: 3px solid #f59e0b; padding: 10px 12px; border-radius: 6px; font-size: 0.9em; color: #fcd34d; line-height: 1.5;">
+                            <span style="font-weight: 600;">1. </span><span id="insight-1">Loading insight...</span>
+                        </div>
+                        <div style="background: rgba(245, 158, 11, 0.15); border-left: 3px solid #f59e0b; padding: 10px 12px; border-radius: 6px; font-size: 0.9em; color: #fcd34d; line-height: 1.5;">
+                            <span style="font-weight: 600;">2. </span><span id="insight-2">Loading insight...</span>
+                        </div>
+                        <div style="background: rgba(245, 158, 11, 0.15); border-left: 3px solid #f59e0b; padding: 10px 12px; border-radius: 6px; font-size: 0.9em; color: #fcd34d; line-height: 1.5;">
+                            <span style="font-weight: 600;">3. </span><span id="insight-3">Loading insight...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accuracy Status -->
+                <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; padding: 12px; font-size: 0.85em; color: #d1fae5;">
+                    <span style="font-weight: 600;">✓ Andy Tracking:</span> <span id="andy-status">Building confidence profile...</span>
+                </div>
+            </div>
+        </div>
+
         <!-- ROW 3: SESSION PERFORMANCE (Below Rule Compliance on left) -->
         <div class="grid two-column">
             <div class="card">
@@ -803,7 +864,8 @@
                         <li><code>wingman, analyze [TICKER]</code> - Full probability breakdown</li>
                         <li><code>NVDA long 100 @ 189.50, stop 188, target 192</code> - Log entry</li>
                         <li><code>Out at [PRICE]</code> - Close position</li>
-                        <li><code>wingman, eod wrap</code> - End-of-day summary</li>
+                        <li><code>wingman, intra</code> - Quick intraday dashboard refresh (run multiple times per session)</li>
+                        <li><code>wingman, eod</code> - End-of-day wrap with dashboard sync & recap generation</li>
                     </ul>
                 </details>
             </div>
@@ -914,8 +976,76 @@
                 // Update Monthly Goal Tracker
                 updateMonthlyGoal(ytdPl);
 
+                // Load Andy Intel
+                loadAndyInsights();
+
             } catch (error) {
                 console.error('Error refreshing dashboard:', error);
+            }
+        }
+
+        async function loadAndyInsights() {
+            try {
+                const andyResponse = await fetch('./andy-intel/andy_intel_tracking.json');
+                if (!andyResponse.ok) {
+                    document.getElementById('andy-status').textContent = 'File not found - check Journal/andy-intel/ folder';
+                    return;
+                }
+                const data = await andyResponse.json();
+
+                if (!data.andy_daily_calls || data.andy_daily_calls.length === 0) {
+                    document.getElementById('andy-thesis').innerHTML = '<div style="color: #9ca3af;">No calls captured yet. Awaiting Andy\'s morning update.</div>';
+                    return;
+                }
+
+                const todayCall = data.andy_daily_calls[0]; // Most recent call
+
+                // Load thesis
+                document.getElementById('andy-thesis').innerHTML = `
+                    <div><strong style="color: #d8b4fe;">${todayCall.general_thesis}</strong></div>
+                `;
+
+                // Load key levels
+                if (todayCall.key_levels && todayCall.key_levels.SPX) {
+                    const spxRes = todayCall.key_levels.SPX.resistance.join(', ');
+                    document.getElementById('andy-spx-resistance').textContent = spxRes;
+                    document.getElementById('andy-spx-pattern').textContent = todayCall.key_levels.SPX.pattern || 'Resistance level';
+                }
+
+                if (todayCall.key_levels && todayCall.key_levels.QQQ) {
+                    const qqqRes = todayCall.key_levels.QQQ.resistance.join(', ');
+                    document.getElementById('andy-qqq-resistance').textContent = qqqRes;
+                    document.getElementById('andy-qqq-pattern').textContent = todayCall.key_levels.QQQ.pattern || 'Resistance level';
+                }
+
+                if (todayCall.macro_catalysts && todayCall.macro_catalysts.length > 0) {
+                    const catalyst = todayCall.macro_catalysts[0];
+                    document.getElementById('andy-catalyst').textContent = catalyst.event || 'FOMC';
+                    document.getElementById('andy-catalyst-time').textContent = catalyst.timing || 'Today';
+                }
+
+                // Load insights - handle both key_insights and key_insights_intraday
+                const insights = todayCall.key_insights || todayCall.key_insights_intraday || [];
+                if (insights && insights.length > 0) {
+                    document.getElementById('insight-1').textContent = insights[0];
+                    if (insights.length > 1) {
+                        document.getElementById('insight-2').textContent = insights[1];
+                    }
+                    if (insights.length > 2) {
+                        document.getElementById('insight-3').textContent = insights[2];
+                    }
+                }
+
+                // Load accuracy status
+                const accuracy = data.accuracy_summary;
+                if (accuracy) {
+                    const calls = accuracy.total_calls || 0;
+                    const rate = accuracy.overall_hit_rate ? (accuracy.overall_hit_rate * 100).toFixed(0) : 'TBD';
+                    document.getElementById('andy-status').textContent = `${calls} calls tracked | ${rate}% accuracy (building profile)`;
+                }
+            } catch (error) {
+                console.error('Error loading Andy intel:', error);
+                document.getElementById('andy-status').textContent = 'Unable to load Andy intel';
             }
         }
 

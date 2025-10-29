@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "description": "Long-term statistical validation of Andy's trading calls. Built over 20+ sessions/calls.",
+    "purpose": "Quantify Andy's effectiveness. Determine which types of calls are reliable vs which to discount.",
+    "started": "2025-10-29",
+    "sample_size_target": 20,
+    "minimum_confidence": "After 20+ validated calls, we can assess: Is Andy >50% accurate? Which categories best?",
+    "update_frequency": "After each session EOD - validate pending calls from morning"
+  },
+
+  "by_category": {
+    "technical_levels": {
+      "description": "Support/resistance calls. e.g., 'SPX resistance 6885'",
+      "validation_criteria": "Level reached within 1% within 2 trading sessions = HIT. Never reached = MISS. Direction also matters: if level hit but wrong direction reaction = PARTIAL.",
+      "total_calls": 15,
+      "hits": 0,
+      "misses": 1,
+      "partial_hits": 0,
+      "pending": 14,
+      "hit_rate": null,
+      "recent_validation": "FOMC EVENT: SPX 6885 resistance reached and tested, but market rallied THROUGH (not reversed at). Levels correct placement, direction wrong. Calling this MISS on reversion thesis but PARTIAL on level accuracy.",
+      "examples": [
+        {
+          "call": "SPX 6885 resistance",
+          "expected": "Market to reverse/test resistance",
+          "actual": "Market rallied through 6885, continued to 6922+ (FOMC dovish catalyst)",
+          "outcome": "MISS on direction/thesis, ACCURATE on level placement"
+        }
+      ]
+    },
+    "trade_ideas": {
+      "description": "Specific entry/exit calls. e.g., 'RUN 19.70 target 23.25'",
+      "validation_criteria": "Target reached within timeframe = HIT. Stop hit first = MISS. Partial credit for 50%+ of target.",
+      "total_calls": 0,
+      "hits": 0,
+      "misses": 0,
+      "pending": 8,
+      "hit_rate": null,
+      "examples": []
+    },
+    "sector_themes": {
+      "description": "Directional sector calls. e.g., 'Mining is new growth sector - bullish'",
+      "validation_criteria": "Sector moves predicted direction >1% within 2 sessions = HIT. Opposite direction = MISS.",
+      "total_calls": 0,
+      "hits": 0,
+      "misses": 0,
+      "pending": 5,
+      "hit_rate": null,
+      "examples": []
+    },
+    "macro_catalysts": {
+      "description": "Macro event impact calls. e.g., 'FOMC dovish = relief rally'",
+      "validation_criteria": "Predicted direction/magnitude occurred = HIT. Opposite or sideways = MISS.",
+      "total_calls": 0,
+      "hits": 0,
+      "misses": 0,
+      "pending": 4,
+      "hit_rate": null,
+      "examples": []
+    },
+    "earnings_analysis": {
+      "description": "Earnings setup calls. e.g., 'CLS bullish on Oct 31 earnings'",
+      "validation_criteria": "Stock moves in predicted direction post-earnings = HIT. Opposite direction = MISS.",
+      "total_calls": 0,
+      "hits": 0,
+      "misses": 0,
+      "pending": 3,
+      "hit_rate": null,
+      "examples": []
+    }
+  },
+
+  "session_history": [
+    {
+      "date": "2025-10-29",
+      "session_phase": "morning_premarket_18:00_ET_FOMC",
+      "calls_made_morning": 25,
+      "calls_made_intraday": 8,
+      "calls_validated": 1,
+      "calls_pending": 32,
+      "major_event": "FOMC Rate Decision (18:00 ET) - 25bps rate cut (dovish), Fed announcing QT cessation",
+      "morning_thesis": "Reversion expected. SPX extended at 6885, 6937 resistance. Mega-cap distribution signals (AAPL double top, NVDA rejection). Breadth negative. Caution on narrow leadership.",
+      "fomc_outcome": "Dovish cut + QT stop = massive bullish catalyst. Market rallied through resistance. Risk-on narrative shifted from reversion to growth acceleration.",
+      "thesis_validation": "BROKEN - Morning bearish thesis invalidated by FOMC dovish catalyst. Market rallied through 6885, 6937 resistance instead of reversing. SPX now 6922+, AAPL through distribution level, GOOG to 275, mega-caps led.",
+      "lesson": "Right levels, wrong direction. Technical exhaustion signals (breadth, mega-cap distribution) were overridden by macro catalyst (FOMC cut + QT ending). Important: Can't always predict direction of technical levels without knowing catalyst impact.",
+      "session_notes": "Historic trading day. Fed decision moved market decisively. Morning thesis looked good on structure, failed on direction. Excellent example of importance of macro catalysts vs technical signals alone."
+    }
+  ],
+
+  "overall_profile": {
+    "sample_size": 33,
+    "calls_validated": 1,
+    "calls_invalidated": 1,
+    "overall_accuracy": null,
+    "confidence_level": "insufficient_data_but_tracking_active",
+    "best_category": null,
+    "worst_category": null,
+    "current_observation": "FOMC event showed Andy's technical level accuracy but macro catalyst can override direction prediction. Morning thesis was structurally sound but direction-wise wrong because Fed QT ending was catalyst not predicted.",
+    "recommendation": "Continue tracking. After 20+ calls validated, Wingman will assess: Is Andy >50% accurate? Which categories (levels vs ideas vs themes) are most reliable? Should we weight Andy as strong confluence or weak confluence in Rule #0?",
+    "next_assessment_date": "After 20+ calls validated (approximately 2025-11-12)",
+    "important_note": "Early indication: Andy is strong on level identification (6885 resistance was exact), but macro catalysts can determine direction. This is NORMAL trading - can't predict direction without knowing event outcomes."
+  },
+
+  "pilot_guidance": {
+    "how_to_use_andy": "Andy is ONE confluence source (Rule #0). Never blind follow. Always require your independent thesis. These statistics will help us determine: When Andy's input makes trades BETTER vs when it's noise.",
+    "tracking_philosophy": "We're testing Andy, not trusting blindly. Data will tell us if Andy improves our edge. Until then: treat as secondary confluence only.",
+    "what_we_will_learn": "After 20+ sessions: (1) Which Andy call types win most? (2) Which setups does Andy excel in? (3) What's Andy's actual accuracy by category? (4) Should we increase/decrease weighting?"
+  }
+}

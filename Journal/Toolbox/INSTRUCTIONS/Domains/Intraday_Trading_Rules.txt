@@ -1,0 +1,608 @@
+================================================================================
+INTRADAY TRADING RULES - SPECIALIZED FOR 5-MIN, 15-MIN, 1-HOUR DAYTRADING
+================================================================================
+
+CORE PHILOSOPHY:
+Intraday trading is PRECISION-based, not emotion-based. Every entry must be pre-planned,
+every exit must be mechanical, every trade must be analyzed for learning.
+
+This document extends Rules #0-20 with intraday-specific protocols.
+
+================================================================================
+RULE #0: CONFLUENCE FRAMEWORK (INTRADAY ADAPTATION)
+================================================================================
+
+CORE REQUIREMENT: Never trade on single reason. Require 3+ independent confluences.
+
+INTRADAY CONFLUENCE HIERARCHY (Ranked by Predictive Power):
+
+TIER 1 - STRONGEST (Each worth +1.5x weight):
+  1. VWAP colored arrow + divergence confirmed (70%+ win rate)
+  2. Bearish/bullish divergence RSI (3-candle confirmed per Rule #19)
+  3. Fibonacci extension at exhaustion level (127% or 168%)
+  4. Multi-timeframe alignment (all 3 TF aligned) = +2 confluence points
+
+TIER 2 - STRONG (Each worth +1x weight):
+  5. Breadth confirmation (ADD > +500 for longs, < -500 for shorts)
+  6. VWAP red/orange arrow (without divergence confirmation)
+  7. Volume > 1.5x average on entry signal
+  8. C+R confirmation (close + retest per Rule #7, #9)
+
+TIER 3 - MODERATE (Each worth +0.5x weight):
+  9. EMA alignment (5-min 200 EMA trending with thesis)
+  10. MACD cross confirmation
+  11. Andy level alignment (if Andy's accuracy > 60%)
+  12. Session-time favorable (opening or power hour, not lunch)
+
+TIER 4 - WEAK (Each worth +0.25x weight):
+  13. Max pain alignment (if Friday option expiration)
+  14. Seasonal pattern
+  15. Previous day structure alignment
+
+SCORING SYSTEM:
+Minimum Requirement: 3 tier-2 confluences (3.0 points)
+                      OR 2 tier-1 + 1 tier-2 (3.5 points)
+                      OR 1 tier-1 + 2 tier-2 + 1 tier-3 (3.25 points)
+
+Standard Entry: 4+ confluences (4+ points)
+High Conviction: 5+ confluences (5+ points)
+Premium Setup: 6+ confluences (6+ points) - SCALE UP
+
+EXAMPLE CALCULATION (Oct 29 SPY trade):
+  - VWAP red arrow + divergence (Tier 1): +1.5
+  - ADD negative (Tier 2): +1.0
+  - FOMC catalyst (Tier 2): +1.0
+  - SPX 168% Fib (Tier 1): +1.5
+  - Narrow leadership (Tier 2): +1.0
+  - Andy alignment (Tier 3): +0.5
+  = 6.5 confluence points = PREMIUM SETUP = High conviction
+
+INTRADAY-SPECIFIC: Confluences must form within 1-5 minutes.
+If setup takes >5 min to develop, confluence weakens (window closed).
+
+================================================================================
+RULE #19: DIVERGENCE CONFIRMATION (INTRADAY PROTOCOL)
+================================================================================
+
+CORE REQUIREMENT: Divergences are early reversal signals, but must be confirmed
+within 3-candle window BEFORE entry.
+
+PROCESS (MANDATORY):
+1. Spot divergence: Price higher high, RSI/MACD lower high
+2. Set observation: 3-candle window (15 min on 5-min chart)
+3. Confirmation: Price MUST reverse within 3 candles
+4. Entry: After confirmation bar closes
+5. Failure: If price continues past divergence high after 3 bars, PASS trade
+
+MULTI-TIMEFRAME DIVERGENCE:
+  5-min + 15-min both showing divergence: 78% win rate (STRONG)
+  5-min only: 65% win rate (moderate)
+  15-min only: 70% win rate (moderate)
+
+REQUIREMENTS BY TIMEFRAME:
+  5-min: RSI divergence at extension (RSI > 80 or < 20)
+         Volume confirmation on reversal bar
+         2 of 3 candles must reverse direction
+
+  15-min: MACD histogram divergence (momentum not confirming price)
+          Volume >= 1.3x average on reversal bar
+          1 candle reversal sufficient (trend stronger on 15-min)
+
+  1-hour: RSI divergence at hourly resistance/support
+          MACD cross confirmation
+          Can skip 3-candle rule (slower timeframe)
+
+FALSE SIGNAL MANAGEMENT:
+  If divergence fails to confirm within 3 candles: BLACKLIST that level
+  for next 30 minutes (price won't reverse there twice in quick succession)
+
+TRACKING (add to learning database):
+  - Divergence spotted?
+  - Confirmed within 3 candles?
+  - Win rate of confirmed vs unconfirmed divergences
+  - By market regime (trending vs choppy)
+
+================================================================================
+RULE #20: TWO-WAY FIBONACCI REVERSION (INTRADAY IMPLEMENTATION)
+================================================================================
+
+CORE FRAMEWORK: Price extends to Fibonacci level, then reverts. Sell extensions,
+buy pullbacks. Tightest stops in your arsenal = mechanical discipline.
+
+EXTENSION SELL SETUP (Fade the Move):
+
+  Entry Criteria:
+    1. Price extends to 127% or 168% Fibonacci level
+    2. Bearish divergence on same timeframe (Rule #19)
+    3. VWAP shows red or orange arrow
+    4. Volume >= 1.5x average on extension bar
+    5. EMA filter aligned (200 EMA falling)
+    6. Breadth confirmation (ADD < -500 or weakening)
+    7. Risk can be defined (<= 1% account max)
+
+  Entry Process:
+    1. Identify extension level (use ThinkOrSwim Fibonacci auto-draw)
+    2. Wait for price to REACH level (don't chase from 10 points away)
+    3. Confirm divergence + VWAP on entry bar
+    4. Pre-set stop at extension high + 0.05% buffer
+    5. Calculate target: 50% of extended move
+    6. Enter at extension level close
+
+  Stop Management:
+    5-min: Stop at extension high + 0.05% (tight, mechanical)
+    15-min: Stop at extension high + 0.1%
+    1-hour: Stop at extension high + 0.2%
+
+    NO ADJUSTMENT: Stop does not move until target hit. Zero flexibility.
+
+  Target Management:
+    Primary target: 50% Fibonacci pullback (TAKE 50% profit)
+    Secondary target: 61.8% pullback (trail remainder with stop-loss)
+
+    Exit Rules:
+      - If 50% target hit: Exit half position, trail remainder
+      - If 3x bars held without progress: Exit for breakeven
+      - If breadth suddenly improves: Exit (thesis broken)
+
+  Position Sizing:
+    Risk = (extension high - entry) * shares = max $231 (1% account)
+    Calculate shares from risk:
+
+    Example:
+    Extension at 685.00, stop at 686.50 = $1.50 risk
+    Max risk per trade = $231
+    Shares = $231 / $1.50 = 154 shares
+
+    Entry at 684.50: -154 shares (short 154 SPXU)
+
+PULLBACK BUY SETUP (Buy the Dip at Structure):
+
+  Entry Criteria:
+    1. Previous extension completed (pullback phase)
+    2. Price pulls back to 50%-61.8% Fibonacci zone
+    3. HARD LEVEL confluence present:
+       - Weekly mid-point OR
+       - Monthly high/low OR
+       - Previous support/resistance structure
+    4. Bullish divergence forming (RSI, MACD)
+    5. VWAP reclaim on 15-min or lower
+    6. Breadth improving (ADD > +500 or turning up)
+    7. 4+ confluences minimum (higher bar than extension fade)
+
+  Entry Process:
+    1. Identify pullback zone (50%-61.8%)
+    2. Identify hard level (weekly mid, etc.)
+    3. Wait for convergence: pullback zone + hard level intersection
+    4. Confirm technical setup (bullish divergence)
+    5. Pre-set stop: Below hard level - buffer
+    6. Target: Previous extension level or beyond
+    7. Enter at hard level support
+
+  Stop Management:
+    Stop placed BELOW hard level (not at, but below)
+    5-min: Below support by 0.05%
+    15-min: Below support by 0.1%
+    1-hour: Below support by 0.2%
+
+    NO ADJUSTMENT: Hard stop, no trailing initially.
+
+  Target Management:
+    Primary target: Return to extension level
+    Secondary target: New high beyond extension
+
+    Exit Rules:
+      - If extension level hit: Exit 100% (confirmed cycle)
+      - If 8 bars held without progress: Exit for breakeven
+      - If close below hard level intraday: Exit immediately (stop)
+
+  Position Sizing:
+    Risk = (entry - hard level low) * shares = max $231
+    Size accordingly
+
+    Example:
+    Hard level 682.00, entry 682.50 = $0.50 risk
+    Max risk = $231
+    Shares = $231 / $0.50 = 462 shares
+
+    Entry at 682.50: +462 shares (long 462 SPXU)
+
+TRACKING TWO-WAY CYCLES:
+  - Extension sell win rate (target: 65%+)
+  - Pullback buy win rate (target: 65%+)
+  - Two-way completion rate (% of cycles that produce both trades)
+  - Average R/R per full cycle
+  - Fibonacci level accuracy (127% vs 168%)
+
+================================================================================
+RULE #21: MULTI-TIMEFRAME CONFIRMATION (NEW - INTRADAY SPECIFIC)
+================================================================================
+
+CORE REQUIREMENT: Before entry on any timeframe, confirm alignment across 3 TF.
+
+PROCESS:
+  1. Spot setup on PRIMARY timeframe (5-min, 15-min, or 1-hour)
+  2. Check SECONDARY timeframe (one level up)
+  3. Check TERTIARY timeframe (one level higher)
+  4. Calculate alignment score (3/3, 2/3, 1/3, 0/3)
+
+ALIGNMENT SCORING:
+  3/3 Aligned: All 3 timeframes showing same direction signal
+    Position sizing: 100% normal size (full conviction)
+
+  2/3 Aligned: 2 of 3 timeframes aligned
+    Position sizing: 75% normal size (standard trade)
+
+  1/3 Aligned: Only primary timeframe showing signal
+    Position sizing: 50% normal size OR PASS (counter-trend risk)
+
+  0/3 Aligned: Multi-timeframe divergence
+    ACTION: PASS - High reversal risk, conflicting signals
+
+EXAMPLE (Entry on 5-min):
+  5-min: VWAP red arrow, divergence (SELL setup)
+  15-min: Channel resistance, MACD divergence (SELL setup)
+  1-hour: SPX at Fib extension (SELL setup)
+  = 3/3 ALIGNED → Full size (100%)
+
+EXAMPLE (Entry on 5-min):
+  5-min: VWAP red arrow (SELL setup)
+  15-min: Just broke support (SELL setup)
+  1-hour: Slight uptrend continuing (BUY setup)
+  = 2/3 aligned (SELL vs SELL, 1 BUY) → 75% size
+
+EXAMPLE (Entry on 15-min):
+  15-min: C+R breakdown (SHORT)
+  5-min: Oversold RSI, bouncing up (LONG setup - counter)
+  1-hour: Uptrend intact (LONG setup - counter)
+  = 1/3 aligned → 50% size OR PASS
+
+MANDATORY CHECKLIST ITEM: "Multi-timeframe alignment confirmed?"
+
+================================================================================
+RULE #22: SESSION-SPECIFIC POSITION SIZING
+================================================================================
+
+CORE REQUIREMENT: Market conditions change by time of day. Adjust size accordingly.
+
+SESSION DEFINITIONS (All times ET):
+
+SESSION 1 - OPENING RANGE (9:30 AM - 10:00 AM):
+  Market Characteristics:
+    - Highest volume of day
+    - Large moves common (gaps, overnight reactions)
+    - Setup quality HIGH (clear directional signal)
+    - Volatility: ELEVATED but structured
+
+  Position Sizing: 100% STANDARD
+  Best Setups: ORB breakout, opening retest, gap fades
+  Risk Level: ACCEPTABLE (high volume = defined risk)
+
+  Rules:
+    - Allow full-size entries if 3+ confluences present
+    - Tight stops (opening range extremes)
+    - Target: 2x opening range size
+    - No mercy: Stop hits = exit immediately (may retest)
+
+SESSION 2 - TREND DEVELOPMENT (10:00 AM - 11:30 AM):
+  Market Characteristics:
+    - Strong trending periods historically
+    - Volume elevated, momentum strong
+    - Setup quality: HIGH (follow extension moves)
+    - Breadth usually confirming
+
+  Position Sizing: 100% STANDARD
+  Best Setups: VWAP extension fades, C+R breaks, momentum follow
+  Risk Level: ACCEPTABLE (trending = directional clarity)
+
+  Rules:
+    - Favor extension SELL setups (market usually pulls back after 10:30)
+    - Trail stops wider (trends can run)
+    - Target: 50%-61.8% pullback
+    - Add-on opportunity if pullback confirmed
+
+SESSION 3 - LUNCH CHOP (11:30 AM - 2:00 PM):
+  Market Characteristics:
+    - Lowest volume of day
+    - Whipsaws VERY COMMON
+    - Setup quality: POOR (false breakouts, fades fail)
+    - Directional clarity LOW
+    - Volatility: HIGH due to low volume (wider spreads)
+
+  Position Sizing: 50% REDUCED OR SKIP ENTIRELY
+  Best Strategy: AVOID NEW ENTRIES (wait for power hour)
+  Alternative: Manage existing positions only
+  Risk Level: UNACCEPTABLE (low conviction + whipsaws)
+
+  Rules:
+    - If you must trade: Only ultra-high-confluence setups (6+ points)
+    - Use half normal size (50%)
+    - Tighter stops (whipsaws likely)
+    - BETTER: Close morning positions, take break, return 2 PM
+    - Historically: Win rate <50% in lunch chop
+
+SESSION 4 - POWER HOUR (2:00 PM - 3:45 PM):
+  Market Characteristics:
+    - Volume returns strongly
+    - Trends resume or reverse
+    - Setup quality: HIGH (pullback opportunities develop)
+    - Breadth usually confirming
+    - Position building begins for next day
+
+  Position Sizing: 100-125% STANDARD (can increase if high conviction)
+  Best Setups: Fibonacci pullbacks, VWAP reversions, structure bounces
+  Risk Level: ACCEPTABLE-HIGH (high quality + high volume)
+
+  Rules:
+    - This is premium trading time (matched with morning)
+    - Allow full-size + 25% increase on 6+ confluence setups
+    - Best pullback buy entries happen here (5+ confluences common)
+    - Favor longer holds (1-3 hour targets)
+    - Can hold into next day if structure intact
+
+SESSION 5 - MARKET CLOSE (3:45 PM - 4:00 PM):
+  Market Characteristics:
+    - Final 15 minutes: often violent and emotional
+    - Fund positioning, index rebalancing
+    - Setup quality: POOR (desperation moves, fades)
+    - Volatility: EXTREME (wider spreads, quick reversals)
+
+  Position Sizing: ZERO - NO NEW ENTRIES (Rule #5)
+  Best Strategy: EXIT MANAGEMENT ONLY
+
+  Rules:
+    - RULE #5: No new initiations in final 15 minutes
+    - Close profitable positions (don't give back profits)
+    - Trail stop on winners only
+    - Accept breakeven exits (don't chase)
+    - If you have overnight position: set stop NOW (don't hold into next day surprise)
+
+SUMMARY TABLE:
+  9:30-10:00: 100% (Opening is PRIME time)
+  10:00-11:30: 100% (Trend development = strong setups)
+  11:30-2:00: 50% (Lunch chop = skip if possible)
+  2:00-3:45: 100-125% (Power hour = best pullbacks)
+  3:45-4:00: 0% (Exits only, no entries)
+
+TRACKING:
+  Calculate win rate by session. If any session <50%, reduce size further or skip.
+  After 10 trades per session, you'll know if that time period is profitable.
+
+================================================================================
+RULE #23: MAXIMUM DAILY LOSS LIMIT (STOP TRADING)
+================================================================================
+
+CORE REQUIREMENT: Protect capital from revenge trading and tilt.
+
+MECHANISM:
+  Daily Loss Limit = 2% of account = $500 (based on $25,000 account)
+
+  Threshold: After -$500 realized loss for the day, STOP TRADING.
+  No new entries. No adding to losers. No revenge trades.
+
+  Exception: If holding profitable position from morning, manage exit only.
+             Can hold winning trade into close, but no NEW entries.
+
+CALCULATION:
+  Track cumulative daily realized losses (closed trades only).
+  When realized P/L hits -$500 (or -2%), STOP.
+
+  Example:
+  Trade 1: -$150 (total: -$150)
+  Trade 2: -$200 (total: -$350)
+  Trade 3: -$180 (total: -$530) → STOP TRADING
+
+  No Trade 4, 5, or 6 today. Done for the day.
+
+PURPOSE:
+  - Prevents compounding losses (recovery psychology is false)
+  - Enforces break/reset (step away, reset mindset)
+  - Protects capital for tomorrow
+  - Documented rule prevents emotion-based exceptions
+
+IMPLEMENTATION:
+  Pre-entry checklist item #18: "Daily loss limit not exceeded?"
+  If YES, do not enter. Close program if necessary to avoid temptation.
+
+================================================================================
+RULE #24: CHECKLIST COMPLIANCE REQUIREMENT (NEW)
+================================================================================
+
+CORE REQUIREMENT: Every intraday trade must pass pre-entry checklist before entry.
+
+PRE-ENTRY CHECKLIST (18 Items - Intraday Version):
+
+  SETUP IDENTIFICATION:
+    1. Primary setup type identified (VWAP/ORB/C+R/Fib)?
+    2. Secondary confluence(s) present (minimum 3 total)?
+    3. Multi-timeframe alignment confirmed (Rule #21)?
+    4. Confluence count >= 3 (Go/No-Go signal)?
+
+  TECHNICAL VALIDATION:
+    5. Divergence confirmed within 3-candle window (Rule #19)?
+    6. Volume >= 1.3x average on entry bar?
+    7. EMA filter passed (200 EMA aligned)?
+    8. VWAP status aligned with thesis (arrow color correct)?
+
+  RISK MANAGEMENT:
+    9. Stop price clearly defined (mechanical, no subjective)?
+    10. Risk amount calculated (<= 1% account = $231 max)?
+    11. Target price pre-set (before entry)?
+    12. Position size calculated from risk?
+
+  MARKET CONTEXT:
+    13. Session time favorable (not lunch chop)?
+    14. Breadth/ADD aligned (not counter-trend)?
+    15. VIX regime noted (adjust stops/size by regime)?
+    16. Andy levels checked (if available)?
+
+  FINAL CHECKS:
+    17. Checklist compliance rate calculated (all 16 above = 16/16)?
+    18. Daily loss limit not exceeded (Rule #23)?
+
+GO CRITERIA: All 18 items checked = GREEN LIGHT
+NO-GO: Any 2+ items unchecked OR confluence < 3 = RED LIGHT
+
+TRACKING:
+  Track checklist compliance per trade
+  After 10 trades: Calculate compliance percentage
+  Find correlation: Higher compliance = higher win rate?
+  EXPECTED: 90%+ compliance correlates to 60%+ win rate
+
+================================================================================
+SIGNAL TYPES & ENTRY PROTOCOLS (Quick Reference)
+================================================================================
+
+SETUP: VWAP REVERSION (5-Min, 15-Min)
+  Recognition: Price extends to VWAP band, colored arrow appears
+  Entry: Fade extension at arrow trigger (not 5 pips later)
+  Stop: Extension high + buffer
+  Target: VWAP centerline or 50% pullback
+  Hold: 1-3 bars (5-15 minutes typical)
+  Win Rate: 70%+ (highest win rate setup)
+  Confluence: VWAP arrow + volume + divergence
+
+SETUP: OPENING RANGE BREAKOUT (5-Min, 15-Min)
+  Recognition: First 30 min establishes range, break out at 10:00 AM
+  Entry: Close above/below range + retest (C+R confirmation)
+  Stop: Opposite end of range
+  Target: 2x range size
+  Hold: 6-12 bars (1.5-3 hours)
+  Win Rate: 60-65% (best in trending markets)
+  Confluence: ORB + volume + breadth + MACD cross
+
+SETUP: FIBONACCI EXTENSION FADE (All Timeframes)
+  Recognition: Price extends to 127% or 168% Fib level
+  Entry: At extension level with divergence confirmation
+  Stop: Extension high + buffer (tight!)
+  Target: 50%-61.8% pullback
+  Hold: 12-20+ bars
+  Win Rate: 65-70%
+  Confluence: Extension + divergence + VWAP + breadth
+
+SETUP: C+R CONFIRMATION (15-Min, 1-Hour)
+  Recognition: Close below level + retest within 3-5 bars
+  Entry: Retest entry (not initial break)
+  Stop: Above/below retest level
+  Target: Next structure level or 2x range
+  Hold: 8-20+ bars
+  Win Rate: 62%+
+  Confluence: C+R + volume + MACD + breadth
+
+SETUP: DIVERGENCE REVERSAL (5-Min Preferred)
+  Recognition: Price higher high, RSI/MACD lower high
+  Entry: After 3-candle confirmation (Rule #19)
+  Stop: Divergence high/low + buffer
+  Target: 50% of prior move
+  Hold: 3-8 bars (varies)
+  Win Rate: 70%+ (if confirmed)
+  Confluence: Divergence + VWAP + volume
+
+================================================================================
+INTEGRATION WITH SWING TRADING (Rule #0-20 Existing)
+================================================================================
+
+Your existing swing position (Trade #7 SPXU) and intraday day trading are SEPARATE.
+
+SEPARATION:
+  Swing Trade (Trade #7):
+    - Position size: 600 shares (29.7% account risk)
+    - Hold: Multi-day (stop at $12.38, target $12.20)
+    - Goal: Capture 50%-61.8% pullback of SPX extension
+    - Update: Check daily, manage exits if rules triggered
+
+  Intraday Trades:
+    - Position size: Micro (1-3% account risk per trade)
+    - Hold: Intraday (1-20 bars, minutes to hours)
+    - Goal: Capture quick reversions, ORB moves, pullbacks
+    - Update: Real-time, check every 5 minutes
+
+DO NOT:
+  - Add to swing trade with intraday capital
+  - Use swing position stop for intraday entries
+  - Mix intraday convictions into swing thesis
+  - Over-leverage: Swing (29.7%) + Intraday (2-3% per) = max 32-33% account
+
+DO:
+  - Manage swing position separately (EOD check)
+  - Use intraday capital for separate setups
+  - Sync Andy calls with both timeframe systems
+  - Update intraday learning database independently
+  - Track: Intraday P/L separately from swing P/L
+
+================================================================================
+LEARNING & CONTINUOUS IMPROVEMENT
+================================================================================
+
+WEEKLY REVIEW (Every Friday 4:30 PM):
+  1. Compile all 5-15 intraday trades from week
+  2. Calculate: Win rate by setup type
+  3. Identify: Which setups >60%? Which <50%?
+  4. Decision: Scale up best setups, deprecate worst setups
+  5. Update: intraday_learning_database.json
+
+MONTHLY REVIEW (End of each month):
+  1. Review all intraday trades (usually 50-100)
+  2. Calculate:
+     - Win rate by setup type
+     - Win rate by timeframe
+     - Win rate by session time
+     - Win rate by market regime
+     - Confluence effectiveness ranking
+  3. Identify: Which confluence types most predictive?
+  4. Create: Regime-specific playbooks (if trending, use X setups)
+  5. Update: Rules if patterns clear
+
+QUARTERLY REVIEW (Every 90 days):
+  1. Full statistical analysis (200+ trades typical)
+  2. Profit factor by setup (target: >1.5 for each)
+  3. Expectancy per trade (target: >$30)
+  4. Determine: Am I profitable? Should I scale?
+  5. Adjust: Rules, confluences, session sizing
+  6. Plan: Next quarter focus
+
+DATA SCIENCE APPROACH:
+  "What signal types produce >65% win rate in choppy markets?"
+  "Which confluences have highest predictive power?"
+  "Which sessions are consistently profitable?"
+  "Does Andy alignment improve our edge?"
+
+  Track EVERYTHING. Let data speak. Adjust rules based on evidence.
+
+================================================================================
+RULES SUMMARY TABLE
+================================================================================
+
+Rule #0:  Confluence Framework (min 3 confluences, tier-weighted for intraday)
+Rule #7:  C+R Confirmation (close + retest protocol)
+Rule #9:  C+R Confirmation Detail (within 3-5 bars on intraday)
+Rule #19: Divergence Confirmation (3-candle window mandatory)
+Rule #20: Fibonacci Reversion (extension fade + pullback buy, tight stops)
+Rule #21: Multi-Timeframe Confirmation (3/3, 2/3, 1/3, 0/3 alignment scoring)
+Rule #22: Session-Specific Sizing (100%/100%/50%/100-125%/0% by session)
+Rule #23: Daily Loss Limit (-2% = $500 stop trading for the day)
+Rule #24: Checklist Compliance (18-item pre-entry checklist = mandatory)
+
+COMPLIANCE SCORE: (Rules followed / Rules applicable) * 100
+  Target: >90% compliance rate per trade
+
+================================================================================
+FINAL NOTES
+================================================================================
+
+These rules are DESIGNED TO WORK TOGETHER.
+
+Rule #0 (confluence) + Rule #21 (multi-TF) = High-probability entry
+Rule #20 (fibonacci) + Rule #22 (session sizing) = Mechanical execution
+Rule #19 (divergence) + Rule #24 (checklist) = Disciplined validation
+Rule #23 (daily loss limit) = Capital preservation
+
+FOLLOW THE SYSTEM. DATA WILL FOLLOW.
+
+After 50 intraday trades with full compliance, you will have statistical edge.
+After 100 trades, your intraday system will be a high-conviction money machine.
+
+The edge exists. Execution discipline unlocks it.
+
+================================================================================
+END INTRADAY TRADING RULES
+================================================================================
