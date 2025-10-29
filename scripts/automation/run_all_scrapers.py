@@ -305,149 +305,183 @@ def print_summary(results: dict, total_time: float):
     print("="*70 + "\n")
 
 
+def prompt_continue() -> bool:
+    """
+    Prompt user to continue or exit after scraper completion.
+    Returns True to continue (re-run), False to exit.
+    """
+    print("\n" + "="*70)
+    print("🎯 SCRAPER OPTIONS")
+    print("="*70)
+    print("1. Close scraper (exit)")
+    print("2. Run all scrapers again")
+    print("="*70)
+
+    while True:
+        try:
+            choice = input("\nEnter your choice (1-2): ").strip()
+            if choice == "1":
+                print("\n👋 Exiting scraper...")
+                return False
+            elif choice == "2":
+                print("\n🔄 Restarting all scrapers...\n")
+                return True
+            else:
+                print("⚠️  Invalid choice. Please enter 1 or 2.")
+        except (KeyboardInterrupt, EOFError):
+            print("\n\n👋 Exiting scraper (interrupted)...")
+            return False
+
+
 def main():
     """Main orchestrator"""
     if relaunch_in_visible_window():
         return
 
-    print_header()
+    # Main execution loop - allows re-running scrapers
+    while True:
+        print_header()
 
-    # Get today's date for archival
-    today = datetime.now().strftime('%Y-%m-%d')
+        # Get today's date for archival
+        today = datetime.now().strftime('%Y-%m-%d')
 
-    # Define scrapers in execution order (for parallel execution)
-    scrapers_dir = Path("Scraper")
-    scrapers = [
-        (scrapers_dir / "x_scraper.py", "X/Twitter Scraper"),
-        (scrapers_dir / "youtube_scraper.py", "YouTube Transcript Scraper"),
-        (scrapers_dir / "rss_scraper.py", "RSS Feed Scraper"),
-    ]
+        # Define scrapers in execution order (for parallel execution)
+        scrapers_dir = Path("Scraper")
+        scrapers = [
+            (scrapers_dir / "x_scraper.py", "X/Twitter Scraper"),
+            (scrapers_dir / "youtube_scraper.py", "YouTube Transcript Scraper"),
+            (scrapers_dir / "rss_scraper.py", "RSS Feed Scraper"),
+        ]
 
-    # Check all scrapers exist
-    print("Checking scrapers...\n")
-    missing = []
-    for script, name in scrapers:
-        if script.exists():
-            print(f"  ✅ {name:30} {script}")
-        else:
-            print(f"  ❌ {name:30} NOT FOUND: {script}")
-            missing.append(name)
+        # Check all scrapers exist
+        print("Checking scrapers...\n")
+        missing = []
+        for script, name in scrapers:
+            if script.exists():
+                print(f"  ✅ {name:30} {script}")
+            else:
+                print(f"  ❌ {name:30} NOT FOUND: {script}")
+                missing.append(name)
 
-    if missing:
-        print(f"\n❌ ERROR: Missing scrapers: {', '.join(missing)}")
-        print("Cannot proceed. Please ensure all scraper files exist.")
-        sys.exit(1)
+        if missing:
+            print(f"\n❌ ERROR: Missing scrapers: {', '.join(missing)}")
+            print("Cannot proceed. Please ensure all scraper files exist.")
+            sys.exit(1)
 
-    print("\n✅ All scrapers found. Starting execution...\n")
+        print("\n✅ All scrapers found. Starting execution...\n")
 
-    # Run scrapers with optimization: X first, then YouTube/RSS in parallel
-    start_time = time.time()
-    results = {}
+        # Run scrapers with optimization: X first, then YouTube/RSS in parallel
+        start_time = time.time()
+        results = {}
 
-    # 0. Run cleanup FIRST (before any scraping)
-    cleanup_result = run_cleanup()
-    results["Research Cleanup"] = cleanup_result
+        # 0. Run cleanup FIRST (before any scraping)
+        cleanup_result = run_cleanup()
+        results["Research Cleanup"] = cleanup_result
 
-    print("\n" + "="*70)
-    print("🚀 STARTING PARALLEL EXECUTION")
-    print("="*70)
-    print(f"Time: {datetime.now().strftime('%H:%M:%S')}")
-    print()
-    print("Launching 3 scrapers concurrently:")
-    print("  • X/Twitter Scraper (Priority - longest task)")
-    print("  • YouTube Transcript Scraper")
-    print("  • RSS Feed Scraper")
-    print()
-    print("NOTE: Output from all 3 scrapers will be mixed together in real-time")
-    print("="*70 + "\n")
+        print("\n" + "="*70)
+        print("🚀 STARTING PARALLEL EXECUTION")
+        print("="*70)
+        print(f"Time: {datetime.now().strftime('%H:%M:%S')}")
+        print()
+        print("Launching 3 scrapers concurrently:")
+        print("  • X/Twitter Scraper (Priority - longest task)")
+        print("  • YouTube Transcript Scraper")
+        print("  • RSS Feed Scraper")
+        print()
+        print("NOTE: Output from all 3 scrapers will be mixed together in real-time")
+        print("="*70 + "\n")
 
-    # 1. X/Twitter Scraper (PRIORITY - launch first, runs longest)
-    x_thread = threading.Thread(
-        target=run_scraper_parallel,
-        args=(scrapers_dir / "x_scraper.py", "X/Twitter Scraper", results, start_time)
-    )
-    x_thread.start()
-    print("▶️  X/Twitter Scraper started...")
-
-    # Give X scraper a moment to initialize, then start YouTube/RSS in parallel
-    time.sleep(1)
-
-    # 2. YouTube Scraper (parallel with X)
-    youtube_thread = threading.Thread(
-        target=run_scraper_parallel,
-        args=(scrapers_dir / "youtube_scraper.py", "YouTube Transcript Scraper", results, start_time)
-    )
-    youtube_thread.start()
-    print("▶️  YouTube Transcript Scraper started...")
-
-    # 3. RSS Scraper (parallel with X and YouTube)
-    rss_thread = threading.Thread(
-        target=run_scraper_parallel,
-        args=(scrapers_dir / "rss_scraper.py", "RSS Feed Scraper", results, start_time)
-    )
-    rss_thread.start()
-    print("▶️  RSS Feed Scraper started...")
-
-    # Wait for all three to complete
-    print("\n⏳ Waiting for all scrapers to complete...\n")
-    x_thread.join()
-    youtube_thread.join()
-    rss_thread.join()
-
-    print("\n✅ All parallel scrapers complete. Now running sequential tasks...\n")
-
-    # 4. X data archival
-    archival_result = run_archive(today)
-    results["X Archival"] = archival_result
-
-    # 5. Options data scraper
-    print(f"\n{'='*70}")
-    print("📊 Options Data Scraper")
-    print('='*70)
-    print(f"Script: scripts/processing/fetch_technical_data.py")
-    print(f"Started: {datetime.now().strftime('%H:%M:%S')}")
-    print()
-
-    options_start = time.time()
-
-    try:
-        result = subprocess.run(
-            [sys.executable, "scripts/processing/fetch_technical_data.py", today],
-            capture_output=False,
-            text=True,
-            encoding='utf-8',
-            errors='replace',
-            timeout=600
+        # 1. X/Twitter Scraper (PRIORITY - launch first, runs longest)
+        x_thread = threading.Thread(
+            target=run_scraper_parallel,
+            args=(scrapers_dir / "x_scraper.py", "X/Twitter Scraper", results, start_time)
         )
+        x_thread.start()
+        print("▶️  X/Twitter Scraper started...")
 
-        elapsed = time.time() - options_start
-        success = result.returncode == 0
+        # Give X scraper a moment to initialize, then start YouTube/RSS in parallel
+        time.sleep(1)
 
-        if success:
-            print(f"\n✅ Options data fetch completed successfully")
-        else:
-            print(f"\n❌ Options data fetch failed (exit code: {result.returncode})")
+        # 2. YouTube Scraper (parallel with X)
+        youtube_thread = threading.Thread(
+            target=run_scraper_parallel,
+            args=(scrapers_dir / "youtube_scraper.py", "YouTube Transcript Scraper", results, start_time)
+        )
+        youtube_thread.start()
+        print("▶️  YouTube Transcript Scraper started...")
 
-        print(f"Duration: {elapsed:.1f} seconds")
+        # 3. RSS Scraper (parallel with X and YouTube)
+        rss_thread = threading.Thread(
+            target=run_scraper_parallel,
+            args=(scrapers_dir / "rss_scraper.py", "RSS Feed Scraper", results, start_time)
+        )
+        rss_thread.start()
+        print("▶️  RSS Feed Scraper started...")
 
-        results["Options Data"] = {
-            'success': success,
-            'elapsed': elapsed,
-            'returncode': result.returncode
-        }
+        # Wait for all three to complete
+        print("\n⏳ Waiting for all scrapers to complete...\n")
+        x_thread.join()
+        youtube_thread.join()
+        rss_thread.join()
 
-    except Exception as e:
-        elapsed = time.time() - options_start
-        print(f"\n❌ Options data fetch error: {e}")
-        results["Options Data"] = {
-            'success': False,
-            'elapsed': elapsed,
-            'returncode': -1,
-            'error': str(e)
-        }
+        print("\n✅ All parallel scrapers complete. Now running sequential tasks...\n")
 
-    total_time = time.time() - start_time
-    print_summary(results, total_time)
+        # 4. X data archival
+        archival_result = run_archive(today)
+        results["X Archival"] = archival_result
+
+        # 5. Options data scraper
+        print(f"\n{'='*70}")
+        print("📊 Options Data Scraper")
+        print('='*70)
+        print(f"Script: scripts/processing/fetch_technical_data.py")
+        print(f"Started: {datetime.now().strftime('%H:%M:%S')}")
+        print()
+
+        options_start = time.time()
+
+        try:
+            result = subprocess.run(
+                [sys.executable, "scripts/processing/fetch_technical_data.py", today],
+                capture_output=False,
+                text=True,
+                encoding='utf-8',
+                errors='replace',
+                timeout=600
+            )
+
+            elapsed = time.time() - options_start
+            success = result.returncode == 0
+
+            if success:
+                print(f"\n✅ Options data fetch completed successfully")
+            else:
+                print(f"\n❌ Options data fetch failed (exit code: {result.returncode})")
+
+            print(f"Duration: {elapsed:.1f} seconds")
+
+            results["Options Data"] = {
+                'success': success,
+                'elapsed': elapsed,
+                'returncode': result.returncode
+            }
+
+        except Exception as e:
+            elapsed = time.time() - options_start
+            print(f"\n❌ Options data fetch error: {e}")
+            results["Options Data"] = {
+                'success': False,
+                'elapsed': elapsed,
+                'returncode': -1,
+                'error': str(e)
+            }
+
+        total_time = time.time() - start_time
+        print_summary(results, total_time)
+
+        # Prompt user to continue or exit
+        if not prompt_continue():
+            break  # Exit the loop and end the program
 
 
 if __name__ == "__main__":

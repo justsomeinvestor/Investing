@@ -882,6 +882,166 @@ Quick Actions are NOT:
 - ❌ Hidden (all actions logged and visible)
 
 ================================================================================
+TRADE FILTER CONSOLE - INTERACTIVE THREAT ASSESSMENT
+================================================================================
+
+**WHAT IT IS:**
+A real-time visual dashboard (cockpit instrument panel) that displays the pre-entry threat
+assessment checklist as you discuss a potential trade with Wingman. As Wingman analyzes the
+setup, each condition "lights up" when satisfied. When all required conditions pass, you get
+a GREEN LIGHT to enter the trade.
+
+**HOW IT WORKS:**
+
+**Step 1: Open the Console**
+- Open: Journal/trade-console.html in your browser
+- The dashboard initializes with all conditions showing as AWAITING
+- Console auto-refreshes every 2 seconds to read live_assessment.json
+
+**Step 2: Mention a Ticker**
+- You: "What about shorting SPY at $595?"
+- Wingman: Automatically opens assessment session for SPY
+- Wingman: Begins analyzing each condition as you discuss the setup
+
+**Step 3: Watch Conditions Light Up**
+- As Wingman analyzes, conditions update on the console:
+  - "C+R Confirmation" → ✅ (Wingman confirms the breakdown)
+  - "RSI Level" → ✅ (RSI is 83, showing divergence)
+  - "Volume" → ✅ (1.4x average)
+  - "EMA Filter" → ✅ (5-min 200 EMA falling)
+- Each condition shows:
+  - Status: ✅ PASS / ❌ FAIL / ⏳ NOT_CHECKED
+  - Description: What this condition means
+  - Notes: Wingman's analysis for this specific trade
+  - Rules: Which trading rules this connects to
+
+**Step 4: Monitor the Signal Light**
+- **RED LIGHT (⭕):** Not enough conditions passing. Do not enter.
+- **YELLOW LIGHT (🟡):** Some conditions passing, but missing key ones. Review before entry.
+- **GREEN LIGHT (🟢):** All required conditions pass. Clear to enter.
+
+**Step 5: Get Wingman Commentary**
+- Wingman updates the commentary section with analysis:
+  - "C+R confirmed at $595 ✓"
+  - "RSI at 83, price higher but momentum lower = divergence ✓"
+  - "Volume 1.4x average ✓"
+  - "All 15/15 conditions pass - GREEN LIGHT"
+
+**CONSOLE DISPLAYS:**
+
+1. **Main Signal Box** (top center):
+   - Large GO/NO-GO indicator
+   - Progress bar (X/Y conditions passing)
+   - Percentage completion (0-100%)
+
+2. **Condition Categories:**
+   - Technical Structure (6 items)
+   - Momentum & Volume (3 items)
+   - Market Context (3 items)
+   - Fibonacci Reversion (5 items)
+   - Risk Management (1 item)
+
+3. **Wingman Commentary Section:**
+   - Real-time analysis as conditions are checked
+   - Updated automatically as you discuss the setup
+
+**WINGMAN BEHAVIOR DURING CONSOLE SESSION:**
+
+When operating with the console, Wingman:
+
+1. **Auto-opens assessment** when you mention a ticker
+   - Sets ticker field in live_assessment.json
+   - Initializes setup_type (EXTENSION_SELL or PULLBACK_BUY based on your direction)
+   - Sets signal_light to RED initially
+
+2. **Continuously updates conditions** as you discuss:
+   - Listens for details: "Price is at $595, RSI is 83, volume 1.4x average"
+   - Maps details to checklist items
+   - Updates status: NOT_CHECKED → PASS or FAIL
+   - Adds analysis notes to each item
+
+3. **Calculates overall signal** automatically:
+   - Counts passed items
+   - Compares to required count (15 for EXTENSION, 14 for PULLBACK)
+   - Sets signal_light: RED (< 70%), YELLOW (70-90%), GREEN (100%)
+   - Updates progress bar percentage
+
+4. **Provides real-time commentary:**
+   - Announces each condition as it passes/fails
+   - Explains why each condition matters
+   - Shows running total: "13/15 conditions passing..."
+   - Final decision: "GREEN LIGHT - Clear to enter" or explains what's missing
+
+**DATA FILES INVOLVED:**
+
+- **live_assessment.json** (write): Wingman updates this during analysis
+  - ticker, setup_type, signal_light, conditions[], assessment_notes[], wingman_commentary
+
+- **trade-console.html** (read): Dashboard displays from this file
+  - Auto-refreshes every 2 seconds
+  - Renders all conditions with status indicators
+  - Shows progress bar and signal light
+  - Displays commentary
+
+**EXAMPLE CONVERSATION WITH CONSOLE:**
+
+```
+You: "What about shorting SPY at $595? I see price broke below the $600 level yesterday."
+
+Wingman: [Opens console session]
+"Copy that. SPY short at $595. Analyzing 18 conditions for extension short setup..."
+
+[Console shows: 1/15 conditions checked, RED LIGHT]
+[C+R Confirmation → ✅ PASS with note "Price closed below $600, retested $598, confirmed breakdown"]
+
+You: "RSI is at 83, and I can see the divergence - price made a higher high but RSI declined"
+
+Wingman: [Updates conditions]
+"Divergence confirmed. RSI overbought at 83..."
+
+[Console shows: 4/15 conditions, RED LIGHT → YELLOW LIGHT]
+[RSI Level → ✅ PASS]
+[Divergence → ✅ PASS]
+[Fibonacci Extension → ✅ PASS - price extended to 127% of prior move]
+
+You: "Volume is strong too - the entry bar is 1.4x the 20-bar average"
+
+Wingman: [Updates conditions]
+
+[Console shows: 5/15 conditions, YELLOW LIGHT]
+[Volume → ✅ PASS]
+
+[... continue discussing each condition ...]
+
+Wingman: "All 15/15 conditions pass. GREEN LIGHT. Clear to enter SPY short at $595."
+
+[Console shows: 15/15 conditions, GREEN LIGHT 🟢]
+[Large indicator: GO]
+```
+
+**WHEN TO USE THE CONSOLE:**
+
+- ✅ Analyzing a potential entry (before you enter)
+- ✅ Teaching yourself to spot setups (visual learning)
+- ✅ Debugging why a trade you took was weak (post-trade analysis)
+- ✅ Backtesting manually (checking if your old trades would pass checklist)
+- ❌ NOT needed if you're just asking general questions (only open when analyzing a specific trade)
+
+**CONSOLE KEYBOARD SHORTCUTS (Optional):**
+
+- **F5 or Cmd+R:** Force-refresh dashboard (usually auto-refreshes)
+- **Open DevTools (F12):** Check browser console for errors
+- **Bookmark the file:** Journal/trade-console.html for quick access
+
+**TECHNICAL NOTES:**
+
+- Console runs entirely in your browser (no server needed)
+- Dashboard refreshes every 2 seconds by polling live_assessment.json
+- Works offline (local file, no internet required)
+- Mobile-friendly (can view on phone while trading)
+- Uses dark theme optimized for trading screens
+
+================================================================================
 VERSION HISTORY
 ================================================================================
 
@@ -898,6 +1058,13 @@ VERSION HISTORY
 - Authorization protocol for buttons
 - Status notification specifications
 - Daily sequence recommendations
+
+**v1.2 - 2025-10-28**
+- Added Trade Filter Console (Interactive Threat Assessment)
+- Real-time dashboard for pre-entry checklist
+- Wingman auto-update behavior during trade analysis
+- Green/Yellow/Red signal light system
+- Console auto-refresh from live_assessment.json
 
 ================================================================================
 END OF PROTOCOL

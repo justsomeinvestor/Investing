@@ -1,0 +1,204 @@
+{
+  "session_id": "mock-test-spy-600",
+  "status": "ANALYZING",
+  "created_at": "2025-10-28T14:00:00Z",
+  "last_updated": "2025-10-28T14:00:00Z",
+  "ticker": "SPY",
+  "setup_type": "EXTENSION_SELL",
+  "signal_light": "RED",
+  "overall_progress": {
+    "items_passed": 3,
+    "items_total": 18,
+    "items_required": 15,
+    "percentage": 20
+  },
+  "conditions": {
+    "technical_structure": {
+      "category": "Technical Structure",
+      "items": [
+        {
+          "id": 1,
+          "name": "C+R Confirmation",
+          "description": "Close+retest confirmation (price closed below level, retested, confirmed breakdown)",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#7, #9"
+        },
+        {
+          "id": 2,
+          "name": "RSI Level Check",
+          "description": "Current RSI level (>80 or <20 = divergence risk)",
+          "status": "PASS",
+          "notes": "RSI at 80 - extreme overbought territory ✓",
+          "rule": "#19"
+        },
+        {
+          "id": 3,
+          "name": "50% Fib Pullback Area",
+          "description": "At 50% Fibonacci pullback zone? (confluence point)",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#18"
+        },
+        {
+          "id": 4,
+          "name": "127% / 168% Extension Area",
+          "description": "At Fib extension targets? (reversal zones / stop placement)",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#18, #19"
+        },
+        {
+          "id": 5,
+          "name": "Divergence Present?",
+          "description": "Price making higher high, but RSI/momentum lower = bearish divergence",
+          "status": "PASS",
+          "notes": "Bearish divergence confirmed - price higher but RSI declining ✓",
+          "rule": "#19"
+        },
+        {
+          "id": "5b",
+          "name": "VWAP Extension Trigger",
+          "description": "VWAP script yellow/orange/red arrows = mean reversion opportunity",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#18"
+        }
+      ]
+    },
+    "momentum_volume": {
+      "category": "Momentum & Volume",
+      "items": [
+        {
+          "id": 6,
+          "name": "EMA Filter",
+          "description": "5-min 200 EMA: must be falling for shorts, rising for longs",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#10"
+        },
+        {
+          "id": 7,
+          "name": "Volume ≥ 1.3× 20-bar avg",
+          "description": "Entry bar volume ≥ 1.3x the 20-bar average",
+          "status": "PASS",
+          "notes": "Volume spike confirmed on move - conviction present ✓",
+          "rule": "#3"
+        },
+        {
+          "id": 8,
+          "name": "ADD Confirmation",
+          "description": "Advance-Decline line: improving for longs, declining for shorts",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#11"
+        }
+      ]
+    },
+    "market_context": {
+      "category": "Market Context",
+      "items": [
+        {
+          "id": 9,
+          "name": "Signal Tier ≥ MODERATE",
+          "description": "Market signal must be MODERATE or higher",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#4"
+        },
+        {
+          "id": 10,
+          "name": "Higher TF Alignment",
+          "description": "Aligned with daily/weekly trend? Or counter-trend?",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#12"
+        },
+        {
+          "id": 11,
+          "name": "Volatility Pattern",
+          "description": "Market regime: consolidation/squeeze? Breakout? Expanding volatility?",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#18"
+        }
+      ]
+    },
+    "fibonacci_reversion": {
+      "category": "Fibonacci Reversion (Rule #20)",
+      "items": [
+        {
+          "id": 13,
+          "name": "At 127%-168% Extension?",
+          "description": "Price extended to 127% or 168% Fib extension of prior move",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#20"
+        },
+        {
+          "id": 14,
+          "name": "Bearish Divergence Confirmed?",
+          "description": "Price at extension making higher high, but RSI/momentum lower",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#20, #19"
+        },
+        {
+          "id": 15,
+          "name": "VWAP Yellow/Orange/Red Arrow?",
+          "description": "VWAP script arrow signal = mean reversion trigger",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#20"
+        },
+        {
+          "id": 16,
+          "name": "50%-61.8% Pullback Identified?",
+          "description": "After selling extension, calculate where 50%-61.8% pullback would be",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#20"
+        },
+        {
+          "id": 17,
+          "name": "Hard Level Confluence Present?",
+          "description": "Does 50%-61.8% zone hit HARD LEVEL? (weekly/monthly high/low, support/resistance, EMA)",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "#20, #0"
+        }
+      ]
+    },
+    "risk_management": {
+      "category": "Risk Management",
+      "items": [
+        {
+          "id": 18,
+          "name": "Risk Calculated ($231 max)",
+          "description": "Position sized for $231 risk (1% of account). Stop pre-set. Capital verified.",
+          "status": "NOT_CHECKED",
+          "notes": "",
+          "rule": "Risk Management Framework"
+        }
+      ]
+    }
+  },
+  "setup_requirements": {
+    "EXTENSION_SELL": {
+      "setup_type": "Extension SHORT",
+      "required_items": [1, 2, 3, 4, 5, "5b", 6, 7, 8, 9, 10, 11, 13, 14, 15, 18],
+      "required_count": 16,
+      "items_checked": 0
+    },
+    "PULLBACK_BUY": {
+      "setup_type": "Pullback LONG",
+      "required_items": [1, 2, 3, 4, 5, "5b", 6, 7, 8, 9, 10, 11, 16, 17, 18],
+      "required_count": 15,
+      "items_checked": 0
+    }
+  },
+  "assessment_notes": [
+    "Session initialized. Awaiting ticker selection."
+  ],
+  "wingman_commentary": "✓ RSI Level Check: RSI at 80 - extreme overbought territory\n✓ Divergence: Bearish divergence confirmed - price higher but RSI declining\n✓ Volume: Volume spike confirmed on move\n\n[3/15 conditions passing - 20% complete]\n\nSetup showing early strength. Momentum failure and overbought signal confirmed. Need more confluences to reach GREEN LIGHT."
+}

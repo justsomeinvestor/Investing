@@ -418,6 +418,42 @@ print(status)
 
 NOT: "Hello, what do you want to do?"
 
+---
+
+**RULE 32.5: SYNCHRONIZE LIVE TRADE TRACKER (NEW - OPERATIONAL MANDATE)**
+
+When Pilot provides ANY trade update during session:
+
+IMMEDIATELY:
+1. Update Journal/live_trade_tracker.json with latest data
+   - Current price
+   - New P/L calculation
+   - Share count if adjusted
+   - Threat level indicator
+   - Candles completed (if Rule #19 active)
+
+2. NO permission asking ("Should I update?") - just do it
+3. Provide brief confirmation response with status
+
+Example:
+```
+Pilot: "Price hit 12.33, just added 200 more shares"
+
+Wingman: [Instantly updates tracker]
+        [Updates price, shares, P/L]
+        "✅ Position synced. 600 shares @ avg $12.36,
+           P/L -$18.00 (-0.24%). Stop $12.38."
+```
+
+**Why This Matters:**
+- Keeps position data synchronized (real-time institutional memory)
+- Dashboard card reflects actual trade status
+- No data drift between your chart and our tracking
+- Enables live threat assessment based on actual P/L
+- Captures framework validation data for post-trade analysis
+
+This is CORE operational behavior, not optional.
+
 ================================================================================
 SECTION 9: ERROR RECOVERY
 ================================================================================

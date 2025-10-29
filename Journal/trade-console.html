@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wingman Trade Filter Console</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1419;
+            color: #b0b8c1;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        .cockpit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #1e2530;
+        }
+
+        .cockpit-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1db679;
+            letter-spacing: 0.5px;
+        }
+
+        .status-info {
+            text-align: right;
+            font-size: 13px;
+            color: #7a8290;
+        }
+
+        .status-info .ticker {
+            font-size: 16px;
+            color: #1db679;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        /* MAIN GO/NO-GO SIGNAL */
+        .signal-box {
+            background: #1a1f2e;
+            border: 1px solid #2a3545;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signal-box.red {
+            border-color: #c73c3c;
+            background: #1a0f0f;
+        }
+
+        .signal-box.yellow {
+            border-color: #ff9d3e;
+            background: #1a1410;
+        }
+
+        .signal-box.green {
+            border-color: #1db679;
+            background: #0f1a14;
+        }
+
+        .signal-light {
+            font-size: 40px;
+            margin-bottom: 8px;
+            animation: pulse 0.8s infinite;
+        }
+
+        .signal-box.red .signal-light {
+            animation: pulse-red 0.8s infinite;
+        }
+
+        .signal-box.yellow .signal-light {
+            animation: pulse-yellow 0.8s infinite;
+        }
+
+        .signal-box.green .signal-light {
+            animation: pulse-green 0.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes pulse-yellow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes pulse-green {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .signal-status {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .signal-box.red .signal-status {
+            color: #ff6b6b;
+        }
+
+        .signal-box.yellow .signal-status {
+            color: #ff9d3e;
+        }
+
+        .signal-box.green .signal-status {
+            color: #1db679;
+        }
+
+        .signal-progress {
+            font-size: 14px;
+            color: #7a8290;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 24px;
+            background: #0f1419;
+            border: 1px solid #2a3545;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff9d3e, #1db679);
+            width: 0%;
+            transition: width 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 11px;
+        }
+
+        /* CATEGORIES CONTAINER */
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .category {
+            background: #1a1f2e;
+            border: 1px solid #2a3545;
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .category-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1db679;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2a3545;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .condition-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding: 8px;
+            background: #0f1419;
+            border-left: 2px solid #2a3545;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .condition-item.passed {
+            background: rgba(29, 182, 121, 0.08);
+            border-left-color: #1db679;
+        }
+
+        .condition-item.failed {
+            background: rgba(199, 60, 60, 0.08);
+            border-left-color: #ff6b6b;
+        }
+
+        .condition-item.not_checked {
+            background: rgba(255, 157, 62, 0.04);
+            border-left-color: #ff9d3e;
+        }
+
+        .status-indicator {
+            font-size: 18px;
+            margin-right: 10px;
+            min-width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .condition-content {
+            flex: 1;
+        }
+
+        .condition-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #d4dadf;
+            margin-bottom: 2px;
+        }
+
+        .condition-description {
+            font-size: 11px;
+            color: #7a8290;
+            line-height: 1.5;
+            margin-bottom: 3px;
+        }
+
+        .condition-notes {
+            font-size: 10px;
+            color: #1db679;
+            line-height: 1.4;
+        }
+
+        .condition-rule {
+            font-size: 9px;
+            color: #495560;
+            margin-top: 3px;
+        }
+
+        /* FOOTER COMMENTARY */
+        .commentary-box {
+            background: #1a1f2e;
+            border: 1px solid #2a3545;
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 24px;
+        }
+
+        .commentary-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1db679;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .commentary-text {
+            font-size: 12px;
+            color: #7a8290;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* TIMESTAMP */
+        .timestamp {
+            text-align: center;
+            font-size: 10px;
+            color: #495560;
+            margin-top: 16px;
+        }
+
+        /* LOADING & ERRORS */
+        .error-box {
+            background: rgba(199, 60, 60, 0.1);
+            border: 1px solid #ff6b6b;
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            color: #ff9999;
+            margin: 16px 0;
+        }
+
+        .loading {
+            text-align: center;
+            color: #1db679;
+            padding: 32px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .categories-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cockpit-title {
+                font-size: 18px;
+            }
+
+            .signal-status {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cockpit-header">
+        <div class="cockpit-title">⚡ WINGMAN TRADE FILTER CONSOLE</div>
+        <div class="status-info">
+            <div class="ticker" id="tickerDisplay">Awaiting Ticker...</div>
+            <div id="timestampHeader"></div>
+        </div>
+    </div>
+
+    <!-- MAIN SIGNAL BOX -->
+    <div id="signalBox" class="signal-box red">
+        <div class="signal-light">⭕</div>
+        <div class="signal-status" id="signalStatus">NO GO</div>
+        <div class="signal-progress" id="signalProgress">Awaiting trade analysis...</div>
+        <div class="progress-bar-container">
+            <div id="progressBar" class="progress-bar" style="width: 0%">0%</div>
+        </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div id="categoriesContainer" class="categories-container"></div>
+
+    <!-- COMMENTARY -->
+    <div class="commentary-box">
+        <div class="commentary-title">📊 WINGMAN COMMENTARY</div>
+        <div id="commentary" class="commentary-text">Session initialized. Awaiting first trade analysis...</div>
+    </div>
+
+    <div class="timestamp">
+        <span id="lastUpdate">Last updated: Never</span> | Auto-refresh enabled
+    </div>
+
+    <script>
+        const DATA_FILE = 'live_assessment.json';
+        const REFRESH_INTERVAL = 2000; // 2 seconds
+        let currentData = null;
+
+        async function loadData() {
+            try {
+                const response = await fetch(DATA_FILE + '?t=' + Date.now());
+                if (!response.ok) throw new Error('Could not load data');
+                currentData = await response.json();
+                updateDisplay();
+                updateTimestamp();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                // Don't show error to user, just log it
+            }
+        }
+
+        function updateDisplay() {
+            if (!currentData) return;
+
+            // Update header info
+            document.getElementById('tickerDisplay').textContent = currentData.ticker || 'Awaiting Ticker...';
+
+            // Update signal box
+            updateSignalBox();
+
+            // Update categories
+            updateCategories();
+
+            // Update commentary
+            document.getElementById('commentary').textContent = currentData.wingman_commentary || currentData.assessment_notes.join('\n');
+        }
+
+        function updateSignalBox() {
+            const box = document.getElementById('signalBox');
+            const status = document.getElementById('signalStatus');
+            const progress = document.getElementById('signalProgress');
+            const progressBar = document.getElementById('progressBar');
+
+            // Set color class
+            box.className = 'signal-box ' + currentData.signal_light.toLowerCase();
+
+            // Set status text
+            const statusMap = {
+                'GREEN': '🟢 GO',
+                'YELLOW': '🟡 CAUTION',
+                'RED': '⭕ NO GO'
+            };
+            status.textContent = statusMap[currentData.signal_light] || currentData.signal_light;
+
+            // Set progress text
+            const overallProgress = currentData.overall_progress;
+            progress.textContent = `${overallProgress.items_passed}/${overallProgress.items_required} CONDITIONS PASSED (${overallProgress.percentage}%)`;
+
+            // Set progress bar
+            progressBar.style.width = overallProgress.percentage + '%';
+            progressBar.textContent = overallProgress.percentage + '%';
+        }
+
+        function updateCategories() {
+            const container = document.getElementById('categoriesContainer');
+            container.innerHTML = '';
+
+            const categoryOrder = [
+                'technical_structure',
+                'momentum_volume',
+                'market_context',
+                'fibonacci_reversion',
+                'risk_management'
+            ];
+
+            categoryOrder.forEach(categoryKey => {
+                const category = currentData.conditions[categoryKey];
+                if (!category) return;
+
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'category-title';
+                titleDiv.textContent = category.category;
+                categoryDiv.appendChild(titleDiv);
+
+                category.items.forEach(item => {
+                    const itemDiv = createConditionItem(item);
+                    categoryDiv.appendChild(itemDiv);
+                });
+
+                container.appendChild(categoryDiv);
+            });
+        }
+
+        function createConditionItem(item) {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'condition-item ' + item.status.toLowerCase();
+
+            // Status indicator
+            const indicator = document.createElement('div');
+            indicator.className = 'status-indicator';
+            const statusMap = {
+                'PASS': '✅',
+                'FAIL': '❌',
+                'NOT_CHECKED': '⏳'
+            };
+            indicator.textContent = statusMap[item.status] || '❓';
+
+            // Content
+            const content = document.createElement('div');
+            content.className = 'condition-content';
+
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'condition-name';
+            nameDiv.textContent = item.name;
+            content.appendChild(nameDiv);
+
+            const descDiv = document.createElement('div');
+            descDiv.className = 'condition-description';
+            descDiv.textContent = item.description;
+            content.appendChild(descDiv);
+
+            if (item.notes) {
+                const notesDiv = document.createElement('div');
+                notesDiv.className = 'condition-notes';
+                notesDiv.textContent = '💡 ' + item.notes;
+                content.appendChild(notesDiv);
+            }
+
+            const ruleDiv = document.createElement('div');
+            ruleDiv.className = 'condition-rule';
+            ruleDiv.textContent = 'Rules: ' + item.rule;
+            content.appendChild(ruleDiv);
+
+            itemDiv.appendChild(indicator);
+            itemDiv.appendChild(content);
+
+            return itemDiv;
+        }
+
+        function updateTimestamp() {
+            const now = new Date();
+            const formatted = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            document.getElementById('timestampHeader').textContent = formatted;
+            document.getElementById('lastUpdate').textContent = 'Last updated: ' + formatted;
+        }
+
+        // Initial load and auto-refresh
+        loadData();
+        setInterval(loadData, REFRESH_INTERVAL);
+    </script>
+</body>
+</html>

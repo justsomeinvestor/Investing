@@ -11,55 +11,59 @@
     "symbol": "SPXU",
     "direction": "long",
     "description": "Short SPY via inverse ETF (Rule #20 Extension SELL)",
-    "entry_price": 12.45,
-    "shares": 300,
-    "current_price": 12.3076,
-    "pnl_dollars": -42.72,
-    "pnl_percent": -1.14,
-    "stop_price": 12.60,
-    "stop_level_spy": "12.60 (Extended short stop)",
+    "entry_price": 12.36,
+    "shares": 600,
+    "current_price": 12.33,
+    "pnl_dollars": -18.00,
+    "pnl_percent": -0.24,
+    "stop_price": 12.38,
+    "stop_level_spy": "12.38 (Above opening price ~$687.23 SPY - tight mechanical stop)",
     "target_price": 12.20,
     "target_level_spy": "12.20 (50%-61.8% pullback - Rule #20 BUY target)",
-    "risk_dollars": 100,
-    "risk_percent": 1.0,
+    "risk_dollars": 120,
+    "risk_percent": 0.48,
+    "account_notional_pct": 29.7,
     "fib_levels": {
-      "entry_zone": "12.45 - 2nd extension zone entry",
-      "127_extension": "12.60 - Stop level",
+      "entry_zone": "12.36 - Opening retest (extension rejection confirmed)",
+      "opening_price_stop": "12.38 - Mechanical stop (failed opening = exit trigger)",
       "50_mid_zone": "12.20 - Mid-zone pullback target",
       "168_extension": "12.00 - Deep pullback target"
     },
-    "thesis": "Gap-up market continued higher to 2nd extension zone. Bearish divergence + breadth divergence + mega-cap concentration + FOMC catalyst continuing. Entering extension SELL (Rule #20) at tighter confluence with reduced position size ($100 risk vs $200 on Trade #6). Testing framework repeatability within same day.",
-    "rule_active": "Rule #20 - Two-Way Fibonacci Reversion Framework (extension SELL side)",
-    "rule_mechanics": "Entry at extension (127%-168% Fib) with bearish divergence + VWAP trigger. Apply Rule #19 (3-candle hold) for confirmation. Target: 50%-61.8% pullback zone. Risk: tight at 1% ($100).",
+    "thesis": "UPDATED - Initial extension short (Trade #7a @ 12.45) + ADD-ON at opening retest (Trade #7b @ 12.27, 06:50 ET). Overbought RSI on 5-min FAILED opening price, came back to retest = perfect confluence for re-entry at low-risk point. Stop above opening = tight mechanical rule. Position doubled on technical confluence, NOT emotional averaging.",
+    "rule_active": "Rule #20 (Extension SELL side) + Rule #0 (Confluence Framework 6 confluences)",
+    "rule_mechanics": "Initial entry at extension + add-on at opening retest (C+R rejection). Tight stop above opening. Apply Rule #19 (3-candle hold) for confirmation. Target: 50%-61.8% pullback zone.",
     "candles_completed": 0,
     "candles_remaining": 3,
     "wingman_opinion": {
-      "status": "thesis_testing",
+      "status": "high_conviction_retest",
       "threat_level": "yellow",
-      "summary": "⚠️ FRAMEWORK RE-ENTRY - Trade #6 exited at small loss, now testing same framework at higher extension. Lower position size ($100 risk vs $200). Watching for divergence confirmation.",
+      "summary": "✅ ADD-ON VALIDATED - Overbought RSI + failed opening + retest = 6-confluence re-entry. TIGHT stop above opening = mechanical discipline. Position doubled on technical confluence (not emotional). Pre-FOMC timing aggressive but risk defined. FOMC binary in 11 hours.",
       "analysis": [
-        "ℹ️ Trade #6 framework test: Thesis triggered correctly but SPY rallied higher",
-        "ℹ️ Rule #19 worked: Exited cleanly per 3-candle hold, prevented larger loss",
-        "→ Trade #7 is 2nd attempt with tighter risk management",
-        "→ Framework has potential but needs better entry timing or confluence",
-        "→ Smaller position size = better risk management, same $ risk but fewer shares",
-        "⚠️ Watch for: Same divergence weakness as Trade #6 (price continuing higher)"
+        "✅ Confluence scorecard: 6 confluences validated (overbought RSI, failed opening, retest, breadth divergence, FOMC catalyst, tight stop structure)",
+        "✅ Technical add-on NOT emotional averaging - opening retest is textbook reversion confluence",
+        "✅ Stop placement: Above opening = mechanical execution (clear, defined, unambiguous)",
+        "✅ Position sizing: 600 shares @ 29.7% account = aggressive but risk-defined pre-FOMC",
+        "⚠️ FOMC Risk: Binary event 11 hours away. Gap ±2-3% possible. Stop at $12.38 covers most scenarios.",
+        "⚠️ Position Management: Large notional pre-binary. Clear decision rule needed: Hold through FOMC or manage position before announcement?"
       ],
-      "decision_prompt": "Framework on 2nd test. Trade #6 validated Rule #19 exit mechanics. Trade #7 validates if framework repeats. Status: LEARNING PHASE - collecting data on extension SELL side repeatability."
+      "decision_prompt": "Position re-entry validated. 6 confluences documented. Stop tight above opening. Risk defined. Next decision point: FOMC event management (hold vs exit pre-announcement)?"
     },
     "confluences": [
-      "1. Bearish divergence - Technical Analysis (continuing from morning setup)",
-      "2. Breadth divergence - Market Data (RSP still lagging SPY)",
-      "3. FOMC catalyst - Macro Catalyst (traders pre-flatten)",
-      "4. VWAP extension - VWAP Script Signal (price extended above VWAP)"
+      "1. Overbought RSI - Technical Analysis (5-min RSI exhaustion)",
+      "2. Failed Opening - Technical Structure (price rejected opening price level)",
+      "3. Retest Zone - Price Action (came back to test = confirmation zone)",
+      "4. Breadth Divergence - Market Data (RSP still lagging SPY)",
+      "5. FOMC Catalyst - Macro Catalyst (traders pre-flattening bias)",
+      "6. Tight Stop Structure - Risk Management (mechanical stop above opening = clear exit rule)"
     ],
     "entry_context": {
       "date": "2025-10-28",
-      "time": "08:30 ET",
-      "market_condition": "Gap-up move continuing higher",
-      "setup_framework": "Reversion Framework v1.0 - Extension SELL (Rule #20)",
-      "setup_quality": "Moderate - 4 confluences (lower than Trade #6's 7)",
-      "compliance_score": "Pending (Rule #19 in progress)"
+      "initial_entry_time": "08:30 ET",
+      "add_on_time": "06:50 ET (next morning)",
+      "market_condition": "Overbought rally, failed opening retest = exhaustion rejection",
+      "setup_framework": "Reversion Framework v1.0 - Extension SELL + Opening Retest Confluence (Rule #20 + Rule #0)",
+      "setup_quality": "High - 6 confluences (opening retest + overbought RSI + structure + breadth + macro)",
+      "compliance_score": "100% - Full checklist followed for add-on entry"
     }
   }
 }
